@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "#SP"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:string"
+    },
+    "S": {
+      "item": "minecraft:slime_ball"
+    },
+    "P": {
+      "item": "minecraft:paper"
+    }
+  },
+  "result": {
+    "item": "minecraft:name_tag",
+    "count": 1
+  },
+  "show_notification": true
+}

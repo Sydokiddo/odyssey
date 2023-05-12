@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:wool_carpets",
+    "minecraft:moss_carpet",
+    "#minecraft:banners",
+    "minecraft:chain",
+    "minecraft:lantern",
+    "minecraft:soul_lantern",
+    "minecraft:torch",
+    "minecraft:wall_torch",
+    "minecraft:soul_torch",
+    "minecraft:soul_wall_torch"
+  ]
+}

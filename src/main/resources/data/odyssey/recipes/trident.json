@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " ##",
+    " P#",
+    "P  "
+  ],
+  "key": {
+    "#": {
+      "item": "odyssey:elder_guardian_thorn"
+    },
+    "P": {
+      "item": "minecraft:prismarine_shard"
+    }
+  },
+  "result": {
+    "item": "minecraft:trident",
+    "count": 1
+  },
+  "show_notification": true
+}

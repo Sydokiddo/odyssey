@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "#c:glass_blocks",
+    "#c:glass_panes",
+    "minecraft:glowstone",
+    "odyssey:potion_cauldron"
+  ]
+}

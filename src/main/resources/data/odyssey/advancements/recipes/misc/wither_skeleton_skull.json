@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_wither_skull_fragment": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "odyssey:wither_skull_fragment"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "odyssey:wither_skeleton_skull"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_wither_skull_fragment",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "odyssey:wither_skeleton_skull"
+    ]
+  },
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "odyssey:block/gunpowder_block"
+    }
+  }
+}

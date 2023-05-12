@@ -1,0 +1,36 @@
+{
+  "parent": "minecraft:adventure/root",
+  "criteria": {
+    "blowing_horn": {
+      "conditions": {
+        "item": {
+          "items": [
+            "minecraft:goat_horn"
+          ]
+        }
+      },
+      "trigger": "minecraft:using_item"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.adventure.use_goat_horn.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "minecraft:goat_horn"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.adventure.use_goat_horn.title"
+    }
+  },
+  "requirements": [
+    [
+      "blowing_horn"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,38 @@
+{
+  "item.odyssey.iron_potato": "Iron Potato",
+  "item.odyssey.enchanted_iron_potato": "Enchanted Iron Potato",
+  "item.odyssey.wither_skull_fragment": "Wither Skull Fragment",
+  "item.odyssey.elder_guardian_thorn": "Elder Guardian Thorn",
+
+  "item.minecraft.potion.effect.mining_fatigue": "Potion of Mining Fatigue",
+  "item.minecraft.splash_potion.effect.mining_fatigue": "Splash Potion of Mining Fatigue",
+  "item.minecraft.lingering_potion.effect.mining_fatigue": "Lingering Potion of Mining Fatigue",
+  "item.minecraft.tipped_arrow.effect.mining_fatigue": "Arrow of Mining Fatigue",
+  "item.minecraft.potion.effect.long_mining_fatigue": "Potion of Mining Fatigue",
+  "item.minecraft.splash_potion.effect.long_mining_fatigue": "Splash Potion of Mining Fatigue",
+  "item.minecraft.lingering_potion.effect.long_mining_fatigue": "Lingering Potion of Mining Fatigue",
+  "item.minecraft.tipped_arrow.effect.long_mining_fatigue": "Arrow of Mining Fatigue",
+  "item.minecraft.potion.effect.strong_mining_fatigue": "Potion of Mining Fatigue",
+  "item.minecraft.splash_potion.effect.strong_mining_fatigue": "Splash Potion of Mining Fatigue",
+  "item.minecraft.lingering_potion.effect.strong_mining_fatigue": "Lingering Potion of Mining Fatigue",
+  "item.minecraft.tipped_arrow.effect.strong_mining_fatigue": "Arrow of Mining Fatigue",
+
+  "item.minecraft.potion.effect.haste": "Potion of Haste",
+  "item.minecraft.splash_potion.effect.haste": "Splash Potion of Haste",
+  "item.minecraft.lingering_potion.effect.haste": "Lingering Potion of Haste",
+  "item.minecraft.tipped_arrow.effect.haste": "Arrow of Haste",
+  "item.minecraft.potion.effect.long_haste": "Potion of Haste",
+  "item.minecraft.splash_potion.effect.long_haste": "Splash Potion of Haste",
+  "item.minecraft.lingering_potion.effect.long_haste": "Lingering Potion of Haste",
+  "item.minecraft.tipped_arrow.effect.long_haste": "Arrow of Haste",
+  "item.minecraft.potion.effect.strong_haste": "Potion of Haste",
+  "item.minecraft.splash_potion.effect.strong_haste": "Splash Potion of Haste",
+  "item.minecraft.lingering_potion.effect.strong_haste": "Lingering Potion of Haste",
+  "item.minecraft.tipped_arrow.effect.strong_haste": "Arrow of Haste",
+
+  "block.odyssey.gunpowder_block": "Block of Gunpowder",
+  "block.odyssey.potion_cauldron": "Potion Cauldron",
+
+  "advancements.adventure.use_goat_horn.title": "Call of the Wild",
+  "advancements.adventure.use_goat_horn.description": "Blow a Goat Horn"
+}

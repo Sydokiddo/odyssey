@@ -1,0 +1,24 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.sydokiddo.odyssey.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "PlayerManagerMixin",
+    "blocks.AbstractCauldronBlockMixin",
+    "blocks.AnvilRepairingMixin",
+    "blocks.FarmlandBlockMixin",
+    "blocks.LilyPadBlockBoneMealMixin",
+    "blocks.LiquidBlockMixin",
+    "entities.PigMixin",
+    "entities.RabbitMixin",
+    "entities.StriderMixin",
+    "misc.ArmorStandInteractionMixin",
+    "misc.CheapAnvilRenameMixin",
+    "misc.PotionColorMixin"
+  ],
+  "client": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

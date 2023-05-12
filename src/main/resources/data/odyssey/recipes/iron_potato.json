@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "###",
+    "#X#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:iron_ingot"
+    },
+    "X": {
+      "item": "minecraft:potato"
+    }
+  },
+  "result": {
+    "item": "odyssey:iron_potato",
+    "count": 1
+  },
+  "show_notification": true
+}
