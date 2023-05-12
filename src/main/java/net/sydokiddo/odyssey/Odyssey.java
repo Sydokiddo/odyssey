@@ -13,6 +13,6 @@ public class Odyssey implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		OdysseyRegistry.registerAll();
-		LOGGER.info("Thank you for downloading Example Odyssey");
+		LOGGER.info("Thank you for downloading Odyssey");
 	}
 }
