@@ -11,8 +11,8 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.Block;
+import net.sydokiddo.chrysalis.registry.items.custom_items.EnchantmentGlintItem;
 import net.sydokiddo.odyssey.Odyssey;
-import net.sydokiddo.odyssey.registry.items.custom_items.EnchantedFoodItem;
 
 @SuppressWarnings("ALL")
 public class ModItems {
@@ -31,7 +31,7 @@ public class ModItems {
         .effect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 300, 0), 1f).build()).rarity(Rarity.RARE)));
 
     public static final Item ENCHANTED_IRON_POTATO = registerItem("enchanted_iron_potato",
-        new EnchantedFoodItem(new FabricItemSettings().food(new FoodProperties.Builder().nutrition(6).saturationMod(10).alwaysEat()
+        new EnchantmentGlintItem(new FabricItemSettings().food(new FoodProperties.Builder().nutrition(6).saturationMod(10).alwaysEat()
         .effect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 900, 1), 1f)
         .effect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 900, 0), 1f).build()).rarity(Rarity.RARE)));
 

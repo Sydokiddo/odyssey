@@ -14,8 +14,7 @@
     "entities.RabbitMixin",
     "entities.StriderMixin",
     "misc.ArmorStandInteractionMixin",
-    "misc.CheapAnvilRenameMixin",
-    "misc.PotionColorMixin"
+    "misc.CheapAnvilRenameMixin"
   ],
   "client": [],
   "injectors": {
