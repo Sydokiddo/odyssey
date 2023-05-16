@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.Mixin;
 @Mixin(Rabbit.class)
 public abstract class RabbitMixin extends Animal {
 
-    private RabbitMixin(EntityType<? extends Animal> entityType, Level level) {
+    private RabbitMixin(EntityType<? extends Rabbit> entityType, Level level) {
         super(entityType, level);
     }
 

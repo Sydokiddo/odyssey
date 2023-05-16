@@ -33,7 +33,7 @@ public class ModItems {
     public static final Item ENCHANTED_IRON_POTATO = registerItem("enchanted_iron_potato",
         new EnchantmentGlintItem(new FabricItemSettings().food(new FoodProperties.Builder().nutrition(6).saturationMod(10).alwaysEat()
         .effect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 900, 1), 1f)
-        .effect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 900, 0), 1f).build()).rarity(Rarity.RARE)));
+        .effect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 900, 0), 1f).build()).rarity(Rarity.EPIC)));
 
     // Registry for Items:
 
