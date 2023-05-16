@@ -15,15 +15,6 @@ repositories {
 		url "https://maven.terraformersmc.com/"
 	}
 	maven {
-		url "https://ladysnake.jfrog.io/artifactory/mods"
-	}
-	maven {
-		url 'https://repo.sleeping.town'
-		content {
-			includeGroup 'com.unascribed'
-		}
-	}
-	maven {
 		url 'https://jitpack.io'
 	}
 	maven {
