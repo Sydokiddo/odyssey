@@ -5,6 +5,7 @@ import net.sydokiddo.odyssey.registry.blocks.custom_blocks.PotionCauldronInterac
 import net.sydokiddo.odyssey.registry.items.ModItems;
 import net.sydokiddo.odyssey.registry.items.ModPotions;
 import net.sydokiddo.odyssey.registry.misc.ModCreativeModeTabs;
+import net.sydokiddo.odyssey.registry.misc.ModLootTableModifiers;
 
 public class OdysseyRegistry {
 
@@ -26,6 +27,7 @@ public class OdysseyRegistry {
         ModPotions.registerStrongHastePotion();
 
         ModCreativeModeTabs.registerCreativeTabs();
+        ModLootTableModifiers.modifyLootTables();
 
         System.out.println("Registering Content for Odyssey");
     }
