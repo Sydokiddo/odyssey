@@ -1,4 +1,4 @@
-package net.sydokiddo.odyssey.client;
+package net.sydokiddo.odyssey.client.rendering;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

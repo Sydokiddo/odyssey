@@ -33,9 +33,9 @@
   "depends": {
     "fabricloader": ">=0.14.19",
     "fabric-api": "*",
-    "minecraft": "1.20-beta.1",
+    "minecraft": "1.20-beta.2",
     "java": ">=17",
-    "chrysalis": "0.0.6-beta-5"
+    "chrysalis": "0.0.6-beta-6"
   },
   "suggests": {
     "another-mod": "*"
