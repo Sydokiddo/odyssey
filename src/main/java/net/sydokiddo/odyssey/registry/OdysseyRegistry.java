@@ -17,14 +17,7 @@ public class OdysseyRegistry {
         ModBlocks.registerModBlocks();
 
         PotionCauldronInteraction.bootstrap();
-
-        ModPotions.registerMiningFatiguePotion();
-        ModPotions.registerLongMiningFatiguePotion();
-        ModPotions.registerStrongMiningFatiguePotion();
-
-        ModPotions.registerHastePotion();
-        ModPotions.registerLongHastePotion();
-        ModPotions.registerStrongHastePotion();
+        ModPotions.registerPotions();
 
         ModCreativeModeTabs.registerCreativeTabs();
         ModLootTableModifiers.modifyLootTables();

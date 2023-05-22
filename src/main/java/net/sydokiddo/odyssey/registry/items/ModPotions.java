@@ -7,7 +7,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.item.alchemy.Potions;
+import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
 import net.sydokiddo.chrysalis.mixin.util.BrewingRecipeRegistryMixin;
 import net.sydokiddo.odyssey.Odyssey;
 
@@ -50,64 +50,26 @@ public class ModPotions {
 
     // Register Potions:
 
-    public static void registerMiningFatiguePotion() {
+    public static void registerPotions() {
+
         MINING_FATIGUE = registerMiningFatiguePotion("mining_fatigue");
-        registerMiningFatiguePotionRecipe();
-    }
-
-    public static void registerLongMiningFatiguePotion() {
         LONG_MINING_FATIGUE = registerLongMiningFatiguePotion("long_mining_fatigue");
-        registerLongMiningFatiguePotionRecipe();
-    }
-
-    public static void registerStrongMiningFatiguePotion() {
         STRONG_MINING_FATIGUE = registerStrongMiningFatiguePotion("strong_mining_fatigue");
-        registerStrongMiningFatiguePotionRecipe();
-    }
 
-    public static void registerHastePotion() {
+        RegistryHelpers.registerBasePotionRecipe(ModItems.ELDER_GUARDIAN_THORN, ModPotions.MINING_FATIGUE);
+        RegistryHelpers.registerLongPotionRecipe(ModPotions.MINING_FATIGUE, ModPotions.LONG_MINING_FATIGUE);
+        RegistryHelpers.registerStrongPotionRecipe(ModPotions.MINING_FATIGUE, ModPotions.STRONG_MINING_FATIGUE);
+
         HASTE = registerHastePotion("haste");
-        registerHastePotionRecipe();
-    }
-
-    public static void registerLongHastePotion() {
         LONG_HASTE = registerLongHastePotion("long_haste");
-        registerLongHastePotionRecipe();
-    }
-
-    public static void registerStrongHastePotion() {
         STRONG_HASTE = registerStrongHastePotion("strong_haste");
-        registerStrongHastePotionRecipe();
-    }
 
-    // Register Potion Recipes:
-
-    private static void registerMiningFatiguePotionRecipe() {
-        BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(Potions.AWKWARD, ModItems.ELDER_GUARDIAN_THORN, ModPotions.MINING_FATIGUE);
-        BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(ModPotions.HASTE, Items.FERMENTED_SPIDER_EYE, ModPotions.MINING_FATIGUE);
-    }
-
-    private static void registerLongMiningFatiguePotionRecipe() {
-        BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(ModPotions.MINING_FATIGUE, Items.REDSTONE, ModPotions.LONG_MINING_FATIGUE);
-        BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(ModPotions.LONG_HASTE, Items.FERMENTED_SPIDER_EYE, ModPotions.LONG_MINING_FATIGUE);
-    }
-
-    private static void registerStrongMiningFatiguePotionRecipe() {
-        BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(ModPotions.MINING_FATIGUE, Items.GLOWSTONE_DUST, ModPotions.STRONG_MINING_FATIGUE);
-        BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(ModPotions.STRONG_HASTE, Items.FERMENTED_SPIDER_EYE, ModPotions.STRONG_MINING_FATIGUE);
-    }
-
-    private static void registerHastePotionRecipe() {
         BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(ModPotions.MINING_FATIGUE, Items.FERMENTED_SPIDER_EYE, ModPotions.HASTE);
-    }
 
-    private static void registerLongHastePotionRecipe() {
-        BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(ModPotions.HASTE, Items.REDSTONE, ModPotions.LONG_HASTE);
+        RegistryHelpers.registerLongPotionRecipe(ModPotions.HASTE, ModPotions.LONG_HASTE);
         BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(ModPotions.LONG_MINING_FATIGUE, Items.FERMENTED_SPIDER_EYE, ModPotions.LONG_HASTE);
-    }
 
-    private static void registerStrongHastePotionRecipe() {
-        BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(ModPotions.HASTE, Items.GLOWSTONE_DUST, ModPotions.STRONG_HASTE);
+        RegistryHelpers.registerStrongPotionRecipe(ModPotions.HASTE, ModPotions.STRONG_HASTE);
         BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(ModPotions.STRONG_MINING_FATIGUE, Items.FERMENTED_SPIDER_EYE, ModPotions.STRONG_HASTE);
     }
 }
