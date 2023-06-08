@@ -10,6 +10,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.WaterlilyBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.sydokiddo.odyssey.Odyssey;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -27,33 +28,36 @@ public abstract class LilyPadBlockBoneMealMixin implements BonemealableBlock {
 
     @Override
     public boolean isValidBonemealTarget(LevelReader levelReader, BlockPos blockPos, BlockState blockState, boolean bl) {
-        return true;
+        return Odyssey.getConfig().blockChanges.lily_pad_bone_mealing;
     }
 
     @Override
     public boolean isBonemealSuccess(Level level, RandomSource randomSource, BlockPos blockPos, BlockState blockState) {
-        return true;
+        return Odyssey.getConfig().blockChanges.lily_pad_bone_mealing;
     }
 
     @Override
     public void performBonemeal(@NotNull ServerLevel world, @NotNull RandomSource random, @NotNull BlockPos pos, @NotNull BlockState state) {
 
-        BlockState blockState = Blocks.LILY_PAD.defaultBlockState();
-        stopGrowth:
+        if (Odyssey.getConfig().blockChanges.lily_pad_bone_mealing) {
 
-        for(int i = 0; i < 24; ++i) {
+            BlockState blockState = Blocks.LILY_PAD.defaultBlockState();
+            stopGrowth:
 
-            BlockPos growPos = pos;
+            for (int i = 0; i < 24; ++i) {
 
-            for (int j = 0; j < i / 16; ++j) {
-                growPos = growPos.offset(random.nextInt(3) - 1, 0, random.nextInt(3) - 1);
-                if (world.getBlockState(growPos).isCollisionShapeFullBlock(world, growPos)) {
-                    continue stopGrowth;
+                BlockPos growPos = pos;
+
+                for (int j = 0; j < i / 16; ++j) {
+                    growPos = growPos.offset(random.nextInt(3) - 1, 0, random.nextInt(3) - 1);
+                    if (world.getBlockState(growPos).isCollisionShapeFullBlock(world, growPos)) {
+                        continue stopGrowth;
+                    }
                 }
-            }
-            if (canGrowTo(growPos,world)) {
-                world.setBlockAndUpdate(growPos,blockState);
-                state.tick(world, growPos, random);
+                if (canGrowTo(growPos, world)) {
+                    world.setBlockAndUpdate(growPos, blockState);
+                    state.tick(world, growPos, random);
+                }
             }
         }
     }

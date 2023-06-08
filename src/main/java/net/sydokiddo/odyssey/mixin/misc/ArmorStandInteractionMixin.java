@@ -1,15 +1,19 @@
 package net.sydokiddo.odyssey.mixin.misc;
 
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
+import net.sydokiddo.odyssey.Odyssey;
+import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -17,7 +21,11 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ArmorStand.class)
-public abstract class ArmorStandInteractionMixin {
+public abstract class ArmorStandInteractionMixin extends LivingEntity {
+
+    private ArmorStandInteractionMixin(EntityType<? extends LivingEntity> entityType, Level level) {
+        super(entityType, level);
+    }
 
     @Shadow public abstract void setShowArms(boolean showArms);
     @Shadow public abstract boolean isShowArms();
@@ -29,10 +37,10 @@ public abstract class ArmorStandInteractionMixin {
 
         ItemStack itemStack = player.getItemInHand(hand);
 
-        if (!this.isShowArms() && itemStack.getItem() == Items.STICK) {
+        if (!this.isShowArms() && itemStack.getItem() == Items.STICK && Odyssey.getConfig().entityChanges.armor_stand_arms) {
 
             this.setShowArms(true);
-            player.level().playSound(null, player.blockPosition(), SoundEvents.ARMOR_STAND_PLACE, SoundSource.NEUTRAL, 1.0F, 1.0F);
+            player.level().playSound(null, this.getOnPos(), ModSoundEvents.ARMOR_STAND_ADD_ARMS, SoundSource.NEUTRAL, 1.0F, 1.0F);
             player.swing(hand);
             player.gameEvent(GameEvent.ENTITY_INTERACT);
 

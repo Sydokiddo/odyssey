@@ -5,10 +5,8 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
 import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
-import net.sydokiddo.chrysalis.mixin.util.BrewingRecipeRegistryMixin;
 import net.sydokiddo.odyssey.Odyssey;
 
 public class ModPotions {
@@ -64,12 +62,12 @@ public class ModPotions {
         LONG_HASTE = registerLongHastePotion("long_haste");
         STRONG_HASTE = registerStrongHastePotion("strong_haste");
 
-        BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(ModPotions.MINING_FATIGUE, Items.FERMENTED_SPIDER_EYE, ModPotions.HASTE);
+        RegistryHelpers.registerInvertedPotionRecipe(ModPotions.MINING_FATIGUE, ModPotions.HASTE);
 
         RegistryHelpers.registerLongPotionRecipe(ModPotions.HASTE, ModPotions.LONG_HASTE);
-        BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(ModPotions.LONG_MINING_FATIGUE, Items.FERMENTED_SPIDER_EYE, ModPotions.LONG_HASTE);
+        RegistryHelpers.registerInvertedPotionRecipe(ModPotions.LONG_MINING_FATIGUE, ModPotions.LONG_HASTE);
 
         RegistryHelpers.registerStrongPotionRecipe(ModPotions.HASTE, ModPotions.STRONG_HASTE);
-        BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(ModPotions.STRONG_MINING_FATIGUE, Items.FERMENTED_SPIDER_EYE, ModPotions.STRONG_HASTE);
+        RegistryHelpers.registerInvertedPotionRecipe(ModPotions.STRONG_MINING_FATIGUE, ModPotions.STRONG_HASTE);
     }
 }

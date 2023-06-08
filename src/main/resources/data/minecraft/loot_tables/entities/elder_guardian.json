@@ -28,7 +28,7 @@
           "name": "minecraft:prismarine_shard"
         }
       ],
-      "rolls": 1.0
+      "rolls": 1
     },
     {
       "bonus_rolls": 0.0,
@@ -81,7 +81,7 @@
           "type": "minecraft:empty"
         }
       ],
-      "rolls": 1.0
+      "rolls": 1
     },
     {
       "bonus_rolls": 0.0,
@@ -96,7 +96,7 @@
           "name": "odyssey:elder_guardian_thorn"
         }
       ],
-      "rolls": 1.0
+      "rolls": 1
     },
     {
       "bonus_rolls": 0.0,
@@ -110,7 +110,7 @@
           "name": "minecraft:tide_armor_trim_smithing_template"
         }
       ],
-      "rolls": 1.0
+      "rolls": 1
     }
   ],
   "random_sequence": "minecraft:entities/elder_guardian"

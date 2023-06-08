@@ -28,7 +28,7 @@
           "name": "minecraft:coal"
         }
       ],
-      "rolls": 1.0
+      "rolls": 1
     },
     {
       "bonus_rolls": 0.0,
@@ -57,7 +57,7 @@
           "name": "minecraft:bone"
         }
       ],
-      "rolls": 1.0
+      "rolls": 1
     },
     {
       "bonus_rolls": 0.0,
@@ -77,7 +77,7 @@
           "name": "odyssey:wither_skull_fragment"
         }
       ],
-      "rolls": 1.0
+      "rolls": 1
     }
   ],
   "random_sequence": "minecraft:entities/wither_skeleton"

@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_refined_amethyst_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "odyssey:refined_amethyst_block"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "odyssey:amethyst_shard"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_refined_amethyst_block",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "odyssey:amethyst_shard"
+    ]
+  },
+  "sends_telemetry_event": false
+}

@@ -7,6 +7,7 @@ import net.minecraft.world.entity.Saddleable;
 import net.minecraft.world.entity.animal.Pig;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
+import net.sydokiddo.odyssey.Odyssey;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -23,7 +24,7 @@ public abstract class PigMixin implements Saddleable {
 
     @Inject(method = "mobInteract", at = @At("HEAD"), cancellable = true)
     private void odyssey_removeSaddleFromPigs(Player player, InteractionHand hand, CallbackInfoReturnable<InteractionResult> cir) {
-        if (this.isSaddled() && player.isDiscrete() && player.getItemInHand(hand).isEmpty()) {
+        if (this.isSaddled() && player.isDiscrete() && player.getItemInHand(hand).isEmpty() && Odyssey.getConfig().entityChanges.saddle_removing) {
             steering.setSaddle(false);
             player.setItemInHand(hand, Items.SADDLE.getDefaultInstance());
             cir.setReturnValue(InteractionResult.SUCCESS);

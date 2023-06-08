@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": [
+      {
+        "item": "minecraft:brick"
+      },
+      {
+        "item": "minecraft:nether_brick"
+      }
+    ]
+  },
+  "pattern": [
+    "# #",
+    " # "
+  ],
+  "result": {
+    "item": "minecraft:flower_pot"
+  },
+  "show_notification": true
+}

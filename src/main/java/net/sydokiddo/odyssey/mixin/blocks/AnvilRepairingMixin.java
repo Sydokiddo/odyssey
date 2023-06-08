@@ -1,7 +1,6 @@
 package net.sydokiddo.odyssey.mixin.blocks;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -14,6 +13,8 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
+import net.sydokiddo.odyssey.Odyssey;
+import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -31,7 +32,7 @@ public class AnvilRepairingMixin {
         ItemStack itemStack = player.getItemInHand(hand);
         BlockState anvilState = level.getBlockState(pos);
 
-        if (!level.isClientSide && itemStack.getItem() == Item.byBlock(Blocks.IRON_BLOCK)) {
+        if (!level.isClientSide && itemStack.getItem() == Item.byBlock(Blocks.IRON_BLOCK) && Odyssey.getConfig().blockChanges.anvil_repairing) {
 
             boolean consume = false;
 
@@ -45,7 +46,7 @@ public class AnvilRepairingMixin {
 
             if (consume) {
 
-                level.playSound(null, pos, SoundEvents.ANVIL_HIT, SoundSource.BLOCKS, 1.0f, 1.0f);
+                level.playSound(null, pos, ModSoundEvents.ANVIL_REPAIR, SoundSource.BLOCKS, 1.0f, 1.0f);
                 player.gameEvent(GameEvent.BLOCK_CHANGE);
 
                 if (!player.getAbilities().instabuild) {

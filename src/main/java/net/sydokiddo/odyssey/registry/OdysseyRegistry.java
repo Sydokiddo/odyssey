@@ -6,6 +6,7 @@ import net.sydokiddo.odyssey.registry.items.ModItems;
 import net.sydokiddo.odyssey.registry.items.ModPotions;
 import net.sydokiddo.odyssey.registry.misc.ModCreativeModeTabs;
 import net.sydokiddo.odyssey.registry.misc.ModLootTableModifiers;
+import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
 
 public class OdysseyRegistry {
 
@@ -15,6 +16,7 @@ public class OdysseyRegistry {
 
         ModItems.registerModItems();
         ModBlocks.registerModBlocks();
+        ModSoundEvents.registerSounds();
 
         PotionCauldronInteraction.bootstrap();
         ModPotions.registerPotions();

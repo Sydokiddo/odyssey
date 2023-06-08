@@ -11,6 +11,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.AmethystBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
@@ -40,6 +41,9 @@ public class ModBlocks {
     public static final Block GUNPOWDER_BLOCK = registerBlock("gunpowder_block",
         new GunpowderBlock(FabricBlockSettings.of().mapColor(MapColor.COLOR_GRAY)
         .sound(SoundType.SAND).instrument(NoteBlockInstrument.SNARE).strength(0.5f)));
+
+    public static final Block REFINED_AMETHYST_BLOCK = registerBlock("refined_amethyst_block",
+        new AmethystBlock(FabricBlockSettings.copyOf(Blocks.AMETHYST_BLOCK).sound(SoundType.AMETHYST)));
 
     // Registry for Blocks:
 

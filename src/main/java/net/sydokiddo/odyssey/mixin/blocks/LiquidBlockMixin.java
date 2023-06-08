@@ -1,5 +1,6 @@
 package net.sydokiddo.odyssey.mixin.blocks;
 
+import net.sydokiddo.odyssey.Odyssey;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
@@ -21,7 +22,7 @@ public class LiquidBlockMixin {
 
         int y_level = pos.getY();
 
-        if (state.is(Blocks.COBBLESTONE) && (random.nextInt(1, 9) - y_level >= 0)) {
+        if (state.is(Blocks.COBBLESTONE) && (random.nextInt(1, 9) - y_level >= 0) && Odyssey.getConfig().blockChanges.renewable_deepslate) {
             state = Blocks.COBBLED_DEEPSLATE.defaultBlockState();
         }
         return state;

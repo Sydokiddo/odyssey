@@ -11,6 +11,18 @@ public class ModCreativeModeTabs {
     @SuppressWarnings("ALL")
     public static void registerCreativeTabs() {
 
+        // Building Blocks Tab:
+
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.BUILDING_BLOCKS).register(entries -> {
+            entries.addAfter(Items.AMETHYST_BLOCK, ModBlocks.REFINED_AMETHYST_BLOCK);
+        });
+
+        // Redstone Blocks Tab:
+
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.REDSTONE_BLOCKS).register(entries -> {
+            entries.addAfter(Items.AMETHYST_BLOCK, ModBlocks.REFINED_AMETHYST_BLOCK);
+        });
+
         // Natural Blocks Tab:
 
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.NATURAL_BLOCKS).register(entries -> {
@@ -29,5 +41,7 @@ public class ModCreativeModeTabs {
             entries.addAfter(Items.BONE_MEAL, ModItems.WITHER_SKULL_FRAGMENT);
             entries.addAfter(Items.PRISMARINE_CRYSTALS, ModItems.ELDER_GUARDIAN_THORN);
         });
+
+
     }
 }

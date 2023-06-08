@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:amethyst_shard"
+    }
+  },
+  "result": {
+    "item": "odyssey:refined_amethyst_block",
+    "count": 1
+  },
+  "show_notification": true
+}

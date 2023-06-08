@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " # ",
+    "#C#",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:paper"
+    },
+    "C": {
+      "item": "minecraft:flower_banner_pattern"
+    }
+  },
+  "result": {
+    "item": "minecraft:flower_banner_pattern",
+    "count": 2
+  },
+  "show_notification": true
+}

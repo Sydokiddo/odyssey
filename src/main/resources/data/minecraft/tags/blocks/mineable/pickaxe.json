@@ -1,9 +1,10 @@
 {
   "replace": false,
   "values": [
-    "#c:glass_blocks",
-    "#c:glass_panes",
+    "#chrysalis:glass",
+    "#chrysalis:glass_panes",
     "minecraft:glowstone",
-    "odyssey:potion_cauldron"
+    "odyssey:potion_cauldron",
+    "odyssey:refined_amethyst_block"
   ]
 }

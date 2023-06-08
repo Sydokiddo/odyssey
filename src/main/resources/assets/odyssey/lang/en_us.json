@@ -32,7 +32,55 @@
 
   "block.odyssey.gunpowder_block": "Block of Gunpowder",
   "block.odyssey.potion_cauldron": "Potion Cauldron",
+  "block.odyssey.refined_amethyst_block": "Refined Block of Amethyst",
+
+  "subtitles.block.anvil.repair": "Anvil is repaired",
+  "subtitles.entity.armor_stand.add_arms": "Arms attach to Armor Stand",
 
   "advancements.adventure.use_goat_horn.title": "Call of the Wild",
-  "advancements.adventure.use_goat_horn.description": "Blow a Goat Horn"
+  "advancements.adventure.use_goat_horn.description": "Blow a Goat Horn",
+
+  "text.autoconfig.odyssey.title": "Odyssey - Options",
+
+  "text.autoconfig.odyssey.option.itemChanges": "Items",
+  "text.autoconfig.odyssey.option.itemChanges.@Tooltip": "Changes to the way certain items function",
+
+  "text.autoconfig.odyssey.option.itemChanges.anvil_renaming_only_costs_one_xp": "Cheaper Anvil Renaming",
+  "text.autoconfig.odyssey.option.itemChanges.anvil_renaming_only_costs_one_xp.@Tooltip": "Renaming an item in an Anvil will only cost 1 XP",
+  "text.autoconfig.odyssey.option.itemChanges.sign_stack_size": "Sign Stack Size",
+  "text.autoconfig.odyssey.option.itemChanges.sign_stack_size.@Tooltip": "Changes the stack size of Signs and Hanging Signs",
+  "text.autoconfig.odyssey.option.itemChanges.boat_stack_size": "Boat Stack Size",
+  "text.autoconfig.odyssey.option.itemChanges.boat_stack_size.@Tooltip": "Changes the stack size of Boats and Chest Boats",
+  "text.autoconfig.odyssey.option.itemChanges.minecart_stack_size": "Minecart Stack Size",
+  "text.autoconfig.odyssey.option.itemChanges.minecart_stack_size.@Tooltip": "Changes the stack size of Minecarts",
+  "text.autoconfig.odyssey.option.itemChanges.banner_pattern_stack_size": "Banner Pattern Stack Size",
+  "text.autoconfig.odyssey.option.itemChanges.banner_pattern_stack_size.@Tooltip": "Changes the stack size of Banner Patterns",
+
+  "text.autoconfig.odyssey.option.blockChanges": "Blocks",
+  "text.autoconfig.odyssey.option.blockChanges.@Tooltip": "Changes to the way certain blocks function",
+
+  "text.autoconfig.odyssey.option.blockChanges.anvil_repairing": "Anvil Repairing",
+  "text.autoconfig.odyssey.option.blockChanges.anvil_repairing.@Tooltip": "Damaged Anvils can be repaired by right-clicking on them with a Block of Iron",
+  "text.autoconfig.odyssey.option.blockChanges.feather_falling_negates_farmland_trampling": "Feather Falling Negates Farmland Trampling",
+  "text.autoconfig.odyssey.option.blockChanges.feather_falling_negates_farmland_trampling.@Tooltip": "Falling onto Farmland with Feather Falling will not trample it",
+  "text.autoconfig.odyssey.option.blockChanges.lily_pad_bone_mealing": "Lily Pad Bone Mealing",
+  "text.autoconfig.odyssey.option.blockChanges.lily_pad_bone_mealing.@Tooltip": "Lily Pads can be right-clicked with Bone Meal to grow more of them nearby",
+  "text.autoconfig.odyssey.option.blockChanges.spore_blossom_bone_mealing": "Spore Blossom Bone Mealing",
+  "text.autoconfig.odyssey.option.blockChanges.spore_blossom_bone_mealing.@Tooltip": "Spore Blossoms can be right-clicked with Bone Meal to duplicate them",
+  "text.autoconfig.odyssey.option.blockChanges.renewable_deepslate": "Renewable Deepslate",
+  "text.autoconfig.odyssey.option.blockChanges.renewable_deepslate.@Tooltip": "Cobblestone generators below Y=0 will create Cobbled Deepslate instead of Cobblestone",
+  "text.autoconfig.odyssey.option.blockChanges.harder_budding_amethyst": "Harder Budding Amethyst",
+  "text.autoconfig.odyssey.option.blockChanges.harder_budding_amethyst.@Tooltip": "Budding Amethyst takes longer to mine to prevent players from accidentally breaking it",
+
+  "text.autoconfig.odyssey.option.entityChanges": "Entities",
+  "text.autoconfig.odyssey.option.entityChanges.@Tooltip": "Changes to the way certain entities function",
+
+  "text.autoconfig.odyssey.option.entityChanges.saddle_removing": "Saddle Removing",
+  "text.autoconfig.odyssey.option.entityChanges.saddle_removing.@Tooltip": "Pigs and Striders can have their saddles removed when right-clicking while crouching",
+  "text.autoconfig.odyssey.option.entityChanges.decreased_rabbit_fall_damage": "Decreased Rabbit Fall Damage",
+  "text.autoconfig.odyssey.option.entityChanges.decreased_rabbit_fall_damage.@Tooltip": "Rabbits will only take fall damage after falling 10 or more blocks",
+  "text.autoconfig.odyssey.option.entityChanges.renewable_elder_guardians": "Renewable Elder Guardians",
+  "text.autoconfig.odyssey.option.entityChanges.renewable_elder_guardians.@Tooltip": "Guardians that are struck by lightning will turn into Elder Guardians",
+  "text.autoconfig.odyssey.option.entityChanges.armor_stand_arms": "Armor Stand Arms",
+  "text.autoconfig.odyssey.option.entityChanges.armor_stand_arms.@Tooltip": "Armor Stands can be right-clicked on with a Stick to give them arms"
 }
