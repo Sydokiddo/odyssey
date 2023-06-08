@@ -13,6 +13,7 @@
     "blocks.LiquidBlockMixin",
     "blocks.SporeBlossomMixin",
     "entities.GuardianMixin",
+    "entities.MobMixin",
     "entities.PigMixin",
     "entities.RabbitMixin",
     "entities.StriderMixin",
