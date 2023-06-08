@@ -31,7 +31,7 @@ public abstract class MobMixin extends LivingEntity {
 
     // Friendly mobs can be right-clicked with a brush to brush them :)
 
-    @Inject(method = "mobInteract", at = @At("RETURN"), cancellable = true)
+    @Inject(method = "interact", at = @At("RETURN"), cancellable = true)
     private void odyssey_brushFriendlyMobs(Player player, InteractionHand interactionHand, CallbackInfoReturnable<InteractionResult> cir) {
 
         ItemStack itemStack = player.getItemInHand(interactionHand);
@@ -40,7 +40,7 @@ public abstract class MobMixin extends LivingEntity {
 
             level().playSound(player, this.getOnPos(), SoundEvents.BRUSH_GENERIC, SoundSource.NEUTRAL);
             this.gameEvent(GameEvent.ENTITY_INTERACT, player);
-            this.level().addParticle(ParticleTypes.HEART, this.getX(), this.getY() + 1, this.getZ(), 0, 0, 0);
+            this.level().addParticle(ParticleTypes.HEART, this.getX(), this.getEyeY() + 0.5, this.getZ(), 0, 0, 0);
 
             cir.setReturnValue(InteractionResult.sidedSuccess(this.level().isClientSide));
         }

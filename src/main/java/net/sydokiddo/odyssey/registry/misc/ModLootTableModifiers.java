@@ -59,7 +59,7 @@ public class ModLootTableModifiers {
 
             if(RegistryHelpers.STRONGHOLD_CORRIDOR.equals(id)) {
                 LootPool.Builder builder = LootPool.lootPool();
-                builder.add(LootItem.lootTableItem(ModItems.IRON_POTATO).setWeight(3));
+                builder.add(LootItem.lootTableItem(ModItems.IRON_POTATO).setWeight(1));
                 table.withPool(builder);
             }
 
