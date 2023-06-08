@@ -8,6 +8,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.BonemealableBlock;
@@ -16,6 +17,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.sydokiddo.odyssey.Odyssey;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
+import java.util.function.Supplier;
 
 @Mixin(SporeBlossomBlock.class)
 public class SporeBlossomMixin implements BonemealableBlock {
@@ -42,11 +44,20 @@ public class SporeBlossomMixin implements BonemealableBlock {
     @Unique
     private static void popResourceBelow(Level level, BlockPos blockPos, ItemStack itemStack) {
 
-        double d = (double) EntityType.ITEM.getHeight() / 2.0D;
+        double d = (double)EntityType.ITEM.getHeight() / 2.0D;
         double e = (double)blockPos.getX() + 0.5D + Mth.nextDouble(level.random, -0.25D, 0.25D);
-        double f = (double)blockPos.getY() - 0.5D + Mth.nextDouble(level.random, -0.25D, 0.25D) - d;
+        double f = (double)blockPos.getY() - 0.25D + Mth.nextDouble(level.random, -0.25D, 0.25D) - d;
         double g = (double)blockPos.getZ() + 0.5D + Mth.nextDouble(level.random, -0.25D, 0.25D);
 
-        new ItemEntity(level, e, f, g, itemStack);
+        popResourceBelow(level, () -> new ItemEntity(level, e, f, g, itemStack), itemStack);
+    }
+
+    @Unique
+    private static void popResourceBelow(Level level, Supplier<ItemEntity> supplier, ItemStack itemStack) {
+        if (!level.isClientSide && !itemStack.isEmpty() && level.getGameRules().getBoolean(GameRules.RULE_DOBLOCKDROPS)) {
+            ItemEntity itemEntity = supplier.get();
+            itemEntity.setDefaultPickUpDelay();
+            level.addFreshEntity(itemEntity);
+        }
     }
 }

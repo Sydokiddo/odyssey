@@ -35,7 +35,7 @@
   "block.odyssey.refined_amethyst_block": "Refined Block of Amethyst",
 
   "subtitles.block.anvil.repair": "Anvil is repaired",
-  "subtitles.entity.armor_stand.add_arms": "Arms attach to Armor Stand",
+  "subtitles.entity.armor_stand.add_arms": "Arms fasten to Armor Stand",
 
   "advancements.adventure.use_goat_horn.title": "Call of the Wild",
   "advancements.adventure.use_goat_horn.description": "Blow a Goat Horn",
@@ -76,7 +76,7 @@
   "text.autoconfig.odyssey.option.entityChanges.@Tooltip": "Changes to the way certain entities function",
 
   "text.autoconfig.odyssey.option.entityChanges.saddle_removing": "Saddle Removing",
-  "text.autoconfig.odyssey.option.entityChanges.saddle_removing.@Tooltip": "Pigs and Striders can have their saddles removed when right-clicking while crouching",
+  "text.autoconfig.odyssey.option.entityChanges.saddle_removing.@Tooltip": "Pigs and Striders can have their saddles removed when right-clicked on while crouching",
   "text.autoconfig.odyssey.option.entityChanges.decreased_rabbit_fall_damage": "Decreased Rabbit Fall Damage",
   "text.autoconfig.odyssey.option.entityChanges.decreased_rabbit_fall_damage.@Tooltip": "Rabbits will only take fall damage after falling 10 or more blocks",
   "text.autoconfig.odyssey.option.entityChanges.renewable_elder_guardians": "Renewable Elder Guardians",
