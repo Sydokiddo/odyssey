@@ -36,6 +36,8 @@
     "minecraft:tropical_fish",
     "minecraft:turtle",
     "minecraft:wolf",
-    "minecraft:zombie_horse"
+    "minecraft:zombie_horse",
+    {"id": "#endlessencore:fleet", "required": false},
+    {"id": "endlessencore:muse", "required": false}
   ]
 }
