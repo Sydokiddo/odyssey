@@ -33,6 +33,8 @@
   "block.odyssey.gunpowder_block": "Block of Gunpowder",
   "block.odyssey.potion_cauldron": "Potion Cauldron",
   "block.odyssey.refined_amethyst_block": "Refined Block of Amethyst",
+  "block.odyssey.polished_deepslate_button": "Polished Deepslate Button",
+  "block.odyssey.polished_deepslate_pressure_plate": "Polished Deepslate Pressure Plate",
 
   "subtitles.block.anvil.repair": "Anvil is repaired",
   "subtitles.entity.armor_stand.add_arms": "Arms fasten to Armor Stand",

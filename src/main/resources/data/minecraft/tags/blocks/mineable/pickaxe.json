@@ -5,6 +5,8 @@
     "#chrysalis:glass_panes",
     "minecraft:glowstone",
     "odyssey:potion_cauldron",
-    "odyssey:refined_amethyst_block"
+    "odyssey:refined_amethyst_block",
+    "odyssey:polished_deepslate_pressure_plate",
+    "odyssey:polished_deepslate_button"
   ]
 }
