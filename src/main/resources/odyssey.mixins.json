@@ -27,8 +27,7 @@
     "misc.CheapAnvilRenameMixin"
   ],
   "client": [
-    "client.MagmaCubeRendererMixin",
-    "client.SlimeRendererMixin"
+    "client.LivingEntityRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

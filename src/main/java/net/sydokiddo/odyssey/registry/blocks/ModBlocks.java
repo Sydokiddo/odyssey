@@ -36,8 +36,8 @@ public class ModBlocks {
     public static final Block POTION_CAULDRON = registerBlockWithoutBlockItem("potion_cauldron", POTION_CAULDRON_STATE);
 
     public static final BlockEntityType<PotionCauldronBlockEntity> POTION_CAULDRON_ENTITY = Registry.register(
-    BuiltInRegistries.BLOCK_ENTITY_TYPE, Odyssey.MOD_ID + "potion_cauldron_entity",
-    FabricBlockEntityTypeBuilder.create(PotionCauldronBlockEntity::new, POTION_CAULDRON).build(null));
+        BuiltInRegistries.BLOCK_ENTITY_TYPE, Odyssey.MOD_ID + "potion_cauldron_entity",
+        FabricBlockEntityTypeBuilder.create(PotionCauldronBlockEntity::new, POTION_CAULDRON).build(null));
 
     public static final Block GUNPOWDER_BLOCK = registerBlock("gunpowder_block",
         new GunpowderBlock(FabricBlockSettings.of().mapColor(MapColor.COLOR_GRAY)

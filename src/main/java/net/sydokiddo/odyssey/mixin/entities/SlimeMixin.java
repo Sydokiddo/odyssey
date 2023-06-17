@@ -116,7 +116,7 @@ public abstract class SlimeMixin extends Mob {
                     } else {
                         ++this.onMagmaTime;
                         if (this.onMagmaTime >= 40) {
-                            this.startMagmaConversion(100);
+                            this.startMagmaConversion(200);
                         }
                     }
                 } else {
@@ -137,7 +137,7 @@ public abstract class SlimeMixin extends Mob {
                     } else {
                         ++this.inWaterTime;
                         if (this.inWaterTime >= 40) {
-                            this.startSlimeConversion(100);
+                            this.startSlimeConversion(200);
                         }
                     }
                 } else {
