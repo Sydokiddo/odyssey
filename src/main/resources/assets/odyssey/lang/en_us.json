@@ -37,6 +37,9 @@
   "subtitles.block.anvil.repair": "Anvil is repaired",
   "subtitles.entity.armor_stand.add_arms": "Arms fasten to Armor Stand",
 
+  "subtitles.entity.slime.converted_to_magma_cube": "Slime converts to Magma Cube",
+  "subtitles.entity.magma_cube.converted_to_slime": "Magma Cube converts to Slime",
+
   "advancements.adventure.use_goat_horn.title": "Call of the Wild",
   "advancements.adventure.use_goat_horn.description": "Blow a Goat Horn",
 
@@ -82,5 +85,9 @@
   "text.autoconfig.odyssey.option.entityChanges.renewable_elder_guardians": "Renewable Elder Guardians",
   "text.autoconfig.odyssey.option.entityChanges.renewable_elder_guardians.@Tooltip": "Guardians that are struck by lightning will turn into Elder Guardians",
   "text.autoconfig.odyssey.option.entityChanges.armor_stand_arms": "Armor Stand Arms",
-  "text.autoconfig.odyssey.option.entityChanges.armor_stand_arms.@Tooltip": "Armor Stands can be right-clicked on with a Stick to give them arms"
+  "text.autoconfig.odyssey.option.entityChanges.armor_stand_arms.@Tooltip": "Armor Stands can be right-clicked on with a Stick to give them arms",
+  "text.autoconfig.odyssey.option.entityChanges.vexes_die_with_evokers": "Vexes Die Alongside Evokers",
+  "text.autoconfig.odyssey.option.entityChanges.vexes_die_with_evokers.@Tooltip": "When an Evoker is killed, any Vexes that it had summoned will also die alongside it",
+  "text.autoconfig.odyssey.option.entityChanges.slime_and_magma_cube_converting": "Slime and Magma Cube Converting",
+  "text.autoconfig.odyssey.option.entityChanges.slime_and_magma_cube_converting.@Tooltip": "Slimes on Magma Blocks will turn into Magma Cubes after a short period of time, and Magma Cubes in water will turn into Slimes"
 }

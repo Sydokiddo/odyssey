@@ -16,12 +16,18 @@
     "entities.MobMixin",
     "entities.PigMixin",
     "entities.RabbitMixin",
+    "entities.SlimeFloatGoalMixin",
+    "entities.SlimeMixin",
     "entities.StriderMixin",
+    "entities.VexMixin",
     "items.ItemStackMixin",
     "misc.ArmorStandInteractionMixin",
     "misc.CheapAnvilRenameMixin"
   ],
-  "client": [],
+  "client": [
+    "client.MagmaCubeRendererMixin",
+    "client.SlimeRendererMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   }

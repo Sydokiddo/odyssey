@@ -73,5 +73,11 @@ public class ModConfig implements ConfigData {
 
         @ConfigEntry.Gui.Tooltip
         public boolean armor_stand_arms = true;
+
+        @ConfigEntry.Gui.Tooltip
+        public boolean vexes_die_with_evokers = true;
+
+        @ConfigEntry.Gui.Tooltip
+        public boolean slime_and_magma_cube_converting = true;
     }
 }

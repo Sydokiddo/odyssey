@@ -17,6 +17,8 @@ public class ModSoundEvents {
     // - Entity Sounds:
 
     public static final SoundEvent ARMOR_STAND_ADD_ARMS = registerSoundEvent("entity.armor_stand.add_arms");
+    public static final SoundEvent SLIME_CONVERTED_TO_MAGMA_CUBE = registerSoundEvent("entity.slime.converted_to_magma_cube");
+    public static final SoundEvent MAGMA_CUBE_CONVERTED_TO_SLIME = registerSoundEvent("entity.magma_cube.converted_to_slime");
 
     private static SoundEvent registerSoundEvent(String name) {
         ResourceLocation id = new ResourceLocation(Odyssey.MOD_ID, name);

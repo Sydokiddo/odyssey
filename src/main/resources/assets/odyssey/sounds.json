@@ -15,5 +15,21 @@
       "odyssey:entity/armor_stand/add_arms4"
     ],
     "subtitle": "subtitles.entity.armor_stand.add_arms"
+  },
+  "entity.slime.converted_to_magma_cube": {
+    "sounds": [
+      "odyssey:mob/slime/magma_cube_convert1",
+      "odyssey:mob/slime/magma_cube_convert2",
+      "odyssey:mob/slime/magma_cube_convert3"
+    ],
+    "subtitle": "subtitles.entity.slime.converted_to_magma_cube"
+  },
+  "entity.magma_cube.converted_to_slime": {
+    "sounds": [
+      "odyssey:mob/slime/slime_convert1",
+      "odyssey:mob/slime/slime_convert2",
+      "odyssey:mob/slime/slime_convert3"
+    ],
+    "subtitle": "subtitles.entity.magma_cube.converted_to_slime"
   }
 }
