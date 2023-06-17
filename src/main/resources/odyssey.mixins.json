@@ -12,6 +12,7 @@
     "blocks.FarmlandBlockMixin",
     "blocks.LilyPadBlockBoneMealMixin",
     "blocks.LiquidBlockMixin",
+    "blocks.SnifferEggBlockMixin",
     "blocks.SporeBlossomMixin",
     "entities.GuardianMixin",
     "entities.MobMixin",

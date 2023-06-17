@@ -76,6 +76,8 @@
   "text.autoconfig.odyssey.option.blockChanges.renewable_deepslate.@Tooltip": "Cobblestone generators below Y=0 will create Cobbled Deepslate instead of Cobblestone",
   "text.autoconfig.odyssey.option.blockChanges.harder_budding_amethyst": "Harder Budding Amethyst",
   "text.autoconfig.odyssey.option.blockChanges.harder_budding_amethyst.@Tooltip": "Budding Amethyst takes longer to mine to prevent players from accidentally breaking it",
+  "text.autoconfig.odyssey.option.blockChanges.sniffer_egg_hatch_preventing": "Sniffer Egg Hatch Preventing",
+  "text.autoconfig.odyssey.option.blockChanges.sniffer_egg_hatch_preventing.@Tooltip": "Sniffer Eggs placed on Magma Blocks will not hatch, which is useful for using them as decoration!",
 
   "text.autoconfig.odyssey.option.entityChanges": "Entities",
   "text.autoconfig.odyssey.option.entityChanges.@Tooltip": "Changes to the way certain entities function",
