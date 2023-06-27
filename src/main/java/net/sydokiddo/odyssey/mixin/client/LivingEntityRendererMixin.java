@@ -5,7 +5,7 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.entity.*;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.monster.Slime;
+import net.sydokiddo.chrysalis.registry.misc.ChrysalisTags;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.OdysseyRegistry;
 import org.spongepowered.asm.mixin.Mixin;
@@ -23,8 +23,8 @@ public abstract class LivingEntityRendererMixin <T extends LivingEntity, M exten
 
     @Inject(method = "isShaking", at = @At("HEAD"), cancellable = true)
     private void odyssey_SlimeAndMagmaCubeShaking(T livingEntity, CallbackInfoReturnable<Boolean> cir) {
-        if (livingEntity instanceof Slime slime && Odyssey.getConfig().entityChanges.slime_and_magma_cube_converting) {
-            cir.setReturnValue(slime.isFullyFrozen() || slime.getEntityData().get(OdysseyRegistry.SLIME_CONVERSION) || slime.getEntityData().get(OdysseyRegistry.MAGMA_CUBE_CONVERSION));
+        if (livingEntity.getType().is(ChrysalisTags.SLIMES) && Odyssey.getConfig().entityChanges.slime_and_magma_cube_converting) {
+            cir.setReturnValue(livingEntity.isFullyFrozen() || livingEntity.getEntityData().get(OdysseyRegistry.SLIME_CONVERSION) || livingEntity.getEntityData().get(OdysseyRegistry.MAGMA_CUBE_CONVERSION));
         }
     }
 }

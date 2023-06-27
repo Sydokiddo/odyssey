@@ -8,12 +8,14 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.sydokiddo.odyssey.Odyssey;
 
+@SuppressWarnings("ALL")
 public class ModTags {
 
     // Item Tags:
 
     public static final TagKey<Item> REPAIRS_ANVILS = TagKey.create(Registries.ITEM, new ResourceLocation(Odyssey.MOD_ID, "repairs_anvils"));
     public static final TagKey<Item> GIVES_ARMOR_STANDS_ARMS = TagKey.create(Registries.ITEM, new ResourceLocation(Odyssey.MOD_ID, "gives_armor_stands_arms"));
+    public static final TagKey<Item> TNT_CRAFTING_MATERIALS = TagKey.create(Registries.ITEM, new ResourceLocation(Odyssey.MOD_ID, "tnt_crafting_materials"));
 
     // Block Tags:
 
