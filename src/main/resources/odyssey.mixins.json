@@ -22,6 +22,7 @@
     "entities.SlimeMixin",
     "entities.StriderMixin",
     "entities.VexMixin",
+    "items.EnchantmentMixin",
     "items.ItemStackMixin",
     "items.tools.BrushItemMixin",
     "items.tools.ShearsItemMixin",
