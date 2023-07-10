@@ -5,6 +5,8 @@
     "minecraft:pearlescent_froglight",
     "minecraft:verdant_froglight",
     "minecraft:ochre_froglight",
-    "#minecraft:candles"
+    "#minecraft:candles",
+    "minecraft:honeycomb_block",
+    "minecraft:frogspawn"
   ]
 }
