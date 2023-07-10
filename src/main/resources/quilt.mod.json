@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+
+  "quilt_loader": {
+
+    "group": "net.sydokiddo",
+    "id": "odyssey",
+    "version": "${version}",
+
+    "metadata": {
+      "name": "Odyssey",
+      "description": "A collection of non-specific features and items that expand upon the base game and its content!",
+      "contributors": {
+        "Sydokiddo": "Owner"
+      },
+      "contact": {
+        "homepage": "https://modrinth.com/mod/odyssey",
+        "issues": "https://github.com/Sydokiddo/odyssey_rewrite/issues",
+        "sources": "https://github.com/Sydokiddo/odyssey_rewrite"
+      },
+      "license": "MIT",
+      "icon": "assets/odyssey/icon.png"
+    },
+
+    "intermediate_mappings": "net.fabricmc:intermediary",
+
+    "entrypoints": {
+      "init": "net.sydokiddo.odyssey.Odyssey",
+      "client": "net.sydokiddo.odyssey.client.OdysseyClient",
+      "modmenu": "net.sydokiddo.odyssey.misc.config.ModMenuCompatibility"
+    },
+
+    "depends": [
+      {
+        "id": "quilt_loader",
+        "versions": ">=0.19.1"
+      },
+      {
+        "id": "quilted_fabric_api",
+        "versions": ">=7.0.2"
+      },
+      {
+        "id": "minecraft",
+        "versions": ">=1.20"
+      },
+      {
+        "id": "chrysalis",
+        "versions": "0.1.1"
+      }
+    ]
+  },
+
+  "mixin": "odyssey.mixins.json",
+  "access_widener": "odyssey.accesswidener"
+}

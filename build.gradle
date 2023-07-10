@@ -1,10 +1,10 @@
 plugins {
-	id 'fabric-loom' version '1.1-SNAPSHOT'
 	id 'maven-publish'
+	alias libs.plugins.quilt.loom
 }
 
-archivesBaseName = project.archives_base_name
-version = project.mod_version
+base.archivesName = project.archives_base_name
+version = "$project.version+${libs.versions.minecraft.get()}"
 group = project.maven_group
 
 repositories {
@@ -12,14 +12,11 @@ repositories {
 		url "https://maven.shedaniel.me/"
 	}
 	maven {
-		url "https://maven.terraformersmc.com/"
-	}
-	maven {
 		url 'https://jitpack.io'
 	}
 	maven {
-		url "https://cursemaven.com"
-		content {includeGroup "curse.maven" }
+		name = 'TerraformersMC'
+		url = 'https://maven.terraformersmc.com/'
 	}
 	maven {
 		name = "Modrinth"
@@ -31,18 +28,21 @@ repositories {
 }
 
 dependencies {
-	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	mappings loom.officialMojangMappings()
+
+	minecraft libs.minecraft
+	mappings loom.layered {
+		mappings "org.quiltmc:quilt-mappings:${libs.versions.quilt.mappings.get()}:intermediary-v2"
+		officialMojangMappings()
+	}
 
 	// Implementations
 
-	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	modImplementation libs.quilt.loader
+	modImplementation libs.quilted.fabric.api
 
 	include modImplementation("maven.modrinth:chrysalis:${project.chrysalis_version}")
 
-	modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
-	modRuntimeOnly "maven.modrinth:modmenu:4.0.5"
+	modImplementation "com.terraformersmc:modmenu:${project.mod_menu_version}"
 
 	modApi("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_version}") {
 		exclude(group: "net.fabricmc.fabric-api")
@@ -57,17 +57,20 @@ loom {
 processResources {
 	inputs.property "version", project.version
 
-	filesMatching("fabric.mod.json") {
-		expand "version": project.version
+	filesMatching('quilt.mod.json') {
+		expand 'version': version
 	}
 }
 
 tasks.withType(JavaCompile).configureEach {
+	it.options.encoding = 'UTF-8'
 	it.options.release = 17
 }
 
 java {
 	withSourcesJar()
+	sourceCompatibility = JavaVersion.VERSION_17
+	targetCompatibility = JavaVersion.VERSION_17
 }
 
 jar {
