@@ -32,6 +32,10 @@ public class ModConfig implements ConfigData {
         @ConfigEntry.Gui.Tooltip
         public int banner_pattern_stack_size = 64;
 
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
+        @ConfigEntry.Gui.Tooltip
+        public int decorated_pot_stack_size = 64;
+
         @ConfigEntry.Gui.Tooltip
         public boolean more_repairable_items = true;
 
