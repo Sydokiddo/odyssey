@@ -60,6 +60,8 @@
   "text.autoconfig.odyssey.option.itemChanges.minecart_stack_size.@Tooltip": "Changes the stack size of Minecarts",
   "text.autoconfig.odyssey.option.itemChanges.banner_pattern_stack_size": "Banner Pattern Stack Size",
   "text.autoconfig.odyssey.option.itemChanges.banner_pattern_stack_size.@Tooltip": "Changes the stack size of Banner Patterns",
+  "text.autoconfig.odyssey.option.itemChanges.more_repairable_items": "More Repairable Items",
+  "text.autoconfig.odyssey.option.itemChanges.more_repairable_items.@Tooltip": "Shears can be repaired with Iron Ingots, Brushes with Feathers, and Tridents with Prismarine Shards",
 
   "text.autoconfig.odyssey.option.blockChanges": "Blocks",
   "text.autoconfig.odyssey.option.blockChanges.@Tooltip": "Changes to the way certain blocks function",

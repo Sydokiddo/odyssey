@@ -23,6 +23,9 @@
     "entities.StriderMixin",
     "entities.VexMixin",
     "items.ItemStackMixin",
+    "items.tools.BrushItemMixin",
+    "items.tools.ShearsItemMixin",
+    "items.tools.TridentItemMixin",
     "misc.ArmorStandInteractionMixin",
     "misc.CheapAnvilRenameMixin"
   ],
