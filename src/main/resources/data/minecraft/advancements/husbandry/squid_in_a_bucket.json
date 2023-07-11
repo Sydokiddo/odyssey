@@ -1,0 +1,37 @@
+{
+  "parent": "minecraft:husbandry/tactical_fishing",
+  "criteria": {
+    "squid_bucket": {
+      "conditions": {
+        "item": {
+          "items": [
+            "odyssey:squid_bucket",
+            "odyssey:glow_squid_bucket"
+          ]
+        }
+      },
+      "trigger": "minecraft:filled_bucket"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.husbandry.squid_in_a_bucket.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "odyssey:squid_bucket"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.husbandry.squid_in_a_bucket.title"
+    }
+  },
+  "requirements": [
+    [
+      "squid_bucket"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

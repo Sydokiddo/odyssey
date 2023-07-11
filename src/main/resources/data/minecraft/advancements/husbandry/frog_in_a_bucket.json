@@ -1,0 +1,36 @@
+{
+  "parent": "minecraft:husbandry/tadpole_in_a_bucket",
+  "criteria": {
+    "frog_bucket": {
+      "conditions": {
+        "item": {
+          "items": [
+            "odyssey:frog_bucket"
+          ]
+        }
+      },
+      "trigger": "minecraft:filled_bucket"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.husbandry.frog_in_a_bucket.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "odyssey:frog_bucket"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.husbandry.frog_in_a_bucket.title"
+    }
+  },
+  "requirements": [
+    [
+      "frog_bucket"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

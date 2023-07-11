@@ -51,6 +51,10 @@
 
   "advancements.adventure.use_goat_horn.title": "Call of the Wild",
   "advancements.adventure.use_goat_horn.description": "Blow a Goat Horn",
+  "advancements.husbandry.frog_in_a_bucket.title": "Leap Year",
+  "advancements.husbandry.frog_in_a_bucket.description": "Catch a Frog in a Bucket",
+  "advancements.husbandry.squid_in_a_bucket.title": "Squidnapper",
+  "advancements.husbandry.squid_in_a_bucket.description": "Catch a Squid or a Glow Squid in a Bucket",
 
   "text.autoconfig.odyssey.title": "Odyssey - Options",
 

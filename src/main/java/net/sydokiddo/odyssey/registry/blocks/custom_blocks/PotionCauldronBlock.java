@@ -53,8 +53,8 @@ public class PotionCauldronBlock extends LayeredCauldronBlock implements EntityB
         return null;
     }
 
-    @org.jetbrains.annotations.Nullable
     @Override
+    @Nullable
     public BlockEntity newBlockEntity(@NotNull BlockPos blockPos, @NotNull BlockState blockState) {
         return new PotionCauldronBlockEntity(blockPos, blockState);
     }
