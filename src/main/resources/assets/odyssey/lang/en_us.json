@@ -4,6 +4,8 @@
   "item.odyssey.wither_skull_fragment": "Wither Skull Fragment",
   "item.odyssey.elder_guardian_thorn": "Elder Guardian Thorn",
   "item.odyssey.frog_bucket": "Bucket of Frog",
+  "item.odyssey.squid_bucket": "Bucket of Squid",
+  "item.odyssey.glow_squid_bucket": "Bucket of Glow Squid",
 
   "item.minecraft.potion.effect.mining_fatigue": "Potion of Mining Fatigue",
   "item.minecraft.splash_potion.effect.mining_fatigue": "Splash Potion of Mining Fatigue",
@@ -44,6 +46,8 @@
   "subtitles.entity.magma_cube.converted_to_slime": "Magma Cube converts to Slime",
 
   "subtitles.item.bucket.fill_frog": "Frog scooped",
+  "subtitles.item.bucket.fill_squid": "Squid scooped",
+  "subtitles.item.bucket.fill_glow_squid": "Glow Squid scooped",
 
   "advancements.adventure.use_goat_horn.title": "Call of the Wild",
   "advancements.adventure.use_goat_horn.description": "Blow a Goat Horn",

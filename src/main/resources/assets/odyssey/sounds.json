@@ -43,5 +43,29 @@
       "odyssey:item/bucket/empty_frog"
     ],
     "subtitle": "subtitles.item.bucket.empty"
+  },
+  "item.bucket.fill_squid": {
+    "sounds": [
+      "odyssey:item/bucket/fill_squid"
+    ],
+    "subtitle": "subtitles.item.bucket.fill_squid"
+  },
+  "item.bucket.empty_squid": {
+    "sounds": [
+      "odyssey:item/bucket/empty_squid"
+    ],
+    "subtitle": "subtitles.item.bucket.empty"
+  },
+  "item.bucket.fill_glow_squid": {
+    "sounds": [
+      "odyssey:item/bucket/fill_glow_squid"
+    ],
+    "subtitle": "subtitles.item.bucket.fill_glow_squid"
+  },
+  "item.bucket.empty_glow_squid": {
+    "sounds": [
+      "odyssey:item/bucket/empty_glow_squid"
+    ],
+    "subtitle": "subtitles.item.bucket.empty"
   }
 }

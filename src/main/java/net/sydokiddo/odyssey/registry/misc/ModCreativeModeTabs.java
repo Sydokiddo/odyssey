@@ -46,6 +46,7 @@ public class ModCreativeModeTabs {
         // Tools and Utilities Tab:
 
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.TOOLS_AND_UTILITIES).register(entries -> {
+            entries.addAfter(Items.PUFFERFISH_BUCKET, ModItems.SQUID_BUCKET, ModItems.GLOW_SQUID_BUCKET);
             entries.addAfter(Items.TADPOLE_BUCKET, ModItems.FROG_BUCKET);
         });
     }
