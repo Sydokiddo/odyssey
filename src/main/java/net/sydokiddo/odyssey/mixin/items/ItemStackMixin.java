@@ -27,8 +27,14 @@ public abstract class ItemStackMixin {
         if (this.getItem() instanceof BoatItem) {
             cir.setReturnValue(Odyssey.getConfig().itemChanges.boat_stack_size);
         }
+        if (this.getItem() instanceof BannerItem) {
+            cir.setReturnValue(Odyssey.getConfig().itemChanges.banner_stack_size);
+        }
         if (this.getItem() instanceof BannerPatternItem) {
             cir.setReturnValue(Odyssey.getConfig().itemChanges.banner_pattern_stack_size);
+        }
+        if (this.getItem() instanceof ArmorStandItem) {
+            cir.setReturnValue(Odyssey.getConfig().itemChanges.armor_stand_stack_size);
         }
         if (this.getItem() instanceof BlockItem item && item.getBlock() instanceof DecoratedPotBlock) {
             cir.setReturnValue(Odyssey.getConfig().itemChanges.decorated_pot_stack_size);

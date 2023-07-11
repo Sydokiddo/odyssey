@@ -30,7 +30,15 @@ public class ModConfig implements ConfigData {
 
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.Tooltip
+        public int banner_stack_size = 64;
+
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
+        @ConfigEntry.Gui.Tooltip
         public int banner_pattern_stack_size = 64;
+
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
+        @ConfigEntry.Gui.Tooltip
+        public int armor_stand_stack_size = 64;
 
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.Tooltip
