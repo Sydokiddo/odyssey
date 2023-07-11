@@ -100,5 +100,11 @@ public class ModConfig implements ConfigData {
 
         @ConfigEntry.Gui.Tooltip
         public boolean slime_and_magma_cube_converting = true;
+
+        @ConfigEntry.Gui.Tooltip
+        public boolean bucketable_frogs = true;
+
+        @ConfigEntry.Gui.Tooltip
+        public boolean bucketable_squids = true;
     }
 }

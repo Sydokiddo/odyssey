@@ -11,6 +11,7 @@ import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.items.ModItems;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
 import org.jetbrains.annotations.NotNull;
@@ -65,9 +66,9 @@ public class SquidMixin extends WaterAnimal implements Bucketable {
 
     @Override
     public InteractionResult mobInteract(Player player, @NotNull InteractionHand interactionHand) {
-        if (this.isAlive()) {
+        if (this.isAlive() && Odyssey.getConfig().entityChanges.bucketable_squids) {
             return Bucketable.bucketMobPickup(player, interactionHand, this).orElse(super.mobInteract(player, interactionHand));
         }
-        return InteractionResult.PASS;
+        return super.mobInteract(player, interactionHand);
     }
 }

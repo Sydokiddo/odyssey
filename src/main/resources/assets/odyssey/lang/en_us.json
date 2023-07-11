@@ -110,5 +110,9 @@
   "text.autoconfig.odyssey.option.entityChanges.vexes_die_with_evokers": "Vexes Die Alongside Evokers",
   "text.autoconfig.odyssey.option.entityChanges.vexes_die_with_evokers.@Tooltip": "When an Evoker is killed, any Vexes that it had summoned will also die alongside it",
   "text.autoconfig.odyssey.option.entityChanges.slime_and_magma_cube_converting": "Slime and Magma Cube Converting",
-  "text.autoconfig.odyssey.option.entityChanges.slime_and_magma_cube_converting.@Tooltip": "Slimes on Magma Blocks will turn into Magma Cubes after a short period of time, and Magma Cubes in water will turn into Slimes"
+  "text.autoconfig.odyssey.option.entityChanges.slime_and_magma_cube_converting.@Tooltip": "Slimes on Magma Blocks will turn into Magma Cubes after a short period of time, and Magma Cubes in water will turn into Slimes",
+  "text.autoconfig.odyssey.option.entityChanges.bucketable_frogs": "Bucketable Frogs",
+  "text.autoconfig.odyssey.option.entityChanges.bucketable_frogs.@Tooltip": "Frogs can be picked up in empty buckets",
+  "text.autoconfig.odyssey.option.entityChanges.bucketable_squids": "Bucketable Squids and Glow Squids",
+  "text.autoconfig.odyssey.option.entityChanges.bucketable_squids.@Tooltip": "Squids and Glow Squids can be picked up in water buckets"
 }

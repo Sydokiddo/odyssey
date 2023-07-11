@@ -14,6 +14,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.sydokiddo.chrysalis.misc.util.EmptyBucketableMob;
+import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.items.ModItems;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
 import org.jetbrains.annotations.NotNull;
@@ -70,9 +71,9 @@ public abstract class FrogMixin extends Animal implements EmptyBucketableMob {
 
     @Override
     public InteractionResult mobInteract(Player player, @NotNull InteractionHand interactionHand) {
-        if (this.isAlive()) {
+        if (this.isAlive() && Odyssey.getConfig().entityChanges.bucketable_frogs) {
             return EmptyBucketableMob.bucketMobPickup(player, interactionHand, this).orElse(super.mobInteract(player, interactionHand));
         }
-        return InteractionResult.PASS;
+        return super.mobInteract(player, interactionHand);
     }
 }
