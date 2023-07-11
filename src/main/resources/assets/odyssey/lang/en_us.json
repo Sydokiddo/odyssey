@@ -3,6 +3,7 @@
   "item.odyssey.enchanted_iron_potato": "Enchanted Iron Potato",
   "item.odyssey.wither_skull_fragment": "Wither Skull Fragment",
   "item.odyssey.elder_guardian_thorn": "Elder Guardian Thorn",
+  "item.odyssey.frog_bucket": "Bucket of Frog",
 
   "item.minecraft.potion.effect.mining_fatigue": "Potion of Mining Fatigue",
   "item.minecraft.splash_potion.effect.mining_fatigue": "Splash Potion of Mining Fatigue",
@@ -41,6 +42,8 @@
 
   "subtitles.entity.slime.converted_to_magma_cube": "Slime converts to Magma Cube",
   "subtitles.entity.magma_cube.converted_to_slime": "Magma Cube converts to Slime",
+
+  "subtitles.item.bucket.fill_frog": "Frog scooped",
 
   "advancements.adventure.use_goat_horn.title": "Call of the Wild",
   "advancements.adventure.use_goat_horn.description": "Blow a Goat Horn",

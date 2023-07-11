@@ -31,5 +31,17 @@
       "odyssey:mob/slime/slime_convert3"
     ],
     "subtitle": "subtitles.entity.magma_cube.converted_to_slime"
+  },
+  "item.bucket.fill_frog": {
+    "sounds": [
+      "odyssey:item/bucket/fill_frog"
+    ],
+    "subtitle": "subtitles.item.bucket.fill_frog"
+  },
+  "item.bucket.empty_frog": {
+    "sounds": [
+      "odyssey:item/bucket/empty_frog"
+    ],
+    "subtitle": "subtitles.item.bucket.empty"
   }
 }

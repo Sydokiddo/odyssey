@@ -5,13 +5,17 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.Block;
 import net.sydokiddo.chrysalis.registry.items.custom_items.EnchantmentGlintItem;
 import net.sydokiddo.odyssey.Odyssey;
+import net.sydokiddo.odyssey.registry.items.custom_items.FrogBucketItem;
+import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
 import org.quiltmc.qsl.item.setting.api.QuiltItemSettings;
 
 @SuppressWarnings("ALL")
@@ -34,6 +38,10 @@ public class ModItems {
         new EnchantmentGlintItem(new QuiltItemSettings().food(new FoodProperties.Builder().nutrition(4).saturationMod(1.2F).alwaysEat()
         .effect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 900, 1), 1f)
         .effect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 900, 0), 1f).build()).rarity(Rarity.EPIC)));
+
+    public static final Item FROG_BUCKET = registerItem("frog_bucket",
+        new FrogBucketItem(EntityType.FROG, ModSoundEvents.BUCKET_EMPTY_FROG,
+        new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET)));
 
     // Registry for Items:
 

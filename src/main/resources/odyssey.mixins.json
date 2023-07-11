@@ -14,6 +14,7 @@
     "blocks.LiquidBlockMixin",
     "blocks.SnifferEggBlockMixin",
     "blocks.SporeBlossomMixin",
+    "entities.FrogMixin",
     "entities.GuardianMixin",
     "entities.MobMixin",
     "entities.PigMixin",

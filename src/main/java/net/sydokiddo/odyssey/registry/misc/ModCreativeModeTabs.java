@@ -43,6 +43,10 @@ public class ModCreativeModeTabs {
             entries.addAfter(Items.PRISMARINE_CRYSTALS, ModItems.ELDER_GUARDIAN_THORN);
         });
 
+        // Tools and Utilities Tab:
 
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.TOOLS_AND_UTILITIES).register(entries -> {
+            entries.addAfter(Items.TADPOLE_BUCKET, ModItems.FROG_BUCKET);
+        });
     }
 }

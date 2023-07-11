@@ -10,6 +10,11 @@ public class ModSoundEvents {
 
     // List of Sounds:
 
+    // - Item Sounds:
+
+    public static final SoundEvent BUCKET_FILL_FROG = registerSoundEvent("item.bucket.fill_frog");
+    public static final SoundEvent BUCKET_EMPTY_FROG = registerSoundEvent("item.bucket.empty_frog");
+
     // - Block Sounds:
 
     public static final SoundEvent ANVIL_REPAIR = registerSoundEvent("block.anvil.repair");
