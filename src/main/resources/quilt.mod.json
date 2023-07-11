@@ -15,8 +15,8 @@
       },
       "contact": {
         "homepage": "https://modrinth.com/mod/odyssey",
-        "issues": "https://github.com/Sydokiddo/odyssey_rewrite/issues",
-        "sources": "https://github.com/Sydokiddo/odyssey_rewrite"
+        "issues": "https://github.com/Sydokiddo/odyssey/issues",
+        "sources": "https://github.com/Sydokiddo/odyssey"
       },
       "license": "MIT",
       "icon": "assets/odyssey/icon.png"
