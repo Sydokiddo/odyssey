@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(FarmBlock.class)
 public class FarmlandBlockMixin extends Block {
 
-    public FarmlandBlockMixin(Properties settings) {
+    private FarmlandBlockMixin(Properties settings) {
         super(settings);
     }
 

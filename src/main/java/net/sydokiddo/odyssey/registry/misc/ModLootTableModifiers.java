@@ -12,26 +12,26 @@ public class ModLootTableModifiers {
     public static void modifyLootTables() {
         LootTableEvents.MODIFY.register((resourceManager, lootManager, id, table, setter) -> {
 
-            if(RegistryHelpers.DUNGEON.equals(id)) {
+            if (RegistryHelpers.DUNGEON.equals(id)) {
                 LootPool.Builder builder = LootPool.lootPool();
                 builder.add(LootItem.lootTableItem(ModItems.ENCHANTED_IRON_POTATO).setWeight(4));
                 builder.add(LootItem.lootTableItem(ModItems.IRON_POTATO).setWeight(12));
                 table.withPool(builder);
             }
 
-            if(RegistryHelpers.MINESHAFT.equals(id)) {
+            if (RegistryHelpers.MINESHAFT.equals(id)) {
                 LootPool.Builder builder = LootPool.lootPool();
                 builder.add(LootItem.lootTableItem(ModItems.IRON_POTATO).setWeight(16));
                 table.withPool(builder);
             }
 
-            if(RegistryHelpers.BASTION_TREASURE.equals(id)) {
+            if (RegistryHelpers.BASTION_TREASURE.equals(id)) {
                 LootPool.Builder builder = LootPool.lootPool();
                 builder.add(LootItem.lootTableItem(ModItems.ENCHANTED_IRON_POTATO).setWeight(1));
                 table.withPool(builder);
             }
 
-            if(RegistryHelpers.BASTION_HOGLIN_STABLE.equals(id)) {
+            if (RegistryHelpers.BASTION_HOGLIN_STABLE.equals(id)) {
                 LootPool.Builder builder = LootPool.lootPool();
                 builder.add(LootItem.lootTableItem(ModItems.IRON_POTATO).setWeight(6));
                 table.withPool(builder);
@@ -43,46 +43,46 @@ public class ModLootTableModifiers {
                 table.withPool(builder);
             }
 
-            if(RegistryHelpers.DESERT_TEMPLE.equals(id)) {
+            if (RegistryHelpers.DESERT_TEMPLE.equals(id)) {
                 LootPool.Builder builder = LootPool.lootPool();
                 builder.add(LootItem.lootTableItem(ModItems.ENCHANTED_IRON_POTATO).setWeight(2));
                 builder.add(LootItem.lootTableItem(ModItems.IRON_POTATO).setWeight(8));
                 table.withPool(builder);
             }
 
-            if(RegistryHelpers.RUINED_PORTAL.equals(id)) {
+            if (RegistryHelpers.RUINED_PORTAL.equals(id)) {
                 LootPool.Builder builder = LootPool.lootPool();
                 builder.add(LootItem.lootTableItem(ModItems.ENCHANTED_IRON_POTATO).setWeight(2));
                 builder.add(LootItem.lootTableItem(ModItems.IRON_POTATO).setWeight(12));
                 table.withPool(builder);
             }
 
-            if(RegistryHelpers.STRONGHOLD_CORRIDOR.equals(id)) {
+            if (RegistryHelpers.STRONGHOLD_CORRIDOR.equals(id)) {
                 LootPool.Builder builder = LootPool.lootPool();
                 builder.add(LootItem.lootTableItem(ModItems.IRON_POTATO).setWeight(1));
                 table.withPool(builder);
             }
 
-            if(RegistryHelpers.UNDERWATER_RUIN_BIG.equals(id)) {
+            if (RegistryHelpers.UNDERWATER_RUIN_BIG.equals(id)) {
                 LootPool.Builder builder = LootPool.lootPool();
                 builder.add(LootItem.lootTableItem(ModItems.IRON_POTATO).setWeight(2));
                 table.withPool(builder);
             }
 
-            if(RegistryHelpers.WOODLAND_MANSION.equals(id)) {
+            if (RegistryHelpers.WOODLAND_MANSION.equals(id)) {
                 LootPool.Builder builder = LootPool.lootPool();
                 builder.add(LootItem.lootTableItem(ModItems.ENCHANTED_IRON_POTATO).setWeight(2));
                 builder.add(LootItem.lootTableItem(ModItems.IRON_POTATO).setWeight(8));
                 table.withPool(builder);
             }
 
-            if(RegistryHelpers.PILLAGER_OUTPOST.equals(id)) {
+            if (RegistryHelpers.PILLAGER_OUTPOST.equals(id)) {
                 LootPool.Builder builder = LootPool.lootPool();
                 builder.add(LootItem.lootTableItem(ModItems.IRON_POTATO).setWeight(12));
                 table.withPool(builder);
             }
 
-            if(RegistryHelpers.ANCIENT_CITY.equals(id)) {
+            if (RegistryHelpers.ANCIENT_CITY.equals(id)) {
                 LootPool.Builder builder = LootPool.lootPool();
                 builder.when(LootItemRandomChanceCondition.randomChance(0.20f));
                 builder.add(LootItem.lootTableItem(ModItems.ENCHANTED_IRON_POTATO).setWeight(1));

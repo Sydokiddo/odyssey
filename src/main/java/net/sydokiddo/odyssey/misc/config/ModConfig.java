@@ -106,5 +106,8 @@ public class ModConfig implements ConfigData {
 
         @ConfigEntry.Gui.Tooltip
         public boolean bucketable_squids = true;
+
+        @ConfigEntry.Gui.Tooltip
+        public boolean hidden_fire_overlay_with_fire_resistance = true;
     }
 }

@@ -16,6 +16,7 @@
     "blocks.SporeBlossomMixin",
     "entities.FrogMixin",
     "entities.GuardianMixin",
+    "entities.LivingEntityMixin",
     "entities.MobMixin",
     "entities.PigMixin",
     "entities.RabbitMixin",
@@ -33,7 +34,8 @@
     "misc.CheapAnvilRenameMixin"
   ],
   "client": [
-    "client.LivingEntityRendererMixin"
+    "client.LivingEntityRendererMixin",
+    "client.ScreenEffectRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

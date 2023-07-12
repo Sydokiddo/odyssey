@@ -14,6 +14,7 @@ import net.sydokiddo.odyssey.Odyssey;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 
 @Mixin(WaterlilyBlock.class)
 public abstract class LilyPadBlockBoneMealMixin implements BonemealableBlock {
@@ -22,6 +23,7 @@ public abstract class LilyPadBlockBoneMealMixin implements BonemealableBlock {
 
     @Shadow protected abstract boolean mayPlaceOn(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos);
 
+    @Unique
     private boolean canGrowTo(BlockPos pos, BlockGetter world) {
         return this.mayPlaceOn(world.getBlockState(pos.below()), world, pos.below()) && world.getBlockState(pos).isAir();
     }
