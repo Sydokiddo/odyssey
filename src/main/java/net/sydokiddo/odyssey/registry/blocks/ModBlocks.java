@@ -1,5 +1,6 @@
 package net.sydokiddo.odyssey.registry.blocks;
 
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -57,6 +58,12 @@ public class ModBlocks {
     public static final Block SUSPICIOUS_RED_SAND = registerBlock("suspicious_red_sand",
         new BrushableBlock(Blocks.RED_SAND, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).instrument(NoteBlockInstrument.SNARE)
         .strength(0.25F).sound(SoundType.SUSPICIOUS_SAND).pushReaction(PushReaction.DESTROY), SoundEvents.BRUSH_SAND, SoundEvents.BRUSH_SAND_COMPLETED));
+
+    public static final Block PRISMARINE_BRICK_WALL = registerBlock("prismarine_brick_wall",
+        new WallBlock(FabricBlockSettings.copyOf(Blocks.PRISMARINE_BRICKS).sound(SoundType.STONE)));
+
+    public static final Block DARK_PRISMARINE_WALL = registerBlock("dark_prismarine_wall",
+        new WallBlock(FabricBlockSettings.copyOf(Blocks.DARK_PRISMARINE).sound(SoundType.STONE)));
 
     // Registry for Blocks:
 
