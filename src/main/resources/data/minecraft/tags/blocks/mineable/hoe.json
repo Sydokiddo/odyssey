@@ -7,6 +7,8 @@
     "minecraft:ochre_froglight",
     "#minecraft:candles",
     "minecraft:honeycomb_block",
-    "minecraft:frogspawn"
+    "minecraft:frogspawn",
+    "minecraft:cake",
+    "#minecraft:candle_cakes"
   ]
 }
