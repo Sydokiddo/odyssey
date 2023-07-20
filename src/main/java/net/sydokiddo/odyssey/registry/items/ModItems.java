@@ -11,8 +11,8 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluids;
 import net.sydokiddo.chrysalis.registry.items.custom_items.EnchantmentGlintItem;
+import net.sydokiddo.chrysalis.registry.items.custom_items.MobInContainerItem;
 import net.sydokiddo.odyssey.Odyssey;
-import net.sydokiddo.odyssey.registry.items.custom_items.FrogBucketItem;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
 import org.quiltmc.qsl.item.setting.api.QuiltItemSettings;
 
@@ -38,7 +38,7 @@ public class ModItems {
         .effect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 900, 0), 1f).build()).rarity(Rarity.EPIC)));
 
     public static final Item FROG_BUCKET = registerItem("frog_bucket",
-        new FrogBucketItem(EntityType.FROG, ModSoundEvents.BUCKET_EMPTY_FROG,
+        new MobInContainerItem(EntityType.FROG, ModSoundEvents.BUCKET_EMPTY_FROG,
         new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET)));
 
     public static final Item SQUID_BUCKET = registerItem("squid_bucket",

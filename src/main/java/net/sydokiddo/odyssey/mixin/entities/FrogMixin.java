@@ -13,7 +13,7 @@ import net.minecraft.world.entity.animal.frog.Frog;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.sydokiddo.chrysalis.misc.util.EmptyBucketableMob;
+import net.sydokiddo.chrysalis.misc.util.mobs.ContainerMob;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.items.ModItems;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
@@ -22,7 +22,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(Frog.class)
-public abstract class FrogMixin extends Animal implements EmptyBucketableMob {
+public abstract class FrogMixin extends Animal implements ContainerMob {
 
     // Frogs can now be picked up in Empty Buckets
 
@@ -34,25 +34,25 @@ public abstract class FrogMixin extends Animal implements EmptyBucketableMob {
     }
 
     @Override
-    public boolean fromBucket() {
+    public boolean fromItem() {
         return true;
     }
 
     @Override
-    public void setFromBucket(boolean bl) {}
+    public void setFromItem(boolean bl) {}
 
     @SuppressWarnings("ALL")
     @Override
-    public void saveToBucketTag(ItemStack itemStack) {
-        EmptyBucketableMob.saveDefaultDataToBucketTag(this, itemStack);
+    public void saveToItemTag(ItemStack itemStack) {
+        ContainerMob.saveDefaultDataToItemTag(this, itemStack);
         CompoundTag compoundTag = itemStack.getOrCreateTag();
         compoundTag.putString("variant", BuiltInRegistries.FROG_VARIANT.getKey(this.getVariant()).toString());
     }
 
     @SuppressWarnings("ALL")
     @Override
-    public void loadFromBucketTag(CompoundTag compoundTag) {
-        EmptyBucketableMob.loadDefaultDataFromBucketTag(this, compoundTag);
+    public void loadFromItemTag(CompoundTag compoundTag) {
+        ContainerMob.loadDefaultDataFromItemTag(this, compoundTag);
         FrogVariant frogVariant = (FrogVariant)BuiltInRegistries.FROG_VARIANT.get(ResourceLocation.tryParse(compoundTag.getString("variant")));
         if (frogVariant != null) {
             this.setVariant(frogVariant);
@@ -60,7 +60,7 @@ public abstract class FrogMixin extends Animal implements EmptyBucketableMob {
     }
 
     @Override
-    public ItemStack getBucketItemStack() {
+    public ItemStack getResultItemStack() {
         return new ItemStack(ModItems.FROG_BUCKET);
     }
 
@@ -72,7 +72,7 @@ public abstract class FrogMixin extends Animal implements EmptyBucketableMob {
     @Override
     public InteractionResult mobInteract(Player player, @NotNull InteractionHand interactionHand) {
         if (this.isAlive() && Odyssey.getConfig().entityChanges.bucketable_frogs) {
-            return EmptyBucketableMob.bucketMobPickup(player, interactionHand, this).orElse(super.mobInteract(player, interactionHand));
+            return ContainerMob.emptyBucketMobPickup(player, interactionHand, this).orElse(super.mobInteract(player, interactionHand));
         }
         return super.mobInteract(player, interactionHand);
     }
