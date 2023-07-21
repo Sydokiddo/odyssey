@@ -16,10 +16,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
 import net.sydokiddo.odyssey.Odyssey;
-import net.sydokiddo.odyssey.registry.blocks.custom_blocks.GunpowderBlock;
-import net.sydokiddo.odyssey.registry.blocks.custom_blocks.PotionCauldronBlock;
-import net.sydokiddo.odyssey.registry.blocks.custom_blocks.PotionCauldronBlockEntity;
-import net.sydokiddo.odyssey.registry.blocks.custom_blocks.PotionCauldronInteraction;
+import net.sydokiddo.odyssey.registry.blocks.custom_blocks.*;
 import org.quiltmc.qsl.block.entity.api.QuiltBlockEntityTypeBuilder;
 import org.quiltmc.qsl.block.extensions.api.QuiltBlockSettings;
 import org.quiltmc.qsl.item.setting.api.QuiltItemSettings;
@@ -52,7 +49,7 @@ public class ModBlocks {
     public static final Block POLISHED_DEEPSLATE_BUTTON = registerBlock("polished_deepslate_button", RegistryHelpers.registerStoneButton());
 
     public static final Block SUSPICIOUS_RED_SAND = registerBlock("suspicious_red_sand",
-        new BrushableBlock(Blocks.RED_SAND, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).instrument(NoteBlockInstrument.SNARE)
+        new ModBrushableBlock(Blocks.RED_SAND, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).instrument(NoteBlockInstrument.SNARE)
         .strength(0.25F).sound(SoundType.SUSPICIOUS_SAND).pushReaction(PushReaction.DESTROY), SoundEvents.BRUSH_SAND, SoundEvents.BRUSH_SAND_COMPLETED));
 
     public static final Block PRISMARINE_BRICK_WALL = registerBlock("prismarine_brick_wall",

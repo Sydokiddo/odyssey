@@ -18,7 +18,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.sydokiddo.odyssey.registry.blocks.ModBlocks;
 import org.jetbrains.annotations.NotNull;
-import static net.sydokiddo.odyssey.client.rendering.CauldronRendering.setRenderColors;
+import static net.sydokiddo.odyssey.client.rendering.block_entities.PotionCauldronRendering.setRenderColors;
 
 public class PotionCauldronBlockEntity extends BlockEntity {
     public Potion potion = ModBlocks.POTION_CAULDRON_STATE.potion;
