@@ -22,6 +22,8 @@ public class ModSoundEvents {
     // - Block Sounds:
 
     public static final SoundEvent ANVIL_REPAIR = registerSoundEvent("block.anvil.repair");
+    public static final SoundEvent REDSTONE_LANTERN_POWER_ON = registerSoundEvent("block.redstone_lantern.power_on");
+    public static final SoundEvent REDSTONE_LANTERN_POWER_OFF = registerSoundEvent("block.redstone_lantern.power_off");
 
     // - Entity Sounds:
 

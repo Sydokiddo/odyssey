@@ -58,6 +58,9 @@ public class ModBlocks {
     public static final Block DARK_PRISMARINE_WALL = registerBlock("dark_prismarine_wall",
         new WallBlock(FabricBlockSettings.copyOf(Blocks.DARK_PRISMARINE).sound(SoundType.STONE)));
 
+    public static final Block REDSTONE_LANTERN = registerBlock("redstone_lantern",
+        new RedstoneLanternBlock(FabricBlockSettings.copyOf(Blocks.LANTERN).lightLevel(RegistryHelpers.blockStateShouldEmitLight(7))));
+
     // Registry for Blocks:
 
     private static Block registerBlockWithoutBlockItem(String string, Block block) {

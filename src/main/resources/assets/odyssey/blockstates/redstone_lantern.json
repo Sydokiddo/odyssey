@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "hanging=false,lit=false": {
+      "model": "odyssey:block/redstone_lantern_off"
+    },
+    "hanging=true,lit=false": {
+      "model": "odyssey:block/redstone_lantern_hanging_off"
+    },
+    "hanging=false,lit=true": {
+      "model": "odyssey:block/redstone_lantern_on"
+    },
+    "hanging=true,lit=true": {
+      "model": "odyssey:block/redstone_lantern_hanging_on"
+    }
+  }
+}

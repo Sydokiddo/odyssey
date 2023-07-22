@@ -3,8 +3,12 @@ package net.sydokiddo.odyssey.client;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.renderer.RenderType;
+import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.client.rendering.ModEntityRenderer;
 import net.sydokiddo.odyssey.client.rendering.block_entities.PotionCauldronRendering;
+import net.sydokiddo.odyssey.registry.blocks.ModBlocks;
+import org.quiltmc.qsl.block.extensions.api.client.BlockRenderLayerMap;
 
 @SuppressWarnings("ALL")
 @Environment(EnvType.CLIENT)
@@ -12,7 +16,16 @@ public class OdysseyClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        ModEntityRenderer.registerRenderers();
-        PotionCauldronRendering.setRenderColors();
+        if (Odyssey.chrysalisInitialized()) {
+
+            ModEntityRenderer.registerRenderers();
+            PotionCauldronRendering.setRenderColors();
+
+            // Renders Blocks in List as Transparent (Without Translucency)
+
+            BlockRenderLayerMap.put(RenderType.cutout(),
+                ModBlocks.REDSTONE_LANTERN
+            );
+        }
     }
 }

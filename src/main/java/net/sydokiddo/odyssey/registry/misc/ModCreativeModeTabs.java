@@ -24,12 +24,14 @@ public class ModCreativeModeTabs {
 
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(entries -> {
             entries.addAfter(Items.SUSPICIOUS_SAND, ModBlocks.SUSPICIOUS_RED_SAND);
+            entries.addAfter(Items.SOUL_LANTERN, ModBlocks.REDSTONE_LANTERN);
         });
 
         // Redstone Blocks Tab:
 
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.REDSTONE_BLOCKS).register(entries -> {
             entries.addAfter(Items.AMETHYST_BLOCK, ModBlocks.REFINED_AMETHYST_BLOCK);
+            entries.addAfter(Items.REDSTONE_TORCH, ModBlocks.REDSTONE_LANTERN);
         });
 
         // Natural Blocks Tab:
