@@ -6,10 +6,10 @@ import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.sydokiddo.odyssey.client.rendering.block_entities.ModBrushableBlockRenderer;
 import net.sydokiddo.odyssey.registry.entities.ModBlockEntities;
 
-@SuppressWarnings("ALL")
 @Environment(EnvType.CLIENT)
 public class ModEntityRenderer {
 
+    @SuppressWarnings("ALL")
     public static void registerRenderers() {
         BlockEntityRendererRegistry.register(ModBlockEntities.ODYSSEY_BRUSHABLE_BLOCK, ModBrushableBlockRenderer::new);
     }

@@ -6,7 +6,6 @@ import me.shedaniel.autoconfig.AutoConfig;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 
-@SuppressWarnings("ALL")
 @Environment(EnvType.CLIENT)
 public class ModMenuCompatibility implements ModMenuApi {
 

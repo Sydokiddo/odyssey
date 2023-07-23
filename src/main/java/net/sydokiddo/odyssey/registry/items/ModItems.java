@@ -1,5 +1,6 @@
 package net.sydokiddo.odyssey.registry.items;
 
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -14,7 +15,6 @@ import net.sydokiddo.chrysalis.registry.items.custom_items.EnchantmentGlintItem;
 import net.sydokiddo.chrysalis.registry.items.custom_items.MobInContainerItem;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
-import org.quiltmc.qsl.item.setting.api.QuiltItemSettings;
 
 @SuppressWarnings("ALL")
 public class ModItems {
@@ -22,18 +22,18 @@ public class ModItems {
     // List of Items:
 
     public static final Item ELDER_GUARDIAN_THORN = registerItem("elder_guardian_thorn",
-        new Item(new QuiltItemSettings()));
+        new Item(new FabricItemSettings()));
 
     public static final Item WITHER_SKULL_FRAGMENT = registerItem("wither_skull_fragment",
-        new Item(new QuiltItemSettings()));
+        new Item(new FabricItemSettings()));
 
     public static final Item IRON_POTATO = registerItem("iron_potato",
-        new Item(new QuiltItemSettings().food(new FoodProperties.Builder().nutrition(4).saturationMod(1.2F).alwaysEat()
+        new Item(new FabricItemSettings().food(new FoodProperties.Builder().nutrition(4).saturationMod(1.2F).alwaysEat()
         .effect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 300, 1), 1f)
         .effect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 300, 0), 1f).build()).rarity(Rarity.RARE)));
 
     public static final Item ENCHANTED_IRON_POTATO = registerItem("enchanted_iron_potato",
-        new EnchantmentGlintItem(new QuiltItemSettings().food(new FoodProperties.Builder().nutrition(4).saturationMod(1.2F).alwaysEat()
+        new EnchantmentGlintItem(new FabricItemSettings().food(new FoodProperties.Builder().nutrition(4).saturationMod(1.2F).alwaysEat()
         .effect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 900, 1), 1f)
         .effect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 900, 0), 1f).build()).rarity(Rarity.EPIC)));
 
@@ -62,7 +62,7 @@ public class ModItems {
 
     private static Item registerBlockItem(String name, Block block) {
         return Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(Odyssey.MOD_ID, name),
-        new BlockItem(block, new QuiltItemSettings()));
+        new BlockItem(block, new FabricItemSettings()));
     }
 
     public static void registerModItems() {}

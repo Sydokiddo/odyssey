@@ -1,10 +1,9 @@
 plugins {
+	id 'fabric-loom' version '1.1-SNAPSHOT'
 	id 'maven-publish'
-	alias libs.plugins.quilt.loom
 }
 
-base.archivesName = project.archives_base_name
-version = "$project.version+${libs.versions.minecraft.get()}"
+version = project.mod_version
 group = project.maven_group
 
 repositories {
@@ -29,16 +28,13 @@ repositories {
 
 dependencies {
 
-	minecraft libs.minecraft
-	mappings loom.layered {
-		mappings "org.quiltmc:quilt-mappings:${libs.versions.quilt.mappings.get()}:intermediary-v2"
-		officialMojangMappings()
-	}
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	mappings loom.officialMojangMappings()
 
 	// Implementations
 
-	modImplementation libs.quilt.loader
-	modImplementation libs.quilted.fabric.api
+	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	include modImplementation("maven.modrinth:chrysalis:${project.chrysalis_version}")
 
@@ -54,11 +50,15 @@ loom {
 	accessWidenerPath = file("src/main/resources/odyssey.accesswidener")
 }
 
+base {
+	archivesName = project.archives_base_name
+}
+
 processResources {
 	inputs.property "version", project.version
 
-	filesMatching('quilt.mod.json') {
-		expand 'version': version
+	filesMatching("fabric.mod.json") {
+		expand "version": project.version
 	}
 }
 

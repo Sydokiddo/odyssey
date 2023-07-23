@@ -2,12 +2,11 @@ package net.sydokiddo.odyssey;
 
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
+import net.fabricmc.api.ModInitializer;
+import net.fabricmc.loader.api.FabricLoader;
 import net.sydokiddo.chrysalis.Chrysalis;
 import net.sydokiddo.odyssey.misc.config.ModConfig;
 import net.sydokiddo.odyssey.registry.OdysseyRegistry;
-import org.quiltmc.loader.api.ModContainer;
-import org.quiltmc.loader.api.QuiltLoader;
-import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,11 +17,11 @@ public class Odyssey implements ModInitializer {
 	private static final ModConfig CONFIG = AutoConfig.register(ModConfig.class, GsonConfigSerializer::new).getConfig();
 
 	public static boolean chrysalisInitialized() {
-		return QuiltLoader.isModLoaded(Chrysalis.MOD_ID);
+		return FabricLoader.getInstance().isModLoaded(Chrysalis.MOD_ID);
 	}
 
 	@Override
-	public void onInitialize(ModContainer mod) {
+	public void onInitialize() {
 		if (chrysalisInitialized()) {
 			OdysseyRegistry.registerAll();
 			LOGGER.info("Thank you for downloading Odyssey!");

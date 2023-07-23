@@ -7,7 +7,6 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.sydokiddo.odyssey.registry.blocks.ModBlocks;
 import net.sydokiddo.odyssey.registry.blocks.custom_blocks.PotionCauldronBlockEntity;
 
-@SuppressWarnings("ALL")
 @Environment(EnvType.CLIENT)
 public class PotionCauldronRendering {
 

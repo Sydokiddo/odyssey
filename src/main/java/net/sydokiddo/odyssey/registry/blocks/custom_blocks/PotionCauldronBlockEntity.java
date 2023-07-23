@@ -21,6 +21,7 @@ import org.jetbrains.annotations.NotNull;
 import static net.sydokiddo.odyssey.client.rendering.block_entities.PotionCauldronRendering.setRenderColors;
 
 public class PotionCauldronBlockEntity extends BlockEntity {
+
     public Potion potion = ModBlocks.POTION_CAULDRON_STATE.potion;
 
     public PotionCauldronBlockEntity(BlockPos pos, BlockState state) {
