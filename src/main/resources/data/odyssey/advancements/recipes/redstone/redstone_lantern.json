@@ -1,24 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_iron_ingot": {
+    "has_redstone_torch": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:iron_ingot"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "has_iron_nugget": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "minecraft:iron_nugget"
+              "minecraft:redstone_torch"
             ]
           }
         ]
@@ -34,8 +22,7 @@
   },
   "requirements": [
     [
-      "has_iron_nugget",
-      "has_iron_ingot",
+      "has_redstone_torch",
       "has_the_recipe"
     ]
   ],

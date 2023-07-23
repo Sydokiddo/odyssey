@@ -104,7 +104,7 @@
   "text.autoconfig.odyssey.option.blockChanges.spore_blossom_bone_mealing": "Spore Blossom Bone Mealing",
   "text.autoconfig.odyssey.option.blockChanges.spore_blossom_bone_mealing.@Tooltip": "Spore Blossoms can be right-clicked with Bone Meal to duplicate them",
   "text.autoconfig.odyssey.option.blockChanges.small_dripleaf_bone_mealing": "Small Dripleaf Renewability",
-  "text.autoconfig.odyssey.option.blockChanges.small_dripleaf_bone_mealing.@Tooltip": "When using Bone Meal on a Small Dripleaf, it will duplicate itself",
+  "text.autoconfig.odyssey.option.blockChanges.small_dripleaf_bone_mealing.@Tooltip": "Using Bone Meal on a Small Dripleaf will drop 2 of itself when it growing into a Big Dripleaf, making it truly renewable",
   "text.autoconfig.odyssey.option.blockChanges.renewable_deepslate": "Renewable Deepslate",
   "text.autoconfig.odyssey.option.blockChanges.renewable_deepslate.@Tooltip": "Cobblestone generators below Y=0 will create Cobbled Deepslate instead of Cobblestone",
   "text.autoconfig.odyssey.option.blockChanges.harder_budding_amethyst": "Harder To Mine Budding Amethyst",
