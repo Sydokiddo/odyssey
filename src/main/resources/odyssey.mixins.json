@@ -8,10 +8,10 @@
     "blocks.AbstractCauldronBlockMixin",
     "blocks.AnvilRepairingMixin",
     "blocks.BlockMixin",
-    "blocks.BlockStateBaseMixin",
     "blocks.FarmlandBlockMixin",
     "blocks.LilyPadBlockBoneMealMixin",
     "blocks.LiquidBlockMixin",
+    "blocks.SmallDripleafBlockMixin",
     "blocks.SnifferEggBlockMixin",
     "blocks.SporeBlossomMixin",
     "entities.FrogMixin",
@@ -28,10 +28,10 @@
     "items.EnchantmentMixin",
     "items.ItemStackMixin",
     "items.tools.BrushItemMixin",
+    "items.tools.DiggerItemMixin",
     "items.tools.ShearsItemMixin",
     "items.tools.TridentItemMixin",
-    "misc.ArmorStandInteractionMixin",
-    "misc.CheapAnvilRenameMixin"
+    "misc.ArmorStandInteractionMixin"
   ],
   "client": [
     "client.LivingEntityRendererMixin",

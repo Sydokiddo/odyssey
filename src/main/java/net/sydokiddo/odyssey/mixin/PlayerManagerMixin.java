@@ -21,7 +21,7 @@ public class PlayerManagerMixin {
     @Shadow @Mutable @Final private static final Logger LOGGER = LogUtils.getLogger();
 
     @Inject(method = "placeNewPlayer", at = @At(value = "TAIL"))
-    private void endlessEncore_onPlayerConnectToServer(Connection connection, ServerPlayer player, CallbackInfo info) {
+    private void odyssey_onPlayerConnectToServer(Connection connection, ServerPlayer player, CallbackInfo info) {
         LOGGER.info(player.getName().getString() + " has Odyssey installed");
     }
 }

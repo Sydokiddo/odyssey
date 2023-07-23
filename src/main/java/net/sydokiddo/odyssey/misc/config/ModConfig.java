@@ -13,9 +13,6 @@ public class ModConfig implements ConfigData {
 
     public static class ItemChanges {
 
-        @ConfigEntry.Gui.Tooltip
-        public boolean anvil_renaming_only_costs_one_xp = true;
-
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.Tooltip
         public int sign_stack_size = 64;
@@ -67,6 +64,9 @@ public class ModConfig implements ConfigData {
 
         @ConfigEntry.Gui.Tooltip
         public boolean spore_blossom_bone_mealing = true;
+
+        @ConfigEntry.Gui.Tooltip
+        public boolean small_dripleaf_bone_mealing = true;
 
         @ConfigEntry.Gui.Tooltip
         public boolean renewable_deepslate = true;
