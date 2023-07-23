@@ -47,11 +47,14 @@ public class RedstoneLanternBlock extends LanternBlock {
             level.playSound(null, blockPos, ModSoundEvents.REDSTONE_LANTERN_POWER_OFF, SoundSource.BLOCKS);
             turnOffLantern(level, blockPos, blockState);
 
-            if (!blockState.getValue(WATERLOGGED)) {
-                for (int i = 0; i < 10; ++i) {
-                    double d = (double) blockPos.getX() + 0.5D;
-                    double e = (double) blockPos.getY() + 0.7D;
-                    double f = (double) blockPos.getZ() + 0.5D;
+            for (int i = 0; i < 10; ++i) {
+                double d = (double) blockPos.getX() + 0.5D;
+                double e = (double) blockPos.getY() + 0.7D;
+                double f = (double) blockPos.getZ() + 0.5D;
+
+                if (blockState.getValue(WATERLOGGED)) {
+                    level.addParticle(ParticleTypes.BUBBLE, d, e, f, 0.0D, 0.0D, 0.0D);
+                } else {
                     level.addParticle(ParticleTypes.SMOKE, d, e, f, 0.0D, 0.0D, 0.0D);
                 }
             }
@@ -138,11 +141,14 @@ public class RedstoneLanternBlock extends LanternBlock {
 
                     turnOffLantern(serverLevel, relativePos, blockState);
 
-                    if (!serverLevel.getBlockState(blockPos).getValue(WATERLOGGED)) {
-                        for (int i = 0; i < 10; ++i) {
-                            double d = (double) relativePos.getX() + 0.5D;
-                            double e = (double) relativePos.getY() + 0.7D;
-                            double f = (double) relativePos.getZ() + 0.5D;
+                    for (int i = 0; i < 10; ++i) {
+                        double d = (double) relativePos.getX() + 0.5D;
+                        double e = (double) relativePos.getY() + 0.7D;
+                        double f = (double) relativePos.getZ() + 0.5D;
+
+                        if (serverLevel.getBlockState(blockPos).getValue(WATERLOGGED)) {
+                            serverLevel.sendParticles(ParticleTypes.BUBBLE, d, e, f, 1, 0.0D, 0.0D, 0.0D, 0.0D);
+                        } else {
                             serverLevel.sendParticles(ParticleTypes.SMOKE, d, e, f, 1, 0.0D, 0.0D, 0.0D, 0.0D);
                         }
                     }
