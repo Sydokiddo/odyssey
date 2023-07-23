@@ -1,6 +1,7 @@
 package net.sydokiddo.odyssey.registry.blocks.custom_blocks;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -33,13 +34,10 @@ public class GunpowderBlock extends FallingBlock {
 
         super.onPlace(state, level, pos, oldState, bl);
 
-        if (level.getBlockState(pos.offset(-1, 0, 0)).getBlock() instanceof FireBlock ||
-        level.getBlockState(pos.offset(1, 0, 0)).getBlock() instanceof FireBlock ||
-        level.getBlockState(pos.offset(0, -1, 0)).getBlock() instanceof FireBlock ||
-        level.getBlockState(pos.offset(0, 1, 0)).getBlock() instanceof FireBlock ||
-        level.getBlockState(pos.offset(0, 0, -1)).getBlock() instanceof FireBlock ||
-        level.getBlockState(pos.offset(0, 0, 1)).getBlock() instanceof FireBlock) {
-            explode(level, pos);
+        for (Direction direction : Direction.values()) {
+            if (level.getBlockState(pos.relative(direction)).getBlock() instanceof FireBlock) {
+                explode(level, pos);
+            }
         }
     }
 
@@ -95,7 +93,7 @@ public class GunpowderBlock extends FallingBlock {
 
         super.neighborChanged(state, level, pos, block, neighborPos, bl);
 
-        if (level.getBlockState(neighborPos).getBlock() == Blocks.FIRE) {
+        if (level.getBlockState(neighborPos).getBlock() instanceof FireBlock) {
             explode(level, pos);
         }
     }
