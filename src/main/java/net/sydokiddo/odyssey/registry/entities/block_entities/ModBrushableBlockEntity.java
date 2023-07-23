@@ -4,7 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.BrushableBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.sydokiddo.odyssey.registry.entities.ModBlockEntities;
+import net.sydokiddo.odyssey.registry.entities.registry.ModEntities;
 
 public class ModBrushableBlockEntity extends BrushableBlockEntity {
 
@@ -14,6 +14,6 @@ public class ModBrushableBlockEntity extends BrushableBlockEntity {
 
     @Override
     public BlockEntityType<?> getType() {
-        return ModBlockEntities.ODYSSEY_BRUSHABLE_BLOCK;
+        return ModEntities.ODYSSEY_BRUSHABLE_BLOCK;
     }
 }

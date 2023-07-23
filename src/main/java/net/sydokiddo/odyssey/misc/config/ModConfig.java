@@ -76,6 +76,9 @@ public class ModConfig implements ConfigData {
 
         @ConfigEntry.Gui.Tooltip
         public boolean sniffer_egg_hatch_preventing = true;
+
+        @ConfigEntry.Gui.Tooltip
+        public boolean unstable_gunpowder_blocks = true;
     }
 
     @ConfigEntry.Gui.CollapsibleObject()

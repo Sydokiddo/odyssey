@@ -45,6 +45,8 @@
   "block.odyssey.dark_prismarine_wall": "Dark Prismarine Wall",
   "block.odyssey.redstone_lantern": "Redstone Lantern",
 
+  "entity.odyssey.gunpowder_block": "Primed Block of Gunpowder",
+
   "subtitles.block.anvil.repair": "Anvil is repaired",
   "subtitles.entity.armor_stand.add_arms": "Arms fasten to Armor Stand",
 
@@ -108,6 +110,8 @@
   "text.autoconfig.odyssey.option.blockChanges.harder_budding_amethyst.@Tooltip": "Budding Amethyst takes longer to mine to prevent players from accidentally breaking it",
   "text.autoconfig.odyssey.option.blockChanges.sniffer_egg_hatch_preventing": "Sniffer Egg Hatch Preventing",
   "text.autoconfig.odyssey.option.blockChanges.sniffer_egg_hatch_preventing.@Tooltip": "Sniffer Eggs placed on Magma Blocks will not hatch, which is useful for using them as decoration!",
+  "text.autoconfig.odyssey.option.blockChanges.unstable_gunpowder_blocks": "Unstable Blocks of Gunpowder",
+  "text.autoconfig.odyssey.option.blockChanges.unstable_gunpowder_blocks.@Tooltip": "Blocks of Gunpowder will instantly explode when they catch on fire or when lit with Flint and Steel or Fire Charges",
 
   "text.autoconfig.odyssey.option.entityChanges": "Entities",
   "text.autoconfig.odyssey.option.entityChanges.@Tooltip": "Changes to the way certain entities function",

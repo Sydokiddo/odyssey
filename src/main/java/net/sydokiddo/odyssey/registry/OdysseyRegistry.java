@@ -6,7 +6,7 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.monster.Slime;
 import net.sydokiddo.odyssey.registry.blocks.ModBlocks;
 import net.sydokiddo.odyssey.registry.blocks.custom_blocks.PotionCauldronInteraction;
-import net.sydokiddo.odyssey.registry.entities.ModBlockEntities;
+import net.sydokiddo.odyssey.registry.entities.registry.ModEntities;
 import net.sydokiddo.odyssey.registry.items.ModItems;
 import net.sydokiddo.odyssey.registry.items.ModPotions;
 import net.sydokiddo.odyssey.registry.misc.ModCreativeModeTabs;
@@ -27,7 +27,7 @@ public class OdysseyRegistry {
         ModItems.registerModItems();
         ModBlocks.registerModBlocks();
         ModSoundEvents.registerSounds();
-        ModBlockEntities.registerBlockEntities();
+        ModEntities.registerModEntities();
 
         PotionCauldronInteraction.bootstrap();
         ModPotions.registerPotions();
