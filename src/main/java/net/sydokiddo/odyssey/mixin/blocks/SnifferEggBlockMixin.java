@@ -23,6 +23,8 @@ public abstract class SnifferEggBlockMixin extends Block {
         super(properties);
     }
 
+    // Placing Sniffer Eggs on Magma Blocks will prevent them from hatching
+
     @Inject(at = @At("HEAD"), method = "tick", cancellable = true)
     private void odyssey_preventSnifferEggTicking(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource, CallbackInfo ci) {
 

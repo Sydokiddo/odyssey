@@ -49,6 +49,7 @@
 
   "subtitles.block.anvil.repair": "Anvil is repaired",
   "subtitles.entity.armor_stand.add_arms": "Arms fasten to Armor Stand",
+  "subtitles.block.small_flower.pick": "Flower picked",
 
   "subtitles.block.redstone_lantern.power_on": "Redstone Lantern activates",
   "subtitles.block.redstone_lantern.power_off": "Redstone Lantern extinguishes",
@@ -112,6 +113,8 @@
   "text.autoconfig.odyssey.option.blockChanges.sniffer_egg_hatch_preventing.@Tooltip": "Sniffer Eggs placed on Magma Blocks will not hatch, which is useful for using them as decoration!",
   "text.autoconfig.odyssey.option.blockChanges.unstable_gunpowder_blocks": "Unstable Blocks of Gunpowder",
   "text.autoconfig.odyssey.option.blockChanges.unstable_gunpowder_blocks.@Tooltip": "Blocks of Gunpowder will instantly explode when they catch on fire or when lit with Flint and Steel or Fire Charges",
+  "text.autoconfig.odyssey.option.blockChanges.flower_picking": "Flower Picking",
+  "text.autoconfig.odyssey.option.blockChanges.flower_picking.@Tooltip": "Small Flowers can be right-clicked to instantly drop themselves as an item instead of having to destroy them in order to obtain them",
 
   "text.autoconfig.odyssey.option.entityChanges": "Entities",
   "text.autoconfig.odyssey.option.entityChanges.@Tooltip": "Changes to the way certain entities function",

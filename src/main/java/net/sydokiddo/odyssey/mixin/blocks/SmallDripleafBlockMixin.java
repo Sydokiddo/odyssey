@@ -16,6 +16,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(SmallDripleafBlock.class)
 public class SmallDripleafBlockMixin {
 
+    // Small Dripleaves can be duplicated by bone-mealing them
+
     @Inject(method = "performBonemeal", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/BigDripleafBlock;placeWithRandomHeight(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;)V"))
     private void odyssey_dropSmallDripleafOnBoneMeal(ServerLevel serverLevel, RandomSource randomSource, BlockPos blockPos, BlockState blockState, CallbackInfo ci) {
         if (Odyssey.getConfig().blockChanges.small_dripleaf_bone_mealing) {

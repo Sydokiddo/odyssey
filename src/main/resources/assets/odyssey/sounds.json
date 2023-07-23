@@ -7,6 +7,15 @@
     ],
     "subtitle": "subtitles.block.anvil.repair"
   },
+  "block.small_flower.pick": {
+    "sounds": [
+      "odyssey:block/small_flower/pick1",
+      "odyssey:block/small_flower/pick2",
+      "odyssey:block/small_flower/pick3",
+      "odyssey:block/small_flower/pick4"
+    ],
+    "subtitle": "subtitles.block.small_flower.pick"
+  },
   "block.redstone_lantern.power_on": {
     "sounds": [
       "odyssey:block/redstone_lantern/power_on"

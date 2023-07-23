@@ -13,6 +13,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(DiggerItem.class)
 public class DiggerItemMixin {
 
+    // Prevents Budding Amethyst from being mined faster with Pickaxes
+
     @Inject(method = "getDestroySpeed", at = @At("HEAD"), cancellable = true)
     private void odyssey_removeBuddingAmethystFromPickaxeTag(ItemStack itemStack, BlockState blockState, CallbackInfoReturnable<Float> cir) {
         if (Odyssey.getConfig().blockChanges.harder_budding_amethyst && blockState.is(Blocks.BUDDING_AMETHYST)) {

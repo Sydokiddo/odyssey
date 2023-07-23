@@ -17,6 +17,8 @@ public abstract class BlockMixin extends BlockBehaviour {
         super(properties);
     }
 
+    // Changes the sound groups of various blocks
+
     @Inject(at = @At("HEAD"), method = "getSoundType", cancellable = true)
     private void odyssey_changeBlockSounds(BlockState state, CallbackInfoReturnable<SoundType> info) {
         if (state.is(ModBlocks.POLISHED_DEEPSLATE_PRESSURE_PLATE) || state.is(ModBlocks.POLISHED_DEEPSLATE_BUTTON)) {

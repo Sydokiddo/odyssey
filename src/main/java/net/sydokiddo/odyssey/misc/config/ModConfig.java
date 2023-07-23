@@ -79,6 +79,9 @@ public class ModConfig implements ConfigData {
 
         @ConfigEntry.Gui.Tooltip
         public boolean unstable_gunpowder_blocks = true;
+
+        @ConfigEntry.Gui.Tooltip
+        public boolean flower_picking = true;
     }
 
     @ConfigEntry.Gui.CollapsibleObject()
