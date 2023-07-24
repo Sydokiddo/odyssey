@@ -37,6 +37,7 @@
     "misc.ArmorStandInteractionMixin"
   ],
   "client": [
+    "client.GUIMixin",
     "client.LivingEntityRendererMixin",
     "client.ScreenEffectRendererMixin"
   ],
