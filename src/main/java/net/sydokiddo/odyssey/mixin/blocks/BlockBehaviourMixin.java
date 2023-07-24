@@ -28,7 +28,7 @@ public class BlockBehaviourMixin {
         if (Odyssey.getConfig().blockChanges.flower_picking && blockState.is(BlockTags.SMALL_FLOWERS) && player.mayBuild() && !player.isSecondaryUseActive() && level.mayInteract(player, blockPos) && !player.isSpectator()) {
             Block.dropResources(blockState, level, blockPos);
             level.removeBlock(blockPos, false);
-            level.playSound(player, blockPos, ModSoundEvents.SMALL_FLOWER_PICK, SoundSource.BLOCKS, 1.0f, 1.0f);
+            level.playSound(player, blockPos, ModSoundEvents.SMALL_FLOWER_PICK, SoundSource.BLOCKS, 0.5f, 1.0f);
             cir.setReturnValue(InteractionResult.SUCCESS);
         }
     }
