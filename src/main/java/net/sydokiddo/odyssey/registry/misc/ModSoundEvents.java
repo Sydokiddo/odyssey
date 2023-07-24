@@ -4,7 +4,6 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.sydokiddo.odyssey.Odyssey;
 
 public class ModSoundEvents {
@@ -32,6 +31,7 @@ public class ModSoundEvents {
     public static final SoundEvent ARMOR_STAND_ADD_ARMS = registerSoundEvent("entity.armor_stand.add_arms");
     public static final SoundEvent SLIME_CONVERTED_TO_MAGMA_CUBE = registerSoundEvent("entity.slime.converted_to_magma_cube");
     public static final SoundEvent MAGMA_CUBE_CONVERTED_TO_SLIME = registerSoundEvent("entity.magma_cube.converted_to_slime");
+    public static final SoundEvent ITEM_FRAME_SHEAR = registerSoundEvent("entity.item_frame.shear");
     public static final SoundEvent WAXED_ITEM_FRAME_INTERACT_FAIL = registerSoundEvent("entity.item_frame.waxed_interact_fail");
     public static final SoundEvent WAXED_GLOW_ITEM_FRAME_INTERACT_FAIL = registerSoundEvent("entity.glow_item_frame.waxed_interact_fail");
 

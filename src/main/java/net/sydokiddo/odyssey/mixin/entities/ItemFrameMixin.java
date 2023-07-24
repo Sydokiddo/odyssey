@@ -1,10 +1,12 @@
 package net.sydokiddo.odyssey.mixin.entities;
 
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.decoration.HangingEntity;
 import net.minecraft.world.entity.decoration.ItemFrame;
@@ -65,24 +67,59 @@ public abstract class ItemFrameMixin extends HangingEntity {
     }
 
     @Inject(at = @At("HEAD"), method = "interact", cancellable = true)
-    private void odyssey_waxItemFrame(Player player, InteractionHand interactionHand, CallbackInfoReturnable<InteractionResult> cir) {
+    private void odyssey_waxingAndShearingItemFrames(Player player, InteractionHand interactionHand, CallbackInfoReturnable<InteractionResult> cir) {
 
         ItemStack itemStack = player.getItemInHand(interactionHand);
 
-        if (!this.getItem().isEmpty() && itemStack.is(Items.HONEYCOMB) && player.mayBuild() && !this.isWaxed() && Odyssey.getConfig().entityChanges.item_frame_waxing) {
+        if (!this.getItem().isEmpty() && player.mayBuild() && !this.isWaxed()) {
 
-            if (!player.isCreative()) {
-                itemStack.shrink(1);
+            if (itemStack.is(Items.HONEYCOMB) && Odyssey.getConfig().entityChanges.item_frame_waxing) {
+
+                if (!player.isCreative()) {
+                    itemStack.shrink(1);
+                }
+
+                this.setWaxed(true);
+                this.level().levelEvent(player, 3003, this.pos, 0);
+
+                this.gameEvent(GameEvent.BLOCK_CHANGE, player);
+                player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
+                cir.setReturnValue(InteractionResult.SUCCESS);
             }
 
-            this.setWaxed(true);
-            this.level().levelEvent(player, 3003, this.blockPosition(), 0);
+            if (itemStack.is(Items.SHEARS) && !this.isInvisible() && Odyssey.getConfig().entityChanges.item_frame_shearing) {
 
-            this.gameEvent(GameEvent.BLOCK_CHANGE, player);
-            player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
-            cir.setReturnValue(InteractionResult.SUCCESS);
+                if (!player.isCreative()) {
+                    itemStack.hurtAndBreak(1, player, playerx -> player.broadcastBreakEvent(interactionHand));
+                }
+
+                this.setInvisible(true);
+                this.playSound(ModSoundEvents.ITEM_FRAME_SHEAR, 1.0f, 1.0f);
+
+                for (int i = 0; i < 5; ++i) {
+                    double d = (double) this.pos.getX() + 0.5D;
+                    double e = (double) this.pos.getY() + 0.5D;
+                    double f = (double) this.pos.getZ() + 0.5D;
+                    level().addParticle(ParticleTypes.POOF, d, e, f, 0.0D, 0.0D, 0.0D);
+                }
+
+                this.gameEvent(GameEvent.BLOCK_CHANGE, player);
+                player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
+                cir.setReturnValue(InteractionResult.SUCCESS);
+            }
         }
     }
+
+    // Makes the item frame visible again if invisible without an item in it
+
+    @Inject(method = "hurt", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/decoration/ItemFrame;gameEvent(Lnet/minecraft/world/level/gameevent/GameEvent;Lnet/minecraft/world/entity/Entity;)V"))
+    private void odyssey_makeItemFrameVisibleUponRemovingItem(DamageSource damageSource, float f, CallbackInfoReturnable<Boolean> cir) {
+        if (this.isInvisible()) {
+            this.setInvisible(false);
+        }
+    }
+
+    // Prevents the item  in the item frame from being rotated if it is waxed
 
     @Inject(method = "interact", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/decoration/ItemFrame;setRotation(I)V"), cancellable = true)
     private void odyssey_cancelRotationIfItemFrameWaxed(Player player, InteractionHand interactionHand, CallbackInfoReturnable<InteractionResult> cir) {

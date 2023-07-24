@@ -120,6 +120,9 @@ public class ModConfig implements ConfigData {
         public boolean item_frame_waxing = true;
 
         @ConfigEntry.Gui.Tooltip
+        public boolean item_frame_shearing = true;
+
+        @ConfigEntry.Gui.Tooltip
         public boolean improved_mount_hud = true;
     }
 }

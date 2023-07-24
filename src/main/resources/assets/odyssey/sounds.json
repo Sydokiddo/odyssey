@@ -53,6 +53,14 @@
     ],
     "subtitle": "subtitles.entity.glow_item_frame.waxed_interact_fail"
   },
+  "entity.item_frame.shear": {
+    "sounds": [
+      "odyssey:entity/item_frame/shear1",
+      "odyssey:entity/item_frame/shear2",
+      "odyssey:entity/item_frame/shear3"
+    ],
+    "subtitle": "subtitles.item.shears.shear"
+  },
   "entity.slime.converted_to_magma_cube": {
     "sounds": [
       "odyssey:mob/slime/magma_cube_convert1",
