@@ -9,6 +9,7 @@
     "blocks.AnvilRepairingMixin",
     "blocks.BlockBehaviourMixin",
     "blocks.BlockMixin",
+    "blocks.DispenserBlockMixin",
     "blocks.FarmlandBlockMixin",
     "blocks.LilyPadBlockBoneMealMixin",
     "blocks.LiquidBlockMixin",
