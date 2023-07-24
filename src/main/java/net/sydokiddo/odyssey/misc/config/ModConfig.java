@@ -115,5 +115,8 @@ public class ModConfig implements ConfigData {
 
         @ConfigEntry.Gui.Tooltip
         public boolean hidden_fire_overlay_with_fire_resistance = true;
+
+        @ConfigEntry.Gui.Tooltip
+        public boolean item_frame_waxing = true;
     }
 }

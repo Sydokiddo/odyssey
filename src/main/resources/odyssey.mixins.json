@@ -18,6 +18,7 @@
     "blocks.SporeBlossomMixin",
     "entities.FrogMixin",
     "entities.GuardianMixin",
+    "entities.ItemFrameMixin",
     "entities.LivingEntityMixin",
     "entities.MobMixin",
     "entities.PigMixin",

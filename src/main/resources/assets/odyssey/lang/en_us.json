@@ -54,6 +54,9 @@
   "subtitles.block.redstone_lantern.power_on": "Redstone Lantern activates",
   "subtitles.block.redstone_lantern.power_off": "Redstone Lantern extinguishes",
 
+  "subtitles.entity.item_frame.waxed_interact_fail": "Item Frame rustles",
+  "subtitles.entity.glow_item_frame.waxed_interact_fail": "Glow Item Frame rustles",
+
   "subtitles.entity.slime.converted_to_magma_cube": "Slime converts to Magma Cube",
   "subtitles.entity.magma_cube.converted_to_slime": "Magma Cube converts to Slime",
 
@@ -136,5 +139,7 @@
   "text.autoconfig.odyssey.option.entityChanges.bucketable_squids": "Bucketable Squids and Glow Squids",
   "text.autoconfig.odyssey.option.entityChanges.bucketable_squids.@Tooltip": "Squids and Glow Squids can be picked up in water buckets",
   "text.autoconfig.odyssey.option.entityChanges.hidden_fire_overlay_with_fire_resistance": "Hidden Fire Overlay with Fire Resistance",
-  "text.autoconfig.odyssey.option.entityChanges.hidden_fire_overlay_with_fire_resistance.@Tooltip": "The fire overlay won't render on mobs or players with Fire Resistance"
+  "text.autoconfig.odyssey.option.entityChanges.hidden_fire_overlay_with_fire_resistance.@Tooltip": "The fire overlay won't render on mobs or players with Fire Resistance",
+  "text.autoconfig.odyssey.option.entityChanges.item_frame_waxing": "Item Frame Waxing",
+  "text.autoconfig.odyssey.option.entityChanges.item_frame_waxing.@Tooltip": "Filled Item Frames and Glow Item Frames can be waxed with Honeycomb to prevent items inside them from being rotated"
 }
