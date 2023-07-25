@@ -141,7 +141,9 @@
   "text.autoconfig.odyssey.option.entityChanges.hidden_fire_overlay_with_fire_resistance": "Hidden Fire Overlay with Fire Resistance",
   "text.autoconfig.odyssey.option.entityChanges.hidden_fire_overlay_with_fire_resistance.@Tooltip": "The fire overlay won't render on mobs or players with Fire Resistance",
   "text.autoconfig.odyssey.option.entityChanges.item_frame_waxing": "Item Frame Waxing",
-  "text.autoconfig.odyssey.option.entityChanges.item_frame_waxing.@Tooltip": "Filled Item Frames and Glow Item Frames can be waxed with Honeycomb to prevent items inside them from being rotated",
+  "text.autoconfig.odyssey.option.entityChanges.item_frame_waxing.@Tooltip": "Filled Item Frames and Glow Item Frames can be waxed with Honeycomb to prevent items inside of them from being rotated",
+  "text.autoconfig.odyssey.option.entityChanges.item_frame_shearing": "Item Frame Shearing",
+  "text.autoconfig.odyssey.option.entityChanges.item_frame_shearing.@Tooltip": "Filled Item Frames and Glow Item Frames can be sheared to make the frame part invisible",
   "text.autoconfig.odyssey.option.entityChanges.improved_mount_hud": "Improved Mount HUD",
   "text.autoconfig.odyssey.option.entityChanges.improved_mount_hud.@Tooltip": "When riding on an entity, the player's hunger bar will now properly display on the in-game HUD"
 }

@@ -2,6 +2,7 @@ package net.sydokiddo.odyssey.mixin.entities;
 
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
@@ -51,6 +52,18 @@ public abstract class ItemFrameMixin extends HangingEntity {
         this.entityData.set(OdysseyRegistry.WAXED, bl);
     }
 
+    @Unique
+    private void displayPoofParticles() {
+        if (level() instanceof ServerLevel serverLevel) {
+            for (int i = 0; i < 5; ++i) {
+                double x = (double) this.pos.getX() + 0.5D;
+                double y = (double) this.pos.getY() + 0.5D;
+                double z = (double) this.pos.getZ() + 0.5D;
+                serverLevel.sendParticles(ParticleTypes.POOF, x, y, z, 1, 0.0D, 0.0D, 0.0D, 0.0D);
+            }
+        }
+    }
+
     @Inject(at = @At("HEAD"), method = "defineSynchedData")
     private void odyssey_defineItemFrameSyncedData(CallbackInfo ci) {
         this.getEntityData().define(OdysseyRegistry.WAXED, false);
@@ -95,13 +108,7 @@ public abstract class ItemFrameMixin extends HangingEntity {
 
                 this.setInvisible(true);
                 this.playSound(ModSoundEvents.ITEM_FRAME_SHEAR, 1.0f, 1.0f);
-
-                for (int i = 0; i < 5; ++i) {
-                    double d = (double) this.pos.getX() + 0.5D;
-                    double e = (double) this.pos.getY() + 0.5D;
-                    double f = (double) this.pos.getZ() + 0.5D;
-                    level().addParticle(ParticleTypes.POOF, d, e, f, 0.0D, 0.0D, 0.0D);
-                }
+                this.displayPoofParticles();
 
                 this.gameEvent(GameEvent.BLOCK_CHANGE, player);
                 player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
@@ -116,6 +123,7 @@ public abstract class ItemFrameMixin extends HangingEntity {
     private void odyssey_makeItemFrameVisibleUponRemovingItem(DamageSource damageSource, float f, CallbackInfoReturnable<Boolean> cir) {
         if (this.isInvisible()) {
             this.setInvisible(false);
+            this.displayPoofParticles();
         }
     }
 
