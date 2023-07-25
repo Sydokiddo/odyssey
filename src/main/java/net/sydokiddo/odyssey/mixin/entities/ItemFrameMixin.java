@@ -84,9 +84,9 @@ public abstract class ItemFrameMixin extends HangingEntity {
 
         ItemStack itemStack = player.getItemInHand(interactionHand);
 
-        if (!this.getItem().isEmpty() && player.mayBuild() && !this.isWaxed()) {
+        if (!this.getItem().isEmpty() && player.mayBuild()) {
 
-            if (itemStack.is(Items.HONEYCOMB) && Odyssey.getConfig().entityChanges.item_frame_waxing) {
+            if (itemStack.is(Items.HONEYCOMB) && !this.isWaxed() && Odyssey.getConfig().entityChanges.item_frame_waxing) {
 
                 if (!player.isCreative()) {
                     itemStack.shrink(1);
