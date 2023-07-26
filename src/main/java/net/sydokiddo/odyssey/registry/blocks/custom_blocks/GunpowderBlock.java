@@ -104,7 +104,6 @@ public class GunpowderBlock extends FallingBlock {
         }
     }
 
-    @SuppressWarnings("ALL")
     private static void explode(Level level, BlockPos pos, LivingEntity livingEntity) {
 
         level.removeBlock(pos, false);
@@ -113,6 +112,7 @@ public class GunpowderBlock extends FallingBlock {
 
             GunpowderBlockEntity gunpowderBlock = ModEntities.GUNPOWDER_BLOCK.create(level);
 
+            assert gunpowderBlock != null;
             gunpowderBlock.setPos(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
             gunpowderBlock.owner = livingEntity;
 
