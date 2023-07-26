@@ -38,6 +38,7 @@
     "minecraft:wolf",
     "minecraft:zombie_horse",
     {"id": "#endlessencore:fleet", "required": false},
-    {"id": "endlessencore:muse", "required": false}
+    {"id": "endlessencore:muse", "required": false},
+    {"id": "peculia:baby_titan", "required": false}
   ]
 }

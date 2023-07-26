@@ -20,7 +20,7 @@ public class ModCreativeModeTabs {
             entries.addAfter(Items.DARK_PRISMARINE_SLAB, ModBlocks.DARK_PRISMARINE_WALL);
         });
 
-        // Functional Blocks Tag
+        // Functional Blocks Tag:
 
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(entries -> {
             entries.addAfter(Items.SUSPICIOUS_SAND, ModBlocks.SUSPICIOUS_RED_SAND);
@@ -46,7 +46,7 @@ public class ModCreativeModeTabs {
             entries.addAfter(Items.POISONOUS_POTATO, ModItems.IRON_POTATO, ModItems.ENCHANTED_IRON_POTATO);
         });
 
-        // Ingredients Tab
+        // Ingredients Tab:
 
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.INGREDIENTS).register(entries -> {
             entries.addAfter(Items.BONE_MEAL, ModItems.WITHER_SKULL_FRAGMENT);
