@@ -6,7 +6,7 @@ Odyssey is a Minecraft mod for [Fabric](https://fabricmc.net) 1.20.1 that featur
 
 ## **Information**
 
-For more information about Odyssey, please check out the [Wiki](https://github.com/Sydokiddo/odyssey/wiki)! (Wiki not available yet!)
+For more information about Odyssey, please check out the [Wiki](https://github.com/Sydokiddo/odyssey/wiki)!
 
 ## **Download**
 
