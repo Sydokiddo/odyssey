@@ -48,8 +48,8 @@ public class ModBlocks {
     public static final Block POLISHED_DEEPSLATE_BUTTON = registerBlock("polished_deepslate_button", RegistryHelpers.registerStoneButton());
 
     public static final Block SUSPICIOUS_RED_SAND = registerBlock("suspicious_red_sand",
-        new ModBrushableBlock(Blocks.RED_SAND, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).instrument(NoteBlockInstrument.SNARE)
-        .strength(0.25F).sound(SoundType.SUSPICIOUS_SAND).pushReaction(PushReaction.DESTROY), SoundEvents.BRUSH_SAND, SoundEvents.BRUSH_SAND_COMPLETED));
+        new ModBrushableBlock(Blocks.RED_SAND, FabricBlockSettings.copyOf(Blocks.SUSPICIOUS_SAND)
+        .mapColor(MapColor.COLOR_ORANGE), SoundEvents.BRUSH_SAND, SoundEvents.BRUSH_SAND_COMPLETED));
 
     public static final Block PRISMARINE_BRICK_WALL = registerBlock("prismarine_brick_wall",
         new WallBlock(FabricBlockSettings.copyOf(Blocks.PRISMARINE_BRICKS).sound(SoundType.STONE)));
@@ -59,6 +59,9 @@ public class ModBlocks {
 
     public static final Block REDSTONE_LANTERN = registerBlock("redstone_lantern",
         new RedstoneLanternBlock(FabricBlockSettings.copyOf(Blocks.LANTERN).lightLevel(RegistryHelpers.blockStateShouldEmitLight(7))));
+
+    public static final Block POTTED_SMALL_DRIPLEAF = registerBlockWithoutBlockItem("potted_small_dripleaf",
+        new FlowerPotBlock(Blocks.SMALL_DRIPLEAF, FabricBlockSettings.copyOf(Blocks.FLOWER_POT)));
 
     // Registry for Blocks:
 
