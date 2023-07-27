@@ -18,7 +18,6 @@ import net.minecraft.world.level.block.LayeredCauldronBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
-
 import java.util.Map;
 import java.util.Objects;
 import static net.minecraft.world.item.alchemy.PotionUtils.getPotion;
@@ -93,6 +92,8 @@ public class PotionCauldronInteraction {
             return InteractionResult.sidedSuccess(world.isClientSide);
         });
 
+        // Tipping Arrows with Potion Cauldrons
+
         POTION_CAULDRON_BEHAVIOR.put(Items.ARROW, (state, world, pos, player, hand, stack) -> {
 
             BlockEntity blockEntity = world.getBlockEntity(pos);
@@ -106,6 +107,7 @@ public class PotionCauldronInteraction {
                 player.setItemInHand(hand, tippedArrow);
 
                 player.awardStat(Stats.USE_CAULDRON);
+                player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
 
                 PotionCauldronBlock.lowerFillLevel(state, world, pos);
                 world.playSound(null, pos, ModSoundEvents.CAULDRON_TIP_ARROW, SoundSource.BLOCKS, 1.0F, 1.0F);
@@ -113,6 +115,33 @@ public class PotionCauldronInteraction {
             }
             return InteractionResult.sidedSuccess(world.isClientSide);
         });
+
+        // Making Potatoes into Poisonous Potatoes
+
+        POTION_CAULDRON_BEHAVIOR.put(Items.POTATO, (state, world, pos, player, hand, stack) -> {
+
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+            PotionCauldronBlockEntity cauldron = (PotionCauldronBlockEntity)blockEntity;
+            ItemStack poisonousPotato = new ItemStack(Items.POISONOUS_POTATO, player.getItemInHand(hand).getCount());
+
+            if (cauldron != null && (cauldron.getPotion() == Potions.POISON || cauldron.getPotion() == Potions.LONG_POISON || cauldron.getPotion() == Potions.STRONG_POISON)) {
+                if (cauldron.hasPotion() && !world.isClientSide) {
+
+                    player.setItemInHand(hand, poisonousPotato);
+
+                    player.awardStat(Stats.USE_CAULDRON);
+                    player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
+
+                    PotionCauldronBlock.lowerFillLevel(state, world, pos);
+                    world.playSound(null, pos, ModSoundEvents.CAULDRON_POISON_POTATO, SoundSource.BLOCKS, 1.0F, 1.0F);
+                    world.gameEvent(null, GameEvent.FLUID_PICKUP, pos);
+                }
+                return InteractionResult.sidedSuccess(world.isClientSide);
+            } else {
+                return InteractionResult.PASS;
+            }
+        });
+
         CauldronInteraction.addDefaultInteractions(POTION_CAULDRON_BEHAVIOR);
     }
 }

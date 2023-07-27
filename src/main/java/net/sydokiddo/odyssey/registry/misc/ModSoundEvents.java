@@ -26,6 +26,7 @@ public class ModSoundEvents {
     public static final SoundEvent REDSTONE_LANTERN_POWER_ON = registerSoundEvent("block.redstone_lantern.power_on");
     public static final SoundEvent REDSTONE_LANTERN_POWER_OFF = registerSoundEvent("block.redstone_lantern.power_off");
     public static final SoundEvent CAULDRON_TIP_ARROW = registerSoundEvent("block.cauldron.tip_arrow");
+    public static final SoundEvent CAULDRON_POISON_POTATO = registerSoundEvent("block.cauldron.poison_potato");
     public static final SoundEvent CAULDRON_POTION_DISSIPATE = registerSoundEvent("block.cauldron.potion_dissipate");
 
     // - Entity Sounds:

@@ -35,6 +35,13 @@
     ],
     "subtitle": "subtitles.block.cauldron.tip_arrow"
   },
+  "block.cauldron.poison_potato": {
+    "sounds": [
+      "odyssey:block/cauldron/poison_potato1",
+      "odyssey:block/cauldron/poison_potato2"
+    ],
+    "subtitle": "subtitles.block.cauldron.poison_potato"
+  },
   "block.cauldron.potion_dissipate": {
     "sounds": [
       "odyssey:block/cauldron/potion_dissipate"
