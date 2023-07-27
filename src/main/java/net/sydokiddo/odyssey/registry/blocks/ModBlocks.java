@@ -63,6 +63,9 @@ public class ModBlocks {
     public static final Block POTTED_SMALL_DRIPLEAF = registerBlockWithoutBlockItem("potted_small_dripleaf",
         new FlowerPotBlock(Blocks.SMALL_DRIPLEAF, FabricBlockSettings.copyOf(Blocks.FLOWER_POT)));
 
+    public static final Block POTTED_SPORE_BLOSSOM = registerBlockWithoutBlockItem("potted_spore_blossom",
+        new PottedSporeBlossomBlock(Blocks.SPORE_BLOSSOM, FabricBlockSettings.copyOf(Blocks.FLOWER_POT)));
+
     // Registry for Blocks:
 
     private static Block registerBlockWithoutBlockItem(String string, Block block) {

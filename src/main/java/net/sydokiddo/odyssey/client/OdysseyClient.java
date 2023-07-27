@@ -24,7 +24,8 @@ public class OdysseyClient implements ClientModInitializer {
 
             BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.cutout(),
                 ModBlocks.REDSTONE_LANTERN,
-                ModBlocks.POTTED_SMALL_DRIPLEAF
+                ModBlocks.POTTED_SMALL_DRIPLEAF,
+                ModBlocks.POTTED_SPORE_BLOSSOM
             );
         }
     }

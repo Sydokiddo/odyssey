@@ -26,11 +26,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:small_dripleaf"
+          "name": "minecraft:spore_blossom"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "odyssey:blocks/potted_small_dripleaf"
+  "random_sequence": "odyssey:blocks/potted_spore_blossom"
 }
