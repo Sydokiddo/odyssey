@@ -1,6 +1,7 @@
 package net.sydokiddo.odyssey.mixin.entities;
 
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -38,9 +39,12 @@ public abstract class MobMixin extends LivingEntity {
 
         if (this.isAlive() && !this.isAggressive() && itemStack.is(Items.BRUSH) && this.getType().is(ModTags.CAN_BE_BRUSHED)) {
 
-            level().playSound(player, this.getOnPos(), SoundEvents.BRUSH_GENERIC, SoundSource.NEUTRAL);
+            this.level().playSound(player, this.getOnPos(), SoundEvents.BRUSH_GENERIC, SoundSource.NEUTRAL);
             this.gameEvent(GameEvent.ENTITY_INTERACT, player);
-            this.level().addParticle(ParticleTypes.HEART, this.getX(), this.getEyeY() + 0.5, this.getZ(), 0, 0, 0);
+
+            if (this.level() instanceof ServerLevel serverLevel) {
+                serverLevel.sendParticles(ParticleTypes.HEART, this.getX(), this.getEyeY() + 0.5, this.getZ(), 1, 0.0D, 0.0D, 0.0D, 0.0D);
+            }
 
             cir.setReturnValue(InteractionResult.sidedSuccess(this.level().isClientSide));
         }
