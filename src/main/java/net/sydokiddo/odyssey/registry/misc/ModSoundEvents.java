@@ -18,6 +18,7 @@ public class ModSoundEvents {
     public static final SoundEvent BUCKET_EMPTY_SQUID = registerSoundEvent("item.bucket.empty_squid");
     public static final SoundEvent BUCKET_FILL_GLOW_SQUID = registerSoundEvent("item.bucket.fill_glow_squid");
     public static final SoundEvent BUCKET_EMPTY_GLOW_SQUID = registerSoundEvent("item.bucket.empty_glow_squid");
+    public static final SoundEvent SADDLE_UNEQUIP = registerSoundEvent("item.saddle.unequip");
 
     // - Block Sounds:
 

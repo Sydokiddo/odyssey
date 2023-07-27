@@ -132,5 +132,11 @@
       "odyssey:item/bucket/empty_glow_squid"
     ],
     "subtitle": "subtitles.item.bucket.empty"
+  },
+  "item.saddle.unequip": {
+    "sounds": [
+      "odyssey:item/saddle/unequip"
+    ],
+    "subtitle": "subtitles.item.saddle.unequip"
   }
 }
