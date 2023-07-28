@@ -10,6 +10,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
@@ -21,14 +22,17 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(BlockBehaviour.class)
 public class BlockBehaviourMixin {
 
-    // Small Flowers can be picked by right-clicking on them
+    // Small Flowers can be picked by right-clicking on them with an empty hand
 
     @Inject(at = @At("HEAD"), method = "use", cancellable = true)
-    private void odyssey_flowerPicking(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult, CallbackInfoReturnable<InteractionResult> cir) {
-        if (Odyssey.getConfig().blockChanges.flower_picking && blockState.is(BlockTags.SMALL_FLOWERS) && player.mayBuild() && !player.isSecondaryUseActive() && level.mayInteract(player, blockPos) && !player.isSpectator()) {
+    private void odyssey_flowerPicking(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult blockHitResult, CallbackInfoReturnable<InteractionResult> cir) {
+        if (Odyssey.getConfig().blockChanges.flower_picking && blockState.is(BlockTags.SMALL_FLOWERS) && player.mayBuild() && player.getItemInHand(hand).isEmpty() && !player.isSecondaryUseActive() && player.mayInteract(level, blockPos)) {
+
             Block.dropResources(blockState, level, blockPos);
             level.removeBlock(blockPos, false);
             level.playSound(player, blockPos, ModSoundEvents.SMALL_FLOWER_PICK, SoundSource.BLOCKS, 0.5f, 1.0f);
+            level.gameEvent(GameEvent.BLOCK_DESTROY, blockPos, GameEvent.Context.of(player, blockState));
+
             cir.setReturnValue(InteractionResult.SUCCESS);
         }
     }
