@@ -35,7 +35,7 @@ public class GunpowderBlock extends FallingBlock {
         super.onPlace(state, level, pos, oldState, bl);
 
         for (Direction direction : Direction.values()) {
-            if (level.getBlockState(pos.relative(direction)).getBlock() instanceof FireBlock) {
+            if (level.getBlockState(pos.relative(direction)).getBlock() instanceof BaseFireBlock) {
                 explode(level, pos);
             }
         }
