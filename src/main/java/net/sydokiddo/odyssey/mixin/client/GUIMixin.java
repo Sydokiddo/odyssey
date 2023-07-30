@@ -33,7 +33,7 @@ public abstract class GUIMixin {
     // Allows for the player's hunger bar to always render when on a mount
 
     @Redirect(method = "renderPlayerHealth", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/Gui;getVehicleMaxHearts(Lnet/minecraft/world/entity/LivingEntity;)I"))
-    private int odyssey_alwaysRenderFoodBar(Gui instance, LivingEntity livingEntity) {
+    private int odyssey_alwaysRenderFoodBar(Gui gui, LivingEntity livingEntity) {
         if (Odyssey.getConfig().entityChanges.improved_mount_hud) {
             return 0;
         } else {

@@ -12,6 +12,7 @@ import net.minecraft.world.entity.animal.FrogVariant;
 import net.minecraft.world.entity.animal.frog.Frog;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.sydokiddo.chrysalis.misc.util.mobs.ContainerMob;
 import net.sydokiddo.odyssey.Odyssey;
@@ -72,7 +73,7 @@ public abstract class FrogMixin extends Animal implements ContainerMob {
     @Override
     public InteractionResult mobInteract(Player player, @NotNull InteractionHand interactionHand) {
         if (this.isAlive() && Odyssey.getConfig().entityChanges.bucketable_frogs) {
-            return ContainerMob.emptyBucketMobPickup(player, interactionHand, this).orElse(super.mobInteract(player, interactionHand));
+            return ContainerMob.containerMobPickup(player, interactionHand, this, Items.BUCKET).orElse(super.mobInteract(player, interactionHand));
         }
         return super.mobInteract(player, interactionHand);
     }

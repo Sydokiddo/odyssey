@@ -10,9 +10,8 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.material.Fluids;
+import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
 import net.sydokiddo.chrysalis.registry.items.custom_items.EnchantmentGlintItem;
-import net.sydokiddo.chrysalis.registry.items.custom_items.MobInContainerItem;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
 
@@ -38,16 +37,13 @@ public class ModItems {
         .effect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 900, 0), 1f).build()).rarity(Rarity.EPIC)));
 
     public static final Item FROG_BUCKET = registerItem("frog_bucket",
-        new MobInContainerItem(EntityType.FROG, ModSoundEvents.BUCKET_EMPTY_FROG,
-        new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET)));
+        RegistryHelpers.registerMobInContainer(EntityType.FROG, ModSoundEvents.BUCKET_EMPTY_FROG, Items.BUCKET));
 
     public static final Item SQUID_BUCKET = registerItem("squid_bucket",
-        new MobBucketItem(EntityType.SQUID, Fluids.WATER, ModSoundEvents.BUCKET_EMPTY_SQUID,
-        new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET)));
+        RegistryHelpers.registerMobInWaterBucket(EntityType.SQUID, ModSoundEvents.BUCKET_EMPTY_SQUID));
 
     public static final Item GLOW_SQUID_BUCKET = registerItem("glow_squid_bucket",
-        new MobBucketItem(EntityType.GLOW_SQUID, Fluids.WATER, ModSoundEvents.BUCKET_EMPTY_GLOW_SQUID,
-        new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET)));
+        RegistryHelpers.registerMobInWaterBucket(EntityType.GLOW_SQUID, ModSoundEvents.BUCKET_EMPTY_GLOW_SQUID));
 
     // Registry for Items:
 

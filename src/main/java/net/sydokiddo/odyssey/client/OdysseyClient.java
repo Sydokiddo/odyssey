@@ -5,7 +5,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.client.renderer.RenderType;
-import net.sydokiddo.odyssey.Odyssey;
+import net.sydokiddo.chrysalis.Chrysalis;
 import net.sydokiddo.odyssey.client.rendering.ModEntityRenderer;
 import net.sydokiddo.odyssey.client.rendering.block_entities.PotionCauldronRendering;
 import net.sydokiddo.odyssey.registry.blocks.ModBlocks;
@@ -15,7 +15,7 @@ public class OdysseyClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        if (Odyssey.chrysalisInitialized()) {
+        if (Chrysalis.CHRYSALIS_INITIALIZED) {
 
             ModEntityRenderer.registerRenderers();
             PotionCauldronRendering.setRenderColors();

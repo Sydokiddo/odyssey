@@ -34,7 +34,7 @@ import static net.minecraft.core.cauldron.CauldronInteraction.addDefaultInteract
 @Mixin(AbstractCauldronBlock.class)
 public class AbstractCauldronBlockMixin {
 
-    @Inject(at=@At("HEAD"), method= "use", cancellable = true)
+    @Inject(at = @At("HEAD"), method = "use", cancellable = true)
     private void odyssey_cauldronInteraction(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult, CallbackInfoReturnable<InteractionResult> cir) {
 
         // If the player attempts to place water into a Cauldron in the Nether, it will evaporate it and display particles and a sound
