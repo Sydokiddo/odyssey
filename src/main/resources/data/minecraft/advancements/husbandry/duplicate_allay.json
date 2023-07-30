@@ -1,0 +1,28 @@
+{
+  "parent": "minecraft:husbandry/allay_deliver_item_to_player",
+  "criteria": {
+    "duplicate_allay": {
+      "trigger": "odyssey:duplicate_allay"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.husbandry.duplicate_allay.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.husbandry.duplicate_allay.title"
+    }
+  },
+  "requirements": [
+    [
+      "duplicate_allay"
+    ]
+  ]
+}

@@ -13,6 +13,7 @@ import net.sydokiddo.odyssey.registry.items.ModPotions;
 import net.sydokiddo.odyssey.registry.misc.ModCreativeModeTabs;
 import net.sydokiddo.odyssey.registry.misc.ModLootTableModifiers;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
+import net.sydokiddo.odyssey.registry.misc.technical.ModCriteriaTriggers;
 
 public class OdysseyRegistry {
 
@@ -24,8 +25,6 @@ public class OdysseyRegistry {
 
     public static void registerAll() {
 
-        // - Blocks, Items, Etc.
-
         ModItems.registerModItems();
         ModBlocks.registerModBlocks();
         ModSoundEvents.registerSounds();
@@ -36,6 +35,7 @@ public class OdysseyRegistry {
 
         ModCreativeModeTabs.registerCreativeTabs();
         ModLootTableModifiers.modifyLootTables();
+        ModCriteriaTriggers.registerCriteriaTriggers();
 
         System.out.println("Registering Content for Odyssey");
     }

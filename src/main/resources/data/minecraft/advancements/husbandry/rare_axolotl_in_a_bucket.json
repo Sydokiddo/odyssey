@@ -1,0 +1,46 @@
+{
+  "parent": "minecraft:husbandry/axolotl_in_a_bucket",
+  "criteria": {
+    "blue_axolotl": {
+      "trigger": "minecraft:player_interacted_with_entity",
+      "conditions": {
+        "item": {
+          "items": [
+            "minecraft:water_bucket"
+          ]
+        },
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "minecraft:axolotl",
+              "nbt": "{Variant:4}"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.husbandry.rare_axolotl_in_a_bucket.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "minecraft:axolotl_bucket",
+      "nbt": "{Variant:4}"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.husbandry.rare_axolotl_in_a_bucket.title"
+    }
+  },
+  "requirements": [
+    [
+      "blue_axolotl"
+    ]
+  ]
+}

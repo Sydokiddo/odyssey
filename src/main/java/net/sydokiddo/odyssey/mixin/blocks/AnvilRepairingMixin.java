@@ -25,7 +25,7 @@ public class AnvilRepairingMixin {
 
     // Anvils can be repaired by right-clicking on them with an Iron Block
 
-    @Inject(at=@At("HEAD"), method="use", cancellable=true)
+    @Inject(at=@At("HEAD"), method = "use", cancellable = true)
     private void odyssey_repairAnvilWithIronBlock(BlockState blockState, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit, CallbackInfoReturnable<InteractionResult> ci) {
 
         ItemStack itemStack = player.getItemInHand(hand);

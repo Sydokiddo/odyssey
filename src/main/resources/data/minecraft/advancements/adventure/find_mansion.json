@@ -1,0 +1,41 @@
+{
+  "parent": "minecraft:adventure/root",
+  "criteria": {
+    "in_mansion": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structure": "minecraft:mansion"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.adventure.find_mansion.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "minecraft:dark_oak_planks"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.adventure.find_mansion.title"
+    }
+  },
+  "requirements": [
+    [
+      "in_mansion"
+    ]
+  ]
+}
