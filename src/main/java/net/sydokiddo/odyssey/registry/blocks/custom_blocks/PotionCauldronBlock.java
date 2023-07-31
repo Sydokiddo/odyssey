@@ -16,7 +16,7 @@ import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.sydokiddo.odyssey.registry.blocks.ModBlocks;
+import net.sydokiddo.odyssey.registry.entities.registry.ModEntities;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import java.util.Map;
@@ -48,7 +48,7 @@ public class PotionCauldronBlock extends LayeredCauldronBlock implements EntityB
     @Nullable
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, @NotNull BlockState blockState, @NotNull BlockEntityType<T> blockEntityType) {
         if (level.isClientSide) {
-            return PotionCauldronBlock.createTickerHelper(blockEntityType, ModBlocks.POTION_CAULDRON_ENTITY, (level1, blockPos, blockState1, potionCauldronBlockEntity) -> PotionCauldronBlockEntity.particleTick(level1, blockPos, potionCauldronBlockEntity));
+            return PotionCauldronBlock.createTickerHelper(blockEntityType, ModEntities.POTION_CAULDRON, (level1, blockPos, blockState1, potionCauldronBlockEntity) -> PotionCauldronBlockEntity.particleTick(level1, blockPos, potionCauldronBlockEntity));
         }
         return null;
     }

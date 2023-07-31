@@ -14,6 +14,6 @@ public class ModBrushableBlockEntity extends BrushableBlockEntity {
 
     @Override
     public BlockEntityType<?> getType() {
-        return ModEntities.ODYSSEY_BRUSHABLE_BLOCK;
+        return ModEntities.BRUSHABLE_BLOCK;
     }
 }

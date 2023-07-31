@@ -13,7 +13,7 @@ public class ModEntityRenderer {
 
     @SuppressWarnings("ALL")
     public static void registerRenderers() {
-        BlockEntityRendererRegistry.register(ModEntities.ODYSSEY_BRUSHABLE_BLOCK, ModBrushableBlockRenderer::new);
+        BlockEntityRendererRegistry.register(ModEntities.BRUSHABLE_BLOCK, ModBrushableBlockRenderer::new);
         EntityRendererRegistry.register(ModEntities.GUNPOWDER_BLOCK, GunpowderBlockEntityRenderer::new);
     }
 }

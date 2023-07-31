@@ -11,6 +11,7 @@ import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.blocks.ModBlocks;
+import net.sydokiddo.odyssey.registry.blocks.custom_blocks.PotionCauldronBlockEntity;
 import net.sydokiddo.odyssey.registry.entities.block_entities.ModBrushableBlockEntity;
 import net.sydokiddo.odyssey.registry.entities.non_living_entities.GunpowderBlockEntity;
 
@@ -18,7 +19,9 @@ public class ModEntities {
 
     // Block Entities:
 
-    public static BlockEntityType<ModBrushableBlockEntity> ODYSSEY_BRUSHABLE_BLOCK = FabricBlockEntityTypeBuilder.create(ModBrushableBlockEntity::new, ModBlocks.SUSPICIOUS_RED_SAND).build(null);
+    public static BlockEntityType<ModBrushableBlockEntity> BRUSHABLE_BLOCK = FabricBlockEntityTypeBuilder.create(ModBrushableBlockEntity::new, ModBlocks.SUSPICIOUS_RED_SAND).build(null);
+
+    public static BlockEntityType<PotionCauldronBlockEntity> POTION_CAULDRON = FabricBlockEntityTypeBuilder.create(PotionCauldronBlockEntity::new, ModBlocks.POTION_CAULDRON).build(null);
 
     // Non-Living Entities:
 
@@ -27,7 +30,8 @@ public class ModEntities {
     // Registry for Entities:
 
     public static void registerModEntities() {
-        Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, Odyssey.MOD_ID + ":brushable_block", ODYSSEY_BRUSHABLE_BLOCK);
+        Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, new ResourceLocation(Odyssey.MOD_ID, "brushable_block"), BRUSHABLE_BLOCK);
+        Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, new ResourceLocation(Odyssey.MOD_ID, "potion_cauldron"), POTION_CAULDRON);
         Registry.register(BuiltInRegistries.ENTITY_TYPE, new ResourceLocation(Odyssey.MOD_ID, "gunpowder_block"), GUNPOWDER_BLOCK);
     }
 }

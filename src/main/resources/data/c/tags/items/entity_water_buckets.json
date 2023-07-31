@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "odyssey:squid_bucket",
+    "odyssey:glow_squid_bucket"
+  ]
+}
