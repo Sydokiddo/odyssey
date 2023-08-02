@@ -26,7 +26,7 @@ import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
 @SuppressWarnings("ALL")
 public class RedstoneLanternBlock extends LanternBlock {
 
-    private int tickTime = 3;
+    private int tickTime = 2;
     private static final BooleanProperty LIT = BlockStateProperties.LIT;
 
     public RedstoneLanternBlock(Properties properties) {
