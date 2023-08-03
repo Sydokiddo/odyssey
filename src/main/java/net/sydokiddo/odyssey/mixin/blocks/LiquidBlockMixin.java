@@ -22,7 +22,7 @@ public class LiquidBlockMixin {
 
         int y_level = pos.getY();
 
-        if (state.is(Blocks.COBBLESTONE) && (random.nextInt(1, 9) - y_level >= 0) && Odyssey.getConfig().blockChanges.renewable_deepslate) {
+        if (state.is(Blocks.COBBLESTONE) && (random.nextInt(1, 9) - y_level >= 0) && Odyssey.getConfig().blocks.renewable_deepslate) {
             state = Blocks.COBBLED_DEEPSLATE.defaultBlockState();
         }
         return state;

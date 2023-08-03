@@ -77,7 +77,7 @@ public abstract class FrogMixin extends Animal implements ContainerMob {
         ItemStack itemInHand = player.getItemInHand(interactionHand);
         Item containerItem = Items.BUCKET;
 
-        if (this.isAlive() && Odyssey.getConfig().entityChanges.bucketable_frogs && itemInHand.is(containerItem)) {
+        if (this.isAlive() && Odyssey.getConfig().entities.bucketable_frogs && itemInHand.is(containerItem)) {
             return ContainerMob.containerMobPickup(player, interactionHand, this, containerItem).orElse(super.mobInteract(player, interactionHand));
         }
         return super.mobInteract(player, interactionHand);

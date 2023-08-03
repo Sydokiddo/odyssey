@@ -21,12 +21,12 @@ public class ModBlocks {
 
     // List of Blocks:
 
-    public static PotionCauldronBlock POTION_CAULDRON_STATE = new PotionCauldronBlock(FabricBlockSettings.copy(Blocks.CAULDRON), PotionCauldronInteraction.POTION_CAULDRON_BEHAVIOR);
+    public static PotionCauldronBlock POTION_CAULDRON_STATE = new PotionCauldronBlock(FabricBlockSettings.copyOf(Blocks.CAULDRON), PotionCauldronInteraction.POTION_CAULDRON_BEHAVIOR);
 
     public static final Block POTION_CAULDRON = registerBlockWithoutBlockItem("potion_cauldron", POTION_CAULDRON_STATE);
 
     public static final Block GUNPOWDER_BLOCK = registerBlock("gunpowder_block",
-        new GunpowderBlock(FabricBlockSettings.of().mapColor(MapColor.COLOR_GRAY)
+        new GunpowderBlock(FabricBlockSettings.create().mapColor(MapColor.COLOR_GRAY)
         .sound(SoundType.SAND).instrument(NoteBlockInstrument.SNARE).strength(0.5f)));
 
     public static final Block REFINED_AMETHYST_BLOCK = registerBlock("refined_amethyst_block",

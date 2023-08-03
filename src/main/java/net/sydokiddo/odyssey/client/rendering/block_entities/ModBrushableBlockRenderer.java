@@ -2,6 +2,8 @@ package net.sydokiddo.odyssey.client.rendering.block_entities;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
@@ -14,6 +16,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.sydokiddo.odyssey.registry.entities.block_entities.ModBrushableBlockEntity;
 
+@Environment(EnvType.CLIENT)
 public class ModBrushableBlockRenderer implements BlockEntityRenderer<ModBrushableBlockEntity> {
 
     // Quite literally just a copy of the vanilla Brushable Block Entity renderer.

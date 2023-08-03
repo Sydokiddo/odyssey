@@ -50,24 +50,30 @@ public class ModPotions {
 
     public static void registerPotions() {
 
-        MINING_FATIGUE = registerMiningFatiguePotion("mining_fatigue");
-        LONG_MINING_FATIGUE = registerLongMiningFatiguePotion("long_mining_fatigue");
-        STRONG_MINING_FATIGUE = registerStrongMiningFatiguePotion("strong_mining_fatigue");
+        if (Odyssey.getConfig().items.allow_mining_fatigue_potions) {
 
-        RegistryHelpers.registerBasePotionRecipe(ModItems.ELDER_GUARDIAN_THORN, ModPotions.MINING_FATIGUE);
-        RegistryHelpers.registerLongPotionRecipe(ModPotions.MINING_FATIGUE, ModPotions.LONG_MINING_FATIGUE);
-        RegistryHelpers.registerStrongPotionRecipe(ModPotions.MINING_FATIGUE, ModPotions.STRONG_MINING_FATIGUE);
+            MINING_FATIGUE = registerMiningFatiguePotion("mining_fatigue");
+            LONG_MINING_FATIGUE = registerLongMiningFatiguePotion("long_mining_fatigue");
+            STRONG_MINING_FATIGUE = registerStrongMiningFatiguePotion("strong_mining_fatigue");
 
-        HASTE = registerHastePotion("haste");
-        LONG_HASTE = registerLongHastePotion("long_haste");
-        STRONG_HASTE = registerStrongHastePotion("strong_haste");
+            RegistryHelpers.registerBasePotionRecipe(ModItems.ELDER_GUARDIAN_THORN, ModPotions.MINING_FATIGUE);
+            RegistryHelpers.registerLongPotionRecipe(ModPotions.MINING_FATIGUE, ModPotions.LONG_MINING_FATIGUE);
+            RegistryHelpers.registerStrongPotionRecipe(ModPotions.MINING_FATIGUE, ModPotions.STRONG_MINING_FATIGUE);
+        }
 
-        RegistryHelpers.registerInvertedPotionRecipe(ModPotions.MINING_FATIGUE, ModPotions.HASTE);
+        if (Odyssey.getConfig().items.allow_haste_potions) {
 
-        RegistryHelpers.registerLongPotionRecipe(ModPotions.HASTE, ModPotions.LONG_HASTE);
-        RegistryHelpers.registerInvertedPotionRecipe(ModPotions.LONG_MINING_FATIGUE, ModPotions.LONG_HASTE);
+            HASTE = registerHastePotion("haste");
+            LONG_HASTE = registerLongHastePotion("long_haste");
+            STRONG_HASTE = registerStrongHastePotion("strong_haste");
 
-        RegistryHelpers.registerStrongPotionRecipe(ModPotions.HASTE, ModPotions.STRONG_HASTE);
-        RegistryHelpers.registerInvertedPotionRecipe(ModPotions.STRONG_MINING_FATIGUE, ModPotions.STRONG_HASTE);
+            RegistryHelpers.registerInvertedPotionRecipe(ModPotions.MINING_FATIGUE, ModPotions.HASTE);
+
+            RegistryHelpers.registerLongPotionRecipe(ModPotions.HASTE, ModPotions.LONG_HASTE);
+            RegistryHelpers.registerInvertedPotionRecipe(ModPotions.LONG_MINING_FATIGUE, ModPotions.LONG_HASTE);
+
+            RegistryHelpers.registerStrongPotionRecipe(ModPotions.HASTE, ModPotions.STRONG_HASTE);
+            RegistryHelpers.registerInvertedPotionRecipe(ModPotions.STRONG_MINING_FATIGUE, ModPotions.STRONG_HASTE);
+        }
     }
 }

@@ -18,7 +18,7 @@ public abstract class RabbitMixin extends Animal {
 
     @Override
     protected int calculateFallDamage(float f, float g) {
-        if (Odyssey.getConfig().entityChanges.decreased_rabbit_fall_damage) {
+        if (Odyssey.getConfig().entities.decreased_rabbit_fall_damage) {
             return super.calculateFallDamage(f, g) - 10;
         } else {
             return super.calculateFallDamage(f, g);

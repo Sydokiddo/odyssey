@@ -9,9 +9,9 @@ import me.shedaniel.autoconfig.annotation.ConfigEntry;
 public class ModConfig implements ConfigData {
 
     @ConfigEntry.Gui.CollapsibleObject()
-    public ItemChanges itemChanges = new ItemChanges();
+    public Items items = new Items();
 
-    public static class ItemChanges {
+    public static class Items {
 
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.Tooltip
@@ -46,12 +46,20 @@ public class ModConfig implements ConfigData {
 
         @ConfigEntry.Gui.Tooltip
         public boolean silk_touch_and_fortune_on_shears = true;
+
+        @ConfigEntry.Gui.Tooltip
+        @ConfigEntry.Gui.RequiresRestart
+        public boolean allow_mining_fatigue_potions = true;
+
+        @ConfigEntry.Gui.Tooltip
+        @ConfigEntry.Gui.RequiresRestart
+        public boolean allow_haste_potions = true;
     }
 
     @ConfigEntry.Gui.CollapsibleObject()
-    public BlockChanges blockChanges = new BlockChanges();
+    public Blocks blocks = new Blocks();
 
-    public static class BlockChanges {
+    public static class Blocks {
 
         @ConfigEntry.Gui.Tooltip
         public boolean anvil_repairing = true;
@@ -85,9 +93,9 @@ public class ModConfig implements ConfigData {
     }
 
     @ConfigEntry.Gui.CollapsibleObject()
-    public EntityChanges entityChanges = new EntityChanges();
+    public Entities entities = new Entities();
 
-    public static class EntityChanges {
+    public static class Entities {
 
         @ConfigEntry.Gui.Tooltip
         public boolean saddle_removing = true;

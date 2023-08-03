@@ -61,7 +61,7 @@ public class GunpowderBlock extends FallingBlock {
         ItemStack itemStack = player.getItemInHand(interactionHand);
         Item item = itemStack.getItem();
 
-        if (Odyssey.getConfig().blockChanges.unstable_gunpowder_blocks && itemStack.is(ChrysalisTags.TNT_IGNITERS)) {
+        if (Odyssey.getConfig().blocks.unstable_gunpowder_blocks && itemStack.is(ChrysalisTags.TNT_IGNITERS)) {
 
             explode(level, blockPos, player);
             level.setBlock(blockPos, Blocks.AIR.defaultBlockState(), 11);
@@ -99,7 +99,7 @@ public class GunpowderBlock extends FallingBlock {
     }
 
     private static void explode(Level level, BlockPos pos) {
-        if (Odyssey.getConfig().blockChanges.unstable_gunpowder_blocks) {
+        if (Odyssey.getConfig().blocks.unstable_gunpowder_blocks) {
             explode(level, pos, null);
         }
     }
@@ -125,7 +125,7 @@ public class GunpowderBlock extends FallingBlock {
 
     @Override
     public boolean dropFromExplosion(Explosion explosion) {
-        if (Odyssey.getConfig().blockChanges.unstable_gunpowder_blocks) {
+        if (Odyssey.getConfig().blocks.unstable_gunpowder_blocks) {
             return false;
         } else {
             return super.dropFromExplosion(explosion);

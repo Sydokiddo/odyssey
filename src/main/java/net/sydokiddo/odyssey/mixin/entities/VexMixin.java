@@ -27,7 +27,7 @@ public abstract class VexMixin extends Monster implements TraceableEntity {
 
         Entity owner = this.getOwner();
 
-        if (!this.level().isClientSide && Odyssey.getConfig().entityChanges.vexes_die_with_evokers && owner instanceof Evoker && !owner.isAlive()) {
+        if (!this.level().isClientSide && Odyssey.getConfig().entities.vexes_die_with_evokers && owner instanceof Evoker && !owner.isAlive()) {
             this.hurt(this.damageSources().starve(), this.getMaxHealth());
         }
     }

@@ -66,7 +66,7 @@ public class SquidMixin extends WaterAnimal implements Bucketable {
 
     @Override
     public InteractionResult mobInteract(Player player, @NotNull InteractionHand interactionHand) {
-        if (this.isAlive() && Odyssey.getConfig().entityChanges.bucketable_squids) {
+        if (this.isAlive() && Odyssey.getConfig().entities.bucketable_squids) {
             return Bucketable.bucketMobPickup(player, interactionHand, this).orElse(super.mobInteract(player, interactionHand));
         }
         return super.mobInteract(player, interactionHand);

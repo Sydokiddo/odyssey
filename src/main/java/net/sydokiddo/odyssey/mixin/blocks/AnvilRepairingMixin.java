@@ -31,7 +31,7 @@ public class AnvilRepairingMixin {
         ItemStack itemStack = player.getItemInHand(hand);
         BlockState anvilState = level.getBlockState(pos);
 
-        if (!level.isClientSide && itemStack.is(ModTags.REPAIRS_ANVILS) && Odyssey.getConfig().blockChanges.anvil_repairing) {
+        if (!level.isClientSide && itemStack.is(ModTags.REPAIRS_ANVILS) && Odyssey.getConfig().blocks.anvil_repairing) {
 
             boolean consume = false;
 

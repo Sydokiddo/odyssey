@@ -37,7 +37,7 @@ public abstract class ArmorStandInteractionMixin extends LivingEntity {
 
         ItemStack itemStack = player.getItemInHand(hand);
 
-        if (!this.isShowArms() && !this.isMarker() && itemStack.is(ModTags.GIVES_ARMOR_STANDS_ARMS) && Odyssey.getConfig().entityChanges.armor_stand_arms) {
+        if (!this.isShowArms() && !this.isMarker() && itemStack.is(ModTags.GIVES_ARMOR_STANDS_ARMS) && Odyssey.getConfig().entities.armor_stand_arms) {
 
             if (player.level().isClientSide) {
                 cir.setReturnValue(InteractionResult.CONSUME);

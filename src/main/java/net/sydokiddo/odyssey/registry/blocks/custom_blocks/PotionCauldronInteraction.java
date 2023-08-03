@@ -142,7 +142,6 @@ public class PotionCauldronInteraction {
                 return InteractionResult.PASS;
             }
         });
-
         CauldronInteraction.addDefaultInteractions(POTION_CAULDRON_BEHAVIOR);
     }
 }

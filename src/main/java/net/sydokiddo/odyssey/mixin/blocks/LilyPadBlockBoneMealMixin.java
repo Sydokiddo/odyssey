@@ -30,18 +30,18 @@ public abstract class LilyPadBlockBoneMealMixin implements BonemealableBlock {
 
     @Override
     public boolean isValidBonemealTarget(LevelReader levelReader, BlockPos blockPos, BlockState blockState, boolean bl) {
-        return Odyssey.getConfig().blockChanges.lily_pad_bone_mealing;
+        return Odyssey.getConfig().blocks.lily_pad_bone_mealing;
     }
 
     @Override
     public boolean isBonemealSuccess(Level level, RandomSource randomSource, BlockPos blockPos, BlockState blockState) {
-        return Odyssey.getConfig().blockChanges.lily_pad_bone_mealing;
+        return Odyssey.getConfig().blocks.lily_pad_bone_mealing;
     }
 
     @Override
     public void performBonemeal(@NotNull ServerLevel world, @NotNull RandomSource random, @NotNull BlockPos pos, @NotNull BlockState state) {
 
-        if (Odyssey.getConfig().blockChanges.lily_pad_bone_mealing) {
+        if (Odyssey.getConfig().blocks.lily_pad_bone_mealing) {
 
             BlockState blockState = Blocks.LILY_PAD.defaultBlockState();
             stopGrowth:

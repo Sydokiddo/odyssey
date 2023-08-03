@@ -23,7 +23,7 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Override
     public boolean displayFireAnimation() {
-        if (this.hasEffect(MobEffects.FIRE_RESISTANCE) && Odyssey.getConfig().entityChanges.hidden_fire_overlay_with_fire_resistance) {
+        if (this.hasEffect(MobEffects.FIRE_RESISTANCE) && Odyssey.getConfig().entities.hidden_fire_overlay_with_fire_resistance) {
             return false;
         }
         return super.displayFireAnimation();

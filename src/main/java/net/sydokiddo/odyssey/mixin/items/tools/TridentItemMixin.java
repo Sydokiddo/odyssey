@@ -15,7 +15,7 @@ public class TridentItemMixin extends Item {
 
     @Override
     public boolean isValidRepairItem(ItemStack stack, ItemStack ingredient) {
-        if (Odyssey.getConfig().itemChanges.more_repairable_items) {
+        if (Odyssey.getConfig().items.more_repairable_items) {
             return ingredient.is(Items.PRISMARINE_SHARD);
         } else {
             return super.isValidRepairItem(stack, ingredient);

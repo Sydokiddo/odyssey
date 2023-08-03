@@ -24,7 +24,7 @@ public abstract class GUIMixin {
     @ModifyVariable(method = "renderVehicleHealth", at = @At(value = "STORE"), ordinal = 2)
     private int odyssey_moveVehicleHealthDownwards(int y) {
         assert this.minecraft.gameMode != null;
-        if (this.minecraft.gameMode.canHurtPlayer() && Odyssey.getConfig().entityChanges.improved_mount_hud) {
+        if (this.minecraft.gameMode.canHurtPlayer() && Odyssey.getConfig().entities.improved_mount_hud) {
             y -= 10;
         }
         return y;
@@ -34,7 +34,7 @@ public abstract class GUIMixin {
 
     @Redirect(method = "renderPlayerHealth", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/Gui;getVehicleMaxHearts(Lnet/minecraft/world/entity/LivingEntity;)I"))
     private int odyssey_alwaysRenderFoodBar(Gui gui, LivingEntity livingEntity) {
-        if (Odyssey.getConfig().entityChanges.improved_mount_hud) {
+        if (Odyssey.getConfig().entities.improved_mount_hud) {
             return 0;
         } else {
             return this.getVehicleMaxHearts(livingEntity);
@@ -48,7 +48,7 @@ public abstract class GUIMixin {
 
         LivingEntity vehicle = getPlayerVehicleWithHealth();
 
-        if (vehicle != null && Odyssey.getConfig().entityChanges.improved_mount_hud) {
+        if (vehicle != null && Odyssey.getConfig().entities.improved_mount_hud) {
             int rows = getVisibleVehicleHeartRows(getVehicleMaxHearts(vehicle));
             y -= rows * 10;
         }

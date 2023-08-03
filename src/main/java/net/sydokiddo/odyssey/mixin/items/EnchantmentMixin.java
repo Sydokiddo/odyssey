@@ -22,7 +22,7 @@ public abstract class EnchantmentMixin {
 
         // Shears can now be enchanted with Silk Touch
 
-        if ((enchantment instanceof UntouchingEnchantment || enchantment == Enchantments.BLOCK_FORTUNE) && Odyssey.getConfig().itemChanges.silk_touch_and_fortune_on_shears && stack.getItem() instanceof ShearsItem) {
+        if ((enchantment instanceof UntouchingEnchantment || enchantment == Enchantments.BLOCK_FORTUNE) && Odyssey.getConfig().items.silk_touch_and_fortune_on_shears && stack.getItem() instanceof ShearsItem) {
             cir.setReturnValue(true);
         }
     }
