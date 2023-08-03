@@ -5,7 +5,7 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.sydokiddo.odyssey.registry.blocks.ModBlocks;
-import net.sydokiddo.odyssey.registry.blocks.custom_blocks.PotionCauldronBlockEntity;
+import net.sydokiddo.odyssey.registry.entities.block_entities.PotionCauldronBlockEntity;
 
 @Environment(EnvType.CLIENT)
 public class PotionCauldronRendering {

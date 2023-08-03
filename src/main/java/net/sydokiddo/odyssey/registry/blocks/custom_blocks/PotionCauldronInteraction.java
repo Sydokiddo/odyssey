@@ -17,6 +17,7 @@ import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.block.LayeredCauldronBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.sydokiddo.odyssey.registry.entities.block_entities.PotionCauldronBlockEntity;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
 import java.util.Map;
 import java.util.Objects;
@@ -111,7 +112,7 @@ public class PotionCauldronInteraction {
 
                 PotionCauldronBlock.lowerFillLevel(state, world, pos);
                 world.playSound(null, pos, ModSoundEvents.CAULDRON_TIP_ARROW, SoundSource.BLOCKS, 1.0F, 1.0F);
-                world.gameEvent(null, GameEvent.FLUID_PICKUP, pos);
+                world.gameEvent(null, GameEvent.BLOCK_CHANGE, pos);
             }
             return InteractionResult.sidedSuccess(world.isClientSide);
         });
@@ -134,7 +135,7 @@ public class PotionCauldronInteraction {
 
                     PotionCauldronBlock.lowerFillLevel(state, world, pos);
                     world.playSound(null, pos, ModSoundEvents.CAULDRON_POISON_POTATO, SoundSource.BLOCKS, 1.0F, 1.0F);
-                    world.gameEvent(null, GameEvent.FLUID_PICKUP, pos);
+                    world.gameEvent(null, GameEvent.BLOCK_CHANGE, pos);
                 }
                 return InteractionResult.sidedSuccess(world.isClientSide);
             } else {

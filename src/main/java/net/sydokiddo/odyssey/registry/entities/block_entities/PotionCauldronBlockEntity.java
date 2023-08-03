@@ -1,4 +1,4 @@
-package net.sydokiddo.odyssey.registry.blocks.custom_blocks;
+package net.sydokiddo.odyssey.registry.entities.block_entities;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;

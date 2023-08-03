@@ -11,7 +11,7 @@ import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.blocks.ModBlocks;
-import net.sydokiddo.odyssey.registry.blocks.custom_blocks.PotionCauldronBlockEntity;
+import net.sydokiddo.odyssey.registry.entities.block_entities.PotionCauldronBlockEntity;
 import net.sydokiddo.odyssey.registry.entities.block_entities.ModBrushableBlockEntity;
 import net.sydokiddo.odyssey.registry.entities.non_living_entities.GunpowderBlockEntity;
 
