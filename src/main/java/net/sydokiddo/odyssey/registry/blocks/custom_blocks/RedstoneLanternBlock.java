@@ -20,13 +20,12 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
-import net.sydokiddo.odyssey.registry.blocks.ModBlocks;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
 
 @SuppressWarnings("ALL")
 public class RedstoneLanternBlock extends LanternBlock {
 
-    private int tickTime = 2;
+    private final int tickTime = 2;
     private static final BooleanProperty LIT = BlockStateProperties.LIT;
 
     public RedstoneLanternBlock(Properties properties) {
@@ -43,29 +42,22 @@ public class RedstoneLanternBlock extends LanternBlock {
     public InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult hitResult) {
 
         if (blockState.getValue(LIT)) {
-
-            level.playSound(null, blockPos, ModSoundEvents.REDSTONE_LANTERN_POWER_OFF, SoundSource.BLOCKS);
             turnOffLantern(level, blockPos, blockState);
-
-            for (int i = 0; i < 10; ++i) {
-                double d = (double) blockPos.getX() + 0.5D;
-                double e = (double) blockPos.getY() + 0.7D;
-                double f = (double) blockPos.getZ() + 0.5D;
-
-                if (blockState.getValue(WATERLOGGED)) {
-                    level.addParticle(ParticleTypes.BUBBLE, d, e, f, 0.0D, 0.0D, 0.0D);
-                } else {
-                    level.addParticle(ParticleTypes.SMOKE, d, e, f, 0.0D, 0.0D, 0.0D);
-                }
-            }
-
         } else {
-            level.playSound(null, blockPos, ModSoundEvents.REDSTONE_LANTERN_POWER_ON, SoundSource.BLOCKS);
             turnOnLantern(level, blockPos, blockState);
         }
 
-        level.scheduleTick(blockPos, this, tickTime);
+        this.updateNeighbours(blockState, level, blockPos);
         return InteractionResult.sidedSuccess(level.isClientSide);
+    }
+
+    private void updateNeighbours(BlockState blockState, Level level, BlockPos blockPos) {
+
+        level.updateNeighborsAt(blockPos, this);
+
+        for (Direction direction : Direction.values()) {
+            level.updateNeighborsAt(blockPos.relative(direction), this);
+        }
     }
 
     @Override
@@ -84,16 +76,18 @@ public class RedstoneLanternBlock extends LanternBlock {
     }
 
     @Override
-    public void onPlace(BlockState blockState, Level level, BlockPos blockPos, BlockState oldState, boolean notify) {
-        for (Direction direction : Direction.values()) {
+    public void onPlace(BlockState blockState, Level level, BlockPos blockPos, BlockState blockState2, boolean bl) {
+        Direction[] directions = Direction.values();
+        for (Direction direction : directions) {
             level.updateNeighborsAt(blockPos.relative(direction), this);
         }
     }
 
     @Override
-    public void onRemove(BlockState blockState, Level level, BlockPos blockPos, BlockState newState, boolean moved) {
+    public void onRemove(BlockState blockState, Level level, BlockPos blockPos, BlockState blockState2, boolean moved) {
         if (!moved) {
-            for (Direction direction : Direction.values()) {
+            Direction[] directions = Direction.values();
+            for (Direction direction : directions) {
                 level.updateNeighborsAt(blockPos.relative(direction), this);
             }
         }
@@ -110,53 +104,29 @@ public class RedstoneLanternBlock extends LanternBlock {
     }
 
     private void turnOffLantern(Level level, BlockPos blockPos, BlockState blockState) {
+
+        level.playSound(null, blockPos, ModSoundEvents.REDSTONE_LANTERN_POWER_OFF, SoundSource.BLOCKS);
         level.setBlock(blockPos, blockState.setValue(LIT, false), tickTime);
         level.gameEvent(null, GameEvent.BLOCK_DEACTIVATE, blockPos);
-    }
 
-    private void turnOnLantern(Level level, BlockPos blockPos, BlockState blockState) {
-        level.setBlock(blockPos, blockState.setValue(LIT, true), tickTime);
-        level.gameEvent(null, GameEvent.BLOCK_ACTIVATE, blockPos);
-    }
+        if (level instanceof ServerLevel serverLevel) {
+            for (int i = 0; i < 10; ++i) {
+                double d = (double) blockPos.getX() + 0.5D;
+                double e = (double) blockPos.getY() + 0.7D;
+                double f = (double) blockPos.getZ() + 0.5D;
 
-    @Override
-    public void neighborChanged(BlockState blockState, Level level, BlockPos blockPos, Block block, BlockPos neighborBlock, boolean bl) {
-        if (!level.isClientSide) {
-            if (level.getBlockState(neighborBlock).is(ModBlocks.REDSTONE_LANTERN)) {
-                level.scheduleTick(blockPos, this, tickTime);
-            }
-        }
-    }
-
-    @Override
-    public void tick(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource) {
-
-        for (Direction direction : Direction.values()) {
-
-            BlockPos relativePos = blockPos.relative(direction);
-
-            if (serverLevel.getBlockState(blockPos.relative(direction)).is(ModBlocks.REDSTONE_LANTERN) && direction.getAxis().isHorizontal()) {
-
-                if (serverLevel.getBlockState(blockPos).getValue(LIT)) {
-
-                    turnOffLantern(serverLevel, relativePos, blockState);
-
-                    for (int i = 0; i < 10; ++i) {
-                        double d = (double) relativePos.getX() + 0.5D;
-                        double e = (double) relativePos.getY() + 0.7D;
-                        double f = (double) relativePos.getZ() + 0.5D;
-
-                        if (serverLevel.getBlockState(blockPos).getValue(WATERLOGGED)) {
-                            serverLevel.sendParticles(ParticleTypes.BUBBLE, d, e, f, 1, 0.0D, 0.0D, 0.0D, 0.0D);
-                        } else {
-                            serverLevel.sendParticles(ParticleTypes.SMOKE, d, e, f, 1, 0.0D, 0.0D, 0.0D, 0.0D);
-                        }
-                    }
-
+                if (serverLevel.getBlockState(blockPos).getValue(WATERLOGGED)) {
+                    serverLevel.sendParticles(ParticleTypes.BUBBLE, d, e, f, 1, 0.0D, 0.0D, 0.0D, 0.0D);
                 } else {
-                    turnOnLantern(serverLevel, relativePos, blockState);
+                    serverLevel.sendParticles(ParticleTypes.SMOKE, d, e, f, 1, 0.0D, 0.0D, 0.0D, 0.0D);
                 }
             }
         }
+    }
+
+    private void turnOnLantern(Level level, BlockPos blockPos, BlockState blockState) {
+        level.playSound(null, blockPos, ModSoundEvents.REDSTONE_LANTERN_POWER_ON, SoundSource.BLOCKS);
+        level.setBlock(blockPos, blockState.setValue(LIT, true), tickTime);
+        level.gameEvent(null, GameEvent.BLOCK_ACTIVATE, blockPos);
     }
 }
