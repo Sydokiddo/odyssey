@@ -2,7 +2,6 @@ package net.sydokiddo.odyssey.registry.items;
 
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.alchemy.Potion;
@@ -22,27 +21,27 @@ public class ModPotions {
     // Register Potion Stats:
 
     public static Potion registerMiningFatiguePotion(String name) {
-        return Registry.register(BuiltInRegistries.POTION, new ResourceLocation(Odyssey.MOD_ID, name),
+        return Registry.register(BuiltInRegistries.POTION, Odyssey.id(name),
         new Potion(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 3600, 0)));
     }
     public static Potion registerLongMiningFatiguePotion(String name) {
-        return Registry.register(BuiltInRegistries.POTION, new ResourceLocation(Odyssey.MOD_ID, name),
+        return Registry.register(BuiltInRegistries.POTION, Odyssey.id(name),
         new Potion(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 9600, 0)));
     }
     public static Potion registerStrongMiningFatiguePotion(String name) {
-        return Registry.register(BuiltInRegistries.POTION, new ResourceLocation(Odyssey.MOD_ID, name),
+        return Registry.register(BuiltInRegistries.POTION, Odyssey.id(name),
         new Potion(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 1800, 1)));
     }
     public static Potion registerHastePotion(String name) {
-        return Registry.register(BuiltInRegistries.POTION, new ResourceLocation(Odyssey.MOD_ID, name),
+        return Registry.register(BuiltInRegistries.POTION, Odyssey.id(name),
         new Potion(new MobEffectInstance(MobEffects.DIG_SPEED, 3600, 0)));
     }
     public static Potion registerLongHastePotion(String name) {
-        return Registry.register(BuiltInRegistries.POTION, new ResourceLocation(Odyssey.MOD_ID, name),
+        return Registry.register(BuiltInRegistries.POTION, Odyssey.id(name),
         new Potion(new MobEffectInstance(MobEffects.DIG_SPEED, 9600, 0)));
     }
     public static Potion registerStrongHastePotion(String name) {
-        return Registry.register(BuiltInRegistries.POTION, new ResourceLocation(Odyssey.MOD_ID, name),
+        return Registry.register(BuiltInRegistries.POTION, Odyssey.id(name),
         new Potion(new MobEffectInstance(MobEffects.DIG_SPEED, 1800, 1)));
     }
 

@@ -2,7 +2,7 @@
   "parent": "minecraft:husbandry/allay_deliver_item_to_player",
   "criteria": {
     "duplicate_allay": {
-      "trigger": "odyssey:duplicate_allay"
+      "trigger": "chrysalis:duplicate_allay"
     }
   },
   "display": {

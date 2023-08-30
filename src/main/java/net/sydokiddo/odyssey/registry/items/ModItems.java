@@ -3,7 +3,6 @@ package net.sydokiddo.odyssey.registry.items;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
@@ -48,16 +47,16 @@ public class ModItems {
     // Registry for Items:
 
     private static Item registerItem(String name, Item item) {
-        return Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(Odyssey.MOD_ID, name), item);
+        return Registry.register(BuiltInRegistries.ITEM, Odyssey.id(name), item);
     }
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
-        return Registry.register(BuiltInRegistries.BLOCK, new ResourceLocation(Odyssey.MOD_ID, name), block);
+        return Registry.register(BuiltInRegistries.BLOCK, Odyssey.id(name), block);
     }
 
     private static Item registerBlockItem(String name, Block block) {
-        return Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(Odyssey.MOD_ID, name),
+        return Registry.register(BuiltInRegistries.ITEM, Odyssey.id(name),
         new BlockItem(block, new FabricItemSettings()));
     }
 

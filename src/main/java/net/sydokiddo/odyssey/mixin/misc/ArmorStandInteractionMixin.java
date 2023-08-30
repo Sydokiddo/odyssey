@@ -42,7 +42,6 @@ public abstract class ArmorStandInteractionMixin extends LivingEntity {
             if (player.level().isClientSide) {
                 cir.setReturnValue(InteractionResult.CONSUME);
             } else {
-
                 this.setShowArms(true);
                 this.level().playSound(null, this.getX(), this.getY(), this.getZ(), ModSoundEvents.ARMOR_STAND_ADD_ARMS, this.getSoundSource(), 1.0F, 1.0F);
                 player.gameEvent(GameEvent.ENTITY_INTERACT);
@@ -50,7 +49,6 @@ public abstract class ArmorStandInteractionMixin extends LivingEntity {
                 if (!player.getAbilities().instabuild) {
                     itemStack.shrink(1);
                 }
-
                 cir.setReturnValue(InteractionResult.SUCCESS);
             }
         }

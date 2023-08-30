@@ -2,14 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": [
-      {
-        "item": "minecraft:brick"
-      },
-      {
-        "item": "minecraft:nether_brick"
-      }
-    ]
+    "#": {
+      "tag": "chrysalis:bricks"
+    }
   },
   "pattern": [
     "# #",

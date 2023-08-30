@@ -1,8 +1,6 @@
 {
   "replace": false,
   "values": [
-    "odyssey:frog_bucket",
-    "odyssey:squid_bucket",
-    "odyssey:glow_squid_bucket"
+    "odyssey:frog_bucket"
   ]
 }

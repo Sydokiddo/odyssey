@@ -167,31 +167,12 @@ public abstract class SlimeMixin extends Mob {
 
         if (magmaCube != null) {
 
-            magmaCube.setSize(this.getSize(), true);
-            magmaCube.copyPosition(this);
-            magmaCube.setNoAi(this.isNoAi());
-            magmaCube.setInvulnerable(this.isInvulnerable());
-
-            if (this.hasCustomName()) {
-                magmaCube.setCustomName(this.getCustomName());
-                magmaCube.setCustomNameVisible(this.isCustomNameVisible());
-            }
-            if (this.isPersistenceRequired()) {
-                magmaCube.setPersistenceRequired();
-            }
-
             if (!this.isSilent()) {
                 this.playSound(ModSoundEvents.SLIME_CONVERTED_TO_MAGMA_CUBE);
             }
 
-            this.level().addFreshEntity(magmaCube);
-
-            if (this.isPassenger()) {
-                Entity entity = this.getVehicle();
-                this.stopRiding();
-                magmaCube.startRiding(entity, true);
-            }
-
+            magmaCube.setSize(this.getSize(), true);
+            doEntityConversionEvents(magmaCube);
             this.discard();
         }
     }
@@ -203,32 +184,37 @@ public abstract class SlimeMixin extends Mob {
 
         if (slime != null) {
 
-            slime.setSize(this.getSize(), true);
-            slime.copyPosition(this);
-            slime.setNoAi(this.isNoAi());
-            slime.setInvulnerable(this.isInvulnerable());
-
-            if (this.hasCustomName()) {
-                slime.setCustomName(this.getCustomName());
-                slime.setCustomNameVisible(this.isCustomNameVisible());
-            }
-            if (this.isPersistenceRequired()) {
-                slime.setPersistenceRequired();
-            }
-
             if (!this.isSilent()) {
                 this.playSound(ModSoundEvents.MAGMA_CUBE_CONVERTED_TO_SLIME);
             }
 
-            this.level().addFreshEntity(slime);
-
-            if (this.isPassenger()) {
-                Entity entity = this.getVehicle();
-                this.stopRiding();
-                slime.startRiding(entity, true);
-            }
-
+            slime.setSize(this.getSize(), true);
+            doEntityConversionEvents(slime);
             this.discard();
         }
+    }
+
+    @Unique
+    private void doEntityConversionEvents(Mob mob) {
+
+        mob.copyPosition(this);
+        mob.setNoAi(this.isNoAi());
+        mob.setInvulnerable(this.isInvulnerable());
+
+        if (this.hasCustomName()) {
+            mob.setCustomName(this.getCustomName());
+            mob.setCustomNameVisible(this.isCustomNameVisible());
+        }
+        if (this.isPersistenceRequired()) {
+            mob.setPersistenceRequired();
+        }
+
+        if (this.isPassenger()) {
+            Entity vehicle = this.getVehicle();
+            this.stopRiding();
+            mob.startRiding(vehicle, true);
+        }
+
+        this.level().addFreshEntity(mob);
     }
 }

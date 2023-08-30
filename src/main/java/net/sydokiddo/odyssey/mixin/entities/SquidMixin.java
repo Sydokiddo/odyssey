@@ -12,13 +12,16 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.sydokiddo.odyssey.Odyssey;
+import net.sydokiddo.odyssey.registry.OdysseyRegistry;
 import net.sydokiddo.odyssey.registry.items.ModItems;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
 
-@Mixin({Squid.class})
+@Mixin(Squid.class)
 public class SquidMixin extends WaterAnimal implements Bucketable {
+
+    private static final String FROM_BUCKET_TAG = "FromBucket";
 
     // Squids and Glow Squids can now be picked up in Water Buckets
 
@@ -27,12 +30,32 @@ public class SquidMixin extends WaterAnimal implements Bucketable {
     }
 
     @Override
-    public boolean fromBucket() {
-        return true;
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+        this.entityData.define(OdysseyRegistry.FROM_BUCKET, false);
     }
 
     @Override
-    public void setFromBucket(boolean bl) {}
+    public void addAdditionalSaveData(CompoundTag compoundTag) {
+        super.addAdditionalSaveData(compoundTag);
+        compoundTag.putBoolean(FROM_BUCKET_TAG, this.fromBucket());
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag compoundTag) {
+        super.readAdditionalSaveData(compoundTag);
+        this.setFromBucket(compoundTag.getBoolean(FROM_BUCKET_TAG));
+    }
+
+    @Override
+    public boolean fromBucket() {
+        return this.entityData.get(OdysseyRegistry.FROM_BUCKET);
+    }
+
+    @Override
+    public void setFromBucket(boolean bl) {
+        this.entityData.set(OdysseyRegistry.FROM_BUCKET, bl);
+    }
 
     @SuppressWarnings("ALL")
     @Override
@@ -44,6 +67,11 @@ public class SquidMixin extends WaterAnimal implements Bucketable {
     @Override
     public void loadFromBucketTag(CompoundTag compoundTag) {
         Bucketable.loadDefaultDataFromBucketTag(this, compoundTag);
+    }
+
+    @Override
+    public boolean requiresCustomPersistence() {
+        return super.requiresCustomPersistence() || this.fromBucket();
     }
 
     @Override

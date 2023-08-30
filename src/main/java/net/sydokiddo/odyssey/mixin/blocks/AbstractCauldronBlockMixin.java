@@ -37,15 +37,15 @@ public class AbstractCauldronBlockMixin {
     @Inject(at = @At("HEAD"), method = "use", cancellable = true)
     private void odyssey_cauldronInteraction(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult, CallbackInfoReturnable<InteractionResult> cir) {
 
-        // If the player attempts to place water into a Cauldron in the Nether, it will evaporate it and display particles and a sound
+        // If the player attempts to place water into a Cauldron in the Nether, it will evaporate
 
         if (player.getItemInHand(interactionHand).getItem().equals(Items.WATER_BUCKET) && level.dimensionType().ultraWarm()) {
 
             level.playSound(null, blockPos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.5f, 2.6f + (level.random.nextFloat() - level.random.nextFloat()) * 0.8f);
 
-            if (level instanceof ServerLevel) {
+            if (level instanceof ServerLevel serverLevel) {
 
-                ((ServerLevel) level).sendParticles(ParticleTypes.LARGE_SMOKE, blockPos.getX() + 0.5, blockPos.getY() + 0.6, blockPos.getZ() + 0.5, 8, 0.2, 0.2, 0.2, 0);
+                serverLevel.sendParticles(ParticleTypes.LARGE_SMOKE, blockPos.getX() + 0.5, blockPos.getY() + 0.6, blockPos.getZ() + 0.5, 8, 0.2, 0.2, 0.2, 0);
 
                 if (!player.getAbilities().instabuild) {
                     player.getItemInHand(interactionHand).shrink(1);
@@ -59,9 +59,9 @@ public class AbstractCauldronBlockMixin {
 
         // Potion Cauldron Interaction
 
-        CauldronInteraction.EMPTY.put(Items.POTION, (state1, level1, pos1, player1, hand1, stack) -> {
+        CauldronInteraction.EMPTY.put(Items.POTION, (cauldronState, world, pos, user, hand, stack) -> {
 
-            if (!level1.isClientSide) {
+            if (!world.isClientSide) {
 
                 Potion potion = PotionUtils.getPotion(stack);
                 Item item = stack.getItem();
@@ -69,20 +69,19 @@ public class AbstractCauldronBlockMixin {
                 if (potion != Potions.WATER) {
                     PotionCauldronBlock potionCauldronBlock = ModBlocks.POTION_CAULDRON_STATE;
                     potionCauldronBlock.setPotion(potion);
-                    level1.setBlockAndUpdate(pos1, potionCauldronBlock.defaultBlockState());
+                    world.setBlockAndUpdate(pos, potionCauldronBlock.defaultBlockState());
                 } else {
-                    level1.setBlockAndUpdate(pos1, Blocks.WATER_CAULDRON.defaultBlockState());
+                    world.setBlockAndUpdate(pos, Blocks.WATER_CAULDRON.defaultBlockState());
                 }
 
-                player1.setItemInHand(hand1, ItemUtils.createFilledResult(stack, player1, new ItemStack(Items.GLASS_BOTTLE)));
-                player1.awardStat(Stats.USE_CAULDRON);
-                player1.awardStat(Stats.ITEM_USED.get(item));
+                user.setItemInHand(hand, ItemUtils.createFilledResult(stack, user, new ItemStack(Items.GLASS_BOTTLE)));
+                user.awardStat(Stats.USE_CAULDRON);
+                user.awardStat(Stats.ITEM_USED.get(item));
 
-                level1.playSound(null, pos1, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
-                level1.gameEvent(null, GameEvent.FLUID_PLACE, pos1);
+                world.playSound(null, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
+                world.gameEvent(null, GameEvent.FLUID_PLACE, pos);
             }
-
-            return InteractionResult.sidedSuccess(level1.isClientSide);
+            return InteractionResult.sidedSuccess(world.isClientSide);
         });
     }
 }

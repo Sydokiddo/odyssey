@@ -11,7 +11,6 @@ import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.FrogVariant;
 import net.minecraft.world.entity.animal.frog.Frog;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -27,6 +26,8 @@ import org.spongepowered.asm.mixin.Shadow;
 public abstract class FrogMixin extends Animal implements ContainerMob {
 
     // Frogs can now be picked up in Empty Buckets
+
+    private static final String VARIANT_TAG = "variant";
 
     @Shadow public abstract FrogVariant getVariant();
     @Shadow public abstract void setVariant(FrogVariant frogVariant);
@@ -48,14 +49,14 @@ public abstract class FrogMixin extends Animal implements ContainerMob {
     public void saveToItemTag(ItemStack itemStack) {
         ContainerMob.saveDefaultDataToItemTag(this, itemStack);
         CompoundTag compoundTag = itemStack.getOrCreateTag();
-        compoundTag.putString("variant", BuiltInRegistries.FROG_VARIANT.getKey(this.getVariant()).toString());
+        compoundTag.putString(VARIANT_TAG, BuiltInRegistries.FROG_VARIANT.getKey(this.getVariant()).toString());
     }
 
     @SuppressWarnings("ALL")
     @Override
     public void loadFromItemTag(CompoundTag compoundTag) {
         ContainerMob.loadDefaultDataFromItemTag(this, compoundTag);
-        FrogVariant frogVariant = (FrogVariant)BuiltInRegistries.FROG_VARIANT.get(ResourceLocation.tryParse(compoundTag.getString("variant")));
+        FrogVariant frogVariant = (FrogVariant)BuiltInRegistries.FROG_VARIANT.get(ResourceLocation.tryParse(compoundTag.getString(VARIANT_TAG)));
         if (frogVariant != null) {
             this.setVariant(frogVariant);
         }
@@ -73,12 +74,8 @@ public abstract class FrogMixin extends Animal implements ContainerMob {
 
     @Override
     public InteractionResult mobInteract(Player player, @NotNull InteractionHand interactionHand) {
-
-        ItemStack itemInHand = player.getItemInHand(interactionHand);
-        Item containerItem = Items.BUCKET;
-
-        if (this.isAlive() && Odyssey.getConfig().entities.bucketable_frogs && itemInHand.is(containerItem)) {
-            return ContainerMob.containerMobPickup(player, interactionHand, this, containerItem).orElse(super.mobInteract(player, interactionHand));
+        if (this.isAlive() && Odyssey.getConfig().entities.bucketable_frogs) {
+            return ContainerMob.containerMobPickup(player, interactionHand, this, Items.BUCKET).orElse(super.mobInteract(player, interactionHand));
         }
         return super.mobInteract(player, interactionHand);
     }

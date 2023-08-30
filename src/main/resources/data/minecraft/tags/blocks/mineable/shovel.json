@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "odyssey:gunpowder_block",
-    "odyssey:suspicious_red_sand"
+    "odyssey:gunpowder_block"
   ]
 }

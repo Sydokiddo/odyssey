@@ -4,7 +4,6 @@ import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityT
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -30,8 +29,8 @@ public class ModEntities {
     // Registry for Entities:
 
     public static void registerModEntities() {
-        Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, new ResourceLocation(Odyssey.MOD_ID, "brushable_block"), BRUSHABLE_BLOCK);
-        Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, new ResourceLocation(Odyssey.MOD_ID, "potion_cauldron"), POTION_CAULDRON);
-        Registry.register(BuiltInRegistries.ENTITY_TYPE, new ResourceLocation(Odyssey.MOD_ID, "gunpowder_block"), GUNPOWDER_BLOCK);
+        Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, Odyssey.id("brushable_block"), BRUSHABLE_BLOCK);
+        Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, Odyssey.id("potion_cauldron"), POTION_CAULDRON);
+        Registry.register(BuiltInRegistries.ENTITY_TYPE, Odyssey.id("gunpowder_block"), GUNPOWDER_BLOCK);
     }
 }
