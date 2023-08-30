@@ -3,6 +3,7 @@ package net.sydokiddo.odyssey.misc.config;
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
+import net.sydokiddo.odyssey.misc.config.options.ItemStackSizeConfig;
 
 @Config(name = "odyssey")
 @Config.Gui.Background("odyssey:textures/block/refined_amethyst_block.png")
@@ -13,33 +14,9 @@ public class ModConfig implements ConfigData {
 
     public static class Items {
 
-        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
+        @ConfigEntry.Gui.CollapsibleObject()
         @ConfigEntry.Gui.Tooltip
-        public int sign_stack_size = 64;
-
-        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
-        @ConfigEntry.Gui.Tooltip
-        public int boat_stack_size = 64;
-
-        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
-        @ConfigEntry.Gui.Tooltip
-        public int minecart_stack_size = 64;
-
-        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
-        @ConfigEntry.Gui.Tooltip
-        public int banner_stack_size = 64;
-
-        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
-        @ConfigEntry.Gui.Tooltip
-        public int banner_pattern_stack_size = 64;
-
-        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
-        @ConfigEntry.Gui.Tooltip
-        public int armor_stand_stack_size = 64;
-
-        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
-        @ConfigEntry.Gui.Tooltip
-        public int decorated_pot_stack_size = 64;
+        public ItemStackSizeConfig itemStackSizeConfig = new ItemStackSizeConfig();
 
         @ConfigEntry.Gui.Tooltip
         public boolean more_repairable_items = true;
