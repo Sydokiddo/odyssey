@@ -39,5 +39,11 @@ public abstract class ItemStackMixin {
         if (this.getItem() instanceof BlockItem item && item.getBlock() instanceof DecoratedPotBlock) {
             cir.setReturnValue(Odyssey.getConfig().items.itemStackSizeConfig.decorated_pot_stack_size);
         }
+        if (this.getItem() instanceof SnowballItem) {
+            cir.setReturnValue(Odyssey.getConfig().items.itemStackSizeConfig.snowball_stack_size);
+        }
+        if (this.getItem() instanceof EggItem) {
+            cir.setReturnValue(Odyssey.getConfig().items.itemStackSizeConfig.egg_stack_size);
+        }
     }
 }

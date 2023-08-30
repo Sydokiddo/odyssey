@@ -113,6 +113,10 @@
   "text.autoconfig.odyssey.option.items.itemStackSizeConfig.armor_stand_stack_size.@Tooltip": "Changes the stack size of Armor Stands",
   "text.autoconfig.odyssey.option.items.itemStackSizeConfig.decorated_pot_stack_size": "Decorated Pot Stack Size",
   "text.autoconfig.odyssey.option.items.itemStackSizeConfig.decorated_pot_stack_size.@Tooltip": "Changes the stack size of Decorated Pots",
+  "text.autoconfig.odyssey.option.items.itemStackSizeConfig.snowball_stack_size": "Snowball Stack Size",
+  "text.autoconfig.odyssey.option.items.itemStackSizeConfig.snowball_stack_size.@Tooltip": "Changes the stack size of Snowballs",
+  "text.autoconfig.odyssey.option.items.itemStackSizeConfig.egg_stack_size": "Egg Stack Size",
+  "text.autoconfig.odyssey.option.items.itemStackSizeConfig.egg_stack_size.@Tooltip": "Changes the stack size of Eggs",
 
   "text.autoconfig.odyssey.option.items.more_repairable_items": "More Repairable Items",
   "text.autoconfig.odyssey.option.items.more_repairable_items.@Tooltip": "Shears can be repaired with Iron Ingots, Brushes with Feathers, and Tridents with Prismarine Shards",

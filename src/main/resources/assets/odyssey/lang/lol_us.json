@@ -113,6 +113,10 @@
   "text.autoconfig.odyssey.option.items.itemStackSizeConfig.armor_stand_stack_size.@Tooltip": "Changez da stakk size of Stick hoomanz",
   "text.autoconfig.odyssey.option.items.itemStackSizeConfig.decorated_pot_stack_size": "Ancient Containr Stakk Size",
   "text.autoconfig.odyssey.option.items.itemStackSizeConfig.decorated_pot_stack_size.@Tooltip": "Changez da stakk size of Ancient containrz",
+  "text.autoconfig.odyssey.option.items.itemStackSizeConfig.snowball_stack_size": "Cold Wet Stakk Size",
+  "text.autoconfig.odyssey.option.items.itemStackSizeConfig.snowball_stack_size.@Tooltip": "Changez da stakk size of Cold wet",
+  "text.autoconfig.odyssey.option.items.itemStackSizeConfig.egg_stack_size": "Eg Stakk Size",
+  "text.autoconfig.odyssey.option.items.itemStackSizeConfig.egg_stack_size.@Tooltip": "Changez da stakk size of Egz",
 
   "text.autoconfig.odyssey.option.items.more_repairable_items": "Moar Itemz Can Fixeh",
   "text.autoconfig.odyssey.option.items.more_repairable_items.@Tooltip": "Skizzors can be fixd wif Irun Ingotz, mini broomz wif detherz, and dinglehopperz wif Prizmarine thingys",

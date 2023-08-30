@@ -113,6 +113,10 @@
   "text.autoconfig.odyssey.option.items.itemStackSizeConfig.armor_stand_stack_size.@Tooltip": "Définie la taille d'un stack de porte-armure",
   "text.autoconfig.odyssey.option.items.itemStackSizeConfig.decorated_pot_stack_size": "Taille d'un stack de vase décoré",
   "text.autoconfig.odyssey.option.items.itemStackSizeConfig.decorated_pot_stack_size.@Tooltip": "Définie la taille d'un stack de vase décoré",
+  "text.autoconfig.odyssey.option.items.itemStackSizeConfig.snowball_stack_size": "Snowball Stack Size",
+  "text.autoconfig.odyssey.option.items.itemStackSizeConfig.snowball_stack_size.@Tooltip": "Changes the stack size of Snowballs",
+  "text.autoconfig.odyssey.option.items.itemStackSizeConfig.egg_stack_size": "Egg Stack Size",
+  "text.autoconfig.odyssey.option.items.itemStackSizeConfig.egg_stack_size.@Tooltip": "Changes the stack size of Eggs",
 
   "text.autoconfig.odyssey.option.items.more_repairable_items": "Plus d'outils réparables",
   "text.autoconfig.odyssey.option.items.more_repairable_items.@Tooltip": "Les cisailles peuvent être réparé avec un lingot de fer, les pinceaux avec des plumes, et les tridents avec un éclat de prismarine",

@@ -31,4 +31,12 @@ public class ItemStackSizeConfig {
     @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
     @ConfigEntry.Gui.Tooltip
     public int decorated_pot_stack_size = 64;
+
+    @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
+    @ConfigEntry.Gui.Tooltip
+    public int snowball_stack_size = 64;
+
+    @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
+    @ConfigEntry.Gui.Tooltip
+    public int egg_stack_size = 64;
 }

@@ -113,6 +113,10 @@
   "text.autoconfig.odyssey.option.items.itemStackSizeConfig.armor_stand_stack_size.@Tooltip": "Змінює розмір стосу стійок для обладунків",
   "text.autoconfig.odyssey.option.items.itemStackSizeConfig.decorated_pot_stack_size": "Розмір стосу декоративного горщика",
   "text.autoconfig.odyssey.option.items.itemStackSizeConfig.decorated_pot_stack_size.@Tooltip": "Змінює розмір стосу декоративних горщиків",
+  "text.autoconfig.odyssey.option.items.itemStackSizeConfig.snowball_stack_size": "Snowball Stack Size",
+  "text.autoconfig.odyssey.option.items.itemStackSizeConfig.snowball_stack_size.@Tooltip": "Changes the stack size of Snowballs",
+  "text.autoconfig.odyssey.option.items.itemStackSizeConfig.egg_stack_size": "Egg Stack Size",
+  "text.autoconfig.odyssey.option.items.itemStackSizeConfig.egg_stack_size.@Tooltip": "Changes the stack size of Eggs",
 
   "text.autoconfig.odyssey.option.items.more_repairable_items": "Більше предметів, як можна ремонтувати",
   "text.autoconfig.odyssey.option.items.more_repairable_items.@Tooltip": "Ножиці можна ремонтувати залізними злитками, щітки — пір'ям, тризубці — уламками призмарину",

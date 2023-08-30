@@ -113,6 +113,10 @@
   "text.autoconfig.odyssey.option.items.itemStackSizeConfig.armor_stand_stack_size.@Tooltip": "Changes tha holdin' capacity of booty racks",
   "text.autoconfig.odyssey.option.items.itemStackSizeConfig.decorated_pot_stack_size": "Festooned Vase Holdin' Capacity",
   "text.autoconfig.odyssey.option.items.itemStackSizeConfig.decorated_pot_stack_size.@Tooltip": "Changes tha holdin' capacity of festooned vases",
+  "text.autoconfig.odyssey.option.items.itemStackSizeConfig.snowball_stack_size": "Ball o' Snow Holdin' Capacity",
+  "text.autoconfig.odyssey.option.items.itemStackSizeConfig.snowball_stack_size.@Tooltip": "Changes tha holdin' capacity of Balls o' Snow",
+  "text.autoconfig.odyssey.option.items.itemStackSizeConfig.egg_stack_size": "Cackle Fruit Holdin' Capacity",
+  "text.autoconfig.odyssey.option.items.itemStackSizeConfig.egg_stack_size.@Tooltip": "Changes tha holdin' capacity of Cackle Fruit",
 
   "text.autoconfig.odyssey.option.items.more_repairable_items": "More of yer loot can be remedied",
   "text.autoconfig.odyssey.option.items.more_repairable_items.@Tooltip": "Cutters can be remedied usin' bullions o' steel, paintbrushes usin' feathers, and Poseidon's fightin' fork usin' shards o' prismarine",
