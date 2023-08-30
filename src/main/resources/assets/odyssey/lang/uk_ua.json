@@ -58,6 +58,8 @@
   "subtitles.block.cauldron.poison_potato": "Картоплю отруєно",
   "subtitles.block.cauldron.potion_dissipate": "Зілля зникає",
 
+  "subtitles.block.piston.apply_slimeball": "Slimeball squishes",
+
   "subtitles.block.redstone_lantern.power_on": "Редстоуновий ліхтар активується",
   "subtitles.block.redstone_lantern.power_off": "Редстоуновий ліхтар гасне",
 
@@ -150,6 +152,8 @@
   "text.autoconfig.odyssey.option.blocks.unstable_gunpowder_blocks.@Tooltip": "Блоки пороху миттєво вибухають коли вони спалахують або коли запалені кресалом чи зарядом полум'я",
   "text.autoconfig.odyssey.option.blocks.flower_picking": "Підбирання квітів",
   "text.autoconfig.odyssey.option.blocks.flower_picking.@Tooltip": "По малих квітках можна клацнути Пкм, що миттєво викине їх як предмет, замість руйнування та підбирання їх",
+  "text.autoconfig.odyssey.option.blocks.piston_interactions": "Piston Interactions",
+  "text.autoconfig.odyssey.option.blocks.piston_interactions.@Tooltip": "Pistons can be right-clicked with a Slimeball to turn them into Sticky Pistons, and Sticky Pistons can be right-clicked with an Axe to turn them into normal Pistons",
 
   "text.autoconfig.odyssey.option.entities": "Сутності",
   "text.autoconfig.odyssey.option.entities.@Tooltip": "Зміни функціонування певних сутностей",

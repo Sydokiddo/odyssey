@@ -58,6 +58,8 @@
   "subtitles.block.cauldron.poison_potato": "Pootato becomes yukky",
   "subtitles.block.cauldron.potion_dissipate": "Poshun disapers :(",
 
+  "subtitles.block.piston.apply_slimeball": "Ew boogerz squishy",
+
   "subtitles.block.redstone_lantern.power_on": "Redstone Lanturn startz purrrrring",
   "subtitles.block.redstone_lantern.power_off": "Redstone Lanturn purzzzz no more",
 
@@ -150,6 +152,8 @@
   "text.autoconfig.odyssey.option.blocks.unstable_gunpowder_blocks.@Tooltip": "Blokz of Ganpowder will instantly go boom when dey catch on fireh or when lit wif frint und steal or fire punchz",
   "text.autoconfig.odyssey.option.blocks.flower_picking": "Flowr Pikkin",
   "text.autoconfig.odyssey.option.blocks.flower_picking.@Tooltip": "Pretty flowrz can be pickd wif when u rite clik wif an empty paw",
+  "text.autoconfig.odyssey.option.blocks.piston_interactions": "Pushur Interacshuns",
+  "text.autoconfig.odyssey.option.blocks.piston_interactions.@Tooltip": "Pushurz can be rite-clikkd wif boogerz to make dem into Stickeh Pushurrz, and Stickeh Pushurrz can be rite-clikkd wif an Aks to turn dem into a normal Pushurr",
 
   "text.autoconfig.odyssey.option.entities": "Entityz",
   "text.autoconfig.odyssey.option.entities.@Tooltip": "Change da way ur entityz workz",

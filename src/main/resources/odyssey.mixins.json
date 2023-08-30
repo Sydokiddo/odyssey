@@ -13,6 +13,7 @@
     "blocks.FarmlandBlockMixin",
     "blocks.LilyPadBlockBoneMealMixin",
     "blocks.LiquidBlockMixin",
+    "blocks.PistonBaseBlockMixin",
     "blocks.SmallDripleafBlockMixin",
     "blocks.SnifferEggBlockMixin",
     "blocks.SporeBlossomMixin",

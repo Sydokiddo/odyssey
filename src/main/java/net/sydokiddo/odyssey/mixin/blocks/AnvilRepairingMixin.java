@@ -26,33 +26,27 @@ public class AnvilRepairingMixin {
     // Anvils can be repaired by right-clicking on them with an Iron Block
 
     @Inject(at = @At("HEAD"), method = "use", cancellable = true)
-    private void odyssey_repairAnvilWithIronBlock(BlockState blockState, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit, CallbackInfoReturnable<InteractionResult> ci) {
+    private void odyssey_repairAnvilWithIronBlock(BlockState blockState, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit, CallbackInfoReturnable<InteractionResult> cir) {
 
         ItemStack itemStack = player.getItemInHand(hand);
         BlockState anvilState = level.getBlockState(pos);
 
-        if (!level.isClientSide && itemStack.is(ModTags.REPAIRS_ANVILS) && Odyssey.getConfig().blocks.anvil_repairing) {
-
-            boolean consume = false;
+        if (!level.isClientSide && itemStack.is(ModTags.REPAIRS_ANVILS) && Odyssey.getConfig().blocks.anvil_repairing && anvilState.getBlock() != Blocks.ANVIL) {
 
             if (anvilState.getBlock() == Blocks.DAMAGED_ANVIL) {
                 level.setBlockAndUpdate(pos, Blocks.CHIPPED_ANVIL.defaultBlockState().setValue(AnvilBlock.FACING, anvilState.getValue(AnvilBlock.FACING)));
-                consume = true;
             } else if (anvilState.getBlock() == Blocks.CHIPPED_ANVIL) {
                 level.setBlockAndUpdate(pos, Blocks.ANVIL.defaultBlockState().setValue(AnvilBlock.FACING, anvilState.getValue(AnvilBlock.FACING)));
-                consume = true;
             }
 
-            if (consume) {
+            level.playSound(null, pos, ModSoundEvents.ANVIL_REPAIR, SoundSource.BLOCKS, 1.0f, 1.0f);
+            level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player));
 
-                level.playSound(null, pos, ModSoundEvents.ANVIL_REPAIR, SoundSource.BLOCKS, 1.0f, 1.0f);
-                player.gameEvent(GameEvent.BLOCK_CHANGE);
-
-                if (!player.getAbilities().instabuild) {
-                    itemStack.shrink(1);
-                }
-                ci.setReturnValue(InteractionResult.SUCCESS);
+            if (!player.getAbilities().instabuild) {
+                itemStack.shrink(1);
             }
+
+            cir.setReturnValue(InteractionResult.SUCCESS);
         }
     }
 }

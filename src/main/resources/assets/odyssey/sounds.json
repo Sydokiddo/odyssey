@@ -48,6 +48,22 @@
     ],
     "subtitle": "subtitles.block.cauldron.potion_dissipate"
   },
+  "block.piston.apply_slimeball": {
+    "sounds": [
+      "odyssey:block/piston/apply_slimeball1",
+      "odyssey:block/piston/apply_slimeball2",
+      "odyssey:block/piston/apply_slimeball3"
+    ],
+    "subtitle": "subtitles.block.piston.apply_slimeball"
+  },
+  "block.piston.remove_slimeball": {
+    "sounds": [
+      "odyssey:block/piston/remove_slimeball1",
+      "odyssey:block/piston/remove_slimeball2",
+      "odyssey:block/piston/remove_slimeball3"
+    ],
+    "subtitle": "subtitles.item.axe.scrape"
+  },
   "entity.armor_stand.add_arms": {
     "sounds": [
       "odyssey:entity/armor_stand/add_arms1",

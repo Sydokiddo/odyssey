@@ -58,6 +58,8 @@
   "subtitles.block.cauldron.poison_potato": "Tater be intoxicated",
   "subtitles.block.cauldron.potion_dissipate": "Brew be disappearin'",
 
+  "subtitles.block.piston.apply_slimeball": "Ball o' Slime squishes",
+
   "subtitles.block.redstone_lantern.power_on": "Redstone Lantarrrn triggers",
   "subtitles.block.redstone_lantern.power_off": "Redstone Lantarrrn wen' out",
 
@@ -150,6 +152,8 @@
   "text.autoconfig.odyssey.option.blocks.unstable_gunpowder_blocks.@Tooltip": "Blocks of black powder will instantly blow up when nearby flames or when lit ablaze wit' Ship's bane or Cannonballs",
   "text.autoconfig.odyssey.option.blocks.flower_picking": "Flower Pickin'",
   "text.autoconfig.odyssey.option.blocks.flower_picking.@Tooltip": "Small Flowers can be right-clicked wit' yer empty hook to instantly drop their loot instead of having to destroy 'em in order to obtain 'em",
+  "text.autoconfig.odyssey.option.blocks.piston_interactions": "Movin' Arm Interactin'",
+  "text.autoconfig.odyssey.option.blocks.piston_interactions.@Tooltip": "Movin' Arms can be right-clicked with a Ball o' Slime to turn 'em into a Piston o' Slime, and Pistons o' Slime can be right-clicked with a Hatchet to turn 'em into a normal Movin' Arm",
 
   "text.autoconfig.odyssey.option.entities": "Entities",
   "text.autoconfig.odyssey.option.entities.@Tooltip": "Changes to th' way yer creatures work",

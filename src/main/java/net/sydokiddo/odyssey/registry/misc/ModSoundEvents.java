@@ -29,6 +29,8 @@ public class ModSoundEvents {
     public static final SoundEvent CAULDRON_TIP_ARROW = registerSoundEvent("block.cauldron.tip_arrow");
     public static final SoundEvent CAULDRON_POISON_POTATO = registerSoundEvent("block.cauldron.poison_potato");
     public static final SoundEvent CAULDRON_POTION_DISSIPATE = registerSoundEvent("block.cauldron.potion_dissipate");
+    public static final SoundEvent PISTON_APPLY_SLIMEBALL = registerSoundEvent("block.piston.apply_slimeball");
+    public static final SoundEvent PISTON_REMOVE_SLIMEBALL = registerSoundEvent("block.piston.remove_slimeball");
 
     // - Entity Sounds:
 

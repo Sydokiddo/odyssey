@@ -58,6 +58,8 @@
   "subtitles.block.cauldron.poison_potato": "Potato poisoned",
   "subtitles.block.cauldron.potion_dissipate": "Potion dissipates",
 
+  "subtitles.block.piston.apply_slimeball": "Slimeball squishes",
+
   "subtitles.block.redstone_lantern.power_on": "Redstone Lantern activates",
   "subtitles.block.redstone_lantern.power_off": "Redstone Lantern extinguishes",
 
@@ -150,6 +152,8 @@
   "text.autoconfig.odyssey.option.blocks.unstable_gunpowder_blocks.@Tooltip": "Blocks of Gunpowder will instantly explode when they catch on fire or when lit with Flint and Steel or Fire Charges",
   "text.autoconfig.odyssey.option.blocks.flower_picking": "Flower Picking",
   "text.autoconfig.odyssey.option.blocks.flower_picking.@Tooltip": "Small Flowers can be right-clicked with an empty hand to instantly drop themselves as an item instead of having to destroy them in order to obtain them",
+  "text.autoconfig.odyssey.option.blocks.piston_interactions": "Piston Interactions",
+  "text.autoconfig.odyssey.option.blocks.piston_interactions.@Tooltip": "Pistons can be right-clicked with a Slimeball to turn them into Sticky Pistons, and Sticky Pistons can be right-clicked with an Axe to turn them into normal Pistons",
 
   "text.autoconfig.odyssey.option.entities": "Entities",
   "text.autoconfig.odyssey.option.entities.@Tooltip": "Changes to the way certain entities function",
