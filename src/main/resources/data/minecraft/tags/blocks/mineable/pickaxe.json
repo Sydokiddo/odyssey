@@ -10,6 +10,7 @@
     "minecraft:sea_lantern",
     "minecraft:beacon",
     "minecraft:turtle_egg",
-    "minecraft:sniffer_egg"
+    "minecraft:sniffer_egg",
+    "minecraft:lever"
   ]
 }

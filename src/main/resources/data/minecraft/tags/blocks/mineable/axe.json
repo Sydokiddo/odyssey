@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "#minecraft:beds",
-    "minecraft:lever"
+    "#minecraft:beds"
   ]
 }

@@ -2,9 +2,12 @@ package net.sydokiddo.odyssey.mixin.blocks;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
+import net.minecraft.util.ParticleUtils;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -40,16 +43,19 @@ public class PistonBaseBlockMixin extends DirectionalBlock {
     }
 
     @Unique
-    private void doPistonUseEvents(Level level, BlockPos blockPos, Player player, Item item, BlockState blockState, Block block, SoundEvent soundEvent) {
+    private void doPistonUseEvents(Level level, BlockPos blockPos, Player player, Item item, BlockState blockState, Block block, SoundEvent soundEvent, Direction direction) {
 
         if (!level.isClientSide()) {
             player.awardStat(Stats.ITEM_USED.get(item));
         }
 
+        ParticleUtils.spawnParticlesOnBlockFace(level, blockPos, ParticleTypes.ITEM_SLIME, UniformInt.of(3, 5), direction, () -> ParticleUtils.getRandomSpeedRanges(level.random), 0.55);
         level.setBlockAndUpdate(blockPos, block.defaultBlockState().setValue(PistonBaseBlock.FACING, blockState.getValue(PistonBaseBlock.FACING)));
         level.playSound(null, blockPos, soundEvent, SoundSource.BLOCKS, 1.0f, 1.0f);
         level.gameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Context.of(player));
     }
+
+    // Pistons can now be right-clicked with a Slime Ball to turn them into Sticky Pistons, and Sticky Pistons can be right-clicked with an Axe to turn them back into normal Pistons
 
     @SuppressWarnings("ALL")
     @Override
@@ -67,7 +73,7 @@ public class PistonBaseBlockMixin extends DirectionalBlock {
                     itemStack.shrink(1);
                 }
 
-                doPistonUseEvents(level, blockPos, player, item, blockState, Blocks.STICKY_PISTON, ModSoundEvents.PISTON_APPLY_SLIMEBALL);
+                doPistonUseEvents(level, blockPos, player, item, blockState, Blocks.STICKY_PISTON, ModSoundEvents.PISTON_APPLY_SLIMEBALL, direction);
                 return InteractionResult.sidedSuccess(level.isClientSide);
 
             } else if (this.isSticky && item instanceof AxeItem) {
@@ -77,7 +83,7 @@ public class PistonBaseBlockMixin extends DirectionalBlock {
                 }
 
                 popResourceFromFace(level, blockPos, direction, new ItemStack(Items.SLIME_BALL));
-                doPistonUseEvents(level, blockPos, player, item, blockState, Blocks.PISTON, ModSoundEvents.PISTON_REMOVE_SLIMEBALL);
+                doPistonUseEvents(level, blockPos, player, item, blockState, Blocks.PISTON, ModSoundEvents.PISTON_REMOVE_SLIMEBALL, direction);
                 return InteractionResult.sidedSuccess(level.isClientSide);
 
             } else {

@@ -1,1 +1,3 @@
 accessWidener   v1  named
+
+accessible method net/minecraft/util/ParticleUtils getRandomSpeedRanges (Lnet/minecraft/util/RandomSource;)Lnet/minecraft/world/phys/Vec3;
