@@ -25,7 +25,7 @@ public class SporeBlossomMixin implements BonemealableBlock {
     // Spore Blossoms can now be right-clicked with Bone Meal to duplicate them
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader levelReader, BlockPos blockPos, BlockState blockState, boolean bl) {
+    public boolean isValidBonemealTarget(LevelReader levelReader, BlockPos blockPos, BlockState blockState) {
         return Odyssey.getConfig().blocks.spore_blossom_bone_mealing;
     }
 

@@ -33,9 +33,9 @@ public class ModBrushableBlockRenderer implements BlockEntityRenderer<ModBrushab
 
         if (brushableBlockEntity.getLevel() != null) {
 
-            int k = brushableBlockEntity.getBlockState().getValue(BlockStateProperties.DUSTED);
+            int dustedState = brushableBlockEntity.getBlockState().getValue(BlockStateProperties.DUSTED);
 
-            if (k > 0) {
+            if (dustedState > 0) {
 
                 Direction direction = brushableBlockEntity.getHitDirection();
 
@@ -45,7 +45,7 @@ public class ModBrushableBlockRenderer implements BlockEntityRenderer<ModBrushab
                     if (!itemStack.isEmpty()) {
                         poseStack.pushPose();
                         poseStack.translate(0.0F, 0.5F, 0.0F);
-                        float[] fs = this.translations(direction, k);
+                        float[] fs = this.translations(direction, dustedState);
                         poseStack.translate(fs[0], fs[1], fs[2]);
                         poseStack.mulPose(Axis.YP.rotationDegrees(75.0F));
                         boolean bl = direction == Direction.EAST || direction == Direction.WEST;

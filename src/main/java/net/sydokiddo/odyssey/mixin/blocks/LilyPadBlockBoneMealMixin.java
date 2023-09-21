@@ -29,7 +29,7 @@ public abstract class LilyPadBlockBoneMealMixin implements BonemealableBlock {
     }
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader levelReader, BlockPos blockPos, BlockState blockState, boolean bl) {
+    public boolean isValidBonemealTarget(LevelReader levelReader, BlockPos blockPos, BlockState blockState) {
         return Odyssey.getConfig().blocks.lily_pad_bone_mealing;
     }
 
