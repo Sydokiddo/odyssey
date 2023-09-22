@@ -98,7 +98,7 @@ public class GunpowderBlock extends FallingBlock {
         }
     }
 
-    private static void explode(Level level, BlockPos pos) {
+    public static void explode(Level level, BlockPos pos) {
         if (Odyssey.getConfig().blocks.unstable_gunpowder_blocks) {
             explode(level, pos, null);
         }

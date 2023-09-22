@@ -9,6 +9,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
@@ -27,10 +28,14 @@ public class ModBlocks {
 
     public static final Block GUNPOWDER_BLOCK = registerBlock("gunpowder_block",
         new GunpowderBlock(FabricBlockSettings.create().mapColor(MapColor.COLOR_GRAY)
-        .sound(SoundType.SAND).instrument(NoteBlockInstrument.SNARE).strength(0.5f)));
+        .sound(SoundType.SAND).instrument(NoteBlockInstrument.SNARE).strength(0.5f).ignitedByLava()));
 
     public static final Block REFINED_AMETHYST_BLOCK = registerBlock("refined_amethyst_block",
         new AmethystBlock(FabricBlockSettings.copyOf(Blocks.AMETHYST_BLOCK).sound(SoundType.AMETHYST)));
+
+    public static final Block SUGAR_CANE_BLOCK = registerBlock("sugar_cane_block",
+        new RotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.PLANT)
+        .instrument(NoteBlockInstrument.BASS).strength(0.5F).sound(SoundType.GRASS).ignitedByLava()));
 
     public static final Block POLISHED_DEEPSLATE_PRESSURE_PLATE = registerBlock("polished_deepslate_pressure_plate", RegistryHelpers.registerStonePressurePlate(MapColor.DEEPSLATE, BlockSetType.STONE));
 

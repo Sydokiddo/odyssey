@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "odyssey:block/sugar_cane_block_top",
+    "side": "odyssey:block/sugar_cane_block"
+  }
+}

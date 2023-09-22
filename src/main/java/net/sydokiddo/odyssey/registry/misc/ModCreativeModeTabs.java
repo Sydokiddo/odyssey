@@ -38,6 +38,7 @@ public class ModCreativeModeTabs {
 
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.NATURAL_BLOCKS).register(entries -> {
             entries.addAfter(Items.HAY_BLOCK, ModBlocks.GUNPOWDER_BLOCK);
+            entries.addAfter(Items.SUGAR_CANE, ModBlocks.SUGAR_CANE_BLOCK);
         });
 
         // Food and Drinks Tab:

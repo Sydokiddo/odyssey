@@ -9,6 +9,7 @@
     "minecraft:honeycomb_block",
     "minecraft:frogspawn",
     "minecraft:cake",
-    "#minecraft:candle_cakes"
+    "#minecraft:candle_cakes",
+    "odyssey:sugar_cane_block"
   ]
 }

@@ -11,6 +11,7 @@
     "blocks.BlockMixin",
     "blocks.DispenserBlockMixin",
     "blocks.FarmlandBlockMixin",
+    "blocks.FireBlockMixin",
     "blocks.LilyPadBlockBoneMealMixin",
     "blocks.LiquidBlockMixin",
     "blocks.PistonBaseBlockMixin",
