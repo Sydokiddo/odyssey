@@ -1,11 +1,13 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_brick": {
+    "has_snow_block": {
       "conditions": {
         "items": [
           {
-            "tag": "chrysalis:bricks"
+            "items": [
+              "minecraft:snow_block"
+            ]
           }
         ]
       },
@@ -13,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:flower_pot"
+        "recipe": "odyssey:snowball"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_brick",
+      "has_snow_block",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:flower_pot"
+      "odyssey:snowball"
     ]
   },
   "sends_telemetry_event": false

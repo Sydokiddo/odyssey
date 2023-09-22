@@ -1,0 +1,8 @@
+{
+  "values": [
+    "minecraft:smooth_stone_slab",
+    "minecraft:polished_deepslate_slab",
+    "minecraft:polished_blackstone_slab",
+    {"id": "endlessencore:polished_porousite_slab", "required": false}
+  ]
+}

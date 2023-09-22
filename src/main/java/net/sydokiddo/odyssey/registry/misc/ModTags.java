@@ -16,6 +16,9 @@ public class ModTags {
     public static final TagKey<Item> REPAIRS_ANVILS = TagKey.create(Registries.ITEM, new ResourceLocation(Odyssey.MOD_ID, "repairs_anvils"));
     public static final TagKey<Item> GIVES_ARMOR_STANDS_ARMS = TagKey.create(Registries.ITEM, new ResourceLocation(Odyssey.MOD_ID, "gives_armor_stands_arms"));
     public static final TagKey<Item> TNT_CRAFTING_MATERIALS = TagKey.create(Registries.ITEM, new ResourceLocation(Odyssey.MOD_ID, "tnt_crafting_materials"));
+    public static final TagKey<Item> POLISHED_STONE_CRAFTING_MATERIALS = TagKey.create(Registries.ITEM, new ResourceLocation(Odyssey.MOD_ID, "polished_stone_crafting_materials"));
+    public static final TagKey<Item> POLISHED_STONE_SLAB_CRAFTING_MATERIALS = TagKey.create(Registries.ITEM, new ResourceLocation(Odyssey.MOD_ID, "polished_stone_slab_crafting_materials"));
+    public static final TagKey<Item> LODESTONE_CRAFTING_MATERIALS = TagKey.create(Registries.ITEM, new ResourceLocation(Odyssey.MOD_ID, "lodestone_crafting_materials"));
 
     // Block Tags:
 

@@ -31,6 +31,7 @@
     "entities.VexMixin",
     "items.EnchantmentMixin",
     "items.ItemStackMixin",
+    "items.misc.HoneyBottleItemMixin",
     "items.tools.BrushItemMixin",
     "items.tools.DiggerItemMixin",
     "items.tools.ShearsItemMixin",

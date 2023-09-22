@@ -3,7 +3,7 @@
   "category": "misc",
   "key": {
     "#": {
-      "item": "minecraft:netherite_scrap"
+      "tag": "odyssey:lodestone_crafting_materials"
     },
     "S": {
       "item": "minecraft:chiseled_stone_bricks"

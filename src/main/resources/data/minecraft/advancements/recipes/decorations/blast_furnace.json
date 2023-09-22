@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_brick": {
+    "has_smooth_stone": {
       "conditions": {
         "items": [
           {
-            "tag": "chrysalis:bricks"
+            "tag": "odyssey:polished_stone_crafting_materials"
           }
         ]
       },
@@ -13,20 +13,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:flower_pot"
+        "recipe": "minecraft:blast_furnace"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_brick",
+      "has_smooth_stone",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:flower_pot"
+      "minecraft:blast_furnace"
     ]
   },
   "sends_telemetry_event": false

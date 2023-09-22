@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:netherite_scrap"
-            ]
+            "tag": "odyssey:lodestone_crafting_materials"
           }
         ]
       },

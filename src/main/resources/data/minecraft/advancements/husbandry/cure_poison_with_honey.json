@@ -1,0 +1,28 @@
+{
+  "parent": "minecraft:husbandry/safely_harvest_honey",
+  "criteria": {
+    "cure_poison": {
+      "trigger": "odyssey:cure_poison_with_honey"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.husbandry.cure_poison_with_honey.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "minecraft:honey_bottle"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.husbandry.cure_poison_with_honey.title"
+    }
+  },
+  "requirements": [
+    [
+      "cure_poison"
+    ]
+  ]
+}

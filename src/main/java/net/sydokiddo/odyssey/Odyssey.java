@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 public class Odyssey implements ModInitializer {
 
 	public static final String MOD_ID = "odyssey";
-	private static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 	private static final ModConfig CONFIG = AutoConfig.register(ModConfig.class, GsonConfigSerializer::new).getConfig();
 
 	public static ResourceLocation id(String name) {

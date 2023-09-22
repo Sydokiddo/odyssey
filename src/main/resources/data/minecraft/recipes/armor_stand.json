@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "/": {
+      "item": "minecraft:stick"
+    },
+    "_": {
+      "tag": "odyssey:polished_stone_slab_crafting_materials"
+    }
+  },
+  "pattern": [
+    "///",
+    " / ",
+    "/_/"
+  ],
+  "result": {
+    "item": "minecraft:armor_stand"
+  },
+  "show_notification": true
+}

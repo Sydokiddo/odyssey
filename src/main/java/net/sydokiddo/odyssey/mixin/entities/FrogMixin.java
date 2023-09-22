@@ -11,6 +11,7 @@ import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.FrogVariant;
 import net.minecraft.world.entity.animal.frog.Frog;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -55,8 +56,10 @@ public abstract class FrogMixin extends Animal implements ContainerMob {
     @SuppressWarnings("ALL")
     @Override
     public void loadFromItemTag(CompoundTag compoundTag) {
+
         ContainerMob.loadDefaultDataFromItemTag(this, compoundTag);
         FrogVariant frogVariant = (FrogVariant)BuiltInRegistries.FROG_VARIANT.get(ResourceLocation.tryParse(compoundTag.getString(VARIANT_TAG)));
+
         if (frogVariant != null) {
             this.setVariant(frogVariant);
         }
@@ -74,8 +77,12 @@ public abstract class FrogMixin extends Animal implements ContainerMob {
 
     @Override
     public InteractionResult mobInteract(Player player, @NotNull InteractionHand interactionHand) {
-        if (this.isAlive() && Odyssey.getConfig().entities.bucketable_frogs) {
-            return ContainerMob.containerMobPickup(player, interactionHand, this, Items.BUCKET).orElse(super.mobInteract(player, interactionHand));
+
+        ItemStack itemInHand = player.getItemInHand(interactionHand);
+        Item containerItem = Items.BUCKET;
+
+        if (this.isAlive() && itemInHand.is(containerItem) && Odyssey.getConfig().entities.bucketable_frogs) {
+            return ContainerMob.containerMobPickup(player, interactionHand, this, containerItem).orElse(super.mobInteract(player, interactionHand));
         }
         return super.mobInteract(player, interactionHand);
     }

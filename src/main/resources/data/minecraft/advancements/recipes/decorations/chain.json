@@ -1,11 +1,13 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_brick": {
+    "has_iron_nugget": {
       "conditions": {
         "items": [
           {
-            "tag": "chrysalis:bricks"
+            "items": [
+              "minecraft:iron_nugget"
+            ]
           }
         ]
       },
@@ -13,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:flower_pot"
+        "recipe": "minecraft:chain"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_brick",
+      "has_iron_nugget",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:flower_pot"
+      "minecraft:chain"
     ]
   },
   "sends_telemetry_event": false

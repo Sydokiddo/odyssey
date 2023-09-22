@@ -79,7 +79,7 @@
   "advancements.husbandry.frog_in_a_bucket.description": "Catch a Frog in a Bucket",
   "advancements.husbandry.squid_in_a_bucket.title": "Squidnapper",
   "advancements.husbandry.squid_in_a_bucket.description": "Catch a Squid or a Glow Squid in a Bucket",
-  "advancements.adventure.find_ancient_city.title": "What Lies Beneath",
+  "advancements.adventure.find_ancient_city.title": "Long Long Forgotten",
   "advancements.adventure.find_ancient_city.description": "Enter an Ancient City",
   "advancements.adventure.find_ocean_monument.title": "A Monumental Discovery",
   "advancements.adventure.find_ocean_monument.description": "Enter an Ocean Monument",
@@ -93,6 +93,8 @@
   "advancements.husbandry.rare_axolotl_in_a_bucket.description": "Catch the rarest Axolotl variant in a Bucket",
   "advancements.husbandry.brush_mob.title": "You Can Pet the Dog!",
   "advancements.husbandry.brush_mob.description": "Pet a passive mob with a Brush",
+  "advancements.husbandry.cure_poison_with_honey.title": "Cough Syrup",
+  "advancements.husbandry.cure_poison_with_honey.description": "Cure poison by drinking a Honey Bottle",
 
   "text.autoconfig.odyssey.title": "Odyssey - Options",
 

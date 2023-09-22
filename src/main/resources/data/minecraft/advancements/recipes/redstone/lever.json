@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_brick": {
+    "has_cobblestone": {
       "conditions": {
         "items": [
           {
-            "tag": "chrysalis:bricks"
+            "tag": "minecraft:stone_crafting_materials"
           }
         ]
       },
@@ -13,20 +13,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:flower_pot"
+        "recipe": "minecraft:lever"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_brick",
+      "has_cobblestone",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:flower_pot"
+      "minecraft:lever"
     ]
   },
   "sends_telemetry_event": false

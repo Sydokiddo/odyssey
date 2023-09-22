@@ -12,6 +12,7 @@ import net.sydokiddo.odyssey.registry.entities.registry.ModEntities;
 import net.sydokiddo.odyssey.registry.items.ModItems;
 import net.sydokiddo.odyssey.registry.items.ModPotions;
 import net.sydokiddo.odyssey.registry.misc.ModCreativeModeTabs;
+import net.sydokiddo.odyssey.registry.misc.ModCriteriaTriggers;
 import net.sydokiddo.odyssey.registry.misc.ModLootTableModifiers;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
 
@@ -36,6 +37,7 @@ public class OdysseyRegistry {
 
         ModCreativeModeTabs.registerCreativeTabs();
         ModLootTableModifiers.modifyLootTables();
+        ModCriteriaTriggers.registerCriteriaTriggers();
 
         System.out.println("Registering Content for Odyssey");
     }

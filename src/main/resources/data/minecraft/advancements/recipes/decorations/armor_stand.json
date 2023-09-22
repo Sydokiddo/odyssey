@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_brick": {
+    "has_stone_slab": {
       "conditions": {
         "items": [
           {
-            "tag": "chrysalis:bricks"
+            "tag": "odyssey:polished_stone_slab_crafting_materials"
           }
         ]
       },
@@ -13,20 +13,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:flower_pot"
+        "recipe": "minecraft:armor_stand"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_brick",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_stone_slab"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:flower_pot"
+      "minecraft:armor_stand"
     ]
   },
   "sends_telemetry_event": false
