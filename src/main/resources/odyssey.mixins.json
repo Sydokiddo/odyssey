@@ -18,6 +18,7 @@
     "blocks.SmallDripleafBlockMixin",
     "blocks.SnifferEggBlockMixin",
     "blocks.SporeBlossomMixin",
+    "entities.MobBrushingOverridesMixin",
     "entities.FrogMixin",
     "entities.GuardianMixin",
     "entities.ItemFrameMixin",
