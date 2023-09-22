@@ -1,0 +1,51 @@
+{
+  "parent": "minecraft:nether/brew_potion",
+  "criteria": {
+    "poison_potato": {
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {
+              "block": {
+                "blocks": [
+                  "minecraft:cauldron",
+                  "odyssey:potion_cauldron"
+                ]
+              }
+            }
+          },
+          {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "items": [
+                "minecraft:potato"
+              ]
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:item_used_on_block"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.nether.poison_potato_in_potion_cauldron.description"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "minecraft:poisonous_potato"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.nether.poison_potato_in_potion_cauldron.title"
+    }
+  },
+  "requirements": [
+    [
+      "poison_potato"
+    ]
+  ]
+}

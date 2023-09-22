@@ -95,6 +95,10 @@
   "advancements.husbandry.brush_mob.description": "Pet a passive mob with a Brush",
   "advancements.husbandry.cure_poison_with_honey.title": "Cough Syrup",
   "advancements.husbandry.cure_poison_with_honey.description": "Cure poison by drinking a Honey Bottle",
+  "advancements.nether.tip_arrows_in_potion_cauldron.title": "Tipped to Perfection",
+  "advancements.nether.tip_arrows_in_potion_cauldron.description": "Tip Arrows in a Potion Cauldron",
+  "advancements.nether.poison_potato_in_potion_cauldron.title": "Spoiled Rotten",
+  "advancements.nether.poison_potato_in_potion_cauldron.description": "Poison a Potato in a Potion Cauldron",
 
   "text.autoconfig.odyssey.title": "Odyssey - Options",
 
