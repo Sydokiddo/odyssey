@@ -1,15 +1,46 @@
 package net.sydokiddo.odyssey.registry.misc;
 
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.blocks.ModBlocks;
 import net.sydokiddo.odyssey.registry.items.ModItems;
 
 public class ModCreativeModeTabs {
 
+    // Creative Mode Tab Registry:
+
+    private static final ResourceKey<CreativeModeTab> ODYSSEY_CREATIVE_TAB = ResourceKey.create(Registries.CREATIVE_MODE_TAB, Odyssey.id(Odyssey.MOD_ID));
+
     @SuppressWarnings("ALL")
     public static void registerCreativeTabs() {
+
+        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, ODYSSEY_CREATIVE_TAB, FabricItemGroup.builder()
+            .title(Component.translatable("itemGroup.odyssey"))
+            .icon(() -> new ItemStack(ModBlocks.REFINED_AMETHYST_BLOCK))
+            .build()
+        );
+
+        // Odyssey Tab:
+
+        ItemGroupEvents.modifyEntriesEvent(ODYSSEY_CREATIVE_TAB).register(content -> {
+
+            content.accept(ModItems.ELDER_GUARDIAN_THORN);
+
+            content.addAfter(ModItems.ELDER_GUARDIAN_THORN, ModItems.WITHER_SKULL_FRAGMENT, ModItems.IRON_POTATO, ModItems.ENCHANTED_IRON_POTATO,
+            ModItems.SQUID_BUCKET, ModItems.GLOW_SQUID_BUCKET, ModItems.FROG_BUCKET, ModBlocks.GUNPOWDER_BLOCK, ModBlocks.REFINED_AMETHYST_BLOCK,
+            ModBlocks.SUGAR_CANE_BLOCK, ModBlocks.SUSPICIOUS_RED_SAND, ModBlocks.POLISHED_DEEPSLATE_BUTTON, ModBlocks.POLISHED_DEEPSLATE_PRESSURE_PLATE,
+            ModBlocks.REDSTONE_LANTERN, ModBlocks.PRISMARINE_BRICK_WALL, ModBlocks.DARK_PRISMARINE_WALL);
+        });
 
         // Building Blocks Tab:
 
