@@ -7,7 +7,9 @@ import net.minecraft.world.entity.monster.ElderGuardian;
 import net.minecraft.world.entity.monster.Guardian;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.Level;
+import net.sydokiddo.chrysalis.Chrysalis;
 import net.sydokiddo.odyssey.Odyssey;
+import net.sydokiddo.odyssey.registry.OdysseyRegistry;
 import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(Guardian.class)
@@ -36,6 +38,7 @@ public class GuardianMixin extends Monster {
 
             elderGuardian.setPersistenceRequired();
             serverLevel.addFreshEntity(elderGuardian);
+            OdysseyRegistry.sendMobConversionDebugMessage(this, elderGuardian);
             this.discard();
 
         } else {

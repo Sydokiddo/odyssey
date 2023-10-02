@@ -2,6 +2,7 @@ package net.sydokiddo.odyssey.mixin.blocks;
 
 import net.sydokiddo.odyssey.Odyssey;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 import java.util.Random;
@@ -13,7 +14,7 @@ import net.minecraft.world.level.block.state.BlockState;
 @Mixin(LiquidBlock.class)
 public class LiquidBlockMixin {
 
-    Random random = new Random();
+    @Unique Random random = new Random();
 
     // Cobblestone generators are replaced with Cobbled Deepslate generators below Y=0
 

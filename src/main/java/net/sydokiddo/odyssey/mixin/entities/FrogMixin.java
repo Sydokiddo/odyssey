@@ -17,18 +17,20 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.sydokiddo.chrysalis.misc.util.mobs.ContainerMob;
 import net.sydokiddo.odyssey.Odyssey;
+import net.sydokiddo.odyssey.registry.OdysseyRegistry;
 import net.sydokiddo.odyssey.registry.items.ModItems;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 
 @Mixin(Frog.class)
 public abstract class FrogMixin extends Animal implements ContainerMob {
 
     // Frogs can now be picked up in Empty Buckets
 
-    private static final String VARIANT_TAG = "variant";
+    @Unique private static final String VARIANT_TAG = "variant";
 
     @Shadow public abstract FrogVariant getVariant();
     @Shadow public abstract void setVariant(FrogVariant frogVariant);
@@ -82,6 +84,7 @@ public abstract class FrogMixin extends Animal implements ContainerMob {
         Item containerItem = Items.BUCKET;
 
         if (this.isAlive() && itemInHand.is(containerItem) && Odyssey.getConfig().entities.bucketable_frogs) {
+            OdysseyRegistry.sendMobBucketingDebugMessage(this, player);
             return ContainerMob.containerMobPickup(player, interactionHand, this, containerItem).orElse(super.mobInteract(player, interactionHand));
         }
         return super.mobInteract(player, interactionHand);

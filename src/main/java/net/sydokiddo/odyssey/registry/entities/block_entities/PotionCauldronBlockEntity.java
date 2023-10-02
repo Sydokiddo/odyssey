@@ -16,10 +16,10 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.sydokiddo.odyssey.client.rendering.ModEntityRenderer;
 import net.sydokiddo.odyssey.registry.blocks.ModBlocks;
 import net.sydokiddo.odyssey.registry.entities.registry.ModEntities;
 import org.jetbrains.annotations.NotNull;
-import static net.sydokiddo.odyssey.client.rendering.block_entities.PotionCauldronRendering.setRenderColors;
 
 public class PotionCauldronBlockEntity extends BlockEntity {
 
@@ -57,7 +57,7 @@ public class PotionCauldronBlockEntity extends BlockEntity {
         if (potionCauldronBlockEntity.hasPotion() && potionCauldronBlockEntity.getPotion().getEffects() != null ) {
 
             RandomSource randomSource = level.random;
-            setRenderColors();
+            ModEntityRenderer.setPotionCauldronRenderColors();
 
             int i = PotionUtils.getColor(potionCauldronBlockEntity.getPotion());
 

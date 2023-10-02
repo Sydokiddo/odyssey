@@ -12,6 +12,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.sydokiddo.chrysalis.Chrysalis;
+import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.misc.ModTags;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -33,6 +35,11 @@ public abstract class MobBrushingOverridesMixin extends Mob {
         ItemStack itemStack = player.getItemInHand(interactionHand);
 
         if (this.isAlive() && itemStack.is(Items.BRUSH) && this.getType().is(ModTags.CAN_BE_BRUSHED)) {
+
+            if (Chrysalis.IS_DEBUG) {
+                Odyssey.LOGGER.info("Overriding right-click methods for {} as {} has a brush in their hand", this.getName().getString(), player.getName().getString());
+            }
+
             cir.setReturnValue(super.mobInteract(player, interactionHand));
         }
     }

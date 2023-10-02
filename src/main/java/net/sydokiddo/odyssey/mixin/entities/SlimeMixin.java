@@ -28,12 +28,12 @@ public abstract class SlimeMixin extends Mob {
 
     @Shadow public abstract int getSize();
 
-    private static final String MAGMA_CONVERSION_TAG = "MagmaCubeConversionTime";
-    private static final String SLIME_CONVERSION_TAG = "SlimeConversionTime";
+    @Unique private static final String MAGMA_CONVERSION_TAG = "MagmaCubeConversionTime";
+    @Unique private static final String SLIME_CONVERSION_TAG = "SlimeConversionTime";
 
-    private int onMagmaTime;
-    private int inWaterTime;
-    private int conversionTime;
+    @Unique private int onMagmaTime;
+    @Unique private int inWaterTime;
+    @Unique private int conversionTime;
 
     private SlimeMixin(EntityType<? extends Mob> entityType, Level level) {
         super(entityType, level);
@@ -215,6 +215,7 @@ public abstract class SlimeMixin extends Mob {
             mob.startRiding(vehicle, true);
         }
 
+        OdysseyRegistry.sendMobConversionDebugMessage(this, mob);
         this.level().addFreshEntity(mob);
     }
 }

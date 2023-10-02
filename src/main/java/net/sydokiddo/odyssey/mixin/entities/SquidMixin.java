@@ -17,11 +17,12 @@ import net.sydokiddo.odyssey.registry.items.ModItems;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 
 @Mixin(Squid.class)
 public class SquidMixin extends WaterAnimal implements Bucketable {
 
-    private static final String FROM_BUCKET_TAG = "FromBucket";
+    @Unique private static final String FROM_BUCKET_TAG = "FromBucket";
 
     // Squids and Glow Squids can now be picked up in Water Buckets
 
@@ -95,6 +96,7 @@ public class SquidMixin extends WaterAnimal implements Bucketable {
     @Override
     public InteractionResult mobInteract(Player player, @NotNull InteractionHand interactionHand) {
         if (this.isAlive() && Odyssey.getConfig().entities.bucketable_squids) {
+            OdysseyRegistry.sendMobBucketingDebugMessage(this, player);
             return Bucketable.bucketMobPickup(player, interactionHand, this).orElse(super.mobInteract(player, interactionHand));
         }
         return super.mobInteract(player, interactionHand);

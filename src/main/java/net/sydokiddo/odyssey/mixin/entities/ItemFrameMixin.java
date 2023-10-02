@@ -16,6 +16,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.sydokiddo.chrysalis.Chrysalis;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.OdysseyRegistry;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
@@ -34,7 +35,7 @@ public abstract class ItemFrameMixin extends HangingEntity {
     @Shadow public abstract ItemStack getItem();
     @Shadow public abstract SoundEvent getRotateItemSound();
 
-    private static final String WAXED_TAG = "Waxed";
+    @Unique private static final String WAXED_TAG = "Waxed";
 
     private ItemFrameMixin(EntityType<? extends HangingEntity> entityType, Level level) {
         super(entityType, level);
@@ -95,6 +96,10 @@ public abstract class ItemFrameMixin extends HangingEntity {
                 this.setWaxed(true);
                 this.level().levelEvent(player, 3003, this.pos, 0);
 
+                if (Chrysalis.IS_DEBUG) {
+                    Odyssey.LOGGER.info("{} has been successfully waxed by {}", this.getName().getString(), player.getName().getString());
+                }
+
                 this.gameEvent(GameEvent.BLOCK_CHANGE, player);
                 player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
                 cir.setReturnValue(InteractionResult.SUCCESS);
@@ -110,6 +115,10 @@ public abstract class ItemFrameMixin extends HangingEntity {
                 this.playSound(ModSoundEvents.ITEM_FRAME_SHEAR, 1.0f, 1.0f);
                 this.displayPoofParticles();
 
+                if (Chrysalis.IS_DEBUG) {
+                    Odyssey.LOGGER.info("Setting {} as invisible as it has been sheared by {}", this.getName().getString(), player.getName().getString());
+                }
+
                 this.gameEvent(GameEvent.BLOCK_CHANGE, player);
                 player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
                 cir.setReturnValue(InteractionResult.SUCCESS);
@@ -122,8 +131,13 @@ public abstract class ItemFrameMixin extends HangingEntity {
     @Inject(method = "hurt", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/decoration/ItemFrame;gameEvent(Lnet/minecraft/world/level/gameevent/GameEvent;Lnet/minecraft/world/entity/Entity;)V"))
     private void odyssey_makeItemFrameVisibleUponRemovingItem(DamageSource damageSource, float f, CallbackInfoReturnable<Boolean> cir) {
         if (this.isInvisible()) {
+
             this.setInvisible(false);
             this.displayPoofParticles();
+
+            if (Chrysalis.IS_DEBUG) {
+                Odyssey.LOGGER.info("Setting {} as visible again as its item has been removed", this.getName().getString());
+            }
         }
     }
 
@@ -132,6 +146,11 @@ public abstract class ItemFrameMixin extends HangingEntity {
     @Inject(method = "interact", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/decoration/ItemFrame;setRotation(I)V"), cancellable = true)
     private void odyssey_cancelRotationIfItemFrameWaxed(Player player, InteractionHand interactionHand, CallbackInfoReturnable<InteractionResult> cir) {
         if (this.isWaxed()) {
+
+            if (Chrysalis.IS_DEBUG) {
+                Odyssey.LOGGER.info("{} is waxed, preventing items inside of it from being rotated", this.getName().getString());
+            }
+
             cir.cancel();
             cir.setReturnValue(InteractionResult.PASS);
         }
