@@ -51,6 +51,16 @@
 
   "entity.odyssey.gunpowder_block": "Primed Block of Gunpowder",
 
+  "entity.odyssey.frog_type.temperate": "Temperate",
+  "entity.odyssey.frog_type.warm": "Warm",
+  "entity.odyssey.frog_type.cold": "Cold",
+
+  "entity.odyssey.axolotl_type.lucy": "Lucy",
+  "entity.odyssey.axolotl_type.wild": "Wild",
+  "entity.odyssey.axolotl_type.gold": "Gold",
+  "entity.odyssey.axolotl_type.cyan": "Cyan",
+  "entity.odyssey.axolotl_type.blue": "Blue",
+
   "subtitles.block.anvil.repair": "Anvil repaired",
   "subtitles.entity.armor_stand.add_arms": "Arms fasten to Armor Stand",
   "subtitles.block.small_flower.pick": "Flower picked",

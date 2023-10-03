@@ -8,13 +8,12 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
-import net.minecraft.world.level.block.Block;
 import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
 import net.sydokiddo.chrysalis.registry.items.custom_items.EnchantedGlintItem;
 import net.sydokiddo.odyssey.Odyssey;
+import net.sydokiddo.odyssey.registry.items.custom_items.FrogBucketItem;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
 
-@SuppressWarnings("ALL")
 public class ModItems {
 
     // List of Items:
@@ -36,7 +35,8 @@ public class ModItems {
         .effect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 900, 0), 1f).build()).rarity(Rarity.EPIC)));
 
     public static final Item FROG_BUCKET = registerItem("frog_bucket",
-        RegistryHelpers.registerMobInContainer(EntityType.FROG, ModSoundEvents.BUCKET_EMPTY_FROG, Items.BUCKET));
+        new FrogBucketItem(EntityType.FROG, ModSoundEvents.BUCKET_EMPTY_FROG,
+        new FabricItemSettings().stacksTo(1).craftRemainder(Items.BUCKET), Items.BUCKET));
 
     public static final Item SQUID_BUCKET = registerItem("squid_bucket",
         RegistryHelpers.registerMobInWaterBucket(EntityType.SQUID, ModSoundEvents.BUCKET_EMPTY_SQUID));
@@ -48,16 +48,6 @@ public class ModItems {
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(BuiltInRegistries.ITEM, Odyssey.id(name), item);
-    }
-
-    private static Block registerBlock(String name, Block block) {
-        registerBlockItem(name, block);
-        return Registry.register(BuiltInRegistries.BLOCK, Odyssey.id(name), block);
-    }
-
-    private static Item registerBlockItem(String name, Block block) {
-        return Registry.register(BuiltInRegistries.ITEM, Odyssey.id(name),
-        new BlockItem(block, new FabricItemSettings()));
     }
 
     public static void registerModItems() {}
