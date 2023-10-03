@@ -3,9 +3,10 @@ package net.sydokiddo.odyssey.misc.config;
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
+import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.misc.config.options.ItemStackSizeConfig;
 
-@Config(name = "odyssey")
+@Config(name = Odyssey.MOD_ID)
 @Config.Gui.Background("odyssey:textures/block/refined_amethyst_block.png")
 public class ModConfig implements ConfigData {
 
@@ -23,6 +24,9 @@ public class ModConfig implements ConfigData {
 
         @ConfigEntry.Gui.Tooltip
         public boolean silk_touch_and_fortune_on_shears = true;
+
+        @ConfigEntry.Gui.Tooltip
+        public boolean mob_bucket_variant_tooltips = true;
 
         @ConfigEntry.Gui.Tooltip
         @ConfigEntry.Gui.RequiresRestart

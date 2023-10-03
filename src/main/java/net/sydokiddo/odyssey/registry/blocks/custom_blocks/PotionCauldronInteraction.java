@@ -22,6 +22,7 @@ import net.minecraft.world.level.block.LayeredCauldronBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.sydokiddo.odyssey.registry.OdysseyRegistry;
 import net.sydokiddo.odyssey.registry.entities.block_entities.PotionCauldronBlockEntity;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
 import java.util.Map;
@@ -109,7 +110,7 @@ public class PotionCauldronInteraction {
 
             if (cauldron.hasPotion() && !world.isClientSide && getPotion(stack) != Potions.WATER) {
                 PotionUtils.setPotion(tippedArrow, potion);
-                doCauldronConsumeInteraction(state, world, pos, player, hand, tippedArrow);
+                doCauldronConsumeInteraction(state, world, pos, player, hand, Items.ARROW.getDefaultInstance(), tippedArrow);
                 world.playSound(null, pos, ModSoundEvents.CAULDRON_TIP_ARROW, SoundSource.BLOCKS, 1.0F, 1.0F);
             }
             return InteractionResult.sidedSuccess(world.isClientSide);
@@ -126,7 +127,7 @@ public class PotionCauldronInteraction {
             if (cauldron != null && (cauldron.getPotion() == Potions.POISON || cauldron.getPotion() == Potions.LONG_POISON || cauldron.getPotion() == Potions.STRONG_POISON)) {
 
                 if (cauldron.hasPotion() && !world.isClientSide) {
-                    doCauldronConsumeInteraction(state, world, pos, player, hand, poisonousPotato);
+                    doCauldronConsumeInteraction(state, world, pos, player, hand, Items.POTATO.getDefaultInstance(), poisonousPotato);
                     world.playSound(null, pos, ModSoundEvents.CAULDRON_POISON_POTATO, SoundSource.BLOCKS, 1.0F, 1.0F);
                 }
                 return InteractionResult.sidedSuccess(world.isClientSide);
@@ -138,14 +139,16 @@ public class PotionCauldronInteraction {
         CauldronInteraction.addDefaultInteractions(POTION_CAULDRON_BEHAVIOR);
     }
 
-    private static void doCauldronConsumeInteraction(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, ItemStack itemStack) {
+    private static void doCauldronConsumeInteraction(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, ItemStack startingItem, ItemStack resultItem) {
 
-        player.setItemInHand(hand, itemStack);
+        player.setItemInHand(hand, resultItem);
 
         player.awardStat(Stats.USE_CAULDRON);
-        player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
+        player.awardStat(Stats.ITEM_USED.get(resultItem.getItem()));
 
         PotionCauldronBlock.lowerFillLevel(state, world, pos);
         world.gameEvent(null, GameEvent.BLOCK_CHANGE, pos);
+
+        OdysseyRegistry.sendCauldronInteractionDebugMessage(startingItem, resultItem, state.getBlock());
     }
 }

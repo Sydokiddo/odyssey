@@ -34,6 +34,7 @@
     "items.EnchantmentMixin",
     "items.ItemStackMixin",
     "items.misc.HoneyBottleItemMixin",
+    "items.misc.MobBucketItemMixin",
     "items.tools.BrushItemMixin",
     "items.tools.DiggerItemMixin",
     "items.tools.ShearsItemMixin",

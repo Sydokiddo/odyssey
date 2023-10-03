@@ -2,7 +2,6 @@ package net.sydokiddo.odyssey.mixin.entities;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.InteractionHand;
@@ -12,27 +11,22 @@ import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.FrogVariant;
 import net.minecraft.world.entity.animal.frog.Frog;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.sydokiddo.chrysalis.misc.util.mobs.ContainerMob;
 import net.sydokiddo.odyssey.Odyssey;
-import net.sydokiddo.odyssey.registry.OdysseyRegistry;
 import net.sydokiddo.odyssey.registry.items.ModItems;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.Unique;
 
 @Mixin(Frog.class)
 public abstract class FrogMixin extends Animal implements ContainerMob {
 
     // Frogs can now be picked up in Empty Buckets
-
-    @Unique private static final String VARIANT_TAG = "variant";
 
     @Shadow public abstract FrogVariant getVariant();
     @Shadow public abstract void setVariant(FrogVariant frogVariant);
@@ -54,7 +48,7 @@ public abstract class FrogMixin extends Animal implements ContainerMob {
     public void saveToItemTag(ItemStack itemStack) {
         ContainerMob.saveDefaultDataToItemTag(this, itemStack);
         CompoundTag compoundTag = itemStack.getOrCreateTag();
-        compoundTag.putString(VARIANT_TAG, BuiltInRegistries.FROG_VARIANT.getKey(this.getVariant()).toString());
+        compoundTag.putString(Frog.VARIANT_KEY, BuiltInRegistries.FROG_VARIANT.getKey(this.getVariant()).toString());
     }
 
     @SuppressWarnings("ALL")
@@ -62,7 +56,7 @@ public abstract class FrogMixin extends Animal implements ContainerMob {
     public void loadFromItemTag(CompoundTag compoundTag) {
 
         ContainerMob.loadDefaultDataFromItemTag(this, compoundTag);
-        FrogVariant frogVariant = (FrogVariant)BuiltInRegistries.FROG_VARIANT.get(ResourceLocation.tryParse(compoundTag.getString(VARIANT_TAG)));
+        FrogVariant frogVariant = (FrogVariant)BuiltInRegistries.FROG_VARIANT.get(ResourceLocation.tryParse(compoundTag.getString(Frog.VARIANT_KEY)));
 
         if (frogVariant != null) {
             this.setVariant(frogVariant);
@@ -86,7 +80,6 @@ public abstract class FrogMixin extends Animal implements ContainerMob {
         Item containerItem = Items.BUCKET;
 
         if (this.isAlive() && itemInHand.is(containerItem) && Odyssey.getConfig().entities.bucketable_frogs) {
-            OdysseyRegistry.sendMobBucketingDebugMessage(this, player);
             return ContainerMob.containerMobPickup(player, interactionHand, this, containerItem).orElse(super.mobInteract(player, interactionHand));
         }
         return super.mobInteract(player, interactionHand);

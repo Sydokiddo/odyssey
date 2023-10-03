@@ -51,15 +51,15 @@
 
   "entity.odyssey.gunpowder_block": "Primed Block of Gunpowder",
 
-  "entity.odyssey.frog_type.temperate": "Temperate",
-  "entity.odyssey.frog_type.warm": "Warm",
-  "entity.odyssey.frog_type.cold": "Cold",
+  "entity.frog_type.minecraft:temperate": "Temperate",
+  "entity.frog_type.minecraft:warm": "Warm",
+  "entity.frog_type.minecraft:cold": "Cold",
 
-  "entity.odyssey.axolotl_type.lucy": "Lucy",
-  "entity.odyssey.axolotl_type.wild": "Wild",
-  "entity.odyssey.axolotl_type.gold": "Gold",
-  "entity.odyssey.axolotl_type.cyan": "Cyan",
-  "entity.odyssey.axolotl_type.blue": "Blue",
+  "entity.axolotl_type.0": "Leucistic",
+  "entity.axolotl_type.1": "Wild",
+  "entity.axolotl_type.2": "Gold",
+  "entity.axolotl_type.3": "Cyan",
+  "entity.axolotl_type.4": "Blue",
 
   "subtitles.block.anvil.repair": "Anvil repaired",
   "subtitles.entity.armor_stand.add_arms": "Arms fasten to Armor Stand",
@@ -142,6 +142,8 @@
   "text.autoconfig.odyssey.option.items.more_repairable_items.@Tooltip": "Shears can be repaired with Iron Ingots, Brushes with Feathers, and Tridents with Prismarine Shards",
   "text.autoconfig.odyssey.option.items.silk_touch_and_fortune_on_shears": "Silk Touch and Fortune on Shears",
   "text.autoconfig.odyssey.option.items.silk_touch_and_fortune_on_shears.@Tooltip": "Shears can now be enchanted with Silk Touch and Fortune",
+  "text.autoconfig.odyssey.option.items.mob_bucket_variant_tooltips": "Mob Bucket Variant Tooltips",
+  "text.autoconfig.odyssey.option.items.mob_bucket_variant_tooltips.@Tooltip": "Axolotl and Frog Buckets will display a tooltip on them with the type of Axolotl or Frog that is in them",
   "text.autoconfig.odyssey.option.items.allow_mining_fatigue_potions": "Allow Mining Fatigue Potions",
   "text.autoconfig.odyssey.option.items.allow_mining_fatigue_potions.@Tooltip": "Allows for Potions of Mining Fatigue to be brewed using Elder Guardian Thorns",
   "text.autoconfig.odyssey.option.items.allow_haste_potions": "Allow Haste Potions",

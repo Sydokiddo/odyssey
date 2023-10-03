@@ -51,6 +51,16 @@
 
   "entity.odyssey.gunpowder_block": "Запалений блок пороху",
 
+  "entity.frog_type.minecraft:temperate": "Temperate",
+  "entity.frog_type.minecraft:warm": "Warm",
+  "entity.frog_type.minecraft:cold": "Cold",
+
+  "entity.axolotl_type.0": "Leucistic",
+  "entity.axolotl_type.1": "Wild",
+  "entity.axolotl_type.2": "Gold",
+  "entity.axolotl_type.3": "Cyan",
+  "entity.axolotl_type.4": "Blue",
+
   "subtitles.block.anvil.repair": "Ковадло відремонтовано",
   "subtitles.entity.armor_stand.add_arms": "Руки прикріплено до стійки для обладунків",
   "subtitles.block.small_flower.pick": "Квітку підібрано",
@@ -132,6 +142,8 @@
   "text.autoconfig.odyssey.option.items.more_repairable_items.@Tooltip": "Ножиці можна ремонтувати залізними злитками, щітки — пір'ям, тризубці — уламками призмарину",
   "text.autoconfig.odyssey.option.items.silk_touch_and_fortune_on_shears": "Шовковий дотик і вдача на ножицях",
   "text.autoconfig.odyssey.option.items.silk_touch_and_fortune_on_shears.@Tooltip": "Ножиці тепер можна зачарувати шовковим дотиком або вдачею",
+  "text.autoconfig.odyssey.option.items.mob_bucket_variant_tooltips": "Mob Bucket Variant Tooltips",
+  "text.autoconfig.odyssey.option.items.mob_bucket_variant_tooltips.@Tooltip": "Axolotl and Frog Buckets will display a tooltip on them with the type of Axolotl or Frog that is in them",
   "text.autoconfig.odyssey.option.items.allow_mining_fatigue_potions": "Allow Mining Fatigue Potions",
   "text.autoconfig.odyssey.option.items.allow_mining_fatigue_potions.@Tooltip": "Allows for Potions of Mining Fatigue to be brewed using Elder Guardian Thorns",
   "text.autoconfig.odyssey.option.items.allow_haste_potions": "Allow Haste Potions",

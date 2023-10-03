@@ -51,6 +51,16 @@
 
   "entity.odyssey.gunpowder_block": "Bloc de poudre à canon amorcé",
 
+  "entity.frog_type.minecraft:temperate": "Temperate",
+  "entity.frog_type.minecraft:warm": "Warm",
+  "entity.frog_type.minecraft:cold": "Cold",
+
+  "entity.axolotl_type.0": "Leucistic",
+  "entity.axolotl_type.1": "Wild",
+  "entity.axolotl_type.2": "Gold",
+  "entity.axolotl_type.3": "Cyan",
+  "entity.axolotl_type.4": "Blue",
+
   "subtitles.block.anvil.repair": "Enclume réparée",
   "subtitles.entity.armor_stand.add_arms": "Bras de porte-armure attaché",
   "subtitles.block.small_flower.pick": "Fleur cueillie",
@@ -132,6 +142,8 @@
   "text.autoconfig.odyssey.option.items.more_repairable_items.@Tooltip": "Les cisailles peuvent être réparé avec un lingot de fer, les pinceaux avec des plumes, et les tridents avec un éclat de prismarine",
   "text.autoconfig.odyssey.option.items.silk_touch_and_fortune_on_shears": "Toucher de soie et fortune sur les cisailles",
   "text.autoconfig.odyssey.option.items.silk_touch_and_fortune_on_shears.@Tooltip": "Les cisailles peuvent être enchantées avec toucher de soie ou fortune",
+  "text.autoconfig.odyssey.option.items.mob_bucket_variant_tooltips": "Mob Bucket Variant Tooltips",
+  "text.autoconfig.odyssey.option.items.mob_bucket_variant_tooltips.@Tooltip": "Axolotl and Frog Buckets will display a tooltip on them with the type of Axolotl or Frog that is in them",
   "text.autoconfig.odyssey.option.items.allow_mining_fatigue_potions": "Allow Mining Fatigue Potions",
   "text.autoconfig.odyssey.option.items.allow_mining_fatigue_potions.@Tooltip": "Allows for Potions of Mining Fatigue to be brewed using Elder Guardian Thorns",
   "text.autoconfig.odyssey.option.items.allow_haste_potions": "Allow Haste Potions",

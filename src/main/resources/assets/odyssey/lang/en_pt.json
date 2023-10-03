@@ -51,6 +51,16 @@
 
   "entity.odyssey.gunpowder_block": "Ignited Block o' Black powder",
 
+  "entity.frog_type.minecraft:temperate": "Temperate",
+  "entity.frog_type.minecraft:warm": "Warm",
+  "entity.frog_type.minecraft:cold": "Cold",
+
+  "entity.axolotl_type.0": "Leucistic",
+  "entity.axolotl_type.1": "Wild",
+  "entity.axolotl_type.2": "Gold",
+  "entity.axolotl_type.3": "Cyan",
+  "entity.axolotl_type.4": "Blue",
+
   "subtitles.block.anvil.repair": "Slab o' fixin' be remedied",
   "subtitles.entity.armor_stand.add_arms": "Arms fasten to Stand o' Armor",
   "subtitles.block.small_flower.pick": "Flower be picked",
@@ -132,6 +142,8 @@
   "text.autoconfig.odyssey.option.items.more_repairable_items.@Tooltip": "Cutters can be remedied usin' bullions o' steel, paintbrushes usin' feathers, and Poseidon's fightin' fork usin' shards o' prismarine",
   "text.autoconfig.odyssey.option.items.silk_touch_and_fortune_on_shears": "Soft Hands and Treasure on yer Cutters",
   "text.autoconfig.odyssey.option.items.silk_touch_and_fortune_on_shears.@Tooltip": "Cutters can now be witchcrafted wit' Soft Hands and Treasure",
+  "text.autoconfig.odyssey.option.items.mob_bucket_variant_tooltips": "Mob Bucket Variant Tooltips",
+  "text.autoconfig.odyssey.option.items.mob_bucket_variant_tooltips.@Tooltip": "Axolotl and Frog Buckets will display a tooltip on them with the type of Axolotl or Frog that is in them",
   "text.autoconfig.odyssey.option.items.allow_mining_fatigue_potions": "Allow Mining Fatigue Potions",
   "text.autoconfig.odyssey.option.items.allow_mining_fatigue_potions.@Tooltip": "Allows for Potions of Mining Fatigue to be brewed using Elder Guardian Thorns",
   "text.autoconfig.odyssey.option.items.allow_haste_potions": "Allow Haste Potions",

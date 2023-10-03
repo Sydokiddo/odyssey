@@ -49,12 +49,6 @@ public class OdysseyRegistry {
         }
     }
 
-    public static void sendMobBucketingDebugMessage(LivingEntity livingEntity, Player player) {
-        if (Chrysalis.IS_DEBUG) {
-            Odyssey.LOGGER.info("{} has been picked up in a bucket by {}", livingEntity.getName().getString(), player.getName().getString());
-        }
-    }
-
     public static void sendMobConversionDebugMessage(LivingEntity startingEntity, LivingEntity resultEntity) {
         if (Chrysalis.IS_DEBUG) {
             Odyssey.LOGGER.info("{} has been converted into {}", startingEntity.getName().getString(), resultEntity.getName().getString());

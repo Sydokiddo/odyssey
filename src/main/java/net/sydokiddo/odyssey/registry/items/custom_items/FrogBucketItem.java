@@ -3,14 +3,15 @@ package net.sydokiddo.odyssey.registry.items.custom_items;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.animal.frog.Frog;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.sydokiddo.chrysalis.registry.items.custom_items.MobInContainerItem;
+import net.sydokiddo.odyssey.Odyssey;
 import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
@@ -27,11 +28,10 @@ public class FrogBucketItem extends MobInContainerItem {
     public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> list, TooltipFlag tooltipFlag) {
 
         CompoundTag compoundTag = itemStack.getTag();
-        String VARIANT_TAG = "variant";
 
-        if (this.type == EntityType.FROG && compoundTag != null && compoundTag.contains(VARIANT_TAG)) {
+        if (this.type == EntityType.FROG && compoundTag != null && compoundTag.contains(Frog.VARIANT_KEY) && Odyssey.getConfig().items.mob_bucket_variant_tooltips) {
 
-            String translationString = "entity.odyssey.frog_type." + itemStack.getTag().getString(EntityDataSerializers.FROG_VARIANT.toString());
+            String translationString = "entity.frog_type." + compoundTag.getString(Frog.VARIANT_KEY);
             ChatFormatting[] chatFormattings = new ChatFormatting[]{ChatFormatting.ITALIC, ChatFormatting.GRAY};
 
             list.add(Component.translatable(translationString).withStyle(chatFormattings));
