@@ -19,13 +19,15 @@ public class OdysseyClient implements ClientModInitializer {
             ModEntityRenderer.registerRenderers();
             ModEntityRenderer.setPotionCauldronRenderColors();
 
-            // Renders Blocks in List as Transparent (Without Translucency)
+            // region Block Rendering
 
             BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.cutout(),
                 ModBlocks.REDSTONE_LANTERN,
                 ModBlocks.POTTED_SMALL_DRIPLEAF,
                 ModBlocks.POTTED_SPORE_BLOSSOM
             );
+
+            // endregion
         }
     }
 }

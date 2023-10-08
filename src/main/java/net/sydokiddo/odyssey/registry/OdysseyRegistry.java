@@ -30,14 +30,16 @@ import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
 
 public class OdysseyRegistry {
 
-    // Entity Data
+    // region Entity Data
 
     public static final EntityDataAccessor<Boolean> MAGMA_CUBE_CONVERSION = SynchedEntityData.defineId(Slime.class, EntityDataSerializers.BOOLEAN);
     public static final EntityDataAccessor<Boolean> SLIME_CONVERSION = SynchedEntityData.defineId(Slime.class, EntityDataSerializers.BOOLEAN);
-    public static final EntityDataAccessor<Boolean> WAXED = SynchedEntityData.defineId(ItemFrame.class, EntityDataSerializers.BOOLEAN);
     public static final EntityDataAccessor<Boolean> FROM_BUCKET = SynchedEntityData.defineId(Squid.class, EntityDataSerializers.BOOLEAN);
+    public static final EntityDataAccessor<Boolean> WAXED = SynchedEntityData.defineId(ItemFrame.class, EntityDataSerializers.BOOLEAN);
 
-    // Debug and Common Methods
+    // endregion
+
+    // region Debug and Common Methods
 
     public static void doSaddleRemovingEvents(LivingEntity livingEntity, Player player, InteractionHand hand) {
 
@@ -61,9 +63,11 @@ public class OdysseyRegistry {
         }
     }
 
+    // endregion
+
     public static void registerAll() {
 
-        // - Blocks, Items, Etc.
+        // region Blocks, Items, Etc.
 
         ModItems.registerModItems();
         ModBlocks.registerModBlocks();
@@ -71,24 +75,34 @@ public class OdysseyRegistry {
         PotionCauldronInteraction.bootstrap();
         ModPotions.registerPotions();
 
-        // - Entities
+        // endregion
+
+        // region Entities
 
         ModEntities.registerModEntities();
 
-        // - Technical
+        // endregion
+
+        // region Technical
 
         ModCreativeModeTabs.registerCreativeTabs();
         ModLootTableModifiers.modifyLootTables();
         ModCriteriaTriggers.registerCriteriaTriggers();
 
-        // - Composting
+        // endregion
+
+        // region Composting
 
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.SUGAR_CANE_BLOCK, RegistryHelpers.composter85PercentChance);
 
-        // - Flammable Blocks
+        // endregion
+
+        // region Flammable Blocks
 
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.GUNPOWDER_BLOCK, 15, 100);
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.SUGAR_CANE_BLOCK, 30, 60);
+
+        // endregion
 
         System.out.println("Registering Content for Odyssey");
     }

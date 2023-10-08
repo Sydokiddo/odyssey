@@ -16,7 +16,7 @@ public class PlayerManagerMixin {
     // Puts a message in the server console to let the user know if a player has the mod installed
 
     @Inject(method = "placeNewPlayer", at = @At(value = "TAIL"))
-    private void odyssey_onPlayerConnectToServer(Connection connection, ServerPlayer serverPlayer, CommonListenerCookie commonListenerCookie, CallbackInfo ci) {
+    private void odyssey$onPlayerConnectToServer(Connection connection, ServerPlayer serverPlayer, CommonListenerCookie commonListenerCookie, CallbackInfo ci) {
         Odyssey.LOGGER.info(serverPlayer.getName().getString() + " has Odyssey installed");
     }
 }

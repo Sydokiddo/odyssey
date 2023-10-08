@@ -5,11 +5,11 @@ import net.minecraft.advancements.critereon.PlayerTrigger;
 
 public class ModCriteriaTriggers extends CriteriaTriggers {
 
-    // List of Criteria Triggers:
+    // Criteria Triggers
 
     public static final PlayerTrigger CURE_POISON_WITH_HONEY = ModCriteriaTriggers.register("odyssey:cure_poison_with_honey", new PlayerTrigger());
 
-    // Registry for Criteria Triggers:
+    // Registry
 
     public static void registerCriteriaTriggers() {}
 }

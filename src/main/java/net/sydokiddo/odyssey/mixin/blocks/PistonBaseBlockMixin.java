@@ -42,6 +42,8 @@ public class PistonBaseBlockMixin extends DirectionalBlock {
         super(properties);
     }
 
+    // region Piston Item Interactions
+
     @Unique
     private void doPistonUseEvents(Level level, BlockPos blockPos, Player player, Item item, BlockState blockState, Block block, SoundEvent soundEvent, Direction direction) {
 
@@ -51,13 +53,13 @@ public class PistonBaseBlockMixin extends DirectionalBlock {
 
         ParticleUtils.spawnParticlesOnBlockFace(level, blockPos, ParticleTypes.ITEM_SLIME, UniformInt.of(3, 5), direction, () -> ParticleUtils.getRandomSpeedRanges(level.random), 0.55);
         level.setBlockAndUpdate(blockPos, block.defaultBlockState().setValue(PistonBaseBlock.FACING, blockState.getValue(PistonBaseBlock.FACING)));
-        level.playSound(null, blockPos, soundEvent, SoundSource.BLOCKS, 1.0f, 1.0f);
+        level.playSound(null, blockPos, soundEvent, SoundSource.BLOCKS, 1.0F, 1.0F);
         level.gameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Context.of(player));
     }
 
     // Pistons can now be right-clicked with a Slime Ball to turn them into Sticky Pistons, and Sticky Pistons can be right-clicked with an Axe to turn them back into normal Pistons
 
-    @SuppressWarnings("ALL")
+    @SuppressWarnings("deprecation")
     @Override
     public InteractionResult use(BlockState blockState, @NotNull Level level, @NotNull BlockPos blockPos, Player player, @NotNull InteractionHand interactionHand, @NotNull BlockHitResult blockHitResult) {
 
@@ -69,6 +71,8 @@ public class PistonBaseBlockMixin extends DirectionalBlock {
 
             if (!this.isSticky && itemStack.is(Items.SLIME_BALL)) {
 
+                // Putting Slime Balls on Pistons
+
                 if (!player.getAbilities().instabuild) {
                     itemStack.shrink(1);
                 }
@@ -77,6 +81,8 @@ public class PistonBaseBlockMixin extends DirectionalBlock {
                 return InteractionResult.sidedSuccess(level.isClientSide);
 
             } else if (this.isSticky && item instanceof AxeItem) {
+
+                // Scraping Sticky Pistons
 
                 if (!player.getAbilities().instabuild) {
                     itemStack.hurtAndBreak(1, player, playerx -> player.broadcastBreakEvent(interactionHand));
@@ -92,4 +98,6 @@ public class PistonBaseBlockMixin extends DirectionalBlock {
         }
         return InteractionResult.PASS;
     }
+
+    // endregion
 }

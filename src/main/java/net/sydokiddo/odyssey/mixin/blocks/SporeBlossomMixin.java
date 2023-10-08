@@ -22,7 +22,7 @@ import java.util.function.Supplier;
 @Mixin(SporeBlossomBlock.class)
 public class SporeBlossomMixin implements BonemealableBlock {
 
-    // Spore Blossoms can now be right-clicked with Bone Meal to duplicate them
+    // region Bone-Mealing
 
     @Override
     public boolean isValidBonemealTarget(LevelReader levelReader, BlockPos blockPos, BlockState blockState) {
@@ -44,12 +44,12 @@ public class SporeBlossomMixin implements BonemealableBlock {
     @Unique
     private static void popResourceBelow(Level level, BlockPos blockPos, ItemStack itemStack) {
 
-        double d = (double)EntityType.ITEM.getHeight() / 2.0D;
-        double e = (double)blockPos.getX() + 0.5D + Mth.nextDouble(level.random, -0.25D, 0.25D);
-        double f = (double)blockPos.getY() - 0.25D + Mth.nextDouble(level.random, -0.25D, 0.25D) - d;
-        double g = (double)blockPos.getZ() + 0.5D + Mth.nextDouble(level.random, -0.25D, 0.25D);
+        double itemHeight = (double)EntityType.ITEM.getHeight() / 2.0D;
+        double x = (double)blockPos.getX() + 0.5D + Mth.nextDouble(level.random, -0.25D, 0.25D);
+        double y = (double)blockPos.getY() - 0.25D + Mth.nextDouble(level.random, -0.25D, 0.25D) - itemHeight;
+        double z = (double)blockPos.getZ() + 0.5D + Mth.nextDouble(level.random, -0.25D, 0.25D);
 
-        popResourceBelow(level, () -> new ItemEntity(level, e, f, g, itemStack), itemStack);
+        popResourceBelow(level, () -> new ItemEntity(level, x, y, z, itemStack), itemStack);
     }
 
     @Unique
@@ -60,4 +60,6 @@ public class SporeBlossomMixin implements BonemealableBlock {
             level.addFreshEntity(itemEntity);
         }
     }
+
+    // endregion
 }

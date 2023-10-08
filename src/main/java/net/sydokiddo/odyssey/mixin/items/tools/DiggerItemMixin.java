@@ -16,9 +16,9 @@ public class DiggerItemMixin {
     // Prevents Budding Amethyst from being mined faster with Pickaxes
 
     @Inject(method = "getDestroySpeed", at = @At("HEAD"), cancellable = true)
-    private void odyssey_removeBuddingAmethystFromPickaxeTag(ItemStack itemStack, BlockState blockState, CallbackInfoReturnable<Float> cir) {
+    private void odyssey$removeBuddingAmethystFromPickaxeTag(ItemStack itemStack, BlockState blockState, CallbackInfoReturnable<Float> cir) {
         if (Odyssey.getConfig().blocks.harder_budding_amethyst && blockState.is(Blocks.BUDDING_AMETHYST)) {
-            cir.setReturnValue(1.0f);
+            cir.setReturnValue(1.0F);
         }
     }
 }

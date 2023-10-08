@@ -22,10 +22,10 @@ public class FarmlandBlockMixin extends Block {
         super(settings);
     }
 
-    // Farmland won't be trampled if the entity has Feather Falling
+    // Farmland won't be trampled if the entity falling on it has Feather Falling
 
     @Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/FarmBlock;turnToDirt(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)V"), method = "fallOn", cancellable = true)
-    private void odyssey_preventFarmlandTramplingWithFeatherFalling(Level world, BlockState state, BlockPos pos, Entity entity, float fallDistance, CallbackInfo info) {
+    private void odyssey$preventFarmlandTramplingWithFeatherFalling(Level world, BlockState state, BlockPos pos, Entity entity, float fallDistance, CallbackInfo info) {
         if (entity != null && EnchantmentHelper.getEnchantmentLevel(Enchantments.FALL_PROTECTION, (LivingEntity) entity) > 0 && Odyssey.getConfig().blocks.feather_falling_negates_farmland_trampling) {
             super.fallOn(world, state, pos, entity, fallDistance);
             info.cancel();

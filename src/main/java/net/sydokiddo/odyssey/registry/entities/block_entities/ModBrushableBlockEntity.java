@@ -8,8 +8,8 @@ import net.sydokiddo.odyssey.registry.entities.registry.ModEntities;
 
 public class ModBrushableBlockEntity extends BrushableBlockEntity {
 
-    public ModBrushableBlockEntity(BlockPos pos, BlockState state) {
-        super(pos, state);
+    public ModBrushableBlockEntity(BlockPos blockPos, BlockState blockState) {
+        super(blockPos, blockState);
     }
 
     @Override

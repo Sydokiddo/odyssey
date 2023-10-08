@@ -24,8 +24,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(Slime.class)
 public abstract class SlimeMixin extends Mob {
 
-    // Slimes can be converted into Magma Cubes and vise-versa
-
     @Shadow public abstract int getSize();
 
     @Unique private static final String MAGMA_CONVERSION_TAG = "MagmaCubeConversionTime";
@@ -38,6 +36,8 @@ public abstract class SlimeMixin extends Mob {
     private SlimeMixin(EntityType<? extends Mob> entityType, Level level) {
         super(entityType, level);
     }
+
+    // region NBT
 
     @Unique
     private boolean isMagmaConverting() {
@@ -60,19 +60,19 @@ public abstract class SlimeMixin extends Mob {
     }
 
     @Inject(at = @At("HEAD"), method = "defineSynchedData")
-    private void odyssey_defineSlimeSyncedData(CallbackInfo ci) {
+    private void odyssey_defineSlimeNBT(CallbackInfo ci) {
         this.getEntityData().define(OdysseyRegistry.MAGMA_CUBE_CONVERSION, false);
         this.getEntityData().define(OdysseyRegistry.SLIME_CONVERSION, false);
     }
 
     @Inject(at = @At("HEAD"), method = "addAdditionalSaveData")
-    private void odyssey_addSlimeAdditionalSaveData(CompoundTag compoundTag, CallbackInfo ci) {
+    private void odyssey_addSlimeNBT(CompoundTag compoundTag, CallbackInfo ci) {
         compoundTag.putInt(MAGMA_CONVERSION_TAG, this.isMagmaConverting() ? this.conversionTime : -1);
         compoundTag.putInt(SLIME_CONVERSION_TAG, this.isSlimeConverting() ? this.conversionTime : -1);
     }
 
     @Inject(at = @At("HEAD"), method = "readAdditionalSaveData")
-    private void odyssey_readSlimeAdditionalSaveData(CompoundTag compoundTag, CallbackInfo ci) {
+    private void odyssey_readSlimeNBT(CompoundTag compoundTag, CallbackInfo ci) {
         if (Odyssey.getConfig().entities.slime_and_magma_cube_converting) {
             if (compoundTag.contains(MAGMA_CONVERSION_TAG, 99) && compoundTag.getInt(MAGMA_CONVERSION_TAG) > -1) {
                 this.startMagmaConversion(compoundTag.getInt(MAGMA_CONVERSION_TAG));
@@ -82,22 +82,9 @@ public abstract class SlimeMixin extends Mob {
         }
     }
 
-    @Inject(at = @At("HEAD"), method = "getJumpDelay", cancellable = true)
-    private void odyssey_preventSlimeJumping(CallbackInfoReturnable<Integer> cir) {
-        if ((this.isSlimeConverting() || this.isMagmaConverting()) && Odyssey.getConfig().entities.slime_and_magma_cube_converting) {
-            cir.setReturnValue(conversionTime);
-        }
-    }
+    // endregion
 
-    // Slimes no longer take damage from Magma as Magma Blocks will now convert them instead
-
-    @Override
-    public boolean isInvulnerableTo(DamageSource damageSource) {
-        if (damageSource.is(DamageTypes.HOT_FLOOR) && Odyssey.getConfig().entities.slime_and_magma_cube_converting) {
-            return true;
-        }
-        return super.isInvulnerableTo(damageSource);
-    }
+    // region Slime and Magma Cube Converting
 
     @Inject(at = @At("RETURN"), method = "tick")
     private void odyssey_tickSlimeConversion(CallbackInfo ci) {
@@ -149,14 +136,14 @@ public abstract class SlimeMixin extends Mob {
     }
 
     @Unique
-    private void startMagmaConversion(int i) {
-        this.conversionTime = i;
+    private void startMagmaConversion(int time) {
+        this.conversionTime = time;
         this.setMagmaConverting(true);
     }
 
     @Unique
-    private void startSlimeConversion(int i) {
-        this.conversionTime = i;
+    private void startSlimeConversion(int time) {
+        this.conversionTime = time;
         this.setSlimeConverting(true);
     }
 
@@ -218,4 +205,25 @@ public abstract class SlimeMixin extends Mob {
         OdysseyRegistry.sendMobConversionDebugMessage(this, mob);
         this.level().addFreshEntity(mob);
     }
+
+    // endregion
+
+    // region Misc Methods
+
+    @Inject(at = @At("HEAD"), method = "getJumpDelay", cancellable = true)
+    private void odyssey$preventSlimeJumpingWhileConverting(CallbackInfoReturnable<Integer> cir) {
+        if ((this.isSlimeConverting() || this.isMagmaConverting()) && Odyssey.getConfig().entities.slime_and_magma_cube_converting) {
+            cir.setReturnValue(conversionTime);
+        }
+    }
+
+    @Override
+    public boolean isInvulnerableTo(DamageSource damageSource) {
+        if (damageSource.is(DamageTypes.HOT_FLOOR) && Odyssey.getConfig().entities.slime_and_magma_cube_converting) {
+            return true;
+        }
+        return super.isInvulnerableTo(damageSource);
+    }
+
+    // endregion
 }

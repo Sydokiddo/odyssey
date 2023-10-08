@@ -10,7 +10,6 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -33,11 +32,9 @@ public abstract class MobMixin extends LivingEntity {
     // Friendly mobs can be right-clicked with a brush to brush them :)
 
     @Inject(method = "interact", at = @At("HEAD"), cancellable = true)
-    private void odyssey_brushFriendlyMobs(Player player, InteractionHand interactionHand, CallbackInfoReturnable<InteractionResult> cir) {
+    private void odyssey$brushFriendlyMobs(Player player, InteractionHand interactionHand, CallbackInfoReturnable<InteractionResult> cir) {
 
-        ItemStack itemStack = player.getItemInHand(interactionHand);
-
-        if (this.isAlive() && !this.isAggressive() && itemStack.is(Items.BRUSH) && this.getType().is(ModTags.CAN_BE_BRUSHED)) {
+        if (this.isAlive() && !this.isAggressive() && player.getItemInHand(interactionHand).is(Items.BRUSH) && this.getType().is(ModTags.CAN_BE_BRUSHED)) {
 
             cir.cancel();
             this.level().playSound(player, this.getOnPos(), SoundEvents.BRUSH_GENERIC, SoundSource.NEUTRAL);

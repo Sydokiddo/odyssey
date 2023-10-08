@@ -17,7 +17,7 @@ public class DispenserBlockMixin {
     // Custom Dispenser Methods
 
     @Inject(method = "getDispenseMethod", at = @At("HEAD"), cancellable = true)
-    private void odyssey_addNewDispenserMethod(ItemStack itemStack, CallbackInfoReturnable<DispenseItemBehavior> cir) {
+    private void odyssey$addNewDispenserMethods(ItemStack itemStack, CallbackInfoReturnable<DispenseItemBehavior> cir) {
 
         Item item = itemStack.getItem();
 

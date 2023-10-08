@@ -25,12 +25,12 @@ public class BlockBehaviourMixin {
     // Small Flowers can be picked by right-clicking on them with an empty hand
 
     @Inject(at = @At("HEAD"), method = "use", cancellable = true)
-    private void odyssey_flowerPicking(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult blockHitResult, CallbackInfoReturnable<InteractionResult> cir) {
+    private void odyssey$flowerPicking(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult blockHitResult, CallbackInfoReturnable<InteractionResult> cir) {
         if (Odyssey.getConfig().blocks.flower_picking && blockState.is(BlockTags.SMALL_FLOWERS) && player.mayBuild() && player.getMainHandItem().isEmpty() && !player.isSecondaryUseActive() && player.mayInteract(level, blockPos)) {
 
             Block.dropResources(blockState, level, blockPos);
             level.removeBlock(blockPos, false);
-            level.playSound(player, blockPos, ModSoundEvents.SMALL_FLOWER_PICK, SoundSource.BLOCKS, 0.5f, 1.0f);
+            level.playSound(player, blockPos, ModSoundEvents.SMALL_FLOWER_PICK, SoundSource.BLOCKS, 0.5F, 1.0F);
             level.gameEvent(GameEvent.BLOCK_DESTROY, blockPos, GameEvent.Context.of(player, blockState));
 
             cir.setReturnValue(InteractionResult.SUCCESS);

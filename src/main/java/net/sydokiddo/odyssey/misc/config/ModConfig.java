@@ -10,6 +10,8 @@ import net.sydokiddo.odyssey.misc.config.options.ItemStackSizeConfig;
 @Config.Gui.Background("odyssey:textures/block/refined_amethyst_block.png")
 public class ModConfig implements ConfigData {
 
+    // region Items
+
     @ConfigEntry.Gui.CollapsibleObject()
     public Items items = new Items();
 
@@ -36,6 +38,10 @@ public class ModConfig implements ConfigData {
         @ConfigEntry.Gui.RequiresRestart
         public boolean allow_haste_potions = true;
     }
+
+    // endregion
+
+    // region Blocks
 
     @ConfigEntry.Gui.CollapsibleObject()
     public Blocks blocks = new Blocks();
@@ -75,6 +81,10 @@ public class ModConfig implements ConfigData {
         @ConfigEntry.Gui.Tooltip
         public boolean piston_interactions = true;
     }
+
+    // endregion
+
+    // region Entitites
 
     @ConfigEntry.Gui.CollapsibleObject()
     public Entities entities = new Entities();
@@ -117,4 +127,6 @@ public class ModConfig implements ConfigData {
         @ConfigEntry.Gui.Tooltip
         public boolean improved_mount_hud = true;
     }
+
+    // endregion
 }

@@ -13,10 +13,13 @@ public class GunpowderBlockEntity extends Entity implements TraceableEntity {
     private static final EntityDataAccessor<Integer> DATA_FUSE_ID = SynchedEntityData.defineId(GunpowderBlockEntity.class, EntityDataSerializers.INT);
 
     @Nullable public LivingEntity owner;
+    private final String fuseString = "Fuse";
 
     public GunpowderBlockEntity(EntityType<? extends GunpowderBlockEntity> entityType, Level level) {
         super(entityType, level);
     }
+
+    // region NBT
 
     @Override
     protected void defineSynchedData() {
@@ -24,29 +27,13 @@ public class GunpowderBlockEntity extends Entity implements TraceableEntity {
     }
 
     @Override
-    protected void readAdditionalSaveData(CompoundTag compoundTag) {
-        this.setFuse(compoundTag.getShort("Fuse"));
-    }
-
-    @Override
     protected void addAdditionalSaveData(CompoundTag compoundTag) {
-        compoundTag.putShort("Fuse", (short)this.getFuse());
-    }
-
-    @Nullable
-    @Override
-    public Entity getOwner() {
-        return this.owner;
+        compoundTag.putShort(fuseString, (short) this.getFuse());
     }
 
     @Override
-    protected Entity.MovementEmission getMovementEmission() {
-        return Entity.MovementEmission.NONE;
-    }
-
-    @Override
-    public boolean isPickable() {
-        return !this.isRemoved();
+    protected void readAdditionalSaveData(CompoundTag compoundTag) {
+        this.setFuse(compoundTag.getShort(fuseString));
     }
 
     public int getFuse() {
@@ -56,6 +43,10 @@ public class GunpowderBlockEntity extends Entity implements TraceableEntity {
     private void setFuse(int i) {
         this.entityData.set(DATA_FUSE_ID, i);
     }
+
+    // endregion
+
+    // region Ticking
 
     @Override
     public void tick() {
@@ -71,20 +62,39 @@ public class GunpowderBlockEntity extends Entity implements TraceableEntity {
             this.setDeltaMovement(this.getDeltaMovement().multiply(0.7, -0.5, 0.7));
         }
 
-        int i = this.getFuse() - 1;
-        this.setFuse(i);
+        int fuse = this.getFuse() - 1;
+        this.setFuse(fuse);
 
-        if (i <= 0) {
+        if (fuse <= 0) {
+
             this.discard();
             if (!this.level().isClientSide) {
-                this.explode();
+                this.level().explode(this, this.getX(), this.getY(0.0625), this.getZ(), 5.0f, true, Level.ExplosionInteraction.TNT);
             }
+
         } else {
             this.updateInWaterStateAndDoFluidPushing();
         }
     }
 
-    private void explode() {
-        this.level().explode(this, this.getX(), this.getY(0.0625), this.getZ(), 5.0f, true, Level.ExplosionInteraction.TNT);
+    // endregion
+
+    // region Misc Methods
+
+    @Override
+    public boolean isPickable() {
+        return !this.isRemoved();
     }
+
+    @Override
+    protected Entity.MovementEmission getMovementEmission() {
+        return Entity.MovementEmission.NONE;
+    }
+
+    @Nullable @Override
+    public Entity getOwner() {
+        return this.owner;
+    }
+
+    // endregion
 }

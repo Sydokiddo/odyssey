@@ -24,11 +24,11 @@ public class SquidMixin extends WaterAnimal implements Bucketable {
 
     @Unique private static final String FROM_BUCKET_TAG = "FromBucket";
 
-    // Squids and Glow Squids can now be picked up in Water Buckets
-
     private SquidMixin(EntityType<? extends WaterAnimal> entityType, Level level) {
         super(entityType, level);
     }
+
+    // region NBT
 
     @Override
     protected void defineSynchedData() {
@@ -54,26 +54,25 @@ public class SquidMixin extends WaterAnimal implements Bucketable {
     }
 
     @Override
-    public void setFromBucket(boolean bl) {
-        this.entityData.set(OdysseyRegistry.FROM_BUCKET, bl);
+    public void setFromBucket(boolean fromBucket) {
+        this.entityData.set(OdysseyRegistry.FROM_BUCKET, fromBucket);
     }
 
-    @SuppressWarnings("ALL")
+    @SuppressWarnings("deprecation")
     @Override
     public void saveToBucketTag(ItemStack itemStack) {
         Bucketable.saveDefaultDataToBucketTag(this, itemStack);
     }
 
-    @SuppressWarnings("ALL")
+    @SuppressWarnings("deprecation")
     @Override
     public void loadFromBucketTag(CompoundTag compoundTag) {
         Bucketable.loadDefaultDataFromBucketTag(this, compoundTag);
     }
 
-    @Override
-    public boolean requiresCustomPersistence() {
-        return super.requiresCustomPersistence() || this.fromBucket();
-    }
+    // endregion
+
+    // region Squid Bucketing
 
     @Override
     public ItemStack getBucketItemStack() {
@@ -100,4 +99,15 @@ public class SquidMixin extends WaterAnimal implements Bucketable {
         }
         return super.mobInteract(player, interactionHand);
     }
+
+    // endregion
+
+    // region Misc Methods
+
+    @Override
+    public boolean requiresCustomPersistence() {
+        return super.requiresCustomPersistence() || this.fromBucket();
+    }
+
+    // endregion
 }

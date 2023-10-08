@@ -29,19 +29,18 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import static net.minecraft.core.cauldron.CauldronInteraction.addDefaultInteractions;
 
 @Mixin(AbstractCauldronBlock.class)
 public class AbstractCauldronBlockMixin {
 
     @Inject(at = @At("HEAD"), method = "use", cancellable = true)
-    private void odyssey_cauldronInteraction(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult, CallbackInfoReturnable<InteractionResult> cir) {
+    private void odyssey$addCauldronInteractions(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult, CallbackInfoReturnable<InteractionResult> cir) {
 
-        // If the player attempts to place water into a Cauldron in the Nether, it will evaporate
+        // region Water Cauldrons Extinguishing in the Nether
 
         if (player.getItemInHand(interactionHand).getItem().equals(Items.WATER_BUCKET) && level.dimensionType().ultraWarm()) {
 
-            level.playSound(null, blockPos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.5f, 2.6f + (level.random.nextFloat() - level.random.nextFloat()) * 0.8f);
+            level.playSound(null, blockPos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.5F, 2.6F + (level.random.nextFloat() - level.random.nextFloat()) * 0.8F);
 
             if (level instanceof ServerLevel serverLevel) {
 
@@ -55,9 +54,9 @@ public class AbstractCauldronBlockMixin {
             cir.setReturnValue(InteractionResult.SUCCESS);
         }
 
-        addDefaultInteractions(CauldronInteraction.EMPTY);
+        // endregion
 
-        // Potion Cauldron Interaction
+        // region Inserting Potions into Cauldrons
 
         CauldronInteraction.EMPTY.put(Items.POTION, (cauldronState, world, pos, user, hand, stack) -> {
 
@@ -83,5 +82,7 @@ public class AbstractCauldronBlockMixin {
             }
             return InteractionResult.sidedSuccess(world.isClientSide);
         });
+
+        // endregion
     }
 }

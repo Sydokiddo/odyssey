@@ -15,7 +15,7 @@ import net.sydokiddo.odyssey.registry.entities.registry.ModEntities;
 @Environment(EnvType.CLIENT)
 public class ModEntityRenderer {
 
-    @SuppressWarnings("ALL")
+    @SuppressWarnings("deprecation")
     public static void registerRenderers() {
         BlockEntityRendererRegistry.register(ModEntities.BRUSHABLE_BLOCK, ModBrushableBlockRenderer::new);
         EntityRendererRegistry.register(ModEntities.GUNPOWDER_BLOCK, GunpowderBlockEntityRenderer::new);
@@ -28,10 +28,11 @@ public class ModEntityRenderer {
             assert level != null;
             BlockEntity blockEntity = level.getBlockEntity(pos);
 
-            if (pos != null && blockEntity instanceof PotionCauldronBlockEntity) {
-                return ((PotionCauldronBlockEntity) blockEntity).getColor();
+            if (pos != null && blockEntity instanceof PotionCauldronBlockEntity potionCauldron) {
+                return potionCauldron.getColor();
             }
             return 0;
+
         }, ModBlocks.POTION_CAULDRON);
     }
 }

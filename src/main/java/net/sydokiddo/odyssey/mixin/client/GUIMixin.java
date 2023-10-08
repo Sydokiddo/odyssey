@@ -19,21 +19,22 @@ public abstract class GUIMixin {
     @Shadow protected abstract int getVisibleVehicleHeartRows(int i);
     @Shadow protected abstract int getVehicleMaxHearts(LivingEntity livingEntity);
 
+    // region Improved Mount HUD
+
     // Shifts the vehicle mob's health downwards
 
     @ModifyVariable(method = "renderVehicleHealth", at = @At(value = "STORE"), ordinal = 2)
-    private int odyssey_moveVehicleHealthDownwards(int y) {
-        assert this.minecraft.gameMode != null;
-        if (this.minecraft.gameMode.canHurtPlayer() && Odyssey.getConfig().entities.improved_mount_hud) {
-            y -= 10;
+    private int odyssey$moveVehicleHealthDownwards(int offset) {
+        if (this.minecraft.gameMode != null && this.minecraft.gameMode.canHurtPlayer() && Odyssey.getConfig().entities.improved_mount_hud) {
+            offset -= 10;
         }
-        return y;
+        return offset;
     }
 
     // Allows for the player's hunger bar to always render when on a mount
 
     @Redirect(method = "renderPlayerHealth", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/Gui;getVehicleMaxHearts(Lnet/minecraft/world/entity/LivingEntity;)I"))
-    private int odyssey_alwaysRenderFoodBar(Gui gui, LivingEntity livingEntity) {
+    private int odyssey$alwaysRenderFoodBar(Gui gui, LivingEntity livingEntity) {
         if (Odyssey.getConfig().entities.improved_mount_hud) {
             return 0;
         } else {
@@ -44,14 +45,15 @@ public abstract class GUIMixin {
     // Shifts the player's air bubble meter upwards
 
     @ModifyVariable(method = "renderPlayerHealth", at = @At(value = "STORE", ordinal = 1), ordinal = 10)
-    private int odyssey_moveAirBubblesUpwards(int y) {
+    private int odyssey$moveAirBubblesUpwards(int offset) {
 
         LivingEntity vehicle = getPlayerVehicleWithHealth();
 
         if (vehicle != null && Odyssey.getConfig().entities.improved_mount_hud) {
-            int rows = getVisibleVehicleHeartRows(getVehicleMaxHearts(vehicle));
-            y -= rows * 10;
+            offset -= getVisibleVehicleHeartRows(getVehicleMaxHearts(vehicle)) * 10;
         }
-        return y;
+        return offset;
     }
+
+    // endregion
 }

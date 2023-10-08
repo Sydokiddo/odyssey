@@ -18,11 +18,7 @@ public class ModItems {
 
     // List of Items:
 
-    public static final Item ELDER_GUARDIAN_THORN = registerItem("elder_guardian_thorn",
-        new Item(new FabricItemSettings()));
-
-    public static final Item WITHER_SKULL_FRAGMENT = registerItem("wither_skull_fragment",
-        new Item(new FabricItemSettings()));
+    // region Foods
 
     public static final Item IRON_POTATO = registerItem("iron_potato",
         new Item(new FabricItemSettings().food(new FoodProperties.Builder().nutrition(4).saturationMod(1.2F).alwaysEat()
@@ -34,6 +30,10 @@ public class ModItems {
         .effect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 900, 1), 1f)
         .effect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 900, 0), 1f).build()).rarity(Rarity.EPIC)));
 
+    // endregion
+
+    // region Mob Buckets
+
     public static final Item FROG_BUCKET = registerItem("frog_bucket",
         new FrogBucketItem(EntityType.FROG, ModSoundEvents.BUCKET_EMPTY_FROG,
         new FabricItemSettings().stacksTo(1).craftRemainder(Items.BUCKET), Items.BUCKET));
@@ -44,7 +44,17 @@ public class ModItems {
     public static final Item GLOW_SQUID_BUCKET = registerItem("glow_squid_bucket",
         RegistryHelpers.registerMobInWaterBucket(EntityType.GLOW_SQUID, ModSoundEvents.BUCKET_EMPTY_GLOW_SQUID));
 
-    // Registry for Items:
+    // endregion
+
+    // region Misc Items
+
+    public static final Item ELDER_GUARDIAN_THORN = registerItem("elder_guardian_thorn", new Item(new FabricItemSettings()));
+
+    public static final Item WITHER_SKULL_FRAGMENT = registerItem("wither_skull_fragment", new Item(new FabricItemSettings()));
+
+    // endregion
+
+    // Registry
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(BuiltInRegistries.ITEM, Odyssey.id(name), item);

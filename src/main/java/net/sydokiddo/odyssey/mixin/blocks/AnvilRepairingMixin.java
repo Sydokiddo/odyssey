@@ -8,6 +8,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.AnvilBlock;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -23,27 +24,29 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(AnvilBlock.class)
 public class AnvilRepairingMixin {
 
-    // Anvils can be repaired by right-clicking on them with an Iron Block
+    // Anvils can be repaired by right-clicking on them with any items in the repairs_anvils tag
 
     @Inject(at = @At("HEAD"), method = "use", cancellable = true)
-    private void odyssey_repairAnvilWithIronBlock(BlockState blockState, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit, CallbackInfoReturnable<InteractionResult> cir) {
+    private void odyssey$anvilRepairing(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult hit, CallbackInfoReturnable<InteractionResult> cir) {
 
-        ItemStack itemStack = player.getItemInHand(hand);
-        BlockState anvilState = level.getBlockState(pos);
+        ItemStack itemInHand = player.getItemInHand(hand);
 
-        if (!level.isClientSide && itemStack.is(ModTags.REPAIRS_ANVILS) && Odyssey.getConfig().blocks.anvil_repairing && anvilState.getBlock() != Blocks.ANVIL) {
+        if (!level.isClientSide && itemInHand.is(ModTags.REPAIRS_ANVILS) && Odyssey.getConfig().blocks.anvil_repairing && blockState.getBlock() != Blocks.ANVIL) {
 
-            if (anvilState.getBlock() == Blocks.DAMAGED_ANVIL) {
-                level.setBlockAndUpdate(pos, Blocks.CHIPPED_ANVIL.defaultBlockState().setValue(AnvilBlock.FACING, anvilState.getValue(AnvilBlock.FACING)));
-            } else if (anvilState.getBlock() == Blocks.CHIPPED_ANVIL) {
-                level.setBlockAndUpdate(pos, Blocks.ANVIL.defaultBlockState().setValue(AnvilBlock.FACING, anvilState.getValue(AnvilBlock.FACING)));
+            Block anvilType;
+
+            if (blockState.getBlock() == Blocks.DAMAGED_ANVIL) {
+                anvilType = Blocks.CHIPPED_ANVIL;
+            } else {
+                anvilType = Blocks.ANVIL;
             }
 
-            level.playSound(null, pos, ModSoundEvents.ANVIL_REPAIR, SoundSource.BLOCKS, 1.0f, 1.0f);
-            level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player));
+            level.setBlockAndUpdate(blockPos, anvilType.defaultBlockState().setValue(AnvilBlock.FACING, blockState.getValue(AnvilBlock.FACING)));
+            level.playSound(null, blockPos, ModSoundEvents.ANVIL_REPAIR, SoundSource.BLOCKS, 1.0F, 1.0F);
+            level.gameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Context.of(player));
 
             if (!player.getAbilities().instabuild) {
-                itemStack.shrink(1);
+                itemInHand.shrink(1);
             }
 
             cir.setReturnValue(InteractionResult.SUCCESS);

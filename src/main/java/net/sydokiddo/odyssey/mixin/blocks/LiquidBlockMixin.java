@@ -19,13 +19,10 @@ public class LiquidBlockMixin {
     // Cobblestone generators are replaced with Cobbled Deepslate generators below Y=0
 
     @ModifyArg(method = "shouldSpreadLiquid", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;setBlockAndUpdate(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z"), index = 1)
-    private BlockState odyssey_generateCobbledDeepslate(BlockPos pos, BlockState state) {
-
-        int y_level = pos.getY();
-
-        if (state.is(Blocks.COBBLESTONE) && (random.nextInt(1, 9) - y_level >= 0) && Odyssey.getConfig().blocks.renewable_deepslate) {
-            state = Blocks.COBBLED_DEEPSLATE.defaultBlockState();
+    private BlockState odyssey$generateCobbledDeepslate(BlockPos blockPos, BlockState blockState) {
+        if (blockState.is(Blocks.COBBLESTONE) && (random.nextInt(1, 9) - blockPos.getY() >= 0) && Odyssey.getConfig().blocks.renewable_deepslate) {
+            blockState = Blocks.COBBLED_DEEPSLATE.defaultBlockState();
         }
-        return state;
+        return blockState;
     }
 }

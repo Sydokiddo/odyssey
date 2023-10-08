@@ -22,11 +22,10 @@ import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import java.util.Objects;
 
 @Mixin(Frog.class)
 public abstract class FrogMixin extends Animal implements ContainerMob {
-
-    // Frogs can now be picked up in Empty Buckets
 
     @Shadow public abstract FrogVariant getVariant();
     @Shadow public abstract void setVariant(FrogVariant frogVariant);
@@ -35,28 +34,27 @@ public abstract class FrogMixin extends Animal implements ContainerMob {
         super(entityType, level);
     }
 
+    // region Frog Bucketing
+
     @Override
     public boolean fromItem() {
         return true;
     }
 
     @Override
-    public void setFromItem(boolean bl) {}
+    public void setFromItem(boolean fromItem) {}
 
-    @SuppressWarnings("ALL")
     @Override
     public void saveToItemTag(ItemStack itemStack) {
         ContainerMob.saveDefaultDataToItemTag(this, itemStack);
-        CompoundTag compoundTag = itemStack.getOrCreateTag();
-        compoundTag.putString(Frog.VARIANT_KEY, BuiltInRegistries.FROG_VARIANT.getKey(this.getVariant()).toString());
+        itemStack.getOrCreateTag().putString(Frog.VARIANT_KEY, Objects.requireNonNull(BuiltInRegistries.FROG_VARIANT.getKey(this.getVariant())).toString());
     }
 
-    @SuppressWarnings("ALL")
     @Override
     public void loadFromItemTag(CompoundTag compoundTag) {
 
         ContainerMob.loadDefaultDataFromItemTag(this, compoundTag);
-        FrogVariant frogVariant = (FrogVariant)BuiltInRegistries.FROG_VARIANT.get(ResourceLocation.tryParse(compoundTag.getString(Frog.VARIANT_KEY)));
+        FrogVariant frogVariant = BuiltInRegistries.FROG_VARIANT.get(ResourceLocation.tryParse(compoundTag.getString(Frog.VARIANT_KEY)));
 
         if (frogVariant != null) {
             this.setVariant(frogVariant);
@@ -76,12 +74,13 @@ public abstract class FrogMixin extends Animal implements ContainerMob {
     @Override
     public InteractionResult mobInteract(Player player, @NotNull InteractionHand interactionHand) {
 
-        ItemStack itemInHand = player.getItemInHand(interactionHand);
         Item containerItem = Items.BUCKET;
 
-        if (this.isAlive() && itemInHand.is(containerItem) && Odyssey.getConfig().entities.bucketable_frogs) {
+        if (this.isAlive() && player.getItemInHand(interactionHand).is(containerItem) && Odyssey.getConfig().entities.bucketable_frogs) {
             return ContainerMob.containerMobPickup(player, interactionHand, this, containerItem).orElse(super.mobInteract(player, interactionHand));
         }
         return super.mobInteract(player, interactionHand);
     }
+
+    // endregion
 }

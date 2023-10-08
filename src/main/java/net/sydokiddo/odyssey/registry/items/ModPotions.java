@@ -10,6 +10,8 @@ import net.sydokiddo.odyssey.Odyssey;
 
 public class ModPotions {
 
+    // region Potion Types
+
     private static Potion MINING_FATIGUE;
     private static Potion LONG_MINING_FATIGUE;
     private static Potion STRONG_MINING_FATIGUE;
@@ -18,34 +20,43 @@ public class ModPotions {
     private static Potion LONG_HASTE;
     private static Potion STRONG_HASTE;
 
-    // Register Potion Stats:
+    // endregion
+
+    // region Potion Stats
 
     public static Potion registerMiningFatiguePotion(String name) {
         return Registry.register(BuiltInRegistries.POTION, Odyssey.id(name),
         new Potion(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 3600, 0)));
     }
+
     public static Potion registerLongMiningFatiguePotion(String name) {
         return Registry.register(BuiltInRegistries.POTION, Odyssey.id(name),
         new Potion(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 9600, 0)));
     }
+
     public static Potion registerStrongMiningFatiguePotion(String name) {
         return Registry.register(BuiltInRegistries.POTION, Odyssey.id(name),
         new Potion(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 1800, 1)));
     }
+
     public static Potion registerHastePotion(String name) {
         return Registry.register(BuiltInRegistries.POTION, Odyssey.id(name),
         new Potion(new MobEffectInstance(MobEffects.DIG_SPEED, 3600, 0)));
     }
+
     public static Potion registerLongHastePotion(String name) {
         return Registry.register(BuiltInRegistries.POTION, Odyssey.id(name),
         new Potion(new MobEffectInstance(MobEffects.DIG_SPEED, 9600, 0)));
     }
+
     public static Potion registerStrongHastePotion(String name) {
         return Registry.register(BuiltInRegistries.POTION, Odyssey.id(name),
         new Potion(new MobEffectInstance(MobEffects.DIG_SPEED, 1800, 1)));
     }
 
-    // Register Potions:
+    // endregion
+
+    // region Registry
 
     public static void registerPotions() {
 
@@ -75,4 +86,6 @@ public class ModPotions {
             RegistryHelpers.registerInvertedPotionRecipe(ModPotions.STRONG_MINING_FATIGUE, ModPotions.STRONG_HASTE);
         }
     }
+
+    // endregion
 }

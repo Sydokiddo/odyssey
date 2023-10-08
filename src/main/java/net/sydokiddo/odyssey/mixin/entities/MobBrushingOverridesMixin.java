@@ -9,7 +9,6 @@ import net.minecraft.world.entity.animal.Parrot;
 import net.minecraft.world.entity.animal.Wolf;
 import net.minecraft.world.entity.animal.horse.*;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.sydokiddo.chrysalis.Chrysalis;
@@ -27,14 +26,10 @@ public abstract class MobBrushingOverridesMixin extends Mob {
         super(entityType, level);
     }
 
-    // Cancels opening a Horse's inventory when attempting to brush it
-
     @Inject(method = "mobInteract", at = @At("HEAD"), cancellable = true)
-    private void odyssey_cancelMobInteractionsWhenBrushing(Player player, InteractionHand interactionHand, CallbackInfoReturnable<InteractionResult> cir) {
+    private void odyssey$cancelMobInteractionsWhenBrushing(Player player, InteractionHand interactionHand, CallbackInfoReturnable<InteractionResult> cir) {
 
-        ItemStack itemStack = player.getItemInHand(interactionHand);
-
-        if (this.isAlive() && itemStack.is(Items.BRUSH) && this.getType().is(ModTags.CAN_BE_BRUSHED)) {
+        if (this.isAlive() && player.getItemInHand(interactionHand).is(Items.BRUSH) && this.getType().is(ModTags.CAN_BE_BRUSHED)) {
 
             if (Chrysalis.IS_DEBUG) {
                 Odyssey.LOGGER.info("Overriding right-click methods for {} as {} has a brush in their hand", this.getName().getString(), player.getName().getString());

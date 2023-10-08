@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class HoneyBottleItemMixin {
 
     @Inject(method = "finishUsingItem", at = @At("HEAD"))
-    private void odyssey_curePoisonFromHoneyAdvancement(ItemStack itemStack, Level level, LivingEntity livingEntity, CallbackInfoReturnable<ItemStack> cir) {
+    private void odyssey$curePoisonFromHoneyAdvancement(ItemStack itemStack, Level level, LivingEntity livingEntity, CallbackInfoReturnable<ItemStack> cir) {
         if (livingEntity instanceof ServerPlayer serverPlayer && serverPlayer.hasEffect(MobEffects.POISON)) {
 
             ModCriteriaTriggers.CURE_POISON_WITH_HONEY.trigger(serverPlayer);

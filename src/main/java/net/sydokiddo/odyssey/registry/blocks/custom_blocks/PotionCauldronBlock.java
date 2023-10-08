@@ -30,8 +30,12 @@ public class PotionCauldronBlock extends LayeredCauldronBlock implements EntityB
         super(settings, predicate -> predicate == Biome.Precipitation.NONE, map);
     }
 
-    public void setPotion(Potion potion) {
-        this.potion = potion;
+    // region Initialization
+
+    @Override
+    @Nullable
+    public BlockEntity newBlockEntity(@NotNull BlockPos blockPos, @NotNull BlockState blockState) {
+        return new PotionCauldronBlockEntity(blockPos, blockState);
     }
 
     @Override
@@ -39,7 +43,15 @@ public class PotionCauldronBlock extends LayeredCauldronBlock implements EntityB
         return new ItemStack(Blocks.CAULDRON);
     }
 
-    @SuppressWarnings("ALL")
+    public void setPotion(Potion potion) {
+        this.potion = potion;
+    }
+
+    // endregion
+
+    // region Block Entity Ticking
+
+    @SuppressWarnings("unchecked")
     @Nullable
     protected static <E extends BlockEntity, A extends BlockEntity> BlockEntityTicker<A> createTickerHelper(BlockEntityType<A> blockEntityType, BlockEntityType<E> blockEntityType2, BlockEntityTicker<? super E> blockEntityTicker) {
         return blockEntityType2 == blockEntityType ? (BlockEntityTicker<A>) blockEntityTicker : null;
@@ -54,9 +66,5 @@ public class PotionCauldronBlock extends LayeredCauldronBlock implements EntityB
         return null;
     }
 
-    @Override
-    @Nullable
-    public BlockEntity newBlockEntity(@NotNull BlockPos blockPos, @NotNull BlockState blockState) {
-        return new PotionCauldronBlockEntity(blockPos, blockState);
-    }
+    // endregion
 }

@@ -17,7 +17,7 @@ public abstract class ItemStackMixin {
     // Changes the max stack size of certain items
 
     @Inject(method = "getMaxStackSize", at = @At("HEAD"), cancellable = true)
-    private void odyssey_changeMaxStackSize(CallbackInfoReturnable<Integer> cir) {
+    private void odyssey$changeMaxStackSizes(CallbackInfoReturnable<Integer> cir) {
         if (this.getItem() instanceof SignItem || this.getItem() instanceof HangingSignItem) {
             cir.setReturnValue(Odyssey.getConfig().items.itemStackSizeConfig.sign_stack_size);
         }

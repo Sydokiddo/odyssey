@@ -8,7 +8,6 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Explosion;
@@ -27,80 +26,78 @@ public class GunpowderBlock extends FallingBlock {
         super(properties);
     }
 
-    // Gunpowder Blocks will explode if set on fire
+    // region Block Interactions
 
     @Override
-    public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean bl) {
+    public void onPlace(BlockState blockState, Level level, BlockPos blockPos, BlockState neighborState, boolean bl) {
 
-        super.onPlace(state, level, pos, oldState, bl);
+        super.onPlace(blockState, level, blockPos, neighborState, bl);
 
         for (Direction direction : Direction.values()) {
-            if (level.getBlockState(pos.relative(direction)).getBlock() instanceof BaseFireBlock) {
-                explode(level, pos);
+            if (level.getBlockState(blockPos.relative(direction)).getBlock() instanceof BaseFireBlock) {
+                explode(level, blockPos);
             }
         }
     }
 
-    // Gunpowder Blocks will explode if hit by a flaming projectile
-
-    @SuppressWarnings("ALL")
+    @SuppressWarnings("deprecation")
     @Override
-    public void onProjectileHit(Level world, BlockState state, BlockHitResult hitResult, Projectile projectile) {
-        if (!world.isClientSide && projectile.isOnFire()) {
-            BlockPos blockPos = hitResult.getBlockPos();
-            explode(world, blockPos);
+    public void neighborChanged(BlockState state, Level level, BlockPos blockPos, Block block, BlockPos neighborPos, boolean bl) {
+
+        super.neighborChanged(state, level, blockPos, block, neighborPos, bl);
+
+        if (level.getBlockState(neighborPos).getBlock() instanceof FireBlock) {
+            explode(level, blockPos);
         }
     }
 
-    // Gunpowder Blocks will explode if lit by any TNT igniters
+    @SuppressWarnings("deprecation")
+    @Override
+    public void onProjectileHit(Level level, BlockState state, BlockHitResult hitResult, Projectile projectile) {
+        if (!level.isClientSide && projectile.isOnFire()) {
+            explode(level,  hitResult.getBlockPos());
+        }
+    }
 
-    @SuppressWarnings("ALL")
+    @SuppressWarnings("deprecation")
     @Override
     public InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
 
-        ItemStack itemStack = player.getItemInHand(interactionHand);
-        Item item = itemStack.getItem();
+        ItemStack itemInHand = player.getItemInHand(interactionHand);
 
-        if (Odyssey.getConfig().blocks.unstable_gunpowder_blocks && itemStack.is(ChrysalisTags.TNT_IGNITERS)) {
+        if (Odyssey.getConfig().blocks.unstable_gunpowder_blocks && itemInHand.is(ChrysalisTags.TNT_IGNITERS)) {
 
             explode(level, blockPos, player);
             level.setBlock(blockPos, Blocks.AIR.defaultBlockState(), 11);
 
-            if (!player.isCreative()) {
-                if (itemStack.is(Items.FLINT_AND_STEEL)) {
-                    itemStack.hurtAndBreak(1, player, playerx -> player.broadcastBreakEvent(interactionHand));
+            if (!player.getAbilities().instabuild) {
+                if (itemInHand.is(Items.FLINT_AND_STEEL)) {
+                    itemInHand.hurtAndBreak(1, player, flintAndSteel -> flintAndSteel.broadcastBreakEvent(interactionHand));
                 } else {
-                    itemStack.shrink(1);
+                    itemInHand.shrink(1);
                 }
             }
 
-            player.awardStat(Stats.ITEM_USED.get(item));
+            player.awardStat(Stats.ITEM_USED.get(itemInHand.getItem()));
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
         return super.use(blockState, level, blockPos, player, interactionHand, blockHitResult);
     }
 
+    // endregion
+
+    // region Gunpowder Block Exploding
+
     @Override
-    public void wasExploded(Level level, BlockPos pos, Explosion explosion) {
+    public void wasExploded(Level level, BlockPos blockPos, Explosion explosion) {
         if (!level.isClientSide) {
-            explode(level, pos, explosion.getIndirectSourceEntity());
+            explode(level, blockPos, explosion.getIndirectSourceEntity());
         }
     }
 
-    @SuppressWarnings("ALL")
-    @Override
-    public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos neighborPos, boolean bl) {
-
-        super.neighborChanged(state, level, pos, block, neighborPos, bl);
-
-        if (level.getBlockState(neighborPos).getBlock() instanceof FireBlock) {
-            explode(level, pos);
-        }
-    }
-
-    public static void explode(Level level, BlockPos pos) {
+    public static void explode(Level level, BlockPos blockPos) {
         if (Odyssey.getConfig().blocks.unstable_gunpowder_blocks) {
-            explode(level, pos, null);
+            explode(level, blockPos, null);
         }
     }
 
@@ -121,8 +118,6 @@ public class GunpowderBlock extends FallingBlock {
         }
     }
 
-    // Gunpowder Blocks will not drop themselves when exploded
-
     @Override
     public boolean dropFromExplosion(Explosion explosion) {
         if (Odyssey.getConfig().blocks.unstable_gunpowder_blocks) {
@@ -131,4 +126,6 @@ public class GunpowderBlock extends FallingBlock {
             return super.dropFromExplosion(explosion);
         }
     }
+
+    // endregion
 }

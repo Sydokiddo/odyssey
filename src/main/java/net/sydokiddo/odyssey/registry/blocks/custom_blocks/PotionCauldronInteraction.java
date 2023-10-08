@@ -19,7 +19,6 @@ import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.LayeredCauldronBlock;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.sydokiddo.odyssey.registry.OdysseyRegistry;
@@ -35,120 +34,126 @@ public class PotionCauldronInteraction {
 
     public static void bootstrap() {
 
-        // Inserting Potions into Cauldrons
+        // region Inserting Potions into Cauldrons
 
-        POTION_CAULDRON_BEHAVIOR.put(Items.POTION, (state, level, pos, player, hand, stack) -> {
+        POTION_CAULDRON_BEHAVIOR.put(Items.POTION, (blockState, level, blockPos, player, hand, itemStack) -> {
 
-            BlockEntity blockEntity = level.getBlockEntity(pos);
-            PotionCauldronBlockEntity cauldron = (PotionCauldronBlockEntity)blockEntity;
-            assert cauldron != null;
+            PotionCauldronBlockEntity cauldron = (PotionCauldronBlockEntity) level.getBlockEntity(blockPos);
 
-            if (getPotion(stack) == cauldron.getPotion()) {
+            if (cauldron != null && getPotion(itemStack) == cauldron.getPotion()) {
 
-                if (state.getValue(LayeredCauldronBlock.LEVEL) != 3 && getPotion(stack) != Potions.WATER && cauldron.tryApplyPotion(getPotion(stack))) {
+                if (blockState.getValue(LayeredCauldronBlock.LEVEL) != 3 && getPotion(itemStack) != Potions.WATER && cauldron.tryApplyPotion(getPotion(itemStack))) {
 
                     if (!level.isClientSide) {
 
-                        player.setItemInHand(hand, ItemUtils.createFilledResult(stack, player, new ItemStack(Items.GLASS_BOTTLE)));
+                        player.setItemInHand(hand, ItemUtils.createFilledResult(itemStack, player, new ItemStack(Items.GLASS_BOTTLE)));
                         player.awardStat(Stats.USE_CAULDRON);
-                        player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
+                        player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
 
-                        level.setBlock(pos, state.cycle(LayeredCauldronBlock.LEVEL), 3);
-                        level.playSound(null, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
-                        level.gameEvent(null, GameEvent.FLUID_PLACE, pos);
+                        level.setBlock(blockPos, blockState.cycle(LayeredCauldronBlock.LEVEL), 3);
+                        level.playSound(null, blockPos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
+                        level.gameEvent(null, GameEvent.FLUID_PLACE, blockPos);
                     }
                     return InteractionResult.sidedSuccess(level.isClientSide);
 
                 } else {
                     return InteractionResult.PASS;
                 }
+
             } else {
+
+                // Dissipating Particles and Sound
+
                 if (level instanceof ServerLevel serverLevel) {
                     for (int i = 0; i < 10; ++i) {
-                        double x = (double) pos.getX() + 0.5D;
-                        double y = (double) pos.getY() + 1.0D;
-                        double z = (double) pos.getZ() + 0.5D;
-                        serverLevel.sendParticles(ParticleTypes.POOF, x, y, z, 1, 0.0D, 0.0D, 0.0D, 0.0D);
+                        serverLevel.sendParticles(ParticleTypes.POOF, (double) blockPos.getX() + 0.5D, (double) blockPos.getY() + 1.0D, (double) blockPos.getZ() + 0.5D, 1, 0.0D, 0.0D, 0.0D, 0.0D);
                     }
                 }
-                return CauldronInteraction.fillBucket(state, level, pos, player, hand, stack, new ItemStack(Items.GLASS_BOTTLE), stateIn -> true, ModSoundEvents.CAULDRON_POTION_DISSIPATE);
+                return CauldronInteraction.fillBucket(blockState, level, blockPos, player, hand, itemStack, new ItemStack(Items.GLASS_BOTTLE), stateIn -> true, ModSoundEvents.CAULDRON_POTION_DISSIPATE);
             }
         });
 
-        // Removing Potions from Cauldrons
+        // endregion
 
-        POTION_CAULDRON_BEHAVIOR.put(Items.GLASS_BOTTLE, (state, world, pos, player, hand, stack) -> {
+        // region Removing Potions from Potion Cauldrons
 
-            BlockEntity blockEntity = world.getBlockEntity(pos);
-            PotionCauldronBlockEntity cauldron = (PotionCauldronBlockEntity)blockEntity;
+        POTION_CAULDRON_BEHAVIOR.put(Items.GLASS_BOTTLE, (blockState, level, blockPos, player, hand, itemStack) -> {
+
+            PotionCauldronBlockEntity cauldron = (PotionCauldronBlockEntity) level.getBlockEntity(blockPos);
             Potion potion = Objects.requireNonNull(cauldron).getPotion();
             ItemStack bottle = new ItemStack(Items.POTION);
 
-            if (cauldron.hasPotion() && !world.isClientSide) {
+            if (cauldron.hasPotion() && !level.isClientSide) {
 
                 PotionUtils.setPotion(bottle, potion);
-                player.setItemInHand(hand, ItemUtils.createFilledResult(stack, player, bottle));
+                player.setItemInHand(hand, ItemUtils.createFilledResult(itemStack, player, bottle));
 
                 player.awardStat(Stats.USE_CAULDRON);
-                player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
+                player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
 
-                PotionCauldronBlock.lowerFillLevel(state, world, pos);
-                world.playSound(null, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
-                world.gameEvent(null, GameEvent.FLUID_PICKUP, pos);
+                PotionCauldronBlock.lowerFillLevel(blockState, level, blockPos);
+                level.playSound(null, blockPos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
+                level.gameEvent(null, GameEvent.FLUID_PICKUP, blockPos);
             }
-            return InteractionResult.sidedSuccess(world.isClientSide);
+            return InteractionResult.sidedSuccess(level.isClientSide);
         });
 
-        // Tipping Arrows with Potion Cauldrons
+        // endregion
 
-        POTION_CAULDRON_BEHAVIOR.put(Items.ARROW, (state, world, pos, player, hand, stack) -> {
+        // region Tipping Arrows with Potion Cauldrons
 
-            BlockEntity blockEntity = world.getBlockEntity(pos);
-            PotionCauldronBlockEntity cauldron = (PotionCauldronBlockEntity)blockEntity;
+        POTION_CAULDRON_BEHAVIOR.put(Items.ARROW, (blockState, level, blockPos, player, hand, itemStack) -> {
+
+            PotionCauldronBlockEntity cauldron = (PotionCauldronBlockEntity) level.getBlockEntity(blockPos);
             Potion potion = Objects.requireNonNull(cauldron).getPotion();
             ItemStack tippedArrow = new ItemStack(Items.TIPPED_ARROW, player.getItemInHand(hand).getCount());
 
-            if (cauldron.hasPotion() && !world.isClientSide && getPotion(stack) != Potions.WATER) {
+            if (cauldron.hasPotion() && !level.isClientSide && getPotion(itemStack) != Potions.WATER) {
                 PotionUtils.setPotion(tippedArrow, potion);
-                doCauldronConsumeInteraction(state, world, pos, player, hand, Items.ARROW.getDefaultInstance(), tippedArrow);
-                world.playSound(null, pos, ModSoundEvents.CAULDRON_TIP_ARROW, SoundSource.BLOCKS, 1.0F, 1.0F);
+                doCauldronConsumeInteraction(blockState, level, blockPos, player, hand, Items.ARROW.getDefaultInstance(), tippedArrow);
+                level.playSound(null, blockPos, ModSoundEvents.CAULDRON_TIP_ARROW, SoundSource.BLOCKS, 1.0F, 1.0F);
             }
-            return InteractionResult.sidedSuccess(world.isClientSide);
+
+            return InteractionResult.sidedSuccess(level.isClientSide);
         });
 
-        // Making Potatoes into Poisonous Potatoes
+        // endregion
 
-        POTION_CAULDRON_BEHAVIOR.put(Items.POTATO, (state, world, pos, player, hand, stack) -> {
+        // region Making Potatoes into Poisonous Potatoes
 
-            BlockEntity blockEntity = world.getBlockEntity(pos);
-            PotionCauldronBlockEntity cauldron = (PotionCauldronBlockEntity)blockEntity;
+        POTION_CAULDRON_BEHAVIOR.put(Items.POTATO, (blockState, level, blockPos, player, hand, itemStack) -> {
+
+            PotionCauldronBlockEntity cauldron = (PotionCauldronBlockEntity) level.getBlockEntity(blockPos);
             ItemStack poisonousPotato = new ItemStack(Items.POISONOUS_POTATO, player.getItemInHand(hand).getCount());
 
             if (cauldron != null && (cauldron.getPotion() == Potions.POISON || cauldron.getPotion() == Potions.LONG_POISON || cauldron.getPotion() == Potions.STRONG_POISON)) {
 
-                if (cauldron.hasPotion() && !world.isClientSide) {
-                    doCauldronConsumeInteraction(state, world, pos, player, hand, Items.POTATO.getDefaultInstance(), poisonousPotato);
-                    world.playSound(null, pos, ModSoundEvents.CAULDRON_POISON_POTATO, SoundSource.BLOCKS, 1.0F, 1.0F);
+                if (cauldron.hasPotion() && !level.isClientSide) {
+                    doCauldronConsumeInteraction(blockState, level, blockPos, player, hand, Items.POTATO.getDefaultInstance(), poisonousPotato);
+                    level.playSound(null, blockPos, ModSoundEvents.CAULDRON_POISON_POTATO, SoundSource.BLOCKS, 1.0F, 1.0F);
                 }
-                return InteractionResult.sidedSuccess(world.isClientSide);
+                return InteractionResult.sidedSuccess(level.isClientSide);
 
             } else {
                 return InteractionResult.PASS;
             }
         });
+
+        // endregion
+
         CauldronInteraction.addDefaultInteractions(POTION_CAULDRON_BEHAVIOR);
     }
 
-    private static void doCauldronConsumeInteraction(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, ItemStack startingItem, ItemStack resultItem) {
+    private static void doCauldronConsumeInteraction(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand hand, ItemStack startingItem, ItemStack resultItem) {
 
         player.setItemInHand(hand, resultItem);
 
         player.awardStat(Stats.USE_CAULDRON);
         player.awardStat(Stats.ITEM_USED.get(resultItem.getItem()));
 
-        PotionCauldronBlock.lowerFillLevel(state, world, pos);
-        world.gameEvent(null, GameEvent.BLOCK_CHANGE, pos);
+        PotionCauldronBlock.lowerFillLevel(blockState, level, blockPos);
+        level.gameEvent(null, GameEvent.BLOCK_CHANGE, blockPos);
 
-        OdysseyRegistry.sendCauldronInteractionDebugMessage(startingItem, resultItem, state.getBlock());
+        OdysseyRegistry.sendCauldronInteractionDebugMessage(startingItem, resultItem, blockState.getBlock());
     }
 }

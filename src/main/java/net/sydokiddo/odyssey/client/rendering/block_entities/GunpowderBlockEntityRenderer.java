@@ -22,36 +22,40 @@ public class GunpowderBlockEntityRenderer extends EntityRenderer<GunpowderBlockE
 
     public GunpowderBlockEntityRenderer(EntityRendererProvider.Context context) {
         super(context);
-        this.shadowRadius = 0.5f;
+        this.shadowRadius = 0.5F;
         this.blockRenderer = context.getBlockRenderDispatcher();
     }
+
+    // region Rendering
 
     @Override
     public void render(GunpowderBlockEntity gunpowderBlock, float f, float g, PoseStack poseStack, MultiBufferSource multiBufferSource, int i) {
 
         poseStack.pushPose();
-        poseStack.translate(0.0f, 0.5f, 0.0f);
-        int j = gunpowderBlock.getFuse();
+        poseStack.translate(0.0F, 0.5F, 0.0F);
+        int fuse = gunpowderBlock.getFuse();
 
-        if ((float)j - g + 1.0f < 10.0f) {
-            float h = 1.0f - ((float)j - g + 1.0f) / 10.0f;
-            h = Mth.clamp(h, 0.0f, 1.0f);
+        if ((float)fuse - g + 1.0F < 10.0F) {
+            float h = 1.0f - ((float)fuse - g + 1.0F) / 10.0F;
+            h = Mth.clamp(h, 0.0f, 1.0F);
             h *= h;
             h *= h;
-            float k = 1.0f + h * 0.3f;
-            poseStack.scale(k, k, k);
+            float scale = 1.0f + h * 0.3F;
+            poseStack.scale(scale, scale, scale);
         }
 
-        poseStack.mulPose(Axis.YP.rotationDegrees(-90.0f));
-        poseStack.translate(-0.5f, -0.5f, 0.5f);
-        poseStack.mulPose(Axis.YP.rotationDegrees(90.0f));
-        TntMinecartRenderer.renderWhiteSolidBlock(this.blockRenderer, ModBlocks.GUNPOWDER_BLOCK.defaultBlockState(), poseStack, multiBufferSource, i, j / 5 % 2 == 0);
+        poseStack.mulPose(Axis.YP.rotationDegrees(-90.0F));
+        poseStack.translate(-0.5F, -0.5F, 0.5F);
+        poseStack.mulPose(Axis.YP.rotationDegrees(90.0F));
+        TntMinecartRenderer.renderWhiteSolidBlock(this.blockRenderer, ModBlocks.GUNPOWDER_BLOCK.defaultBlockState(), poseStack, multiBufferSource, i, fuse / 5 % 2 == 0);
         poseStack.popPose();
 
         super.render(gunpowderBlock, f, g, poseStack, multiBufferSource, i);
     }
 
-    @SuppressWarnings("ALL")
+    // endregion
+
+    @SuppressWarnings("deprecation")
     @Override
     public ResourceLocation getTextureLocation(GunpowderBlockEntity gunpowderBlock) {
         return TextureAtlas.LOCATION_BLOCKS;

@@ -18,15 +18,15 @@ public class PottedSporeBlossomBlock extends FlowerPotBlock {
     @Override
     public void animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource randomSource) {
 
-        int i = blockPos.getX();
-        int j = blockPos.getY();
-        int k = blockPos.getZ();
         BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
 
         for (int l = 0; l < 7; ++l) {
-            mutableBlockPos.set(i + Mth.nextInt(randomSource, -5, 5), j - randomSource.nextInt(5), k + Mth.nextInt(randomSource, -5, 5));
-            BlockState blockState2 = level.getBlockState(mutableBlockPos);
-            if (blockState2.isCollisionShapeFullBlock(level, mutableBlockPos)) continue;
+
+            mutableBlockPos.set(blockPos.getX() + Mth.nextInt(randomSource, -5, 5), blockPos.getY() - randomSource.nextInt(5), blockPos.getZ() + Mth.nextInt(randomSource, -5, 5));
+
+            BlockState mutualBlockState = level.getBlockState(mutableBlockPos);
+            if (mutualBlockState.isCollisionShapeFullBlock(level, mutableBlockPos)) continue;
+
             level.addParticle(ParticleTypes.SPORE_BLOSSOM_AIR, (double)mutableBlockPos.getX() + randomSource.nextDouble(), (double)mutableBlockPos.getY() + randomSource.nextDouble(), (double)mutableBlockPos.getZ() + randomSource.nextDouble(), 0.0, 0.0, 0.0);
         }
     }

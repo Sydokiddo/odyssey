@@ -16,17 +16,11 @@ import net.sydokiddo.odyssey.registry.entities.non_living_entities.GunpowderBloc
 
 public class ModEntities {
 
-    // Block Entities:
-
     public static BlockEntityType<ModBrushableBlockEntity> BRUSHABLE_BLOCK = FabricBlockEntityTypeBuilder.create(ModBrushableBlockEntity::new, ModBlocks.SUSPICIOUS_RED_SAND).build(null);
-
     public static BlockEntityType<PotionCauldronBlockEntity> POTION_CAULDRON = FabricBlockEntityTypeBuilder.create(PotionCauldronBlockEntity::new, ModBlocks.POTION_CAULDRON).build(null);
-
-    // Non-Living Entities:
-
     public static final EntityType<GunpowderBlockEntity> GUNPOWDER_BLOCK = FabricEntityTypeBuilder.create(MobCategory.MISC, GunpowderBlockEntity::new).dimensions(EntityDimensions.fixed(1F, 1F)).trackRangeChunks(4).trackedUpdateRate(10).build();
 
-    // Registry for Entities:
+    // Registry
 
     public static void registerModEntities() {
         Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, Odyssey.id("brushable_block"), BRUSHABLE_BLOCK);

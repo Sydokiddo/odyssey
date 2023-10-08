@@ -11,12 +11,12 @@ import org.jetbrains.annotations.Nullable;
 
 public class ModBrushableBlock extends BrushableBlock {
 
-    public ModBrushableBlock(Block block, Properties settings, SoundEvent brushingSound, SoundEvent brushingCompleteSound) {
-        super(block, settings, brushingSound, brushingCompleteSound);
+    public ModBrushableBlock(Block block, Properties properties, SoundEvent brushingSound, SoundEvent brushingCompleteSound) {
+        super(block, properties, brushingSound, brushingCompleteSound);
     }
 
     @Override @Nullable
-    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new ModBrushableBlockEntity(pos, state);
+    public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
+        return new ModBrushableBlockEntity(blockPos, blockState);
     }
 }

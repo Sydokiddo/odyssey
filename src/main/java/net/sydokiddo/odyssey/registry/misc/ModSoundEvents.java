@@ -8,22 +8,7 @@ import net.sydokiddo.odyssey.Odyssey;
 
 public class ModSoundEvents {
 
-    // List of Sounds:
-
-    // - Item Sounds:
-
-    public static final SoundEvent BUCKET_FILL_FROG = registerSoundEvent("item.bucket.fill_frog");
-    public static final SoundEvent BUCKET_EMPTY_FROG = registerSoundEvent("item.bucket.empty_frog");
-
-    public static final SoundEvent BUCKET_FILL_SQUID = registerSoundEvent("item.bucket.fill_squid");
-    public static final SoundEvent BUCKET_EMPTY_SQUID = registerSoundEvent("item.bucket.empty_squid");
-
-    public static final SoundEvent BUCKET_FILL_GLOW_SQUID = registerSoundEvent("item.bucket.fill_glow_squid");
-    public static final SoundEvent BUCKET_EMPTY_GLOW_SQUID = registerSoundEvent("item.bucket.empty_glow_squid");
-
-    public static final SoundEvent SADDLE_UNEQUIP = registerSoundEvent("item.saddle.unequip");
-
-    // - Block Sounds:
+    // region Block Sounds
 
     public static final SoundEvent ANVIL_REPAIR = registerSoundEvent("block.anvil.repair");
 
@@ -39,7 +24,24 @@ public class ModSoundEvents {
     public static final SoundEvent PISTON_APPLY_SLIMEBALL = registerSoundEvent("block.piston.apply_slimeball");
     public static final SoundEvent PISTON_REMOVE_SLIMEBALL = registerSoundEvent("block.piston.remove_slimeball");
 
-    // - Entity Sounds:
+    // endregion
+
+    // region Item Sounds
+
+    public static final SoundEvent BUCKET_FILL_FROG = registerSoundEvent("item.bucket.fill_frog");
+    public static final SoundEvent BUCKET_EMPTY_FROG = registerSoundEvent("item.bucket.empty_frog");
+
+    public static final SoundEvent BUCKET_FILL_SQUID = registerSoundEvent("item.bucket.fill_squid");
+    public static final SoundEvent BUCKET_EMPTY_SQUID = registerSoundEvent("item.bucket.empty_squid");
+
+    public static final SoundEvent BUCKET_FILL_GLOW_SQUID = registerSoundEvent("item.bucket.fill_glow_squid");
+    public static final SoundEvent BUCKET_EMPTY_GLOW_SQUID = registerSoundEvent("item.bucket.empty_glow_squid");
+
+    public static final SoundEvent SADDLE_UNEQUIP = registerSoundEvent("item.saddle.unequip");
+
+    // endregion
+
+    // region Entity Sounds
 
     public static final SoundEvent ARMOR_STAND_ADD_ARMS = registerSoundEvent("entity.armor_stand.add_arms");
 
@@ -50,7 +52,9 @@ public class ModSoundEvents {
     public static final SoundEvent WAXED_ITEM_FRAME_INTERACT_FAIL = registerSoundEvent("entity.item_frame.waxed_interact_fail");
     public static final SoundEvent WAXED_GLOW_ITEM_FRAME_INTERACT_FAIL = registerSoundEvent("entity.glow_item_frame.waxed_interact_fail");
 
-    // Registry for Sounds:
+    // endregion
+
+    // Registry
 
     private static SoundEvent registerSoundEvent(String name) {
         ResourceLocation id = new ResourceLocation(Odyssey.MOD_ID, name);

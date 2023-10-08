@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@SuppressWarnings("ALL")
+@SuppressWarnings("all")
 @Mixin(targets = "net/minecraft/world/entity/monster/Slime$SlimeFloatGoal", priority = 1500)
 public class SlimeFloatGoalMixin {
 
@@ -22,7 +22,7 @@ public class SlimeFloatGoalMixin {
     }
 
     @Inject(method = "canUse", at = @At(value = "HEAD"), cancellable = true)
-    private void odyssey_preventSlimeFloatingOnWater(CallbackInfoReturnable<Boolean> cir) {
+    private void odyssey$preventSlimeFloatingOnWater(CallbackInfoReturnable<Boolean> cir) {
         if (slime instanceof MagmaCube magmaCube && magmaCube.isInWater() && Odyssey.getConfig().entities.slime_and_magma_cube_converting) {
             cir.setReturnValue(false);
         }

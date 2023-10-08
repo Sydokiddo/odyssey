@@ -35,13 +35,28 @@ public abstract class ItemFrameMixin extends HangingEntity {
     @Shadow public abstract ItemStack getItem();
     @Shadow public abstract SoundEvent getRotateItemSound();
 
-    @Unique private static final String WAXED_TAG = "Waxed";
-
     private ItemFrameMixin(EntityType<? extends HangingEntity> entityType, Level level) {
         super(entityType, level);
     }
 
-    // Allows for filled Item Frames and Glow Item Frames to be waxed with Honeycomb to prevent item rotation
+    // region NBT
+
+    @Unique private static final String WAXED_TAG = "Waxed";
+
+    @Inject(at = @At("HEAD"), method = "defineSynchedData")
+    private void odyssey$defineItemFrameNBT(CallbackInfo ci) {
+        this.getEntityData().define(OdysseyRegistry.WAXED, false);
+    }
+
+    @Inject(at = @At("HEAD"), method = "addAdditionalSaveData")
+    private void odyssey$addItemFrameNBT(CompoundTag compoundTag, CallbackInfo ci) {
+        compoundTag.putBoolean(WAXED_TAG, this.isWaxed());
+    }
+
+    @Inject(at = @At("HEAD"), method = "readAdditionalSaveData")
+    private void odyssey$readItemFrameNBT(CompoundTag compoundTag, CallbackInfo ci) {
+        this.setWaxed(compoundTag.getBoolean(WAXED_TAG));
+    }
 
     @Unique
     private boolean isWaxed() {
@@ -52,6 +67,104 @@ public abstract class ItemFrameMixin extends HangingEntity {
     private void setWaxed(boolean bl) {
         this.entityData.set(OdysseyRegistry.WAXED, bl);
     }
+
+    // endregion
+
+    // region Item Frame Interactions
+
+    @Unique
+    private void doItemFrameInteractionEvents(Player player, ItemStack itemStack) {
+        this.gameEvent(GameEvent.BLOCK_CHANGE, player);
+        player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
+    }
+
+    @Inject(at = @At("HEAD"), method = "interact", cancellable = true)
+    private void odyssey$waxingAndShearingItemFrames(Player player, InteractionHand interactionHand, CallbackInfoReturnable<InteractionResult> cir) {
+
+        ItemStack itemStack = player.getItemInHand(interactionHand);
+
+        if (!this.getItem().isEmpty() && player.mayBuild()) {
+
+            // region Waxing
+
+            if (itemStack.is(Items.HONEYCOMB) && !this.isWaxed() && Odyssey.getConfig().entities.item_frame_waxing) {
+
+                if (!player.isCreative()) {
+                    itemStack.shrink(1);
+                }
+
+                this.setWaxed(true);
+                this.level().levelEvent(player, 3003, this.pos, 0);
+                this.doItemFrameInteractionEvents(player, itemStack);
+
+                if (Chrysalis.IS_DEBUG) {
+                    Odyssey.LOGGER.info("{} has been successfully waxed by {}", this.getName().getString(), player.getName().getString());
+                }
+
+                cir.setReturnValue(InteractionResult.SUCCESS);
+            }
+
+            // endregion
+
+            // region Shearing
+
+            if (itemStack.is(Items.SHEARS) && !this.isInvisible() && Odyssey.getConfig().entities.item_frame_shearing) {
+
+                if (!player.isCreative()) {
+                    itemStack.hurtAndBreak(1, player, playerx -> player.broadcastBreakEvent(interactionHand));
+                }
+
+                this.setInvisible(true);
+                this.playSound(ModSoundEvents.ITEM_FRAME_SHEAR, 1.0f, 1.0f);
+                this.displayPoofParticles();
+                this.doItemFrameInteractionEvents(player, itemStack);
+
+                if (Chrysalis.IS_DEBUG) {
+                    Odyssey.LOGGER.info("Setting {} as invisible as it has been sheared by {}", this.getName().getString(), player.getName().getString());
+                }
+
+                cir.setReturnValue(InteractionResult.SUCCESS);
+            }
+
+            // endregion
+        }
+    }
+
+    @Inject(method = "hurt", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/decoration/ItemFrame;gameEvent(Lnet/minecraft/world/level/gameevent/GameEvent;Lnet/minecraft/world/entity/Entity;)V"))
+    private void odyssey$makeItemFrameVisibleUponRemovingItem(DamageSource damageSource, float f, CallbackInfoReturnable<Boolean> cir) {
+
+        // Makes the item frame visible again if it is invisible without an item in it
+
+        if (this.isInvisible()) {
+
+            this.setInvisible(false);
+            this.displayPoofParticles();
+
+            if (Chrysalis.IS_DEBUG) {
+                Odyssey.LOGGER.info("Setting {} as visible again as its item has been removed", this.getName().getString());
+            }
+        }
+    }
+
+    @Inject(method = "interact", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/decoration/ItemFrame;setRotation(I)V"), cancellable = true)
+    private void odyssey$cancelRotationIfItemFrameIsWaxed(Player player, InteractionHand interactionHand, CallbackInfoReturnable<InteractionResult> cir) {
+
+        // Prevents the item inside the Item Frame from being rotated if the Item Frame is waxed
+
+        if (this.isWaxed()) {
+
+            if (Chrysalis.IS_DEBUG) {
+                Odyssey.LOGGER.info("{} is waxed, preventing items inside of it from being rotated", this.getName().getString());
+            }
+
+            cir.cancel();
+            cir.setReturnValue(InteractionResult.PASS);
+        }
+    }
+
+    // endregion
+
+    // region Particles and Sounds
 
     @Unique
     private void displayPoofParticles() {
@@ -65,107 +178,23 @@ public abstract class ItemFrameMixin extends HangingEntity {
         }
     }
 
-    @Inject(at = @At("HEAD"), method = "defineSynchedData")
-    private void odyssey_defineItemFrameSyncedData(CallbackInfo ci) {
-        this.getEntityData().define(OdysseyRegistry.WAXED, false);
-    }
-
-    @Inject(at = @At("HEAD"), method = "addAdditionalSaveData")
-    private void odyssey_addItemFrameAdditionalSaveData(CompoundTag compoundTag, CallbackInfo ci) {
-        compoundTag.putBoolean(WAXED_TAG, this.isWaxed());
-    }
-
-    @Inject(at = @At("HEAD"), method = "readAdditionalSaveData")
-    private void odyssey_readItemFrameAdditionalSaveData(CompoundTag compoundTag, CallbackInfo ci) {
-        this.setWaxed(compoundTag.getBoolean(WAXED_TAG));
-    }
-
-    @Inject(at = @At("HEAD"), method = "interact", cancellable = true)
-    private void odyssey_waxingAndShearingItemFrames(Player player, InteractionHand interactionHand, CallbackInfoReturnable<InteractionResult> cir) {
-
-        ItemStack itemStack = player.getItemInHand(interactionHand);
-
-        if (!this.getItem().isEmpty() && player.mayBuild()) {
-
-            if (itemStack.is(Items.HONEYCOMB) && !this.isWaxed() && Odyssey.getConfig().entities.item_frame_waxing) {
-
-                if (!player.isCreative()) {
-                    itemStack.shrink(1);
-                }
-
-                this.setWaxed(true);
-                this.level().levelEvent(player, 3003, this.pos, 0);
-
-                if (Chrysalis.IS_DEBUG) {
-                    Odyssey.LOGGER.info("{} has been successfully waxed by {}", this.getName().getString(), player.getName().getString());
-                }
-
-                this.gameEvent(GameEvent.BLOCK_CHANGE, player);
-                player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
-                cir.setReturnValue(InteractionResult.SUCCESS);
-            }
-
-            if (itemStack.is(Items.SHEARS) && !this.isInvisible() && Odyssey.getConfig().entities.item_frame_shearing) {
-
-                if (!player.isCreative()) {
-                    itemStack.hurtAndBreak(1, player, playerx -> player.broadcastBreakEvent(interactionHand));
-                }
-
-                this.setInvisible(true);
-                this.playSound(ModSoundEvents.ITEM_FRAME_SHEAR, 1.0f, 1.0f);
-                this.displayPoofParticles();
-
-                if (Chrysalis.IS_DEBUG) {
-                    Odyssey.LOGGER.info("Setting {} as invisible as it has been sheared by {}", this.getName().getString(), player.getName().getString());
-                }
-
-                this.gameEvent(GameEvent.BLOCK_CHANGE, player);
-                player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
-                cir.setReturnValue(InteractionResult.SUCCESS);
-            }
-        }
-    }
-
-    // Makes the item frame visible again if invisible without an item in it
-
-    @Inject(method = "hurt", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/decoration/ItemFrame;gameEvent(Lnet/minecraft/world/level/gameevent/GameEvent;Lnet/minecraft/world/entity/Entity;)V"))
-    private void odyssey_makeItemFrameVisibleUponRemovingItem(DamageSource damageSource, float f, CallbackInfoReturnable<Boolean> cir) {
-        if (this.isInvisible()) {
-
-            this.setInvisible(false);
-            this.displayPoofParticles();
-
-            if (Chrysalis.IS_DEBUG) {
-                Odyssey.LOGGER.info("Setting {} as visible again as its item has been removed", this.getName().getString());
-            }
-        }
-    }
-
-    // Prevents the item  in the item frame from being rotated if it is waxed
-
-    @Inject(method = "interact", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/decoration/ItemFrame;setRotation(I)V"), cancellable = true)
-    private void odyssey_cancelRotationIfItemFrameWaxed(Player player, InteractionHand interactionHand, CallbackInfoReturnable<InteractionResult> cir) {
-        if (this.isWaxed()) {
-
-            if (Chrysalis.IS_DEBUG) {
-                Odyssey.LOGGER.info("{} is waxed, preventing items inside of it from being rotated", this.getName().getString());
-            }
-
-            cir.cancel();
-            cir.setReturnValue(InteractionResult.PASS);
-        }
-    }
-
     @Redirect(method = "interact", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/decoration/ItemFrame;playSound(Lnet/minecraft/sounds/SoundEvent;FF)V"))
-    private void odyssey_playSeparateSoundIfItemFrameWaxed(ItemFrame instance, SoundEvent soundEvent, float v, float w) {
+    private void odyssey$playSeparateInteractionSoundWhenWaxed(ItemFrame instance, SoundEvent soundEvent, float volume, float pitch) {
+
+        SoundEvent interactionSound;
+
         if (this.isWaxed()) {
             if (this.getType() == EntityType.GLOW_ITEM_FRAME) {
-                this.playSound(ModSoundEvents.WAXED_GLOW_ITEM_FRAME_INTERACT_FAIL, 1.0f, 1.0f);
+                interactionSound = ModSoundEvents.WAXED_GLOW_ITEM_FRAME_INTERACT_FAIL;
             } else {
-                this.playSound(ModSoundEvents.WAXED_ITEM_FRAME_INTERACT_FAIL, 1.0f, 1.0f);
+                interactionSound = ModSoundEvents.WAXED_ITEM_FRAME_INTERACT_FAIL;
             }
         } else {
-            this.playSound(this.getRotateItemSound(), 1.0f, 1.0f);
+            interactionSound = this.getRotateItemSound();
         }
+
+        this.playSound(interactionSound, 1.0F, 1.0F);
     }
+
+    // endregion
 }

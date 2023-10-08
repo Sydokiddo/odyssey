@@ -7,6 +7,7 @@
     ],
     "subtitle": "subtitles.block.anvil.repair"
   },
+
   "block.small_flower.pick": {
     "sounds": [
       "odyssey:block/small_flower/pick1",
@@ -16,6 +17,7 @@
     ],
     "subtitle": "subtitles.block.small_flower.pick"
   },
+
   "block.redstone_lantern.power_on": {
     "sounds": [
       "odyssey:block/redstone_lantern/power_on"
@@ -28,6 +30,7 @@
     ],
     "subtitle": "subtitles.block.redstone_lantern.power_off"
   },
+
   "block.cauldron.tip_arrow": {
     "sounds": [
       "odyssey:block/cauldron/tip_arrow1",
@@ -48,6 +51,7 @@
     ],
     "subtitle": "subtitles.block.cauldron.potion_dissipate"
   },
+
   "block.piston.apply_slimeball": {
     "sounds": [
       "odyssey:block/piston/apply_slimeball1",
@@ -64,6 +68,53 @@
     ],
     "subtitle": "subtitles.item.axe.scrape"
   },
+
+  "item.bucket.fill_frog": {
+    "sounds": [
+      "odyssey:item/bucket/fill_frog"
+    ],
+    "subtitle": "subtitles.item.bucket.fill_frog"
+  },
+  "item.bucket.empty_frog": {
+    "sounds": [
+      "odyssey:item/bucket/empty_frog"
+    ],
+    "subtitle": "subtitles.item.bucket.empty"
+  },
+
+  "item.bucket.fill_squid": {
+    "sounds": [
+      "odyssey:item/bucket/fill_squid"
+    ],
+    "subtitle": "subtitles.item.bucket.fill_squid"
+  },
+  "item.bucket.empty_squid": {
+    "sounds": [
+      "odyssey:item/bucket/empty_squid"
+    ],
+    "subtitle": "subtitles.item.bucket.empty"
+  },
+
+  "item.bucket.fill_glow_squid": {
+    "sounds": [
+      "odyssey:item/bucket/fill_glow_squid"
+    ],
+    "subtitle": "subtitles.item.bucket.fill_glow_squid"
+  },
+  "item.bucket.empty_glow_squid": {
+    "sounds": [
+      "odyssey:item/bucket/empty_glow_squid"
+    ],
+    "subtitle": "subtitles.item.bucket.empty"
+  },
+
+  "item.saddle.unequip": {
+    "sounds": [
+      "odyssey:item/saddle/unequip"
+    ],
+    "subtitle": "subtitles.item.saddle.unequip"
+  },
+
   "entity.armor_stand.add_arms": {
     "sounds": [
       "odyssey:entity/armor_stand/add_arms1",
@@ -73,30 +124,7 @@
     ],
     "subtitle": "subtitles.entity.armor_stand.add_arms"
   },
-  "entity.item_frame.waxed_interact_fail": {
-    "sounds": [
-      "odyssey:entity/item_frame/rotate_fail1",
-      "odyssey:entity/item_frame/rotate_fail2",
-      "odyssey:entity/item_frame/rotate_fail3"
-    ],
-    "subtitle": "subtitles.entity.item_frame.waxed_interact_fail"
-  },
-  "entity.glow_item_frame.waxed_interact_fail": {
-    "sounds": [
-      "odyssey:entity/item_frame/rotate_fail1",
-      "odyssey:entity/item_frame/rotate_fail2",
-      "odyssey:entity/item_frame/rotate_fail3"
-    ],
-    "subtitle": "subtitles.entity.glow_item_frame.waxed_interact_fail"
-  },
-  "entity.item_frame.shear": {
-    "sounds": [
-      "odyssey:entity/item_frame/shear1",
-      "odyssey:entity/item_frame/shear2",
-      "odyssey:entity/item_frame/shear3"
-    ],
-    "subtitle": "subtitles.item.shears.shear"
-  },
+
   "entity.slime.converted_to_magma_cube": {
     "sounds": [
       "odyssey:mob/slime/magma_cube_convert1",
@@ -113,46 +141,29 @@
     ],
     "subtitle": "subtitles.entity.magma_cube.converted_to_slime"
   },
-  "item.bucket.fill_frog": {
+
+  "entity.item_frame.shear": {
     "sounds": [
-      "odyssey:item/bucket/fill_frog"
+      "odyssey:entity/item_frame/shear1",
+      "odyssey:entity/item_frame/shear2",
+      "odyssey:entity/item_frame/shear3"
     ],
-    "subtitle": "subtitles.item.bucket.fill_frog"
+    "subtitle": "subtitles.item.shears.shear"
   },
-  "item.bucket.empty_frog": {
+  "entity.item_frame.waxed_interact_fail": {
     "sounds": [
-      "odyssey:item/bucket/empty_frog"
+      "odyssey:entity/item_frame/rotate_fail1",
+      "odyssey:entity/item_frame/rotate_fail2",
+      "odyssey:entity/item_frame/rotate_fail3"
     ],
-    "subtitle": "subtitles.item.bucket.empty"
+    "subtitle": "subtitles.entity.item_frame.waxed_interact_fail"
   },
-  "item.bucket.fill_squid": {
+  "entity.glow_item_frame.waxed_interact_fail": {
     "sounds": [
-      "odyssey:item/bucket/fill_squid"
+      "odyssey:entity/item_frame/rotate_fail1",
+      "odyssey:entity/item_frame/rotate_fail2",
+      "odyssey:entity/item_frame/rotate_fail3"
     ],
-    "subtitle": "subtitles.item.bucket.fill_squid"
-  },
-  "item.bucket.empty_squid": {
-    "sounds": [
-      "odyssey:item/bucket/empty_squid"
-    ],
-    "subtitle": "subtitles.item.bucket.empty"
-  },
-  "item.bucket.fill_glow_squid": {
-    "sounds": [
-      "odyssey:item/bucket/fill_glow_squid"
-    ],
-    "subtitle": "subtitles.item.bucket.fill_glow_squid"
-  },
-  "item.bucket.empty_glow_squid": {
-    "sounds": [
-      "odyssey:item/bucket/empty_glow_squid"
-    ],
-    "subtitle": "subtitles.item.bucket.empty"
-  },
-  "item.saddle.unequip": {
-    "sounds": [
-      "odyssey:item/saddle/unequip"
-    ],
-    "subtitle": "subtitles.item.saddle.unequip"
+    "subtitle": "subtitles.entity.glow_item_frame.waxed_interact_fail"
   }
 }
