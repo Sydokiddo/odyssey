@@ -172,6 +172,8 @@
   "text.autoconfig.odyssey.option.blocks.unstable_gunpowder_blocks.@Tooltip": "Blokz of Ganpowder will instantly go boom when dey catch on fireh or when lit wif frint und steal or fire punchz",
   "text.autoconfig.odyssey.option.blocks.flower_picking": "Flowr Pikkin",
   "text.autoconfig.odyssey.option.blocks.flower_picking.@Tooltip": "Pretty flowrz can be pickd wif when u rite clik wif an empty paw",
+  "text.autoconfig.odyssey.option.blocks.snow_layer_right_clicking": "Snow Harvesting with Right-Click",
+  "text.autoconfig.odyssey.option.blocks.snow_layer_right_clicking.@Tooltip": "Snow Layers can be right-clicked with a Shovel to harvest them to prevent accidental breaking of other nearby blocks",
   "text.autoconfig.odyssey.option.blocks.piston_interactions": "Pushur Interacshuns",
   "text.autoconfig.odyssey.option.blocks.piston_interactions.@Tooltip": "Pushurz can be rite-clikkd wif boogerz to make dem into Stickeh Pushurrz, and Stickeh Pushurrz can be rite-clikkd wif an Aks to turn dem into a normal Pushurr",
 

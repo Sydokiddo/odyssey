@@ -172,6 +172,8 @@
   "text.autoconfig.odyssey.option.blocks.unstable_gunpowder_blocks.@Tooltip": "Les blocs de poudre à canon exploseront instantanément si ils s'enflamment",
   "text.autoconfig.odyssey.option.blocks.flower_picking": "Cueillette de fleurs",
   "text.autoconfig.odyssey.option.blocks.flower_picking.@Tooltip": "Les petites fleurs peuvent être récupérées avec un clic droit",
+  "text.autoconfig.odyssey.option.blocks.snow_layer_right_clicking": "Snow Harvesting with Right-Click",
+  "text.autoconfig.odyssey.option.blocks.snow_layer_right_clicking.@Tooltip": "Snow Layers can be right-clicked with a Shovel to harvest them to prevent accidental breaking of other nearby blocks",
   "text.autoconfig.odyssey.option.blocks.piston_interactions": "Piston Interactions",
   "text.autoconfig.odyssey.option.blocks.piston_interactions.@Tooltip": "Pistons can be right-clicked with a Slimeball to turn them into Sticky Pistons, and Sticky Pistons can be right-clicked with an Axe to turn them into normal Pistons",
 

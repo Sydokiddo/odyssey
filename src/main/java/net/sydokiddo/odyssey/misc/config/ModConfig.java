@@ -79,6 +79,9 @@ public class ModConfig implements ConfigData {
         public boolean flower_picking = true;
 
         @ConfigEntry.Gui.Tooltip
+        public boolean snow_layer_right_clicking = true;
+
+        @ConfigEntry.Gui.Tooltip
         public boolean piston_interactions = true;
     }
 

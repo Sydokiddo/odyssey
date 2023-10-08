@@ -72,7 +72,7 @@ public class GunpowderBlock extends FallingBlock {
 
             if (!player.getAbilities().instabuild) {
                 if (itemInHand.is(Items.FLINT_AND_STEEL)) {
-                    itemInHand.hurtAndBreak(1, player, flintAndSteel -> flintAndSteel.broadcastBreakEvent(interactionHand));
+                    itemInHand.hurtAndBreak(1, player, (flintAndSteel) -> flintAndSteel.broadcastBreakEvent(interactionHand));
                 } else {
                     itemInHand.shrink(1);
                 }

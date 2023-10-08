@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 
 @Mixin(WaterlilyBlock.class)
-public abstract class LilyPadBlockBoneMealMixin implements BonemealableBlock {
+public abstract class LilyPadBlockMixin implements BonemealableBlock {
 
     // region Bone-Mealing
 

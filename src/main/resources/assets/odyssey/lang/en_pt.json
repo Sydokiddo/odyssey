@@ -172,6 +172,8 @@
   "text.autoconfig.odyssey.option.blocks.unstable_gunpowder_blocks.@Tooltip": "Blocks of black powder will instantly blow up when nearby flames or when lit ablaze wit' Ship's bane or Cannonballs",
   "text.autoconfig.odyssey.option.blocks.flower_picking": "Flower Pickin'",
   "text.autoconfig.odyssey.option.blocks.flower_picking.@Tooltip": "Small Flowers can be right-clicked wit' yer empty hook to instantly drop their loot instead of having to destroy 'em in order to obtain 'em",
+  "text.autoconfig.odyssey.option.blocks.snow_layer_right_clicking": "Snow Harvesting with Right-Click",
+  "text.autoconfig.odyssey.option.blocks.snow_layer_right_clicking.@Tooltip": "Snow Layers can be right-clicked with a Shovel to harvest them to prevent accidental breaking of other nearby blocks",
   "text.autoconfig.odyssey.option.blocks.piston_interactions": "Movin' Arm Interactin'",
   "text.autoconfig.odyssey.option.blocks.piston_interactions.@Tooltip": "Movin' Arms can be right-clicked with a Ball o' Slime to turn 'em into a Piston o' Slime, and Pistons o' Slime can be right-clicked with a Hatchet to turn 'em into a normal Movin' Arm",
 

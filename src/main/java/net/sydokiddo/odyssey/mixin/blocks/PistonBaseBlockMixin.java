@@ -63,18 +63,18 @@ public class PistonBaseBlockMixin extends DirectionalBlock {
     @Override
     public InteractionResult use(BlockState blockState, @NotNull Level level, @NotNull BlockPos blockPos, Player player, @NotNull InteractionHand interactionHand, @NotNull BlockHitResult blockHitResult) {
 
-        ItemStack itemStack = player.getItemInHand(interactionHand);
-        Item item = itemStack.getItem();
+        ItemStack itemInHand = player.getItemInHand(interactionHand);
+        Item item = itemInHand.getItem();
         Direction direction = blockState.getValue(PistonBaseBlock.FACING);
 
         if (!blockState.getValue(EXTENDED) && Odyssey.getConfig().blocks.piston_interactions) {
 
-            if (!this.isSticky && itemStack.is(Items.SLIME_BALL)) {
+            if (!this.isSticky && itemInHand.is(Items.SLIME_BALL)) {
 
                 // Putting Slime Balls on Pistons
 
                 if (!player.getAbilities().instabuild) {
-                    itemStack.shrink(1);
+                    itemInHand.shrink(1);
                 }
 
                 doPistonUseEvents(level, blockPos, player, item, blockState, Blocks.STICKY_PISTON, ModSoundEvents.PISTON_APPLY_SLIMEBALL, direction);
@@ -85,7 +85,7 @@ public class PistonBaseBlockMixin extends DirectionalBlock {
                 // Scraping Sticky Pistons
 
                 if (!player.getAbilities().instabuild) {
-                    itemStack.hurtAndBreak(1, player, playerx -> player.broadcastBreakEvent(interactionHand));
+                    itemInHand.hurtAndBreak(1, player, (axe) -> axe.broadcastBreakEvent(interactionHand));
                 }
 
                 popResourceFromFace(level, blockPos, direction, new ItemStack(Items.SLIME_BALL));

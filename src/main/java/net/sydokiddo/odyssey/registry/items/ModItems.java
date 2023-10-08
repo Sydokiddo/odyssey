@@ -16,8 +16,6 @@ import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
 
 public class ModItems {
 
-    // List of Items:
-
     // region Foods
 
     public static final Item IRON_POTATO = registerItem("iron_potato",
