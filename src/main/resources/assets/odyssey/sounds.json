@@ -115,6 +115,16 @@
     "subtitle": "subtitles.item.saddle.unequip"
   },
 
+  "item.shovel.dig_snow": {
+    "sounds": [
+      "odyssey:item/shovel/dig_snow1",
+      "odyssey:item/shovel/dig_snow2",
+      "odyssey:item/shovel/dig_snow3",
+      "odyssey:item/shovel/dig_snow4"
+    ],
+    "subtitle": "subtitles.item.shovel.dig_snow"
+  },
+
   "entity.armor_stand.add_arms": {
     "sounds": [
       "odyssey:entity/armor_stand/add_arms1",

@@ -39,6 +39,8 @@ public class ModSoundEvents {
 
     public static final SoundEvent SADDLE_UNEQUIP = registerSoundEvent("item.saddle.unequip");
 
+    public static final SoundEvent SHOVEL_DIG_SNOW = registerSoundEvent("item.shovel.dig_snow");
+
     // endregion
 
     // region Entity Sounds
