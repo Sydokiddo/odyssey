@@ -62,6 +62,8 @@ public class ModBlocks {
     public static final Block DARK_PRISMARINE_WALL = registerBlock("dark_prismarine_wall",
         new WallBlock(FabricBlockSettings.copyOf(Blocks.DARK_PRISMARINE).sound(SoundType.STONE)));
 
+    // endregion
+
     // region Polished Granite, Diorite, and Andesite Walls
 
     public static final Block POLISHED_GRANITE_WALL = registerBlock("polished_granite_wall",
@@ -72,6 +74,13 @@ public class ModBlocks {
 
     public static final Block POLISHED_ANDESITE_WALL = registerBlock("polished_andesite_wall",
         new WallBlock(FabricBlockSettings.copyOf(Blocks.POLISHED_ANDESITE).sound(SoundType.STONE)));
+
+    // endregion
+
+    // region Stone and Smooth Stone Variants
+
+    public static final Block STONE_WALL = registerBlock("stone_wall",
+        new WallBlock(FabricBlockSettings.copyOf(Blocks.STONE).sound(SoundType.STONE)));
 
     // endregion
 
