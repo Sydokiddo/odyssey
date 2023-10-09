@@ -2,6 +2,9 @@
   "replace": false,
   "values": [
     "odyssey:prismarine_brick_wall",
-    "odyssey:dark_prismarine_wall"
+    "odyssey:dark_prismarine_wall",
+    "odyssey:polished_granite_wall",
+    "odyssey:polished_diorite_wall",
+    "odyssey:polished_andesite_wall"
   ]
 }

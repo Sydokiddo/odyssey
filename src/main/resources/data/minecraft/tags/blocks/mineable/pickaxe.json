@@ -11,6 +11,9 @@
     "minecraft:beacon",
     "minecraft:turtle_egg",
     "minecraft:sniffer_egg",
-    "minecraft:lever"
+    "minecraft:lever",
+    "odyssey:polished_granite_wall",
+    "odyssey:polished_diorite_wall",
+    "odyssey:polished_andesite_wall"
   ]
 }
