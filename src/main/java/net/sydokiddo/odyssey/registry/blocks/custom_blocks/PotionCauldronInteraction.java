@@ -1,11 +1,9 @@
 package net.sydokiddo.odyssey.registry.blocks.custom_blocks;
 
-import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.cauldron.CauldronInteraction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -48,13 +46,9 @@ public class PotionCauldronInteraction {
 
                     if (!level.isClientSide) {
 
-                        player.setItemInHand(hand, ItemUtils.createFilledResult(itemStack, player, new ItemStack(Items.GLASS_BOTTLE)));
-                        player.awardStat(Stats.USE_CAULDRON);
                         player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
-
-                        if (player instanceof ServerPlayer serverPlayer) {
-                            CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, itemStack);
-                        }
+                        player.awardStat(Stats.USE_CAULDRON);
+                        player.setItemInHand(hand, ItemUtils.createFilledResult(itemStack, player, new ItemStack(Items.GLASS_BOTTLE)));
 
                         level.setBlock(blockPos, blockState.cycle(LayeredCauldronBlock.LEVEL), 3);
                         level.playSound(null, blockPos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);

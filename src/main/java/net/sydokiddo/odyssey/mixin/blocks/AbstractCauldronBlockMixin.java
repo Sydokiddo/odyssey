@@ -1,11 +1,9 @@
 package net.sydokiddo.odyssey.mixin.blocks;
 
-import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.cauldron.CauldronInteraction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -78,10 +76,6 @@ public class AbstractCauldronBlockMixin {
                 user.setItemInHand(hand, ItemUtils.createFilledResult(stack, user, new ItemStack(Items.GLASS_BOTTLE)));
                 user.awardStat(Stats.USE_CAULDRON);
                 user.awardStat(Stats.ITEM_USED.get(item));
-
-                if (user instanceof ServerPlayer serverPlayer) {
-                    CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, item.getDefaultInstance());
-                }
 
                 world.playSound(null, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
                 world.gameEvent(null, GameEvent.FLUID_PLACE, pos);

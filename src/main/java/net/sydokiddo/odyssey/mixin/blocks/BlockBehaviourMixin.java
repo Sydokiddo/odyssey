@@ -1,8 +1,6 @@
 package net.sydokiddo.odyssey.mixin.blocks;
 
-import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -56,15 +54,10 @@ public class BlockBehaviourMixin {
                 Block.dropResources(blockState, level, blockPos, null, player, mainHandItem);
                 this.doBlockHarvestingEvents(level, blockPos, blockState, player, ModSoundEvents.SHOVEL_DIG_SNOW, 1.0F);
                 level.addDestroyBlockEffect(blockPos, blockState);
+                player.awardStat(Stats.ITEM_USED.get(mainHandItem.getItem()));
 
                 if (!player.getAbilities().instabuild) {
                     player.getMainHandItem().hurtAndBreak(1, player, (shovel) -> shovel.broadcastBreakEvent(hand));
-                }
-
-                player.awardStat(Stats.ITEM_USED.get(mainHandItem.getItem()));
-
-                if (player instanceof ServerPlayer serverPlayer) {
-                    CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, mainHandItem);
                 }
 
                 cir.setReturnValue(InteractionResult.SUCCESS);

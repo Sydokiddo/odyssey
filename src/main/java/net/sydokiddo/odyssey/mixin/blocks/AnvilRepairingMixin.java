@@ -47,15 +47,14 @@ public class AnvilRepairingMixin {
             level.setBlockAndUpdate(blockPos, anvilType.defaultBlockState().setValue(AnvilBlock.FACING, blockState.getValue(AnvilBlock.FACING)));
             level.playSound(null, blockPos, ModSoundEvents.ANVIL_REPAIR, SoundSource.BLOCKS, 1.0F, 1.0F);
             level.gameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Context.of(player));
-
-            if (!player.getAbilities().instabuild) {
-                itemInHand.shrink(1);
-            }
-
             player.awardStat(Stats.ITEM_USED.get(itemInHand.getItem()));
 
             if (player instanceof ServerPlayer serverPlayer) {
                 CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, itemInHand);
+            }
+
+            if (!player.getAbilities().instabuild) {
+                itemInHand.shrink(1);
             }
 
             cir.setReturnValue(InteractionResult.SUCCESS);
