@@ -1,5 +1,6 @@
 package net.sydokiddo.odyssey.mixin.misc;
 
+import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntityType;
@@ -50,6 +51,8 @@ public abstract class ArmorStandInteractionMixin extends LivingEntity {
                 if (!player.getAbilities().instabuild) {
                     itemInHand.shrink(1);
                 }
+
+                player.awardStat(Stats.ITEM_USED.get(itemInHand.getItem()));
 
                 cir.setReturnValue(InteractionResult.SUCCESS);
             }

@@ -1,9 +1,11 @@
 package net.sydokiddo.odyssey.registry.blocks.custom_blocks;
 
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.cauldron.CauldronInteraction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -149,7 +151,11 @@ public class PotionCauldronInteraction {
         player.setItemInHand(hand, resultItem);
 
         player.awardStat(Stats.USE_CAULDRON);
-        player.awardStat(Stats.ITEM_USED.get(resultItem.getItem()));
+        player.awardStat(Stats.ITEM_USED.get(startingItem.getItem()));
+
+        if (player instanceof ServerPlayer serverPlayer) {
+            CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, startingItem);
+        }
 
         PotionCauldronBlock.lowerFillLevel(blockState, level, blockPos);
         level.gameEvent(null, GameEvent.BLOCK_CHANGE, blockPos);

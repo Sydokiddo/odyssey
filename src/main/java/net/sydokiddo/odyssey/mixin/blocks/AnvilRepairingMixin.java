@@ -1,7 +1,10 @@
 package net.sydokiddo.odyssey.mixin.blocks;
 
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -47,6 +50,12 @@ public class AnvilRepairingMixin {
 
             if (!player.getAbilities().instabuild) {
                 itemInHand.shrink(1);
+            }
+
+            player.awardStat(Stats.ITEM_USED.get(itemInHand.getItem()));
+
+            if (player instanceof ServerPlayer serverPlayer) {
+                CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, itemInHand);
             }
 
             cir.setReturnValue(InteractionResult.SUCCESS);

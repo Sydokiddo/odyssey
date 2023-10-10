@@ -1,8 +1,11 @@
 package net.sydokiddo.odyssey.mixin.blocks;
 
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.Stats;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
@@ -56,6 +59,12 @@ public class BlockBehaviourMixin {
 
                 if (!player.getAbilities().instabuild) {
                     player.getMainHandItem().hurtAndBreak(1, player, (shovel) -> shovel.broadcastBreakEvent(hand));
+                }
+
+                player.awardStat(Stats.ITEM_USED.get(mainHandItem.getItem()));
+
+                if (player instanceof ServerPlayer serverPlayer) {
+                    CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, mainHandItem);
                 }
 
                 cir.setReturnValue(InteractionResult.SUCCESS);

@@ -1,8 +1,10 @@
 package net.sydokiddo.odyssey.mixin.blocks;
 
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -46,6 +48,10 @@ public class PistonBaseBlockMixin extends DirectionalBlock {
 
     @Unique
     private void doPistonUseEvents(Level level, BlockPos blockPos, Player player, Item item, BlockState blockState, Block block, SoundEvent soundEvent, Direction direction) {
+
+        if (player instanceof ServerPlayer serverPlayer) {
+            CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, item.getDefaultInstance());
+        }
 
         if (!level.isClientSide()) {
             player.awardStat(Stats.ITEM_USED.get(item));
