@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "waterlogged=false": {
+      "model": "odyssey:block/potted_dead_sea_pickle"
+    },
+    "waterlogged=true": {
+      "model": "odyssey:block/potted_sea_pickle"
+    }
+  }
+}

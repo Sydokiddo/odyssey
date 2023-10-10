@@ -1,0 +1,97 @@
+{
+	"ambientocclusion": false,
+	"textures": {
+		"sea_pickle": "minecraft:block/sea_pickle",
+		"particle": "minecraft:block/flower_pot",
+		"flowerpot": "minecraft:block/flower_pot"
+	},
+	"elements": [
+		{
+			"name": "Pot",
+			"from": [5, 0, 5],
+			"to": [11, 6, 11],
+			"faces": {
+				"north": {"uv": [5, 10, 11, 16], "texture": "#flowerpot"},
+				"east": {"uv": [5, 10, 11, 16], "texture": "#flowerpot"},
+				"south": {"uv": [5, 10, 11, 16], "texture": "#flowerpot"},
+				"west": {"uv": [5, 10, 11, 16], "texture": "#flowerpot"},
+				"up": {"uv": [5, 5, 11, 11], "texture": "#flowerpot"},
+				"down": {"uv": [5, 5, 6, 11], "texture": "#flowerpot", "cullface": "down"}
+			}
+		},
+		{
+			"name": "Base",
+			"from": [6, 6, 6],
+			"to": [10, 12, 10],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 9, 8]},
+			"faces": {
+				"north": {"uv": [4, 5, 8, 11], "texture": "#sea_pickle"},
+				"east": {"uv": [12, 5, 16, 11], "texture": "#sea_pickle"},
+				"south": {"uv": [0, 5, 4, 11], "texture": "#sea_pickle"},
+				"west": {"uv": [8, 5, 12, 11], "texture": "#sea_pickle"},
+				"up": {"uv": [4, 1, 8, 5], "texture": "#sea_pickle"},
+				"down": {"uv": [8, 1, 12, 5], "texture": "#sea_pickle", "cullface": "down"}
+			}
+		},
+		{
+			"name": "Top",
+			"from": [6, 11.95, 6],
+			"to": [10, 11.95, 10],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 11.95, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 0, 0], "texture": "#sea_pickle"},
+				"east": {"uv": [0, 0, 0, 0], "texture": "#sea_pickle"},
+				"south": {"uv": [0, 0, 0, 0], "texture": "#sea_pickle"},
+				"west": {"uv": [0, 0, 0, 0], "texture": "#sea_pickle"},
+				"up": {"uv": [8, 1, 12, 5], "texture": "#sea_pickle"},
+				"down": {"uv": [0, 0, 0, 0], "texture": "#sea_pickle"}
+			}
+		},
+		{
+			"name": "Upper",
+			"from": [7.5, 11.2, 8],
+			"to": [8.5, 14.7, 8],
+			"shade": false,
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 12.95, 8], "rescale": true},
+			"faces": {
+				"north": {"uv": [1, 0, 3, 5], "texture": "#sea_pickle"},
+				"east": {"uv": [0, 0, 0, 0], "texture": "#sea_pickle"},
+				"south": {"uv": [3, 0, 1, 5], "texture": "#sea_pickle"},
+				"west": {"uv": [0, 0, 0, 0], "texture": "#sea_pickle"},
+				"up": {"uv": [0, 0, 0, 0], "texture": "#sea_pickle"},
+				"down": {"uv": [0, 0, 0, 0], "texture": "#sea_pickle"}
+			}
+		},
+		{
+			"name": "Upper",
+			"from": [8, 11.2, 7.5],
+			"to": [8, 14.7, 8.5],
+			"shade": false,
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 12.95, 8], "rescale": true},
+			"faces": {
+				"north": {"uv": [0, 0, 0, 0], "texture": "#sea_pickle"},
+				"east": {"uv": [15, 0, 13, 5], "texture": "#sea_pickle"},
+				"south": {"uv": [0, 0, 0, 0], "texture": "#sea_pickle"},
+				"west": {"uv": [13, 0, 15, 5], "texture": "#sea_pickle"},
+				"up": {"uv": [0, 0, 0, 0], "texture": "#sea_pickle"},
+				"down": {"uv": [0, 0, 0, 0], "texture": "#sea_pickle"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "Pot",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"nbt": "{}",
+			"children": [0]
+		},
+		{
+			"name": "Sea Pickle",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"nbt": "{}",
+			"children": [1, 2, 3, 4]
+		}
+	]
+}

@@ -98,6 +98,9 @@ public class ModBlocks {
     public static final Block POTTED_SPORE_BLOSSOM = registerBlockWithoutBlockItem("potted_spore_blossom",
         new PottedSporeBlossomBlock(Blocks.SPORE_BLOSSOM, FabricBlockSettings.copyOf(Blocks.FLOWER_POT)));
 
+    public static final Block POTTED_SEA_PICKLE = registerBlockWithoutBlockItem("potted_sea_pickle",
+        new FlowerPotBlock(Blocks.SEA_PICKLE, FabricBlockSettings.copyOf(Blocks.FLOWER_POT).luminance(blockState -> SeaPickleBlock.isDead(blockState) ? 0 : 6)));
+
     // endregion
 
     // Registry

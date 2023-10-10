@@ -18,12 +18,14 @@ public class ModTags {
     public static final TagKey<Item> POLISHED_STONE_CRAFTING_MATERIALS = registerItemTag("polished_stone_crafting_materials");
     public static final TagKey<Item> POLISHED_STONE_SLAB_CRAFTING_MATERIALS = registerItemTag("polished_stone_slab_crafting_materials");
     public static final TagKey<Item> LODESTONE_CRAFTING_MATERIALS = registerItemTag("lodestone_crafting_materials");
+    public static final TagKey<Item> UNDERWATER_POTTABLE_PLANTS = registerItemTag("underwater_pottable_plants");
 
     // endregion
 
     // region Block Tags
 
     public static final TagKey<Block> PREVENTS_SNIFFER_EGG_HATCHING = registerBlockTag("prevents_sniffer_egg_hatching");
+    public static final TagKey<Block> UNDERWATER_FLOWER_POTS = registerBlockTag("underwater_flower_pots");
 
     // endregion
 
