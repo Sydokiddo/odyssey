@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_stone_stairs": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:stone_stairs"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "odyssey:smooth_stone_stairs_from_smelting_stone_stairs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_stone_stairs"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "odyssey:smooth_stone_stairs_from_smelting_stone_stairs"
+    ]
+  },
+  "sends_telemetry_event": false
+}

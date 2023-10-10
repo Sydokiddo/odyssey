@@ -82,6 +82,12 @@ public class ModBlocks {
     public static final Block STONE_WALL = registerBlock("stone_wall",
         new WallBlock(FabricBlockSettings.copyOf(Blocks.STONE).sound(SoundType.STONE)));
 
+    public static final Block SMOOTH_STONE_STAIRS = registerBlock("smooth_stone_stairs",
+        new StairBlock(Blocks.SMOOTH_STONE.defaultBlockState(), FabricBlockSettings.copyOf(Blocks.SMOOTH_STONE)));
+
+    public static final Block SMOOTH_STONE_WALL = registerBlock("smooth_stone_wall",
+        new WallBlock(FabricBlockSettings.copyOf(Blocks.SMOOTH_STONE).sound(SoundType.STONE)));
+
     // endregion
 
     // region Potted Plants
