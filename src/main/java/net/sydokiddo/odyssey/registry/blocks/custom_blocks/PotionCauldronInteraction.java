@@ -52,6 +52,10 @@ public class PotionCauldronInteraction {
                         player.awardStat(Stats.USE_CAULDRON);
                         player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
 
+                        if (player instanceof ServerPlayer serverPlayer) {
+                            CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, itemStack);
+                        }
+
                         level.setBlock(blockPos, blockState.cycle(LayeredCauldronBlock.LEVEL), 3);
                         level.playSound(null, blockPos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
                         level.gameEvent(null, GameEvent.FLUID_PLACE, blockPos);
@@ -151,11 +155,7 @@ public class PotionCauldronInteraction {
         player.setItemInHand(hand, resultItem);
 
         player.awardStat(Stats.USE_CAULDRON);
-        player.awardStat(Stats.ITEM_USED.get(startingItem.getItem()));
-
-        if (player instanceof ServerPlayer serverPlayer) {
-            CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, startingItem);
-        }
+        player.awardStat(Stats.ITEM_USED.get(resultItem.getItem()));
 
         PotionCauldronBlock.lowerFillLevel(blockState, level, blockPos);
         level.gameEvent(null, GameEvent.BLOCK_CHANGE, blockPos);

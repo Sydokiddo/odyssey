@@ -89,13 +89,13 @@ public abstract class ItemFrameMixin extends HangingEntity {
 
             if (itemInHand.is(Items.HONEYCOMB) && !this.isWaxed()) {
 
-                if (!player.isCreative()) {
-                    itemInHand.shrink(1);
-                }
-
                 this.setWaxed(true);
                 this.level().levelEvent(player, 3003, this.pos, 0);
                 this.doItemFrameInteractionEvents(player, itemInHand);
+
+                if (!player.isCreative()) {
+                    itemInHand.shrink(1);
+                }
 
                 if (Chrysalis.IS_DEBUG) {
                     Odyssey.LOGGER.info("{} has been successfully waxed by {}", this.getName().getString(), player.getName().getString());
@@ -110,14 +110,14 @@ public abstract class ItemFrameMixin extends HangingEntity {
 
             if (itemInHand.is(Items.SHEARS) && !this.isInvisible()) {
 
-                if (!player.getAbilities().instabuild) {
-                    itemInHand.hurtAndBreak(1, player, (shears) -> shears.broadcastBreakEvent(interactionHand));
-                }
-
                 this.setInvisible(true);
                 this.playSound(ModSoundEvents.ITEM_FRAME_SHEAR, 1.0f, 1.0f);
                 this.displayPoofParticles();
                 this.doItemFrameInteractionEvents(player, itemInHand);
+
+                if (!player.getAbilities().instabuild) {
+                    itemInHand.hurtAndBreak(1, player, (shears) -> shears.broadcastBreakEvent(interactionHand));
+                }
 
                 if (Chrysalis.IS_DEBUG) {
                     Odyssey.LOGGER.info("Setting {} as invisible as it has been sheared by {}", this.getName().getString(), player.getName().getString());

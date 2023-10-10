@@ -1,7 +1,9 @@
 package net.sydokiddo.odyssey.registry.blocks.custom_blocks;
 
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -79,6 +81,11 @@ public class GunpowderBlock extends FallingBlock {
             }
 
             player.awardStat(Stats.ITEM_USED.get(itemInHand.getItem()));
+
+            if (player instanceof ServerPlayer serverPlayer) {
+                CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, itemInHand);
+            }
+
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
         return super.use(blockState, level, blockPos, player, interactionHand, blockHitResult);
