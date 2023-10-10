@@ -38,6 +38,10 @@ public class ModBlocks {
         new ModBrushableBlock(Blocks.RED_SAND, FabricBlockSettings.copyOf(Blocks.SUSPICIOUS_SAND)
         .mapColor(MapColor.COLOR_ORANGE), SoundEvents.BRUSH_SAND, SoundEvents.BRUSH_SAND_COMPLETED));
 
+    public static final Block TINTED_GLASS_PANE = registerBlock("tinted_glass_pane",
+        new TintedGlassPaneBlock(FabricBlockSettings.copyOf(Blocks.GLASS_PANE).mapColor(MapColor.COLOR_GRAY).noOcclusion()
+        .isValidSpawn(Blocks::never).isRedstoneConductor(Blocks::never).isSuffocating(Blocks::never).isViewBlocking(Blocks::never)));
+
     // region Potion Cauldron
 
     public static PotionCauldronBlock POTION_CAULDRON_STATE = new PotionCauldronBlock(FabricBlockSettings.copyOf(Blocks.CAULDRON), PotionCauldronInteraction.POTION_CAULDRON_BEHAVIOR);

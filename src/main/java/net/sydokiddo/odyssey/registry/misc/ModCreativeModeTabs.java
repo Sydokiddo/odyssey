@@ -39,7 +39,7 @@ public class ModCreativeModeTabs {
             content.addAfter(ModItems.ELDER_GUARDIAN_THORN, ModItems.WITHER_SKULL_FRAGMENT, ModItems.IRON_POTATO, ModItems.ENCHANTED_IRON_POTATO,
             ModItems.SQUID_BUCKET, ModItems.GLOW_SQUID_BUCKET, ModItems.FROG_BUCKET, ModBlocks.GUNPOWDER_BLOCK, ModBlocks.REFINED_AMETHYST_BLOCK,
             ModBlocks.SUGAR_CANE_BLOCK, ModBlocks.SUSPICIOUS_RED_SAND, ModBlocks.POLISHED_DEEPSLATE_BUTTON, ModBlocks.POLISHED_DEEPSLATE_PRESSURE_PLATE,
-            ModBlocks.REDSTONE_LANTERN, ModBlocks.STONE_WALL, ModBlocks.SMOOTH_STONE_STAIRS, ModBlocks.SMOOTH_STONE_WALL, ModBlocks.POLISHED_GRANITE_WALL,
+            ModBlocks.REDSTONE_LANTERN, ModBlocks.TINTED_GLASS_PANE, ModBlocks.STONE_WALL, ModBlocks.SMOOTH_STONE_STAIRS, ModBlocks.SMOOTH_STONE_WALL, ModBlocks.POLISHED_GRANITE_WALL,
             ModBlocks.POLISHED_DIORITE_WALL, ModBlocks.POLISHED_ANDESITE_WALL, ModBlocks.PRISMARINE_BRICK_WALL, ModBlocks.DARK_PRISMARINE_WALL,
             Items.FLOWER_POT, Items.SMALL_DRIPLEAF, Items.SPORE_BLOSSOM, Items.SEA_PICKLE);
         });
@@ -63,6 +63,14 @@ public class ModCreativeModeTabs {
 
         // endregion
 
+        // region Colored Blocks Tab
+
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.COLORED_BLOCKS).register(entries -> {
+            entries.addAfter(Items.GLASS_PANE, ModBlocks.TINTED_GLASS_PANE);
+        });
+
+        // endregion
+
         // region Natural Blocks Tab:
 
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.NATURAL_BLOCKS).register(entries -> {
@@ -77,6 +85,7 @@ public class ModCreativeModeTabs {
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(entries -> {
             entries.addAfter(Items.SUSPICIOUS_SAND, ModBlocks.SUSPICIOUS_RED_SAND);
             entries.addAfter(Items.SOUL_LANTERN, ModBlocks.REDSTONE_LANTERN);
+            entries.addAfter(Items.TINTED_GLASS, ModBlocks.TINTED_GLASS_PANE);
         });
 
         // endregion
@@ -95,6 +104,14 @@ public class ModCreativeModeTabs {
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.TOOLS_AND_UTILITIES).register(entries -> {
             entries.addAfter(Items.PUFFERFISH_BUCKET, ModItems.SQUID_BUCKET, ModItems.GLOW_SQUID_BUCKET);
             entries.addAfter(Items.TADPOLE_BUCKET, ModItems.FROG_BUCKET);
+        });
+
+        // endregion
+
+        // region Combat Tab
+
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.COMBAT).register(entries -> {
+            entries.addAfter(Items.TNT, ModBlocks.GUNPOWDER_BLOCK);
         });
 
         // endregion

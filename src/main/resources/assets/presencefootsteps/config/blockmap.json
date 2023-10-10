@@ -5,6 +5,7 @@
   "odyssey:redstone_lantern": "UNASSIGNED",
   "odyssey:suspicious_red_sand": "sand",
   "odyssey:potion_cauldron": "metalbar,waterfine",
+  "odyssey:tinted_glass_pane": "glass",
 
   "odyssey:polished_deepslate_button[face=floor].foliage": "composite,ore",
   "odyssey:polished_deepslate_button": "NOT_EMITTER",

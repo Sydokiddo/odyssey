@@ -28,6 +28,10 @@ public class OdysseyClient implements ClientModInitializer {
                 ModBlocks.POTTED_SEA_PICKLE
             );
 
+            BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.translucent(),
+                ModBlocks.TINTED_GLASS_PANE
+            );
+
             // endregion
         }
     }
