@@ -211,5 +211,7 @@
   "text.autoconfig.odyssey.option.entities.item_frame_shearing": "Kitteh Fraem Shearing",
   "text.autoconfig.odyssey.option.entities.item_frame_shearing.@Tooltip": "Fild kitteh fraemz and brite item holdrz can be sheared to make dem invisable",
   "text.autoconfig.odyssey.option.entities.improved_mount_hud": "Mount HUD but IMPROVED!!",
-  "text.autoconfig.odyssey.option.entities.improved_mount_hud.@Tooltip": "When rieding on a thing, da kittez's hungrr bar will now show on da in-gaem HUD"
+  "text.autoconfig.odyssey.option.entities.improved_mount_hud.@Tooltip": "When rieding on a thing, da kittez's hungrr bar will now show on da in-gaem HUD",
+  "text.autoconfig.odyssey.option.entities.improved_horses": "Improved Horses",
+  "text.autoconfig.odyssey.option.entities.improved_horses.@Tooltip": "Horses wearing Leather Horse Armor are now able to walk on Powder Snow, and Horses, Donkeys, Mules, and Camels will now all ignore leaf collisions while being ridden"
 }

@@ -211,5 +211,7 @@
   "text.autoconfig.odyssey.option.entities.item_frame_shearing": "Booty Holder Snippin'",
   "text.autoconfig.odyssey.option.entities.item_frame_shearing.@Tooltip": "Filled Booty holders and Glowin' booty holders can be snipped wit' cutters to make tha frame part hidden",
   "text.autoconfig.odyssey.option.entities.improved_mount_hud": "Better Brumby HUD",
-  "text.autoconfig.odyssey.option.entities.improved_mount_hud.@Tooltip": "When sailin' on a creature, the sailor's hunger bar will now properly show on yer in-game HUD"
+  "text.autoconfig.odyssey.option.entities.improved_mount_hud.@Tooltip": "When sailin' on a creature, the sailor's hunger bar will now properly show on yer in-game HUD",
+  "text.autoconfig.odyssey.option.entities.improved_horses": "Improved Horses",
+  "text.autoconfig.odyssey.option.entities.improved_horses.@Tooltip": "Horses wearing Leather Horse Armor are now able to walk on Powder Snow, and Horses, Donkeys, Mules, and Camels will now all ignore leaf collisions while being ridden"
 }

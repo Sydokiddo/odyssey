@@ -211,5 +211,7 @@
   "text.autoconfig.odyssey.option.entities.item_frame_shearing": "Cadre invisible",
   "text.autoconfig.odyssey.option.entities.item_frame_shearing.@Tooltip": "Un coup de cisaille sur un cadre ou cadre luisant le rendra invisible",
   "text.autoconfig.odyssey.option.entities.improved_mount_hud": "HUD de monture amélioré",
-  "text.autoconfig.odyssey.option.entities.improved_mount_hud.@Tooltip": "La barre de nourriture s'affiche sur le hud de monture"
+  "text.autoconfig.odyssey.option.entities.improved_mount_hud.@Tooltip": "La barre de nourriture s'affiche sur le hud de monture",
+  "text.autoconfig.odyssey.option.entities.improved_horses": "Improved Horses",
+  "text.autoconfig.odyssey.option.entities.improved_horses.@Tooltip": "Horses wearing Leather Horse Armor are now able to walk on Powder Snow, and Horses, Donkeys, Mules, and Camels will now all ignore leaf collisions while being ridden"
 }

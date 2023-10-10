@@ -211,5 +211,7 @@
   "text.autoconfig.odyssey.option.entities.item_frame_shearing": "Item Frame Shearing",
   "text.autoconfig.odyssey.option.entities.item_frame_shearing.@Tooltip": "Filled Item Frames and Glow Item Frames can be sheared to make the frame part invisible",
   "text.autoconfig.odyssey.option.entities.improved_mount_hud": "Improved Mount HUD",
-  "text.autoconfig.odyssey.option.entities.improved_mount_hud.@Tooltip": "When riding on an entity, the player's hunger bar will now properly display on the in-game HUD"
+  "text.autoconfig.odyssey.option.entities.improved_mount_hud.@Tooltip": "When riding on an entity, the player's hunger bar will now properly display on the in-game HUD",
+  "text.autoconfig.odyssey.option.entities.improved_horses": "Improved Horses",
+  "text.autoconfig.odyssey.option.entities.improved_horses.@Tooltip": "Horses wearing Leather Horse Armor are now able to walk on Powder Snow, and Horses, Donkeys, Mules, and Camels will now all ignore leaf collisions while being ridden"
 }

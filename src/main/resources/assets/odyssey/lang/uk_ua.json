@@ -211,5 +211,7 @@
   "text.autoconfig.odyssey.option.entities.item_frame_shearing": "Стриження рамок для предметів",
   "text.autoconfig.odyssey.option.entities.item_frame_shearing.@Tooltip": "Заповнені звичайні та сяйні предметні рамки можна підстригти, щоб зробити рамку невидимою",
   "text.autoconfig.odyssey.option.entities.improved_mount_hud": "Покращений інтерфейс верхового улюбленця",
-  "text.autoconfig.odyssey.option.entities.improved_mount_hud.@Tooltip": "Під час катання на сутності, шкала голоду гравця тепер буде показуватися на внутрішньоігровому інтерфейсі"
+  "text.autoconfig.odyssey.option.entities.improved_mount_hud.@Tooltip": "Під час катання на сутності, шкала голоду гравця тепер буде показуватися на внутрішньоігровому інтерфейсі",
+  "text.autoconfig.odyssey.option.entities.improved_horses": "Improved Horses",
+  "text.autoconfig.odyssey.option.entities.improved_horses.@Tooltip": "Horses wearing Leather Horse Armor are now able to walk on Powder Snow, and Horses, Donkeys, Mules, and Camels will now all ignore leaf collisions while being ridden"
 }
