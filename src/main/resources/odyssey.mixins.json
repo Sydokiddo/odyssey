@@ -33,6 +33,7 @@
     "entities.RabbitMixin",
     "entities.SlimeFloatGoalMixin",
     "entities.SlimeMixin",
+    "entities.SnifferMixin",
     "entities.SquidMixin",
     "entities.StriderMixin",
     "entities.VexMixin",

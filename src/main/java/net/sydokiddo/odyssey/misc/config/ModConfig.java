@@ -132,6 +132,9 @@ public class ModConfig implements ConfigData {
 
         @ConfigEntry.Gui.Tooltip
         public boolean improved_horses = true;
+
+        @ConfigEntry.Gui.Tooltip
+        public boolean improved_sniffer_stats = true;
     }
 
     // endregion
