@@ -4,8 +4,10 @@
 
   "item.odyssey.iron_potato": "Iron Potato",
   "item.odyssey.enchanted_iron_potato": "Enchanted Iron Potato",
+
   "item.odyssey.wither_skull_fragment": "Wither Skull Fragment",
   "item.odyssey.elder_guardian_thorn": "Elder Guardian Thorn",
+
   "item.odyssey.frog_bucket": "Bucket of Frog",
   "item.odyssey.squid_bucket": "Bucket of Squid",
   "item.odyssey.glow_squid_bucket": "Bucket of Glow Squid",
@@ -37,12 +39,15 @@
   "item.minecraft.tipped_arrow.effect.strong_haste": "Arrow of Haste",
 
   "block.odyssey.gunpowder_block": "Block of Gunpowder",
-  "block.odyssey.potion_cauldron": "Potion Cauldron",
+  "block.odyssey.sugar_cane_block": "Block of Sugar Cane",
   "block.odyssey.refined_amethyst_block": "Refined Block of Amethyst",
+  "block.odyssey.potion_cauldron": "Potion Cauldron",
+  "block.odyssey.redstone_lantern": "Redstone Lantern",
+  "block.odyssey.suspicious_red_sand": "Suspicious Red Sand",
+
   "block.odyssey.polished_deepslate_button": "Polished Deepslate Button",
   "block.odyssey.polished_deepslate_pressure_plate": "Polished Deepslate Pressure Plate",
-  "block.odyssey.suspicious_red_sand": "Suspicious Red Sand",
-  "block.odyssey.sugar_cane_block": "Block of Sugar Cane",
+
   "block.odyssey.prismarine_brick_wall": "Prismarine Brick Wall",
   "block.odyssey.dark_prismarine_wall": "Dark Prismarine Wall",
   "block.odyssey.polished_granite_wall": "Polished Granite Wall",
@@ -51,7 +56,7 @@
   "block.odyssey.stone_wall": "Stone Wall",
   "block.odyssey.smooth_stone_stairs": "Smooth Stone Stairs",
   "block.odyssey.smooth_stone_wall": "Smooth Stone Wall",
-  "block.odyssey.redstone_lantern": "Redstone Lantern",
+
   "block.odyssey.potted_small_dripleaf": "Potted Small Dripleaf",
   "block.odyssey.potted_spore_blossom": "Potted Spore Blossom",
   "block.odyssey.potted_sea_pickle": "Potted Sea Pickle",
@@ -72,12 +77,12 @@
   "subtitles.entity.armor_stand.add_arms": "Arms fasten to Armor Stand",
   "subtitles.block.small_flower.pick": "Flower picked",
   "subtitles.item.saddle.unequip": "Saddle unequips",
+  "subtitles.item.shovel.dig_snow": "Shovel digs",
+  "subtitles.block.piston.apply_slimeball": "Slimeball squishes",
 
   "subtitles.block.cauldron.tip_arrow": "Arrows tipped",
   "subtitles.block.cauldron.poison_potato": "Potato poisoned",
   "subtitles.block.cauldron.potion_dissipate": "Potion dissipates",
-
-  "subtitles.block.piston.apply_slimeball": "Slimeball squishes",
 
   "subtitles.block.redstone_lantern.power_on": "Redstone Lantern activates",
   "subtitles.block.redstone_lantern.power_off": "Redstone Lantern extinguishes",
@@ -92,42 +97,52 @@
   "subtitles.item.bucket.fill_squid": "Squid scooped",
   "subtitles.item.bucket.fill_glow_squid": "Glow Squid scooped",
 
-  "subtitles.item.shovel.dig_snow": "Shovel digs",
-
   "advancements.adventure.use_goat_horn.title": "Call of the Wild",
   "advancements.adventure.use_goat_horn.description": "Blow a Goat Horn",
+
   "advancements.husbandry.frog_in_a_bucket.title": "Leap Year",
   "advancements.husbandry.frog_in_a_bucket.description": "Catch a Frog in a Bucket",
+
   "advancements.husbandry.squid_in_a_bucket.title": "Squidnapper",
   "advancements.husbandry.squid_in_a_bucket.description": "Catch a Squid or a Glow Squid in a Bucket",
+
   "advancements.adventure.find_ancient_city.title": "Long Long Forgotten",
   "advancements.adventure.find_ancient_city.description": "Enter an Ancient City",
+
   "advancements.adventure.find_ocean_monument.title": "A Monumental Discovery",
   "advancements.adventure.find_ocean_monument.description": "Enter an Ocean Monument",
+
   "advancements.adventure.find_mansion.title": "A Foreboding Keep",
   "advancements.adventure.find_mansion.description": "Enter a Woodland Mansion",
+
   "advancements.husbandry.duplicate_allay.title": "Musical Evocation",
   "advancements.husbandry.duplicate_allay.description": "Duplicate an Allay while it is dancing near a Jukebox using an Amethyst Shard",
+
   "advancements.husbandry.play_jukebox.title": "Music to My Ears!",
   "advancements.husbandry.play_jukebox.description": "Play a Music Disc in a Jukebox",
+
   "advancements.husbandry.rare_axolotl_in_a_bucket.title": "The Luckiest Predator",
   "advancements.husbandry.rare_axolotl_in_a_bucket.description": "Catch the rarest Axolotl variant in a Bucket",
+
   "advancements.husbandry.brush_mob.title": "You Can Pet the Dog!",
   "advancements.husbandry.brush_mob.description": "Pet a passive mob with a Brush",
+
   "advancements.husbandry.cure_poison_with_honey.title": "Cough Syrup",
   "advancements.husbandry.cure_poison_with_honey.description": "Cure poison by drinking a Honey Bottle",
+
   "advancements.nether.tip_arrows_in_potion_cauldron.title": "Tipped to Perfection",
   "advancements.nether.tip_arrows_in_potion_cauldron.description": "Tip Arrows in a Potion Cauldron",
+
   "advancements.nether.poison_potato_in_potion_cauldron.title": "Spoiled Rotten",
   "advancements.nether.poison_potato_in_potion_cauldron.description": "Poison a Potato in a Potion Cauldron",
 
   "text.autoconfig.odyssey.title": "Odyssey - Options",
 
   "text.autoconfig.odyssey.option.items": "Items",
-  "text.autoconfig.odyssey.option.items.@Tooltip": "Changes to the way certain items function",
 
   "text.autoconfig.odyssey.option.items.itemStackSizeConfig": "Stack Size Changes",
   "text.autoconfig.odyssey.option.items.itemStackSizeConfig.@Tooltip": "Configure the stack size of various items",
+
   "text.autoconfig.odyssey.option.items.itemStackSizeConfig.sign_stack_size": "Sign Stack Size",
   "text.autoconfig.odyssey.option.items.itemStackSizeConfig.sign_stack_size.@Tooltip": "Changes the stack size of Signs and Hanging Signs",
   "text.autoconfig.odyssey.option.items.itemStackSizeConfig.boat_stack_size": "Boat Stack Size",
@@ -147,74 +162,96 @@
   "text.autoconfig.odyssey.option.items.itemStackSizeConfig.egg_stack_size": "Egg Stack Size",
   "text.autoconfig.odyssey.option.items.itemStackSizeConfig.egg_stack_size.@Tooltip": "Changes the stack size of Eggs",
 
+  "text.autoconfig.odyssey.option.items.potionConfig": "Potions",
+  "text.autoconfig.odyssey.option.items.potionConfig.@Tooltip": "Enable or disable any custom potions from being able to be brewed",
+
+  "text.autoconfig.odyssey.option.items.potionConfig.allow_mining_fatigue_potions": "Allow Mining Fatigue Potions",
+  "text.autoconfig.odyssey.option.items.potionConfig.allow_mining_fatigue_potions.@Tooltip": "Allows for Potions of Mining Fatigue to be brewed using Elder Guardian Thorns",
+  "text.autoconfig.odyssey.option.items.potionConfig.allow_haste_potions": "Allow Haste Potions",
+  "text.autoconfig.odyssey.option.items.potionConfig.allow_haste_potions.@Tooltip": "Allows for Potions of Haste to be brewed by inverting a Potion of Mining Fatigue with a Fermented Spider Eye",
+
   "text.autoconfig.odyssey.option.items.more_repairable_items": "More Repairable Items",
   "text.autoconfig.odyssey.option.items.more_repairable_items.@Tooltip": "Shears can be repaired with Iron Ingots, Brushes with Feathers, and Tridents with Prismarine Shards",
   "text.autoconfig.odyssey.option.items.silk_touch_and_fortune_on_shears": "Silk Touch and Fortune on Shears",
   "text.autoconfig.odyssey.option.items.silk_touch_and_fortune_on_shears.@Tooltip": "Shears can now be enchanted with Silk Touch and Fortune",
   "text.autoconfig.odyssey.option.items.mob_bucket_variant_tooltips": "Mob Bucket Variant Tooltips",
   "text.autoconfig.odyssey.option.items.mob_bucket_variant_tooltips.@Tooltip": "Axolotl and Frog Buckets will display a tooltip on them with the type of Axolotl or Frog that is in them",
-  "text.autoconfig.odyssey.option.items.allow_mining_fatigue_potions": "Allow Mining Fatigue Potions",
-  "text.autoconfig.odyssey.option.items.allow_mining_fatigue_potions.@Tooltip": "Allows for Potions of Mining Fatigue to be brewed using Elder Guardian Thorns",
-  "text.autoconfig.odyssey.option.items.allow_haste_potions": "Allow Haste Potions",
-  "text.autoconfig.odyssey.option.items.allow_haste_potions.@Tooltip": "Allows for Potions of Haste to be brewed by inverting a Potion of Mining Fatigue with a Fermented Spider Eye",
 
   "text.autoconfig.odyssey.option.blocks": "Blocks",
-  "text.autoconfig.odyssey.option.blocks.@Tooltip": "Changes to the way certain blocks function",
 
-  "text.autoconfig.odyssey.option.blocks.anvil_repairing": "Anvil Repairing",
-  "text.autoconfig.odyssey.option.blocks.anvil_repairing.@Tooltip": "Damaged Anvils can be repaired by right-clicking on them with a Block of Iron",
-  "text.autoconfig.odyssey.option.blocks.feather_falling_negates_farmland_trampling": "Feather Falling Negates Farmland Trampling",
-  "text.autoconfig.odyssey.option.blocks.feather_falling_negates_farmland_trampling.@Tooltip": "Falling onto Farmland with Feather Falling will not trample it",
-  "text.autoconfig.odyssey.option.blocks.lily_pad_bone_mealing": "Lily Pad Bone Mealing",
-  "text.autoconfig.odyssey.option.blocks.lily_pad_bone_mealing.@Tooltip": "Lily Pads can be right-clicked with Bone Meal to grow more of them nearby",
-  "text.autoconfig.odyssey.option.blocks.spore_blossom_bone_mealing": "Spore Blossom Bone Mealing",
-  "text.autoconfig.odyssey.option.blocks.spore_blossom_bone_mealing.@Tooltip": "Spore Blossoms can be right-clicked with Bone Meal to duplicate them",
-  "text.autoconfig.odyssey.option.blocks.small_dripleaf_bone_mealing": "Small Dripleaf Renewability",
-  "text.autoconfig.odyssey.option.blocks.small_dripleaf_bone_mealing.@Tooltip": "Using Bone Meal on a Small Dripleaf will drop 2 of itself when it growing into a Big Dripleaf, making it truly renewable",
-  "text.autoconfig.odyssey.option.blocks.renewable_deepslate": "Renewable Deepslate",
-  "text.autoconfig.odyssey.option.blocks.renewable_deepslate.@Tooltip": "Cobblestone generators below Y=0 will create Cobbled Deepslate instead of Cobblestone",
-  "text.autoconfig.odyssey.option.blocks.harder_budding_amethyst": "Harder To Mine Budding Amethyst",
-  "text.autoconfig.odyssey.option.blocks.harder_budding_amethyst.@Tooltip": "Budding Amethyst is no longer mined faster by Pickaxes in order to prevent players from accidentally breaking it",
-  "text.autoconfig.odyssey.option.blocks.sniffer_egg_hatch_preventing": "Sniffer Egg Hatch Preventing",
-  "text.autoconfig.odyssey.option.blocks.sniffer_egg_hatch_preventing.@Tooltip": "Sniffer Eggs placed on Magma Blocks will not hatch, which is useful for using them as decoration!",
-  "text.autoconfig.odyssey.option.blocks.unstable_gunpowder_blocks": "Unstable Blocks of Gunpowder",
-  "text.autoconfig.odyssey.option.blocks.unstable_gunpowder_blocks.@Tooltip": "Blocks of Gunpowder will instantly explode when they catch on fire or when lit with Flint and Steel or Fire Charges",
-  "text.autoconfig.odyssey.option.blocks.flower_picking": "Flower Picking",
-  "text.autoconfig.odyssey.option.blocks.flower_picking.@Tooltip": "Small Flowers can be right-clicked with an empty hand to instantly drop themselves as an item instead of having to destroy them in order to obtain them",
-  "text.autoconfig.odyssey.option.blocks.snow_layer_right_clicking": "Snow Harvesting with Right-Click",
-  "text.autoconfig.odyssey.option.blocks.snow_layer_right_clicking.@Tooltip": "Snow Layers can be right-clicked with a Shovel to harvest them to prevent accidental breaking of other nearby blocks",
-  "text.autoconfig.odyssey.option.blocks.piston_interactions": "Piston Interactions",
-  "text.autoconfig.odyssey.option.blocks.piston_interactions.@Tooltip": "Pistons can be right-clicked with a Slimeball to turn them into Sticky Pistons, and Sticky Pistons can be right-clicked with an Axe to turn them into normal Pistons",
+  "text.autoconfig.odyssey.option.blocks.qualityOfLifeBlockConfig": "Quality-Of-Life Tweaks",
+  "text.autoconfig.odyssey.option.blocks.qualityOfLifeBlockConfig.@Tooltip": "Useful tweaks to various blocks",
+
+  "text.autoconfig.odyssey.option.blocks.qualityOfLifeBlockConfig.anvil_repairing": "Anvil Repairing",
+  "text.autoconfig.odyssey.option.blocks.qualityOfLifeBlockConfig.anvil_repairing.@Tooltip": "Damaged Anvils can be repaired by right-clicking on them with a Block of Iron",
+  "text.autoconfig.odyssey.option.blocks.qualityOfLifeBlockConfig.feather_falling_negates_farmland_trampling": "Feather Falling Negates Farmland Trampling",
+  "text.autoconfig.odyssey.option.blocks.qualityOfLifeBlockConfig.feather_falling_negates_farmland_trampling.@Tooltip": "Falling onto Farmland with Feather Falling will not trample it",
+  "text.autoconfig.odyssey.option.blocks.qualityOfLifeBlockConfig.renewable_deepslate": "Renewable Deepslate",
+  "text.autoconfig.odyssey.option.blocks.qualityOfLifeBlockConfig.renewable_deepslate.@Tooltip": "Cobblestone generators below Y=0 will create Cobbled Deepslate instead of Cobblestone",
+  "text.autoconfig.odyssey.option.blocks.qualityOfLifeBlockConfig.harder_budding_amethyst": "Harder To Mine Budding Amethyst",
+  "text.autoconfig.odyssey.option.blocks.qualityOfLifeBlockConfig.harder_budding_amethyst.@Tooltip": "Budding Amethyst is no longer mined faster with Pickaxes in order to prevent players from accidentally breaking it",
+  "text.autoconfig.odyssey.option.blocks.qualityOfLifeBlockConfig.flower_picking": "Flower Picking",
+  "text.autoconfig.odyssey.option.blocks.qualityOfLifeBlockConfig.flower_picking.@Tooltip": "Small Flowers can be right-clicked with an empty hand to instantly drop themselves as an item instead of having to destroy them to obtain them",
+  "text.autoconfig.odyssey.option.blocks.qualityOfLifeBlockConfig.snow_layer_right_clicking": "Snow Harvesting with Right-Click",
+  "text.autoconfig.odyssey.option.blocks.qualityOfLifeBlockConfig.snow_layer_right_clicking.@Tooltip": "Snow Layers can be right-clicked with a Shovel to harvest them to prevent accidental breaking of other nearby blocks",
+  "text.autoconfig.odyssey.option.blocks.qualityOfLifeBlockConfig.piston_interactions": "Piston Interactions",
+  "text.autoconfig.odyssey.option.blocks.qualityOfLifeBlockConfig.piston_interactions.@Tooltip": "Pistons can be right-clicked with a Slimeball to turn them into Sticky Pistons, and Sticky Pistons can be right-clicked with an Axe to turn them into normal Pistons",
+
+  "text.autoconfig.odyssey.option.blocks.boneMealingConfig": "Bone-Mealing",
+  "text.autoconfig.odyssey.option.blocks.boneMealingConfig.@Tooltip": "Allow for more plant types to be bone-mealed",
+
+  "text.autoconfig.odyssey.option.blocks.boneMealingConfig.lily_pad_bone_mealing": "Lily Pads",
+  "text.autoconfig.odyssey.option.blocks.boneMealingConfig.lily_pad_bone_mealing.@Tooltip": "Lily Pads can be right-clicked with Bone Meal to grow more of them nearby",
+  "text.autoconfig.odyssey.option.blocks.boneMealingConfig.spore_blossom_bone_mealing": "Spore Blossoms",
+  "text.autoconfig.odyssey.option.blocks.boneMealingConfig.spore_blossom_bone_mealing.@Tooltip": "Spore Blossoms can be right-clicked with Bone Meal to duplicate them",
+  "text.autoconfig.odyssey.option.blocks.boneMealingConfig.small_dripleaf_bone_mealing": "Small Dripleaves",
+  "text.autoconfig.odyssey.option.blocks.boneMealingConfig.small_dripleaf_bone_mealing.@Tooltip": "Using Bone Meal on a Small Dripleaf will drop 2 of itself when it growing into a Big Dripleaf, making it truly renewable",
+
+  "text.autoconfig.odyssey.option.blocks.miscBlocksConfig": "Miscellaneous Block Tweaks",
+  "text.autoconfig.odyssey.option.blocks.miscBlocksConfig.@Tooltip": "Options for miscellaneous mechanics relating to blocks",
+
+  "text.autoconfig.odyssey.option.blocks.miscBlocksConfig.sniffer_egg_hatch_preventing": "Sniffer Egg Hatch Preventing",
+  "text.autoconfig.odyssey.option.blocks.miscBlocksConfig.sniffer_egg_hatch_preventing.@Tooltip": "Sniffer Eggs placed on Magma Blocks will not hatch, which is useful for using them as decoration!",
+  "text.autoconfig.odyssey.option.blocks.miscBlocksConfig.unstable_gunpowder_blocks": "Unstable Blocks of Gunpowder",
+  "text.autoconfig.odyssey.option.blocks.miscBlocksConfig.unstable_gunpowder_blocks.@Tooltip": "Blocks of Gunpowder will instantly explode when they catch on fire or when lit with Flint and Steel or Fire Charges",
 
   "text.autoconfig.odyssey.option.entities": "Entities",
-  "text.autoconfig.odyssey.option.entities.@Tooltip": "Changes to the way certain entities function",
 
-  "text.autoconfig.odyssey.option.entities.saddle_removing": "Saddle Removing",
-  "text.autoconfig.odyssey.option.entities.saddle_removing.@Tooltip": "Pigs and Striders can have their saddles removed when right-clicked on while crouching",
-  "text.autoconfig.odyssey.option.entities.decreased_rabbit_fall_damage": "Decreased Rabbit Fall Damage",
-  "text.autoconfig.odyssey.option.entities.decreased_rabbit_fall_damage.@Tooltip": "Rabbits will only take fall damage after falling 10 or more blocks",
-  "text.autoconfig.odyssey.option.entities.renewable_elder_guardians": "Renewable Elder Guardians",
-  "text.autoconfig.odyssey.option.entities.renewable_elder_guardians.@Tooltip": "Guardians that are struck by lightning will turn into Elder Guardians",
-  "text.autoconfig.odyssey.option.entities.armor_stand_arms": "Armor Stand Arms",
-  "text.autoconfig.odyssey.option.entities.armor_stand_arms.@Tooltip": "Armor Stands can be right-clicked on with a Stick to give them arms",
-  "text.autoconfig.odyssey.option.entities.vexes_die_with_evokers": "Vexes Die Alongside Evokers",
-  "text.autoconfig.odyssey.option.entities.vexes_die_with_evokers.@Tooltip": "When an Evoker is killed, any Vexes that it had summoned will also die alongside it",
-  "text.autoconfig.odyssey.option.entities.slime_and_magma_cube_converting": "Slime and Magma Cube Converting",
-  "text.autoconfig.odyssey.option.entities.slime_and_magma_cube_converting.@Tooltip": "Slimes on Magma Blocks will turn into Magma Cubes after a short period of time, and Magma Cubes in water will turn into Slimes",
-  "text.autoconfig.odyssey.option.entities.bucketable_frogs": "Bucketable Frogs",
-  "text.autoconfig.odyssey.option.entities.bucketable_frogs.@Tooltip": "Frogs can be picked up in empty buckets",
-  "text.autoconfig.odyssey.option.entities.bucketable_squids": "Bucketable Squids and Glow Squids",
-  "text.autoconfig.odyssey.option.entities.bucketable_squids.@Tooltip": "Squids and Glow Squids can be picked up in water buckets",
-  "text.autoconfig.odyssey.option.entities.hidden_fire_overlay_with_fire_resistance": "Hidden Fire Overlay with Fire Resistance",
-  "text.autoconfig.odyssey.option.entities.hidden_fire_overlay_with_fire_resistance.@Tooltip": "The fire overlay won't render on mobs or players with Fire Resistance",
-  "text.autoconfig.odyssey.option.entities.item_frame_waxing": "Item Frame Waxing",
-  "text.autoconfig.odyssey.option.entities.item_frame_waxing.@Tooltip": "Filled Item Frames and Glow Item Frames can be waxed with Honeycomb to prevent items inside of them from being rotated",
-  "text.autoconfig.odyssey.option.entities.item_frame_shearing": "Item Frame Shearing",
-  "text.autoconfig.odyssey.option.entities.item_frame_shearing.@Tooltip": "Filled Item Frames and Glow Item Frames can be sheared to make the frame part invisible",
-  "text.autoconfig.odyssey.option.entities.improved_mount_hud": "Improved Mount HUD",
-  "text.autoconfig.odyssey.option.entities.improved_mount_hud.@Tooltip": "When riding on an entity, the player's hunger bar will now properly display on the in-game HUD",
-  "text.autoconfig.odyssey.option.entities.improved_horses": "Improved Horses",
-  "text.autoconfig.odyssey.option.entities.improved_horses.@Tooltip": "Horses wearing Leather Horse Armor are now able to walk on Powder Snow, and Horses, Donkeys, Mules, and Camels will now all ignore leaf collisions while being ridden",
-  "text.autoconfig.odyssey.option.entities.improved_sniffer_stats": "Improved Sniffer Stats",
-  "text.autoconfig.odyssey.option.entities.improved_sniffer_stats.@Tooltip": "Sniffers now have 24 health instead of 14, and they also now have 0.6 knockback resistance"
+  "text.autoconfig.odyssey.option.entities.passiveMobsConfig": "Passive Mobs",
+  "text.autoconfig.odyssey.option.entities.passiveMobsConfig.@Tooltip": "Options for the behavior of passive mobs",
+
+  "text.autoconfig.odyssey.option.entities.passiveMobsConfig.saddle_removing": "Saddle Removing from Pigs and Striders",
+  "text.autoconfig.odyssey.option.entities.passiveMobsConfig.saddle_removing.@Tooltip": "Pigs and Striders can have their saddles removed when right-clicked on while sneaking",
+  "text.autoconfig.odyssey.option.entities.passiveMobsConfig.decreased_rabbit_fall_damage": "Decreased Rabbit Fall Damage",
+  "text.autoconfig.odyssey.option.entities.passiveMobsConfig.decreased_rabbit_fall_damage.@Tooltip": "Rabbits will only take fall damage after falling 10 or more blocks",
+  "text.autoconfig.odyssey.option.entities.passiveMobsConfig.bucketable_frogs": "Bucketable Frogs",
+  "text.autoconfig.odyssey.option.entities.passiveMobsConfig.bucketable_frogs.@Tooltip": "Frogs can be picked up in empty buckets",
+  "text.autoconfig.odyssey.option.entities.passiveMobsConfig.bucketable_squids": "Bucketable Squids and Glow Squids",
+  "text.autoconfig.odyssey.option.entities.passiveMobsConfig.bucketable_squids.@Tooltip": "Squids and Glow Squids can be picked up in water buckets",
+  "text.autoconfig.odyssey.option.entities.passiveMobsConfig.improved_mount_hud": "Improved Mount HUD",
+  "text.autoconfig.odyssey.option.entities.passiveMobsConfig.improved_mount_hud.@Tooltip": "When riding on an entity, the player's hunger bar will now properly display on the in-game HUD",
+  "text.autoconfig.odyssey.option.entities.passiveMobsConfig.improved_horses": "Improved Horses",
+  "text.autoconfig.odyssey.option.entities.passiveMobsConfig.improved_horses.@Tooltip": "Horses wearing Leather Horse Armor are now able to walk on Powder Snow, and Horses, Donkeys, Mules, and Camels will now ignore leaf collisions while being ridden",
+  "text.autoconfig.odyssey.option.entities.passiveMobsConfig.improved_sniffer_stats": "Improved Sniffer Stats",
+  "text.autoconfig.odyssey.option.entities.passiveMobsConfig.improved_sniffer_stats.@Tooltip": "Sniffers now have 24 health instead of 14, and they also now have 0.6 knockback resistance",
+
+  "text.autoconfig.odyssey.option.entities.hostileMobsConfig": "Hostile Mobs",
+  "text.autoconfig.odyssey.option.entities.hostileMobsConfig.@Tooltip": "Options for the behavior of hostile mobs",
+
+  "text.autoconfig.odyssey.option.entities.hostileMobsConfig.renewable_elder_guardians": "Renewable Elder Guardians",
+  "text.autoconfig.odyssey.option.entities.hostileMobsConfig.renewable_elder_guardians.@Tooltip": "Guardians that are struck by lightning will be turned into Elder Guardians",
+  "text.autoconfig.odyssey.option.entities.hostileMobsConfig.vexes_die_with_evokers": "Vexes Die Alongside Evokers",
+  "text.autoconfig.odyssey.option.entities.hostileMobsConfig.vexes_die_with_evokers.@Tooltip": "When an Evoker is killed, any Vexes that it had summoned will also die alongside it",
+  "text.autoconfig.odyssey.option.entities.hostileMobsConfig.slime_and_magma_cube_converting": "Slime and Magma Cube Converting",
+  "text.autoconfig.odyssey.option.entities.hostileMobsConfig.slime_and_magma_cube_converting.@Tooltip": "Slimes on Magma Blocks will turn into Magma Cubes after a short period of time, and Magma Cubes in water will turn into Slimes",
+
+  "text.autoconfig.odyssey.option.entities.miscEntitiesConfig": "Miscellaneous Entity Tweaks",
+  "text.autoconfig.odyssey.option.entities.miscEntitiesConfig.@Tooltip": "Options for the behavior and mechanics of miscellaneous entities",
+
+  "text.autoconfig.odyssey.option.entities.miscEntitiesConfig.armor_stand_arms": "Armor Stands with Arms",
+  "text.autoconfig.odyssey.option.entities.miscEntitiesConfig.armor_stand_arms.@Tooltip": "Armor Stands can be right-clicked on with a Stick to give them arms",
+  "text.autoconfig.odyssey.option.entities.miscEntitiesConfig.hidden_fire_overlay_with_fire_resistance": "Hidden Fire Overlay with Fire Resistance",
+  "text.autoconfig.odyssey.option.entities.miscEntitiesConfig.hidden_fire_overlay_with_fire_resistance.@Tooltip": "The fire overlay won't display on mobs or players with Fire Resistance",
+  "text.autoconfig.odyssey.option.entities.miscEntitiesConfig.item_frame_interactions": "Item Frame Interactions",
+  "text.autoconfig.odyssey.option.entities.miscEntitiesConfig.item_frame_interactions.@Tooltip": "Item Frames can be waxed with Honeycomb to prevent items inside of them from being rotated as well as sheared to make the frame part of them invisible"
 }

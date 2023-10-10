@@ -60,7 +60,7 @@ public class ModPotions {
 
     public static void registerPotions() {
 
-        if (Odyssey.getConfig().items.allow_mining_fatigue_potions) {
+        if (Odyssey.getConfig().items.potionConfig.allow_mining_fatigue_potions) {
 
             MINING_FATIGUE = registerMiningFatiguePotion("mining_fatigue");
             LONG_MINING_FATIGUE = registerLongMiningFatiguePotion("long_mining_fatigue");
@@ -71,7 +71,7 @@ public class ModPotions {
             RegistryHelpers.registerStrongPotionRecipe(ModPotions.MINING_FATIGUE, ModPotions.STRONG_MINING_FATIGUE);
         }
 
-        if (Odyssey.getConfig().items.allow_haste_potions) {
+        if (Odyssey.getConfig().items.potionConfig.allow_haste_potions) {
 
             HASTE = registerHastePotion("haste");
             LONG_HASTE = registerLongHastePotion("long_haste");

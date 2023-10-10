@@ -20,7 +20,7 @@ public class SmallDripleafBlockMixin {
 
     @Inject(method = "performBonemeal", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/BigDripleafBlock;placeWithRandomHeight(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;)V"))
     private void odyssey$dropSmallDripleafOnBoneMeal(ServerLevel serverLevel, RandomSource randomSource, BlockPos blockPos, BlockState blockState, CallbackInfo ci) {
-        if (Odyssey.getConfig().blocks.small_dripleaf_bone_mealing) {
+        if (Odyssey.getConfig().blocks.boneMealingConfig.small_dripleaf_bone_mealing) {
             for (int i = 0; i < 2; ++i) {
                 SmallDripleafBlock.popResource(serverLevel, blockPos, new ItemStack(Items.SMALL_DRIPLEAF));
             }

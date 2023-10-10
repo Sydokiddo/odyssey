@@ -23,7 +23,7 @@ public abstract class LivingEntityRendererMixin <T extends LivingEntity, M exten
 
     @Inject(method = "isShaking", at = @At("HEAD"), cancellable = true)
     private void odyssey$slimeAndMagmaCubeShaking(T livingEntity, CallbackInfoReturnable<Boolean> cir) {
-        if (livingEntity.getType().is(ChrysalisTags.SLIMES) && Odyssey.getConfig().entities.slime_and_magma_cube_converting) {
+        if (livingEntity.getType().is(ChrysalisTags.SLIMES) && Odyssey.getConfig().entities.hostileMobsConfig.slime_and_magma_cube_converting) {
             cir.setReturnValue(livingEntity.isFullyFrozen() || livingEntity.getEntityData().get(OdysseyRegistry.SLIME_CONVERSION) || livingEntity.getEntityData().get(OdysseyRegistry.MAGMA_CUBE_CONVERSION));
         }
     }

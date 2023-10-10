@@ -31,7 +31,7 @@ public abstract class PigMixin extends Animal implements Saddleable {
 
     @Inject(method = "mobInteract", at = @At("HEAD"), cancellable = true)
     private void odyssey$removeSaddleFromPig(Player player, InteractionHand hand, CallbackInfoReturnable<InteractionResult> cir) {
-        if (this.isSaddled() && player.isDiscrete() && player.getItemInHand(hand).isEmpty() && Odyssey.getConfig().entities.saddle_removing) {
+        if (this.isSaddled() && player.isDiscrete() && player.getItemInHand(hand).isEmpty() && Odyssey.getConfig().entities.passiveMobsConfig.saddle_removing) {
             this.steering.setSaddle(false);
             OdysseyRegistry.doSaddleRemovingEvents(this, player, hand);
             cir.setReturnValue(InteractionResult.SUCCESS);

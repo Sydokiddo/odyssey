@@ -24,7 +24,7 @@ public class LeavesBlockMixin extends Block {
 
     @Override @SuppressWarnings("deprecation")
     public VoxelShape getCollisionShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
-        if (Odyssey.getConfig().entities.improved_horses && collisionContext instanceof EntityCollisionContext entityCollisionContext && entityCollisionContext.getEntity() != null && entityCollisionContext.getEntity() instanceof AbstractHorse abstractHorse && abstractHorse.hasControllingPassenger()) {
+        if (Odyssey.getConfig().entities.passiveMobsConfig.improved_horses && collisionContext instanceof EntityCollisionContext entityCollisionContext && entityCollisionContext.getEntity() != null && entityCollisionContext.getEntity() instanceof AbstractHorse abstractHorse && abstractHorse.hasControllingPassenger()) {
             return Shapes.empty();
         }
         return super.getCollisionShape(blockState, blockGetter, blockPos, collisionContext);

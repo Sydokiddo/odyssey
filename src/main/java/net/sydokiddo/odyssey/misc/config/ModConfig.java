@@ -4,7 +4,7 @@ import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
 import net.sydokiddo.odyssey.Odyssey;
-import net.sydokiddo.odyssey.misc.config.options.ItemStackSizeConfig;
+import net.sydokiddo.odyssey.misc.config.options.*;
 
 @Config(name = Odyssey.MOD_ID)
 @Config.Gui.Background("odyssey:textures/block/refined_amethyst_block.png")
@@ -21,6 +21,10 @@ public class ModConfig implements ConfigData {
         @ConfigEntry.Gui.Tooltip
         public ItemStackSizeConfig itemStackSizeConfig = new ItemStackSizeConfig();
 
+        @ConfigEntry.Gui.CollapsibleObject()
+        @ConfigEntry.Gui.Tooltip
+        public PotionConfig potionConfig = new PotionConfig();
+
         @ConfigEntry.Gui.Tooltip
         public boolean more_repairable_items = true;
 
@@ -29,14 +33,6 @@ public class ModConfig implements ConfigData {
 
         @ConfigEntry.Gui.Tooltip
         public boolean mob_bucket_variant_tooltips = true;
-
-        @ConfigEntry.Gui.Tooltip
-        @ConfigEntry.Gui.RequiresRestart
-        public boolean allow_mining_fatigue_potions = true;
-
-        @ConfigEntry.Gui.Tooltip
-        @ConfigEntry.Gui.RequiresRestart
-        public boolean allow_haste_potions = true;
     }
 
     // endregion
@@ -48,41 +44,17 @@ public class ModConfig implements ConfigData {
 
     public static class Blocks {
 
+        @ConfigEntry.Gui.CollapsibleObject()
         @ConfigEntry.Gui.Tooltip
-        public boolean anvil_repairing = true;
+        public QualityOfLifeBlockConfig qualityOfLifeBlockConfig = new QualityOfLifeBlockConfig();
 
+        @ConfigEntry.Gui.CollapsibleObject()
         @ConfigEntry.Gui.Tooltip
-        public boolean feather_falling_negates_farmland_trampling = true;
+        public BoneMealingConfig boneMealingConfig = new BoneMealingConfig();
 
+        @ConfigEntry.Gui.CollapsibleObject()
         @ConfigEntry.Gui.Tooltip
-        public boolean lily_pad_bone_mealing = true;
-
-        @ConfigEntry.Gui.Tooltip
-        public boolean spore_blossom_bone_mealing = true;
-
-        @ConfigEntry.Gui.Tooltip
-        public boolean small_dripleaf_bone_mealing = true;
-
-        @ConfigEntry.Gui.Tooltip
-        public boolean renewable_deepslate = true;
-
-        @ConfigEntry.Gui.Tooltip
-        public boolean harder_budding_amethyst = true;
-
-        @ConfigEntry.Gui.Tooltip
-        public boolean sniffer_egg_hatch_preventing = true;
-
-        @ConfigEntry.Gui.Tooltip
-        public boolean unstable_gunpowder_blocks = true;
-
-        @ConfigEntry.Gui.Tooltip
-        public boolean flower_picking = true;
-
-        @ConfigEntry.Gui.Tooltip
-        public boolean snow_layer_right_clicking = true;
-
-        @ConfigEntry.Gui.Tooltip
-        public boolean piston_interactions = true;
+        public MiscBlocksConfig miscBlocksConfig = new MiscBlocksConfig();
     }
 
     // endregion
@@ -94,47 +66,17 @@ public class ModConfig implements ConfigData {
 
     public static class Entities {
 
+        @ConfigEntry.Gui.CollapsibleObject()
         @ConfigEntry.Gui.Tooltip
-        public boolean saddle_removing = true;
+        public PassiveMobsConfig passiveMobsConfig = new PassiveMobsConfig();
 
+        @ConfigEntry.Gui.CollapsibleObject()
         @ConfigEntry.Gui.Tooltip
-        public boolean decreased_rabbit_fall_damage = true;
+        public HostileMobsConfig hostileMobsConfig = new HostileMobsConfig();
 
+        @ConfigEntry.Gui.CollapsibleObject()
         @ConfigEntry.Gui.Tooltip
-        public boolean renewable_elder_guardians = true;
-
-        @ConfigEntry.Gui.Tooltip
-        public boolean armor_stand_arms = true;
-
-        @ConfigEntry.Gui.Tooltip
-        public boolean vexes_die_with_evokers = true;
-
-        @ConfigEntry.Gui.Tooltip
-        public boolean slime_and_magma_cube_converting = true;
-
-        @ConfigEntry.Gui.Tooltip
-        public boolean bucketable_frogs = true;
-
-        @ConfigEntry.Gui.Tooltip
-        public boolean bucketable_squids = true;
-
-        @ConfigEntry.Gui.Tooltip
-        public boolean hidden_fire_overlay_with_fire_resistance = true;
-
-        @ConfigEntry.Gui.Tooltip
-        public boolean item_frame_waxing = true;
-
-        @ConfigEntry.Gui.Tooltip
-        public boolean item_frame_shearing = true;
-
-        @ConfigEntry.Gui.Tooltip
-        public boolean improved_mount_hud = true;
-
-        @ConfigEntry.Gui.Tooltip
-        public boolean improved_horses = true;
-
-        @ConfigEntry.Gui.Tooltip
-        public boolean improved_sniffer_stats = true;
+        public MiscEntitiesConfig miscEntitiesConfig = new MiscEntitiesConfig();
     }
 
     // endregion

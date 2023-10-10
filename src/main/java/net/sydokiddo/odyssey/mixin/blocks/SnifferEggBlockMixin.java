@@ -41,6 +41,6 @@ public abstract class SnifferEggBlockMixin extends Block {
 
     @Unique
     private static boolean preventsHatching(BlockGetter blockGetter, BlockPos blockPos) {
-        return blockGetter.getBlockState(blockPos.below()).is(ModTags.PREVENTS_SNIFFER_EGG_HATCHING) && Odyssey.getConfig().blocks.sniffer_egg_hatch_preventing;
+        return blockGetter.getBlockState(blockPos.below()).is(ModTags.PREVENTS_SNIFFER_EGG_HATCHING) && Odyssey.getConfig().blocks.miscBlocksConfig.sniffer_egg_hatch_preventing;
     }
 }

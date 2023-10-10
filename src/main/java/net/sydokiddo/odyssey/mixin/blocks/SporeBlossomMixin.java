@@ -26,17 +26,17 @@ public class SporeBlossomMixin implements BonemealableBlock {
 
     @Override
     public boolean isValidBonemealTarget(LevelReader levelReader, BlockPos blockPos, BlockState blockState) {
-        return Odyssey.getConfig().blocks.spore_blossom_bone_mealing;
+        return Odyssey.getConfig().blocks.boneMealingConfig.spore_blossom_bone_mealing;
     }
 
     @Override
     public boolean isBonemealSuccess(Level level, RandomSource randomSource, BlockPos blockPos, BlockState blockState) {
-        return Odyssey.getConfig().blocks.spore_blossom_bone_mealing;
+        return Odyssey.getConfig().blocks.boneMealingConfig.spore_blossom_bone_mealing;
     }
 
     @Override
     public void performBonemeal(ServerLevel serverLevel, RandomSource randomSource, BlockPos blockPos, BlockState blockState) {
-        if (Odyssey.getConfig().blocks.spore_blossom_bone_mealing) {
+        if (Odyssey.getConfig().blocks.boneMealingConfig.spore_blossom_bone_mealing) {
             popResourceBelow(serverLevel, blockPos, new ItemStack(Items.SPORE_BLOSSOM));
         }
     }

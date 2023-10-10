@@ -83,11 +83,11 @@ public abstract class ItemFrameMixin extends HangingEntity {
 
         ItemStack itemInHand = player.getItemInHand(interactionHand);
 
-        if (!this.getItem().isEmpty() && player.mayBuild()) {
+        if (!this.getItem().isEmpty() && player.mayBuild() && Odyssey.getConfig().entities.miscEntitiesConfig.item_frame_interactions) {
 
             // region Waxing
 
-            if (itemInHand.is(Items.HONEYCOMB) && !this.isWaxed() && Odyssey.getConfig().entities.item_frame_waxing) {
+            if (itemInHand.is(Items.HONEYCOMB) && !this.isWaxed()) {
 
                 if (!player.isCreative()) {
                     itemInHand.shrink(1);
@@ -108,7 +108,7 @@ public abstract class ItemFrameMixin extends HangingEntity {
 
             // region Shearing
 
-            if (itemInHand.is(Items.SHEARS) && !this.isInvisible() && Odyssey.getConfig().entities.item_frame_shearing) {
+            if (itemInHand.is(Items.SHEARS) && !this.isInvisible()) {
 
                 if (!player.getAbilities().instabuild) {
                     itemInHand.hurtAndBreak(1, player, (shears) -> shears.broadcastBreakEvent(interactionHand));

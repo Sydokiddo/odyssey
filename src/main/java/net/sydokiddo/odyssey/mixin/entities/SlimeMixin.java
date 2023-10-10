@@ -73,7 +73,7 @@ public abstract class SlimeMixin extends Mob {
 
     @Inject(at = @At("HEAD"), method = "readAdditionalSaveData")
     private void odyssey_readSlimeNBT(CompoundTag compoundTag, CallbackInfo ci) {
-        if (Odyssey.getConfig().entities.slime_and_magma_cube_converting) {
+        if (Odyssey.getConfig().entities.hostileMobsConfig.slime_and_magma_cube_converting) {
             if (compoundTag.contains(MAGMA_CONVERSION_TAG, 99) && compoundTag.getInt(MAGMA_CONVERSION_TAG) > -1) {
                 this.startMagmaConversion(compoundTag.getInt(MAGMA_CONVERSION_TAG));
             } else if (compoundTag.contains(SLIME_CONVERSION_TAG, 99) && compoundTag.getInt(SLIME_CONVERSION_TAG) > -1) {
@@ -89,7 +89,7 @@ public abstract class SlimeMixin extends Mob {
     @Inject(at = @At("RETURN"), method = "tick")
     private void odyssey_tickSlimeConversion(CallbackInfo ci) {
 
-        if (!this.level().isClientSide && this.isAlive() && Odyssey.getConfig().entities.slime_and_magma_cube_converting) {
+        if (!this.level().isClientSide && this.isAlive() && Odyssey.getConfig().entities.hostileMobsConfig.slime_and_magma_cube_converting) {
 
             if (this.getType() == EntityType.SLIME) {
 
@@ -212,14 +212,14 @@ public abstract class SlimeMixin extends Mob {
 
     @Inject(at = @At("HEAD"), method = "getJumpDelay", cancellable = true)
     private void odyssey$preventSlimeJumpingWhileConverting(CallbackInfoReturnable<Integer> cir) {
-        if ((this.isSlimeConverting() || this.isMagmaConverting()) && Odyssey.getConfig().entities.slime_and_magma_cube_converting) {
+        if ((this.isSlimeConverting() || this.isMagmaConverting()) && Odyssey.getConfig().entities.hostileMobsConfig.slime_and_magma_cube_converting) {
             cir.setReturnValue(conversionTime);
         }
     }
 
     @Override
     public boolean isInvulnerableTo(DamageSource damageSource) {
-        if (damageSource.is(DamageTypes.HOT_FLOOR) && Odyssey.getConfig().entities.slime_and_magma_cube_converting) {
+        if (damageSource.is(DamageTypes.HOT_FLOOR) && Odyssey.getConfig().entities.hostileMobsConfig.slime_and_magma_cube_converting) {
             return true;
         }
         return super.isInvulnerableTo(damageSource);

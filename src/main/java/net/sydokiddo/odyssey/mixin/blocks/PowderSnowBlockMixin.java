@@ -16,7 +16,7 @@ public class PowderSnowBlockMixin {
 
     @Inject(method = "canEntityWalkOnPowderSnow", at = @At("HEAD"), cancellable = true)
     private static void odyssey$horsesWalkingOnPowderSnow(Entity entity, CallbackInfoReturnable<Boolean> cir) {
-        if (Odyssey.getConfig().entities.improved_horses && entity instanceof AbstractHorse horse && horse.getItemBySlot(EquipmentSlot.CHEST).is(Items.LEATHER_HORSE_ARMOR)) {
+        if (Odyssey.getConfig().entities.passiveMobsConfig.improved_horses && entity instanceof AbstractHorse horse && horse.getItemBySlot(EquipmentSlot.CHEST).is(Items.LEATHER_HORSE_ARMOR)) {
             cir.setReturnValue(true);
         }
     }

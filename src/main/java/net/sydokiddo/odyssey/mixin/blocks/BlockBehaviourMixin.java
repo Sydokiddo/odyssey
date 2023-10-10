@@ -36,7 +36,7 @@ public class BlockBehaviourMixin {
 
             // region Flower Picking
 
-            if (Odyssey.getConfig().blocks.flower_picking && blockState.is(BlockTags.SMALL_FLOWERS) && player.getMainHandItem().isEmpty()) {
+            if (Odyssey.getConfig().blocks.qualityOfLifeBlockConfig.flower_picking && blockState.is(BlockTags.SMALL_FLOWERS) && player.getMainHandItem().isEmpty()) {
 
                 Block.dropResources(blockState, level, blockPos);
                 this.doBlockHarvestingEvents(level, blockPos, blockState, player, ModSoundEvents.SMALL_FLOWER_PICK, 0.5F);
@@ -48,7 +48,7 @@ public class BlockBehaviourMixin {
 
             // region Snow Harvesting
 
-            if (Odyssey.getConfig().blocks.snow_layer_right_clicking && blockState.is(Blocks.SNOW) && mainHandItem.is(ItemTags.SHOVELS)) {
+            if (Odyssey.getConfig().blocks.qualityOfLifeBlockConfig.snow_layer_right_clicking && blockState.is(Blocks.SNOW) && mainHandItem.is(ItemTags.SHOVELS)) {
 
                 Block.dropResources(blockState, level, blockPos, null, player, mainHandItem);
                 this.doBlockHarvestingEvents(level, blockPos, blockState, player, ModSoundEvents.SHOVEL_DIG_SNOW, 1.0F);
