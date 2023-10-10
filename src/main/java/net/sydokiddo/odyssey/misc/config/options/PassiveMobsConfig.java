@@ -23,5 +23,8 @@ public class PassiveMobsConfig {
     public boolean improved_horses = true;
 
     @ConfigEntry.Gui.Tooltip
+    public boolean improved_parrots = true;
+
+    @ConfigEntry.Gui.Tooltip
     public boolean improved_sniffer_stats = true;
 }

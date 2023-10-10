@@ -1,0 +1,28 @@
+{
+  "odyssey:gunpowder_block": "sand",
+  "odyssey:refined_amethyst_block": "chimes",
+  "odyssey:sugar_cane_block": "leaves,straw",
+  "odyssey:redstone_lantern": "UNASSIGNED",
+  "odyssey:suspicious_red_sand": "sand",
+  "odyssey:potion_cauldron": "metalbar,waterfine",
+
+  "odyssey:polished_deepslate_button[face=floor].foliage": "composite,ore",
+  "odyssey:polished_deepslate_button": "NOT_EMITTER",
+  "odyssey:polished_deepslate_pressure_plate": "composite,ore",
+  "odyssey:polished_deepslate_pressure_plate.carpet": "composite,ore",
+
+  "odyssey:prismarine_brick_wall": "brickstone",
+  "odyssey:dark_prismarine_wall": "stone",
+
+  "odyssey:polished_granite_wall": "marble",
+  "odyssey:polished_diorite_wall": "marble,ore",
+  "odyssey:polished_andesite_wall": "marble",
+
+  "odyssey:stone_wall": "stone",
+  "odyssey:smooth_stone_stairs": "marble",
+  "odyssey:smooth_stone_wall": "marble",
+
+  "odyssey:potted_small_dripleaf.foliage": "straw",
+  "odyssey:potted_spore_blossom.foliage": "straw",
+  "odyssey:potted_sea_pickle.foliage": "mud,slime"
+}
