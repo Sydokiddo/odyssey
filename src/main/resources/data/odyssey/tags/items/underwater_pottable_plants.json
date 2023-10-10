@@ -1,5 +1,8 @@
 {
   "values": [
-    "minecraft:sea_pickle"
+    "minecraft:mangrove_propagule",
+    "minecraft:small_dripleaf",
+    "minecraft:sea_pickle",
+    {"id": "endlessencore:anemonate", "required": false}
   ]
 }

@@ -1,5 +1,8 @@
 {
   "values": [
-    "odyssey:potted_sea_pickle"
+    "minecraft:potted_mangrove_propagule",
+    "odyssey:potted_small_dripleaf",
+    "odyssey:potted_sea_pickle",
+    {"id": "endlessencore:potted_anemonate", "required": false}
   ]
 }
