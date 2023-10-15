@@ -32,7 +32,7 @@ public class ModConfig implements ConfigData {
         public boolean silk_touch_and_fortune_on_shears = true;
 
         @ConfigEntry.Gui.Tooltip
-        public boolean mob_bucket_variant_tooltips = true;
+        public boolean more_tooltips = true;
     }
 
     // endregion

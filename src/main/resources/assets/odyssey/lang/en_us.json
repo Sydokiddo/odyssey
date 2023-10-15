@@ -38,6 +38,9 @@
   "item.minecraft.lingering_potion.effect.strong_haste": "Lingering Potion of Haste",
   "item.minecraft.tipped_arrow.effect.strong_haste": "Arrow of Haste",
 
+  "item.odyssey.milk_bucket.desc": "Clears All Effects",
+  "item.odyssey.honey_bottle.desc": "Clears Poison",
+
   "block.odyssey.gunpowder_block": "Block of Gunpowder",
   "block.odyssey.sugar_cane_block": "Block of Sugar Cane",
   "block.odyssey.refined_amethyst_block": "Refined Block of Amethyst",
@@ -175,8 +178,8 @@
   "text.autoconfig.odyssey.option.items.more_repairable_items.@Tooltip": "Shears can be repaired with Iron Ingots, Brushes with Feathers, and Tridents with Prismarine Shards",
   "text.autoconfig.odyssey.option.items.silk_touch_and_fortune_on_shears": "Silk Touch and Fortune on Shears",
   "text.autoconfig.odyssey.option.items.silk_touch_and_fortune_on_shears.@Tooltip": "Shears can now be enchanted with Silk Touch and Fortune",
-  "text.autoconfig.odyssey.option.items.mob_bucket_variant_tooltips": "Mob Bucket Variant Tooltips",
-  "text.autoconfig.odyssey.option.items.mob_bucket_variant_tooltips.@Tooltip": "Axolotl and Frog Buckets will display a tooltip on them with the type of Axolotl or Frog that is in them",
+  "text.autoconfig.odyssey.option.items.more_tooltips": "More Tooltips",
+  "text.autoconfig.odyssey.option.items.more_tooltips.@Tooltip": "Tooltips will be displayed on a wider variety of items to explain the properties and mechanics of them",
 
   "text.autoconfig.odyssey.option.blocks": "Blocks",
 

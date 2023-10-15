@@ -40,6 +40,7 @@
     "entities.StriderMixin",
     "entities.VexMixin",
     "items.EnchantmentMixin",
+    "items.ItemMixin",
     "items.ItemStackMixin",
     "items.misc.HoneyBottleItemMixin",
     "items.misc.MobBucketItemMixin",

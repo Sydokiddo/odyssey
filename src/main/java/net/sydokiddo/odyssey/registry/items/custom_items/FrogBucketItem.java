@@ -29,7 +29,7 @@ public class FrogBucketItem extends MobInContainerItem {
 
         CompoundTag compoundTag = itemStack.getTag();
 
-        if (this.type == EntityType.FROG && compoundTag != null && compoundTag.contains(Frog.VARIANT_KEY) && Odyssey.getConfig().items.mob_bucket_variant_tooltips) {
+        if (this.type == EntityType.FROG && compoundTag != null && compoundTag.contains(Frog.VARIANT_KEY) && Odyssey.getConfig().items.more_tooltips) {
 
             String translationString = "entity.frog_type." + compoundTag.getString(Frog.VARIANT_KEY);
             ChatFormatting[] chatFormattings = new ChatFormatting[]{ChatFormatting.ITALIC, ChatFormatting.GRAY};

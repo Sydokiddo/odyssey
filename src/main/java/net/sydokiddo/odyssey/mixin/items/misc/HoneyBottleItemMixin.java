@@ -4,6 +4,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.HoneyBottleItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.sydokiddo.chrysalis.Chrysalis;
@@ -15,7 +16,11 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(HoneyBottleItem.class)
-public class HoneyBottleItemMixin {
+public class HoneyBottleItemMixin extends Item {
+
+    private HoneyBottleItemMixin(Properties properties) {
+        super(properties);
+    }
 
     @Inject(method = "finishUsingItem", at = @At("HEAD"))
     private void odyssey$curePoisonFromHoneyAdvancement(ItemStack itemStack, Level level, LivingEntity livingEntity, CallbackInfoReturnable<ItemStack> cir) {

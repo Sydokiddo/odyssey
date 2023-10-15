@@ -29,7 +29,7 @@ public class MobBucketItemMixin {
 
         CompoundTag compoundTag = itemStack.getTag();
 
-        if (itemStack.is(Items.AXOLOTL_BUCKET) && this.type == EntityType.AXOLOTL && compoundTag != null && compoundTag.contains(Axolotl.VARIANT_TAG) && Odyssey.getConfig().items.mob_bucket_variant_tooltips) {
+        if (itemStack.is(Items.AXOLOTL_BUCKET) && this.type == EntityType.AXOLOTL && compoundTag != null && compoundTag.contains(Axolotl.VARIANT_TAG) && Odyssey.getConfig().items.more_tooltips) {
 
             String translationString = "entity.axolotl_type." + compoundTag.getInt(Axolotl.VARIANT_TAG);
             ChatFormatting[] chatFormattings = new ChatFormatting[]{ChatFormatting.ITALIC, ChatFormatting.GRAY};
