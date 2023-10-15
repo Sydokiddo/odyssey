@@ -4,7 +4,7 @@ import net.minecraft.core.dispenser.DispenseItemBehavior;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.DispenserBlock;
-import net.sydokiddo.chrysalis.misc.util.dispenser.DispenseBucketMobDispenserBehavior;
+import net.sydokiddo.chrysalis.misc.util.dispenser.DispenseContainerMobDispenserBehavior;
 import net.sydokiddo.odyssey.registry.items.ModItems;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -22,7 +22,7 @@ public class DispenserBlockMixin {
         Item item = itemStack.getItem();
 
         if (item == ModItems.FROG_BUCKET || item == ModItems.SQUID_BUCKET || item == ModItems.GLOW_SQUID_BUCKET) {
-            cir.setReturnValue(DispenseBucketMobDispenserBehavior.INSTANCE);
+            cir.setReturnValue(DispenseContainerMobDispenserBehavior.INSTANCE);
         }
     }
 }

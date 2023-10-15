@@ -59,9 +59,9 @@ public class ModSoundEvents {
     // Registry
 
     private static SoundEvent registerSoundEvent(String name) {
-        ResourceLocation id = new ResourceLocation(Odyssey.MOD_ID, name);
-        SoundEvent se = SoundEvent.createVariableRangeEvent(id);
-        return Registry.register(BuiltInRegistries.SOUND_EVENT, id, se);
+        ResourceLocation resourceLocation = new ResourceLocation(Odyssey.MOD_ID, name);
+        SoundEvent soundEvent = SoundEvent.createVariableRangeEvent(resourceLocation);
+        return Registry.register(BuiltInRegistries.SOUND_EVENT, resourceLocation, soundEvent);
     }
 
     public static void registerSounds() {}

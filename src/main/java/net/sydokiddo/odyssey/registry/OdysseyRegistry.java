@@ -32,10 +32,12 @@ public class OdysseyRegistry {
 
     // region Entity Data
 
-    public static final EntityDataAccessor<Boolean> MAGMA_CUBE_CONVERSION = SynchedEntityData.defineId(Slime.class, EntityDataSerializers.BOOLEAN);
-    public static final EntityDataAccessor<Boolean> SLIME_CONVERSION = SynchedEntityData.defineId(Slime.class, EntityDataSerializers.BOOLEAN);
-    public static final EntityDataAccessor<Boolean> FROM_BUCKET = SynchedEntityData.defineId(Squid.class, EntityDataSerializers.BOOLEAN);
-    public static final EntityDataAccessor<Boolean> WAXED = SynchedEntityData.defineId(ItemFrame.class, EntityDataSerializers.BOOLEAN);
+    public static final EntityDataAccessor<Boolean>
+        MAGMA_CUBE_CONVERSION = SynchedEntityData.defineId(Slime.class, EntityDataSerializers.BOOLEAN),
+        SLIME_CONVERSION = SynchedEntityData.defineId(Slime.class, EntityDataSerializers.BOOLEAN),
+        FROM_BUCKET = SynchedEntityData.defineId(Squid.class, EntityDataSerializers.BOOLEAN),
+        WAXED = SynchedEntityData.defineId(ItemFrame.class, EntityDataSerializers.BOOLEAN)
+    ;
 
     // endregion
 
@@ -43,7 +45,7 @@ public class OdysseyRegistry {
 
     public static void doSaddleRemovingEvents(LivingEntity livingEntity, Player player, InteractionHand hand) {
 
-        livingEntity.level().playSound(null, livingEntity, ModSoundEvents.SADDLE_UNEQUIP, SoundSource.NEUTRAL, 1.0f, 1.0f);
+        livingEntity.level().playSound(null, livingEntity, ModSoundEvents.SADDLE_UNEQUIP, SoundSource.NEUTRAL, 1.0F, 1.0F);
         player.setItemInHand(hand, Items.SADDLE.getDefaultInstance());
 
         if (Chrysalis.IS_DEBUG) {

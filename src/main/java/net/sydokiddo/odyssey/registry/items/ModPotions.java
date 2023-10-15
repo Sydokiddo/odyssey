@@ -12,13 +12,15 @@ public class ModPotions {
 
     // region Potion Types
 
-    private static Potion MINING_FATIGUE;
-    private static Potion LONG_MINING_FATIGUE;
-    private static Potion STRONG_MINING_FATIGUE;
+    private static Potion
+        MINING_FATIGUE,
+        LONG_MINING_FATIGUE,
+        STRONG_MINING_FATIGUE,
 
-    private static Potion HASTE;
-    private static Potion LONG_HASTE;
-    private static Potion STRONG_HASTE;
+        HASTE,
+        LONG_HASTE,
+        STRONG_HASTE
+    ;
 
     // endregion
 

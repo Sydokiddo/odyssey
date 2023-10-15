@@ -1,8 +1,9 @@
 {
-  "parent": "minecraft:block/inner_stairs",
+  "parent": "chrysalis:block/template_custom_inner_stairs",
   "textures": {
+    "top": "odyssey:block/smooth_stone_stairs_top_corner",
     "bottom": "minecraft:block/smooth_stone",
-    "side": "minecraft:block/smooth_stone_slab_side",
-    "top": "minecraft:block/smooth_stone"
+    "front": "minecraft:block/smooth_stone_slab_side",
+    "side": "odyssey:block/smooth_stone_stairs_side"
   }
 }

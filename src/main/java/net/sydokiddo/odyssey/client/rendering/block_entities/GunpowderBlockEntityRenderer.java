@@ -36,11 +36,11 @@ public class GunpowderBlockEntityRenderer extends EntityRenderer<GunpowderBlockE
         int fuse = gunpowderBlock.getFuse();
 
         if ((float)fuse - g + 1.0F < 10.0F) {
-            float h = 1.0f - ((float)fuse - g + 1.0F) / 10.0F;
-            h = Mth.clamp(h, 0.0f, 1.0F);
+            float h = 1.0F - ((float)fuse - g + 1.0F) / 10.0F;
+            h = Mth.clamp(h, 0.0F, 1.0F);
             h *= h;
             h *= h;
-            float scale = 1.0f + h * 0.3F;
+            float scale = 1.0F + h * 0.3F;
             poseStack.scale(scale, scale, scale);
         }
 

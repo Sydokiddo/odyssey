@@ -20,13 +20,13 @@ public class ModItems {
 
     public static final Item IRON_POTATO = registerItem("iron_potato",
         new Item(new FabricItemSettings().food(new FoodProperties.Builder().nutrition(4).saturationMod(1.2F).alwaysEat()
-        .effect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 300, 1), 1f)
-        .effect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 300, 0), 1f).build()).rarity(Rarity.RARE)));
+        .effect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 300, 1), 1F)
+        .effect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 300, 0), 1F).build()).rarity(Rarity.RARE)));
 
     public static final Item ENCHANTED_IRON_POTATO = registerItem("enchanted_iron_potato",
         new EnchantedGlintItem(new FabricItemSettings().food(new FoodProperties.Builder().nutrition(4).saturationMod(1.2F).alwaysEat()
-        .effect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 900, 1), 1f)
-        .effect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 900, 0), 1f).build()).rarity(Rarity.EPIC)));
+        .effect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 900, 1), 1F)
+        .effect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 900, 0), 1F).build()).rarity(Rarity.EPIC)));
 
     // endregion
 

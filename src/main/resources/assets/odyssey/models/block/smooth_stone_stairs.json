@@ -1,8 +1,9 @@
 {
-  "parent": "minecraft:block/stairs",
+  "parent": "chrysalis:block/template_custom_stairs",
   "textures": {
+    "top": "odyssey:block/smooth_stone_stairs_top",
     "bottom": "minecraft:block/smooth_stone",
-    "side": "minecraft:block/smooth_stone_slab_side",
-    "top": "minecraft:block/smooth_stone"
+    "front": "minecraft:block/smooth_stone_slab_side",
+    "side": "odyssey:block/smooth_stone_stairs_side"
   }
 }
