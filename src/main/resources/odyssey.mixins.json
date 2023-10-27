@@ -43,10 +43,12 @@
     "items.ItemMixin",
     "items.ItemStackMixin",
     "items.misc.HoneyBottleItemMixin",
+    "items.misc.HorseArmorItemMixin",
     "items.misc.MobBucketItemMixin",
     "items.tools.BrushItemMixin",
     "items.tools.DiggerItemMixin",
     "items.tools.ShearsItemMixin",
+    "items.tools.ShieldItemMixin",
     "items.tools.TridentItemMixin",
     "misc.ArmorStandInteractionMixin"
   ],

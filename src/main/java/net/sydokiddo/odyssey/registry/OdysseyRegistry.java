@@ -2,6 +2,9 @@ package net.sydokiddo.odyssey.registry;
 
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.CommonComponents;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -14,6 +17,7 @@ import net.minecraft.world.entity.monster.Slime;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.block.Block;
 import net.sydokiddo.chrysalis.Chrysalis;
 import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
@@ -23,10 +27,8 @@ import net.sydokiddo.odyssey.registry.blocks.custom_blocks.PotionCauldronInterac
 import net.sydokiddo.odyssey.registry.entities.registry.ModEntities;
 import net.sydokiddo.odyssey.registry.items.ModItems;
 import net.sydokiddo.odyssey.registry.items.ModPotions;
-import net.sydokiddo.odyssey.registry.misc.ModCreativeModeTabs;
-import net.sydokiddo.odyssey.registry.misc.ModCriteriaTriggers;
-import net.sydokiddo.odyssey.registry.misc.ModLootTableModifiers;
-import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
+import net.sydokiddo.odyssey.registry.misc.*;
+import java.util.List;
 
 public class OdysseyRegistry {
 
@@ -42,6 +44,23 @@ public class OdysseyRegistry {
     // endregion
 
     // region Debug and Common Methods
+
+    public static void addItemDurabilityTooltip(ItemStack itemStack, List<Component> tooltip, TooltipFlag tooltipFlag) {
+        if (itemStack.isDamaged() && !tooltipFlag.isAdvanced()) {
+
+            tooltip.add(Component.translatable("item.durability", itemStack.getMaxDamage() - itemStack.getDamageValue(), itemStack.getMaxDamage()).withStyle(ChatFormatting.BLUE));
+
+            if (!itemStack.is(ModTags.TOOLTIP_SPACE_BLACKLISTED)) {
+                addSpaceOnTooltipIfEnchanted(itemStack, tooltip);
+            }
+        }
+    }
+
+    public static void addSpaceOnTooltipIfEnchanted(ItemStack itemStack, List<Component> tooltip) {
+        if (itemStack.isEnchanted()) {
+            tooltip.add(CommonComponents.EMPTY);
+        }
+    }
 
     public static void doSaddleRemovingEvents(LivingEntity livingEntity, Player player, InteractionHand hand) {
 

@@ -1,18 +1,102 @@
 package net.sydokiddo.odyssey.mixin.items;
 
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
+import net.minecraft.core.GlobalPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.DecoratedPotBlock;
 import net.sydokiddo.odyssey.Odyssey;
+import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import java.util.List;
 
 @Mixin(ItemStack.class)
 public abstract class ItemStackMixin {
 
     @Shadow public abstract Item getItem();
+    @Shadow public abstract ItemStack copy();
+    private final Minecraft client = Minecraft.getInstance();
+
+    // To Move to Chrysalis
+
+    private void addCoordinatesTooltip(List<Component> tooltip, int x, int y, int z) {
+        tooltip.add(Component.translatable("gui.chrysalis.coordinates", x, y, z).withStyle(ChatFormatting.BLUE));
+    }
+
+    private void addDimensionTooltip(List<Component> tooltip, String dimension) {
+        tooltip.add(Component.translatable("gui.chrysalis.dimension", Component.translatable("dimension." + dimension).withStyle(ChatFormatting.BLUE)).withStyle(ChatFormatting.BLUE));
+    }
+
+    private void addNullTooltip(List<Component> tooltip) {
+        tooltip.add(Component.translatable("gui.chrysalis.none").withStyle(ChatFormatting.BLUE));
+    }
+
+    @Inject(method = "getTooltipLines", at = @At("RETURN"))
+    private void odyssey$addCompassAndClockTooltips(@Nullable Player player, TooltipFlag tooltipFlag, CallbackInfoReturnable<List<Component>> cir) {
+        if (client != null && client.level != null && client.player != null) {
+
+            // region Compasses and Maps
+
+            if (getItem() == Items.COMPASS || getItem() == Items.FILLED_MAP) {
+
+                int x;
+                int y;
+                int z;
+
+                if (CompassItem.isLodestoneCompass(this.copy())) {
+
+                    cir.getReturnValue().add(Component.translatable("gui.odyssey.item.compass.lodestone_location").withStyle(ChatFormatting.GRAY));
+
+                    x = copy().getOrCreateTag().getCompound(CompassItem.TAG_LODESTONE_POS).getInt("X");
+                    y = copy().getOrCreateTag().getCompound(CompassItem.TAG_LODESTONE_POS).getInt("Y");
+                    z = copy().getOrCreateTag().getCompound(CompassItem.TAG_LODESTONE_POS).getInt("Z");
+
+                } else {
+
+                    cir.getReturnValue().add(Component.translatable("gui.odyssey.item.compass.current_location").withStyle(ChatFormatting.GRAY));
+
+                    x = client.player.getBlockX();
+                    y = client.player.getBlockY();
+                    z = client.player.getBlockZ();
+                }
+
+                this.addCoordinatesTooltip(cir.getReturnValue(), x, y, z);
+                if (!CompassItem.isLodestoneCompass(this.copy())) cir.getReturnValue().add(Component.translatable("gui.odyssey.direction." + client.player.getDirection().getName()).withStyle(ChatFormatting.BLUE));
+                if (CompassItem.isLodestoneCompass(this.copy())) this.addDimensionTooltip(cir.getReturnValue(),copy().getOrCreateTag().getString(CompassItem.TAG_LODESTONE_DIMENSION));
+            }
+
+            // endregion
+
+            // region Recovery Compasses
+
+            if (getItem() == Items.RECOVERY_COMPASS) {
+
+                cir.getReturnValue().add(Component.translatable("gui.odyssey.item.compass.death_location").withStyle(ChatFormatting.GRAY));
+
+                if (client.player.getLastDeathLocation().isPresent()) {
+
+                    GlobalPos deathPos = client.player.getLastDeathLocation().get();
+                    int deathX = deathPos.pos().getX();
+                    int deathY = deathPos.pos().getY();
+                    int deathZ = deathPos.pos().getZ();
+
+                    this.addCoordinatesTooltip(cir.getReturnValue(), deathX, deathY, deathZ);
+                    this.addDimensionTooltip(cir.getReturnValue(), client.player.getLastDeathLocation().get().dimension().location().toString());
+
+                } else {
+                    this.addNullTooltip(cir.getReturnValue());
+                }
+            }
+
+            // endregion
+        }
+    }
 
     // Changes the max stack size of certain items
 

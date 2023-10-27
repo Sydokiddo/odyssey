@@ -7,6 +7,7 @@
 
   "item.odyssey.wither_skull_fragment": "Wither Skull Fragment",
   "item.odyssey.elder_guardian_thorn": "Elder Guardian Thorn",
+  "item.odyssey.environment_meter": "Environment Meter",
 
   "item.odyssey.frog_bucket": "Bucket of Frog",
   "item.odyssey.squid_bucket": "Bucket of Squid",
@@ -38,8 +39,43 @@
   "item.minecraft.lingering_potion.effect.strong_haste": "Lingering Potion of Haste",
   "item.minecraft.tipped_arrow.effect.strong_haste": "Arrow of Haste",
 
+  "gui.chrysalis.none": "None",
+  "gui.chrysalis.dimension": "Dimension: %s",
+  "gui.chrysalis.coordinates": "X: %s Y: %s Z: %s",
+  "gui.odyssey.item.when_held": "When Held:",
+  "dimension.minecraft:overworld": "Overworld",
+  "dimension.minecraft:the_nether": "The Nether",
+  "dimension.minecraft:the_end": "The End",
+
+  "gui.odyssey.item.when_on_horse": "When on Horse:",
+
+  "gui.odyssey.item.compass.current_location": "Current Location:",
+  "gui.odyssey.item.compass.lodestone_location": "Lodestone Location:",
+  "gui.odyssey.item.compass.death_location": "Last Death Location:",
+
+  "gui.odyssey.direction.north": "Facing: North",
+  "gui.odyssey.direction.south": "Facing: South",
+  "gui.odyssey.direction.east": "Facing: East",
+  "gui.odyssey.direction.west": "Facing: West",
+
+  "gui.odyssey.item.environment_meter.current_biome": "Biome: %s",
+  "gui.odyssey.item.environment_meter.biome_temperature": "Temperature: %s",
+  "gui.odyssey.item.environment_meter.weather": "Weather: %s",
+
   "item.odyssey.milk_bucket.desc": "Clears All Effects",
   "item.odyssey.honey_bottle.desc": "Clears Poison",
+  "item.odyssey.carrot_on_a_stick.desc": "Controls Saddled Pigs",
+  "item.odyssey.warped_fungus_on_a_stick.desc": "Controls Saddled Striders",
+  "item.odyssey.totem_of_undying.desc": "Revives Holder from Death",
+  "item.odyssey.spawn_egg.desc": "Spawns Mob",
+  "item.odyssey.spyglass.desc": "Zooms Into Distant Objects",
+  "item.odyssey.shield.desc": "Blocks Incoming Attacks",
+
+  "item.odyssey.recovery_compass.desc": "Death Location: X: %s Y: %s Z: %s",
+  "item.odyssey.compass.dimension.desc": "Dimension: %s",
+  "item.odyssey.horse_armor.desc": "+%s Horse Armor",
+  "item.odyssey.food.nutrition_points": "+%s Nutrition",
+  "item.odyssey.food.saturation_points": "+%s Saturation",
 
   "block.odyssey.gunpowder_block": "Block of Gunpowder",
   "block.odyssey.sugar_cane_block": "Block of Sugar Cane",
