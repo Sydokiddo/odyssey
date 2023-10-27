@@ -7,7 +7,7 @@
 
   "item.odyssey.wither_skull_fragment": "Wither Skull Fragment",
   "item.odyssey.elder_guardian_thorn": "Elder Guardian Thorn",
-  "item.odyssey.environment_meter": "Environment Meter",
+  "item.odyssey.environment_detector": "Environment Detector",
 
   "item.odyssey.frog_bucket": "Bucket of Frog",
   "item.odyssey.squid_bucket": "Bucket of Squid",
@@ -58,9 +58,12 @@
   "gui.odyssey.direction.east": "Facing: East",
   "gui.odyssey.direction.west": "Facing: West",
 
-  "gui.odyssey.item.environment_meter.current_biome": "Biome: %s",
-  "gui.odyssey.item.environment_meter.biome_temperature": "Temperature: %s",
-  "gui.odyssey.item.environment_meter.weather": "Weather: %s",
+  "gui.odyssey.item.environment_detector.biome": "Biome: %s",
+  "gui.odyssey.item.environment_detector.biome_temperature": "Temperature: %s",
+  "gui.odyssey.item.environment_detector.weather_clear": "Weather: Clear",
+  "gui.odyssey.item.environment_detector.weather_raining": "Weather: Raining",
+  "gui.odyssey.item.environment_detector.weather_thundering": "Weather: Thundering",
+  "gui.odyssey.item.environment_detector.weather_snowing": "Weather: Snowing",
 
   "item.odyssey.milk_bucket.desc": "Clears All Effects",
   "item.odyssey.honey_bottle.desc": "Clears Poison",
@@ -68,7 +71,6 @@
   "item.odyssey.warped_fungus_on_a_stick.desc": "Controls Saddled Striders",
   "item.odyssey.totem_of_undying.desc": "Revives Holder from Death",
   "item.odyssey.spawn_egg.desc": "Spawns Mob",
-  "item.odyssey.spyglass.desc": "Zooms Into Distant Objects",
   "item.odyssey.shield.desc": "Blocks Incoming Attacks",
 
   "item.odyssey.recovery_compass.desc": "Death Location: X: %s Y: %s Z: %s",
@@ -112,6 +114,8 @@
   "entity.axolotl_type.2": "Gold",
   "entity.axolotl_type.3": "Cyan",
   "entity.axolotl_type.4": "Blue",
+
+  "subtitles.item.environment_detector.use": "Environment Detector clicks",
 
   "subtitles.block.anvil.repair": "Anvil repaired",
   "subtitles.entity.armor_stand.add_arms": "Arms fasten to Armor Stand",

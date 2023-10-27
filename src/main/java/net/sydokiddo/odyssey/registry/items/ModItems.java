@@ -11,6 +11,7 @@ import net.minecraft.world.item.*;
 import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
 import net.sydokiddo.chrysalis.registry.items.custom_items.EnchantedGlintItem;
 import net.sydokiddo.odyssey.Odyssey;
+import net.sydokiddo.odyssey.registry.items.custom_items.EnvironmentDetectorItem;
 import net.sydokiddo.odyssey.registry.items.custom_items.FrogBucketItem;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
 
@@ -49,6 +50,8 @@ public class ModItems {
     public static final Item ELDER_GUARDIAN_THORN = registerItem("elder_guardian_thorn", new Item(new FabricItemSettings()));
 
     public static final Item WITHER_SKULL_FRAGMENT = registerItem("wither_skull_fragment", new Item(new FabricItemSettings()));
+
+    public static final Item ENVIRONMENT_DETECTOR = registerItem("environment_detector", new EnvironmentDetectorItem(new FabricItemSettings()));
 
     // endregion
 

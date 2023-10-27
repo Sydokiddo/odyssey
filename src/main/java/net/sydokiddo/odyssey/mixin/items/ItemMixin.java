@@ -66,11 +66,6 @@ public abstract class ItemMixin {
                 ChrysalisRegistry.addUseTooltip(tooltip);
                 tooltip.add(Component.translatable("item.odyssey.spawn_egg.desc").withStyle(ChatFormatting.BLUE));
             }
-            if (itemStack.is(Items.SPYGLASS)) {
-                ChrysalisRegistry.addUseTooltip(tooltip);
-                tooltip.add(Component.translatable("item.odyssey.spyglass.desc").withStyle(ChatFormatting.BLUE));
-                OdysseyRegistry.addSpaceOnTooltipIfEnchanted(itemStack, tooltip);
-            }
         }
     }
 }

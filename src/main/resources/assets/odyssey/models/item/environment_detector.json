@@ -1,0 +1,26 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "odyssey:item/environment_detector_temperate"
+  },
+  "overrides": [
+    {
+      "model": "odyssey:item/environment_detector_temperate",
+      "predicate": {
+        "type": 0.1
+      }
+    },
+    {
+      "model": "odyssey:item/environment_detector_warm",
+      "predicate": {
+        "type": 0.2
+      }
+    },
+    {
+      "model": "odyssey:item/environment_detector_cold",
+      "predicate": {
+        "type": 0.3
+      }
+    }
+  ]
+}

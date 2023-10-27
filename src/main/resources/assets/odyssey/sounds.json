@@ -69,6 +69,13 @@
     "subtitle": "subtitles.item.axe.scrape"
   },
 
+  "item.environment_detector.use": {
+    "sounds": [
+      "odyssey:item/environment_detector/use"
+    ],
+    "subtitle": "subtitles.item.environment_detector.use"
+  },
+
   "item.bucket.fill_frog": {
     "sounds": [
       "odyssey:item/bucket/fill_frog"
