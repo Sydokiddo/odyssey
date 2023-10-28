@@ -2,7 +2,6 @@ package net.sydokiddo.odyssey.mixin.items;
 
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
@@ -10,24 +9,13 @@ import net.sydokiddo.chrysalis.registry.ChrysalisRegistry;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.OdysseyRegistry;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.*;
 
 @Mixin(Item.class)
-public abstract class ItemMixin {
-
-    // region To move to Chrysalis
-
-    @Unique
-    private void addHoldingTooltip(List<Component> tooltip) {
-        tooltip.add(CommonComponents.EMPTY);
-        tooltip.add(Component.translatable("gui.chrysalis.item.when_held").withStyle(ChatFormatting.GRAY));
-    }
-
-    // endregion
+public class ItemMixin {
 
     @Inject(method = "appendHoverText", at = @At("RETURN"))
     private void odyssey$addItemTooltips(ItemStack itemStack, Level level, List<Component> tooltip, TooltipFlag tooltipFlag, CallbackInfo ci) {
@@ -50,18 +38,18 @@ public abstract class ItemMixin {
             }
 
             if (itemStack.is(Items.CARROT_ON_A_STICK)) {
-                this.addHoldingTooltip(tooltip);
+                ChrysalisRegistry.addHoldingTooltip(tooltip);
                 tooltip.add(Component.translatable("item.odyssey.carrot_on_a_stick.desc").withStyle(ChatFormatting.BLUE));
                 OdysseyRegistry.addSpaceOnTooltipIfEnchanted(itemStack, tooltip);
             }
             if (itemStack.is(Items.WARPED_FUNGUS_ON_A_STICK)) {
-                this.addHoldingTooltip(tooltip);
+                ChrysalisRegistry.addHoldingTooltip(tooltip);
                 tooltip.add(Component.translatable("item.odyssey.warped_fungus_on_a_stick.desc").withStyle(ChatFormatting.BLUE));
                 OdysseyRegistry.addSpaceOnTooltipIfEnchanted(itemStack, tooltip);
             }
 
             if (itemStack.is(Items.TOTEM_OF_UNDYING)) {
-                this.addHoldingTooltip(tooltip);
+                ChrysalisRegistry.addHoldingTooltip(tooltip);
                 tooltip.add(Component.translatable("item.odyssey.totem_of_undying.desc").withStyle(ChatFormatting.BLUE));
             }
             if (itemStack.getItem() instanceof SpawnEggItem) {

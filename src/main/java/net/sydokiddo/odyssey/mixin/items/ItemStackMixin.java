@@ -13,6 +13,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.DecoratedPotBlock;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.sydokiddo.chrysalis.registry.ChrysalisRegistry;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.items.ModItems;
 import org.jetbrains.annotations.Nullable;
@@ -31,37 +32,12 @@ public abstract class ItemStackMixin {
     @Shadow public abstract ItemStack copy();
     private final Minecraft client = Minecraft.getInstance();
 
+    // Adds unique tooltips to various items
+
     @Unique
     private void addWeatherTooltip(List<Component> tooltip, Component weatherType) {
         tooltip.add(Component.translatable("gui.odyssey.item.environment_detector.weather", weatherType).withStyle(ChatFormatting.BLUE));
     }
-
-    // region To Move to Chrysalis
-
-    private void addCoordinatesTooltip(List<Component> tooltip, int x, int y, int z) {
-        tooltip.add(Component.translatable("gui.chrysalis.coordinates", x, y, z).withStyle(ChatFormatting.BLUE));
-    }
-
-    private void addDimensionTooltip(List<Component> tooltip, String dimension) {
-
-        String registryKey = dimension.split(":")[0];
-        String registryPath = dimension.split(":")[1];
-
-        tooltip.add(Component.translatable("gui.chrysalis.dimension", Component.translatable("dimension." + registryKey + "." + registryPath).withStyle(ChatFormatting.BLUE)).withStyle(ChatFormatting.BLUE));
-    }
-
-    private void addDirectionTooltip(List<Component> tooltip, Minecraft minecraft) {
-        if (minecraft.player != null) {
-            Component direction = Component.translatable("gui.chrysalis.direction." + minecraft.player.getDirection().getName()).withStyle(ChatFormatting.BLUE);
-            tooltip.add(Component.translatable("gui.chrysalis.facing_direction", direction).withStyle(ChatFormatting.BLUE));
-        }
-    }
-
-    private void addNullTooltip(List<Component> tooltip) {
-        tooltip.add(Component.translatable("gui.chrysalis.none").withStyle(ChatFormatting.BLUE));
-    }
-
-    // endregion
 
     @Inject(method = "getTooltipLines", at = @At("RETURN"))
     private void odyssey$addCompassAndClockTooltips(@Nullable Player player, TooltipFlag tooltipFlag, CallbackInfoReturnable<List<Component>> cir) {
@@ -95,11 +71,11 @@ public abstract class ItemStackMixin {
                         z = client.player.getBlockZ();
                     }
 
-                    this.addCoordinatesTooltip(cir.getReturnValue(), x, y, z);
+                    ChrysalisRegistry.addCoordinatesTooltip(cir.getReturnValue(), x, y, z);
                     if (!CompassItem.isLodestoneCompass(this.copy()))
-                        this.addDirectionTooltip(cir.getReturnValue(), client);
+                        ChrysalisRegistry.addDirectionTooltip(cir.getReturnValue(), client);
                     if (CompassItem.isLodestoneCompass(this.copy()))
-                        this.addDimensionTooltip(cir.getReturnValue(), copy().getOrCreateTag().getString(CompassItem.TAG_LODESTONE_DIMENSION));
+                        ChrysalisRegistry.addDimensionTooltip(cir.getReturnValue(), copy().getOrCreateTag().getString(CompassItem.TAG_LODESTONE_DIMENSION));
                 }
 
                 // endregion
@@ -117,11 +93,11 @@ public abstract class ItemStackMixin {
                         int deathY = deathPos.pos().getY();
                         int deathZ = deathPos.pos().getZ();
 
-                        this.addCoordinatesTooltip(cir.getReturnValue(), deathX, deathY, deathZ);
-                        this.addDimensionTooltip(cir.getReturnValue(), client.player.getLastDeathLocation().get().dimension().location().toString());
+                        ChrysalisRegistry.addCoordinatesTooltip(cir.getReturnValue(), deathX, deathY, deathZ);
+                        ChrysalisRegistry.addDimensionTooltip(cir.getReturnValue(), client.player.getLastDeathLocation().get().dimension().location().toString());
 
                     } else {
-                        this.addNullTooltip(cir.getReturnValue());
+                        ChrysalisRegistry.addNullTooltip(cir.getReturnValue());
                     }
                 }
 
