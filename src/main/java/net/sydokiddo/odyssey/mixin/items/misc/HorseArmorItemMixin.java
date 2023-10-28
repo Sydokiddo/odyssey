@@ -27,7 +27,7 @@ public class HorseArmorItemMixin extends Item {
 
     @Override
     public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> tooltip, TooltipFlag tooltipFlag) {
-        if (Odyssey.getConfig().items.more_tooltips) {
+        if (Odyssey.getConfig().items.tooltipConfig.horse_armor) {
             tooltip.add(CommonComponents.EMPTY);
             tooltip.add(Component.translatable("gui.odyssey.item.when_on_horse").withStyle(ChatFormatting.GRAY));
             tooltip.add(Component.translatable("item.odyssey.horse_armor.desc", this.protection).withStyle(ChatFormatting.BLUE));

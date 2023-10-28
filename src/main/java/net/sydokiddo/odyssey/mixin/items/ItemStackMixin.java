@@ -44,9 +44,9 @@ public abstract class ItemStackMixin {
 
         if (client != null && client.level != null && client.player != null) {
 
-            if (Odyssey.getConfig().items.more_tooltips) {
+            // region Compass and Map Tooltips
 
-                // region Compass and Map
+            if (Odyssey.getConfig().items.tooltipConfig.compasses_and_maps) {
 
                 if (getItem() == Items.COMPASS || getItem() == Items.FILLED_MAP) {
 
@@ -72,15 +72,9 @@ public abstract class ItemStackMixin {
                     }
 
                     ChrysalisRegistry.addCoordinatesTooltip(cir.getReturnValue(), x, y, z);
-                    if (!CompassItem.isLodestoneCompass(this.copy()))
-                        ChrysalisRegistry.addDirectionTooltip(cir.getReturnValue(), client);
-                    if (CompassItem.isLodestoneCompass(this.copy()))
-                        ChrysalisRegistry.addDimensionTooltip(cir.getReturnValue(), copy().getOrCreateTag().getString(CompassItem.TAG_LODESTONE_DIMENSION));
+                    if (!CompassItem.isLodestoneCompass(this.copy())) ChrysalisRegistry.addDirectionTooltip(cir.getReturnValue(), client);
+                    if (CompassItem.isLodestoneCompass(this.copy())) ChrysalisRegistry.addDimensionTooltip(cir.getReturnValue(), copy().getOrCreateTag().getString(CompassItem.TAG_LODESTONE_DIMENSION));
                 }
-
-                // endregion
-
-                // region Recovery Compass
 
                 if (getItem() == Items.RECOVERY_COMPASS) {
 
@@ -95,16 +89,15 @@ public abstract class ItemStackMixin {
 
                         ChrysalisRegistry.addCoordinatesTooltip(cir.getReturnValue(), deathX, deathY, deathZ);
                         ChrysalisRegistry.addDimensionTooltip(cir.getReturnValue(), client.player.getLastDeathLocation().get().dimension().location().toString());
-
                     } else {
                         ChrysalisRegistry.addNullTooltip(cir.getReturnValue());
                     }
                 }
-
-                // endregion
             }
 
-            // region Environment Detector
+            // endregion
+
+            // region Environment Detector Tooltips
 
             Holder<Biome> biome = client.level.getBiome(client.player.getOnPos());
 

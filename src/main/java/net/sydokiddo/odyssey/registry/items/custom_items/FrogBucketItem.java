@@ -2,6 +2,7 @@ package net.sydokiddo.odyssey.registry.items.custom_items;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EntityType;
@@ -26,16 +27,15 @@ public class FrogBucketItem extends MobInContainerItem {
 
     @Override
     public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> tooltip, TooltipFlag tooltipFlag) {
-
         super.appendHoverText(itemStack, level, tooltip, tooltipFlag);
         CompoundTag compoundTag = itemStack.getTag();
 
-        if (this.type == EntityType.FROG && compoundTag != null && compoundTag.contains(Frog.VARIANT_KEY) && Odyssey.getConfig().items.more_tooltips) {
+        if (this.type == EntityType.FROG && compoundTag != null && compoundTag.contains(Frog.VARIANT_KEY) && Odyssey.getConfig().items.tooltipConfig.frog_buckets) {
 
             String translationString = "entity.frog_type." + compoundTag.getString(Frog.VARIANT_KEY).split(":")[0] + "." + compoundTag.getString(Frog.VARIANT_KEY).split(":")[1];
             ChatFormatting[] chatFormatting = new ChatFormatting[]{ChatFormatting.ITALIC, ChatFormatting.GRAY};
 
-            tooltip.add(Component.translatable(translationString).withStyle(chatFormatting));
+            tooltip.add(CommonComponents.space().append(Component.translatable(translationString).withStyle(chatFormatting)));
         }
     }
 }

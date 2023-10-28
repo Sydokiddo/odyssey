@@ -2,6 +2,7 @@ package net.sydokiddo.odyssey.mixin.items.misc;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.animal.axolotl.Axolotl;
@@ -29,12 +30,12 @@ public class MobBucketItemMixin {
 
         CompoundTag compoundTag = itemStack.getTag();
 
-        if (itemStack.is(Items.AXOLOTL_BUCKET) && this.type == EntityType.AXOLOTL && compoundTag != null && compoundTag.contains(Axolotl.VARIANT_TAG) && Odyssey.getConfig().items.more_tooltips) {
+        if (itemStack.is(Items.AXOLOTL_BUCKET) && this.type == EntityType.AXOLOTL && compoundTag != null && compoundTag.contains(Axolotl.VARIANT_TAG) && Odyssey.getConfig().items.tooltipConfig.axolotl_buckets) {
 
             String translationString = "entity.axolotl_type." + compoundTag.getInt(Axolotl.VARIANT_TAG);
             ChatFormatting[] chatFormattings = new ChatFormatting[]{ChatFormatting.ITALIC, ChatFormatting.GRAY};
 
-            list.add(Component.translatable(translationString).withStyle(chatFormattings));
+            list.add(CommonComponents.space().append(Component.translatable(translationString).withStyle(chatFormattings)));
         }
     }
 }

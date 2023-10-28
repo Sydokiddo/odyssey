@@ -1,6 +1,7 @@
 package net.sydokiddo.odyssey.mixin.items.tools;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ShieldItem;
@@ -20,10 +21,10 @@ public class ShieldItemMixin {
 
     @Inject(method = "appendHoverText", at = @At("RETURN"))
     private void odyssey$addShieldTooltip(ItemStack itemStack, Level level, List<Component> tooltip, TooltipFlag tooltipFlag, CallbackInfo ci) {
-        if (Odyssey.getConfig().items.more_tooltips) {
+        if (Odyssey.getConfig().items.tooltipConfig.shields) {
             OdysseyRegistry.addItemDurabilityTooltip(itemStack, tooltip, tooltipFlag);
             ChrysalisRegistry.addUseTooltip(tooltip);
-            tooltip.add(Component.translatable("item.odyssey.shield.desc").withStyle(ChatFormatting.BLUE));
+            tooltip.add(CommonComponents.space().append(Component.translatable("item.odyssey.shield.desc").withStyle(ChatFormatting.BLUE)));
             OdysseyRegistry.addSpaceOnTooltipIfEnchanted(itemStack, tooltip);
         }
     }
