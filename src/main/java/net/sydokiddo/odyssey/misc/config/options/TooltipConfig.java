@@ -29,6 +29,9 @@ public class TooltipConfig {
     public boolean totems_of_undying = true;
 
     @ConfigEntry.Gui.Tooltip
+    public boolean eyes_of_ender = true;
+
+    @ConfigEntry.Gui.Tooltip
     public boolean spawn_eggs = true;
 
     @ConfigEntry.Gui.Tooltip

@@ -49,6 +49,10 @@ public class ItemMixin {
             ChrysalisRegistry.addHoldingTooltip(tooltip);
             tooltip.add(CommonComponents.space().append(Component.translatable("item.odyssey.totem_of_undying.desc").withStyle(ChatFormatting.BLUE)));
         }
+        if (itemStack.is(Items.ENDER_EYE) && Odyssey.getConfig().items.tooltipConfig.eyes_of_ender) {
+            ChrysalisRegistry.addUseTooltip(tooltip);
+            tooltip.add(CommonComponents.space().append(Component.translatable("item.odyssey.ender_eye.desc").withStyle(ChatFormatting.BLUE)));
+        }
         if (itemStack.getItem() instanceof SpawnEggItem && Odyssey.getConfig().items.tooltipConfig.spawn_eggs) {
             ChrysalisRegistry.addUseTooltip(tooltip);
             tooltip.add(CommonComponents.space().append(Component.translatable("item.odyssey.spawn_egg.desc").withStyle(ChatFormatting.BLUE)));
