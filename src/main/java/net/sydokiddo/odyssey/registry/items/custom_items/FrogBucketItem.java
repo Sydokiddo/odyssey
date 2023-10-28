@@ -25,16 +25,17 @@ public class FrogBucketItem extends MobInContainerItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> list, TooltipFlag tooltipFlag) {
+    public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> tooltip, TooltipFlag tooltipFlag) {
 
+        super.appendHoverText(itemStack, level, tooltip, tooltipFlag);
         CompoundTag compoundTag = itemStack.getTag();
 
         if (this.type == EntityType.FROG && compoundTag != null && compoundTag.contains(Frog.VARIANT_KEY) && Odyssey.getConfig().items.more_tooltips) {
 
-            String translationString = "entity.frog_type." + compoundTag.getString(Frog.VARIANT_KEY);
-            ChatFormatting[] chatFormattings = new ChatFormatting[]{ChatFormatting.ITALIC, ChatFormatting.GRAY};
+            String translationString = "entity.frog_type." + compoundTag.getString(Frog.VARIANT_KEY).split(":")[0] + "." + compoundTag.getString(Frog.VARIANT_KEY).split(":")[1];
+            ChatFormatting[] chatFormatting = new ChatFormatting[]{ChatFormatting.ITALIC, ChatFormatting.GRAY};
 
-            list.add(Component.translatable(translationString).withStyle(chatFormattings));
+            tooltip.add(Component.translatable(translationString).withStyle(chatFormatting));
         }
     }
 }

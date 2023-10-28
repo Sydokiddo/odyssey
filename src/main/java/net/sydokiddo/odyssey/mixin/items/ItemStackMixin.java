@@ -7,6 +7,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.GlobalPos;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.biome.Biome;
@@ -17,6 +18,7 @@ import net.sydokiddo.odyssey.registry.items.ModItems;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
@@ -29,19 +31,37 @@ public abstract class ItemStackMixin {
     @Shadow public abstract ItemStack copy();
     private final Minecraft client = Minecraft.getInstance();
 
-    // To Move to Chrysalis
+    @Unique
+    private void addWeatherTooltip(List<Component> tooltip, Component weatherType) {
+        tooltip.add(Component.translatable("gui.odyssey.item.environment_detector.weather", weatherType).withStyle(ChatFormatting.BLUE));
+    }
+
+    // region To Move to Chrysalis
 
     private void addCoordinatesTooltip(List<Component> tooltip, int x, int y, int z) {
         tooltip.add(Component.translatable("gui.chrysalis.coordinates", x, y, z).withStyle(ChatFormatting.BLUE));
     }
 
     private void addDimensionTooltip(List<Component> tooltip, String dimension) {
-        tooltip.add(Component.translatable("gui.chrysalis.dimension", Component.translatable("dimension." + dimension).withStyle(ChatFormatting.BLUE)).withStyle(ChatFormatting.BLUE));
+
+        String registryKey = dimension.split(":")[0];
+        String registryPath = dimension.split(":")[1];
+
+        tooltip.add(Component.translatable("gui.chrysalis.dimension", Component.translatable("dimension." + registryKey + "." + registryPath).withStyle(ChatFormatting.BLUE)).withStyle(ChatFormatting.BLUE));
+    }
+
+    private void addDirectionTooltip(List<Component> tooltip, Minecraft minecraft) {
+        if (minecraft.player != null) {
+            Component direction = Component.translatable("gui.chrysalis.direction." + minecraft.player.getDirection().getName()).withStyle(ChatFormatting.BLUE);
+            tooltip.add(Component.translatable("gui.chrysalis.facing_direction", direction).withStyle(ChatFormatting.BLUE));
+        }
     }
 
     private void addNullTooltip(List<Component> tooltip) {
         tooltip.add(Component.translatable("gui.chrysalis.none").withStyle(ChatFormatting.BLUE));
     }
+
+    // endregion
 
     @Inject(method = "getTooltipLines", at = @At("RETURN"))
     private void odyssey$addCompassAndClockTooltips(@Nullable Player player, TooltipFlag tooltipFlag, CallbackInfoReturnable<List<Component>> cir) {
@@ -77,7 +97,7 @@ public abstract class ItemStackMixin {
 
                     this.addCoordinatesTooltip(cir.getReturnValue(), x, y, z);
                     if (!CompassItem.isLodestoneCompass(this.copy()))
-                        cir.getReturnValue().add(Component.translatable("gui.odyssey.direction." + client.player.getDirection().getName()).withStyle(ChatFormatting.BLUE));
+                        this.addDirectionTooltip(cir.getReturnValue(), client);
                     if (CompassItem.isLodestoneCompass(this.copy()))
                         this.addDimensionTooltip(cir.getReturnValue(), copy().getOrCreateTag().getString(CompassItem.TAG_LODESTONE_DIMENSION));
                 }
@@ -88,7 +108,7 @@ public abstract class ItemStackMixin {
 
                 if (getItem() == Items.RECOVERY_COMPASS) {
 
-                    cir.getReturnValue().add(Component.translatable("gui.odyssey.item.compass.death_location").withStyle(ChatFormatting.GRAY));
+                    cir.getReturnValue().add(Component.translatable("gui.odyssey.item.recovery_compass.death_location").withStyle(ChatFormatting.GRAY));
 
                     if (client.player.getLastDeathLocation().isPresent()) {
 
@@ -122,20 +142,23 @@ public abstract class ItemStackMixin {
                 });
 
                 BlockPos highestPos = new BlockPos(client.player.getBlockX(), client.level.getHeight(Heightmap.Types.WORLD_SURFACE, client.player.getBlockX(), client.player.getBlockZ()), client.player.getBlockZ()).above();
+                MutableComponent weatherType;
 
                 if (client.level.isRainingAt(highestPos)) {
                     if (client.level.isThundering()) {
-                        cir.getReturnValue().add(Component.translatable("gui.odyssey.item.environment_detector.weather_thundering").withStyle(ChatFormatting.BLUE));
+                        weatherType = Component.translatable("gui.chrysalis.weather.thundering");
                     } else {
-                        cir.getReturnValue().add(Component.translatable("gui.odyssey.item.environment_detector.weather_raining").withStyle(ChatFormatting.BLUE));
+                        weatherType = Component.translatable("gui.chrysalis.weather.raining");
                     }
                 } else {
                     if (biome.value().getPrecipitationAt(highestPos) == Biome.Precipitation.SNOW && client.level.isRaining()) {
-                        cir.getReturnValue().add(Component.translatable("gui.odyssey.item.environment_detector.weather_snowing").withStyle(ChatFormatting.BLUE));
+                        weatherType = Component.translatable("gui.chrysalis.weather.snowing");
                     } else {
-                        cir.getReturnValue().add(Component.translatable("gui.odyssey.item.environment_detector.weather_clear").withStyle(ChatFormatting.BLUE));
+                        weatherType = Component.translatable("gui.chrysalis.weather.clear");
                     }
                 }
+
+                this.addWeatherTooltip(cir.getReturnValue(), weatherType.withStyle(ChatFormatting.BLUE));
             }
 
             // endregion

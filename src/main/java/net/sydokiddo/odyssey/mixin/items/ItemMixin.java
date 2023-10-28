@@ -19,13 +19,15 @@ import java.util.*;
 @Mixin(Item.class)
 public abstract class ItemMixin {
 
-    // To move to Chrysalis
+    // region To move to Chrysalis
 
     @Unique
     private void addHoldingTooltip(List<Component> tooltip) {
         tooltip.add(CommonComponents.EMPTY);
-        tooltip.add(Component.translatable("gui.odyssey.item.when_held").withStyle(ChatFormatting.GRAY));
+        tooltip.add(Component.translatable("gui.chrysalis.item.when_held").withStyle(ChatFormatting.GRAY));
     }
+
+    // endregion
 
     @Inject(method = "appendHoverText", at = @At("RETURN"))
     private void odyssey$addItemTooltips(ItemStack itemStack, Level level, List<Component> tooltip, TooltipFlag tooltipFlag, CallbackInfo ci) {
