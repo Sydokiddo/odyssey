@@ -25,7 +25,7 @@ public class ShieldItemMixin {
             OdysseyRegistry.addItemDurabilityTooltip(itemStack, tooltip, tooltipFlag);
             ChrysalisRegistry.addUseTooltip(tooltip);
             tooltip.add(CommonComponents.space().append(Component.translatable("item.odyssey.shield.desc").withStyle(ChatFormatting.BLUE)));
-            OdysseyRegistry.addSpaceOnTooltipIfEnchanted(itemStack, tooltip);
+            OdysseyRegistry.addSpaceOnTooltipIfEnchantedOrTrimmed(itemStack, tooltip);
         }
     }
 }

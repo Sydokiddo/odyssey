@@ -31,7 +31,7 @@ public class HorseArmorItemMixin extends Item {
             tooltip.add(CommonComponents.EMPTY);
             tooltip.add(Component.translatable("gui.odyssey.item.when_on_horse").withStyle(ChatFormatting.GRAY));
             tooltip.add(Component.translatable("item.odyssey.horse_armor.desc", this.protection).withStyle(ChatFormatting.BLUE));
-            OdysseyRegistry.addSpaceOnTooltipIfEnchanted(itemStack, tooltip);
+            OdysseyRegistry.addSpaceOnTooltipIfEnchantedOrTrimmed(itemStack, tooltip);
         }
     }
 }

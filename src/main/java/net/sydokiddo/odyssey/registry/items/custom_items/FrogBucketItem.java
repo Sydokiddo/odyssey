@@ -2,7 +2,6 @@ package net.sydokiddo.odyssey.registry.items.custom_items;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EntityType;
@@ -35,7 +34,7 @@ public class FrogBucketItem extends MobInContainerItem {
             String translationString = "entity.frog_type." + compoundTag.getString(Frog.VARIANT_KEY).split(":")[0] + "." + compoundTag.getString(Frog.VARIANT_KEY).split(":")[1];
             ChatFormatting[] chatFormatting = new ChatFormatting[]{ChatFormatting.ITALIC, ChatFormatting.GRAY};
 
-            tooltip.add(CommonComponents.space().append(Component.translatable(translationString).withStyle(chatFormatting)));
+            tooltip.add(Component.translatable(translationString).withStyle(chatFormatting));
         }
     }
 }

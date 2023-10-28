@@ -18,6 +18,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.armortrim.ArmorTrim;
 import net.minecraft.world.level.block.Block;
 import net.sydokiddo.chrysalis.Chrysalis;
 import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
@@ -51,13 +52,13 @@ public class OdysseyRegistry {
             tooltip.add(Component.translatable("item.durability", itemStack.getMaxDamage() - itemStack.getDamageValue(), itemStack.getMaxDamage()).withStyle(ChatFormatting.BLUE));
 
             if (!itemStack.is(ModTags.TOOLTIP_SPACE_BLACKLISTED)) {
-                addSpaceOnTooltipIfEnchanted(itemStack, tooltip);
+                addSpaceOnTooltipIfEnchantedOrTrimmed(itemStack, tooltip);
             }
         }
     }
 
-    public static void addSpaceOnTooltipIfEnchanted(ItemStack itemStack, List<Component> tooltip) {
-        if (itemStack.isEnchanted()) {
+    public static void addSpaceOnTooltipIfEnchantedOrTrimmed(ItemStack itemStack, List<Component> tooltip) {
+        if (itemStack.isEnchanted() || itemStack.getTag() != null && itemStack.getTag().contains(ArmorTrim.TAG_TRIM_ID)) {
             tooltip.add(CommonComponents.EMPTY);
         }
     }

@@ -38,12 +38,12 @@ public class ItemMixin {
         if (itemStack.is(Items.CARROT_ON_A_STICK) && Odyssey.getConfig().items.tooltipConfig.carrots_on_a_stick) {
             ChrysalisRegistry.addHoldingTooltip(tooltip);
             tooltip.add(CommonComponents.space().append(Component.translatable("item.odyssey.carrot_on_a_stick.desc").withStyle(ChatFormatting.BLUE)));
-            OdysseyRegistry.addSpaceOnTooltipIfEnchanted(itemStack, tooltip);
+            OdysseyRegistry.addSpaceOnTooltipIfEnchantedOrTrimmed(itemStack, tooltip);
         }
         if (itemStack.is(Items.WARPED_FUNGUS_ON_A_STICK) && Odyssey.getConfig().items.tooltipConfig.warped_fungus_on_a_stick) {
             ChrysalisRegistry.addHoldingTooltip(tooltip);
             tooltip.add(CommonComponents.space().append(Component.translatable("item.odyssey.warped_fungus_on_a_stick.desc").withStyle(ChatFormatting.BLUE)));
-            OdysseyRegistry.addSpaceOnTooltipIfEnchanted(itemStack, tooltip);
+            OdysseyRegistry.addSpaceOnTooltipIfEnchantedOrTrimmed(itemStack, tooltip);
         }
         if (itemStack.is(Items.TOTEM_OF_UNDYING) && Odyssey.getConfig().items.tooltipConfig.totems_of_undying) {
             ChrysalisRegistry.addHoldingTooltip(tooltip);
