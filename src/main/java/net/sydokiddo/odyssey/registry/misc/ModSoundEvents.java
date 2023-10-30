@@ -24,6 +24,9 @@ public class ModSoundEvents {
     public static final SoundEvent PISTON_APPLY_SLIMEBALL = registerSoundEvent("block.piston.apply_slimeball");
     public static final SoundEvent PISTON_REMOVE_SLIMEBALL = registerSoundEvent("block.piston.remove_slimeball");
 
+    public static final SoundEvent METAL_BUTTON_CLICK_OFF = registerSoundEvent("block.metal_button.click_off");
+    public static final SoundEvent METAL_BUTTON_CLICK_ON = registerSoundEvent("block.metal_button.click_on");
+
     // endregion
 
     // region Item Sounds

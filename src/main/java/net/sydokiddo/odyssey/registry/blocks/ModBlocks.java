@@ -11,6 +11,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.blocks.custom_blocks.*;
@@ -33,6 +34,12 @@ public class ModBlocks {
 
     public static final Block REDSTONE_LANTERN = registerBlock("redstone_lantern",
         new RedstoneLanternBlock(FabricBlockSettings.copyOf(Blocks.LANTERN).luminance(RegistryHelpers.blockStateShouldEmitLight(7))));
+
+    public static final Block GOLDEN_BUTTON = registerBlock("golden_button",
+        new MetalButtonBlock(BlockBehaviour.Properties.of().noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY), BlockSetType.GOLD, 10, false));
+
+    public static final Block IRON_BUTTON = registerBlock("iron_button",
+        new MetalButtonBlock(BlockBehaviour.Properties.of().noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY), BlockSetType.IRON, 40, false));
 
     public static final Block SUSPICIOUS_RED_SAND = registerBlock("suspicious_red_sand",
         new ModBrushableBlock(Blocks.RED_SAND, FabricBlockSettings.copyOf(Blocks.SUSPICIOUS_SAND)

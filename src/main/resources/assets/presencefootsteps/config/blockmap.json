@@ -7,6 +7,11 @@
   "odyssey:potion_cauldron": "metalbar,waterfine",
   "odyssey:tinted_glass_pane": "glass",
 
+  "odyssey:golden_button[face=floor].foliage": "hardmetal",
+  "odyssey:golden_button": "NOT_EMITTER",
+  "odyssey:iron_button[face=floor].foliage": "hardmetal",
+  "odyssey:iron_button": "NOT_EMITTER",
+
   "odyssey:polished_deepslate_button[face=floor].foliage": "composite,ore",
   "odyssey:polished_deepslate_button": "NOT_EMITTER",
   "odyssey:polished_deepslate_pressure_plate": "composite,ore",
