@@ -76,6 +76,9 @@
   "block.odyssey.polished_deepslate_button": "Polished Deepslate Button",
   "block.odyssey.polished_deepslate_pressure_plate": "Polished Deepslate Pressure Plate",
 
+  "block.odyssey.fragile_button": "Fragile Button",
+  "block.odyssey.fragile_pressure_plate": "Fragile Pressure Plate",
+
   "block.odyssey.prismarine_brick_wall": "Prismarine Brick Wall",
   "block.odyssey.dark_prismarine_wall": "Dark Prismarine Wall",
   "block.odyssey.polished_granite_wall": "Polished Granite Wall",
@@ -109,6 +112,9 @@
   "subtitles.item.saddle.unequip": "Saddle unequips",
   "subtitles.item.shovel.dig_snow": "Shovel digs",
   "subtitles.block.piston.apply_slimeball": "Slimeball squishes",
+
+  "subtitles.block.fragile_button.shatter": "Button shatters",
+  "subtitles.block.fragile_pressure_plate.shatter": "Pressure Plate shatters",
 
   "subtitles.block.cauldron.tip_arrow": "Arrows tipped",
   "subtitles.block.cauldron.poison_potato": "Potato poisoned",

@@ -2,6 +2,7 @@ package net.sydokiddo.odyssey.registry.blocks;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.sounds.SoundEvents;
@@ -15,9 +16,26 @@ import net.minecraft.world.level.material.PushReaction;
 import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.blocks.custom_blocks.*;
+import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
 
-@SuppressWarnings("unused")
 public class ModBlocks {
+
+    // To Move to Chrysalis
+
+    public static ButtonBlock registerStoneButton(BlockSetType blockSetType) {
+        return new ButtonBlock(BlockBehaviour.Properties.of().noCollission().strength(0.5F)
+        .pushReaction(PushReaction.DESTROY), blockSetType, 20, false);
+    }
+
+    // Block Set Types
+
+    public static final BlockSetType POLISHED_DEEPSLATE_TYPE = BlockSetTypeBuilder.copyOf(BlockSetType.STONE)
+        .soundGroup(SoundType.POLISHED_DEEPSLATE).register(Odyssey.id("polished_deepslate"));
+
+    public static final BlockSetType TERRACOTTA_TYPE = BlockSetTypeBuilder.copyOf(BlockSetType.STONE)
+        .pressurePlateClickOffSound(SoundEvents.EMPTY).pressurePlateClickOnSound(ModSoundEvents.FRAGILE_PRESSURE_PLATE_CLICK_ON)
+        .buttonClickOffSound(SoundEvents.EMPTY).buttonClickOnSound(ModSoundEvents.FRAGILE_BUTTON_CLICK_ON)
+        .register(Odyssey.id("terracotta"));
 
     // Blocks
 
@@ -41,6 +59,13 @@ public class ModBlocks {
     public static final Block IRON_BUTTON = registerBlock("iron_button",
         new MetalButtonBlock(BlockBehaviour.Properties.of().noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY), BlockSetType.IRON, 40, false));
 
+    public static final Block FRAGILE_BUTTON = registerBlock("fragile_button",
+        new FragileButtonBlock(BlockBehaviour.Properties.of().noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY), TERRACOTTA_TYPE, 20, false));
+
+    public static final Block FRAGILE_PRESSURE_PLATE = registerBlock("fragile_pressure_plate",
+        new FragilePressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.of().forceSolidOn().mapColor(MapColor.TERRACOTTA_RED)
+        .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY), TERRACOTTA_TYPE));
+
     public static final Block SUSPICIOUS_RED_SAND = registerBlock("suspicious_red_sand",
         new ModBrushableBlock(Blocks.RED_SAND, FabricBlockSettings.copyOf(Blocks.SUSPICIOUS_SAND)
         .mapColor(MapColor.COLOR_ORANGE), SoundEvents.BRUSH_SAND, SoundEvents.BRUSH_SAND_COMPLETED));
@@ -59,9 +84,9 @@ public class ModBlocks {
 
     // region Deepslate Variants
 
-    public static final Block POLISHED_DEEPSLATE_PRESSURE_PLATE = registerBlock("polished_deepslate_pressure_plate", RegistryHelpers.registerStonePressurePlate(MapColor.DEEPSLATE, BlockSetType.STONE));
+    public static final Block POLISHED_DEEPSLATE_BUTTON = registerBlock("polished_deepslate_button", registerStoneButton(POLISHED_DEEPSLATE_TYPE));
 
-    public static final Block POLISHED_DEEPSLATE_BUTTON = registerBlock("polished_deepslate_button", RegistryHelpers.registerStoneButton());
+    public static final Block POLISHED_DEEPSLATE_PRESSURE_PLATE = registerBlock("polished_deepslate_pressure_plate", RegistryHelpers.registerStonePressurePlate(MapColor.DEEPSLATE, POLISHED_DEEPSLATE_TYPE));
 
     // endregion
 

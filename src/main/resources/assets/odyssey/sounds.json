@@ -90,6 +90,132 @@
     "subtitle": "subtitles.block.button.click"
   },
 
+  "block.fragile_button.place": {
+    "sounds": [
+      "minecraft:block/decorated_pot/break1",
+      "minecraft:block/decorated_pot/break2",
+      "minecraft:block/decorated_pot/break3",
+      "minecraft:block/decorated_pot/break4"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.fragile_button.break": {
+    "sounds": [
+      "minecraft:block/decorated_pot/break1",
+      "minecraft:block/decorated_pot/break2",
+      "minecraft:block/decorated_pot/break3",
+      "minecraft:block/decorated_pot/break4"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.fragile_button.hit": {
+    "sounds": [
+      "minecraft:block/decorated_pot/step1",
+      "minecraft:block/decorated_pot/step2",
+      "minecraft:block/decorated_pot/step3",
+      "minecraft:block/decorated_pot/step4",
+      "minecraft:block/decorated_pot/step5"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.fragile_button.step": {
+    "sounds": [
+      "minecraft:block/decorated_pot/step1",
+      "minecraft:block/decorated_pot/step2",
+      "minecraft:block/decorated_pot/step3",
+      "minecraft:block/decorated_pot/step4",
+      "minecraft:block/decorated_pot/step5"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.fragile_button.fall": {
+    "sounds": [
+      "minecraft:block/decorated_pot/step1",
+      "minecraft:block/decorated_pot/step2",
+      "minecraft:block/decorated_pot/step3",
+      "minecraft:block/decorated_pot/step4",
+      "minecraft:block/decorated_pot/step5"
+    ]
+  },
+  "block.fragile_button.shatter": {
+    "sounds": [
+      "odyssey:block/fragile_button/shatter"
+    ],
+    "subtitle": "subtitles.block.fragile_button.shatter"
+  },
+  "block.fragile_button.click_on": {
+    "sounds": [
+      {
+        "name": "odyssey:block/fragile_button/press",
+        "volume": 0.3
+      }
+    ],
+    "subtitle": "subtitles.block.button.click"
+  },
+
+  "block.fragile_pressure_plate.place": {
+    "sounds": [
+      "minecraft:block/decorated_pot/break1",
+      "minecraft:block/decorated_pot/break2",
+      "minecraft:block/decorated_pot/break3",
+      "minecraft:block/decorated_pot/break4"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.fragile_pressure_plate.break": {
+    "sounds": [
+      "minecraft:block/decorated_pot/break1",
+      "minecraft:block/decorated_pot/break2",
+      "minecraft:block/decorated_pot/break3",
+      "minecraft:block/decorated_pot/break4"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.fragile_pressure_plate.hit": {
+    "sounds": [
+      "minecraft:block/decorated_pot/step1",
+      "minecraft:block/decorated_pot/step2",
+      "minecraft:block/decorated_pot/step3",
+      "minecraft:block/decorated_pot/step4",
+      "minecraft:block/decorated_pot/step5"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.fragile_pressure_plate.step": {
+    "sounds": [
+      "minecraft:block/decorated_pot/step1",
+      "minecraft:block/decorated_pot/step2",
+      "minecraft:block/decorated_pot/step3",
+      "minecraft:block/decorated_pot/step4",
+      "minecraft:block/decorated_pot/step5"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.fragile_pressure_plate.fall": {
+    "sounds": [
+      "minecraft:block/decorated_pot/step1",
+      "minecraft:block/decorated_pot/step2",
+      "minecraft:block/decorated_pot/step3",
+      "minecraft:block/decorated_pot/step4",
+      "minecraft:block/decorated_pot/step5"
+    ]
+  },
+  "block.fragile_pressure_plate.shatter": {
+    "sounds": [
+      "odyssey:block/fragile_button/shatter"
+    ],
+    "subtitle": "subtitles.block.fragile_pressure_plate.shatter"
+  },
+  "block.fragile_pressure_plate.click_on": {
+    "sounds": [
+      {
+        "name": "odyssey:block/fragile_button/press",
+        "volume": 0.3
+      }
+    ],
+    "subtitle": "subtitles.block.pressure_plate.click"
+  },
+
   "item.environment_detector.use": {
     "sounds": [
       "odyssey:item/environment_detector/use"

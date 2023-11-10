@@ -8,7 +8,6 @@
     "blocks.AbstractCauldronBlockMixin",
     "blocks.AnvilRepairingMixin",
     "blocks.BlockBehaviourMixin",
-    "blocks.BlockMixin",
     "blocks.CarpetBlockMixin",
     "blocks.DispenserBlockMixin",
     "blocks.FarmlandBlockMixin",

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    {
+      "tag": "chrysalis:bricks"
+    }
+  ],
+  "result": {
+    "item": "odyssey:fragile_button"
+  }
+}

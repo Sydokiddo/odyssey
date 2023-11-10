@@ -45,15 +45,15 @@ public class OdysseyClient implements ClientModInitializer {
 
                 if (client != null && livingEntity != null) {
                     if (client.getBiome(livingEntity.getOnPos()).is(BiomeTags.SPAWNS_WARM_VARIANT_FROGS)) {
-                        return 0.2f;
+                        return 0.2F;
                     }
                     else if (client.getBiome(livingEntity.getOnPos()).is(BiomeTags.SPAWNS_COLD_VARIANT_FROGS)) {
-                        return 0.3f;
+                        return 0.3F;
                     } else {
-                        return 0.1f;
+                        return 0.1F;
                     }
                 }
-                return 0.1f;
+                return 0.1F;
             });
 
             // endregion

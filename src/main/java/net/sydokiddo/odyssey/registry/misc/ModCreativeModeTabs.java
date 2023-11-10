@@ -38,10 +38,10 @@ public class ModCreativeModeTabs {
 
             content.addAfter(ModItems.ELDER_GUARDIAN_THORN, ModItems.WITHER_SKULL_FRAGMENT, ModItems.IRON_POTATO, ModItems.ENCHANTED_IRON_POTATO,
             ModItems.SQUID_BUCKET, ModItems.GLOW_SQUID_BUCKET, ModItems.FROG_BUCKET, ModItems.ENVIRONMENT_DETECTOR, ModBlocks.GUNPOWDER_BLOCK, ModBlocks.REFINED_AMETHYST_BLOCK,
-            ModBlocks.SUGAR_CANE_BLOCK, ModBlocks.SUSPICIOUS_RED_SAND, ModBlocks.GOLDEN_BUTTON, ModBlocks.IRON_BUTTON, ModBlocks.POLISHED_DEEPSLATE_BUTTON, ModBlocks.POLISHED_DEEPSLATE_PRESSURE_PLATE,
-            ModBlocks.REDSTONE_LANTERN, ModBlocks.TINTED_GLASS_PANE, ModBlocks.STONE_WALL, ModBlocks.SMOOTH_STONE_STAIRS, ModBlocks.SMOOTH_STONE_WALL, ModBlocks.POLISHED_GRANITE_WALL,
-            ModBlocks.POLISHED_DIORITE_WALL, ModBlocks.POLISHED_ANDESITE_WALL, ModBlocks.PRISMARINE_BRICK_WALL, ModBlocks.DARK_PRISMARINE_WALL,
-            Items.FLOWER_POT, Items.SMALL_DRIPLEAF, Items.SPORE_BLOSSOM, Items.SEA_PICKLE);
+            ModBlocks.SUGAR_CANE_BLOCK, ModBlocks.SUSPICIOUS_RED_SAND, ModBlocks.GOLDEN_BUTTON, ModBlocks.IRON_BUTTON, ModBlocks.FRAGILE_BUTTON, ModBlocks.FRAGILE_PRESSURE_PLATE,
+            ModBlocks.POLISHED_DEEPSLATE_BUTTON, ModBlocks.POLISHED_DEEPSLATE_PRESSURE_PLATE, ModBlocks.REDSTONE_LANTERN, ModBlocks.TINTED_GLASS_PANE, ModBlocks.STONE_WALL,
+            ModBlocks.SMOOTH_STONE_STAIRS, ModBlocks.SMOOTH_STONE_WALL, ModBlocks.POLISHED_GRANITE_WALL, ModBlocks.POLISHED_DIORITE_WALL, ModBlocks.POLISHED_ANDESITE_WALL,
+            ModBlocks.PRISMARINE_BRICK_WALL, ModBlocks.DARK_PRISMARINE_WALL, Items.FLOWER_POT, Items.SMALL_DRIPLEAF, Items.SPORE_BLOSSOM, Items.SEA_PICKLE);
         });
 
         // endregion
@@ -97,7 +97,8 @@ public class ModCreativeModeTabs {
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.REDSTONE_BLOCKS).register(entries -> {
             entries.addAfter(Items.AMETHYST_BLOCK, ModBlocks.REFINED_AMETHYST_BLOCK);
             entries.addAfter(Items.REDSTONE_TORCH, ModBlocks.REDSTONE_LANTERN);
-            entries.addAfter(Items.STONE_BUTTON, ModBlocks.GOLDEN_BUTTON, ModBlocks.IRON_BUTTON);
+            entries.addAfter(Items.STONE_BUTTON, ModBlocks.FRAGILE_BUTTON, ModBlocks.GOLDEN_BUTTON, ModBlocks.IRON_BUTTON);
+            entries.addAfter(Items.STONE_PRESSURE_PLATE, ModBlocks.FRAGILE_PRESSURE_PLATE);
         });
 
         // endregion

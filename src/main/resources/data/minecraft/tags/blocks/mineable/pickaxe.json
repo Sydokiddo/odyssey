@@ -19,6 +19,8 @@
     "odyssey:smooth_stone_stairs",
     "odyssey:smooth_stone_wall",
     "odyssey:golden_button",
-    "odyssey:iron_button"
+    "odyssey:iron_button",
+    "odyssey:fragile_button",
+    "odyssey:fragile_pressure_plate"
   ]
 }
