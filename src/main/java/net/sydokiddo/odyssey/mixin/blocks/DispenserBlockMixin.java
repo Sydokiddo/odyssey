@@ -3,8 +3,11 @@ package net.sydokiddo.odyssey.mixin.blocks;
 import net.minecraft.core.dispenser.DispenseItemBehavior;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.sydokiddo.chrysalis.misc.util.dispenser.DispenseContainerMobDispenserBehavior;
+import net.sydokiddo.odyssey.Odyssey;
+import net.sydokiddo.odyssey.misc.util.dispenser.ApplySlimeballToPistonDispenserBehavior;
 import net.sydokiddo.odyssey.registry.items.ModItems;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -23,6 +26,9 @@ public class DispenserBlockMixin {
 
         if (item == ModItems.FROG_BUCKET || item == ModItems.SQUID_BUCKET || item == ModItems.GLOW_SQUID_BUCKET) {
             cir.setReturnValue(DispenseContainerMobDispenserBehavior.INSTANCE);
+        }
+        if (item == Items.SLIME_BALL && Odyssey.getConfig().blocks.qualityOfLifeBlockConfig.piston_interactions) {
+            cir.setReturnValue(ApplySlimeballToPistonDispenserBehavior.INSTANCE);
         }
     }
 }
