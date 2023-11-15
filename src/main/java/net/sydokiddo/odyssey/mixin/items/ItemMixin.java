@@ -7,18 +7,24 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.sydokiddo.chrysalis.registry.ChrysalisRegistry;
+import net.sydokiddo.chrysalis.registry.misc.ChrysalisTags;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.OdysseyRegistry;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import java.awt.*;
 import java.util.*;
+import java.util.List;
 
 @Mixin(Item.class)
 public class ItemMixin {
 
-    @Inject(method = "appendHoverText", at = @At("RETURN"))
+    @Unique private static final int FIREPROOF_COLOR = Color.decode("#766A76").getRGB();
+
+    @Inject(method = "appendHoverText", at = @At("HEAD"))
     private void odyssey$addItemTooltips(ItemStack itemStack, Level level, List<Component> tooltip, TooltipFlag tooltipFlag, CallbackInfo ci) {
         if (Odyssey.getConfig().items.tooltipConfig.durability_information) {
             OdysseyRegistry.addItemDurabilityTooltip(itemStack, tooltip, tooltipFlag);
@@ -26,6 +32,10 @@ public class ItemMixin {
         if (itemStack.isEdible() && !FabricLoader.getInstance().isModLoaded("appleskin") && Odyssey.getConfig().items.tooltipConfig.food_information) {
             tooltip.add(Component.translatable("item.odyssey.food.nutrition_points", Objects.requireNonNull(itemStack.getItem().getFoodProperties()).getNutrition()).withStyle(ChatFormatting.BLUE));
             tooltip.add(Component.translatable("item.odyssey.food.saturation_points", Objects.requireNonNull(itemStack.getItem().getFoodProperties()).getSaturationModifier()).withStyle(ChatFormatting.BLUE));
+        }
+        if ((itemStack.getItem().isFireResistant() || itemStack.is(ChrysalisTags.IMMUNE_TO_FIRE)) && Odyssey.getConfig().items.tooltipConfig.fireproof_items) {
+            tooltip.add(Component.translatable("gui.odyssey.item.fireproof").withStyle(style -> style.withItalic(true).withColor(FIREPROOF_COLOR)));
+            OdysseyRegistry.addSpaceOnTooltipIfEnchantedOrTrimmed(itemStack, tooltip);
         }
         if (itemStack.getItem() instanceof HoneyBottleItem && Odyssey.getConfig().items.tooltipConfig.honey_bottles) {
             ChrysalisRegistry.addDrinkTooltip(tooltip);

@@ -62,6 +62,8 @@
   "item.odyssey.food.nutrition_points": "+%s Nutrition",
   "item.odyssey.food.saturation_points": "+%s Saturation",
 
+  "gui.odyssey.item.fireproof": "Fireproof",
+
   "block.odyssey.gunpowder_block": "Block of Gunpowder",
   "block.odyssey.sugar_cane_block": "Block of Sugar Cane",
   "block.odyssey.refined_amethyst_block": "Refined Block of Amethyst",
@@ -213,6 +215,8 @@
   "text.autoconfig.odyssey.option.items.tooltipConfig.durability_information.@Tooltip": "Items with durability will display a unique tooltip showcasing their current durability without the need of using the detailed item descriptions debug feature",
   "text.autoconfig.odyssey.option.items.tooltipConfig.food_information": "Food Information",
   "text.autoconfig.odyssey.option.items.tooltipConfig.food_information.@Tooltip": "Food items will display a unique tooltip displaying their nutrition and saturation values",
+  "text.autoconfig.odyssey.option.items.tooltipConfig.fireproof_items": "Fireproof Items",
+  "text.autoconfig.odyssey.option.items.tooltipConfig.fireproof_items.@Tooltip": "Items that are fireproof will display a unique tooltip on them",
   "text.autoconfig.odyssey.option.items.tooltipConfig.honey_bottles": "Honey Bottles",
   "text.autoconfig.odyssey.option.items.tooltipConfig.honey_bottles.@Tooltip": "Honey Bottles will display a unique tooltip on them displaying how they function",
   "text.autoconfig.odyssey.option.items.tooltipConfig.milk_buckets": "Milk Buckets",

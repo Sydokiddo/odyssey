@@ -11,6 +11,9 @@ public class TooltipConfig {
     public boolean food_information = true;
 
     @ConfigEntry.Gui.Tooltip
+    public boolean fireproof_items = true;
+
+    @ConfigEntry.Gui.Tooltip
     public boolean honey_bottles = true;
 
     @ConfigEntry.Gui.Tooltip

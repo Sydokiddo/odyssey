@@ -2,6 +2,8 @@
   "values": [
     "minecraft:carrot_on_a_stick",
     "minecraft:warped_fungus_on_a_stick",
-    "minecraft:shield"
+    "minecraft:shield",
+    "#chrysalis:immune_to_fire",
+    {"id": "#endlessencore:disobeys_gravity", "required": false}
   ]
 }

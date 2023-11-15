@@ -20,13 +20,6 @@ import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
 
 public class ModBlocks {
 
-    // To Move to Chrysalis
-
-    public static ButtonBlock registerStoneButton(BlockSetType blockSetType) {
-        return new ButtonBlock(BlockBehaviour.Properties.of().noCollission().strength(0.5F)
-        .pushReaction(PushReaction.DESTROY), blockSetType, 20, false);
-    }
-
     // Block Set Types
 
     public static final BlockSetType POLISHED_DEEPSLATE_TYPE = BlockSetTypeBuilder.copyOf(BlockSetType.STONE)
@@ -84,7 +77,7 @@ public class ModBlocks {
 
     // region Deepslate Variants
 
-    public static final Block POLISHED_DEEPSLATE_BUTTON = registerBlock("polished_deepslate_button", registerStoneButton(POLISHED_DEEPSLATE_TYPE));
+    public static final Block POLISHED_DEEPSLATE_BUTTON = registerBlock("polished_deepslate_button", RegistryHelpers.registerStoneButton(POLISHED_DEEPSLATE_TYPE));
 
     public static final Block POLISHED_DEEPSLATE_PRESSURE_PLATE = registerBlock("polished_deepslate_pressure_plate", RegistryHelpers.registerStonePressurePlate(MapColor.DEEPSLATE, POLISHED_DEEPSLATE_TYPE));
 
