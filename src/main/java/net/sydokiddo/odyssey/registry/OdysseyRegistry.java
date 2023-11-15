@@ -50,7 +50,7 @@ public class OdysseyRegistry {
     public static void addItemDurabilityTooltip(ItemStack itemStack, List<Component> tooltip, TooltipFlag tooltipFlag) {
         if (itemStack.isDamaged() && !tooltipFlag.isAdvanced()) {
 
-            tooltip.add(Component.translatable("item.durability", itemStack.getMaxDamage() - itemStack.getDamageValue(), itemStack.getMaxDamage()).withStyle(ChatFormatting.BLUE));
+            tooltip.add(Component.translatable("item.durability", itemStack.getMaxDamage() - itemStack.getDamageValue(), itemStack.getMaxDamage()).withStyle(ChatFormatting.GRAY));
 
             if (!itemStack.is(ModTags.TOOLTIP_SPACE_BLACKLISTED)) {
                 addSpaceOnTooltipIfEnchantedOrTrimmed(itemStack, tooltip);
