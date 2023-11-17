@@ -12,6 +12,7 @@ import net.sydokiddo.chrysalis.Chrysalis;
 import net.sydokiddo.odyssey.client.rendering.ModEntityRenderer;
 import net.sydokiddo.odyssey.registry.blocks.ModBlocks;
 import net.sydokiddo.odyssey.registry.items.ModItems;
+import net.sydokiddo.odyssey.registry.misc.ModParticles;
 
 @Environment(EnvType.CLIENT)
 public class OdysseyClient implements ClientModInitializer {
@@ -23,6 +24,7 @@ public class OdysseyClient implements ClientModInitializer {
 
             ModEntityRenderer.registerRenderers();
             ModEntityRenderer.setPotionCauldronRenderColors();
+            ModParticles.registerParticles();
 
             // region Block Rendering
 

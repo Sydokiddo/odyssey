@@ -97,6 +97,7 @@ public class OdysseyRegistry {
         ModSoundEvents.registerSounds();
         PotionCauldronInteraction.bootstrap();
         ModPotions.registerPotions();
+        ModParticles.PARTICLES.register();
 
         // endregion
 
