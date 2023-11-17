@@ -316,6 +316,8 @@
   "text.autoconfig.odyssey.option.entities.hostileMobsConfig.vexes_die_with_evokers.@Tooltip": "When an Evoker is killed, any Vexes that it had summoned will also die alongside it",
   "text.autoconfig.odyssey.option.entities.hostileMobsConfig.slime_and_magma_cube_converting": "Slime and Magma Cube Converting",
   "text.autoconfig.odyssey.option.entities.hostileMobsConfig.slime_and_magma_cube_converting.@Tooltip": "Slimes on Magma Blocks will turn into Magma Cubes after a short period of time, and Magma Cubes in water will turn into Slimes",
+  "text.autoconfig.odyssey.option.entities.hostileMobsConfig.more_heads_from_charged_creepers": "More Heads from Charged Creepers",
+  "text.autoconfig.odyssey.option.entities.hostileMobsConfig.more_heads_from_charged_creepers.@Tooltip": "If a single Charged Creeper kills multiple mobs, each mob will drop their head instead of only one of them",
 
   "text.autoconfig.odyssey.option.entities.miscEntitiesConfig": "Miscellaneous Entity Tweaks",
   "text.autoconfig.odyssey.option.entities.miscEntitiesConfig.@Tooltip": "Options for the behavior and mechanics of miscellaneous entities",
