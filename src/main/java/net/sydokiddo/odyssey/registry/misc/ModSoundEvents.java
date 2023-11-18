@@ -76,6 +76,8 @@ public class ModSoundEvents {
     public static final SoundEvent WAXED_ITEM_FRAME_INTERACT_FAIL = registerSoundEvent("entity.item_frame.waxed_interact_fail");
     public static final SoundEvent WAXED_GLOW_ITEM_FRAME_INTERACT_FAIL = registerSoundEvent("entity.glow_item_frame.waxed_interact_fail");
 
+    public static final SoundEvent TNT_SHEAR = registerSoundEvent("entity.tnt.shear");
+
     // endregion
 
     // region Block Sound Groups

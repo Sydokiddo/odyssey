@@ -12,4 +12,7 @@ public class MiscEntitiesConfig {
 
     @ConfigEntry.Gui.Tooltip
     public boolean item_frame_interactions = true;
+
+    @ConfigEntry.Gui.Tooltip
+    public boolean tnt_defusing = true;
 }

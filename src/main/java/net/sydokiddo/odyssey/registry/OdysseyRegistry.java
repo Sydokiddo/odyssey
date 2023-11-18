@@ -3,6 +3,7 @@ package net.sydokiddo.odyssey.registry;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -10,6 +11,7 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Saddleable;
 import net.minecraft.world.entity.animal.Squid;
@@ -20,7 +22,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.armortrim.ArmorTrim;
+import net.minecraft.world.level.GameRules;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.sydokiddo.chrysalis.Chrysalis;
 import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
 import net.sydokiddo.odyssey.Odyssey;
@@ -84,6 +89,18 @@ public class OdysseyRegistry {
         if (Chrysalis.IS_DEBUG) {
             Odyssey.LOGGER.info("{} has been converted into {} in a {}", startingItem.getItem().getName(startingItem).getString(), resultItem.getItem().getName(resultItem).getString(), block.asItem().getName(block.asItem().getDefaultInstance()));
         }
+    }
+
+    public static void shearPrimedTNT(Level level, Entity primedTnt, BlockPos blockPos) {
+
+        if (RegistryHelpers.isBlockStateFree(level.getBlockState(blockPos)) && (blockPos.getY() >= level.getMinBuildHeight() || blockPos.getY() <= level.getMaxBuildHeight())) {
+            level.setBlock(blockPos, Blocks.TNT.defaultBlockState(), 3);
+        } else if (level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
+            primedTnt.spawnAtLocation(Items.TNT);
+        }
+
+        level.playSound(null, blockPos, ModSoundEvents.TNT_SHEAR, SoundSource.PLAYERS, 1.0F, 1.0F);
+        primedTnt.discard();
     }
 
     // endregion

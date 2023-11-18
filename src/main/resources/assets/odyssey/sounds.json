@@ -329,5 +329,12 @@
       "odyssey:entity/item_frame/rotate_fail3"
     ],
     "subtitle": "subtitles.entity.glow_item_frame.waxed_interact_fail"
+  },
+
+  "entity.tnt.shear": {
+    "sounds": [
+      "odyssey:entity/tnt/shear"
+    ],
+    "subtitle": "subtitles.item.shears.shear"
   }
 }
