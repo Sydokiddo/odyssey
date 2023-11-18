@@ -1,10 +1,9 @@
 package net.sydokiddo.odyssey.mixin.items.tools;
 
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.CrossbowItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ProjectileWeaponItem;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.sydokiddo.odyssey.registry.OdysseyRegistry;
 import org.jetbrains.annotations.Nullable;
@@ -23,7 +22,14 @@ public abstract class CrossbowItemMixin extends ProjectileWeaponItem {
 
     @Inject(method = "appendHoverText", at = @At("HEAD"))
     private void odyssey$addCrossbowTooltip(ItemStack itemStack, @Nullable Level level, List<Component> tooltip, TooltipFlag tooltipFlag, CallbackInfo ci) {
+
         OdysseyRegistry.addItemDurabilityTooltip(itemStack, tooltip, tooltipFlag);
+
+        CompoundTag compoundTag = itemStack.getTag();
+
+        if (itemStack.isEnchanted() && itemStack.isDamaged() && !(compoundTag != null && compoundTag.getBoolean("Charged"))) {
+            tooltip.add(CommonComponents.EMPTY);
+        }
     }
 
     @Inject(method = "appendHoverText", at = @At("TAIL"))

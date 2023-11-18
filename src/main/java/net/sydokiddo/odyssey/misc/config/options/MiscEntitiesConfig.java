@@ -15,4 +15,7 @@ public class MiscEntitiesConfig {
 
     @ConfigEntry.Gui.Tooltip
     public boolean tnt_defusing = true;
+
+    @ConfigEntry.Gui.Tooltip
+    public boolean tnt_knockback = true;
 }

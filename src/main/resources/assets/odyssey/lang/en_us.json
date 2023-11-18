@@ -331,5 +331,7 @@
   "text.autoconfig.odyssey.option.entities.miscEntitiesConfig.item_frame_interactions": "Item Frame Interactions",
   "text.autoconfig.odyssey.option.entities.miscEntitiesConfig.item_frame_interactions.@Tooltip": "Item Frames can be waxed with Honeycomb to prevent items inside of them from being rotated as well as sheared to make the frame part of them invisible",
   "text.autoconfig.odyssey.option.entities.miscEntitiesConfig.tnt_defusing": "TNT Defusing",
-  "text.autoconfig.odyssey.option.entities.miscEntitiesConfig.tnt_defusing.@Tooltip": "Primed TNT can be right-clicked with Shears to defuse it, placing itself as a block in its place"
+  "text.autoconfig.odyssey.option.entities.miscEntitiesConfig.tnt_defusing.@Tooltip": "Primed TNT can be right-clicked with Shears to defuse it, placing itself as a block in its place",
+  "text.autoconfig.odyssey.option.entities.miscEntitiesConfig.tnt_knockback": "TNT Knockback",
+  "text.autoconfig.odyssey.option.entities.miscEntitiesConfig.tnt_knockback.@Tooltip": "Primed TNT can receive knockback from being hit"
 }
