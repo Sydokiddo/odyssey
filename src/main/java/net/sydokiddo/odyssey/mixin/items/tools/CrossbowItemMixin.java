@@ -22,7 +22,12 @@ public abstract class CrossbowItemMixin extends ProjectileWeaponItem {
     }
 
     @Inject(method = "appendHoverText", at = @At("HEAD"))
-    private void odyssey$changeCrossbowTooltip(ItemStack itemStack, @Nullable Level level, List<Component> tooltip, TooltipFlag tooltipFlag, CallbackInfo ci) {
+    private void odyssey$addCrossbowTooltip(ItemStack itemStack, @Nullable Level level, List<Component> tooltip, TooltipFlag tooltipFlag, CallbackInfo ci) {
         OdysseyRegistry.addItemDurabilityTooltip(itemStack, tooltip, tooltipFlag);
+    }
+
+    @Inject(method = "appendHoverText", at = @At("TAIL"))
+    private void odyssey$addSpaceBeforeCrossbowEnchantments(ItemStack itemStack, @Nullable Level level, List<Component> tooltip, TooltipFlag tooltipFlag, CallbackInfo ci) {
+        OdysseyRegistry.addSpaceOnTooltipIfEnchantedOrTrimmed(itemStack, tooltip);
     }
 }

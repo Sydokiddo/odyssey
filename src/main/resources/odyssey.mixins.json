@@ -46,6 +46,7 @@
     "items.misc.HorseArmorItemMixin",
     "items.misc.MobBucketItemMixin",
     "items.tools.BrushItemMixin",
+    "items.tools.CrossbowItemMixin",
     "items.tools.DiggerItemMixin",
     "items.tools.ShearsItemMixin",
     "items.tools.ShieldItemMixin",

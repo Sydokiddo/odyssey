@@ -26,9 +26,9 @@ public class ItemMixin {
 
     @Inject(method = "appendHoverText", at = @At("HEAD"))
     private void odyssey$addItemTooltips(ItemStack itemStack, Level level, List<Component> tooltip, TooltipFlag tooltipFlag, CallbackInfo ci) {
-        if (Odyssey.getConfig().items.tooltipConfig.durability_information) {
-            OdysseyRegistry.addItemDurabilityTooltip(itemStack, tooltip, tooltipFlag);
-        }
+
+        OdysseyRegistry.addItemDurabilityTooltip(itemStack, tooltip, tooltipFlag);
+
         if (itemStack.isEdible() && !FabricLoader.getInstance().isModLoaded("appleskin") && Odyssey.getConfig().items.tooltipConfig.food_information) {
             tooltip.add(Component.translatable("item.odyssey.food.nutrition_points", Objects.requireNonNull(itemStack.getItem().getFoodProperties()).getNutrition()).withStyle(ChatFormatting.BLUE));
             tooltip.add(Component.translatable("item.odyssey.food.saturation_points", Objects.requireNonNull(itemStack.getItem().getFoodProperties()).getSaturationModifier()).withStyle(ChatFormatting.BLUE));

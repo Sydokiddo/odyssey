@@ -48,7 +48,7 @@ public class OdysseyRegistry {
     // region Debug and Common Methods
 
     public static void addItemDurabilityTooltip(ItemStack itemStack, List<Component> tooltip, TooltipFlag tooltipFlag) {
-        if (itemStack.isDamaged() && !tooltipFlag.isAdvanced()) {
+        if (Odyssey.getConfig().items.tooltipConfig.durability_information && itemStack.isDamaged() && !tooltipFlag.isAdvanced()) {
 
             tooltip.add(Component.translatable("item.durability", itemStack.getMaxDamage() - itemStack.getDamageValue(), itemStack.getMaxDamage()).withStyle(ChatFormatting.GRAY));
 
