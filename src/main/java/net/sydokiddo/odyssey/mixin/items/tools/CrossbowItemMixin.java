@@ -27,7 +27,7 @@ public abstract class CrossbowItemMixin extends ProjectileWeaponItem {
 
         CompoundTag compoundTag = itemStack.getTag();
 
-        if (itemStack.isEnchanted() && itemStack.isDamaged() && !(compoundTag != null && compoundTag.getBoolean("Charged"))) {
+        if (itemStack.isEnchanted() && itemStack.isDamaged() && !(compoundTag != null && compoundTag.getBoolean("Charged")) && !tooltipFlag.isAdvanced()) {
             tooltip.add(CommonComponents.EMPTY);
         }
     }
