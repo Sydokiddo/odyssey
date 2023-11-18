@@ -56,15 +56,15 @@
   "item.odyssey.spawn_egg.desc": "Spawns Mob",
   "item.odyssey.shield.desc": "Blocks Incoming Attacks",
 
-  "gui.odyssey.item.fireproof": "Fireproof",
-  "gui.odyssey.item.shield.banner": "Banner:",
-  "gui.odyssey.item.cake.for_each_slice": "For Each Slice:",
+  "item.odyssey.food.nutrition_points": "+%s Nutrition",
+  "item.odyssey.food.saturation_points": "+%s Saturation",
 
   "gui.odyssey.item.when_on_horse": "When on Horse:",
   "item.odyssey.horse_armor.desc": "+%s Horse Armor",
 
-  "item.odyssey.food.nutrition_points": "+%s Nutrition",
-  "item.odyssey.food.saturation_points": "+%s Saturation",
+  "gui.odyssey.item.fireproof": "Fireproof",
+  "gui.odyssey.item.shield.banner": "Banner:",
+  "gui.odyssey.item.cake.for_each_slice": "For Each Slice:",
 
   "block.odyssey.gunpowder_block": "Block of Gunpowder",
   "block.odyssey.sugar_cane_block": "Block of Sugar Cane",

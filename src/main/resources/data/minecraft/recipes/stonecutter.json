@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "tag": "odyssey:normal_stone_crafting_materials"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "pattern": [
+    " I ",
+    "###"
+  ],
+  "result": {
+    "item": "minecraft:stonecutter"
+  }
+}

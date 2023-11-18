@@ -13,9 +13,14 @@
     "#": {
       "tag": "minecraft:stone_crafting_materials"
     },
-    "X": {
-      "item": "minecraft:bow"
-    }
+    "X": [
+      {
+        "item": "minecraft:bow"
+      },
+      {
+        "item": "minecraft:crossbow"
+      }
+    ]
   },
   "result": {
     "item": "minecraft:dispenser"

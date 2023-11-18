@@ -1,0 +1,8 @@
+{
+  "values": [
+    "minecraft:stone",
+    "minecraft:deepslate",
+    "minecraft:polished_blackstone",
+    {"id": "endlessencore:polished_porousite", "required": false}
+  ]
+}

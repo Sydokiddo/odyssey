@@ -16,6 +16,7 @@ public class ModTags {
         REPAIRS_ANVILS = registerItemTag("repairs_anvils"),
         GIVES_ARMOR_STANDS_ARMS = registerItemTag("gives_armor_stands_arms"),
         TNT_CRAFTING_MATERIALS = registerItemTag("tnt_crafting_materials"),
+        NORMAL_STONE_CRAFTING_MATERIALS = registerItemTag("normal_stone_crafting_materials"),
         POLISHED_STONE_CRAFTING_MATERIALS = registerItemTag("polished_stone_crafting_materials"),
         POLISHED_STONE_SLAB_CRAFTING_MATERIALS = registerItemTag("polished_stone_slab_crafting_materials"),
         LODESTONE_CRAFTING_MATERIALS = registerItemTag("lodestone_crafting_materials"),

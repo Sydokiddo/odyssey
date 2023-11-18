@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": {
+      "tag": "odyssey:normal_stone_crafting_materials"
+    },
+    "/": {
+      "item": "minecraft:stick"
+    },
+    "G": {
+      "item": "minecraft:gold_block"
+    }
+  },
+  "pattern": [
+    "#/#",
+    "#G#",
+    "# #"
+  ],
+  "result": {
+    "item": "minecraft:bell"
+  },
+  "show_notification": true
+}
