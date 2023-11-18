@@ -4,19 +4,19 @@ import net.minecraft.world.item.*;
 import net.sydokiddo.odyssey.Odyssey;
 import org.spongepowered.asm.mixin.Mixin;
 
-@Mixin(ShearsItem.class)
-public class ShearsItemMixin extends Item {
+@Mixin({BowItem.class, CrossbowItem.class, FishingRodItem.class})
+public class StringRepairableItemMixin extends Item {
 
-    private ShearsItemMixin(Properties settings) {
+    private StringRepairableItemMixin(Properties settings) {
         super(settings);
     }
 
-    // Shears can now be repaired using Iron Ingots
+    // Bows and Crossbows can now be repaired using String
 
     @Override
     public boolean isValidRepairItem(ItemStack stack, ItemStack ingredient) {
         if (Odyssey.getConfig().items.more_repairable_items) {
-            return ingredient.is(Items.IRON_INGOT);
+            return ingredient.is(Items.STRING);
         } else {
             return super.isValidRepairItem(stack, ingredient);
         }

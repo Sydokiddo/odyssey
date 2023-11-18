@@ -245,7 +245,7 @@
   "text.autoconfig.odyssey.option.items.tooltipConfig.compasses_and_maps.@Tooltip": "A variety of information such as coordinates, direction, and dimension will display on Compasses, Recovery Compasses, Lodestone Compasses, and Written Maps",
 
   "text.autoconfig.odyssey.option.items.more_repairable_items": "More Repairable Items",
-  "text.autoconfig.odyssey.option.items.more_repairable_items.@Tooltip": "Shears can be repaired with Iron Ingots, Brushes with Feathers, and Tridents with Prismarine Shards",
+  "text.autoconfig.odyssey.option.items.more_repairable_items.@Tooltip": "Shears + Flint and Steel can be repaired with Iron Ingots, Brushes with Feathers, Tridents with Prismarine Shards, and Bows + Crossbows + Fishing Rods with String",
   "text.autoconfig.odyssey.option.items.silk_touch_and_fortune_on_shears": "Silk Touch and Fortune on Shears",
   "text.autoconfig.odyssey.option.items.silk_touch_and_fortune_on_shears.@Tooltip": "Shears can now be enchanted with Silk Touch and Fortune",
 
