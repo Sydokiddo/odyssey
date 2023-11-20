@@ -93,7 +93,7 @@ public class OdysseyRegistry {
 
     public static void shearPrimedTNT(Level level, Entity primedTnt, BlockPos blockPos) {
 
-        if (RegistryHelpers.isBlockStateFree(level.getBlockState(blockPos)) && (blockPos.getY() >= level.getMinBuildHeight() || blockPos.getY() <= level.getMaxBuildHeight())) {
+        if (RegistryHelpers.isBlockStateFree(level.getBlockState(blockPos)) && !level.isOutsideBuildHeight(blockPos)) {
             level.setBlock(blockPos, Blocks.TNT.defaultBlockState(), 3);
         } else if (level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
             primedTnt.spawnAtLocation(Items.TNT);
