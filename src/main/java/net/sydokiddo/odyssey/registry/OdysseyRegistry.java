@@ -63,6 +63,8 @@ public class OdysseyRegistry {
         }
     }
 
+    // To remove when Chrysalis is updated
+
     public static void addSpaceOnTooltipIfEnchantedOrTrimmed(ItemStack itemStack, List<Component> tooltip) {
         if (itemStack.isEnchanted() || itemStack.getTag() != null && itemStack.getTag().contains(ArmorTrim.TAG_TRIM_ID)) {
             tooltip.add(CommonComponents.EMPTY);

@@ -58,7 +58,7 @@ public class SpawnerBubbleParticle extends TextureSheetParticle {
         int lightColor = super.getLightColor(f);
         int j = lightColor & 0xFF;
         int k = lightColor >> 16 & 0xFF;
-        if ((j += (int)(g * 15.0f * 16.0F)) > 240) {
+        if ((j += (int)(g * 15.0F * 16.0F)) > 240) {
             j = 240;
         }
         return j | k << 16;

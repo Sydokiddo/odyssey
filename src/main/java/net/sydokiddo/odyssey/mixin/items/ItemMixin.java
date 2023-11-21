@@ -26,6 +26,14 @@ public class ItemMixin {
 
     @Unique private static final int FIREPROOF_COLOR = Color.decode("#766A76").getRGB();
 
+    // To remove when Chrysalis is updated
+
+    @Unique
+    private static BigDecimal getFoodSaturation(ItemStack itemStack) {
+        float saturationAmount = Objects.requireNonNull(itemStack.getItem().getFoodProperties()).getNutrition() * Objects.requireNonNull(itemStack.getItem().getFoodProperties()).getSaturationModifier() * 2.0F;
+        return new BigDecimal(saturationAmount).setScale(1, RoundingMode.DOWN);
+    }
+
     @Inject(method = "appendHoverText", at = @At("HEAD"))
     private void odyssey$addItemTooltips(ItemStack itemStack, Level level, List<Component> tooltip, TooltipFlag tooltipFlag, CallbackInfo ci) {
 
@@ -45,11 +53,8 @@ public class ItemMixin {
 
             if (itemStack.isEdible()) {
 
-                float saturationAmount = Objects.requireNonNull(itemStack.getItem().getFoodProperties()).getNutrition() * Objects.requireNonNull(itemStack.getItem().getFoodProperties()).getSaturationModifier() * 2.0F;
-                BigDecimal roundedSaturation = new BigDecimal(saturationAmount).setScale(1, RoundingMode.DOWN);
-
                 tooltip.add(Component.translatable(nutritionString, Objects.requireNonNull(itemStack.getItem().getFoodProperties()).getNutrition()).withStyle(ChatFormatting.BLUE));
-                tooltip.add(Component.translatable(saturationString, roundedSaturation).withStyle(ChatFormatting.BLUE));
+                tooltip.add(Component.translatable(saturationString, getFoodSaturation(itemStack)).withStyle(ChatFormatting.BLUE));
 
                 if (itemStack.getItem() instanceof SuspiciousStewItem && tooltipFlag.isCreative()) {
                     tooltip.add(CommonComponents.EMPTY);
