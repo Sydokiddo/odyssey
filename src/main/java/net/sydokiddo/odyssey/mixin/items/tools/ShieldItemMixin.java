@@ -58,7 +58,11 @@ public class ShieldItemMixin {
             OdysseyRegistry.addItemDurabilityTooltip(itemStack, tooltip, tooltipFlag);
 
             if (compoundTag != null && compoundTag.contains("Patterns")) {
-                tooltip.add(CommonComponents.EMPTY);
+
+                if (itemStack.isDamaged() && !tooltipFlag.isAdvanced()) {
+                    tooltip.add(CommonComponents.EMPTY);
+                }
+
                 tooltip.add(Component.translatable("gui.odyssey.item.shield.banner").withStyle(ChatFormatting.GRAY));
                 addBannerTextToShield(itemStack, tooltip);
             }

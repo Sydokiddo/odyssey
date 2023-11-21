@@ -45,7 +45,6 @@ public class ItemMixin {
             String saturationString = "item.odyssey.food.saturation_points";
 
             if (itemStack.is(Items.CAKE)) {
-                tooltip.add(CommonComponents.EMPTY);
                 tooltip.add(Component.translatable("gui.odyssey.item.cake.for_each_slice").withStyle(ChatFormatting.GRAY));
                 tooltip.add(Component.translatable(nutritionString, 2).withStyle(ChatFormatting.BLUE));
                 tooltip.add(Component.translatable(saturationString, 0.4).withStyle(ChatFormatting.BLUE));
