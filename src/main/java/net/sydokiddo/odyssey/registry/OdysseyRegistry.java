@@ -147,6 +147,6 @@ public class OdysseyRegistry {
 
         // endregion
 
-        System.out.println("Registering Content for Odyssey");
+        System.out.println("Registering Content for " + Odyssey.LOGGER.getName());
     }
 }

@@ -24,7 +24,7 @@ public class Odyssey implements ModInitializer {
 	public void onInitialize() {
 		if (Chrysalis.CHRYSALIS_INITIALIZED) {
 			OdysseyRegistry.registerAll();
-			LOGGER.info("Thank you for downloading Odyssey!");
+			LOGGER.info("Thank you for downloading " + LOGGER.getName() + "!");
 		} else {
 			LOGGER.error("Failed to initialize mod, Chrysalis is not installed!", new Exception());
 		}

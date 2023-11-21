@@ -17,6 +17,6 @@ public class PlayerManagerMixin {
 
     @Inject(method = "placeNewPlayer", at = @At(value = "TAIL"))
     private void odyssey$onPlayerConnectToServer(Connection connection, ServerPlayer serverPlayer, CommonListenerCookie commonListenerCookie, CallbackInfo ci) {
-        Odyssey.LOGGER.info(serverPlayer.getName().getString() + " has Odyssey installed");
+        Odyssey.LOGGER.info(serverPlayer.getName().getString() + " has " + Odyssey.LOGGER.getName() + " installed");
     }
 }
