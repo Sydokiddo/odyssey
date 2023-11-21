@@ -47,6 +47,11 @@
   "gui.odyssey.item.environment_detector.biome_temperature": "Temperature: %s",
   "gui.odyssey.item.environment_detector.weather": "Weather: %s",
 
+  "gui.odyssey.item.clock.time": "Time: %s:%s %s",
+  "gui.odyssey.item.clock.hour_am": "AM",
+  "gui.odyssey.item.clock.hour_pm": "PM",
+  "gui.odyssey.item.clock.day": "Day: %s",
+
   "item.odyssey.milk_bucket.desc": "Clears All Effects",
   "item.odyssey.honey_bottle.desc": "Clears Poison",
   "item.odyssey.carrot_on_a_stick.desc": "Controls Saddled Pigs",
@@ -243,6 +248,8 @@
   "text.autoconfig.odyssey.option.items.tooltipConfig.horse_armor.@Tooltip": "A unique tooltip will display on Horse Armor displaying the amount of armor points it gives",
   "text.autoconfig.odyssey.option.items.tooltipConfig.compasses_and_maps": "Compasses and Maps",
   "text.autoconfig.odyssey.option.items.tooltipConfig.compasses_and_maps.@Tooltip": "A variety of information such as coordinates, direction, and dimension will display on Compasses, Recovery Compasses, Lodestone Compasses, and Written Maps",
+  "text.autoconfig.odyssey.option.items.tooltipConfig.clocks": "Clocks",
+  "text.autoconfig.odyssey.option.items.tooltipConfig.clocks.@Tooltip": "Clocks will display the time of day and the current day number on a unique tooltip",
 
   "text.autoconfig.odyssey.option.items.more_repairable_items": "More Repairable Items",
   "text.autoconfig.odyssey.option.items.more_repairable_items.@Tooltip": "Shears + Flint and Steel can be repaired with Iron Ingots, Brushes with Feathers, Tridents with Prismarine Shards, and Bows + Crossbows + Fishing Rods with String",

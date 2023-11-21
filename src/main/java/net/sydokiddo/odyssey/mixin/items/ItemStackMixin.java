@@ -39,6 +39,11 @@ public abstract class ItemStackMixin {
         tooltip.add(Component.translatable("gui.odyssey.item.environment_detector.weather", weatherType).withStyle(ChatFormatting.BLUE));
     }
 
+    @Unique
+    private static String clockNumberFormat(int number) {
+        return (number < 10 ? "0" : "") + number;
+    }
+
     @Inject(method = "getTooltipLines", at = @At("RETURN"))
     private void odyssey$addCompassAndClockTooltips(@Nullable Player player, TooltipFlag tooltipFlag, CallbackInfoReturnable<List<Component>> cir) {
 
@@ -93,6 +98,45 @@ public abstract class ItemStackMixin {
                         ChrysalisRegistry.addNullTooltip(cir.getReturnValue());
                     }
                 }
+            }
+
+            // endregion
+
+            // region Clock Tooltips
+
+            if (getItem() == Items.CLOCK && Odyssey.getConfig().items.tooltipConfig.clocks) {
+
+                long time = client.level.getDayTime();
+
+                int hour = (int) ((time / 1000L + 6L) % 24L);
+                int minute = (int) (60L * (time % 1000L) / 1000L);
+
+                int hourOutput;
+                Component hourSystem;
+
+                if (hour <= 12) {
+                    hourOutput = hour;
+                } else {
+                    hourOutput = hour - 12;
+                }
+
+                if (hourOutput == 0) hourOutput = 12;
+
+                if (hour >= 12) {
+                    hourSystem = Component.translatable("gui.odyssey.item.clock.hour_pm");
+                } else {
+                    hourSystem = Component.translatable("gui.odyssey.item.clock.hour_am");
+                }
+
+                String clockTimeString = "gui.odyssey.item.clock.time";
+
+                if (!client.level.dimensionType().hasFixedTime()) {
+                    cir.getReturnValue().add(Component.translatable(clockTimeString, hourOutput, clockNumberFormat(minute), hourSystem).withStyle(ChatFormatting.BLUE));
+                } else {
+                    cir.getReturnValue().add(Component.translatable(clockTimeString, "§k00", "§k00", hourSystem.copy().withStyle(ChatFormatting.OBFUSCATED)).withStyle(ChatFormatting.BLUE));
+                }
+
+                cir.getReturnValue().add(Component.translatable("gui.odyssey.item.clock.day", client.level.getDayTime() / 24000L).withStyle(ChatFormatting.BLUE));
             }
 
             // endregion

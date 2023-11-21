@@ -48,4 +48,7 @@ public class TooltipConfig {
 
     @ConfigEntry.Gui.Tooltip
     public boolean compasses_and_maps = true;
+
+    @ConfigEntry.Gui.Tooltip
+    public boolean clocks = true;
 }
