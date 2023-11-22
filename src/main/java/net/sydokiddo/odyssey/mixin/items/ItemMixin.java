@@ -90,5 +90,10 @@ public class ItemMixin {
             ChrysalisRegistry.addUseTooltip(tooltip);
             tooltip.add(CommonComponents.space().append(Component.translatable("item.odyssey.spawn_egg.desc").withStyle(ChatFormatting.BLUE)));
         }
+
+        if (itemStack.is(Items.SPYGLASS) && Odyssey.getConfig().items.tooltipConfig.spyglasses) {
+            ChrysalisRegistry.addUseTooltip(tooltip);
+            tooltip.add(CommonComponents.space().append(Component.translatable("item.odyssey.spyglass.desc").withStyle(ChatFormatting.BLUE)));
+        }
     }
 }

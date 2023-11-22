@@ -60,6 +60,7 @@
   "item.odyssey.ender_eye.desc": "Locates Nearest Stronghold",
   "item.odyssey.spawn_egg.desc": "Spawns Mob",
   "item.odyssey.shield.desc": "Blocks Incoming Attacks",
+  "item.odyssey.spyglass.desc": "Zooms Closer to Distant Objects",
 
   "item.odyssey.food.nutrition_points": "+%s Nutrition",
   "item.odyssey.food.saturation_points": "+%s Saturation",
@@ -234,6 +235,8 @@
   "text.autoconfig.odyssey.option.items.tooltipConfig.carrots_on_a_stick.@Tooltip": "Carrots on a Stick will display a unique tooltip on them displaying how they function",
   "text.autoconfig.odyssey.option.items.tooltipConfig.warped_fungus_on_a_stick": "Warped Fungus on a Stick",
   "text.autoconfig.odyssey.option.items.tooltipConfig.warped_fungus_on_a_stick.@Tooltip": "Warped Fungus on a Stick will display a unique tooltip on them displaying how they function",
+  "text.autoconfig.odyssey.option.items.tooltipConfig.spyglasses": "Spyglasses",
+  "text.autoconfig.odyssey.option.items.tooltipConfig.spyglasses.@Tooltip": "Spyglasses will display a unique tooltip on them displaying how they function",
   "text.autoconfig.odyssey.option.items.tooltipConfig.totems_of_undying": "Totems of Undying",
   "text.autoconfig.odyssey.option.items.tooltipConfig.totems_of_undying.@Tooltip": "Totems of Undying will display a unique tooltip on them displaying how they function",
   "text.autoconfig.odyssey.option.items.tooltipConfig.eyes_of_ender": "Eyes of Ender",

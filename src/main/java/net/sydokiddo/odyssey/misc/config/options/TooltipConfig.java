@@ -29,6 +29,9 @@ public class TooltipConfig {
     public boolean warped_fungus_on_a_stick = true;
 
     @ConfigEntry.Gui.Tooltip
+    public boolean spyglasses = true;
+
+    @ConfigEntry.Gui.Tooltip
     public boolean totems_of_undying = true;
 
     @ConfigEntry.Gui.Tooltip
