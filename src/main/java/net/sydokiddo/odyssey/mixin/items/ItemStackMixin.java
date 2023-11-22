@@ -6,6 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.GlobalPos;
 import net.minecraft.core.Holder;
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.player.Player;
@@ -44,8 +45,25 @@ public abstract class ItemStackMixin {
         return (number < 10 ? "0" : "") + number;
     }
 
-    @Inject(method = "getTooltipLines", at = @At("RETURN"))
-    private void odyssey$addCompassAndClockTooltips(@Nullable Player player, TooltipFlag tooltipFlag, CallbackInfoReturnable<List<Component>> cir) {
+    @Inject(method = "getTooltipLines", at = @At("TAIL"))
+    private void odyssey$addItemTooltipsAfterEnchantments(@Nullable Player player, TooltipFlag tooltipFlag, CallbackInfoReturnable<List<Component>> cir) {
+
+        ItemStack itemStack = this.getItem().getDefaultInstance();
+
+        if (itemStack.is(Items.CARROT_ON_A_STICK) && Odyssey.getConfig().items.tooltipConfig.carrots_on_a_stick) {
+            ChrysalisRegistry.addHoldingTooltip(cir.getReturnValue());
+            cir.getReturnValue().add(CommonComponents.space().append(Component.translatable("item.odyssey.carrot_on_a_stick.desc").withStyle(ChatFormatting.BLUE)));
+        }
+
+        if (itemStack.is(Items.WARPED_FUNGUS_ON_A_STICK) && Odyssey.getConfig().items.tooltipConfig.warped_fungus_on_a_stick) {
+            ChrysalisRegistry.addHoldingTooltip(cir.getReturnValue());
+            cir.getReturnValue().add(CommonComponents.space().append(Component.translatable("item.odyssey.warped_fungus_on_a_stick.desc").withStyle(ChatFormatting.BLUE)));
+        }
+
+        if (itemStack.is(Items.SHIELD) && Odyssey.getConfig().items.tooltipConfig.shields) {
+            ChrysalisRegistry.addUseTooltip(cir.getReturnValue());
+            cir.getReturnValue().add(CommonComponents.space().append(Component.translatable("item.odyssey.shield.desc").withStyle(ChatFormatting.BLUE)));
+        }
 
         if (client != null && client.level != null && client.player != null) {
 
@@ -53,7 +71,7 @@ public abstract class ItemStackMixin {
 
             if (Odyssey.getConfig().items.tooltipConfig.compasses_and_maps) {
 
-                if (getItem() == Items.COMPASS || getItem() == Items.FILLED_MAP) {
+                if (itemStack.is(Items.COMPASS) || itemStack.is(Items.FILLED_MAP)) {
 
                     int x;
                     int y;
@@ -81,7 +99,7 @@ public abstract class ItemStackMixin {
                     if (CompassItem.isLodestoneCompass(this.copy())) ChrysalisRegistry.addDimensionTooltip(cir.getReturnValue(), copy().getOrCreateTag().getString(CompassItem.TAG_LODESTONE_DIMENSION));
                 }
 
-                if (getItem() == Items.RECOVERY_COMPASS) {
+                if (itemStack.is(Items.RECOVERY_COMPASS)) {
 
                     cir.getReturnValue().add(Component.translatable("gui.odyssey.item.recovery_compass.death_location").withStyle(ChatFormatting.GRAY));
 
@@ -104,7 +122,7 @@ public abstract class ItemStackMixin {
 
             // region Clock Tooltips
 
-            if (getItem() == Items.CLOCK && Odyssey.getConfig().items.tooltipConfig.clocks) {
+            if (itemStack.is(Items.CLOCK) && Odyssey.getConfig().items.tooltipConfig.clocks) {
 
                 long time = client.level.getDayTime();
 
@@ -145,7 +163,7 @@ public abstract class ItemStackMixin {
 
             Holder<Biome> biome = client.level.getBiome(client.player.getOnPos());
 
-            if (getItem() == ModItems.ENVIRONMENT_DETECTOR) {
+            if (itemStack.is(ModItems.ENVIRONMENT_DETECTOR)) {
 
                 biome.unwrapKey().ifPresent(key -> {
                     Component biomeName = Component.translatable(Util.makeDescriptionId("biome", key.location()));

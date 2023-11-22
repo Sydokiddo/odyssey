@@ -9,8 +9,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BannerPattern;
-import net.sydokiddo.chrysalis.registry.ChrysalisRegistry;
-import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.OdysseyRegistry;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -52,24 +50,12 @@ public class ShieldItemMixin {
 
         CompoundTag compoundTag = BlockItem.getBlockEntityData(itemStack);
 
-        if (Odyssey.getConfig().items.tooltipConfig.shields) {
+        ci.cancel();
+        OdysseyRegistry.addItemDurabilityTooltip(itemStack, tooltip, tooltipFlag);
 
-            ci.cancel();
-            OdysseyRegistry.addItemDurabilityTooltip(itemStack, tooltip, tooltipFlag);
-
-            if (compoundTag != null && compoundTag.contains("Patterns")) {
-
-                if (itemStack.isDamaged() && !tooltipFlag.isAdvanced()) {
-                    tooltip.add(CommonComponents.EMPTY);
-                }
-
-                tooltip.add(Component.translatable("gui.odyssey.item.shield.banner").withStyle(ChatFormatting.GRAY));
-                addBannerTextToShield(itemStack, tooltip);
-            }
-
-            ChrysalisRegistry.addUseTooltip(tooltip);
-            tooltip.add(CommonComponents.space().append(Component.translatable("item.odyssey.shield.desc").withStyle(ChatFormatting.BLUE)));
-
+        if (compoundTag != null && compoundTag.contains("Patterns")) {
+            tooltip.add(Component.translatable("gui.odyssey.item.shield.banner").withStyle(ChatFormatting.GRAY));
+            addBannerTextToShield(itemStack, tooltip);
             OdysseyRegistry.addSpaceOnTooltipIfEnchantedOrTrimmed(itemStack, tooltip);
         }
     }
