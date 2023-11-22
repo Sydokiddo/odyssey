@@ -201,8 +201,6 @@
   "text.autoconfig.odyssey.option.items.itemStackSizeConfig.banner_pattern_stack_size.@Tooltip": "Changes the stack size of Banner Patterns",
   "text.autoconfig.odyssey.option.items.itemStackSizeConfig.armor_stand_stack_size": "Armor Stand Stack Size",
   "text.autoconfig.odyssey.option.items.itemStackSizeConfig.armor_stand_stack_size.@Tooltip": "Changes the stack size of Armor Stands",
-  "text.autoconfig.odyssey.option.items.itemStackSizeConfig.decorated_pot_stack_size": "Decorated Pot Stack Size",
-  "text.autoconfig.odyssey.option.items.itemStackSizeConfig.decorated_pot_stack_size.@Tooltip": "Changes the stack size of Decorated Pots",
   "text.autoconfig.odyssey.option.items.itemStackSizeConfig.snowball_stack_size": "Snowball Stack Size",
   "text.autoconfig.odyssey.option.items.itemStackSizeConfig.snowball_stack_size.@Tooltip": "Changes the stack size of Snowballs",
   "text.autoconfig.odyssey.option.items.itemStackSizeConfig.egg_stack_size": "Egg Stack Size",

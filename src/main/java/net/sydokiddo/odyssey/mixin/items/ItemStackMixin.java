@@ -36,11 +36,6 @@ public abstract class ItemStackMixin {
     // Adds unique tooltips to various items
 
     @Unique
-    private void addWeatherTooltip(List<Component> tooltip, Component weatherType) {
-        tooltip.add(Component.translatable("gui.odyssey.item.environment_detector.weather", weatherType).withStyle(ChatFormatting.BLUE));
-    }
-
-    @Unique
     private static String clockNumberFormat(int number) {
         return (number < 10 ? "0" : "") + number;
     }
@@ -50,149 +45,154 @@ public abstract class ItemStackMixin {
 
         ItemStack itemStack = this.getItem().getDefaultInstance();
 
-        if (itemStack.is(Items.CARROT_ON_A_STICK) && Odyssey.getConfig().items.tooltipConfig.carrots_on_a_stick) {
-            ChrysalisRegistry.addHoldingTooltip(cir.getReturnValue());
-            cir.getReturnValue().add(CommonComponents.space().append(Component.translatable("item.odyssey.carrot_on_a_stick.desc").withStyle(ChatFormatting.BLUE)));
-        }
+        if (!tooltipFlag.isAdvanced()) {
 
-        if (itemStack.is(Items.WARPED_FUNGUS_ON_A_STICK) && Odyssey.getConfig().items.tooltipConfig.warped_fungus_on_a_stick) {
-            ChrysalisRegistry.addHoldingTooltip(cir.getReturnValue());
-            cir.getReturnValue().add(CommonComponents.space().append(Component.translatable("item.odyssey.warped_fungus_on_a_stick.desc").withStyle(ChatFormatting.BLUE)));
-        }
-
-        if (itemStack.is(Items.SHIELD) && Odyssey.getConfig().items.tooltipConfig.shields) {
-            ChrysalisRegistry.addUseTooltip(cir.getReturnValue());
-            cir.getReturnValue().add(CommonComponents.space().append(Component.translatable("item.odyssey.shield.desc").withStyle(ChatFormatting.BLUE)));
-        }
-
-        if (client != null && client.level != null && client.player != null) {
-
-            // region Compass and Map Tooltips
-
-            if (Odyssey.getConfig().items.tooltipConfig.compasses_and_maps) {
-
-                if (itemStack.is(Items.COMPASS) || itemStack.is(Items.FILLED_MAP)) {
-
-                    int x;
-                    int y;
-                    int z;
-
-                    if (CompassItem.isLodestoneCompass(this.copy())) {
-
-                        cir.getReturnValue().add(Component.translatable("gui.odyssey.item.compass.lodestone_location").withStyle(ChatFormatting.GRAY));
-
-                        x = copy().getOrCreateTag().getCompound(CompassItem.TAG_LODESTONE_POS).getInt("X");
-                        y = copy().getOrCreateTag().getCompound(CompassItem.TAG_LODESTONE_POS).getInt("Y");
-                        z = copy().getOrCreateTag().getCompound(CompassItem.TAG_LODESTONE_POS).getInt("Z");
-
-                    } else {
-
-                        cir.getReturnValue().add(Component.translatable("gui.odyssey.item.compass.current_location").withStyle(ChatFormatting.GRAY));
-
-                        x = client.player.getBlockX();
-                        y = client.player.getBlockY();
-                        z = client.player.getBlockZ();
-                    }
-
-                    ChrysalisRegistry.addCoordinatesTooltip(cir.getReturnValue(), x, y, z);
-                    if (!CompassItem.isLodestoneCompass(this.copy())) ChrysalisRegistry.addDirectionTooltip(cir.getReturnValue(), client);
-                    if (CompassItem.isLodestoneCompass(this.copy())) ChrysalisRegistry.addDimensionTooltip(cir.getReturnValue(), copy().getOrCreateTag().getString(CompassItem.TAG_LODESTONE_DIMENSION));
-                }
-
-                if (itemStack.is(Items.RECOVERY_COMPASS)) {
-
-                    cir.getReturnValue().add(Component.translatable("gui.odyssey.item.recovery_compass.death_location").withStyle(ChatFormatting.GRAY));
-
-                    if (client.player.getLastDeathLocation().isPresent()) {
-
-                        GlobalPos deathPos = client.player.getLastDeathLocation().get();
-                        int deathX = deathPos.pos().getX();
-                        int deathY = deathPos.pos().getY();
-                        int deathZ = deathPos.pos().getZ();
-
-                        ChrysalisRegistry.addCoordinatesTooltip(cir.getReturnValue(), deathX, deathY, deathZ);
-                        ChrysalisRegistry.addDimensionTooltip(cir.getReturnValue(), client.player.getLastDeathLocation().get().dimension().location().toString());
-                    } else {
-                        ChrysalisRegistry.addNullTooltip(cir.getReturnValue());
-                    }
-                }
+            if (itemStack.is(Items.CARROT_ON_A_STICK) && Odyssey.getConfig().items.tooltipConfig.carrots_on_a_stick) {
+                ChrysalisRegistry.addHoldingTooltip(cir.getReturnValue());
+                cir.getReturnValue().add(CommonComponents.space().append(Component.translatable("item.odyssey.carrot_on_a_stick.desc").withStyle(ChatFormatting.BLUE)));
             }
 
-            // endregion
-
-            // region Clock Tooltips
-
-            if (itemStack.is(Items.CLOCK) && Odyssey.getConfig().items.tooltipConfig.clocks) {
-
-                long time = client.level.getDayTime();
-
-                int hour = (int) ((time / 1000L + 6L) % 24L);
-                int minute = (int) (60L * (time % 1000L) / 1000L);
-
-                int hourOutput;
-                Component hourSystem;
-
-                if (hour <= 12) {
-                    hourOutput = hour;
-                } else {
-                    hourOutput = hour - 12;
-                }
-
-                if (hourOutput == 0) hourOutput = 12;
-
-                if (hour >= 12) {
-                    hourSystem = Component.translatable("gui.odyssey.item.clock.hour_pm");
-                } else {
-                    hourSystem = Component.translatable("gui.odyssey.item.clock.hour_am");
-                }
-
-                String clockTimeString = "gui.odyssey.item.clock.time";
-
-                if (!client.level.dimensionType().hasFixedTime()) {
-                    cir.getReturnValue().add(Component.translatable(clockTimeString, hourOutput, clockNumberFormat(minute), hourSystem).withStyle(ChatFormatting.BLUE));
-                } else {
-                    cir.getReturnValue().add(Component.translatable(clockTimeString, "§k00", "§k00", hourSystem.copy().withStyle(ChatFormatting.OBFUSCATED)).withStyle(ChatFormatting.BLUE));
-                }
-
-                cir.getReturnValue().add(Component.translatable("gui.odyssey.item.clock.day", client.level.getDayTime() / 24000L).withStyle(ChatFormatting.BLUE));
+            if (itemStack.is(Items.WARPED_FUNGUS_ON_A_STICK) && Odyssey.getConfig().items.tooltipConfig.warped_fungus_on_a_stick) {
+                ChrysalisRegistry.addHoldingTooltip(cir.getReturnValue());
+                cir.getReturnValue().add(CommonComponents.space().append(Component.translatable("item.odyssey.warped_fungus_on_a_stick.desc").withStyle(ChatFormatting.BLUE)));
             }
 
-            // endregion
+            if (itemStack.is(Items.SHIELD) && Odyssey.getConfig().items.tooltipConfig.shields) {
+                ChrysalisRegistry.addUseTooltip(cir.getReturnValue());
+                cir.getReturnValue().add(CommonComponents.space().append(Component.translatable("item.odyssey.shield.desc").withStyle(ChatFormatting.BLUE)));
+            }
 
-            // region Environment Detector Tooltips
+            if (client != null && client.level != null && client.player != null) {
 
-            Holder<Biome> biome = client.level.getBiome(client.player.getOnPos());
+                // region Compass and Map Tooltips
 
-            if (itemStack.is(ModItems.ENVIRONMENT_DETECTOR)) {
+                if (Odyssey.getConfig().items.tooltipConfig.compasses_and_maps) {
 
-                biome.unwrapKey().ifPresent(key -> {
-                    Component biomeName = Component.translatable(Util.makeDescriptionId("biome", key.location()));
+                    if (itemStack.is(Items.COMPASS) || itemStack.is(Items.FILLED_MAP)) {
 
-                    cir.getReturnValue().add(Component.translatable("gui.odyssey.item.environment_detector.biome", biomeName).withStyle(ChatFormatting.BLUE));
-                    cir.getReturnValue().add(Component.translatable("gui.odyssey.item.environment_detector.biome_temperature", biome.value().getBaseTemperature()).withStyle(ChatFormatting.BLUE));
-                });
+                        int x;
+                        int y;
+                        int z;
 
-                BlockPos highestPos = new BlockPos(client.player.getBlockX(), client.level.getHeight(Heightmap.Types.WORLD_SURFACE, client.player.getBlockX(), client.player.getBlockZ()), client.player.getBlockZ()).above();
-                MutableComponent weatherType;
+                        if (CompassItem.isLodestoneCompass(this.copy())) {
 
-                if (client.level.isRainingAt(highestPos)) {
-                    if (client.level.isThundering()) {
-                        weatherType = Component.translatable("gui.chrysalis.weather.thundering");
-                    } else {
-                        weatherType = Component.translatable("gui.chrysalis.weather.raining");
+                            cir.getReturnValue().add(Component.translatable("gui.odyssey.item.compass.lodestone_location").withStyle(ChatFormatting.GRAY));
+
+                            x = copy().getOrCreateTag().getCompound(CompassItem.TAG_LODESTONE_POS).getInt("X");
+                            y = copy().getOrCreateTag().getCompound(CompassItem.TAG_LODESTONE_POS).getInt("Y");
+                            z = copy().getOrCreateTag().getCompound(CompassItem.TAG_LODESTONE_POS).getInt("Z");
+
+                        } else {
+
+                            cir.getReturnValue().add(Component.translatable("gui.odyssey.item.compass.current_location").withStyle(ChatFormatting.GRAY));
+
+                            x = client.player.getBlockX();
+                            y = client.player.getBlockY();
+                            z = client.player.getBlockZ();
+                        }
+
+                        ChrysalisRegistry.addCoordinatesTooltip(cir.getReturnValue(), x, y, z);
+                        if (!CompassItem.isLodestoneCompass(this.copy()))
+                            ChrysalisRegistry.addDirectionTooltip(cir.getReturnValue(), client);
+                        if (CompassItem.isLodestoneCompass(this.copy()))
+                            ChrysalisRegistry.addDimensionTooltip(cir.getReturnValue(), copy().getOrCreateTag().getString(CompassItem.TAG_LODESTONE_DIMENSION));
                     }
-                } else {
-                    if (biome.value().getPrecipitationAt(highestPos) == Biome.Precipitation.SNOW && client.level.isRaining()) {
-                        weatherType = Component.translatable("gui.chrysalis.weather.snowing");
-                    } else {
-                        weatherType = Component.translatable("gui.chrysalis.weather.clear");
+
+                    if (itemStack.is(Items.RECOVERY_COMPASS)) {
+
+                        cir.getReturnValue().add(Component.translatable("gui.odyssey.item.recovery_compass.death_location").withStyle(ChatFormatting.GRAY));
+
+                        if (client.player.getLastDeathLocation().isPresent()) {
+
+                            GlobalPos deathPos = client.player.getLastDeathLocation().get();
+                            int deathX = deathPos.pos().getX();
+                            int deathY = deathPos.pos().getY();
+                            int deathZ = deathPos.pos().getZ();
+
+                            ChrysalisRegistry.addCoordinatesTooltip(cir.getReturnValue(), deathX, deathY, deathZ);
+                            ChrysalisRegistry.addDimensionTooltip(cir.getReturnValue(), client.player.getLastDeathLocation().get().dimension().location().toString());
+                        } else {
+                            ChrysalisRegistry.addNullTooltip(cir.getReturnValue());
+                        }
                     }
                 }
 
-                this.addWeatherTooltip(cir.getReturnValue(), weatherType.withStyle(ChatFormatting.BLUE));
-            }
+                // endregion
 
-            // endregion
+                // region Clock Tooltips
+
+                if (itemStack.is(Items.CLOCK) && Odyssey.getConfig().items.tooltipConfig.clocks) {
+
+                    long time = client.level.getDayTime();
+
+                    int hour = (int) ((time / 1000L + 6L) % 24L);
+                    int minute = (int) (60L * (time % 1000L) / 1000L);
+
+                    int hourOutput;
+                    Component hourSystem;
+
+                    if (hour <= 12) {
+                        hourOutput = hour;
+                    } else {
+                        hourOutput = hour - 12;
+                    }
+
+                    if (hourOutput == 0) hourOutput = 12;
+
+                    if (hour >= 12) {
+                        hourSystem = Component.translatable("gui.odyssey.item.clock.hour_pm");
+                    } else {
+                        hourSystem = Component.translatable("gui.odyssey.item.clock.hour_am");
+                    }
+
+                    String clockTimeString = "gui.odyssey.item.clock.time";
+
+                    if (!client.level.dimensionType().hasFixedTime()) {
+                        cir.getReturnValue().add(Component.translatable(clockTimeString, hourOutput, clockNumberFormat(minute), hourSystem).withStyle(ChatFormatting.BLUE));
+                    } else {
+                        cir.getReturnValue().add(Component.translatable(clockTimeString, "§k00", "§k00", hourSystem.copy().withStyle(ChatFormatting.OBFUSCATED)).withStyle(ChatFormatting.BLUE));
+                    }
+
+                    cir.getReturnValue().add(Component.translatable("gui.odyssey.item.clock.day", client.level.getDayTime() / 24000L).withStyle(ChatFormatting.BLUE));
+                }
+
+                // endregion
+
+                // region Environment Detector Tooltips
+
+                Holder<Biome> biome = client.level.getBiome(client.player.getOnPos());
+
+                if (itemStack.is(ModItems.ENVIRONMENT_DETECTOR)) {
+
+                    biome.unwrapKey().ifPresent(key -> {
+                        Component biomeName = Component.translatable(Util.makeDescriptionId("biome", key.location()));
+
+                        cir.getReturnValue().add(Component.translatable("gui.odyssey.item.environment_detector.biome", biomeName).withStyle(ChatFormatting.BLUE));
+                        cir.getReturnValue().add(Component.translatable("gui.odyssey.item.environment_detector.biome_temperature", biome.value().getBaseTemperature()).withStyle(ChatFormatting.BLUE));
+                    });
+
+                    BlockPos highestPos = new BlockPos(client.player.getBlockX(), client.level.getHeight(Heightmap.Types.WORLD_SURFACE, client.player.getBlockX(), client.player.getBlockZ()), client.player.getBlockZ()).above();
+                    MutableComponent weatherType;
+
+                    if (client.level.isRainingAt(highestPos)) {
+                        if (client.level.isThundering()) {
+                            weatherType = Component.translatable("gui.chrysalis.weather.thundering");
+                        } else {
+                            weatherType = Component.translatable("gui.chrysalis.weather.raining");
+                        }
+                    } else {
+                        if (biome.value().getPrecipitationAt(highestPos) == Biome.Precipitation.SNOW && client.level.isRaining()) {
+                            weatherType = Component.translatable("gui.chrysalis.weather.snowing");
+                        } else {
+                            weatherType = Component.translatable("gui.chrysalis.weather.clear");
+                        }
+                    }
+
+                    cir.getReturnValue().add(Component.translatable("gui.odyssey.item.environment_detector.weather", weatherType.withStyle(ChatFormatting.BLUE)).withStyle(ChatFormatting.BLUE));
+                }
+
+                // endregion
+            }
         }
     }
 
@@ -219,7 +219,7 @@ public abstract class ItemStackMixin {
             cir.setReturnValue(Odyssey.getConfig().items.itemStackSizeConfig.armor_stand_stack_size);
         }
         if (this.getItem() instanceof BlockItem item && item.getBlock() instanceof DecoratedPotBlock) {
-            cir.setReturnValue(Odyssey.getConfig().items.itemStackSizeConfig.decorated_pot_stack_size);
+            cir.setReturnValue(64);
         }
         if (this.getItem() instanceof SnowballItem) {
             cir.setReturnValue(Odyssey.getConfig().items.itemStackSizeConfig.snowball_stack_size);
