@@ -20,7 +20,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin({AbstractHorse.class, AbstractChestedHorse.class, Horse.class, Wolf.class, Cat.class, Parrot.class})
-public abstract class MobBrushingOverridesMixin extends Mob {
+public class MobBrushingOverridesMixin extends Mob {
 
     private MobBrushingOverridesMixin(EntityType<? extends Mob> entityType, Level level) {
         super(entityType, level);

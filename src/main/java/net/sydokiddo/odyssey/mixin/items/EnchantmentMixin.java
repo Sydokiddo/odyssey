@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Enchantment.class)
-public abstract class EnchantmentMixin {
+public class EnchantmentMixin {
 
     @Shadow @Final public EnchantmentCategory category;
 

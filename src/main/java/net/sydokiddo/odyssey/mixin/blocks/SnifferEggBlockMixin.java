@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(SnifferEggBlock.class)
-public abstract class SnifferEggBlockMixin extends Block {
+public class SnifferEggBlockMixin extends Block {
 
     private SnifferEggBlockMixin(Properties properties) {
         super(properties);
