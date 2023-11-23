@@ -3,6 +3,7 @@
     "minecraft:smooth_stone",
     "minecraft:polished_deepslate",
     "minecraft:polished_blackstone",
-    {"id": "endlessencore:polished_porousite", "required": false}
+    {"id": "endlessencore:polished_porousite", "required": false},
+    {"id": "deeds:polished_sclerium", "required": false}
   ]
 }

@@ -3,6 +3,7 @@
     "minecraft:chiseled_stone_bricks",
     "minecraft:chiseled_deepslate",
     "minecraft:chiseled_polished_blackstone",
-    {"id": "endlessencore:chiseled_porousite", "required": false}
+    {"id": "endlessencore:chiseled_porousite", "required": false},
+    {"id": "deeds:chiseled_sclerium", "required": false}
   ]
 }
