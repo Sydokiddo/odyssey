@@ -34,6 +34,9 @@ public class ModConfig implements ConfigData {
 
         @ConfigEntry.Gui.Tooltip
         public boolean silk_touch_and_fortune_on_shears = true;
+
+        @ConfigEntry.Gui.Tooltip
+        public boolean improved_turtle_helmets = true;
     }
 
     // endregion

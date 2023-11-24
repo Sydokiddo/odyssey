@@ -35,7 +35,10 @@ import net.sydokiddo.odyssey.registry.entities.registry.ModEntities;
 import net.sydokiddo.odyssey.registry.items.ModItems;
 import net.sydokiddo.odyssey.registry.items.ModPotions;
 import net.sydokiddo.odyssey.registry.misc.*;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
+import java.util.Objects;
 
 public class OdysseyRegistry {
 
@@ -63,13 +66,24 @@ public class OdysseyRegistry {
         }
     }
 
-    // To remove when Chrysalis is updated
+    // region To remove when Chrysalis is updated
+
+    public static boolean hasEnchantmentOrTrim(ItemStack itemStack) {
+        return (itemStack.isEnchanted() || itemStack.getTag() != null && itemStack.getTag().contains(ArmorTrim.TAG_TRIM_ID));
+    }
 
     public static void addSpaceOnTooltipIfEnchantedOrTrimmed(ItemStack itemStack, List<Component> tooltip) {
-        if (itemStack.isEnchanted() || itemStack.getTag() != null && itemStack.getTag().contains(ArmorTrim.TAG_TRIM_ID)) {
+        if (hasEnchantmentOrTrim(itemStack)) {
             tooltip.add(CommonComponents.EMPTY);
         }
     }
+
+    public static BigDecimal getFoodSaturation(ItemStack itemStack) {
+        float saturationAmount = Objects.requireNonNull(itemStack.getItem().getFoodProperties()).getNutrition() * Objects.requireNonNull(itemStack.getItem().getFoodProperties()).getSaturationModifier() * 2.0F;
+        return new BigDecimal(saturationAmount).setScale(1, RoundingMode.DOWN);
+    }
+
+    // endregion
 
     public static void doSaddleRemovingEvents(LivingEntity livingEntity, Player player, InteractionHand hand) {
 

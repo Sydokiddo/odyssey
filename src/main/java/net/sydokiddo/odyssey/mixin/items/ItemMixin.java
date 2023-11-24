@@ -4,6 +4,9 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffectUtil;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.sydokiddo.chrysalis.registry.ChrysalisRegistry;
@@ -16,8 +19,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.awt.*;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.*;
 import java.util.List;
 
@@ -25,14 +26,6 @@ import java.util.List;
 public class ItemMixin {
 
     @Unique private static final int FIREPROOF_COLOR = Color.decode("#766A76").getRGB();
-
-    // To remove when Chrysalis is updated
-
-    @Unique
-    private static BigDecimal getFoodSaturation(ItemStack itemStack) {
-        float saturationAmount = Objects.requireNonNull(itemStack.getItem().getFoodProperties()).getNutrition() * Objects.requireNonNull(itemStack.getItem().getFoodProperties()).getSaturationModifier() * 2.0F;
-        return new BigDecimal(saturationAmount).setScale(1, RoundingMode.DOWN);
-    }
 
     @Inject(method = "appendHoverText", at = @At("HEAD"))
     private void odyssey$addItemTooltipsBeforeEnchantments(ItemStack itemStack, Level level, List<Component> tooltip, TooltipFlag tooltipFlag, CallbackInfo ci) {
@@ -53,7 +46,7 @@ public class ItemMixin {
             if (itemStack.isEdible()) {
 
                 tooltip.add(Component.translatable(nutritionString, Objects.requireNonNull(itemStack.getItem().getFoodProperties()).getNutrition()).withStyle(ChatFormatting.BLUE));
-                tooltip.add(Component.translatable(saturationString, getFoodSaturation(itemStack)).withStyle(ChatFormatting.BLUE));
+                tooltip.add(Component.translatable(saturationString, OdysseyRegistry.getFoodSaturation(itemStack)).withStyle(ChatFormatting.BLUE));
 
                 if (itemStack.getItem() instanceof SuspiciousStewItem && tooltipFlag.isCreative()) {
                     tooltip.add(CommonComponents.EMPTY);
@@ -94,6 +87,24 @@ public class ItemMixin {
         if (itemStack.is(Items.SPYGLASS) && Odyssey.getConfig().items.tooltipConfig.spyglasses) {
             ChrysalisRegistry.addUseTooltip(tooltip);
             tooltip.add(CommonComponents.space().append(Component.translatable("item.odyssey.spyglass.desc").withStyle(ChatFormatting.BLUE)));
+        }
+
+        if (itemStack.is(Items.TURTLE_HELMET) && Odyssey.getConfig().items.tooltipConfig.turtle_helmets) {
+
+            int effectTime;
+
+            if (Odyssey.getConfig().items.improved_turtle_helmets) {
+                effectTime = 600;
+            } else {
+                effectTime = 200;
+            }
+
+            MobEffectInstance waterBreathing = new MobEffectInstance(MobEffects.WATER_BREATHING, effectTime, 0, false, false, true);
+
+            if (!OdysseyRegistry.hasEnchantmentOrTrim(itemStack)) tooltip.add(CommonComponents.EMPTY);
+            tooltip.add(Component.translatable("gui.odyssey.item.turtle_helmet.when_entering_water").withStyle(ChatFormatting.GRAY));
+            tooltip.add(CommonComponents.space().append(Component.translatable("potion.withDuration", Component.translatable(waterBreathing.getDescriptionId()), MobEffectUtil.formatDuration(waterBreathing, 1.0F)).withStyle(ChatFormatting.BLUE)));
+            OdysseyRegistry.addSpaceOnTooltipIfEnchantedOrTrimmed(itemStack, tooltip);
         }
     }
 }
