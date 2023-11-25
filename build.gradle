@@ -6,10 +6,11 @@ plugins {
 version = project.mod_version
 group = project.maven_group
 
+base {
+	archivesName = project.archives_base_name
+}
+
 repositories {
-	maven {
-		url "https://maven.shedaniel.me/"
-	}
 	maven {
 		url 'https://jitpack.io'
 	}
@@ -24,6 +25,9 @@ repositories {
 			includeGroup "maven.modrinth"
 		}
 	}
+	maven {
+		url "https://maven.shedaniel.me/"
+	}
 }
 
 dependencies {
@@ -35,10 +39,9 @@ dependencies {
 
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	modImplementation "com.terraformersmc:modmenu:${project.mod_menu_version}"
 
 	include modImplementation("maven.modrinth:chrysalis:${project.chrysalis_version}")
-
-	modImplementation "com.terraformersmc:modmenu:${project.mod_menu_version}"
 
 	modApi("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_version}") {
 		exclude(group: "net.fabricmc.fabric-api")
@@ -50,10 +53,6 @@ loom {
 	accessWidenerPath = file("src/main/resources/odyssey.accesswidener")
 }
 
-base {
-	archivesName = project.archives_base_name
-}
-
 processResources {
 	inputs.property "version", project.version
 
@@ -63,8 +62,8 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-	it.options.encoding = 'UTF-8'
-	it.options.release = 17
+	options.encoding = 'UTF-8'
+	options.release = 17
 }
 
 java {
@@ -75,15 +74,6 @@ java {
 
 jar {
 	from("LICENSE") {
-		rename { "${it}_${base.archivesName.get()}"}
+		rename { "${it}_${project.base.archivesName.get()}"}
 	}
-}
-
-publishing {
-	publications {
-		mavenJava(MavenPublication) {
-			from components.java
-		}
-	}
-	repositories {}
 }
