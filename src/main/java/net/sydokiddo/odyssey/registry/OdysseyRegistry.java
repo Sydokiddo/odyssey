@@ -42,6 +42,29 @@ import java.util.Objects;
 
 public class OdysseyRegistry {
 
+    // region To remove when Chrysalis is updated
+
+    public static boolean hasArmorTrim(ItemStack itemStack) {
+        return itemStack.getTag() != null && itemStack.getTag().contains(ArmorTrim.TAG_TRIM_ID);
+    }
+
+    public static boolean hasEnchantmentOrTrim(ItemStack itemStack) {
+        return (itemStack.isEnchanted() || hasArmorTrim(itemStack));
+    }
+
+    public static void addSpaceOnTooltipIfEnchantedOrTrimmed(ItemStack itemStack, List<Component> tooltip) {
+        if (hasEnchantmentOrTrim(itemStack)) {
+            tooltip.add(CommonComponents.EMPTY);
+        }
+    }
+
+    public static BigDecimal getFoodSaturation(ItemStack itemStack) {
+        float saturationAmount = Objects.requireNonNull(itemStack.getItem().getFoodProperties()).getNutrition() * Objects.requireNonNull(itemStack.getItem().getFoodProperties()).getSaturationModifier() * 2.0F;
+        return new BigDecimal(saturationAmount).setScale(1, RoundingMode.DOWN);
+    }
+
+    // endregion
+
     // region Entity Data
 
     public static final EntityDataAccessor<Boolean>
@@ -65,29 +88,6 @@ public class OdysseyRegistry {
             }
         }
     }
-
-    // region To remove when Chrysalis is updated
-
-    public static boolean hasArmorTrim(ItemStack itemStack) {
-        return itemStack.getTag() != null && itemStack.getTag().contains(ArmorTrim.TAG_TRIM_ID);
-    }
-
-    public static boolean hasEnchantmentOrTrim(ItemStack itemStack) {
-        return (itemStack.isEnchanted() || hasArmorTrim(itemStack));
-    }
-
-    public static void addSpaceOnTooltipIfEnchantedOrTrimmed(ItemStack itemStack, List<Component> tooltip) {
-        if (hasEnchantmentOrTrim(itemStack)) {
-            tooltip.add(CommonComponents.EMPTY);
-        }
-    }
-
-    public static BigDecimal getFoodSaturation(ItemStack itemStack) {
-        float saturationAmount = Objects.requireNonNull(itemStack.getItem().getFoodProperties()).getNutrition() * Objects.requireNonNull(itemStack.getItem().getFoodProperties()).getSaturationModifier() * 2.0F;
-        return new BigDecimal(saturationAmount).setScale(1, RoundingMode.DOWN);
-    }
-
-    // endregion
 
     public static void doSaddleRemovingEvents(LivingEntity livingEntity, Player player, InteractionHand hand) {
 
