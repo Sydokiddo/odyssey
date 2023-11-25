@@ -47,7 +47,7 @@ public abstract class MobMixin extends LivingEntity {
 
             player.awardStat(Stats.ITEM_USED.get(player.getItemInHand(interactionHand).getItem()));
 
-            cir.setReturnValue(InteractionResult.sidedSuccess(this.level().isClientSide));
+            cir.setReturnValue(InteractionResult.sidedSuccess(this.level().isClientSide()));
         }
     }
 }

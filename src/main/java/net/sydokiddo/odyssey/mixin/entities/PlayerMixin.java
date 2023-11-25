@@ -32,7 +32,7 @@ public abstract class PlayerMixin extends LivingEntity {
 
     @Inject(method = "aiStep", at = @At("HEAD"))
     private void odyssey$changeRemovingShoulderEntities(CallbackInfo ci) {
-        if (Odyssey.getConfig().entities.passiveMobsConfig.improved_parrots && !this.level().isClientSide && (this.fallDistance > 1.0F && this.getDeltaMovement().horizontalDistance() == 0) || (this.isUnderWater() || this.isInLava() || this.isInPowderSnow)) {
+        if (Odyssey.getConfig().entities.passiveMobsConfig.improved_parrots && !this.level().isClientSide() && (this.fallDistance > 1.0F && this.getDeltaMovement().horizontalDistance() == 0) || (this.isUnderWater() || this.isInLava() || this.isInPowderSnow)) {
             this.removeEntitiesOnShoulder();
         }
     }

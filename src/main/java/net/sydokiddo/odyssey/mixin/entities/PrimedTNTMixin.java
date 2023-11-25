@@ -42,7 +42,7 @@ public abstract class PrimedTNTMixin extends Entity {
 
                 if (entity != null) {
 
-                    if (!this.level().isClientSide) {
+                    if (!this.level().isClientSide()) {
 
                         this.setDeltaMovement(entity.getLookAngle());
 
@@ -68,7 +68,7 @@ public abstract class PrimedTNTMixin extends Entity {
 
         if (Odyssey.getConfig().entities.miscEntitiesConfig.tnt_defusing) {
 
-            if (!this.level().isClientSide) {
+            if (!this.level().isClientSide()) {
 
                 if (canDefuse) {
                     OdysseyRegistry.shearPrimedTNT(this.level(), this, blockPos);

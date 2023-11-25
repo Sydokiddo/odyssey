@@ -69,7 +69,7 @@ public class GunpowderBlockEntity extends Entity implements TraceableEntity {
 
             this.discard();
 
-            if (!this.level().isClientSide) {
+            if (!this.level().isClientSide()) {
                 this.level().explode(this, this.getX(), this.getY(0.0625), this.getZ(), 5.0F, true, Level.ExplosionInteraction.TNT);
             }
 

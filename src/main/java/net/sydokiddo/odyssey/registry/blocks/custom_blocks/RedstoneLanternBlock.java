@@ -90,7 +90,7 @@ public class RedstoneLanternBlock extends LanternBlock {
             level.updateNeighborsAt(blockPos.relative(direction), this);
         }
 
-        return InteractionResult.sidedSuccess(level.isClientSide);
+        return InteractionResult.sidedSuccess(level.isClientSide());
     }
 
     private void turnOnLantern(Level level, BlockPos blockPos, BlockState blockState) {

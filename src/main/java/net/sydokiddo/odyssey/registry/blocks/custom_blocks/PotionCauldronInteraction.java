@@ -44,7 +44,7 @@ public class PotionCauldronInteraction {
 
                 if (blockState.getValue(LayeredCauldronBlock.LEVEL) != 3 && getPotion(itemStack) != Potions.WATER && cauldron.tryApplyPotion(getPotion(itemStack))) {
 
-                    if (!level.isClientSide) {
+                    if (!level.isClientSide()) {
 
                         player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
                         player.awardStat(Stats.USE_CAULDRON);
@@ -54,7 +54,7 @@ public class PotionCauldronInteraction {
                         level.playSound(null, blockPos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
                         level.gameEvent(null, GameEvent.FLUID_PLACE, blockPos);
                     }
-                    return InteractionResult.sidedSuccess(level.isClientSide);
+                    return InteractionResult.sidedSuccess(level.isClientSide());
 
                 } else {
                     return InteractionResult.PASS;
@@ -83,7 +83,7 @@ public class PotionCauldronInteraction {
             Potion potion = Objects.requireNonNull(cauldron).getPotion();
             ItemStack bottle = new ItemStack(Items.POTION);
 
-            if (cauldron.hasPotion() && !level.isClientSide) {
+            if (cauldron.hasPotion() && !level.isClientSide()) {
 
                 PotionUtils.setPotion(bottle, potion);
                 player.setItemInHand(hand, ItemUtils.createFilledResult(itemStack, player, bottle));
@@ -95,7 +95,7 @@ public class PotionCauldronInteraction {
                 level.playSound(null, blockPos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
                 level.gameEvent(null, GameEvent.FLUID_PICKUP, blockPos);
             }
-            return InteractionResult.sidedSuccess(level.isClientSide);
+            return InteractionResult.sidedSuccess(level.isClientSide());
         });
 
         // endregion
@@ -108,13 +108,13 @@ public class PotionCauldronInteraction {
             Potion potion = Objects.requireNonNull(cauldron).getPotion();
             ItemStack tippedArrow = new ItemStack(Items.TIPPED_ARROW, player.getItemInHand(hand).getCount());
 
-            if (cauldron.hasPotion() && !level.isClientSide && getPotion(itemStack) != Potions.WATER) {
+            if (cauldron.hasPotion() && !level.isClientSide() && getPotion(itemStack) != Potions.WATER) {
                 PotionUtils.setPotion(tippedArrow, potion);
                 doCauldronConsumeInteraction(blockState, level, blockPos, player, hand, Items.ARROW.getDefaultInstance(), tippedArrow);
                 level.playSound(null, blockPos, ModSoundEvents.CAULDRON_TIP_ARROW, SoundSource.BLOCKS, 1.0F, 1.0F);
             }
 
-            return InteractionResult.sidedSuccess(level.isClientSide);
+            return InteractionResult.sidedSuccess(level.isClientSide());
         });
 
         // endregion
@@ -128,11 +128,11 @@ public class PotionCauldronInteraction {
 
             if (cauldron != null && (cauldron.getPotion() == Potions.POISON || cauldron.getPotion() == Potions.LONG_POISON || cauldron.getPotion() == Potions.STRONG_POISON)) {
 
-                if (cauldron.hasPotion() && !level.isClientSide) {
+                if (cauldron.hasPotion() && !level.isClientSide()) {
                     doCauldronConsumeInteraction(blockState, level, blockPos, player, hand, Items.POTATO.getDefaultInstance(), poisonousPotato);
                     level.playSound(null, blockPos, ModSoundEvents.CAULDRON_POISON_POTATO, SoundSource.BLOCKS, 1.0F, 1.0F);
                 }
-                return InteractionResult.sidedSuccess(level.isClientSide);
+                return InteractionResult.sidedSuccess(level.isClientSide());
 
             } else {
                 return InteractionResult.PASS;

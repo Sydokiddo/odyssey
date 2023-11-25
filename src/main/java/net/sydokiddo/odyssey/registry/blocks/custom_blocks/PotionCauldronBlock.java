@@ -60,7 +60,7 @@ public class PotionCauldronBlock extends LayeredCauldronBlock implements EntityB
     @Override
     @Nullable
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, @NotNull BlockState blockState, @NotNull BlockEntityType<T> blockEntityType) {
-        if (level.isClientSide) {
+        if (level.isClientSide()) {
             return PotionCauldronBlock.createTickerHelper(blockEntityType, ModEntities.POTION_CAULDRON, (level1, blockPos, blockState1, potionCauldronBlockEntity) -> PotionCauldronBlockEntity.particleTick(level1, blockPos, potionCauldronBlockEntity));
         }
         return null;

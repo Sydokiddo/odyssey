@@ -54,7 +54,7 @@ public class GunpowderBlock extends FallingBlock {
     @SuppressWarnings("deprecation")
     @Override
     public void onProjectileHit(Level level, BlockState state, BlockHitResult hitResult, Projectile projectile) {
-        if (!level.isClientSide && projectile.isOnFire()) {
+        if (!level.isClientSide() && projectile.isOnFire()) {
             explode(level,  hitResult.getBlockPos());
         }
     }
@@ -79,7 +79,7 @@ public class GunpowderBlock extends FallingBlock {
                 }
             }
 
-            return InteractionResult.sidedSuccess(level.isClientSide);
+            return InteractionResult.sidedSuccess(level.isClientSide());
         }
         return super.use(blockState, level, blockPos, player, interactionHand, blockHitResult);
     }
@@ -90,7 +90,7 @@ public class GunpowderBlock extends FallingBlock {
 
     @Override
     public void wasExploded(Level level, BlockPos blockPos, Explosion explosion) {
-        if (!level.isClientSide) {
+        if (!level.isClientSide()) {
             explode(level, blockPos, explosion.getIndirectSourceEntity());
         }
     }
@@ -105,7 +105,7 @@ public class GunpowderBlock extends FallingBlock {
 
         level.removeBlock(pos, false);
 
-        if (!level.isClientSide) {
+        if (!level.isClientSide()) {
 
             GunpowderBlockEntity gunpowderBlock = ModEntities.GUNPOWDER_BLOCK.create(level);
 

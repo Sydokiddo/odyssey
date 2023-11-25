@@ -42,7 +42,7 @@ public class BlockBehaviourMixin {
                 Block.dropResources(blockState, level, blockPos);
                 this.doBlockHarvestingEvents(level, blockPos, blockState, player, ModSoundEvents.SMALL_FLOWER_PICK, 0.5F);
 
-                cir.setReturnValue(InteractionResult.SUCCESS);
+                cir.setReturnValue(InteractionResult.sidedSuccess(level.isClientSide()));
             }
 
             // endregion
@@ -60,7 +60,7 @@ public class BlockBehaviourMixin {
                     player.getMainHandItem().hurtAndBreak(1, player, (shovel) -> shovel.broadcastBreakEvent(hand));
                 }
 
-                cir.setReturnValue(InteractionResult.SUCCESS);
+                cir.setReturnValue(InteractionResult.sidedSuccess(level.isClientSide()));
             }
 
             // endregion

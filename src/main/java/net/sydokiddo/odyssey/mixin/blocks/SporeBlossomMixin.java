@@ -45,16 +45,16 @@ public class SporeBlossomMixin implements BonemealableBlock {
     private static void popResourceBelow(Level level, BlockPos blockPos, ItemStack itemStack) {
 
         double itemHeight = (double)EntityType.ITEM.getHeight() / 2.0D;
-        double x = (double)blockPos.getX() + 0.5D + Mth.nextDouble(level.random, -0.25D, 0.25D);
-        double y = (double)blockPos.getY() - 0.25D + Mth.nextDouble(level.random, -0.25D, 0.25D) - itemHeight;
-        double z = (double)blockPos.getZ() + 0.5D + Mth.nextDouble(level.random, -0.25D, 0.25D);
+        double x = (double)blockPos.getX() + 0.5D + Mth.nextDouble(level.getRandom(), -0.25D, 0.25D);
+        double y = (double)blockPos.getY() - 0.25D + Mth.nextDouble(level.getRandom(), -0.25D, 0.25D) - itemHeight;
+        double z = (double)blockPos.getZ() + 0.5D + Mth.nextDouble(level.getRandom(), -0.25D, 0.25D);
 
         popResourceBelow(level, () -> new ItemEntity(level, x, y, z, itemStack), itemStack);
     }
 
     @Unique
     private static void popResourceBelow(Level level, Supplier<ItemEntity> supplier, ItemStack itemStack) {
-        if (!level.isClientSide && !itemStack.isEmpty() && level.getGameRules().getBoolean(GameRules.RULE_DOBLOCKDROPS)) {
+        if (!level.isClientSide() && !itemStack.isEmpty() && level.getGameRules().getBoolean(GameRules.RULE_DOBLOCKDROPS)) {
             ItemEntity itemEntity = supplier.get();
             itemEntity.setDefaultPickUpDelay();
             level.addFreshEntity(itemEntity);

@@ -101,7 +101,7 @@ public abstract class ItemFrameMixin extends HangingEntity {
                     Odyssey.LOGGER.info("{} has been successfully waxed by {}", this.getName().getString(), player.getName().getString());
                 }
 
-                cir.setReturnValue(InteractionResult.SUCCESS);
+                cir.setReturnValue(InteractionResult.sidedSuccess(player.level().isClientSide()));
             }
 
             // endregion
@@ -123,7 +123,7 @@ public abstract class ItemFrameMixin extends HangingEntity {
                     Odyssey.LOGGER.info("Setting {} as invisible as it has been sheared by {}", this.getName().getString(), player.getName().getString());
                 }
 
-                cir.setReturnValue(InteractionResult.SUCCESS);
+                cir.setReturnValue(InteractionResult.sidedSuccess(player.level().isClientSide()));
             }
 
             // endregion

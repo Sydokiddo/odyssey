@@ -89,7 +89,7 @@ public abstract class SlimeMixin extends Mob {
     @Inject(at = @At("RETURN"), method = "tick")
     private void odyssey_tickSlimeConversion(CallbackInfo ci) {
 
-        if (!this.level().isClientSide && this.isAlive() && Odyssey.getConfig().entities.hostileMobsConfig.slime_and_magma_cube_converting) {
+        if (!this.level().isClientSide() && this.isAlive() && Odyssey.getConfig().entities.hostileMobsConfig.slime_and_magma_cube_converting) {
 
             if (this.getType() == EntityType.SLIME) {
 

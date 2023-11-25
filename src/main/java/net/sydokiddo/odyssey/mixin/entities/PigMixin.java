@@ -34,7 +34,7 @@ public abstract class PigMixin extends Animal implements Saddleable {
         if (this.isSaddled() && player.isDiscrete() && player.getItemInHand(hand).isEmpty() && Odyssey.getConfig().entities.passiveMobsConfig.saddle_removing) {
             this.steering.setSaddle(false);
             OdysseyRegistry.doSaddleRemovingEvents(this, player, hand);
-            cir.setReturnValue(InteractionResult.SUCCESS);
+            cir.setReturnValue(InteractionResult.sidedSuccess(player.level().isClientSide()));
         }
     }
 }

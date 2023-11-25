@@ -32,9 +32,9 @@ public class ApplySlimeballToPistonDispenserBehavior implements DispenseItemBeha
 
         if (blockState.is(Blocks.PISTON) && !blockState.getValue(PistonBaseBlock.EXTENDED)) {
 
-            if (!serverLevel.isClientSide) {
+            if (!serverLevel.isClientSide()) {
                 for (int i = 0; i < 5; ++i) {
-                    serverLevel.sendParticles(ParticleTypes.ITEM_SLIME, blockPos.getX() + serverLevel.random.nextDouble(), blockPos.getY() + 1, blockPos.getZ() + serverLevel.random.nextDouble(), 1, 0.0, 0.0, 0.0, 1.0);
+                    serverLevel.sendParticles(ParticleTypes.ITEM_SLIME, blockPos.getX() + serverLevel.getRandom().nextDouble(), blockPos.getY() + 1, blockPos.getZ() + serverLevel.getRandom().nextDouble(), 1, 0.0, 0.0, 0.0, 1.0);
                 }
             }
 

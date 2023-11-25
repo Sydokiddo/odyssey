@@ -40,7 +40,7 @@ public class AbstractCauldronBlockMixin {
 
         if (player.getItemInHand(interactionHand).getItem().equals(Items.WATER_BUCKET) && level.dimensionType().ultraWarm()) {
 
-            level.playSound(null, blockPos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.5F, 2.6F + (level.random.nextFloat() - level.random.nextFloat()) * 0.8F);
+            level.playSound(null, blockPos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.5F, 2.6F + (level.getRandom().nextFloat() - level.getRandom().nextFloat()) * 0.8F);
 
             if (level instanceof ServerLevel serverLevel) {
 
@@ -51,7 +51,7 @@ public class AbstractCauldronBlockMixin {
                     player.setItemInHand(interactionHand, new ItemStack(Items.BUCKET.asItem()));
                 }
             }
-            cir.setReturnValue(InteractionResult.SUCCESS);
+            cir.setReturnValue(InteractionResult.sidedSuccess(level.isClientSide()));
         }
 
         // endregion
@@ -60,7 +60,7 @@ public class AbstractCauldronBlockMixin {
 
         CauldronInteraction.EMPTY.put(Items.POTION, (cauldronState, world, pos, user, hand, stack) -> {
 
-            if (!world.isClientSide) {
+            if (!world.isClientSide()) {
 
                 Potion potion = PotionUtils.getPotion(stack);
                 Item item = stack.getItem();
@@ -80,7 +80,7 @@ public class AbstractCauldronBlockMixin {
                 world.playSound(null, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
                 world.gameEvent(null, GameEvent.FLUID_PLACE, pos);
             }
-            return InteractionResult.sidedSuccess(world.isClientSide);
+            return InteractionResult.sidedSuccess(world.isClientSide());
         });
 
         // endregion

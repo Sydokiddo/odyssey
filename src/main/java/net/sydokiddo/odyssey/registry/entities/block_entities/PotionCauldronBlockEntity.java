@@ -76,7 +76,7 @@ public class PotionCauldronBlockEntity extends BlockEntity {
             potionCauldronBlockEntity.setChanged();
             level.sendBlockUpdated(potionCauldronBlockEntity.getBlockPos(), potionCauldronBlockEntity.getBlockState(), potionCauldronBlockEntity.getBlockState(), Block.UPDATE_ALL);
 
-            if (level.random.nextFloat() > 0.05F) return;
+            if (level.getRandom().nextFloat() > 0.05F) return;
 
             double d = (double) (color >> 16 & 0xFF) / 255.0;
             double e = (double) (color >> 8 & 0xFF) / 255.0;

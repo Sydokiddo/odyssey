@@ -57,7 +57,7 @@ public class PistonBaseBlockMixin extends DirectionalBlock {
             player.awardStat(Stats.ITEM_USED.get(item));
         }
 
-        ParticleUtils.spawnParticlesOnBlockFace(level, blockPos, ParticleTypes.ITEM_SLIME, UniformInt.of(3, 5), direction, () -> ParticleUtils.getRandomSpeedRanges(level.random), 0.55);
+        ParticleUtils.spawnParticlesOnBlockFace(level, blockPos, ParticleTypes.ITEM_SLIME, UniformInt.of(3, 5), direction, () -> ParticleUtils.getRandomSpeedRanges(level.getRandom()), 0.55);
         level.setBlockAndUpdate(blockPos, block.defaultBlockState().setValue(PistonBaseBlock.FACING, blockState.getValue(PistonBaseBlock.FACING)));
         level.playSound(null, blockPos, soundEvent, SoundSource.BLOCKS, 1.0F, 1.0F);
         level.gameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Context.of(player));
@@ -84,7 +84,7 @@ public class PistonBaseBlockMixin extends DirectionalBlock {
                 }
 
                 doPistonUseEvents(level, blockPos, player, item, blockState, Blocks.STICKY_PISTON, ModSoundEvents.PISTON_APPLY_SLIMEBALL, direction);
-                return InteractionResult.sidedSuccess(level.isClientSide);
+                return InteractionResult.sidedSuccess(level.isClientSide());
 
             } else if (this.isSticky && item instanceof AxeItem) {
 
@@ -96,7 +96,7 @@ public class PistonBaseBlockMixin extends DirectionalBlock {
 
                 popResourceFromFace(level, blockPos, direction, new ItemStack(Items.SLIME_BALL));
                 doPistonUseEvents(level, blockPos, player, item, blockState, Blocks.PISTON, ModSoundEvents.PISTON_REMOVE_SLIMEBALL, direction);
-                return InteractionResult.sidedSuccess(level.isClientSide);
+                return InteractionResult.sidedSuccess(level.isClientSide());
 
             } else {
                 return InteractionResult.PASS;
