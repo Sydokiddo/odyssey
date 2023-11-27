@@ -17,6 +17,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.piston.PistonBaseBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.OdysseyRegistry;
 import net.sydokiddo.odyssey.registry.items.ModItems;
@@ -46,7 +47,8 @@ public class ScrapeBlockDispenserBehavior implements DispenseItemBehavior {
     @Override
     public ItemStack dispense(BlockSource blockSource, ItemStack itemStack) {
 
-        BlockPos blockPos = blockSource.pos().relative(blockSource.state().getValue(DispenserBlock.FACING));
+        Direction direction = blockSource.state().getValue(DispenserBlock.FACING);
+        BlockPos blockPos = blockSource.pos().relative(direction);
         ServerLevel serverLevel = blockSource.level();
         BlockState blockState = serverLevel.getBlockState(blockPos);
 
@@ -87,7 +89,7 @@ public class ScrapeBlockDispenserBehavior implements DispenseItemBehavior {
 
         if (blockState.is(Blocks.STICKY_PISTON) && !blockState.getValue(PistonBaseBlock.EXTENDED) && Odyssey.getConfig().blocks.qualityOfLifeBlockConfig.piston_interactions) {
 
-            Direction direction = blockState.getValue(PistonBaseBlock.FACING);
+            Direction pistonDirection = blockState.getValue(PistonBaseBlock.FACING);
 
             if (!serverLevel.isClientSide()) {
                 for (int i = 0; i < 5; ++i) {
@@ -95,11 +97,12 @@ public class ScrapeBlockDispenserBehavior implements DispenseItemBehavior {
                 }
             }
 
-            doBlockConversionEvents(serverLevel, blockPos, Blocks.PISTON.defaultBlockState().setValue(PistonBaseBlock.FACING, direction), ModSoundEvents.PISTON_REMOVE_SLIMEBALL, itemStack);
-            Block.popResourceFromFace(serverLevel, blockPos, direction, new ItemStack(Items.SLIME_BALL));
+            doBlockConversionEvents(serverLevel, blockPos, Blocks.PISTON.defaultBlockState().setValue(PistonBaseBlock.FACING, pistonDirection), ModSoundEvents.PISTON_REMOVE_SLIMEBALL, itemStack);
+            Block.popResourceFromFace(serverLevel, blockPos, pistonDirection, new ItemStack(Items.SLIME_BALL));
             return itemStack;
         }
 
+        RegistryHelpers.playDispenserAnimation(blockSource, direction);
         OdysseyRegistry.playDispenserFailSound(blockSource);
         return itemStack;
     }
