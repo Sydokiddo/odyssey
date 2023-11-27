@@ -22,7 +22,7 @@ public class PatinaItem extends Item {
         super(properties);
     }
 
-    private Optional<BlockState> getNextCopperState(BlockState blockState) {
+    public static Optional<BlockState> getNextCopperState(BlockState blockState) {
         return WeatheringCopper.getNext(blockState.getBlock()).map(block -> block.withPropertiesOf(blockState));
     }
 

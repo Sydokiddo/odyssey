@@ -99,10 +99,10 @@ public class PistonBaseBlockMixin extends DirectionalBlock {
                 return InteractionResult.sidedSuccess(level.isClientSide());
 
             } else {
-                return InteractionResult.PASS;
+                return super.use(blockState, level, blockPos, player, interactionHand, blockHitResult);
             }
         }
-        return InteractionResult.PASS;
+        return super.use(blockState, level, blockPos, player, interactionHand, blockHitResult);
     }
 
     // endregion

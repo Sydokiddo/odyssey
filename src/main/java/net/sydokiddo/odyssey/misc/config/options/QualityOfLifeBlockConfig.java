@@ -24,4 +24,7 @@ public class QualityOfLifeBlockConfig {
 
     @ConfigEntry.Gui.Tooltip
     public boolean piston_interactions = true;
+
+    @ConfigEntry.Gui.Tooltip
+    public boolean axe_dispenser_functionality = true;
 }

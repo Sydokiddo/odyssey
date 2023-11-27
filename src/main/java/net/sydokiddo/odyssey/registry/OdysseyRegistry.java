@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.dispenser.BlockSource;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -66,11 +67,11 @@ public class OdysseyRegistry {
         return new BigDecimal(saturationAmount).setScale(1, RoundingMode.DOWN);
     }
 
-    public static void popResourceBelow(Level level, BlockPos blockPos, ItemStack itemStack) {
+    public static void popResourceBelow(Level level, BlockPos blockPos, ItemStack itemStack, double itemDropOffset) {
 
         double itemHeight = (double) EntityType.ITEM.getHeight() / 2.0;
         double x = (double)blockPos.getX() + 0.5 + Mth.nextDouble(level.getRandom(), -0.25, 0.25);
-        double y = (double)blockPos.getY() - 0.5 + Mth.nextDouble(level.getRandom(), -0.25, 0.25) - itemHeight;
+        double y = (double)blockPos.getY() - itemDropOffset + Mth.nextDouble(level.getRandom(), -0.25, 0.25) - itemHeight;
         double z = (double)blockPos.getZ() + 0.5 + Mth.nextDouble(level.getRandom(), -0.25, 0.25);
 
         if (!level.isClientSide() && !itemStack.isEmpty() && level.getGameRules().getBoolean(GameRules.RULE_DOBLOCKDROPS)) {
@@ -78,6 +79,10 @@ public class OdysseyRegistry {
             itemEntity.setDefaultPickUpDelay();
             level.addFreshEntity(itemEntity);
         }
+    }
+
+    public static void playDispenserFailSound(BlockSource blockSource) {
+        blockSource.level().levelEvent(1001, blockSource.pos(), 0);
     }
 
     // endregion

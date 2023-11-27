@@ -30,7 +30,7 @@ public class SporeBlossomMixin implements BonemealableBlock {
     @Override
     public void performBonemeal(ServerLevel serverLevel, RandomSource randomSource, BlockPos blockPos, BlockState blockState) {
         if (Odyssey.getConfig().blocks.boneMealingConfig.spore_blossom_bone_mealing) {
-            OdysseyRegistry.popResourceBelow(serverLevel, blockPos, new ItemStack(Items.SPORE_BLOSSOM));
+            OdysseyRegistry.popResourceBelow(serverLevel, blockPos, new ItemStack(Items.SPORE_BLOSSOM), 0.0);
         }
     }
 }

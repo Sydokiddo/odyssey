@@ -285,6 +285,8 @@
   "text.autoconfig.odyssey.option.blocks.qualityOfLifeBlockConfig.snow_layer_right_clicking.@Tooltip": "Snow Layers can be right-clicked with a Shovel to harvest them to prevent accidental breaking of other nearby blocks",
   "text.autoconfig.odyssey.option.blocks.qualityOfLifeBlockConfig.piston_interactions": "Piston Interactions",
   "text.autoconfig.odyssey.option.blocks.qualityOfLifeBlockConfig.piston_interactions.@Tooltip": "Pistons can be right-clicked with a Slimeball to turn them into Sticky Pistons, and Sticky Pistons can be right-clicked with an Axe to turn them into normal Pistons",
+  "text.autoconfig.odyssey.option.blocks.qualityOfLifeBlockConfig.axe_dispenser_functionality": "Axe Dispenser Functionality",
+  "text.autoconfig.odyssey.option.blocks.qualityOfLifeBlockConfig.axe_dispenser_functionality.@Tooltip": "If an Axe is put into a Dispenser, it is now able to strip Wood/Logs and scrape Copper Blocks/Sticky Pistons that are in front of the Dispenser",
 
   "text.autoconfig.odyssey.option.blocks.boneMealingConfig": "Bone-Mealing",
   "text.autoconfig.odyssey.option.blocks.boneMealingConfig.@Tooltip": "Allow for more plant types to be bone-mealed",
