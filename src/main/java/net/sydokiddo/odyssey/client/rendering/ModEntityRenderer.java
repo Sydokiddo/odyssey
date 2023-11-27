@@ -15,8 +15,13 @@ import net.sydokiddo.odyssey.registry.entities.registry.ModEntities;
 @Environment(EnvType.CLIENT)
 public class ModEntityRenderer {
 
+    public static void init() {
+        registerRenderers();
+        setPotionCauldronRenderColors();
+    }
+
     @SuppressWarnings("deprecation")
-    public static void registerRenderers() {
+    private static void registerRenderers() {
         BlockEntityRendererRegistry.register(ModEntities.BRUSHABLE_BLOCK, ModBrushableBlockRenderer::new);
         EntityRendererRegistry.register(ModEntities.GUNPOWDER_BLOCK, GunpowderBlockEntityRenderer::new);
     }

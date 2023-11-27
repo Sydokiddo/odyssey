@@ -22,8 +22,7 @@ public class OdysseyClient implements ClientModInitializer {
     public void onInitializeClient() {
         if (Chrysalis.CHRYSALIS_INITIALIZED) {
 
-            ModEntityRenderer.registerRenderers();
-            ModEntityRenderer.setPotionCauldronRenderColors();
+            ModEntityRenderer.init();
             ModParticles.registerParticles();
 
             // region Block Rendering
