@@ -1,0 +1,48 @@
+{
+  "parent": "minecraft:husbandry/wax_on",
+  "criteria": {
+    "use_patina": {
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {
+              "block": {
+                "tag": "chrysalis:copper_blocks"
+              }
+            }
+          },
+          {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "items": [
+                "odyssey:patina"
+              ]
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:item_used_on_block"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.husbandry.use_patina.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "odyssey:patina"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.husbandry.use_patina.title"
+    }
+  },
+  "requirements": [
+    [
+      "use_patina"
+    ]
+  ]
+}

@@ -36,7 +36,7 @@ public class ModCreativeModeTabs {
 
             content.accept(ModItems.ELDER_GUARDIAN_THORN);
 
-            content.addAfter(ModItems.ELDER_GUARDIAN_THORN, ModItems.WITHER_SKULL_FRAGMENT, ModItems.IRON_POTATO, ModItems.ENCHANTED_IRON_POTATO,
+            content.addAfter(ModItems.ELDER_GUARDIAN_THORN, ModItems.WITHER_SKULL_FRAGMENT, ModItems.PATINA, ModItems.IRON_POTATO, ModItems.ENCHANTED_IRON_POTATO,
             ModItems.SQUID_BUCKET, ModItems.GLOW_SQUID_BUCKET, ModItems.FROG_BUCKET, ModItems.ENVIRONMENT_DETECTOR, ModBlocks.GUNPOWDER_BLOCK, ModBlocks.REFINED_AMETHYST_BLOCK,
             ModBlocks.SUGAR_CANE_BLOCK, ModBlocks.SUSPICIOUS_RED_SAND, ModBlocks.GOLDEN_BUTTON, ModBlocks.IRON_BUTTON, ModBlocks.FRAGILE_BUTTON, ModBlocks.FRAGILE_PRESSURE_PLATE,
             ModBlocks.POLISHED_DEEPSLATE_BUTTON, ModBlocks.POLISHED_DEEPSLATE_PRESSURE_PLATE, ModBlocks.REDSTONE_LANTERN, ModBlocks.TINTED_GLASS_PANE, ModBlocks.STONE_WALL,
@@ -134,6 +134,7 @@ public class ModCreativeModeTabs {
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.INGREDIENTS).register(entries -> {
             entries.addAfter(Items.BONE_MEAL, ModItems.WITHER_SKULL_FRAGMENT);
             entries.addAfter(Items.PRISMARINE_CRYSTALS, ModItems.ELDER_GUARDIAN_THORN);
+            entries.addBefore(Items.HONEYCOMB, ModItems.PATINA);
         });
 
         // endregion

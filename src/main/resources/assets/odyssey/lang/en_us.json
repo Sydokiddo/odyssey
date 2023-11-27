@@ -7,6 +7,7 @@
 
   "item.odyssey.wither_skull_fragment": "Wither Skull Fragment",
   "item.odyssey.elder_guardian_thorn": "Elder Guardian Thorn",
+  "item.odyssey.patina": "Patina",
   "item.odyssey.environment_detector": "Environment Detector",
 
   "item.odyssey.frog_bucket": "Bucket of Frog",
@@ -115,8 +116,8 @@
   "entity.axolotl_type.3": "Cyan",
   "entity.axolotl_type.4": "Blue",
 
+  "subtitles.item.patina.use": "Patina crumbles",
   "subtitles.item.environment_detector.use": "Environment Detector clicks",
-
   "subtitles.block.anvil.repair": "Anvil repaired",
   "subtitles.entity.armor_stand.add_arms": "Arms fasten to Armor Stand",
   "subtitles.block.small_flower.pick": "Flower picked",
@@ -173,6 +174,9 @@
 
   "advancements.husbandry.brush_mob.title": "You Can Pet the Dog!",
   "advancements.husbandry.brush_mob.description": "Pet a passive mob with a Brush",
+
+  "advancements.husbandry.use_patina.title": "Patina Pending",
+  "advancements.husbandry.use_patina.description": "Apply Patina to a Copper block!",
 
   "advancements.husbandry.cure_poison_with_honey.title": "Cough Syrup",
   "advancements.husbandry.cure_poison_with_honey.description": "Cure poison by drinking a Honey Bottle",

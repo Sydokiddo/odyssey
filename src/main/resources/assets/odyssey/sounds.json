@@ -216,6 +216,15 @@
     "subtitle": "subtitles.block.pressure_plate.click"
   },
 
+  "item.patina.use": {
+    "sounds": [
+      "odyssey:item/patina/apply_patina1",
+      "odyssey:item/patina/apply_patina2",
+      "odyssey:item/patina/apply_patina3"
+    ],
+    "subtitle": "subtitles.item.patina.use"
+  },
+
   "item.environment_detector.use": {
     "sounds": [
       "odyssey:item/environment_detector/use"

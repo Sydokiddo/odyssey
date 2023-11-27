@@ -48,6 +48,8 @@ public class ModSoundEvents {
 
     // region Item Sounds
 
+    public static final SoundEvent PATINA_USE = registerSoundEvent("item.patina.use");
+
     public static final SoundEvent ENVIRONMENT_DETECTOR_USE = registerSoundEvent("item.environment_detector.use");
 
     public static final SoundEvent BUCKET_FILL_FROG = registerSoundEvent("item.bucket.fill_frog");
