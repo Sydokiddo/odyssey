@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "weathered_copper_bulb",
+  "ingredients": [
+    {
+      "item": "minecraft:exposed_copper_bulb"
+    },
+    {
+      "item": "odyssey:patina"
+    }
+  ],
+  "result": {
+    "item": "minecraft:weathered_copper_bulb"
+  }
+}
