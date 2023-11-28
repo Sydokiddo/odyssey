@@ -3,6 +3,7 @@
     "minecraft:mangrove_propagule",
     "minecraft:small_dripleaf",
     "minecraft:sea_pickle",
+    "minecraft:sugar_cane",
     {"id": "endlessencore:anemonate", "required": false}
   ]
 }

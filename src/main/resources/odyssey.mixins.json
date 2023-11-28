@@ -23,6 +23,7 @@
     "blocks.SnifferEggBlockMixin",
     "blocks.SpawnerBlockMixin",
     "blocks.SporeBlossomMixin",
+    "blocks.SugarCaneBlockMixin",
     "entities.CreeperMixin",
     "entities.FrogMixin",
     "entities.GuardianMixin",

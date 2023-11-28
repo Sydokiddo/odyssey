@@ -3,6 +3,7 @@
     "minecraft:potted_mangrove_propagule",
     "odyssey:potted_small_dripleaf",
     "odyssey:potted_sea_pickle",
+    "odyssey:potted_sugar_cane",
     {"id": "endlessencore:potted_anemonate", "required": false}
   ]
 }
