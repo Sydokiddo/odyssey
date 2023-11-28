@@ -25,12 +25,15 @@ public class ApplySlimeballToPistonDispenserBehavior implements DispenseItemBeha
     @Override
     public ItemStack dispense(BlockSource blockSource, ItemStack itemStack) {
 
-        BlockPos blockPos = blockSource.pos().relative(blockSource.state().getValue(DispenserBlock.FACING));
+        Direction direction = blockSource.state().getValue(DispenserBlock.FACING);
+        BlockPos blockPos = blockSource.pos().relative(direction);
         ServerLevel serverLevel = blockSource.level();
         BlockState blockState = serverLevel.getBlockState(blockPos);
-        Direction direction = blockState.getValue(PistonBaseBlock.FACING);
 
         if (blockState.is(Blocks.PISTON) && !blockState.getValue(PistonBaseBlock.EXTENDED)) {
+
+            RegistryHelpers.playDispenserSound(blockSource);
+            RegistryHelpers.playDispenserAnimation(blockSource, direction);
 
             if (!serverLevel.isClientSide()) {
                 for (int i = 0; i < 5; ++i) {
@@ -38,7 +41,7 @@ public class ApplySlimeballToPistonDispenserBehavior implements DispenseItemBeha
                 }
             }
 
-            serverLevel.setBlockAndUpdate(blockPos, Blocks.STICKY_PISTON.defaultBlockState().setValue(PistonBaseBlock.FACING, direction));
+            serverLevel.setBlockAndUpdate(blockPos, Blocks.STICKY_PISTON.defaultBlockState().setValue(PistonBaseBlock.FACING, blockState.getValue(PistonBaseBlock.FACING)));
             serverLevel.playSound(null, blockPos, ModSoundEvents.PISTON_APPLY_SLIMEBALL, SoundSource.BLOCKS, 1.0F, 1.0F);
             serverLevel.gameEvent(null, GameEvent.BLOCK_CHANGE, blockPos);
 

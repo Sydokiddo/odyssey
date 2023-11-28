@@ -33,11 +33,14 @@ public class ScrapeBlockDispenserBehavior implements DispenseItemBehavior {
         return Optional.ofNullable(AxeItemAccessor.getStrippedBlocks().get(blockState.getBlock())).map(block -> block.defaultBlockState().setValue(RotatedPillarBlock.AXIS, blockState.getValue(RotatedPillarBlock.AXIS)));
     }
 
-    private static void doBlockConversionEvents(ServerLevel serverLevel, BlockPos blockPos, BlockState blockState, SoundEvent soundEvent, ItemStack itemStack) {
+    private static void doBlockConversionEvents(ServerLevel serverLevel, BlockPos blockPos, BlockState blockState, SoundEvent soundEvent, ItemStack itemStack, BlockSource blockSource) {
 
         serverLevel.setBlockAndUpdate(blockPos, blockState);
         serverLevel.playSound(null, blockPos, soundEvent, SoundSource.BLOCKS, 1.0F, 1.0F);
         serverLevel.gameEvent(null, GameEvent.BLOCK_CHANGE, blockPos);
+
+        RegistryHelpers.playDispenserSound(blockSource);
+        RegistryHelpers.playDispenserAnimation(blockSource, blockSource.state().getValue(DispenserBlock.FACING));
 
         if (itemStack.hurt(1, serverLevel.getRandom(), null)) {
             itemStack.setCount(0);
@@ -59,7 +62,7 @@ public class ScrapeBlockDispenserBehavior implements DispenseItemBehavior {
         // Wood Stripping
 
         if (strippableWoodBlocks.isPresent()) {
-            doBlockConversionEvents(serverLevel, blockPos, strippableWoodBlocks.get(), SoundEvents.AXE_STRIP, itemStack);
+            doBlockConversionEvents(serverLevel, blockPos, strippableWoodBlocks.get(), SoundEvents.AXE_STRIP, itemStack, blockSource);
             return itemStack;
         }
 
@@ -67,7 +70,7 @@ public class ScrapeBlockDispenserBehavior implements DispenseItemBehavior {
 
         if (previousCopperState.isPresent()) {
 
-            doBlockConversionEvents(serverLevel, blockPos, previousCopperState.get(), SoundEvents.AXE_SCRAPE, itemStack);
+            doBlockConversionEvents(serverLevel, blockPos, previousCopperState.get(), SoundEvents.AXE_SCRAPE, itemStack, blockSource);
             serverLevel.levelEvent(3005, blockPos, 0);
 
             if (serverLevel.getRandom().nextFloat() < 0.25F) {
@@ -80,7 +83,7 @@ public class ScrapeBlockDispenserBehavior implements DispenseItemBehavior {
         // Removing Wax from Copper
 
         if (waxedCopperState.isPresent()) {
-            doBlockConversionEvents(serverLevel, blockPos, waxedCopperState.get(), SoundEvents.AXE_WAX_OFF, itemStack);
+            doBlockConversionEvents(serverLevel, blockPos, waxedCopperState.get(), SoundEvents.AXE_WAX_OFF, itemStack, blockSource);
             serverLevel.levelEvent(3004, blockPos, 0);
             return itemStack;
         }
@@ -97,7 +100,7 @@ public class ScrapeBlockDispenserBehavior implements DispenseItemBehavior {
                 }
             }
 
-            doBlockConversionEvents(serverLevel, blockPos, Blocks.PISTON.defaultBlockState().setValue(PistonBaseBlock.FACING, pistonDirection), ModSoundEvents.PISTON_REMOVE_SLIMEBALL, itemStack);
+            doBlockConversionEvents(serverLevel, blockPos, Blocks.PISTON.defaultBlockState().setValue(PistonBaseBlock.FACING, pistonDirection), ModSoundEvents.PISTON_REMOVE_SLIMEBALL, itemStack, blockSource);
             Block.popResourceFromFace(serverLevel, blockPos, pistonDirection, new ItemStack(Items.SLIME_BALL));
             return itemStack;
         }

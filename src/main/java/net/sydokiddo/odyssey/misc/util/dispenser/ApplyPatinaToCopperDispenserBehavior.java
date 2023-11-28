@@ -1,6 +1,7 @@
 package net.sydokiddo.odyssey.misc.util.dispenser;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.dispenser.BlockSource;
 import net.minecraft.core.dispenser.DispenseItemBehavior;
 import net.minecraft.server.level.ServerLevel;
@@ -23,12 +24,15 @@ public class ApplyPatinaToCopperDispenserBehavior implements DispenseItemBehavio
     @Override
     public ItemStack dispense(BlockSource blockSource, ItemStack itemStack) {
 
-        BlockPos blockPos = blockSource.pos().relative(blockSource.state().getValue(DispenserBlock.FACING));
+        Direction direction = blockSource.state().getValue(DispenserBlock.FACING);
+        BlockPos blockPos = blockSource.pos().relative(direction);
         ServerLevel serverLevel = blockSource.level();
-        BlockState blockState = serverLevel.getBlockState(blockPos);
-        Optional<BlockState> copperState = PatinaItem.getNextCopperState(blockState);
+        Optional<BlockState> copperState = PatinaItem.getNextCopperState(serverLevel.getBlockState(blockPos));
 
         if (copperState.isPresent()) {
+
+            RegistryHelpers.playDispenserSound(blockSource);
+            RegistryHelpers.playDispenserAnimation(blockSource, direction);
 
             serverLevel.setBlockAndUpdate(blockPos, copperState.get());
             serverLevel.playSound(null, blockPos, ModSoundEvents.PATINA_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
