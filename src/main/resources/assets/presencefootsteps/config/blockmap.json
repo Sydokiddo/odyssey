@@ -35,5 +35,7 @@
 
   "odyssey:potted_small_dripleaf.foliage": "straw",
   "odyssey:potted_spore_blossom.foliage": "straw",
-  "odyssey:potted_sea_pickle.foliage": "mud,slime"
+  "odyssey:potted_sea_pickle.foliage": "mud,slime",
+  "odyssey:potted_sugar_cane.foliage": "straw",
+  "odyssey:potted_nether_wart.foliage": "organic,mushroom"
 }

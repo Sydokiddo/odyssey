@@ -130,6 +130,12 @@ public class ModBlocks {
     public static final Block POTTED_SEA_PICKLE = registerBlockWithoutBlockItem("potted_sea_pickle",
         new FlowerPotBlock(Blocks.SEA_PICKLE, FabricBlockSettings.copyOf(Blocks.FLOWER_POT).luminance(blockState -> SeaPickleBlock.isDead(blockState) ? 0 : 6)));
 
+    public static final Block POTTED_SUGAR_CANE = registerBlockWithoutBlockItem("potted_sugar_cane",
+        new FlowerPotBlock(Blocks.SUGAR_CANE, FabricBlockSettings.copyOf(Blocks.FLOWER_POT)));
+
+    public static final Block POTTED_NETHER_WART = registerBlockWithoutBlockItem("potted_nether_wart",
+        new FlowerPotBlock(Blocks.NETHER_WART, FabricBlockSettings.copyOf(Blocks.FLOWER_POT)));
+
     // endregion
 
     // Registry
