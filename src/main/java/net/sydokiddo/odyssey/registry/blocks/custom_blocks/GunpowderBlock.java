@@ -19,6 +19,7 @@ import net.sydokiddo.chrysalis.registry.misc.ChrysalisTags;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.entities.non_living_entities.GunpowderBlockEntity;
 import net.sydokiddo.odyssey.registry.entities.registry.ModEntities;
+import org.jetbrains.annotations.NotNull;
 
 public class GunpowderBlock extends FallingBlock {
 
@@ -61,7 +62,7 @@ public class GunpowderBlock extends FallingBlock {
 
     @SuppressWarnings("deprecation")
     @Override
-    public InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
+    public @NotNull InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
 
         ItemStack itemInHand = player.getItemInHand(interactionHand);
 

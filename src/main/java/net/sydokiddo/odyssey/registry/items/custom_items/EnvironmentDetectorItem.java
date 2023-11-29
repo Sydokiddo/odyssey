@@ -13,6 +13,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
+import org.jetbrains.annotations.NotNull;
 
 public class EnvironmentDetectorItem extends Item {
 
@@ -21,7 +22,7 @@ public class EnvironmentDetectorItem extends Item {
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
+    public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
 
         player.playSound(ModSoundEvents.ENVIRONMENT_DETECTOR_USE, 1.0F, 1.0F + level.getRandom().nextFloat() * 0.2F);
         player.gameEvent(GameEvent.ITEM_INTERACT_START);

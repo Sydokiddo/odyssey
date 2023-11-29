@@ -14,6 +14,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.sydokiddo.odyssey.registry.blocks.ModBlocks;
 import net.sydokiddo.odyssey.registry.entities.non_living_entities.GunpowderBlockEntity;
+import org.jetbrains.annotations.NotNull;
 
 @Environment(EnvType.CLIENT)
 public class GunpowderBlockEntityRenderer extends EntityRenderer<GunpowderBlockEntity> {
@@ -57,7 +58,7 @@ public class GunpowderBlockEntityRenderer extends EntityRenderer<GunpowderBlockE
 
     @SuppressWarnings("deprecation")
     @Override
-    public ResourceLocation getTextureLocation(GunpowderBlockEntity gunpowderBlock) {
+    public @NotNull ResourceLocation getTextureLocation(GunpowderBlockEntity gunpowderBlock) {
         return TextureAtlas.LOCATION_BLOCKS;
     }
 }

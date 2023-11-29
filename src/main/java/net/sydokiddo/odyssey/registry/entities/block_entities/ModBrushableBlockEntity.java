@@ -5,6 +5,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.BrushableBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.sydokiddo.odyssey.registry.entities.registry.ModEntities;
+import org.jetbrains.annotations.NotNull;
 
 public class ModBrushableBlockEntity extends BrushableBlockEntity {
 
@@ -13,7 +14,7 @@ public class ModBrushableBlockEntity extends BrushableBlockEntity {
     }
 
     @Override
-    public BlockEntityType<?> getType() {
+    public @NotNull BlockEntityType<?> getType() {
         return ModEntities.BRUSHABLE_BLOCK;
     }
 }

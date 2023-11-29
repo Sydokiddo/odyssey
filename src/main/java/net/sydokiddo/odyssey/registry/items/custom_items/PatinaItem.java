@@ -14,6 +14,7 @@ import net.minecraft.world.level.block.WeatheringCopper;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
+import org.jetbrains.annotations.NotNull;
 import java.util.Optional;
 
 public class PatinaItem extends Item {
@@ -27,7 +28,7 @@ public class PatinaItem extends Item {
     }
 
     @Override
-    public InteractionResult useOn(UseOnContext useOnContext) {
+    public @NotNull InteractionResult useOn(UseOnContext useOnContext) {
 
         Level level = useOnContext.getLevel();
         BlockPos blockPos = useOnContext.getClickedPos();

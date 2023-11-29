@@ -72,7 +72,7 @@ public abstract class FrogMixin extends Animal implements ContainerMob {
     }
 
     @Override
-    public InteractionResult mobInteract(Player player, @NotNull InteractionHand interactionHand) {
+    public @NotNull InteractionResult mobInteract(Player player, @NotNull InteractionHand interactionHand) {
 
         Item containerItem = Items.BUCKET;
 

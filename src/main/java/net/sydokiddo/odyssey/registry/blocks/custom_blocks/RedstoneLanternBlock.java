@@ -22,6 +22,7 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
+import org.jetbrains.annotations.NotNull;
 
 public class RedstoneLanternBlock extends LanternBlock {
 
@@ -76,7 +77,7 @@ public class RedstoneLanternBlock extends LanternBlock {
 
     @SuppressWarnings("deprecation")
     @Override
-    public InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+    public @NotNull InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult hitResult) {
 
         if (blockState.getValue(LIT)) {
             turnOffLantern(level, blockPos, blockState);

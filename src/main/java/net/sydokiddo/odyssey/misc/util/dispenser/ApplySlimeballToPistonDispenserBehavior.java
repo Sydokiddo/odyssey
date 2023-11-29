@@ -17,13 +17,14 @@ import net.sydokiddo.chrysalis.Chrysalis;
 import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
+import org.jetbrains.annotations.NotNull;
 
 public class ApplySlimeballToPistonDispenserBehavior implements DispenseItemBehavior {
 
     public static final ApplySlimeballToPistonDispenserBehavior INSTANCE = new ApplySlimeballToPistonDispenserBehavior();
 
     @Override
-    public ItemStack dispense(BlockSource blockSource, ItemStack itemStack) {
+    public @NotNull ItemStack dispense(BlockSource blockSource, ItemStack itemStack) {
 
         Direction direction = blockSource.state().getValue(DispenserBlock.FACING);
         BlockPos blockPos = blockSource.pos().relative(direction);

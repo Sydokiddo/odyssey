@@ -75,7 +75,7 @@ public class SquidMixin extends WaterAnimal implements Bucketable {
     // region Squid Bucketing
 
     @Override
-    public ItemStack getBucketItemStack() {
+    public @NotNull ItemStack getBucketItemStack() {
         if (this.getType() == EntityType.GLOW_SQUID) {
             return new ItemStack(ModItems.GLOW_SQUID_BUCKET);
         } else {
@@ -84,7 +84,7 @@ public class SquidMixin extends WaterAnimal implements Bucketable {
     }
 
     @Override
-    public SoundEvent getPickupSound() {
+    public @NotNull SoundEvent getPickupSound() {
         if (this.getType() == EntityType.GLOW_SQUID) {
             return ModSoundEvents.BUCKET_FILL_GLOW_SQUID;
         } else {
@@ -93,7 +93,7 @@ public class SquidMixin extends WaterAnimal implements Bucketable {
     }
 
     @Override
-    public InteractionResult mobInteract(Player player, @NotNull InteractionHand interactionHand) {
+    public @NotNull InteractionResult mobInteract(Player player, @NotNull InteractionHand interactionHand) {
         if (this.isAlive() && Odyssey.getConfig().entities.passiveMobsConfig.bucketable_squids) {
             return Bucketable.bucketMobPickup(player, interactionHand, this).orElse(super.mobInteract(player, interactionHand));
         }

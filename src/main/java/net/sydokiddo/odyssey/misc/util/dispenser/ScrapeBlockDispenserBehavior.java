@@ -22,6 +22,7 @@ import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.OdysseyRegistry;
 import net.sydokiddo.odyssey.registry.items.ModItems;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
+import org.jetbrains.annotations.NotNull;
 import java.util.Optional;
 
 public class ScrapeBlockDispenserBehavior implements DispenseItemBehavior {
@@ -48,7 +49,7 @@ public class ScrapeBlockDispenserBehavior implements DispenseItemBehavior {
     }
 
     @Override
-    public ItemStack dispense(BlockSource blockSource, ItemStack itemStack) {
+    public @NotNull ItemStack dispense(BlockSource blockSource, ItemStack itemStack) {
 
         Direction direction = blockSource.state().getValue(DispenserBlock.FACING);
         BlockPos blockPos = blockSource.pos().relative(direction);

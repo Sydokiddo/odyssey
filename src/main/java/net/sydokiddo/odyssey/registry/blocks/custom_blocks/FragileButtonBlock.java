@@ -14,6 +14,7 @@ import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class FragileButtonBlock extends ButtonBlock {
@@ -32,7 +33,7 @@ public class FragileButtonBlock extends ButtonBlock {
     }
 
     @Override
-    public SoundType getSoundType(BlockState blockState) {
+    public @NotNull SoundType getSoundType(BlockState blockState) {
         if (blockState.getValue(CRACKED)) {
             return ModSoundEvents.FRAGILE_BUTTON_CRACKED;
         }

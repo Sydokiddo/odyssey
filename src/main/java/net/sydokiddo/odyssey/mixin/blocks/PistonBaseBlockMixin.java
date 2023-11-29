@@ -67,7 +67,7 @@ public class PistonBaseBlockMixin extends DirectionalBlock {
 
     @SuppressWarnings("deprecation")
     @Override
-    public InteractionResult use(BlockState blockState, @NotNull Level level, @NotNull BlockPos blockPos, Player player, @NotNull InteractionHand interactionHand, @NotNull BlockHitResult blockHitResult) {
+    public @NotNull InteractionResult use(BlockState blockState, @NotNull Level level, @NotNull BlockPos blockPos, Player player, @NotNull InteractionHand interactionHand, @NotNull BlockHitResult blockHitResult) {
 
         ItemStack itemInHand = player.getItemInHand(interactionHand);
         Item item = itemInHand.getItem();

@@ -43,7 +43,7 @@ public class PotionCauldronBlockEntity extends BlockEntity {
     }
 
     @Override
-    public CompoundTag getUpdateTag() {
+    public @NotNull CompoundTag getUpdateTag() {
         return this.saveWithFullMetadata();
     }
 
@@ -68,8 +68,8 @@ public class PotionCauldronBlockEntity extends BlockEntity {
 
     public static void particleTick(Level level, BlockPos blockPos, PotionCauldronBlockEntity potionCauldronBlockEntity) {
 
-        if (potionCauldronBlockEntity.hasPotion() && potionCauldronBlockEntity.getPotion().getEffects() != null ) {
-
+        if (potionCauldronBlockEntity.hasPotion()) {
+            potionCauldronBlockEntity.getPotion().getEffects();
             ModEntityRenderer.setPotionCauldronRenderColors();
             int color = PotionUtils.getColor(potionCauldronBlockEntity.getPotion());
 

@@ -12,6 +12,7 @@ import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
+import org.jetbrains.annotations.NotNull;
 
 public class FragilePressurePlateBlock extends PressurePlateBlock {
 
@@ -29,7 +30,7 @@ public class FragilePressurePlateBlock extends PressurePlateBlock {
     }
 
     @Override
-    public SoundType getSoundType(BlockState blockState) {
+    public @NotNull SoundType getSoundType(BlockState blockState) {
         if (blockState.getValue(POWERED)) {
             return ModSoundEvents.FRAGILE_PRESSURE_PLATE_CRACKED;
         }

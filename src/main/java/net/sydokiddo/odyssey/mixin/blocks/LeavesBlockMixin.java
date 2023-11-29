@@ -11,6 +11,7 @@ import net.minecraft.world.phys.shapes.EntityCollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.sydokiddo.odyssey.Odyssey;
+import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(LeavesBlock.class)
@@ -23,7 +24,7 @@ public class LeavesBlockMixin extends Block {
     // Horses will now ignore Leaf Block collisions while being ridden
 
     @Override @SuppressWarnings("deprecation")
-    public VoxelShape getCollisionShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
+    public @NotNull VoxelShape getCollisionShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
         if (Odyssey.getConfig().entities.passiveMobsConfig.improved_horses && collisionContext instanceof EntityCollisionContext entityCollisionContext && entityCollisionContext.getEntity() != null && entityCollisionContext.getEntity() instanceof AbstractHorse abstractHorse && abstractHorse.hasControllingPassenger()) {
             return Shapes.empty();
         }

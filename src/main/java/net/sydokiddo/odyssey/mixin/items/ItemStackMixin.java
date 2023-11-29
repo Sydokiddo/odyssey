@@ -31,7 +31,7 @@ public abstract class ItemStackMixin {
 
     @Shadow public abstract Item getItem();
     @Shadow public abstract ItemStack copy();
-    private final Minecraft client = Minecraft.getInstance();
+    @Unique private final Minecraft client = Minecraft.getInstance();
 
     // Adds unique tooltips to various items
 
@@ -62,7 +62,7 @@ public abstract class ItemStackMixin {
                 cir.getReturnValue().add(CommonComponents.space().append(Component.translatable("item.odyssey.shield.desc").withStyle(ChatFormatting.BLUE)));
             }
 
-            if (client != null && client.level != null && client.player != null) {
+            if (client.level != null && client.player != null) {
 
                 // region Compass and Map Tooltips
 

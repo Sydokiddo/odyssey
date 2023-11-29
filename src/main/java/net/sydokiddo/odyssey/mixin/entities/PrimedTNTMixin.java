@@ -17,6 +17,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.OdysseyRegistry;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -47,7 +48,7 @@ public abstract class PrimedTNTMixin extends Entity {
                         this.setDeltaMovement(entity.getLookAngle());
 
                         if (entity instanceof LivingEntity livingEntity) this.owner = livingEntity;
-                        if (entity instanceof Projectile projectile && projectile.getOwner() instanceof LivingEntity owner) this.owner = owner;
+                        if (entity instanceof Projectile projectile && projectile.getOwner() instanceof LivingEntity livingEntity) this.owner = livingEntity;
                     }
                     return true;
 
@@ -60,7 +61,7 @@ public abstract class PrimedTNTMixin extends Entity {
     }
 
     @Override
-    public InteractionResult interact(Player player, InteractionHand interactionHand) {
+    public @NotNull InteractionResult interact(Player player, InteractionHand interactionHand) {
 
         ItemStack itemStack = player.getItemInHand(interactionHand);
         boolean canDefuse = !itemStack.isEmpty() && itemStack.getItem() instanceof ShearsItem && this.getFuse() > 10;
