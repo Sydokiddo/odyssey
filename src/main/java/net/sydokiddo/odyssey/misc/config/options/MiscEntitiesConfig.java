@@ -18,4 +18,7 @@ public class MiscEntitiesConfig {
 
     @ConfigEntry.Gui.Tooltip
     public boolean tnt_knockback = true;
+
+    @ConfigEntry.Gui.Tooltip
+    public boolean named_mob_death_messages = true;
 }

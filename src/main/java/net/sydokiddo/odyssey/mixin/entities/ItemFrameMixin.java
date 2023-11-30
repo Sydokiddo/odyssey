@@ -64,8 +64,8 @@ public abstract class ItemFrameMixin extends HangingEntity {
     }
 
     @Unique
-    private void setWaxed(boolean bl) {
-        this.entityData.set(OdysseyRegistry.WAXED, bl);
+    private void setWaxed(boolean isWaxed) {
+        this.entityData.set(OdysseyRegistry.WAXED, isWaxed);
     }
 
     // endregion

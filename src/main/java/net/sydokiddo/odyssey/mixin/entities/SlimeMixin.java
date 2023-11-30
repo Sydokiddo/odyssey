@@ -45,8 +45,8 @@ public abstract class SlimeMixin extends Mob {
     }
 
     @Unique
-    private void setMagmaConverting(boolean bl) {
-        this.entityData.set(OdysseyRegistry.MAGMA_CUBE_CONVERSION, bl);
+    private void setMagmaConverting(boolean isMagmaConverting) {
+        this.entityData.set(OdysseyRegistry.MAGMA_CUBE_CONVERSION, isMagmaConverting);
     }
 
     @Unique
@@ -55,8 +55,8 @@ public abstract class SlimeMixin extends Mob {
     }
 
     @Unique
-    private void setSlimeConverting(boolean bl) {
-        this.entityData.set(OdysseyRegistry.SLIME_CONVERSION, bl);
+    private void setSlimeConverting(boolean isSlimeConverting) {
+        this.entityData.set(OdysseyRegistry.SLIME_CONVERSION, isSlimeConverting);
     }
 
     @Inject(at = @At("HEAD"), method = "defineSynchedData")
