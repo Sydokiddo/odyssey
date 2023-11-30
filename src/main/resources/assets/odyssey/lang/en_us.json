@@ -118,6 +118,9 @@
   "entity.axolotl_type.3": "Cyan",
   "entity.axolotl_type.4": "Blue",
 
+  "gui.odyssey.showcase_command.success": "%1$s is showcasing %2$s",
+  "gui.odyssey.showcase_command.fail": "You are not holding a valid item to showcase",
+
   "subtitles.item.patina.use": "Patina tarnishes",
   "subtitles.item.environment_detector.use": "Environment Detector clicks",
   "subtitles.block.anvil.repair": "Anvil repaired",

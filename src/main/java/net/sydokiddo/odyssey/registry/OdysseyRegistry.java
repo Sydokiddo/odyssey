@@ -1,5 +1,6 @@
 package net.sydokiddo.odyssey.registry;
 
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.minecraft.ChatFormatting;
@@ -33,6 +34,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.sydokiddo.chrysalis.Chrysalis;
 import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
 import net.sydokiddo.odyssey.Odyssey;
+import net.sydokiddo.odyssey.misc.util.ShowcaseCommand;
 import net.sydokiddo.odyssey.registry.blocks.ModBlocks;
 import net.sydokiddo.odyssey.registry.blocks.custom_blocks.PotionCauldronInteraction;
 import net.sydokiddo.odyssey.registry.entities.registry.ModEntities;
@@ -171,6 +173,7 @@ public class OdysseyRegistry {
         ModCreativeModeTabs.registerCreativeTabs();
         ModLootTableModifiers.modifyLootTables();
         ModCriteriaTriggers.registerCriteriaTriggers();
+        CommandRegistrationCallback.EVENT.register((commandDispatcher, commandBuildContext, commandSelection) -> ShowcaseCommand.register(commandDispatcher));
 
         // endregion
 
