@@ -2,6 +2,7 @@ package net.sydokiddo.odyssey.misc.util;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
+import net.minecraft.ChatFormatting;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
@@ -24,7 +25,7 @@ public class ShowcaseCommand {
         if (!itemStack.isEmpty()) {
             context.getSource().getServer().getPlayerList().broadcastSystemMessage(component, false);
         } else {
-            player.sendSystemMessage(Component.translatable("gui.odyssey.showcase_command.fail"));
+            player.sendSystemMessage(Component.translatable("gui.odyssey.showcase_command.fail").withStyle(ChatFormatting.RED));
         }
 
         return 1;
