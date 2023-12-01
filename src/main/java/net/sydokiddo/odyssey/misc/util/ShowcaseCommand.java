@@ -20,12 +20,14 @@ public class ShowcaseCommand {
 
         Player player =  Objects.requireNonNull(context.getSource().getPlayer());
         ItemStack itemStack = player.getMainHandItem();
-        Component component = Component.translatable("gui.odyssey.showcase_command.success", player.getDisplayName(), itemStack.getDisplayName());
+
+        Component successText = Component.translatable("gui.odyssey.showcase_command.success", player.getDisplayName(), itemStack.getDisplayName());
+        Component failText = Component.translatable("gui.odyssey.showcase_command.fail").withStyle(ChatFormatting.RED);
 
         if (!itemStack.isEmpty()) {
-            context.getSource().getServer().getPlayerList().broadcastSystemMessage(component, false);
+            context.getSource().getServer().getPlayerList().broadcastSystemMessage(successText, false);
         } else {
-            player.sendSystemMessage(Component.translatable("gui.odyssey.showcase_command.fail").withStyle(ChatFormatting.RED));
+            player.sendSystemMessage(failText);
         }
 
         return 1;
