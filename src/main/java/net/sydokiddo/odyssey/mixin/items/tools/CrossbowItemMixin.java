@@ -21,7 +21,7 @@ public abstract class CrossbowItemMixin extends ProjectileWeaponItem {
     }
 
     @Inject(method = "appendHoverText", at = @At("HEAD"))
-    private void odyssey$addCrossbowTooltip(ItemStack itemStack, @Nullable Level level, List<Component> tooltip, TooltipFlag tooltipFlag, CallbackInfo ci) {
+    private void odyssey$addCrossbowTooltip(ItemStack itemStack, @Nullable Level level, List<Component> tooltip, TooltipFlag tooltipFlag, CallbackInfo info) {
 
         OdysseyRegistry.addItemDurabilityTooltip(itemStack, tooltip, tooltipFlag);
 
@@ -35,7 +35,7 @@ public abstract class CrossbowItemMixin extends ProjectileWeaponItem {
     // To remove when Chrysalis is updated
 
     @Inject(method = "appendHoverText", at = @At("TAIL"))
-    private void odyssey$addSpaceBeforeCrossbowEnchantments(ItemStack itemStack, @Nullable Level level, List<Component> tooltip, TooltipFlag tooltipFlag, CallbackInfo ci) {
+    private void odyssey$addSpaceBeforeCrossbowEnchantments(ItemStack itemStack, @Nullable Level level, List<Component> tooltip, TooltipFlag tooltipFlag, CallbackInfo info) {
         OdysseyRegistry.addSpaceOnTooltipIfEnchantedOrTrimmed(itemStack, tooltip);
     }
 }

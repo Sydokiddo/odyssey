@@ -27,7 +27,7 @@ public class MobBucketItemMixin extends BucketItem {
     }
 
     @Inject(method = "appendHoverText", at = @At("RETURN"))
-    private void odyssey$addAxolotlBucketTooltip(ItemStack itemStack, Level level, List<Component> tooltip, TooltipFlag tooltipFlag, CallbackInfo ci) {
+    private void odyssey$addAxolotlBucketTooltip(ItemStack itemStack, Level level, List<Component> tooltip, TooltipFlag tooltipFlag, CallbackInfo info) {
 
         super.appendHoverText(itemStack, level, tooltip, tooltipFlag);
         CompoundTag compoundTag = itemStack.getTag();

@@ -29,7 +29,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class BlockBehaviourMixin {
 
     @Inject(at = @At("HEAD"), method = "use", cancellable = true)
-    private void odyssey$blockRightClickEvents(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult blockHitResult, CallbackInfoReturnable<InteractionResult> cir) {
+    private void odyssey$blockRightClickEvents(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult, CallbackInfoReturnable<InteractionResult> cir) {
 
         ItemStack mainHandItem = player.getMainHandItem();
 
@@ -57,7 +57,7 @@ public class BlockBehaviourMixin {
                 player.awardStat(Stats.ITEM_USED.get(mainHandItem.getItem()));
 
                 if (!player.getAbilities().instabuild) {
-                    player.getMainHandItem().hurtAndBreak(1, player, (shovel) -> shovel.broadcastBreakEvent(hand));
+                    player.getMainHandItem().hurtAndBreak(1, player, (shovel) -> shovel.broadcastBreakEvent(interactionHand));
                 }
 
                 cir.setReturnValue(InteractionResult.sidedSuccess(level.isClientSide()));

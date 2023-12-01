@@ -14,11 +14,11 @@ public class TridentItemMixin extends Item {
     // Tridents can now be repaired using Prismarine Shards
 
     @Override
-    public boolean isValidRepairItem(ItemStack stack, ItemStack ingredient) {
+    public boolean isValidRepairItem(ItemStack itemStack, ItemStack ingredient) {
         if (Odyssey.getConfig().items.more_repairable_items) {
             return ingredient.is(Items.PRISMARINE_SHARD);
         } else {
-            return super.isValidRepairItem(stack, ingredient);
+            return super.isValidRepairItem(itemStack, ingredient);
         }
     }
 }

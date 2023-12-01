@@ -16,7 +16,7 @@ public class FireBlockMixin {
     // Explodes Gunpowder Blocks when they catch on fire
 
     @Inject(method = "checkBurnOut", at = @At("HEAD"))
-    private void odyssey$explodeGunpowderBlockWhenOnFire(Level level, BlockPos blockPos, int i, RandomSource randomSource, int j, CallbackInfo ci) {
+    private void odyssey$explodeGunpowderBlockWhenOnFire(Level level, BlockPos blockPos, int i, RandomSource randomSource, int j, CallbackInfo info) {
         if (level.getBlockState(blockPos).getBlock() instanceof GunpowderBlock) {
             GunpowderBlock.explode(level, blockPos);
         }

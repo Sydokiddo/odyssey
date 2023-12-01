@@ -37,7 +37,7 @@ public class CarpetBlockMixin extends Block implements SimpleWaterloggedBlock {
     // region Block State Initialization
 
     @Inject(method = "<init>", at = @At("RETURN"))
-    private void odyssey$registerCarpetDefaultBlockStates(Properties properties, CallbackInfo ci) {
+    private void odyssey$registerCarpetDefaultBlockStates(Properties properties, CallbackInfo info) {
         this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, false));
     }
 

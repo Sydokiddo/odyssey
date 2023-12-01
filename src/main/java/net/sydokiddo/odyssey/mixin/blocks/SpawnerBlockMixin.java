@@ -43,7 +43,7 @@ public abstract class SpawnerBlockMixin extends BaseEntityBlock implements Simpl
     // region Block State Initialization
 
     @Inject(method = "<init>", at = @At("RETURN"))
-    private void odyssey$registerSpawnerDefaultBlockStates(Properties properties, CallbackInfo ci) {
+    private void odyssey$registerSpawnerDefaultBlockStates(Properties properties, CallbackInfo info) {
         this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, false));
     }
 
@@ -77,16 +77,16 @@ public abstract class SpawnerBlockMixin extends BaseEntityBlock implements Simpl
     // endregion
 
     @Inject(method = "spawnAfterBreak", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/SpawnerBlock;popExperience(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;I)V"), cancellable = true)
-    private void odyssey$preventSpawnerXPFromSilkTouch(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, ItemStack itemStack, boolean bl, CallbackInfo ci) {
+    private void odyssey$preventSpawnerXPFromSilkTouch(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, ItemStack itemStack, boolean brokenByPlayer, CallbackInfo info) {
         if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.SILK_TOUCH, itemStack) > 0) {
-            ci.cancel();
+            info.cancel();
         }
     }
 
     @Inject(method = "appendHoverText", at = @At(value = "INVOKE", target = "Ljava/util/List;add(Ljava/lang/Object;)Z"), cancellable = true)
-    private void odyssey$hideSpawnerTooltipInSurvival(ItemStack itemStack, @Nullable BlockGetter blockGetter, List<Component> tooltip, TooltipFlag tooltipFlag, CallbackInfo ci) {
+    private void odyssey$hideSpawnerTooltipInSurvival(ItemStack itemStack, @Nullable BlockGetter blockGetter, List<Component> tooltip, TooltipFlag tooltipFlag, CallbackInfo info) {
         if (!tooltipFlag.isCreative()) {
-            ci.cancel();
+            info.cancel();
         }
     }
 }

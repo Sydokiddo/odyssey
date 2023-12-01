@@ -42,7 +42,7 @@ public abstract class FlowerPotBlockMixin extends Block implements SimpleWaterlo
     // region Block State Initialization
 
     @Inject(method = "<init>", at = @At("RETURN"))
-    private void odyssey$registerFlowerPotDefaultBlockStates(Block block, Properties properties, CallbackInfo ci) {
+    private void odyssey$registerFlowerPotDefaultBlockStates(Block block, Properties properties, CallbackInfo info) {
         this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, false));
     }
 

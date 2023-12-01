@@ -22,7 +22,7 @@ public class BaseSpawnerMixin {
     private void odyssey$removeDefaultSpawnerClientParticles(Level level, ParticleOptions particleOptions, double d, double e, double f, double g, double h, double i) {}
 
     @Inject(method = "clientTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V"))
-    private void odyssey$replaceSpawnerClientParticles(Level level, BlockPos blockPos, CallbackInfo ci) {
+    private void odyssey$replaceSpawnerClientParticles(Level level, BlockPos blockPos, CallbackInfo info) {
 
         RandomSource randomSource = level.getRandom();
 
@@ -43,7 +43,7 @@ public class BaseSpawnerMixin {
     }
 
     @Redirect(method = "serverTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/level/ServerLevel;levelEvent(ILnet/minecraft/core/BlockPos;I)V"))
-    private void odyssey$replaceSpawnerServerParticles(ServerLevel serverLevel, int levelEvent, BlockPos blockPos, int i) {
+    private void odyssey$replaceSpawnerServerParticles(ServerLevel serverLevel, int levelEvent, BlockPos blockPos, int direction) {
         if (serverLevel.getBlockState(blockPos).getValue(BlockStateProperties.WATERLOGGED)) {
 
             RandomSource randomSource = serverLevel.getRandom();

@@ -60,19 +60,19 @@ public abstract class SlimeMixin extends Mob {
     }
 
     @Inject(at = @At("HEAD"), method = "defineSynchedData")
-    private void odyssey_defineSlimeNBT(CallbackInfo ci) {
+    private void odyssey_defineSlimeNBT(CallbackInfo info) {
         this.getEntityData().define(OdysseyRegistry.MAGMA_CUBE_CONVERSION, false);
         this.getEntityData().define(OdysseyRegistry.SLIME_CONVERSION, false);
     }
 
     @Inject(at = @At("HEAD"), method = "addAdditionalSaveData")
-    private void odyssey_addSlimeNBT(CompoundTag compoundTag, CallbackInfo ci) {
+    private void odyssey_addSlimeNBT(CompoundTag compoundTag, CallbackInfo info) {
         compoundTag.putInt(MAGMA_CONVERSION_TAG, this.isMagmaConverting() ? this.conversionTime : -1);
         compoundTag.putInt(SLIME_CONVERSION_TAG, this.isSlimeConverting() ? this.conversionTime : -1);
     }
 
     @Inject(at = @At("HEAD"), method = "readAdditionalSaveData")
-    private void odyssey_readSlimeNBT(CompoundTag compoundTag, CallbackInfo ci) {
+    private void odyssey_readSlimeNBT(CompoundTag compoundTag, CallbackInfo info) {
         if (Odyssey.getConfig().entities.hostileMobsConfig.slime_and_magma_cube_converting) {
             if (compoundTag.contains(MAGMA_CONVERSION_TAG, 99) && compoundTag.getInt(MAGMA_CONVERSION_TAG) > -1) {
                 this.startMagmaConversion(compoundTag.getInt(MAGMA_CONVERSION_TAG));
@@ -87,7 +87,7 @@ public abstract class SlimeMixin extends Mob {
     // region Slime and Magma Cube Converting
 
     @Inject(at = @At("RETURN"), method = "tick")
-    private void odyssey_tickSlimeConversion(CallbackInfo ci) {
+    private void odyssey_tickSlimeConversion(CallbackInfo info) {
 
         if (!this.level().isClientSide() && this.isAlive() && Odyssey.getConfig().entities.hostileMobsConfig.slime_and_magma_cube_converting) {
 

@@ -17,11 +17,11 @@ public class BrushItemMixin extends Item {
     // Brushes can now be repaired using Feathers
 
     @Override
-    public boolean isValidRepairItem(ItemStack stack, ItemStack ingredient) {
+    public boolean isValidRepairItem(ItemStack itemStack, ItemStack ingredient) {
         if (Odyssey.getConfig().items.more_repairable_items) {
             return ingredient.is(Items.FEATHER);
         } else {
-            return super.isValidRepairItem(stack, ingredient);
+            return super.isValidRepairItem(itemStack, ingredient);
         }
     }
 }

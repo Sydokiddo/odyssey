@@ -46,11 +46,11 @@ public class ShieldItemMixin {
     }
 
     @Inject(method = "appendHoverText", at = @At("HEAD"), cancellable = true)
-    private void odyssey$addShieldTooltip(ItemStack itemStack, Level level, List<Component> tooltip, TooltipFlag tooltipFlag, CallbackInfo ci) {
+    private void odyssey$addShieldTooltip(ItemStack itemStack, Level level, List<Component> tooltip, TooltipFlag tooltipFlag, CallbackInfo info) {
 
         CompoundTag compoundTag = BlockItem.getBlockEntityData(itemStack);
 
-        ci.cancel();
+        info.cancel();
         OdysseyRegistry.addItemDurabilityTooltip(itemStack, tooltip, tooltipFlag);
 
         if (compoundTag != null && compoundTag.contains("Patterns")) {

@@ -34,9 +34,9 @@ public abstract class ArmorStandInteractionMixin extends LivingEntity {
     // Armor Stands can be right-clicked with a Stick to add arms to it
 
     @Inject(at = @At("HEAD"), method = "interactAt", cancellable = true)
-    private void odyssey$addArmsToArmorStand(final Player player, final Vec3 vec3d, final InteractionHand hand, final CallbackInfoReturnable<InteractionResult> cir) {
+    private void odyssey$addArmsToArmorStand(final Player player, final Vec3 vec3d, final InteractionHand interactionHand, final CallbackInfoReturnable<InteractionResult> cir) {
 
-        ItemStack itemInHand = player.getItemInHand(hand);
+        ItemStack itemInHand = player.getItemInHand(interactionHand);
 
         if (!this.isShowArms() && !this.isMarker() && itemInHand.is(ModTags.GIVES_ARMOR_STANDS_ARMS) && Odyssey.getConfig().entities.miscEntitiesConfig.armor_stand_arms) {
 

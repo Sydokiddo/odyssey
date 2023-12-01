@@ -24,7 +24,7 @@ public abstract class VexMixin extends Monster implements TraceableEntity {
     // Vexes die alongside the Evoker that initially summoned them
 
     @Inject(at = @At("HEAD"), method = "tick()V")
-    private void odyssey$killVexesOnEvokerDeath(CallbackInfo ci) {
+    private void odyssey$killVexesOnEvokerDeath(CallbackInfo info) {
 
         Entity owner = this.getOwner();
 

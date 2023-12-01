@@ -16,13 +16,13 @@ public class EnchantmentMixin {
     @Shadow @Final public EnchantmentCategory category;
 
     @Inject(method = "canEnchant", at = @At("HEAD"), cancellable = true)
-    private void odyssey$allowEnchantmentsOnSpecificItems(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
+    private void odyssey$allowEnchantmentsOnSpecificItems(ItemStack itemStack, CallbackInfoReturnable<Boolean> cir) {
 
         Enchantment enchantment = (Enchantment) (Object) this;
 
         // Shears can now be enchanted with Silk Touch
 
-        if ((enchantment instanceof UntouchingEnchantment || enchantment == Enchantments.BLOCK_FORTUNE) && Odyssey.getConfig().items.silk_touch_and_fortune_on_shears && stack.getItem() instanceof ShearsItem) {
+        if ((enchantment instanceof UntouchingEnchantment || enchantment == Enchantments.BLOCK_FORTUNE) && Odyssey.getConfig().items.silk_touch_and_fortune_on_shears && itemStack.getItem() instanceof ShearsItem) {
             cir.setReturnValue(true);
         }
     }

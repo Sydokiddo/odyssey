@@ -110,10 +110,10 @@ public class OdysseyRegistry {
         }
     }
 
-    public static void doSaddleRemovingEvents(LivingEntity livingEntity, Player player, InteractionHand hand) {
+    public static void doSaddleRemovingEvents(LivingEntity livingEntity, Player player, InteractionHand interactionHand) {
 
         livingEntity.level().playSound(null, livingEntity, ModSoundEvents.SADDLE_UNEQUIP, SoundSource.NEUTRAL, 1.0F, 1.0F);
-        player.setItemInHand(hand, Items.SADDLE.getDefaultInstance());
+        player.setItemInHand(interactionHand, Items.SADDLE.getDefaultInstance());
 
         if (Chrysalis.IS_DEBUG && livingEntity instanceof Saddleable saddleable && saddleable.isSaddled()) {
             Odyssey.LOGGER.info("Saddle has been successfully removed from {} by {}", livingEntity.getName().getString(), player.getName().getString());

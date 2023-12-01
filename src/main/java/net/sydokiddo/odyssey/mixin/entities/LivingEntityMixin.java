@@ -20,12 +20,12 @@ import java.util.Objects;
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity {
 
-    @Shadow public abstract boolean hasEffect(MobEffect effect);
+    @Shadow public abstract boolean hasEffect(MobEffect mobEffect);
     @Shadow public abstract CombatTracker getCombatTracker();
     @Shadow protected boolean dead;
 
-    private LivingEntityMixin(EntityType<?> variant, Level world) {
-        super(variant, world);
+    private LivingEntityMixin(EntityType<?> entityType, Level level) {
+        super(entityType, level);
     }
 
     // Entities with the Fire Resistance status effect will not render the fire overlay
@@ -41,7 +41,7 @@ public abstract class LivingEntityMixin extends Entity {
     // Displays a death message to the chat if a named mob dies
 
     @Inject(method = "die", at = @At("HEAD"))
-    private void odyssey$displayMobDeathMessage(DamageSource damageSource, CallbackInfo ci) {
+    private void odyssey$displayMobDeathMessage(DamageSource damageSource, CallbackInfo info) {
         if (!this.isRemoved() && !this.dead && !this.level().isClientSide && this.level().getGameRules().getBoolean(GameRules.RULE_SHOWDEATHMESSAGES) && this.hasCustomName() && Odyssey.getConfig().entities.miscEntitiesConfig.named_mob_death_messages) {
             Objects.requireNonNull(this.level().getServer()).getPlayerList().broadcastSystemMessage(this.getCombatTracker().getDeathMessage(), false);
         }

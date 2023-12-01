@@ -14,7 +14,6 @@ import net.minecraft.world.level.block.LayeredCauldronBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.sydokiddo.odyssey.registry.entities.block_entities.PotionCauldronBlockEntity;
 import net.sydokiddo.odyssey.registry.entities.registry.ModEntities;
@@ -26,8 +25,8 @@ public class PotionCauldronBlock extends LayeredCauldronBlock implements EntityB
 
     public Potion potion;
 
-    public PotionCauldronBlock(BlockBehaviour.Properties settings, Map<Item, CauldronInteraction> map) {
-        super(settings, predicate -> predicate == Biome.Precipitation.NONE, map);
+    public PotionCauldronBlock(Properties properties, Map<Item, CauldronInteraction> map) {
+        super(properties, predicate -> predicate == Biome.Precipitation.NONE, map);
     }
 
     // region Initialization

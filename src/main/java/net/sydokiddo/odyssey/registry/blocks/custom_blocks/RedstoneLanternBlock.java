@@ -43,7 +43,7 @@ public class RedstoneLanternBlock extends LanternBlock {
 
     @SuppressWarnings("deprecation")
     @Override
-    public void onPlace(BlockState blockState, Level level, BlockPos blockPos, BlockState neighborState, boolean bl) {
+    public void onPlace(BlockState blockState, Level level, BlockPos blockPos, BlockState adjacentBlockState, boolean bl) {
         for (Direction direction : Direction.values()) {
             level.updateNeighborsAt(blockPos.relative(direction), this);
         }
@@ -51,7 +51,7 @@ public class RedstoneLanternBlock extends LanternBlock {
 
     @SuppressWarnings("deprecation")
     @Override
-    public void onRemove(BlockState blockState, Level level, BlockPos blockPos, BlockState neighborState, boolean moved) {
+    public void onRemove(BlockState blockState, Level level, BlockPos blockPos, BlockState adjacentBlockState, boolean moved) {
         if (!moved) {
             for (Direction direction : Direction.values()) {
                 level.updateNeighborsAt(blockPos.relative(direction), this);
@@ -77,7 +77,7 @@ public class RedstoneLanternBlock extends LanternBlock {
 
     @SuppressWarnings("deprecation")
     @Override
-    public @NotNull InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+    public @NotNull InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
 
         if (blockState.getValue(LIT)) {
             turnOffLantern(level, blockPos, blockState);
@@ -128,15 +128,15 @@ public class RedstoneLanternBlock extends LanternBlock {
     // region Particles
 
     @Override
-    public void animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource random) {
+    public void animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource randomSource) {
         if (blockState.getValue(LIT)) {
 
-            Direction direction = Direction.getRandom(random);
+            Direction direction = Direction.getRandom(randomSource);
 
             if (direction != Direction.UP) {
-                double d = direction.getStepX() == 0 ? random.nextDouble() : 0.3D + (double) direction.getStepX() * 0.1D;
-                double e = direction.getStepY() == 0 ? random.nextDouble() : 0.3D + (double) direction.getStepY() * 0.1D;
-                double f = direction.getStepZ() == 0 ? random.nextDouble() : 0.3D + (double) direction.getStepZ() * 0.1D;
+                double d = direction.getStepX() == 0 ? randomSource.nextDouble() : 0.3D + (double) direction.getStepX() * 0.1D;
+                double e = direction.getStepY() == 0 ? randomSource.nextDouble() : 0.3D + (double) direction.getStepY() * 0.1D;
+                double f = direction.getStepZ() == 0 ? randomSource.nextDouble() : 0.3D + (double) direction.getStepZ() * 0.1D;
                 level.addParticle(DustParticleOptions.REDSTONE, (double) blockPos.getX() + d, (double) blockPos.getY() + e, (double) blockPos.getZ() + f, 0.0D, 0.0D, 0.0D);
             }
         }

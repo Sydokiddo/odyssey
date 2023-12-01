@@ -44,17 +44,17 @@ public abstract class ItemFrameMixin extends HangingEntity {
     @Unique private static final String WAXED_TAG = "Waxed";
 
     @Inject(at = @At("HEAD"), method = "defineSynchedData")
-    private void odyssey$defineItemFrameNBT(CallbackInfo ci) {
+    private void odyssey$defineItemFrameNBT(CallbackInfo info) {
         this.getEntityData().define(OdysseyRegistry.WAXED, false);
     }
 
     @Inject(at = @At("HEAD"), method = "addAdditionalSaveData")
-    private void odyssey$addItemFrameNBT(CompoundTag compoundTag, CallbackInfo ci) {
+    private void odyssey$addItemFrameNBT(CompoundTag compoundTag, CallbackInfo info) {
         compoundTag.putBoolean(WAXED_TAG, this.isWaxed());
     }
 
     @Inject(at = @At("HEAD"), method = "readAdditionalSaveData")
-    private void odyssey$readItemFrameNBT(CompoundTag compoundTag, CallbackInfo ci) {
+    private void odyssey$readItemFrameNBT(CompoundTag compoundTag, CallbackInfo info) {
         this.setWaxed(compoundTag.getBoolean(WAXED_TAG));
     }
 
@@ -131,7 +131,7 @@ public abstract class ItemFrameMixin extends HangingEntity {
     }
 
     @Inject(method = "hurt", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/decoration/ItemFrame;gameEvent(Lnet/minecraft/world/level/gameevent/GameEvent;Lnet/minecraft/world/entity/Entity;)V"))
-    private void odyssey$makeItemFrameVisibleUponRemovingItem(DamageSource damageSource, float f, CallbackInfoReturnable<Boolean> cir) {
+    private void odyssey$makeItemFrameVisibleUponRemovingItem(DamageSource damageSource, float damageAmount, CallbackInfoReturnable<Boolean> cir) {
 
         // Makes the item frame visible again if it is invisible without an item in it
 
@@ -179,7 +179,7 @@ public abstract class ItemFrameMixin extends HangingEntity {
     }
 
     @Redirect(method = "interact", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/decoration/ItemFrame;playSound(Lnet/minecraft/sounds/SoundEvent;FF)V"))
-    private void odyssey$playSeparateInteractionSoundWhenWaxed(ItemFrame instance, SoundEvent soundEvent, float volume, float pitch) {
+    private void odyssey$playSeparateInteractionSoundWhenWaxed(ItemFrame itemFrame, SoundEvent soundEvent, float volume, float pitch) {
 
         SoundEvent interactionSound;
 

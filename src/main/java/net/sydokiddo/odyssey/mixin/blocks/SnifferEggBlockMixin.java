@@ -26,14 +26,14 @@ public class SnifferEggBlockMixin extends Block {
     // Placing Sniffer Eggs on Magma Blocks will prevent them from hatching
 
     @Inject(at = @At("HEAD"), method = "tick", cancellable = true)
-    private void odyssey$preventSnifferEggTicking(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource, CallbackInfo ci) {
+    private void odyssey$preventSnifferEggTicking(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource, CallbackInfo info) {
         if (preventsHatching(serverLevel, blockPos)) {
-            ci.cancel();
+            info.cancel();
         }
     }
 
     @Inject(at = @At("RETURN"), method = "onPlace")
-    private void odyssey$displayParticlesWhenSnifferEggCannotHatch(BlockState blockState, Level level, BlockPos blockPos, BlockState blockState2, boolean bl, CallbackInfo ci) {
+    private void odyssey$displayParticlesWhenSnifferEggCannotHatch(BlockState blockState, Level level, BlockPos blockPos, BlockState adjacentBlockState, boolean bl, CallbackInfo info) {
         if (!level.isClientSide() && preventsHatching(level, blockPos)) {
             level.levelEvent(1501, blockPos, 0);
         }

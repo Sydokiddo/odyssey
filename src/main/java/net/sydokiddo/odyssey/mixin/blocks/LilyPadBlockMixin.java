@@ -24,8 +24,8 @@ public abstract class LilyPadBlockMixin implements BonemealableBlock {
     @Shadow protected abstract boolean mayPlaceOn(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos);
 
     @Unique
-    private boolean canGrowTo(BlockPos pos, BlockGetter world) {
-        return this.mayPlaceOn(world.getBlockState(pos.below()), world, pos.below()) && world.getBlockState(pos).isAir();
+    private boolean canGrowTo(BlockPos blockPos, BlockGetter blockGetter) {
+        return this.mayPlaceOn(blockGetter.getBlockState(blockPos.below()), blockGetter, blockPos.below()) && blockGetter.getBlockState(blockPos).isAir();
     }
 
     @Override
@@ -39,7 +39,7 @@ public abstract class LilyPadBlockMixin implements BonemealableBlock {
     }
 
     @Override
-    public void performBonemeal(@NotNull ServerLevel level, @NotNull RandomSource random, @NotNull BlockPos blockPos, @NotNull BlockState blockState) {
+    public void performBonemeal(@NotNull ServerLevel serverLevel, @NotNull RandomSource randomSource, @NotNull BlockPos blockPos, @NotNull BlockState blockState) {
 
         if (Odyssey.getConfig().blocks.boneMealingConfig.lily_pad_bone_mealing) {
 
@@ -50,15 +50,15 @@ public abstract class LilyPadBlockMixin implements BonemealableBlock {
                 BlockPos growPos = blockPos;
 
                 for (int j = 0; j < i / 16; ++j) {
-                    growPos = growPos.offset(random.nextInt(3) - 1, 0, random.nextInt(3) - 1);
-                    if (level.getBlockState(growPos).isCollisionShapeFullBlock(level, growPos)) {
+                    growPos = growPos.offset(randomSource.nextInt(3) - 1, 0, randomSource.nextInt(3) - 1);
+                    if (serverLevel.getBlockState(growPos).isCollisionShapeFullBlock(serverLevel, growPos)) {
                         continue stopGrowth;
                     }
                 }
 
-                if (this.canGrowTo(growPos, level)) {
-                    level.setBlockAndUpdate(growPos, Blocks.LILY_PAD.defaultBlockState());
-                    blockState.tick(level, growPos, random);
+                if (this.canGrowTo(growPos, serverLevel)) {
+                    serverLevel.setBlockAndUpdate(growPos, Blocks.LILY_PAD.defaultBlockState());
+                    blockState.tick(serverLevel, growPos, randomSource);
                 }
             }
         }

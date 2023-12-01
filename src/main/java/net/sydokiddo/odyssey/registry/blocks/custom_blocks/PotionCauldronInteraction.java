@@ -144,9 +144,9 @@ public class PotionCauldronInteraction {
         CauldronInteraction.addDefaultInteractions(POTION_CAULDRON_BEHAVIOR);
     }
 
-    private static void doCauldronConsumeInteraction(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand hand, ItemStack startingItem, ItemStack resultItem) {
+    private static void doCauldronConsumeInteraction(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, ItemStack startingItem, ItemStack resultItem) {
 
-        player.setItemInHand(hand, resultItem);
+        player.setItemInHand(interactionHand, resultItem);
 
         player.awardStat(Stats.USE_CAULDRON);
         player.awardStat(Stats.ITEM_USED.get(resultItem.getItem()));

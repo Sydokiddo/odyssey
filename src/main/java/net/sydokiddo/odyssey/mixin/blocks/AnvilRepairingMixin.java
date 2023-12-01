@@ -30,9 +30,9 @@ public class AnvilRepairingMixin {
     // Anvils can be repaired by right-clicking on them with any items in the repairs_anvils tag
 
     @Inject(at = @At("HEAD"), method = "use", cancellable = true)
-    private void odyssey$anvilRepairing(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult hit, CallbackInfoReturnable<InteractionResult> cir) {
+    private void odyssey$anvilRepairing(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult, CallbackInfoReturnable<InteractionResult> cir) {
 
-        ItemStack itemInHand = player.getItemInHand(hand);
+        ItemStack itemInHand = player.getItemInHand(interactionHand);
 
         if (!level.isClientSide() && itemInHand.is(ModTags.REPAIRS_ANVILS) && Odyssey.getConfig().blocks.qualityOfLifeBlockConfig.anvil_repairing && blockState.getBlock() != Blocks.ANVIL) {
 

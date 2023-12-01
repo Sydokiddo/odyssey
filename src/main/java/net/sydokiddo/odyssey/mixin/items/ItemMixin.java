@@ -28,7 +28,7 @@ public class ItemMixin {
     @Unique private static final int FIREPROOF_COLOR = Color.decode("#766A76").getRGB();
 
     @Inject(method = "appendHoverText", at = @At("HEAD"))
-    private void odyssey$addItemTooltipsBeforeEnchantments(ItemStack itemStack, Level level, List<Component> tooltip, TooltipFlag tooltipFlag, CallbackInfo ci) {
+    private void odyssey$addItemTooltipsBeforeEnchantments(ItemStack itemStack, Level level, List<Component> tooltip, TooltipFlag tooltipFlag, CallbackInfo info) {
 
         OdysseyRegistry.addItemDurabilityTooltip(itemStack, tooltip, tooltipFlag);
 

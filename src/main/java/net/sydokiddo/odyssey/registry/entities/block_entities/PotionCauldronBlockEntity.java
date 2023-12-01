@@ -24,8 +24,8 @@ public class PotionCauldronBlockEntity extends BlockEntity {
     public Potion potion = ModBlocks.POTION_CAULDRON_STATE.potion;
     private final String potionString = "Potion";
 
-    public PotionCauldronBlockEntity(BlockPos pos, BlockState state) {
-        super(ModEntities.POTION_CAULDRON, pos, state);
+    public PotionCauldronBlockEntity(BlockPos blockPos, BlockState blockState) {
+        super(ModEntities.POTION_CAULDRON, blockPos, blockState);
     }
 
     // region NBT

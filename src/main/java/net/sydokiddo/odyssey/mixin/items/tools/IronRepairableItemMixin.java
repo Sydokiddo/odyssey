@@ -14,11 +14,11 @@ public class IronRepairableItemMixin extends Item implements Vanishable {
     // Shears and Flint and Steel can now be repaired using Iron Ingots
 
     @Override
-    public boolean isValidRepairItem(ItemStack stack, ItemStack ingredient) {
+    public boolean isValidRepairItem(ItemStack itemStack, ItemStack ingredient) {
         if (Odyssey.getConfig().items.more_repairable_items) {
             return ingredient.is(Items.IRON_INGOT);
         } else {
-            return super.isValidRepairItem(stack, ingredient);
+            return super.isValidRepairItem(itemStack, ingredient);
         }
     }
 }

@@ -14,11 +14,11 @@ public class StringRepairableItemMixin extends Item {
     // Bows and Crossbows can now be repaired using String
 
     @Override
-    public boolean isValidRepairItem(ItemStack stack, ItemStack ingredient) {
+    public boolean isValidRepairItem(ItemStack itemStack, ItemStack ingredient) {
         if (Odyssey.getConfig().items.more_repairable_items) {
             return ingredient.is(Items.STRING);
         } else {
-            return super.isValidRepairItem(stack, ingredient);
+            return super.isValidRepairItem(itemStack, ingredient);
         }
     }
 }

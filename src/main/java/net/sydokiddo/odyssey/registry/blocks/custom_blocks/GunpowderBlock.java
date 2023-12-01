@@ -30,9 +30,9 @@ public class GunpowderBlock extends FallingBlock {
     // region Block Interactions
 
     @Override
-    public void onPlace(BlockState blockState, Level level, BlockPos blockPos, BlockState neighborState, boolean bl) {
+    public void onPlace(BlockState blockState, Level level, BlockPos blockPos, BlockState adjacentBlockState, boolean bl) {
 
-        super.onPlace(blockState, level, blockPos, neighborState, bl);
+        super.onPlace(blockState, level, blockPos, adjacentBlockState, bl);
 
         for (Direction direction : Direction.values()) {
             if (level.getBlockState(blockPos.relative(direction)).getBlock() instanceof BaseFireBlock) {
@@ -54,9 +54,9 @@ public class GunpowderBlock extends FallingBlock {
 
     @SuppressWarnings("deprecation")
     @Override
-    public void onProjectileHit(Level level, BlockState state, BlockHitResult hitResult, Projectile projectile) {
+    public void onProjectileHit(Level level, BlockState blockState, BlockHitResult blockHitResult, Projectile projectile) {
         if (!level.isClientSide() && projectile.isOnFire()) {
-            explode(level,  hitResult.getBlockPos());
+            explode(level, blockHitResult.getBlockPos());
         }
     }
 
@@ -102,20 +102,20 @@ public class GunpowderBlock extends FallingBlock {
         }
     }
 
-    private static void explode(Level level, BlockPos pos, LivingEntity livingEntity) {
+    private static void explode(Level level, BlockPos blockPos, LivingEntity livingEntity) {
 
-        level.removeBlock(pos, false);
+        level.removeBlock(blockPos, false);
 
         if (!level.isClientSide()) {
 
             GunpowderBlockEntity gunpowderBlock = ModEntities.GUNPOWDER_BLOCK.create(level);
 
             assert gunpowderBlock != null;
-            gunpowderBlock.setPos(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
+            gunpowderBlock.setPos(blockPos.getX() + 0.5, blockPos.getY(), blockPos.getZ() + 0.5);
             gunpowderBlock.owner = livingEntity;
 
             level.addFreshEntity(gunpowderBlock);
-            level.setBlock(pos, Blocks.AIR.defaultBlockState(), 11);
+            level.setBlock(blockPos, Blocks.AIR.defaultBlockState(), 11);
         }
     }
 

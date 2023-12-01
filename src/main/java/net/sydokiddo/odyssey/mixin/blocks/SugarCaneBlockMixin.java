@@ -41,12 +41,12 @@ public class SugarCaneBlockMixin extends Block implements SimpleWaterloggedBlock
     // region Block State Initialization
 
     @Inject(method = "<init>", at = @At("RETURN"))
-    private void odyssey$registerSugarCaneDefaultBlockStates(Properties properties, CallbackInfo ci) {
+    private void odyssey$registerSugarCaneDefaultBlockStates(Properties properties, CallbackInfo info) {
         this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0).setValue(WATERLOGGED, false));
     }
 
     @Inject(method = "createBlockStateDefinition", at = @At("HEAD"))
-    private void odyssey$createSugarCaneBlockStates(StateDefinition.Builder<Block, BlockState> builder, CallbackInfo ci) {
+    private void odyssey$createSugarCaneBlockStates(StateDefinition.Builder<Block, BlockState> builder, CallbackInfo info) {
         builder.add(WATERLOGGED);
     }
 
