@@ -24,8 +24,8 @@ public class ModBrushableBlockRenderer implements BlockEntityRenderer<ModBrushab
 
     private final ItemRenderer itemRenderer;
 
-    public ModBrushableBlockRenderer(BlockEntityRendererProvider.Context ctx) {
-        this.itemRenderer = ctx.getItemRenderer();
+    public ModBrushableBlockRenderer(BlockEntityRendererProvider.Context context) {
+        this.itemRenderer = context.getItemRenderer();
     }
 
     // region Rendering
