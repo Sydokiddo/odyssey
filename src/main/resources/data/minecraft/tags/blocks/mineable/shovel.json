@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "odyssey:gunpowder_block",
-    "minecraft:powder_snow"
+    "minecraft:powder_snow",
+    "odyssey:gunpowder_block"
   ]
 }

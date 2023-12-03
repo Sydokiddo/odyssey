@@ -37,6 +37,9 @@ public class ModConfig implements ConfigData {
 
         @ConfigEntry.Gui.Tooltip
         public boolean improved_turtle_helmets = true;
+
+        @ConfigEntry.Gui.Tooltip
+        public boolean improved_riptide = true;
     }
 
     // endregion

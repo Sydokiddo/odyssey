@@ -270,6 +270,8 @@
   "text.autoconfig.odyssey.option.items.silk_touch_and_fortune_on_shears.@Tooltip": "Shears can now be enchanted with Silk Touch and Fortune",
   "text.autoconfig.odyssey.option.items.improved_turtle_helmets": "Improved Turtle Helmets",
   "text.autoconfig.odyssey.option.items.improved_turtle_helmets.@Tooltip": "Turtle Helmets now give Water Breathing for 30 seconds instead of 10 seconds",
+  "text.autoconfig.odyssey.option.items.improved_riptide": "Improved Riptide",
+  "text.autoconfig.odyssey.option.items.improved_riptide.@Tooltip": "Fixes a vanilla bug that causes the speed of Riptide to be decreased when paired with Depth Strider, and allows for Riptide to be used while in a Water Cauldron",
 
   "text.autoconfig.odyssey.option.blocks": "Blocks",
 

@@ -25,6 +25,7 @@
     "blocks.SporeBlossomMixin",
     "blocks.SugarCaneBlockMixin",
     "entities.CreeperMixin",
+    "entities.EntityMixin",
     "entities.FrogMixin",
     "entities.GuardianMixin",
     "entities.ItemFrameMixin",
@@ -57,7 +58,8 @@
     "items.tools.StringRepairableItemMixin",
     "items.tools.TridentItemMixin",
     "misc.ArmorStandInteractionMixin",
-    "misc.BaseSpawnerMixin"
+    "misc.BaseSpawnerMixin",
+    "misc.EnchantmentHelperMixin"
   ],
   "client": [
     "client.GUIMixin",
