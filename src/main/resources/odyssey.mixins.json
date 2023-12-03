@@ -28,6 +28,7 @@
     "entities.EntityMixin",
     "entities.FrogMixin",
     "entities.GuardianMixin",
+    "entities.HorseMixin",
     "entities.ItemFrameMixin",
     "entities.LivingEntityMixin",
     "entities.MobBrushingOverridesMixin",
