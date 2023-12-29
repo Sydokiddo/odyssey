@@ -21,8 +21,6 @@ import org.jetbrains.annotations.NotNull;
 
 public class ApplySlimeballToPistonDispenserBehavior implements DispenseItemBehavior {
 
-    public static final ApplySlimeballToPistonDispenserBehavior INSTANCE = new ApplySlimeballToPistonDispenserBehavior();
-
     @Override
     public @NotNull ItemStack dispense(BlockSource blockSource, ItemStack itemStack) {
 

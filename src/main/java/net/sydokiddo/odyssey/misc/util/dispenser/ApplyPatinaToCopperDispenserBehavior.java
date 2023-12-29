@@ -20,8 +20,6 @@ import java.util.Optional;
 
 public class ApplyPatinaToCopperDispenserBehavior implements DispenseItemBehavior {
 
-    public static final ApplyPatinaToCopperDispenserBehavior INSTANCE = new ApplyPatinaToCopperDispenserBehavior();
-
     @Override
     public @NotNull ItemStack dispense(BlockSource blockSource, ItemStack itemStack) {
 

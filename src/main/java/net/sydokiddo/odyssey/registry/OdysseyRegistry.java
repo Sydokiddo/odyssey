@@ -28,10 +28,13 @@ import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.DispenserBlock;
 import net.sydokiddo.chrysalis.Chrysalis;
 import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.misc.util.ShowcaseCommand;
+import net.sydokiddo.odyssey.misc.util.dispenser.ApplyPatinaToCopperDispenserBehavior;
+import net.sydokiddo.odyssey.misc.util.dispenser.ApplySlimeballToPistonDispenserBehavior;
 import net.sydokiddo.odyssey.registry.blocks.ModBlocks;
 import net.sydokiddo.odyssey.registry.blocks.custom_blocks.PotionCauldronInteraction;
 import net.sydokiddo.odyssey.registry.entities.registry.ModEntities;
@@ -184,6 +187,16 @@ public class OdysseyRegistry {
 
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.GUNPOWDER_BLOCK, 15, 100);
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.SUGAR_CANE_BLOCK, 30, 60);
+
+        // endregion
+
+        // region Dispenser Methods
+
+        DispenserBlock.registerBehavior(ModItems.PATINA, new ApplyPatinaToCopperDispenserBehavior());
+
+        if (Odyssey.getConfig().blocks.qualityOfLifeBlockConfig.piston_interactions) {
+            DispenserBlock.registerBehavior(Items.SLIME_BALL, new ApplySlimeballToPistonDispenserBehavior());
+        }
 
         // endregion
 
