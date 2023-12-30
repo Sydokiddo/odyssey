@@ -32,7 +32,7 @@ import java.util.Objects;
 @Mixin(FlowerPotBlock.class)
 public abstract class FlowerPotBlockMixin extends Block implements SimpleWaterloggedBlock {
 
-    @Shadow public abstract Block getContent();
+    @Shadow public abstract Block getPotted();
     @Unique private static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
     private FlowerPotBlockMixin(Properties properties) {
@@ -62,7 +62,7 @@ public abstract class FlowerPotBlockMixin extends Block implements SimpleWaterlo
     private void odyssey$updateShapeForFlowerPots(BlockState blockState, Direction direction, BlockState blockState2, LevelAccessor levelAccessor, BlockPos blockPos, BlockPos blockPos2, CallbackInfoReturnable<BlockState> cir) {
         if (blockState.getValue(WATERLOGGED)) {
             if (!blockState.is(ModTags.UNDERWATER_FLOWER_POTS) && !blockState.is(Blocks.FLOWER_POT)) {
-                popResource((Level) levelAccessor, blockPos, new ItemStack(this.getContent()));
+                popResource((Level) levelAccessor, blockPos, new ItemStack(this.getPotted()));
                 levelAccessor.setBlock(blockPos, Blocks.FLOWER_POT.defaultBlockState(), 3);
             }
             levelAccessor.scheduleTick(blockPos, Fluids.WATER, Fluids.WATER.getTickDelay(levelAccessor));

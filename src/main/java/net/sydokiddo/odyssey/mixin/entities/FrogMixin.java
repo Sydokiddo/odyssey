@@ -15,7 +15,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.sydokiddo.chrysalis.misc.util.mobs.ContainerMob;
+import net.sydokiddo.chrysalis.misc.util.entities.ContainerMob;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.items.ModItems;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;

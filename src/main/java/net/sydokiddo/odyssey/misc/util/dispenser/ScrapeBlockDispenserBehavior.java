@@ -19,7 +19,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
 import net.sydokiddo.odyssey.Odyssey;
-import net.sydokiddo.odyssey.registry.OdysseyRegistry;
 import net.sydokiddo.odyssey.registry.items.ModItems;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
 import org.jetbrains.annotations.NotNull;
@@ -107,7 +106,7 @@ public class ScrapeBlockDispenserBehavior implements DispenseItemBehavior {
         }
 
         RegistryHelpers.playDispenserAnimation(blockSource, direction);
-        OdysseyRegistry.playDispenserFailSound(blockSource);
+        RegistryHelpers.playDispenserFailSound(blockSource);
         return itemStack;
     }
 }

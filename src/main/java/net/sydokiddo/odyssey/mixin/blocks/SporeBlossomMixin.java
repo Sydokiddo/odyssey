@@ -10,8 +10,8 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.SporeBlossomBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
 import net.sydokiddo.odyssey.Odyssey;
-import net.sydokiddo.odyssey.registry.OdysseyRegistry;
 import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(SporeBlossomBlock.class)
@@ -30,7 +30,7 @@ public class SporeBlossomMixin implements BonemealableBlock {
     @Override
     public void performBonemeal(ServerLevel serverLevel, RandomSource randomSource, BlockPos blockPos, BlockState blockState) {
         if (Odyssey.getConfig().blocks.boneMealingConfig.spore_blossom_bone_mealing) {
-            OdysseyRegistry.popResourceBelow(serverLevel, blockPos, new ItemStack(Items.SPORE_BLOSSOM), 0.0);
+            RegistryHelpers.popResourceBelow(serverLevel, blockPos, new ItemStack(Items.SPORE_BLOSSOM), 0.0);
         }
     }
 }

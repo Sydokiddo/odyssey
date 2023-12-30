@@ -7,6 +7,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
@@ -30,6 +31,10 @@ public class ModBlocks {
         .buttonClickOffSound(SoundEvents.EMPTY).buttonClickOnSound(ModSoundEvents.FRAGILE_BUTTON_CLICK_ON)
         .register(Odyssey.id("terracotta"));
 
+    public static final BlockSetType METAL_TYPE = BlockSetTypeBuilder.copyOf(BlockSetType.STONE)
+        .soundGroup(SoundType.METAL).buttonClickOffSound(ModSoundEvents.METAL_BUTTON_CLICK_OFF).buttonClickOnSound(ModSoundEvents.METAL_BUTTON_CLICK_ON)
+        .register(Odyssey.id("metal"));
+
     // Blocks
 
     public static final Block GUNPOWDER_BLOCK = registerBlock("gunpowder_block",
@@ -47,21 +52,21 @@ public class ModBlocks {
         new RedstoneLanternBlock(FabricBlockSettings.copyOf(Blocks.LANTERN).luminance(RegistryHelpers.blockStateShouldEmitLight(7))));
 
     public static final Block GOLDEN_BUTTON = registerBlock("golden_button",
-        new MetalButtonBlock(BlockBehaviour.Properties.of().noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY), BlockSetType.GOLD, 10, false));
+        new ButtonBlock(METAL_TYPE, 10, BlockBehaviour.Properties.of().noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY)));
 
     public static final Block IRON_BUTTON = registerBlock("iron_button",
-        new MetalButtonBlock(BlockBehaviour.Properties.of().noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY), BlockSetType.IRON, 40, false));
+        new ButtonBlock(METAL_TYPE, 40, BlockBehaviour.Properties.of().noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY)));
 
     public static final Block FRAGILE_BUTTON = registerBlock("fragile_button",
-        new FragileButtonBlock(BlockBehaviour.Properties.of().noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY), TERRACOTTA_TYPE, 20, false));
+        new FragileButtonBlock(TERRACOTTA_TYPE, 40, BlockBehaviour.Properties.of().noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY)));
 
     public static final Block FRAGILE_PRESSURE_PLATE = registerBlock("fragile_pressure_plate",
-        new FragilePressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.of().forceSolidOn().mapColor(MapColor.TERRACOTTA_RED)
-        .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY), TERRACOTTA_TYPE));
+        new FragilePressurePlateBlock(TERRACOTTA_TYPE, BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_RED).forceSolidOn().instrument(NoteBlockInstrument.BASEDRUM)
+        .requiresCorrectToolForDrops().noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY)));
 
     public static final Block SUSPICIOUS_RED_SAND = registerBlock("suspicious_red_sand",
-        new ModBrushableBlock(Blocks.RED_SAND, FabricBlockSettings.copyOf(Blocks.SUSPICIOUS_SAND)
-        .mapColor(MapColor.COLOR_ORANGE), SoundEvents.BRUSH_SAND, SoundEvents.BRUSH_SAND_COMPLETED));
+        new ModBrushableBlock(Blocks.RED_SAND, SoundEvents.BRUSH_SAND, SoundEvents.BRUSH_SAND_COMPLETED,
+        FabricBlockSettings.copyOf(Blocks.SUSPICIOUS_SAND).mapColor(MapColor.COLOR_ORANGE)));
 
     public static final Block TINTED_GLASS_PANE = registerBlock("tinted_glass_pane",
         new TintedGlassPaneBlock(FabricBlockSettings.copyOf(Blocks.GLASS_PANE).mapColor(MapColor.COLOR_GRAY).noOcclusion()
@@ -69,7 +74,7 @@ public class ModBlocks {
 
     // region Potion Cauldron
 
-    public static PotionCauldronBlock POTION_CAULDRON_STATE = new PotionCauldronBlock(FabricBlockSettings.copyOf(Blocks.CAULDRON), PotionCauldronInteraction.POTION_CAULDRON_BEHAVIOR);
+    public static PotionCauldronBlock POTION_CAULDRON_STATE = new PotionCauldronBlock(Biome.Precipitation.NONE, PotionCauldronInteraction.POTION_CAULDRON_BEHAVIOR, FabricBlockSettings.copyOf(Blocks.CAULDRON));
 
     public static final Block POTION_CAULDRON = registerBlockWithoutBlockItem("potion_cauldron", POTION_CAULDRON_STATE);
 
@@ -79,7 +84,7 @@ public class ModBlocks {
 
     public static final Block POLISHED_DEEPSLATE_BUTTON = registerBlock("polished_deepslate_button", RegistryHelpers.registerStoneButton(POLISHED_DEEPSLATE_TYPE));
 
-    public static final Block POLISHED_DEEPSLATE_PRESSURE_PLATE = registerBlock("polished_deepslate_pressure_plate", RegistryHelpers.registerStonePressurePlate(MapColor.DEEPSLATE, POLISHED_DEEPSLATE_TYPE));
+    public static final Block POLISHED_DEEPSLATE_PRESSURE_PLATE = registerBlock("polished_deepslate_pressure_plate", RegistryHelpers.registerStonePressurePlate(POLISHED_DEEPSLATE_TYPE, MapColor.DEEPSLATE));
 
     // endregion
 

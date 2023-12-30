@@ -12,9 +12,8 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.DecoratedPotBlock;
 import net.minecraft.world.level.levelgen.Heightmap;
-import net.sydokiddo.chrysalis.registry.ChrysalisRegistry;
+import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.items.ModItems;
 import org.jetbrains.annotations.Nullable;
@@ -48,17 +47,17 @@ public abstract class ItemStackMixin {
         if (!tooltipFlag.isAdvanced()) {
 
             if (itemStack.is(Items.CARROT_ON_A_STICK) && Odyssey.getConfig().items.tooltipConfig.carrots_on_a_stick) {
-                ChrysalisRegistry.addHoldingTooltip(cir.getReturnValue());
+                RegistryHelpers.addHoldingTooltip(cir.getReturnValue());
                 cir.getReturnValue().add(CommonComponents.space().append(Component.translatable("item.odyssey.carrot_on_a_stick.desc").withStyle(ChatFormatting.BLUE)));
             }
 
             if (itemStack.is(Items.WARPED_FUNGUS_ON_A_STICK) && Odyssey.getConfig().items.tooltipConfig.warped_fungus_on_a_stick) {
-                ChrysalisRegistry.addHoldingTooltip(cir.getReturnValue());
+                RegistryHelpers.addHoldingTooltip(cir.getReturnValue());
                 cir.getReturnValue().add(CommonComponents.space().append(Component.translatable("item.odyssey.warped_fungus_on_a_stick.desc").withStyle(ChatFormatting.BLUE)));
             }
 
             if (itemStack.is(Items.SHIELD) && Odyssey.getConfig().items.tooltipConfig.shields) {
-                ChrysalisRegistry.addUseTooltip(cir.getReturnValue());
+                RegistryHelpers.addUseTooltip(cir.getReturnValue());
                 cir.getReturnValue().add(CommonComponents.space().append(Component.translatable("item.odyssey.shield.desc").withStyle(ChatFormatting.BLUE)));
             }
 
@@ -91,11 +90,9 @@ public abstract class ItemStackMixin {
                             z = client.player.getBlockZ();
                         }
 
-                        ChrysalisRegistry.addCoordinatesTooltip(cir.getReturnValue(), x, y, z);
-                        if (!CompassItem.isLodestoneCompass(this.copy()))
-                            ChrysalisRegistry.addDirectionTooltip(cir.getReturnValue(), client);
-                        if (CompassItem.isLodestoneCompass(this.copy()))
-                            ChrysalisRegistry.addDimensionTooltip(cir.getReturnValue(), copy().getOrCreateTag().getString(CompassItem.TAG_LODESTONE_DIMENSION));
+                        RegistryHelpers.addCoordinatesTooltip(cir.getReturnValue(), x, y, z);
+                        if (!CompassItem.isLodestoneCompass(this.copy())) RegistryHelpers.addDirectionTooltip(cir.getReturnValue(), client);
+                        if (CompassItem.isLodestoneCompass(this.copy())) RegistryHelpers.addDimensionTooltip(cir.getReturnValue(), copy().getOrCreateTag().getString(CompassItem.TAG_LODESTONE_DIMENSION));
                     }
 
                     if (itemStack.is(Items.RECOVERY_COMPASS)) {
@@ -109,10 +106,10 @@ public abstract class ItemStackMixin {
                             int deathY = deathPos.pos().getY();
                             int deathZ = deathPos.pos().getZ();
 
-                            ChrysalisRegistry.addCoordinatesTooltip(cir.getReturnValue(), deathX, deathY, deathZ);
-                            ChrysalisRegistry.addDimensionTooltip(cir.getReturnValue(), client.player.getLastDeathLocation().get().dimension().location().toString());
+                            RegistryHelpers.addCoordinatesTooltip(cir.getReturnValue(), deathX, deathY, deathZ);
+                            RegistryHelpers.addDimensionTooltip(cir.getReturnValue(), client.player.getLastDeathLocation().get().dimension().location().toString());
                         } else {
-                            ChrysalisRegistry.addNullTooltip(cir.getReturnValue());
+                            RegistryHelpers.addNullTooltip(cir.getReturnValue());
                         }
                     }
                 }
@@ -217,9 +214,6 @@ public abstract class ItemStackMixin {
         }
         if (this.getItem() instanceof ArmorStandItem) {
             cir.setReturnValue(Odyssey.getConfig().items.itemStackSizeConfig.armor_stand_stack_size);
-        }
-        if (this.getItem() instanceof BlockItem item && item.getBlock() instanceof DecoratedPotBlock) {
-            cir.setReturnValue(64);
         }
         if (this.getItem() instanceof SnowballItem) {
             cir.setReturnValue(Odyssey.getConfig().items.itemStackSizeConfig.snowball_stack_size);

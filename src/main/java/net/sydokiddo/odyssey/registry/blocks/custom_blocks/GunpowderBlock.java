@@ -1,5 +1,6 @@
 package net.sydokiddo.odyssey.registry.blocks.custom_blocks;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.stats.Stats;
@@ -25,6 +26,11 @@ public class GunpowderBlock extends FallingBlock {
 
     public GunpowderBlock(Properties properties) {
         super(properties);
+    }
+
+    @Override
+    protected @NotNull MapCodec<? extends FallingBlock> codec() {
+        return simpleCodec(GunpowderBlock::new);
     }
 
     // region Block Interactions

@@ -1,23 +1,29 @@
 package net.sydokiddo.odyssey.registry.entities.non_living_entities;
 
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtUtils;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class GunpowderBlockEntity extends Entity implements TraceableEntity {
 
     private static final EntityDataAccessor<Integer> DATA_FUSE_ID = SynchedEntityData.defineId(GunpowderBlockEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<BlockState> DATA_BLOCK_STATE_ID = SynchedEntityData.defineId(GunpowderBlockEntity.class, EntityDataSerializers.BLOCK_STATE);
 
     @Nullable public LivingEntity owner;
-    private final String fuseString = "Fuse";
+    private final String fuseString = "fuse";
+    private final String blockStateString = "block_state";
 
     public GunpowderBlockEntity(EntityType<? extends GunpowderBlockEntity> entityType, Level level) {
         super(entityType, level);
+        this.blocksBuilding = true;
     }
 
     // region NBT
@@ -30,19 +36,33 @@ public class GunpowderBlockEntity extends Entity implements TraceableEntity {
     @Override
     protected void addAdditionalSaveData(CompoundTag compoundTag) {
         compoundTag.putShort(fuseString, (short) this.getFuse());
+        compoundTag.put(blockStateString, NbtUtils.writeBlockState(this.getBlockState()));
     }
 
     @Override
     protected void readAdditionalSaveData(CompoundTag compoundTag) {
+
         this.setFuse(compoundTag.getShort(fuseString));
+
+        if (compoundTag.contains(blockStateString, 10)) {
+            this.setBlockState(NbtUtils.readBlockState(this.level().holderLookup(Registries.BLOCK), compoundTag.getCompound(blockStateString)));
+        }
     }
 
     public int getFuse() {
         return this.entityData.get(DATA_FUSE_ID);
     }
 
-    private void setFuse(int i) {
-        this.entityData.set(DATA_FUSE_ID, i);
+    private void setFuse(int fuseTime) {
+        this.entityData.set(DATA_FUSE_ID, fuseTime);
+    }
+
+    public BlockState getBlockState() {
+        return this.entityData.get(DATA_BLOCK_STATE_ID);
+    }
+
+    public void setBlockState(BlockState blockState) {
+        this.entityData.set(DATA_BLOCK_STATE_ID, blockState);
     }
 
     // endregion
@@ -96,6 +116,22 @@ public class GunpowderBlockEntity extends Entity implements TraceableEntity {
     @Nullable @Override
     public Entity getOwner() {
         return this.owner;
+    }
+
+    @Override
+    protected float getEyeHeight(Pose pose, EntityDimensions entityDimensions) {
+        return 0.15F;
+    }
+
+    @Override
+    public void restoreFrom(Entity entity) {
+
+        super.restoreFrom(entity);
+
+        if (entity instanceof GunpowderBlockEntity gunpowderBlockEntity) {
+            this.owner = gunpowderBlockEntity.owner;
+        }
+
     }
 
     // endregion

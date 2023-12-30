@@ -21,8 +21,8 @@ public class FragileButtonBlock extends ButtonBlock {
 
     private static final BooleanProperty CRACKED = BlockStateProperties.CRACKED;
 
-    public FragileButtonBlock(Properties properties, BlockSetType blockSetType, int ticksToStayPressed, boolean arrowsCanPress) {
-        super(properties, blockSetType, ticksToStayPressed, arrowsCanPress);
+    public FragileButtonBlock(BlockSetType blockSetType, int ticksToStayPressed, Properties properties) {
+        super(blockSetType, ticksToStayPressed, properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(POWERED, false).setValue(FACE, AttachFace.WALL).setValue(CRACKED, false));
     }
 

@@ -1,9 +1,11 @@
 package net.sydokiddo.odyssey.mixin.blocks;
 
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.cauldron.CauldronInteraction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -19,6 +21,7 @@ import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.AbstractCauldronBlock;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -31,7 +34,11 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(AbstractCauldronBlock.class)
-public class AbstractCauldronBlockMixin {
+public abstract class AbstractCauldronBlockMixin extends Block {
+
+    private AbstractCauldronBlockMixin(Properties properties) {
+        super(properties);
+    }
 
     @Inject(at = @At("HEAD"), method = "use", cancellable = true)
     private void odyssey$addCauldronInteractions(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult, CallbackInfoReturnable<InteractionResult> cir) {
@@ -43,6 +50,10 @@ public class AbstractCauldronBlockMixin {
             level.playSound(null, blockPos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.5F, 2.6F + (level.getRandom().nextFloat() - level.getRandom().nextFloat()) * 0.8F);
 
             if (level instanceof ServerLevel serverLevel) {
+
+                if (player instanceof ServerPlayer serverPlayer) {
+                    CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, player.getItemInHand(interactionHand));
+                }
 
                 serverLevel.sendParticles(ParticleTypes.LARGE_SMOKE, blockPos.getX() + 0.5, blockPos.getY() + 0.6, blockPos.getZ() + 0.5, 8, 0.2, 0.2, 0.2, 0);
 
@@ -58,7 +69,7 @@ public class AbstractCauldronBlockMixin {
 
         // region Inserting Potions into Cauldrons
 
-        CauldronInteraction.EMPTY.put(Items.POTION, (cauldronState, world, pos, user, hand, stack) -> {
+        CauldronInteraction.EMPTY.map().put(Items.POTION, (cauldronState, world, pos, user, hand, stack) -> {
 
             if (!world.isClientSide()) {
 
@@ -71,6 +82,10 @@ public class AbstractCauldronBlockMixin {
                     world.setBlockAndUpdate(pos, potionCauldronBlock.defaultBlockState());
                 } else {
                     world.setBlockAndUpdate(pos, Blocks.WATER_CAULDRON.defaultBlockState());
+                }
+
+                if (player instanceof ServerPlayer serverPlayer) {
+                    CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, player.getItemInHand(interactionHand));
                 }
 
                 user.setItemInHand(hand, ItemUtils.createFilledResult(stack, user, new ItemStack(Items.GLASS_BOTTLE)));

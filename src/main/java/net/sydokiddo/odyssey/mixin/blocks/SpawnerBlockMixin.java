@@ -11,10 +11,7 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.BaseEntityBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SimpleWaterloggedBlock;
-import net.minecraft.world.level.block.SpawnerBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -83,7 +80,7 @@ public abstract class SpawnerBlockMixin extends BaseEntityBlock implements Simpl
         }
     }
 
-    @Inject(method = "appendHoverText", at = @At(value = "INVOKE", target = "Ljava/util/List;add(Ljava/lang/Object;)Z"), cancellable = true)
+    @Inject(method = "appendHoverText", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Spawner;appendHoverText(Lnet/minecraft/world/item/ItemStack;Ljava/util/List;Ljava/lang/String;)V"), cancellable = true)
     private void odyssey$hideSpawnerTooltipInSurvival(ItemStack itemStack, @Nullable BlockGetter blockGetter, List<Component> tooltip, TooltipFlag tooltipFlag, CallbackInfo info) {
         if (!tooltipFlag.isCreative()) {
             info.cancel();

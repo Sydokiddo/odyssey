@@ -9,7 +9,7 @@ import net.minecraft.world.effect.MobEffectUtil;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
-import net.sydokiddo.chrysalis.registry.ChrysalisRegistry;
+import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
 import net.sydokiddo.chrysalis.registry.misc.ChrysalisTags;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.OdysseyRegistry;
@@ -46,7 +46,7 @@ public class ItemMixin {
             if (itemStack.isEdible()) {
 
                 tooltip.add(Component.translatable(nutritionString, Objects.requireNonNull(itemStack.getItem().getFoodProperties()).getNutrition()).withStyle(ChatFormatting.BLUE));
-                tooltip.add(Component.translatable(saturationString, OdysseyRegistry.getFoodSaturation(itemStack)).withStyle(ChatFormatting.BLUE));
+                tooltip.add(Component.translatable(saturationString, RegistryHelpers.getFoodSaturation(itemStack)).withStyle(ChatFormatting.BLUE));
 
                 if (itemStack.getItem() instanceof SuspiciousStewItem && tooltipFlag.isCreative()) {
                     tooltip.add(CommonComponents.EMPTY);
@@ -56,40 +56,40 @@ public class ItemMixin {
 
         if ((itemStack.getItem().isFireResistant() || itemStack.is(ChrysalisTags.IMMUNE_TO_FIRE)) && Odyssey.getConfig().items.tooltipConfig.fireproof_items) {
             tooltip.add(Component.translatable("gui.odyssey.item.fireproof").withStyle(style -> style.withItalic(true).withColor(FIREPROOF_COLOR)));
-            OdysseyRegistry.addSpaceOnTooltipIfEnchantedOrTrimmed(itemStack, tooltip);
+            RegistryHelpers.addSpaceOnTooltipIfEnchantedOrTrimmed(itemStack, tooltip);
         }
 
         if (itemStack.getItem() instanceof HoneyBottleItem && Odyssey.getConfig().items.tooltipConfig.honey_bottles) {
-            ChrysalisRegistry.addDrinkTooltip(tooltip);
+            RegistryHelpers.addDrinkTooltip(tooltip);
             tooltip.add(CommonComponents.space().append(Component.translatable("item.odyssey.honey_bottle.desc").withStyle(ChatFormatting.BLUE)));
         }
 
         if (itemStack.getItem() instanceof MilkBucketItem && Odyssey.getConfig().items.tooltipConfig.milk_buckets) {
-            ChrysalisRegistry.addDrinkTooltip(tooltip);
+            RegistryHelpers.addDrinkTooltip(tooltip);
             tooltip.add(CommonComponents.space().append(Component.translatable("item.odyssey.milk_bucket.desc").withStyle(ChatFormatting.BLUE)));
         }
 
         if (itemStack.is(Items.TOTEM_OF_UNDYING) && Odyssey.getConfig().items.tooltipConfig.totems_of_undying) {
-            ChrysalisRegistry.addHoldingTooltip(tooltip);
+            RegistryHelpers.addHoldingTooltip(tooltip);
             tooltip.add(CommonComponents.space().append(Component.translatable("item.odyssey.totem_of_undying.desc").withStyle(ChatFormatting.BLUE)));
         }
 
         if (itemStack.is(Items.ENDER_EYE) && Odyssey.getConfig().items.tooltipConfig.eyes_of_ender) {
-            ChrysalisRegistry.addUseTooltip(tooltip);
+            RegistryHelpers.addUseTooltip(tooltip);
             tooltip.add(CommonComponents.space().append(Component.translatable("item.odyssey.ender_eye.desc").withStyle(ChatFormatting.BLUE)));
         }
 
         if (itemStack.getItem() instanceof SpawnEggItem && Odyssey.getConfig().items.tooltipConfig.spawn_eggs) {
-            ChrysalisRegistry.addUseTooltip(tooltip);
+            RegistryHelpers.addUseTooltip(tooltip);
             tooltip.add(CommonComponents.space().append(Component.translatable("item.odyssey.spawn_egg.desc").withStyle(ChatFormatting.BLUE)));
         }
 
         if (itemStack.is(Items.SPYGLASS) && Odyssey.getConfig().items.tooltipConfig.spyglasses) {
-            ChrysalisRegistry.addUseTooltip(tooltip);
+            RegistryHelpers.addUseTooltip(tooltip);
             tooltip.add(CommonComponents.space().append(Component.translatable("item.odyssey.spyglass.desc").withStyle(ChatFormatting.BLUE)));
         }
 
-        if (itemStack.is(Items.TURTLE_HELMET) && Odyssey.getConfig().items.tooltipConfig.turtle_helmets) {
+        if (itemStack.is(Items.TURTLE_HELMET) && Odyssey.getConfig().items.tooltipConfig.turtle_helmets && level != null) {
 
             int effectTime;
 
@@ -101,10 +101,10 @@ public class ItemMixin {
 
             MobEffectInstance waterBreathing = new MobEffectInstance(MobEffects.WATER_BREATHING, effectTime, 0, false, false, true);
 
-            if (!OdysseyRegistry.hasEnchantmentOrTrim(itemStack)) tooltip.add(CommonComponents.EMPTY);
+            if (!RegistryHelpers.hasEnchantmentOrTrim(itemStack)) tooltip.add(CommonComponents.EMPTY);
             tooltip.add(Component.translatable("gui.odyssey.item.turtle_helmet.when_entering_water").withStyle(ChatFormatting.GRAY));
-            tooltip.add(CommonComponents.space().append(Component.translatable("potion.withDuration", Component.translatable(waterBreathing.getDescriptionId()), MobEffectUtil.formatDuration(waterBreathing, 1.0F)).withStyle(ChatFormatting.BLUE)));
-            OdysseyRegistry.addSpaceOnTooltipIfEnchantedOrTrimmed(itemStack, tooltip);
+            tooltip.add(CommonComponents.space().append(Component.translatable("potion.withDuration", Component.translatable(waterBreathing.getDescriptionId()), MobEffectUtil.formatDuration(waterBreathing, 1.0F, level.tickRateManager().tickrate())).withStyle(ChatFormatting.BLUE)));
+            RegistryHelpers.addSpaceOnTooltipIfEnchantedOrTrimmed(itemStack, tooltip);
         }
     }
 }

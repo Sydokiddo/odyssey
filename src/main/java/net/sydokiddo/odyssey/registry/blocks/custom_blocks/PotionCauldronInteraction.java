@@ -28,15 +28,17 @@ import java.util.Map;
 import java.util.Objects;
 import static net.minecraft.world.item.alchemy.PotionUtils.getPotion;
 
-public class PotionCauldronInteraction {
+public interface PotionCauldronInteraction {
 
-    public static final Map<Item, CauldronInteraction> POTION_CAULDRON_BEHAVIOR = CauldronInteraction.newInteractionMap();
+    CauldronInteraction.InteractionMap POTION_CAULDRON_BEHAVIOR = CauldronInteraction.newInteractionMap("potion");
 
-    public static void bootstrap() {
+    static void bootstrap() {
+
+        Map<Item, CauldronInteraction> potionCauldron = POTION_CAULDRON_BEHAVIOR.map();
 
         // region Inserting Potions into Cauldrons
 
-        POTION_CAULDRON_BEHAVIOR.put(Items.POTION, (blockState, level, blockPos, player, hand, itemStack) -> {
+        potionCauldron.put(Items.POTION, (blockState, level, blockPos, player, hand, itemStack) -> {
 
             PotionCauldronBlockEntity cauldron = (PotionCauldronBlockEntity) level.getBlockEntity(blockPos);
 
@@ -77,7 +79,7 @@ public class PotionCauldronInteraction {
 
         // region Removing Potions from Potion Cauldrons
 
-        POTION_CAULDRON_BEHAVIOR.put(Items.GLASS_BOTTLE, (blockState, level, blockPos, player, hand, itemStack) -> {
+        potionCauldron.put(Items.GLASS_BOTTLE, (blockState, level, blockPos, player, hand, itemStack) -> {
 
             PotionCauldronBlockEntity cauldron = (PotionCauldronBlockEntity) level.getBlockEntity(blockPos);
             Potion potion = Objects.requireNonNull(cauldron).getPotion();
@@ -102,7 +104,7 @@ public class PotionCauldronInteraction {
 
         // region Tipping Arrows with Potion Cauldrons
 
-        POTION_CAULDRON_BEHAVIOR.put(Items.ARROW, (blockState, level, blockPos, player, hand, itemStack) -> {
+        potionCauldron.put(Items.ARROW, (blockState, level, blockPos, player, hand, itemStack) -> {
 
             PotionCauldronBlockEntity cauldron = (PotionCauldronBlockEntity) level.getBlockEntity(blockPos);
             Potion potion = Objects.requireNonNull(cauldron).getPotion();
@@ -121,7 +123,7 @@ public class PotionCauldronInteraction {
 
         // region Making Potatoes into Poisonous Potatoes
 
-        POTION_CAULDRON_BEHAVIOR.put(Items.POTATO, (blockState, level, blockPos, player, hand, itemStack) -> {
+        potionCauldron.put(Items.POTATO, (blockState, level, blockPos, player, hand, itemStack) -> {
 
             PotionCauldronBlockEntity cauldron = (PotionCauldronBlockEntity) level.getBlockEntity(blockPos);
             ItemStack poisonousPotato = new ItemStack(Items.POISONOUS_POTATO, player.getItemInHand(hand).getCount());
@@ -141,7 +143,7 @@ public class PotionCauldronInteraction {
 
         // endregion
 
-        CauldronInteraction.addDefaultInteractions(POTION_CAULDRON_BEHAVIOR);
+        CauldronInteraction.addDefaultInteractions(potionCauldron);
     }
 
     private static void doCauldronConsumeInteraction(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, ItemStack startingItem, ItemStack resultItem) {

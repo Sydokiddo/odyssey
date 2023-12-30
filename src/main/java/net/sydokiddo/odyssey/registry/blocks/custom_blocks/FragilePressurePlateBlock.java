@@ -18,8 +18,8 @@ public class FragilePressurePlateBlock extends PressurePlateBlock {
 
     private static final BooleanProperty CRACKED = BlockStateProperties.CRACKED;
 
-    public FragilePressurePlateBlock(Sensitivity sensitivity, Properties properties, BlockSetType blockSetType) {
-        super(sensitivity, properties, blockSetType);
+    public FragilePressurePlateBlock(BlockSetType blockSetType, Properties properties) {
+        super(blockSetType, properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(POWERED, false).setValue(CRACKED, false));
     }
 

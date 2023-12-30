@@ -1,5 +1,7 @@
 package net.sydokiddo.odyssey.mixin.misc;
 
+import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -48,6 +50,9 @@ public abstract class ArmorStandInteractionMixin extends LivingEntity {
                 this.level().playSound(null, this.getX(), this.getY(), this.getZ(), ModSoundEvents.ARMOR_STAND_ADD_ARMS, this.getSoundSource(), 1.0F, 1.0F);
                 player.gameEvent(GameEvent.ENTITY_INTERACT);
 
+                if (player instanceof ServerPlayer serverPlayer) {
+                    CriteriaTriggers.PLAYER_INTERACTED_WITH_ENTITY.trigger(serverPlayer, itemInHand, this);
+                }
                 if (!player.getAbilities().instabuild) {
                     itemInHand.shrink(1);
                 }

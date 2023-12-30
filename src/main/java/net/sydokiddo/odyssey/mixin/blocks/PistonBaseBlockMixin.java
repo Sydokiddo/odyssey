@@ -35,7 +35,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 
 @Mixin(PistonBaseBlock.class)
-public class PistonBaseBlockMixin extends DirectionalBlock {
+public abstract class PistonBaseBlockMixin extends DirectionalBlock {
 
     @Shadow @Final private boolean isSticky;
     @Shadow @Final public static BooleanProperty EXTENDED;
@@ -52,7 +52,6 @@ public class PistonBaseBlockMixin extends DirectionalBlock {
         if (player instanceof ServerPlayer serverPlayer) {
             CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, item.getDefaultInstance());
         }
-
         if (!level.isClientSide()) {
             player.awardStat(Stats.ITEM_USED.get(item));
         }

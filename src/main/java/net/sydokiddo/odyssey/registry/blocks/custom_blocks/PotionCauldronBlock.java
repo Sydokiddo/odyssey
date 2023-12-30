@@ -2,11 +2,10 @@ package net.sydokiddo.odyssey.registry.blocks.custom_blocks;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.cauldron.CauldronInteraction;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.EntityBlock;
@@ -19,14 +18,13 @@ import net.sydokiddo.odyssey.registry.entities.block_entities.PotionCauldronBloc
 import net.sydokiddo.odyssey.registry.entities.registry.ModEntities;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import java.util.Map;
 
 public class PotionCauldronBlock extends LayeredCauldronBlock implements EntityBlock {
 
     public Potion potion;
 
-    public PotionCauldronBlock(Properties properties, Map<Item, CauldronInteraction> map) {
-        super(properties, predicate -> predicate == Biome.Precipitation.NONE, map);
+    public PotionCauldronBlock(Biome.Precipitation precipitation, CauldronInteraction.InteractionMap interactionMap, Properties properties) {
+        super(precipitation, interactionMap, properties);
     }
 
     // region Initialization
@@ -38,7 +36,7 @@ public class PotionCauldronBlock extends LayeredCauldronBlock implements EntityB
     }
 
     @Override
-    public @NotNull ItemStack getCloneItemStack(@NotNull BlockGetter blockGetter, @NotNull BlockPos blockPos, @NotNull BlockState blockState) {
+    public @NotNull ItemStack getCloneItemStack(LevelReader levelReader, BlockPos blockPos, BlockState blockState) {
         return new ItemStack(Blocks.CAULDRON);
     }
 
