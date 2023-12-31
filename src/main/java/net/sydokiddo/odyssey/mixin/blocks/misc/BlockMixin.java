@@ -1,6 +1,7 @@
 package net.sydokiddo.odyssey.mixin.blocks.misc;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.BlockGetter;
@@ -23,6 +24,7 @@ public class BlockMixin {
     private void odyssey$fallOnBouncyBlock(Level level, BlockState blockState, BlockPos blockPos, Entity entity, float fallDistance, CallbackInfo info) {
         if (!entity.isSuppressingBounce() && blockState.is(ModTags.BOUNCY_BLOCKS) && Odyssey.getConfig().blocks.miscBlocksConfig.bouncy_mushroom_blocks) {
             entity.causeFallDamage(fallDistance, 0.0F, level.damageSources().fall());
+            level.playSound(null, blockPos, blockState.getSoundType().getStepSound(), SoundSource.BLOCKS, blockState.getSoundType().getVolume() * 0.15F, blockState.getSoundType().getPitch());
             info.cancel();
         }
     }
