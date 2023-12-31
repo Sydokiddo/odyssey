@@ -9,4 +9,7 @@ public class MiscBlocksConfig {
 
     @ConfigEntry.Gui.Tooltip
     public boolean unstable_gunpowder_blocks = true;
+
+    @ConfigEntry.Gui.Tooltip
+    public boolean bouncy_mushroom_blocks = true;
 }

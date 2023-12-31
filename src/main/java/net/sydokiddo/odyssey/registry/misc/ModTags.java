@@ -31,7 +31,8 @@ public class ModTags {
 
     public static final TagKey<Block>
         PREVENTS_SNIFFER_EGG_HATCHING = registerBlockTag("prevents_sniffer_egg_hatching"),
-        UNDERWATER_FLOWER_POTS = registerBlockTag("underwater_flower_pots")
+        UNDERWATER_FLOWER_POTS = registerBlockTag("underwater_flower_pots"),
+        BOUNCY_BLOCKS = registerBlockTag("bouncy_blocks")
     ;
 
     // endregion

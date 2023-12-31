@@ -314,6 +314,8 @@
   "text.autoconfig.odyssey.option.blocks.miscBlocksConfig.sniffer_egg_hatch_preventing.@Tooltip": "Sniffer Eggs placed on Magma Blocks will not hatch, which is useful for using them as decoration!",
   "text.autoconfig.odyssey.option.blocks.miscBlocksConfig.unstable_gunpowder_blocks": "Unstable Blocks of Gunpowder",
   "text.autoconfig.odyssey.option.blocks.miscBlocksConfig.unstable_gunpowder_blocks.@Tooltip": "Blocks of Gunpowder will instantly explode when they catch on fire or when lit with Flint and Steel or Fire Charges",
+  "text.autoconfig.odyssey.option.blocks.miscBlocksConfig.bouncy_mushroom_blocks": "Bouncy Mushroom Blocks",
+  "text.autoconfig.odyssey.option.blocks.miscBlocksConfig.bouncy_mushroom_blocks.@Tooltip": "Falling onto a Mushroom Block will bounce you upwards similarly to a Slime Block",
 
   "text.autoconfig.odyssey.option.entities": "Entities",
 
