@@ -21,4 +21,7 @@ public class MiscEntitiesConfig {
 
     @ConfigEntry.Gui.Tooltip
     public boolean named_mob_death_messages = true;
+
+    @ConfigEntry.Gui.Tooltip
+    public boolean capture_allays_and_vexes_in_books = true;
 }

@@ -11,9 +11,7 @@ import net.minecraft.world.item.*;
 import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
 import net.sydokiddo.chrysalis.registry.items.custom_items.EnchantedGlintItem;
 import net.sydokiddo.odyssey.Odyssey;
-import net.sydokiddo.odyssey.registry.items.custom_items.EnvironmentDetectorItem;
-import net.sydokiddo.odyssey.registry.items.custom_items.FrogBucketItem;
-import net.sydokiddo.odyssey.registry.items.custom_items.PatinaItem;
+import net.sydokiddo.odyssey.registry.items.custom_items.*;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
 
 public class ModItems {
@@ -32,7 +30,7 @@ public class ModItems {
 
     // endregion
 
-    // region Mob Buckets
+    // region Mob Containers
 
     public static final Item FROG_BUCKET = registerItem("frog_bucket",
         new FrogBucketItem(EntityType.FROG, ModSoundEvents.BUCKET_EMPTY_FROG,
@@ -43,6 +41,13 @@ public class ModItems {
 
     public static final Item GLOW_SQUID_BUCKET = registerItem("glow_squid_bucket",
         RegistryHelpers.registerMobInWaterBucket(EntityType.GLOW_SQUID, ModSoundEvents.BUCKET_EMPTY_GLOW_SQUID));
+
+    public static final Item ALLAY_BOUND_BOOK = registerItem("allay_bound_book",
+        RegistryHelpers.registerMobInContainer(EntityType.ALLAY, ModSoundEvents.BOOK_RELEASE_ALLAY, Items.BOOK));
+
+    public static final Item VEX_BOUND_BOOK = registerItem("vex_bound_book",
+        new VexBoundBookItem(EntityType.VEX, ModSoundEvents.BOOK_RELEASE_VEX,
+        new FabricItemSettings().stacksTo(1).craftRemainder(Items.BOOK), Items.BOOK));
 
     // endregion
 

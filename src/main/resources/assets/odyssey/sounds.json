@@ -216,6 +216,42 @@
     "subtitle": "subtitles.block.pressure_plate.click"
   },
 
+  "block.chiseled_bookshelf.insert.allay": {
+    "sounds": [
+      "odyssey:block/chiseled_bookshelf/insert_allay1",
+      "odyssey:block/chiseled_bookshelf/insert_allay2",
+      "odyssey:block/chiseled_bookshelf/insert_allay3",
+      "odyssey:block/chiseled_bookshelf/insert_allay4"
+    ],
+    "subtitle": "subtitles.chiseled_bookshelf.insert_allay"
+  },
+  "block.chiseled_bookshelf.pickup.allay": {
+    "sounds": [
+      "odyssey:block/chiseled_bookshelf/pickup_allay1",
+      "odyssey:block/chiseled_bookshelf/pickup_allay2",
+      "odyssey:block/chiseled_bookshelf/pickup_allay3"
+    ],
+    "subtitle": "subtitles.chiseled_bookshelf.take_allay"
+  },
+
+  "block.chiseled_bookshelf.insert.vex": {
+    "sounds": [
+      "odyssey:block/chiseled_bookshelf/insert_vex1",
+      "odyssey:block/chiseled_bookshelf/insert_vex2",
+      "odyssey:block/chiseled_bookshelf/insert_vex3",
+      "odyssey:block/chiseled_bookshelf/insert_vex4"
+    ],
+    "subtitle": "subtitles.chiseled_bookshelf.insert_vex"
+  },
+  "block.chiseled_bookshelf.pickup.vex": {
+    "sounds": [
+      "odyssey:block/chiseled_bookshelf/pickup_vex1",
+      "odyssey:block/chiseled_bookshelf/pickup_vex2",
+      "odyssey:block/chiseled_bookshelf/pickup_vex3"
+    ],
+    "subtitle": "subtitles.chiseled_bookshelf.take_vex"
+  },
+
   "item.patina.use": {
     "sounds": [
       "odyssey:item/patina/apply_patina1",
@@ -269,6 +305,32 @@
       "odyssey:item/bucket/empty_glow_squid"
     ],
     "subtitle": "subtitles.item.bucket.empty"
+  },
+
+  "item.book.capture_allay": {
+    "sounds": [
+      "odyssey:item/book/capture_allay"
+    ],
+    "subtitle": "subtitles.item.book.capture_allay"
+  },
+  "item.book.release_allay": {
+    "sounds": [
+      "odyssey:item/book/release_allay"
+    ],
+    "subtitle": "subtitles.item.book.release_allay"
+  },
+
+  "item.book.capture_vex": {
+    "sounds": [
+      "odyssey:item/book/capture_vex"
+    ],
+    "subtitle": "subtitles.item.book.capture_vex"
+  },
+  "item.book.release_vex": {
+    "sounds": [
+      "odyssey:item/book/release_vex"
+    ],
+    "subtitle": "subtitles.item.book.release_vex"
   },
 
   "item.saddle.unequip": {

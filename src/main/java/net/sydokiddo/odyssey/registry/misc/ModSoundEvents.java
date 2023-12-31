@@ -44,6 +44,12 @@ public class ModSoundEvents {
     public static final SoundEvent FRAGILE_PRESSURE_PLATE_SHATTER = registerSoundEvent("block.fragile_pressure_plate.shatter");
     public static final SoundEvent FRAGILE_PRESSURE_PLATE_CLICK_ON = registerSoundEvent("block.fragile_pressure_plate.click_on");
 
+    public static final SoundEvent CHISELED_BOOKSHELF_INSERT_ALLAY = registerSoundEvent("block.chiseled_bookshelf.insert.allay");
+    public static final SoundEvent CHISELED_BOOKSHELF_PICKUP_ALLAY = registerSoundEvent("block.chiseled_bookshelf.pickup.allay");
+
+    public static final SoundEvent CHISELED_BOOKSHELF_INSERT_VEX = registerSoundEvent("block.chiseled_bookshelf.insert.vex");
+    public static final SoundEvent CHISELED_BOOKSHELF_PICKUP_VEX = registerSoundEvent("block.chiseled_bookshelf.pickup.vex");
+
     // endregion
 
     // region Item Sounds
@@ -60,6 +66,12 @@ public class ModSoundEvents {
 
     public static final SoundEvent BUCKET_FILL_GLOW_SQUID = registerSoundEvent("item.bucket.fill_glow_squid");
     public static final SoundEvent BUCKET_EMPTY_GLOW_SQUID = registerSoundEvent("item.bucket.empty_glow_squid");
+
+    public static final SoundEvent BOOK_CAPTURE_ALLAY = registerSoundEvent("item.book.capture_allay");
+    public static final SoundEvent BOOK_RELEASE_ALLAY = registerSoundEvent("item.book.release_allay");
+
+    public static final SoundEvent BOOK_CAPTURE_VEX = registerSoundEvent("item.book.capture_vex");
+    public static final SoundEvent BOOK_RELEASE_VEX = registerSoundEvent("item.book.release_vex");
 
     public static final SoundEvent SADDLE_UNEQUIP = registerSoundEvent("item.saddle.unequip");
 

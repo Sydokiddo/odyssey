@@ -7,8 +7,10 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.animal.Squid;
+import net.minecraft.world.entity.animal.allay.Allay;
 import net.minecraft.world.entity.decoration.ItemFrame;
 import net.minecraft.world.entity.monster.Slime;
+import net.minecraft.world.entity.monster.Vex;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.sydokiddo.odyssey.Odyssey;
@@ -31,7 +33,9 @@ public class OdysseyRegistry {
         MAGMA_CUBE_CONVERSION = SynchedEntityData.defineId(Slime.class, EntityDataSerializers.BOOLEAN),
         SLIME_CONVERSION = SynchedEntityData.defineId(Slime.class, EntityDataSerializers.BOOLEAN),
         FROM_BUCKET = SynchedEntityData.defineId(Squid.class, EntityDataSerializers.BOOLEAN),
-        WAXED = SynchedEntityData.defineId(ItemFrame.class, EntityDataSerializers.BOOLEAN)
+        WAXED = SynchedEntityData.defineId(ItemFrame.class, EntityDataSerializers.BOOLEAN),
+        ALLAY_FROM_BOOK = SynchedEntityData.defineId(Allay.class, EntityDataSerializers.BOOLEAN),
+        VEX_FROM_BOOK = SynchedEntityData.defineId(Vex.class, EntityDataSerializers.BOOLEAN)
     ;
 
     // endregion

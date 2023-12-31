@@ -13,6 +13,8 @@
   "item.odyssey.frog_bucket": "Bucket of Frog",
   "item.odyssey.squid_bucket": "Bucket of Squid",
   "item.odyssey.glow_squid_bucket": "Bucket of Glow Squid",
+  "item.odyssey.allay_bound_book": "Allay Bound Book",
+  "item.odyssey.vex_bound_book": "Vex Bound Book",
 
   "item.minecraft.potion.effect.mining_fatigue": "Potion of Mining Fatigue",
   "item.minecraft.splash_potion.effect.mining_fatigue": "Splash Potion of Mining Fatigue",
@@ -152,6 +154,16 @@
   "subtitles.item.bucket.fill_frog": "Frog scooped",
   "subtitles.item.bucket.fill_squid": "Squid scooped",
   "subtitles.item.bucket.fill_glow_squid": "Glow Squid scooped",
+
+  "subtitles.item.book.capture_allay": "Allay captured",
+  "subtitles.item.book.release_allay": "Allay released",
+  "subtitles.item.book.capture_vex": "Vex captured",
+  "subtitles.item.book.release_vex": "Vex released",
+
+  "subtitles.chiseled_bookshelf.insert_allay": "Allay Bound Book placed",
+  "subtitles.chiseled_bookshelf.take_allay": "Allay Bound Book taken",
+  "subtitles.chiseled_bookshelf.insert_vex": "Vex Bound Book placed",
+  "subtitles.chiseled_bookshelf.take_vex": "Vex Bound Book taken",
 
   "advancements.adventure.use_goat_horn.title": "Call of the Wild",
   "advancements.adventure.use_goat_horn.description": "Blow a Goat Horn",
@@ -368,5 +380,7 @@
   "text.autoconfig.odyssey.option.entities.miscEntitiesConfig.tnt_knockback": "TNT Knockback",
   "text.autoconfig.odyssey.option.entities.miscEntitiesConfig.tnt_knockback.@Tooltip": "Primed TNT can receive knockback from being hit",
   "text.autoconfig.odyssey.option.entities.miscEntitiesConfig.named_mob_death_messages": "Named Mob Death Messages",
-  "text.autoconfig.odyssey.option.entities.miscEntitiesConfig.named_mob_death_messages.@Tooltip": "Mobs that are named will display a death message in the chat if they are killed"
+  "text.autoconfig.odyssey.option.entities.miscEntitiesConfig.named_mob_death_messages.@Tooltip": "Mobs that are named will display a death message in the chat if they are killed",
+  "text.autoconfig.odyssey.option.entities.miscEntitiesConfig.capture_allays_and_vexes_in_books": "Capture Allays and Vexes in Books",
+  "text.autoconfig.odyssey.option.entities.miscEntitiesConfig.capture_allays_and_vexes_in_books.@Tooltip": "Allays and Vexes can be captured in Books. Additionally, Allay and Vex Bound Books can be inserted into Chiseled Bookshelves."
 }
