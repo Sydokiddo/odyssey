@@ -1,0 +1,7 @@
+{
+  "parent": "chrysalis:block/template_uv_locked_pillar_axis_x",
+  "textures": {
+    "end": "odyssey:block/sugar_cane_block_top",
+    "side": "odyssey:block/sugar_cane_block"
+  }
+}

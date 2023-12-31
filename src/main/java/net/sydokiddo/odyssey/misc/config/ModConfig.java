@@ -40,6 +40,9 @@ public class ModConfig implements ConfigData {
 
         @ConfigEntry.Gui.Tooltip
         public boolean improved_riptide = true;
+
+        @ConfigEntry.Gui.Tooltip
+        public float patina_drop_chance = 0.25F;
     }
 
     // endregion

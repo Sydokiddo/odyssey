@@ -1,8 +1,10 @@
 package net.sydokiddo.odyssey.registry.blocks.custom_blocks;
 
 import com.mojang.serialization.MapCodec;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -77,6 +79,10 @@ public class GunpowderBlock extends FallingBlock {
             explode(level, blockPos, player);
             level.setBlock(blockPos, Blocks.AIR.defaultBlockState(), 11);
             player.awardStat(Stats.ITEM_USED.get(itemInHand.getItem()));
+
+            if (player instanceof ServerPlayer serverPlayer) {
+                CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, itemInHand);
+            }
 
             if (!player.getAbilities().instabuild) {
                 if (itemInHand.is(Items.FLINT_AND_STEEL)) {

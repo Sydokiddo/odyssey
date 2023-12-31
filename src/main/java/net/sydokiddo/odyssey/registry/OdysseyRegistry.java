@@ -3,29 +3,14 @@ package net.sydokiddo.odyssey.registry;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.animal.Squid;
 import net.minecraft.world.entity.decoration.ItemFrame;
 import net.minecraft.world.entity.monster.Slime;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.GameRules;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DispenserBlock;
-import net.sydokiddo.chrysalis.Chrysalis;
-import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.misc.util.ShowcaseCommand;
 import net.sydokiddo.odyssey.misc.util.dispenser.ApplyPatinaToCopperDispenserBehavior;
@@ -36,7 +21,6 @@ import net.sydokiddo.odyssey.registry.entities.registry.ModEntities;
 import net.sydokiddo.odyssey.registry.items.ModItems;
 import net.sydokiddo.odyssey.registry.items.ModPotions;
 import net.sydokiddo.odyssey.registry.misc.*;
-import java.util.List;
 
 public class OdysseyRegistry {
 
@@ -48,55 +32,6 @@ public class OdysseyRegistry {
         FROM_BUCKET = SynchedEntityData.defineId(Squid.class, EntityDataSerializers.BOOLEAN),
         WAXED = SynchedEntityData.defineId(ItemFrame.class, EntityDataSerializers.BOOLEAN)
     ;
-
-    // endregion
-
-    // region Debug and Common Methods
-
-    public static void addItemDurabilityTooltip(ItemStack itemStack, List<Component> tooltip, TooltipFlag tooltipFlag) {
-        if (Odyssey.getConfig().items.tooltipConfig.durability_information && itemStack.isDamaged() && !tooltipFlag.isAdvanced()) {
-
-            tooltip.add(Component.translatable("item.durability", itemStack.getMaxDamage() - itemStack.getDamageValue(), itemStack.getMaxDamage()).withStyle(ChatFormatting.GRAY));
-
-            if (!itemStack.is(ModTags.TOOLTIP_SPACE_BLACKLISTED)) {
-                RegistryHelpers.addSpaceOnTooltipIfEnchantedOrTrimmed(itemStack, tooltip);
-            }
-        }
-    }
-
-    public static void sendMobConversionDebugMessage(LivingEntity startingEntity, LivingEntity resultEntity) {
-        if (Chrysalis.IS_DEBUG) {
-            Odyssey.LOGGER.info("{} has been converted into {}", startingEntity.getName().getString(), resultEntity.getName().getString());
-        }
-    }
-
-    public static void sendCauldronInteractionDebugMessage(ItemStack startingItem, ItemStack resultItem, Block block) {
-        if (Chrysalis.IS_DEBUG) {
-            Odyssey.LOGGER.info("{} has been converted into {} in a {}", startingItem.getItem().getName(startingItem).getString(), resultItem.getItem().getName(resultItem).getString(), block.asItem().getName(block.asItem().getDefaultInstance()));
-        }
-    }
-
-    public static void shearPrimedTNT(Level level, Entity primedTnt, BlockPos blockPos) {
-
-        if (RegistryHelpers.isBlockStateFree(level.getBlockState(blockPos)) && !level.isOutsideBuildHeight(blockPos)) {
-            level.setBlock(blockPos, Blocks.TNT.defaultBlockState(), 3);
-        } else if (level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
-            primedTnt.spawnAtLocation(Items.TNT);
-        }
-
-        level.playSound(null, blockPos, ModSoundEvents.TNT_SHEAR, SoundSource.PLAYERS, 1.0F, 1.0F);
-        primedTnt.discard();
-    }
-
-    public static void doSaddleRemovingEvents(LivingEntity livingEntity, Player player, InteractionHand interactionHand) {
-
-        livingEntity.level().playSound(null, livingEntity, ModSoundEvents.SADDLE_UNEQUIP, SoundSource.NEUTRAL, 1.0F, 1.0F);
-        player.setItemInHand(interactionHand, Items.SADDLE.getDefaultInstance());
-
-        if (Chrysalis.IS_DEBUG && livingEntity instanceof Saddleable saddleable && saddleable.isSaddled()) {
-            Odyssey.LOGGER.info("Saddle has been successfully removed from {} by {}", livingEntity.getName().getString(), player.getName().getString());
-        }
-    }
 
     // endregion
 

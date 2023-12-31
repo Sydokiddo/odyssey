@@ -8,6 +8,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.WeatheringCopper;
 import net.minecraft.world.level.block.state.BlockState;
+import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.items.ModItems;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -24,7 +25,7 @@ public class AxeItemMixin {
         Level level = useOnContext.getLevel();
         Optional<BlockState> weatheringCopper = WeatheringCopper.getPrevious(level.getBlockState(useOnContext.getClickedPos()));
 
-        if (level.getRandom().nextFloat() < 0.25F && weatheringCopper.isPresent()) {
+        if (level.getRandom().nextFloat() < Odyssey.getConfig().items.patina_drop_chance && weatheringCopper.isPresent()) {
             Block.popResourceFromFace(level, useOnContext.getClickedPos(), useOnContext.getClickedFace(), new ItemStack(ModItems.PATINA));
         }
     }

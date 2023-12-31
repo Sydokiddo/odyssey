@@ -5,7 +5,7 @@ import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
-import net.sydokiddo.odyssey.registry.OdysseyRegistry;
+import net.sydokiddo.odyssey.registry.misc.OCommonMethods;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -23,7 +23,7 @@ public abstract class CrossbowItemMixin extends ProjectileWeaponItem {
     @Inject(method = "appendHoverText", at = @At("HEAD"))
     private void odyssey$addCrossbowTooltip(ItemStack itemStack, @Nullable Level level, List<Component> tooltip, TooltipFlag tooltipFlag, CallbackInfo info) {
 
-        OdysseyRegistry.addItemDurabilityTooltip(itemStack, tooltip, tooltipFlag);
+        OCommonMethods.addItemDurabilityTooltip(itemStack, tooltip, tooltipFlag);
 
         CompoundTag compoundTag = itemStack.getTag();
 

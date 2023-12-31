@@ -1,9 +1,11 @@
 package net.sydokiddo.odyssey.registry.blocks.custom_blocks;
 
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.cauldron.CauldronInteraction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -21,7 +23,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.LayeredCauldronBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.sydokiddo.odyssey.registry.OdysseyRegistry;
+import net.sydokiddo.chrysalis.Chrysalis;
+import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.entities.block_entities.PotionCauldronBlockEntity;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
 import java.util.Map;
@@ -148,14 +151,19 @@ public interface PotionCauldronInteraction {
 
     private static void doCauldronConsumeInteraction(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, ItemStack startingItem, ItemStack resultItem) {
 
-        player.setItemInHand(interactionHand, resultItem);
-
+        player.awardStat(Stats.ITEM_USED.get(startingItem.getItem()));
         player.awardStat(Stats.USE_CAULDRON);
-        player.awardStat(Stats.ITEM_USED.get(resultItem.getItem()));
 
+        if (player instanceof ServerPlayer serverPlayer) {
+            CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, startingItem);
+        }
+
+        player.setItemInHand(interactionHand, resultItem);
         PotionCauldronBlock.lowerFillLevel(blockState, level, blockPos);
         level.gameEvent(null, GameEvent.BLOCK_CHANGE, blockPos);
 
-        OdysseyRegistry.sendCauldronInteractionDebugMessage(startingItem, resultItem, blockState.getBlock());
+        if (Chrysalis.IS_DEBUG) {
+            Odyssey.LOGGER.info("{} has been converted into {} in a {}", startingItem.getItem().getName(startingItem).getString(), resultItem.getItem().getName(resultItem).getString(), blockState.getBlock().asItem().getName(blockState.getBlock().asItem().getDefaultInstance()));
+        }
     }
 }

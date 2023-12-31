@@ -12,7 +12,7 @@ import net.minecraft.world.level.Level;
 import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
 import net.sydokiddo.chrysalis.registry.misc.ChrysalisTags;
 import net.sydokiddo.odyssey.Odyssey;
-import net.sydokiddo.odyssey.registry.OdysseyRegistry;
+import net.sydokiddo.odyssey.registry.misc.OCommonMethods;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -30,7 +30,7 @@ public class ItemMixin {
     @Inject(method = "appendHoverText", at = @At("HEAD"))
     private void odyssey$addItemTooltipsBeforeEnchantments(ItemStack itemStack, Level level, List<Component> tooltip, TooltipFlag tooltipFlag, CallbackInfo info) {
 
-        OdysseyRegistry.addItemDurabilityTooltip(itemStack, tooltip, tooltipFlag);
+        OCommonMethods.addItemDurabilityTooltip(itemStack, tooltip, tooltipFlag);
 
         if (!FabricLoader.getInstance().isModLoaded("appleskin") && Odyssey.getConfig().items.tooltipConfig.food_information) {
 

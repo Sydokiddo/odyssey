@@ -10,7 +10,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BannerPattern;
 import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
-import net.sydokiddo.odyssey.registry.OdysseyRegistry;
+import net.sydokiddo.odyssey.registry.misc.OCommonMethods;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -52,7 +52,7 @@ public class ShieldItemMixin {
         CompoundTag compoundTag = BlockItem.getBlockEntityData(itemStack);
 
         info.cancel();
-        OdysseyRegistry.addItemDurabilityTooltip(itemStack, tooltip, tooltipFlag);
+        OCommonMethods.addItemDurabilityTooltip(itemStack, tooltip, tooltipFlag);
 
         if (compoundTag != null && compoundTag.contains("Patterns")) {
             tooltip.add(Component.translatable("gui.odyssey.item.shield.banner").withStyle(ChatFormatting.GRAY));

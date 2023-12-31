@@ -1,16 +1,13 @@
 {
   "variants": {
     "axis=x": {
-      "model": "odyssey:block/sugar_cane_block_horizontal",
-      "x": 90,
-      "y": 90
+      "model": "odyssey:block/sugar_cane_block_axis_x"
     },
     "axis=y": {
       "model": "odyssey:block/sugar_cane_block"
     },
     "axis=z": {
-      "model": "odyssey:block/sugar_cane_block_horizontal",
-      "x": 90
+      "model": "odyssey:block/sugar_cane_block_axis_z"
     }
   }
 }

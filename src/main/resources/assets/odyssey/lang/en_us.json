@@ -272,6 +272,8 @@
   "text.autoconfig.odyssey.option.items.improved_turtle_helmets.@Tooltip": "Turtle Helmets now give Water Breathing for 30 seconds instead of 10 seconds",
   "text.autoconfig.odyssey.option.items.improved_riptide": "Improved Riptide",
   "text.autoconfig.odyssey.option.items.improved_riptide.@Tooltip": "Fixes a vanilla bug that causes the speed of Riptide to be decreased when paired with Depth Strider, and allows for Riptide to be used while in a Water Cauldron",
+  "text.autoconfig.odyssey.option.items.patina_drop_chance": "Patina Drop Chance",
+  "text.autoconfig.odyssey.option.items.patina_drop_chance.@Tooltip": "The chance at which Patina will drop from scraping any Copper block. Any value higher than 1.0 will make it drop 100% of the time.",
 
   "text.autoconfig.odyssey.option.blocks": "Blocks",
 

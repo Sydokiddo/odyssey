@@ -1,5 +1,6 @@
 {
   "values": [
-    "minecraft:iron_block"
+    "minecraft:iron_block",
+    {"id": "lottablocks:cast_iron_block", "required": false}
   ]
 }
