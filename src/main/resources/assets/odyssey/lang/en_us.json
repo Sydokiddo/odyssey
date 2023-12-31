@@ -120,6 +120,9 @@
 
   "gui.odyssey.showcase_command.success": "%1$s is showcasing %2$s",
   "gui.odyssey.showcase_command.fail": "You are not holding a valid item to showcase",
+  "gui.odyssey.hat_command.success": "Placed %1$s on %2$s's head",
+  "gui.odyssey.hat_command.fail_empty": "You are not holding a valid item to place on your head!",
+  "gui.odyssey.hat_command.fail_invalid": "Could not place %1$s on %2$s's head",
 
   "subtitles.item.patina.use": "Patina tarnishes",
   "subtitles.item.environment_detector.use": "Environment Detector clicks",

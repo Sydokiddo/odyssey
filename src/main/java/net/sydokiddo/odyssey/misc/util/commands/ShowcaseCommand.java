@@ -1,4 +1,4 @@
-package net.sydokiddo.odyssey.misc.util;
+package net.sydokiddo.odyssey.misc.util.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;

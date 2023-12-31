@@ -12,7 +12,8 @@ import net.minecraft.world.entity.monster.Slime;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.sydokiddo.odyssey.Odyssey;
-import net.sydokiddo.odyssey.misc.util.ShowcaseCommand;
+import net.sydokiddo.odyssey.misc.util.commands.HatCommand;
+import net.sydokiddo.odyssey.misc.util.commands.ShowcaseCommand;
 import net.sydokiddo.odyssey.misc.util.dispenser.ApplyPatinaToCopperDispenserBehavior;
 import net.sydokiddo.odyssey.misc.util.dispenser.ApplySlimeballToPistonDispenserBehavior;
 import net.sydokiddo.odyssey.registry.blocks.ModBlocks;
@@ -60,6 +61,7 @@ public class OdysseyRegistry {
         ModLootTableModifiers.modifyLootTables();
         ModCriteriaTriggers.registerCriteriaTriggers();
         CommandRegistrationCallback.EVENT.register((commandDispatcher, commandBuildContext, commandSelection) -> ShowcaseCommand.register(commandDispatcher));
+        CommandRegistrationCallback.EVENT.register((commandDispatcher, commandBuildContext, commandSelection) -> HatCommand.register(commandDispatcher));
 
         // endregion
 
