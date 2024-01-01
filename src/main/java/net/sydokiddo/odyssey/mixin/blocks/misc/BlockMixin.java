@@ -20,6 +20,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(Block.class)
 public class BlockMixin {
 
+    @Inject(method = "stepOn", at = @At("HEAD"))
+    private void odyssey$stepOnBlock(Level level, BlockPos blockPos, BlockState blockState, Entity entity, CallbackInfo info) {
+        if (blockState.is(ModTags.BOUNCY_BLOCKS) && Math.abs(entity.getDeltaMovement().y) < 0.1 && !entity.isSteppingCarefully() && Odyssey.getConfig().blocks.miscBlocksConfig.bouncy_mushroom_blocks) {
+            entity.setDeltaMovement(entity.getDeltaMovement().multiply(1.0, 0.0, 1.0));
+        }
+    }
+
     @Inject(at = @At("HEAD"), method = "fallOn", cancellable = true)
     private void odyssey$fallOnBouncyBlock(Level level, BlockState blockState, BlockPos blockPos, Entity entity, float fallDistance, CallbackInfo info) {
         if (!entity.isSuppressingBounce() && blockState.is(ModTags.BOUNCY_BLOCKS) && Odyssey.getConfig().blocks.miscBlocksConfig.bouncy_mushroom_blocks) {
