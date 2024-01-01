@@ -309,26 +309,38 @@
 
   "item.book.capture_allay": {
     "sounds": [
-      "odyssey:item/book/capture_allay"
+      {
+        "name": "odyssey:item/book/capture_allay",
+        "volume": 0.8
+      }
     ],
     "subtitle": "subtitles.item.book.capture_allay"
   },
   "item.book.release_allay": {
     "sounds": [
-      "odyssey:item/book/release_allay"
+      {
+        "name": "odyssey:item/book/release_allay",
+        "volume": 0.8
+      }
     ],
     "subtitle": "subtitles.item.book.release_allay"
   },
 
   "item.book.capture_vex": {
     "sounds": [
-      "odyssey:item/book/capture_vex"
+      {
+        "name": "odyssey:item/book/capture_vex",
+        "volume": 0.8
+      }
     ],
     "subtitle": "subtitles.item.book.capture_vex"
   },
   "item.book.release_vex": {
     "sounds": [
-      "odyssey:item/book/release_vex"
+      {
+        "name": "odyssey:item/book/release_vex",
+        "volume": 0.8
+      }
     ],
     "subtitle": "subtitles.item.book.release_vex"
   },
