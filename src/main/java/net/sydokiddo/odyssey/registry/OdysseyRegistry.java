@@ -1,5 +1,6 @@
 package net.sydokiddo.odyssey.registry;
 
+import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
@@ -66,6 +67,7 @@ public class OdysseyRegistry {
         ModCriteriaTriggers.registerCriteriaTriggers();
         CommandRegistrationCallback.EVENT.register((commandDispatcher, commandBuildContext, commandSelection) -> ShowcaseCommand.register(commandDispatcher));
         CommandRegistrationCallback.EVENT.register((commandDispatcher, commandBuildContext, commandSelection) -> HatCommand.register(commandDispatcher));
+        HudRenderCallback.EVENT.register((guiGraphics, tickDelta) -> OCommonMethods.renderCompassOverlay(guiGraphics));
 
         // endregion
 

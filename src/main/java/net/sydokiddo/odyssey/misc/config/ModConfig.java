@@ -43,6 +43,9 @@ public class ModConfig implements ConfigData {
 
         @ConfigEntry.Gui.Tooltip
         public float patina_drop_chance = 0.25F;
+
+        @ConfigEntry.Gui.Tooltip
+        public boolean compass_gui_rendering = true;
     }
 
     // endregion

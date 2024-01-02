@@ -1,6 +1,13 @@
 package net.sydokiddo.odyssey.registry.misc;
 
+import com.mojang.blaze3d.vertex.PoseStack;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.screens.social.PlayerEntry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundSource;
@@ -68,6 +75,52 @@ public class OCommonMethods {
     public static void sendMobConversionDebugMessage(LivingEntity startingEntity, LivingEntity resultEntity) {
         if (Chrysalis.IS_DEBUG) {
             Odyssey.LOGGER.info("{} has been converted into {}", startingEntity.getName().getString(), resultEntity.getName().getString());
+        }
+    }
+
+    // endregion
+
+    // region Rendering
+
+    @Environment(EnvType.CLIENT)
+    public static void renderCompassOverlay(GuiGraphics guiGraphics) {
+
+        Minecraft minecraft = Minecraft.getInstance();
+        if (minecraft.gui.getDebugOverlay().showDebugScreen() || !Odyssey.getConfig().items.compass_gui_rendering) return;
+
+        if (minecraft.getCameraEntity() != null) {
+
+            Player player = minecraft.player;
+            assert player != null;
+
+            boolean hasCompass = false;
+
+            for (int slots = 0; slots <= 35; slots++) {
+                if (player.getInventory().getItem(slots).is(Items.COMPASS) || player.getOffhandItem().is(Items.COMPASS)) {
+                    hasCompass = true;
+                    break;
+                }
+            }
+
+            if (hasCompass) {
+
+                BlockPos blockPos = minecraft.getCameraEntity().blockPosition();
+                int heightOffset;
+
+                if (FabricLoader.getInstance().isModLoaded(RegistryHelpers.manic)) {
+                    heightOffset = 30;
+                } else {
+                    heightOffset = 5;
+                }
+
+                PoseStack poseStack = guiGraphics.pose();
+                poseStack.pushPose();
+
+                guiGraphics.drawString(minecraft.font, Component.translatable("gui.chrysalis.coordinates", blockPos.getX(), blockPos.getY(), blockPos.getZ()), 5, heightOffset, PlayerEntry.PLAYERNAME_COLOR, true);
+                guiGraphics.drawString(minecraft.font, Component.translatable("gui.chrysalis.facing_direction", Component.translatable("gui.chrysalis.direction." + player.getDirection().getName())), 5, heightOffset + 10, PlayerEntry.PLAYERNAME_COLOR, true);
+
+                poseStack.popPose();
+            }
         }
     }
 
