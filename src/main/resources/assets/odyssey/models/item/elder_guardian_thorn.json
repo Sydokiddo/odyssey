@@ -2,5 +2,12 @@
   "parent": "minecraft:item/generated",
   "textures": {
     "layer0": "odyssey:item/elder_guardian_thorn"
+  },
+  "display": {
+    "head": {
+      "rotation": [0, 180, 45],
+      "translation": [0, 10.5, 0],
+      "scale":[1, 1, 1]
+    }
   }
 }
