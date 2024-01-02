@@ -13,9 +13,11 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Saddleable;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
@@ -96,7 +98,10 @@ public class OCommonMethods {
             boolean hasCompass = false;
 
             for (int slots = 0; slots <= 35; slots++) {
-                if (player.getInventory().getItem(slots).is(Items.COMPASS) || player.getOffhandItem().is(Items.COMPASS)) {
+
+                Item compass = Items.COMPASS;
+
+                if (player.getInventory().getItem(slots).is(compass) || player.getOffhandItem().is(compass) || player.getItemBySlot(EquipmentSlot.HEAD).is(compass)) {
                     hasCompass = true;
                     break;
                 }
