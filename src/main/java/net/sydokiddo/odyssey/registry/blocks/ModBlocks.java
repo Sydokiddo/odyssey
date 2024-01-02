@@ -138,6 +138,9 @@ public class ModBlocks {
     public static final Block POTTED_SUGAR_CANE = registerBlockWithoutBlockItem("potted_sugar_cane",
         new FlowerPotBlock(Blocks.SUGAR_CANE, FabricBlockSettings.copyOf(Blocks.FLOWER_POT)));
 
+    public static final Block POTTED_SHORT_GRASS = registerBlockWithoutBlockItem("potted_short_grass",
+        new FlowerPotBlock(Blocks.SHORT_GRASS, FabricBlockSettings.copyOf(Blocks.FLOWER_POT)));
+
     public static final Block POTTED_NETHER_WART = registerBlockWithoutBlockItem("potted_nether_wart",
         new FlowerPotBlock(Blocks.NETHER_WART, FabricBlockSettings.copyOf(Blocks.FLOWER_POT)));
 

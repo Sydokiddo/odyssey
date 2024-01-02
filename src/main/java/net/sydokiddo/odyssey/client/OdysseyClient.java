@@ -36,6 +36,7 @@ public class OdysseyClient implements ClientModInitializer {
                 ModBlocks.POTTED_SPORE_BLOSSOM,
                 ModBlocks.POTTED_SEA_PICKLE,
                 ModBlocks.POTTED_SUGAR_CANE,
+                ModBlocks.POTTED_SHORT_GRASS,
                 ModBlocks.POTTED_NETHER_WART
             );
 
@@ -45,7 +46,8 @@ public class OdysseyClient implements ClientModInitializer {
 
             ColorProviderRegistry.BLOCK.register((blockState, level, blockPos, tintIndex) ->
             BiomeColors.getAverageGrassColor(Objects.requireNonNull(level), Objects.requireNonNull(blockPos)),
-                ModBlocks.POTTED_SUGAR_CANE
+                ModBlocks.POTTED_SUGAR_CANE,
+                ModBlocks.POTTED_SHORT_GRASS
             );
 
             // endregion
