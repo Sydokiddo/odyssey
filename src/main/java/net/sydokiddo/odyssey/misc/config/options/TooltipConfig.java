@@ -26,6 +26,9 @@ public class TooltipConfig {
     public boolean turtle_helmets = true;
 
     @ConfigEntry.Gui.Tooltip
+    public boolean spectral_arrows = true;
+
+    @ConfigEntry.Gui.Tooltip
     public boolean carrots_on_a_stick = true;
 
     @ConfigEntry.Gui.Tooltip

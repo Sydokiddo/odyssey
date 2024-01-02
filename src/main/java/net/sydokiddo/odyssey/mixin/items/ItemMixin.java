@@ -38,6 +38,7 @@ public class ItemMixin {
             String saturationString = "item.odyssey.food.saturation_points";
 
             if (itemStack.is(Items.CAKE)) {
+                tooltip.add(CommonComponents.EMPTY);
                 tooltip.add(Component.translatable("gui.odyssey.item.cake.for_each_slice").withStyle(ChatFormatting.GRAY));
                 tooltip.add(Component.translatable(nutritionString, 2).withStyle(ChatFormatting.BLUE));
                 tooltip.add(Component.translatable(saturationString, 0.4).withStyle(ChatFormatting.BLUE));
@@ -89,22 +90,29 @@ public class ItemMixin {
             tooltip.add(CommonComponents.space().append(Component.translatable("item.odyssey.spyglass.desc").withStyle(ChatFormatting.BLUE)));
         }
 
-        if (itemStack.is(Items.TURTLE_HELMET) && Odyssey.getConfig().items.tooltipConfig.turtle_helmets && level != null) {
+        if (level != null) {
+            if (itemStack.is(Items.TURTLE_HELMET) && Odyssey.getConfig().items.tooltipConfig.turtle_helmets) {
 
-            int effectTime;
+                int effectTime;
 
-            if (Odyssey.getConfig().items.improved_turtle_helmets) {
-                effectTime = 600;
-            } else {
-                effectTime = 200;
+                if (Odyssey.getConfig().items.improved_turtle_helmets) {
+                    effectTime = 600;
+                } else {
+                    effectTime = 200;
+                }
+
+                MobEffectInstance waterBreathing = new MobEffectInstance(MobEffects.WATER_BREATHING, effectTime, 0, false, false, true);
+
+                if (!RegistryHelpers.hasEnchantmentOrTrim(itemStack)) tooltip.add(CommonComponents.EMPTY);
+                tooltip.add(Component.translatable("gui.odyssey.item.turtle_helmet.when_entering_water").withStyle(ChatFormatting.GRAY));
+                tooltip.add(CommonComponents.space().append(Component.translatable("potion.withDuration", Component.translatable(waterBreathing.getDescriptionId()), MobEffectUtil.formatDuration(waterBreathing, 1.0F, level.tickRateManager().tickrate())).withStyle(ChatFormatting.BLUE)));
+                RegistryHelpers.addSpaceOnTooltipIfEnchantedOrTrimmed(itemStack, tooltip);
             }
 
-            MobEffectInstance waterBreathing = new MobEffectInstance(MobEffects.WATER_BREATHING, effectTime, 0, false, false, true);
-
-            if (!RegistryHelpers.hasEnchantmentOrTrim(itemStack)) tooltip.add(CommonComponents.EMPTY);
-            tooltip.add(Component.translatable("gui.odyssey.item.turtle_helmet.when_entering_water").withStyle(ChatFormatting.GRAY));
-            tooltip.add(CommonComponents.space().append(Component.translatable("potion.withDuration", Component.translatable(waterBreathing.getDescriptionId()), MobEffectUtil.formatDuration(waterBreathing, 1.0F, level.tickRateManager().tickrate())).withStyle(ChatFormatting.BLUE)));
-            RegistryHelpers.addSpaceOnTooltipIfEnchantedOrTrimmed(itemStack, tooltip);
+            if (itemStack.is(Items.SPECTRAL_ARROW) && Odyssey.getConfig().items.tooltipConfig.spectral_arrows) {
+                MobEffectInstance glowing = new MobEffectInstance(MobEffects.GLOWING, 200, 0);
+                tooltip.add(Component.translatable("potion.withDuration", Component.translatable(glowing.getDescriptionId()), MobEffectUtil.formatDuration(glowing, 1.0F, level.tickRateManager().tickrate())).withStyle(ChatFormatting.BLUE));
+            }
         }
     }
 }
