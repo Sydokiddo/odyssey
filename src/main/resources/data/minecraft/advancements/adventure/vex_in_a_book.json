@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:adventure/voluntary_exile",
+  "criteria": {
+    "vex_bound_book": {
+      "conditions": {
+        "item": {
+          "items": [
+            "odyssey:vex_bound_book"
+          ]
+        }
+      },
+      "trigger": "minecraft:filled_bucket"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.adventure.vex_in_a_book.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "odyssey:vex_bound_book"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.adventure.vex_in_a_book.title"
+    }
+  },
+  "requirements": [
+    [
+      "vex_bound_book"
+    ]
+  ]
+}

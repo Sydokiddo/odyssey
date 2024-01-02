@@ -184,6 +184,12 @@
   "advancements.adventure.find_mansion.title": "A Foreboding Keep",
   "advancements.adventure.find_mansion.description": "Enter a Woodland Mansion",
 
+  "advancements.adventure.vex_in_a_book.title": "Fly My Pretties",
+  "advancements.adventure.vex_in_a_book.description": "Capture a Vex in a Book",
+
+  "advancements.husbandry.allay_in_a_book.title": "Do You Believe in Fairies?",
+  "advancements.husbandry.allay_in_a_book.description": "Capture an Allay in a Book",
+
   "advancements.husbandry.duplicate_allay.title": "Musical Evocation",
   "advancements.husbandry.duplicate_allay.description": "Duplicate an Allay while it is dancing near a Jukebox using an Amethyst Shard",
 
