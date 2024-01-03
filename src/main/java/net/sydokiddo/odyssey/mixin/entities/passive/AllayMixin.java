@@ -5,7 +5,9 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.animal.allay.Allay;
 import net.minecraft.world.entity.npc.InventoryCarrier;
@@ -36,6 +38,7 @@ public abstract class AllayMixin extends PathfinderMob implements ContainerMob, 
     @Shadow @Final private static EntityDataAccessor<Boolean> DATA_CAN_DUPLICATE;
     @Shadow public abstract boolean hasItemInHand();
 
+    @Shadow @Final private SimpleContainer inventory;
     @Unique private static final String FROM_BOOK_TAG = "FromBook";
     @Unique private static final String DUPLICATION_COOLDOWN_TAG = "DuplicationCooldown";
     @Unique private static final String CAN_DUPLICATE_TAG = "CanDuplicate";
@@ -106,8 +109,20 @@ public abstract class AllayMixin extends PathfinderMob implements ContainerMob, 
         Item containerItem = Items.BOOK;
 
         if (this.isAlive() && player.getItemInHand(interactionHand).is(containerItem) && this.canPickUpAllay(player) && Odyssey.getConfig().entities.miscEntitiesConfig.capture_allays_and_vexes_in_books) {
-            this.dropEquipment();
+            this.dropHeldItems();
             cir.setReturnValue(ContainerMob.containerMobPickup(player, interactionHand, this, containerItem).orElse(super.mobInteract(player, interactionHand)));
+        }
+    }
+
+    @Unique
+    private void dropHeldItems() {
+
+        this.inventory.removeAllItems().forEach(this::spawnAtLocation);
+        ItemStack itemStack = this.getItemBySlot(EquipmentSlot.MAINHAND);
+
+        if (!itemStack.isEmpty()) {
+            this.spawnAtLocation(itemStack);
+            this.setItemSlot(EquipmentSlot.MAINHAND, ItemStack.EMPTY);
         }
     }
 }
