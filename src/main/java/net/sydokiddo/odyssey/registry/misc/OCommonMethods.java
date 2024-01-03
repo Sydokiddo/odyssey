@@ -85,29 +85,31 @@ public class OCommonMethods {
     // region Rendering
 
     @Environment(EnvType.CLIENT)
-    public static void renderCompassOverlay(GuiGraphics guiGraphics) {
+    public static void renderCompassAndMapOverlay(GuiGraphics guiGraphics) {
 
         Minecraft minecraft = Minecraft.getInstance();
-        if (minecraft.gui.getDebugOverlay().showDebugScreen() || !Odyssey.getConfig().items.compass_gui_rendering) return;
+        if (minecraft.gui.getDebugOverlay().showDebugScreen() || !Odyssey.getConfig().items.compass_and_map_gui_rendering) return;
 
         if (minecraft.getCameraEntity() != null) {
 
             Player player = minecraft.player;
             assert player != null;
 
-            boolean hasCompass = false;
+            boolean hasCompassOrMap = false;
 
             for (int slots = 0; slots <= 35; slots++) {
 
                 Item compass = Items.COMPASS;
+                Item map = Items.FILLED_MAP;
 
-                if (player.getInventory().getItem(slots).is(compass) || player.getOffhandItem().is(compass) || player.getItemBySlot(EquipmentSlot.HEAD).is(compass)) {
-                    hasCompass = true;
+                if (player.getInventory().getItem(slots).is(compass) || player.getOffhandItem().is(compass) || player.getItemBySlot(EquipmentSlot.HEAD).is(compass) ||
+                player.getInventory().getItem(slots).is(map) || player.getOffhandItem().is(map) || player.getItemBySlot(EquipmentSlot.HEAD).is(map)) {
+                    hasCompassOrMap = true;
                     break;
                 }
             }
 
-            if (hasCompass) {
+            if (hasCompassOrMap) {
 
                 BlockPos blockPos = minecraft.getCameraEntity().blockPosition();
                 int heightOffset;

@@ -83,6 +83,7 @@ public abstract class ItemStackMixin {
 
                         } else {
 
+                            if (itemStack.is(Items.FILLED_MAP)) cir.getReturnValue().add(CommonComponents.EMPTY);
                             cir.getReturnValue().add(Component.translatable("gui.odyssey.item.compass.current_location").withStyle(ChatFormatting.GRAY));
 
                             x = client.player.getBlockX();
