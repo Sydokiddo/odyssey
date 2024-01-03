@@ -14,11 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.List;
 
 @Mixin(CrossbowItem.class)
-public abstract class CrossbowItemMixin extends ProjectileWeaponItem {
-
-    private CrossbowItemMixin(Properties properties) {
-        super(properties);
-    }
+public class CrossbowItemMixin {
 
     @Inject(method = "appendHoverText", at = @At("HEAD"))
     private void odyssey$addCrossbowTooltip(ItemStack itemStack, @Nullable Level level, List<Component> tooltip, TooltipFlag tooltipFlag, CallbackInfo info) {

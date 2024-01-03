@@ -21,7 +21,6 @@ import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.AbstractCauldronBlock;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -34,11 +33,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(AbstractCauldronBlock.class)
-public abstract class AbstractCauldronBlockMixin extends Block {
-
-    private AbstractCauldronBlockMixin(Properties properties) {
-        super(properties);
-    }
+public class AbstractCauldronBlockMixin {
 
     @Inject(at = @At("HEAD"), method = "use", cancellable = true)
     private void odyssey$addCauldronInteractions(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult, CallbackInfoReturnable<InteractionResult> cir) {

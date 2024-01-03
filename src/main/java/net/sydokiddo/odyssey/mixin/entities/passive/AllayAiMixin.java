@@ -14,9 +14,9 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Mixin(AllayAi.class)
-public abstract class AllayAiMixin {
+public class AllayAiMixin {
 
-    // Prevents Allays from attempting to move towards their liked player when attached to a lead
+    // Prevents Allays from attempting to move towards their liked player when attached to a lead and 8 blocks further than them
 
     @Inject(method = "getLikedPlayerPositionTracker", at = @At("HEAD"), cancellable = true)
     private static void odyssey$preventAllaysMovingTowardsPlayersWhenLeashed(LivingEntity livingEntity, CallbackInfoReturnable<Optional<PositionTracker>> cir) {
