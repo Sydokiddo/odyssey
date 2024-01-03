@@ -24,6 +24,10 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.ButtonBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.material.PushReaction;
 import net.sydokiddo.chrysalis.Chrysalis;
 import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
 import net.sydokiddo.odyssey.Odyssey;
@@ -95,21 +99,7 @@ public class OCommonMethods {
             Player player = minecraft.player;
             assert player != null;
 
-            boolean hasCompassOrMap = false;
-
-            for (int slots = 0; slots <= 35; slots++) {
-
-                Item compass = Items.COMPASS;
-                Item map = Items.FILLED_MAP;
-
-                if (player.getInventory().getItem(slots).is(compass) || player.getOffhandItem().is(compass) || player.getItemBySlot(EquipmentSlot.HEAD).is(compass) ||
-                player.getInventory().getItem(slots).is(map) || player.getOffhandItem().is(map) || player.getItemBySlot(EquipmentSlot.HEAD).is(map)) {
-                    hasCompassOrMap = true;
-                    break;
-                }
-            }
-
-            if (hasCompassOrMap) {
+            if (hasItemInInventory(Items.COMPASS, player) || hasItemInInventory(Items.FILLED_MAP, player)) {
 
                 BlockPos blockPos = minecraft.getCameraEntity().blockPosition();
                 int heightOffset;
@@ -132,4 +122,20 @@ public class OCommonMethods {
     }
 
     // endregion
+
+    // To Move to Chrysalis
+
+    private static boolean hasItemInInventory(Item item, Player player) {
+        for (int slots = 0; slots <= 35; slots++) {
+            if (player.getInventory().getItem(slots).is(item) || player.getOffhandItem().is(item) || player.getItemBySlot(EquipmentSlot.HEAD).is(item) ||
+            player.getItemBySlot(EquipmentSlot.CHEST).is(item) || player.getItemBySlot(EquipmentSlot.LEGS).is(item) || player.getItemBySlot(EquipmentSlot.FEET).is(item)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static ButtonBlock registerCustomPulseTimeButton(BlockSetType blockSetType, int ticksToStayPressed) {
+        return new ButtonBlock(blockSetType, ticksToStayPressed, BlockBehaviour.Properties.of().noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY));
+    }
 }
