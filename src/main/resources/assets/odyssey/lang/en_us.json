@@ -13,8 +13,12 @@
   "item.odyssey.frog_bucket": "Bucket of Frog",
   "item.odyssey.squid_bucket": "Bucket of Squid",
   "item.odyssey.glow_squid_bucket": "Bucket of Glow Squid",
+  "item.odyssey.caterpillar_bucket": "Bucket of Caterpillar",
   "item.odyssey.allay_bound_book": "Allay Bound Book",
   "item.odyssey.vex_bound_book": "Vex Bound Book",
+
+  "item.odyssey.caterpillar_spawn_egg": "Caterpillar Spawn Egg",
+  "item.odyssey.moth_spawn_egg": "Moth Spawn Egg",
 
   "item.minecraft.potion.effect.mining_fatigue": "Potion of Mining Fatigue",
   "item.minecraft.splash_potion.effect.mining_fatigue": "Splash Potion of Mining Fatigue",
@@ -109,7 +113,17 @@
   "block.odyssey.potted_short_grass": "Potted Short Grass",
   "block.odyssey.potted_nether_wart": "Potted Nether Wart",
 
+  "block.odyssey.cocoon": "Cocoon",
+
   "entity.odyssey.gunpowder_block": "Primed Block of Gunpowder",
+
+  "entity.odyssey.caterpillar": "Caterpillar",
+  "entity.odyssey.moth": "Moth",
+
+  "entity.moth_type.odyssey.polyphemus": "Polyphemus",
+  "entity.moth_type.odyssey.silk": "Silk",
+  "entity.moth_type.odyssey.rosy_maple": "Rosy Maple",
+  "entity.moth_type.odyssey.luna": "Luna",
 
   "entity.frog_type.minecraft.temperate": "Temperate",
   "entity.frog_type.minecraft.warm": "Warm",

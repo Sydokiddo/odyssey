@@ -65,12 +65,12 @@ public abstract class VexMixin extends Monster implements TraceableEntity, Conta
     // region NBT
 
     @Inject(at = @At("HEAD"), method = "defineSynchedData")
-    private void odyssey_defineVexNBT(CallbackInfo info) {
+    private void odyssey$defineVexNBT(CallbackInfo info) {
         this.entityData.define(OdysseyRegistry.VEX_FROM_BOOK, false);
     }
 
     @Inject(at = @At("HEAD"), method = "addAdditionalSaveData")
-    private void odyssey_addVexNBT(CompoundTag compoundTag, CallbackInfo info) {
+    private void odyssey$addVexNBT(CompoundTag compoundTag, CallbackInfo info) {
         compoundTag.putBoolean(FROM_BOOK_TAG, this.fromItem());
     }
 

@@ -18,7 +18,6 @@ import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.blocks.custom_blocks.*;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
-import net.sydokiddo.odyssey.registry.misc.OCommonMethods;
 
 public class ModBlocks {
 
@@ -52,9 +51,9 @@ public class ModBlocks {
     public static final Block REDSTONE_LANTERN = registerBlock("redstone_lantern",
         new RedstoneLanternBlock(FabricBlockSettings.copyOf(Blocks.LANTERN).luminance(RegistryHelpers.blockStateShouldEmitLight(7))));
 
-    public static final Block GOLDEN_BUTTON = registerBlock("golden_button", OCommonMethods.registerCustomPulseTimeButton(METAL_TYPE, 10));
+    public static final Block GOLDEN_BUTTON = registerBlock("golden_button", RegistryHelpers.registerCustomPulseTimeButton(METAL_TYPE, 10));
 
-    public static final Block IRON_BUTTON = registerBlock("iron_button", OCommonMethods.registerCustomPulseTimeButton(METAL_TYPE, 40));
+    public static final Block IRON_BUTTON = registerBlock("iron_button", RegistryHelpers.registerCustomPulseTimeButton(METAL_TYPE, 40));
 
     public static final Block FRAGILE_BUTTON = registerBlock("fragile_button",
         new FragileButtonBlock(TERRACOTTA_TYPE, 20, BlockBehaviour.Properties.of().noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY)));

@@ -2,7 +2,7 @@
   "parent": "minecraft:husbandry/safely_harvest_honey",
   "criteria": {
     "cure_poison": {
-      "trigger": "odyssey:cure_poison_with_honey"
+      "trigger": "chrysalis:cure_poison_with_honey"
     }
   },
   "display": {

@@ -50,12 +50,12 @@ public abstract class AllayMixin extends PathfinderMob implements ContainerMob, 
     // region NBT
 
     @Inject(at = @At("HEAD"), method = "defineSynchedData")
-    private void odyssey_defineAllayNBT(CallbackInfo info) {
+    private void odyssey$defineAllayNBT(CallbackInfo info) {
         this.entityData.define(OdysseyRegistry.ALLAY_FROM_BOOK, false);
     }
 
     @Inject(at = @At("HEAD"), method = "addAdditionalSaveData")
-    private void odyssey_addAllayNBT(CompoundTag compoundTag, CallbackInfo info) {
+    private void odyssey$addAllayNBT(CompoundTag compoundTag, CallbackInfo info) {
         compoundTag.putBoolean(FROM_BOOK_TAG, this.fromItem());
     }
 

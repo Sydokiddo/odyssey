@@ -73,7 +73,7 @@ public class ModCreativeModeTabs {
 
         // endregion
 
-        // region Natural Blocks Tab:
+        // region Natural Blocks Tab
 
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.NATURAL_BLOCKS).register(entries -> {
             entries.addAfter(Items.HAY_BLOCK, ModBlocks.GUNPOWDER_BLOCK);

@@ -35,9 +35,9 @@ public class MobBucketItemMixin extends BucketItem {
         if (itemStack.is(Items.AXOLOTL_BUCKET) && this.type == EntityType.AXOLOTL && compoundTag != null && compoundTag.contains(Axolotl.VARIANT_TAG) && Odyssey.getConfig().items.tooltipConfig.axolotl_buckets) {
 
             String translationString = "entity.axolotl_type." + compoundTag.getInt(Axolotl.VARIANT_TAG);
-            ChatFormatting[] chatFormattings = new ChatFormatting[]{ChatFormatting.ITALIC, ChatFormatting.GRAY};
+            ChatFormatting[] chatFormatting = new ChatFormatting[]{ChatFormatting.ITALIC, ChatFormatting.GRAY};
 
-            tooltip.add(Component.translatable(translationString).withStyle(chatFormattings));
+            tooltip.add(Component.translatable(translationString).withStyle(chatFormatting));
         }
     }
 }

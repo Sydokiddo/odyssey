@@ -64,7 +64,6 @@ public class OdysseyRegistry {
 
         ModCreativeModeTabs.registerCreativeTabs();
         ModLootTableModifiers.modifyLootTables();
-        ModCriteriaTriggers.registerCriteriaTriggers();
         CommandRegistrationCallback.EVENT.register((commandDispatcher, commandBuildContext, commandSelection) -> ShowcaseCommand.register(commandDispatcher));
         CommandRegistrationCallback.EVENT.register((commandDispatcher, commandBuildContext, commandSelection) -> HatCommand.register(commandDispatcher));
         HudRenderCallback.EVENT.register((guiGraphics, tickDelta) -> OCommonMethods.renderCompassAndMapOverlay(guiGraphics));

@@ -51,7 +51,6 @@
     "items.EnchantmentMixin",
     "items.ItemMixin",
     "items.ItemStackMixin",
-    "items.misc.HoneyBottleItemMixin",
     "items.misc.HorseArmorItemMixin",
     "items.misc.MobBucketItemMixin",
     "items.tools.AxeItemMixin",
