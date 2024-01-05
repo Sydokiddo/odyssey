@@ -1,0 +1,38 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "minecraft:item/axolotl_bucket"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "variant": 0
+      },
+      "model": "odyssey:item/axolotl_bucket_lucy"
+    },
+    {
+      "predicate": {
+        "variant": 0.01
+      },
+      "model": "odyssey:item/axolotl_bucket_wild"
+    },
+    {
+      "predicate": {
+        "variant": 0.02
+      },
+      "model": "odyssey:item/axolotl_bucket_gold"
+    },
+    {
+      "predicate": {
+        "variant": 0.03
+      },
+      "model": "odyssey:item/axolotl_bucket_cyan"
+    },
+    {
+      "predicate": {
+        "variant": 0.04
+      },
+      "model": "odyssey:item/axolotl_bucket_blue"
+    }
+  ]
+}

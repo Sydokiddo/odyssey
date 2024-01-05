@@ -8,8 +8,11 @@ import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BiomeTags;
+import net.minecraft.world.entity.animal.frog.Frog;
+import net.minecraft.world.item.Items;
 import net.sydokiddo.chrysalis.Chrysalis;
 import net.sydokiddo.odyssey.client.rendering.ModEntityRenderer;
 import net.sydokiddo.odyssey.registry.blocks.ModBlocks;
@@ -65,6 +68,35 @@ public class OdysseyClient implements ClientModInitializer {
                     } else {
                         return 0.1F;
                     }
+                }
+                return 0.1F;
+            });
+
+            FabricModelPredicateProviderRegistry.register(Items.AXOLOTL_BUCKET, new ResourceLocation("variant"), (itemStack, client, livingEntity, i) -> {
+
+                float axolotlType = 0;
+                String variantString = "Variant";
+
+                if (itemStack.getTag() != null && itemStack.getTag().contains(variantString)) {
+                    axolotlType = itemStack.getTag().getInt(variantString);
+                }
+
+                return axolotlType * 0.01F + 0.0001F;
+            });
+
+            FabricModelPredicateProviderRegistry.register(ModItems.FROG_BUCKET, new ResourceLocation("variant"), (itemStack, client, livingEntity, i) -> {
+
+                CompoundTag compoundTag = itemStack.getTag();
+
+                if (compoundTag != null && compoundTag.contains(Frog.VARIANT_KEY)) {
+                    if (Objects.equals(compoundTag.getString(Frog.VARIANT_KEY), "minecraft:temperate")) {
+                        return 0.1F;
+                    } else if (Objects.equals(compoundTag.getString(Frog.VARIANT_KEY), "minecraft:warm")) {
+                        return 0.2F;
+                    } else if (Objects.equals(compoundTag.getString(Frog.VARIANT_KEY), "minecraft:cold")) {
+                        return 0.3F;
+                    }
+                    return 0.1F;
                 }
                 return 0.1F;
             });
