@@ -99,8 +99,8 @@ public class OCommonMethods {
                 BlockPos blockPos = minecraft.getCameraEntity().blockPosition();
                 int heightOffset;
 
-                if (FabricLoader.getInstance().isModLoaded(RegistryHelpers.manic)) {
-                    heightOffset = 30;
+                if (FabricLoader.getInstance().isModLoaded(RegistryHelpers.manic) || FabricLoader.getInstance().isModLoaded("mr_nevermore") || FabricLoader.getInstance().isModLoaded("mr_manic")) {
+                    heightOffset = 35;
                 } else {
                     heightOffset = 5;
                 }
