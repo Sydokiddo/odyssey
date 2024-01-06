@@ -8,11 +8,13 @@ import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.entity.animal.frog.Frog;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.biome.Biome;
 import net.sydokiddo.chrysalis.Chrysalis;
 import net.sydokiddo.odyssey.client.rendering.ModEntityRenderer;
 import net.sydokiddo.odyssey.registry.blocks.ModBlocks;
@@ -61,10 +63,13 @@ public class OdysseyClient implements ClientModInitializer {
             FabricModelPredicateProviderRegistry.register(ModItems.ENVIRONMENT_DETECTOR, new ResourceLocation("type"), (itemStack, client, livingEntity, i) -> {
 
                 if (client != null && livingEntity != null) {
-                    if (client.getBiome(livingEntity.getOnPos()).is(BiomeTags.SPAWNS_WARM_VARIANT_FROGS)) {
+
+                    Holder<Biome> biome = client.getBiome(livingEntity.getOnPos());
+
+                    if (biome.is(BiomeTags.SPAWNS_WARM_VARIANT_FROGS)) {
                         return 0.2F;
                     }
-                    else if (client.getBiome(livingEntity.getOnPos()).is(BiomeTags.SPAWNS_COLD_VARIANT_FROGS)) {
+                    else if (biome.is(BiomeTags.SPAWNS_COLD_VARIANT_FROGS)) {
                         return 0.3F;
                     } else {
                         return 0.1F;
@@ -75,11 +80,12 @@ public class OdysseyClient implements ClientModInitializer {
 
             FabricModelPredicateProviderRegistry.register(Items.AXOLOTL_BUCKET, new ResourceLocation("variant"), (itemStack, client, livingEntity, i) -> {
 
+                CompoundTag compoundTag = itemStack.getTag();
                 float axolotlType = 0;
                 String variantString = "Variant";
 
-                if (itemStack.getTag() != null && itemStack.getTag().contains(variantString)) {
-                    axolotlType = itemStack.getTag().getInt(variantString);
+                if (compoundTag != null && compoundTag.contains(variantString)) {
+                    axolotlType = compoundTag.getInt(variantString);
                 }
 
                 return axolotlType * 0.01F + 0.0001F;
@@ -90,11 +96,14 @@ public class OdysseyClient implements ClientModInitializer {
                 CompoundTag compoundTag = itemStack.getTag();
 
                 if (compoundTag != null && compoundTag.contains(Frog.VARIANT_KEY)) {
-                    if (Objects.equals(compoundTag.getString(Frog.VARIANT_KEY), "minecraft:temperate")) {
+
+                    String frogVariant = compoundTag.getString(Frog.VARIANT_KEY);
+
+                    if (Objects.equals(frogVariant, "minecraft:temperate")) {
                         return 0.1F;
-                    } else if (Objects.equals(compoundTag.getString(Frog.VARIANT_KEY), "minecraft:warm")) {
+                    } else if (Objects.equals(frogVariant, "minecraft:warm")) {
                         return 0.2F;
-                    } else if (Objects.equals(compoundTag.getString(Frog.VARIANT_KEY), "minecraft:cold")) {
+                    } else if (Objects.equals(frogVariant, "minecraft:cold")) {
                         return 0.3F;
                     }
                     return 0.1F;

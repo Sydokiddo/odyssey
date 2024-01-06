@@ -33,38 +33,26 @@ public class ModBrushableBlockRenderer implements BlockEntityRenderer<ModBrushab
     @Override
     public void render(ModBrushableBlockEntity brushableBlockEntity, float f, PoseStack poseStack, MultiBufferSource multiBufferSource, int i, int j) {
 
-        if (brushableBlockEntity.getLevel() != null) {
+        int dustedState = brushableBlockEntity.getBlockState().getValue(BlockStateProperties.DUSTED);
+        Direction direction = brushableBlockEntity.getHitDirection();
+        ItemStack itemStack = brushableBlockEntity.getItem();
 
-            int dustedState = brushableBlockEntity.getBlockState().getValue(BlockStateProperties.DUSTED);
+        if (brushableBlockEntity.getLevel() != null && dustedState > 0 && direction != null && !itemStack.isEmpty()) {
+            poseStack.pushPose();
+            poseStack.translate(0.0F, 0.5F, 0.0F);
 
-            if (dustedState > 0) {
+            float[] translations = this.translations(direction, dustedState);
+            poseStack.translate(translations[0], translations[1], translations[2]);
 
-                Direction direction = brushableBlockEntity.getHitDirection();
+            poseStack.mulPose(Axis.YP.rotationDegrees(75.0F));
+            boolean directions = direction == Direction.EAST || direction == Direction.WEST;
+            poseStack.mulPose(Axis.YP.rotationDegrees((float)((directions ? 90 : 0) + 11)));
 
-                if (direction != null) {
+            poseStack.scale(0.5F, 0.5F, 0.5F);
 
-                    ItemStack itemStack = brushableBlockEntity.getItem();
-
-                    if (!itemStack.isEmpty()) {
-
-                        poseStack.pushPose();
-                        poseStack.translate(0.0F, 0.5F, 0.0F);
-
-                        float[] translations = this.translations(direction, dustedState);
-                        poseStack.translate(translations[0], translations[1], translations[2]);
-
-                        poseStack.mulPose(Axis.YP.rotationDegrees(75.0F));
-                        boolean directions = direction == Direction.EAST || direction == Direction.WEST;
-                        poseStack.mulPose(Axis.YP.rotationDegrees((float)((directions ? 90 : 0) + 11)));
-
-                        poseStack.scale(0.5F, 0.5F, 0.5F);
-
-                        int lightColor = LevelRenderer.getLightColor(brushableBlockEntity.getLevel(), brushableBlockEntity.getBlockState(), brushableBlockEntity.getBlockPos().relative(direction));
-                        this.itemRenderer.renderStatic(itemStack, ItemDisplayContext.FIXED, lightColor, OverlayTexture.NO_OVERLAY, poseStack, multiBufferSource, brushableBlockEntity.getLevel(), 0);
-                        poseStack.popPose();
-                    }
-                }
-            }
+            int lightColor = LevelRenderer.getLightColor(brushableBlockEntity.getLevel(), brushableBlockEntity.getBlockState(), brushableBlockEntity.getBlockPos().relative(direction));
+            this.itemRenderer.renderStatic(itemStack, ItemDisplayContext.FIXED, lightColor, OverlayTexture.NO_OVERLAY, poseStack, multiBufferSource, brushableBlockEntity.getLevel(), 0);
+            poseStack.popPose();
         }
     }
 
@@ -74,12 +62,12 @@ public class ModBrushableBlockRenderer implements BlockEntityRenderer<ModBrushab
         float translation = (float)dustedLevel / 10.0F * 0.75F;
 
         switch (direction) {
+            case NORTH -> offset[2] = 0.25F - translation;
+            case SOUTH -> offset[2] = 0.73F + translation;
             case EAST -> offset[0] = 0.73F + translation;
             case WEST -> offset[0] = 0.25F - translation;
             case UP -> offset[1] = 0.25F + translation;
             case DOWN -> offset[1] = -0.23F - translation;
-            case NORTH -> offset[2] = 0.25F - translation;
-            case SOUTH -> offset[2] = 0.73F + translation;
         }
         return offset;
     }

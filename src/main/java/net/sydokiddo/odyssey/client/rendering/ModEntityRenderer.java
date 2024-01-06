@@ -28,12 +28,12 @@ public class ModEntityRenderer {
 
     public static void setPotionCauldronRenderColors() {
 
-        ColorProviderRegistry.BLOCK.register((state, level, pos, tintIndex) -> {
+        ColorProviderRegistry.BLOCK.register((blockState, level, blockPos, tintIndex) -> {
 
             assert level != null;
-            BlockEntity blockEntity = level.getBlockEntity(pos);
+            BlockEntity blockEntity = level.getBlockEntity(blockPos);
 
-            if (pos != null && blockEntity instanceof PotionCauldronBlockEntity potionCauldron) {
+            if (blockPos != null && blockEntity instanceof PotionCauldronBlockEntity potionCauldron) {
                 return potionCauldron.getColor();
             }
             return 0;
