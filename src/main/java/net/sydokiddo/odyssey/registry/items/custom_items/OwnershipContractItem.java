@@ -124,7 +124,7 @@ public class OwnershipContractItem extends Item {
                 if (this.isPetOwnedByMe(livingEntity, player) || player.isCreative()) {
 
                     livingEntity.level().playSound(null, player.getOnPos().above(), ModSoundEvents.OWNERSHIP_CONTRACT_SIGN, SoundSource.PLAYERS, 1.0F, 1.0F + player.level().getRandom().nextFloat() * 0.2F);
-                    this.saveMobToContract(player, livingEntity, interactionHand);
+                    this.saveMobToContract(player, livingEntity, interactionHand, itemStack);
                     this.spawnParticlesAroundMob(serverLevel, ParticleTypes.HAPPY_VILLAGER, livingEntity);
 
                     Minecraft.getInstance().gui.setOverlayMessage(bindSuccessMessage, false);
@@ -181,13 +181,17 @@ public class OwnershipContractItem extends Item {
         return compoundTag != null && !compoundTag.getString(mobNameString).isEmpty();
     }
 
-    private void saveMobToContract(Player player, LivingEntity livingEntity, InteractionHand interactionHand) {
+    private void saveMobToContract(Player player, LivingEntity livingEntity, InteractionHand interactionHand, ItemStack oldItem) {
 
         ItemStack boundContract = new ItemStack(this, 1);
 
         CompoundTag compoundTag = boundContract.getOrCreateTag();
         compoundTag.putUUID(mobUUIDString, livingEntity.getUUID());
         compoundTag.putString(mobNameString, livingEntity.getName().getString());
+
+        if (oldItem.hasCustomHoverName()) {
+            boundContract.setHoverName(oldItem.getHoverName());
+        }
 
         String ownerUUIDString = "OwnerUUID";
 
@@ -221,6 +225,7 @@ public class OwnershipContractItem extends Item {
     private void setNewOwner(LivingEntity livingEntity, Player player) {
         if (livingEntity instanceof TamableAnimal tamableAnimal) {
             tamableAnimal.setOwnerUUID(player.getUUID());
+            if (tamableAnimal.isOrderedToSit()) tamableAnimal.setOrderedToSit(true);
         }
         else if (livingEntity instanceof AbstractHorse abstractHorse) {
             abstractHorse.setOwnerUUID(player.getUUID());
