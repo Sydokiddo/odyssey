@@ -31,7 +31,7 @@ public class FragilePressurePlateBlock extends PressurePlateBlock {
 
     @Override
     public @NotNull SoundType getSoundType(BlockState blockState) {
-        if (blockState.getValue(POWERED)) {
+        if (blockState.getValue(CRACKED)) {
             return ModSoundEvents.FRAGILE_PRESSURE_PLATE_CRACKED;
         }
         return ModSoundEvents.FRAGILE_PRESSURE_PLATE;

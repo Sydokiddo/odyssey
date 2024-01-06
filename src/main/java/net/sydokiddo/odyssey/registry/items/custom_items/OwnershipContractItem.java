@@ -230,7 +230,7 @@ public class OwnershipContractItem extends Item {
     private void setNewOwner(LivingEntity livingEntity, Player player) {
         if (livingEntity instanceof TamableAnimal tamableAnimal) {
             tamableAnimal.setOwnerUUID(player.getUUID());
-            if (tamableAnimal.isOrderedToSit()) tamableAnimal.setOrderedToSit(true);
+            tamableAnimal.setOrderedToSit(tamableAnimal.isOrderedToSit());
         }
         else if (livingEntity instanceof AbstractHorse abstractHorse) {
             abstractHorse.setOwnerUUID(player.getUUID());
