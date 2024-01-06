@@ -2,5 +2,13 @@
   "parent": "minecraft:item/generated",
   "textures": {
     "layer0": "odyssey:item/ownership_contract"
-  }
+  },
+  "overrides": [
+    {
+      "model": "odyssey:item/ownership_contract_bound",
+      "predicate": {
+        "bound": 1
+      }
+    }
+  ]
 }

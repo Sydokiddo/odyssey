@@ -17,6 +17,7 @@ import net.sydokiddo.chrysalis.Chrysalis;
 import net.sydokiddo.odyssey.client.rendering.ModEntityRenderer;
 import net.sydokiddo.odyssey.registry.blocks.ModBlocks;
 import net.sydokiddo.odyssey.registry.items.ModItems;
+import net.sydokiddo.odyssey.registry.items.custom_items.OwnershipContractItem;
 import net.sydokiddo.odyssey.registry.misc.ModParticles;
 import java.util.Objects;
 
@@ -99,6 +100,13 @@ public class OdysseyClient implements ClientModInitializer {
                     return 0.1F;
                 }
                 return 0.1F;
+            });
+
+            FabricModelPredicateProviderRegistry.register(ModItems.OWNERSHIP_CONTRACT, new ResourceLocation("bound"), (itemStack, client, livingEntity, i) -> {
+                if (OwnershipContractItem.isContractBound(itemStack)) {
+                    return 1.0F;
+                }
+                return 0.0F;
             });
 
             // endregion

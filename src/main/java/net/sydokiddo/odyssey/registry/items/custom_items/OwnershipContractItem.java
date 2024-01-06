@@ -32,7 +32,7 @@ import java.util.UUID;
 public class OwnershipContractItem extends Item {
 
     private final String ownerNameString = "OwnerName";
-    private final String mobNameString = "MobName";
+    private static final String mobNameString = "MobName";
     private final String mobUUIDString = "MobUUID";
 
     public OwnershipContractItem(Properties properties) {
@@ -45,7 +45,7 @@ public class OwnershipContractItem extends Item {
         ItemStack itemStack = player.getItemInHand(interactionHand);
         CompoundTag compoundTag = itemStack.getOrCreateTag();
 
-        if (this.isContractBound(itemStack) && compoundTag.hasUUID(mobUUIDString)) {
+        if (isContractBound(itemStack) && compoundTag.hasUUID(mobUUIDString)) {
 
             if (level instanceof ServerLevel serverLevel) {
 
@@ -96,7 +96,7 @@ public class OwnershipContractItem extends Item {
     @Override
     public @NotNull InteractionResult interactLivingEntity(ItemStack itemStack, Player player, LivingEntity livingEntity, InteractionHand interactionHand) {
 
-        if ((livingEntity instanceof TamableAnimal tamableAnimal && tamableAnimal.getOwnerUUID() != null || livingEntity instanceof AbstractHorse abstractHorse && abstractHorse.getOwnerUUID() != null) && !this.isContractBound(itemStack)) {
+        if ((livingEntity instanceof TamableAnimal tamableAnimal && tamableAnimal.getOwnerUUID() != null || livingEntity instanceof AbstractHorse abstractHorse && abstractHorse.getOwnerUUID() != null) && !isContractBound(itemStack)) {
 
             if (livingEntity.level() instanceof ServerLevel serverLevel) {
 
@@ -145,12 +145,12 @@ public class OwnershipContractItem extends Item {
 
     @Override
     public boolean isFoil(ItemStack itemStack) {
-        return this.isContractBound(itemStack);
+        return isContractBound(itemStack);
     }
 
     @Override
     public @NotNull Rarity getRarity(ItemStack itemStack) {
-        if (this.isContractBound(itemStack)) {
+        if (isContractBound(itemStack)) {
             return Rarity.RARE;
         }
         return super.getRarity(itemStack);
@@ -161,7 +161,7 @@ public class OwnershipContractItem extends Item {
         livingEntity instanceof AbstractHorse abstractHorse && abstractHorse.getOwnerUUID() != null && abstractHorse.getOwnerUUID().equals(player.getUUID()));
     }
 
-    private boolean isContractBound(ItemStack itemStack) {
+    public static boolean isContractBound(ItemStack itemStack) {
         CompoundTag compoundTag = itemStack.getTag();
         return compoundTag != null && !compoundTag.getString(mobNameString).isEmpty();
     }
@@ -217,7 +217,7 @@ public class OwnershipContractItem extends Item {
 
         super.appendHoverText(itemStack, level, tooltip, tooltipFlag);
         CompoundTag compoundTag = itemStack.getOrCreateTag();
-        boolean isBound = this.isContractBound(itemStack);
+        boolean isBound = isContractBound(itemStack);
 
         if (isBound) {
             tooltip.add(Component.translatable("gui.odyssey.item.ownership_contract.bound").withStyle(style -> style.withItalic(true).withColor(ChatFormatting.YELLOW)));
