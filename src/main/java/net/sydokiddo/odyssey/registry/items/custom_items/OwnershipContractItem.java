@@ -139,7 +139,7 @@ public class OwnershipContractItem extends Item {
                 if (this.isPetOwnedByMe(livingEntity, player) || player.isCreative()) {
 
                     livingEntity.level().playSound(null, player.getOnPos().above(), ModSoundEvents.OWNERSHIP_CONTRACT_SIGN, SoundSource.PLAYERS, 1.0F, 1.0F + player.level().getRandom().nextFloat() * 0.2F);
-                    this.saveMobToContract(player, livingEntity, itemStack);
+                    this.saveMobToContract(player, livingEntity, itemStack, interactionHand);
                     this.spawnParticlesAroundMob(serverLevel, ParticleTypes.HAPPY_VILLAGER, livingEntity);
 
                     Minecraft.getInstance().gui.setOverlayMessage(bindSuccessMessage, false);
@@ -183,7 +183,7 @@ public class OwnershipContractItem extends Item {
         return compoundTag != null && !compoundTag.getString(mobNameString).isEmpty();
     }
 
-    private void saveMobToContract(Player player, LivingEntity livingEntity, ItemStack oldItem) {
+    private void saveMobToContract(Player player, LivingEntity livingEntity, ItemStack oldItem, InteractionHand interactionHand) {
 
         ItemStack boundContract = new ItemStack(this, 1);
 
@@ -205,11 +205,15 @@ public class OwnershipContractItem extends Item {
             if (abstractHorse.getOwner() != null) compoundTag.putString(ownerNameString, abstractHorse.getOwner().getName().getString());
         }
 
-        if (!player.getAbilities().instabuild) {
-            oldItem.shrink(1);
-        }
-        if (!player.getInventory().add(boundContract)) {
-            player.drop(boundContract, false);
+        if (oldItem.getCount() <= 1 && !player.getAbilities().instabuild) {
+            player.setItemInHand(interactionHand, boundContract);
+        } else {
+            if (!player.getAbilities().instabuild) {
+                oldItem.shrink(1);
+            }
+            if (!player.getInventory().add(boundContract)) {
+                player.drop(boundContract, false);
+            }
         }
     }
 
