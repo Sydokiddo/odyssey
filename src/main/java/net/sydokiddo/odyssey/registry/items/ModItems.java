@@ -61,7 +61,7 @@ public class ModItems {
 
     public static final Item ENVIRONMENT_DETECTOR = registerItem("environment_detector", new EnvironmentDetectorItem(new FabricItemSettings()));
 
-    public static final Item OWNERSHIP_CONTRACT = registerItem("ownership_contract", new OwnershipContractItem(new FabricItemSettings().stacksTo(1)));
+    public static final Item OWNERSHIP_CONTRACT = registerItem("ownership_contract", new OwnershipContractItem(new FabricItemSettings()));
 
     // endregion
 

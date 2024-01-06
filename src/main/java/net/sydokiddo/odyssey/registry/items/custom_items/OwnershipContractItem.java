@@ -41,6 +41,21 @@ public class OwnershipContractItem extends Item {
     }
 
     @Override
+    public boolean isFoil(ItemStack itemStack) {
+        return isContractBound(itemStack);
+    }
+
+    @Override
+    public @NotNull Rarity getRarity(ItemStack itemStack) {
+        if (isContractBound(itemStack)) {
+            return Rarity.RARE;
+        }
+        return super.getRarity(itemStack);
+    }
+
+    // region Mechanics
+
+    @Override
     public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
 
         ItemStack itemStack = player.getItemInHand(interactionHand);
@@ -124,7 +139,7 @@ public class OwnershipContractItem extends Item {
                 if (this.isPetOwnedByMe(livingEntity, player) || player.isCreative()) {
 
                     livingEntity.level().playSound(null, player.getOnPos().above(), ModSoundEvents.OWNERSHIP_CONTRACT_SIGN, SoundSource.PLAYERS, 1.0F, 1.0F + player.level().getRandom().nextFloat() * 0.2F);
-                    this.saveMobToContract(player, livingEntity, interactionHand, itemStack);
+                    this.saveMobToContract(player, livingEntity, itemStack);
                     this.spawnParticlesAroundMob(serverLevel, ParticleTypes.HAPPY_VILLAGER, livingEntity);
 
                     Minecraft.getInstance().gui.setOverlayMessage(bindSuccessMessage, false);
@@ -154,19 +169,6 @@ public class OwnershipContractItem extends Item {
         level.playSound(null, player.getOnPos().above(), ModSoundEvents.OWNERSHIP_CONTRACT_FAIL, SoundSource.PLAYERS, 1.0F, 1.0F + level.getRandom().nextFloat() * 0.2F);
     }
 
-    @Override
-    public boolean isFoil(ItemStack itemStack) {
-        return isContractBound(itemStack);
-    }
-
-    @Override
-    public @NotNull Rarity getRarity(ItemStack itemStack) {
-        if (isContractBound(itemStack)) {
-            return Rarity.RARE;
-        }
-        return super.getRarity(itemStack);
-    }
-
     private boolean isPetOwnedByMe(LivingEntity livingEntity, Player player) {
         return (livingEntity instanceof TamableAnimal tamableAnimal && tamableAnimal.getOwnerUUID() != null && tamableAnimal.getOwnerUUID().equals(player.getUUID()) ||
         livingEntity instanceof AbstractHorse abstractHorse && abstractHorse.getOwnerUUID() != null && abstractHorse.getOwnerUUID().equals(player.getUUID()));
@@ -181,7 +183,7 @@ public class OwnershipContractItem extends Item {
         return compoundTag != null && !compoundTag.getString(mobNameString).isEmpty();
     }
 
-    private void saveMobToContract(Player player, LivingEntity livingEntity, InteractionHand interactionHand, ItemStack oldItem) {
+    private void saveMobToContract(Player player, LivingEntity livingEntity, ItemStack oldItem) {
 
         ItemStack boundContract = new ItemStack(this, 1);
 
@@ -204,11 +206,10 @@ public class OwnershipContractItem extends Item {
         }
 
         if (!player.getAbilities().instabuild) {
-            player.setItemInHand(interactionHand, boundContract);
-        } else {
-            if (!player.getInventory().add(boundContract)) {
-                player.drop(boundContract, false);
-            }
+            oldItem.shrink(1);
+        }
+        if (!player.getInventory().add(boundContract)) {
+            player.drop(boundContract, false);
         }
     }
 
@@ -232,6 +233,8 @@ public class OwnershipContractItem extends Item {
         }
     }
 
+    // endregion
+
     @Override
     public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> tooltip, TooltipFlag tooltipFlag) {
 
@@ -240,7 +243,7 @@ public class OwnershipContractItem extends Item {
         boolean isBound = isContractBound(itemStack);
 
         if (isBound) {
-            tooltip.add(Component.translatable("gui.odyssey.item.ownership_contract.bound").withStyle(style -> style.withItalic(true).withColor(ChatFormatting.YELLOW)));
+            tooltip.add(Component.translatable("gui.odyssey.item.ownership_contract.bound").withStyle(style -> style.withItalic(true).withColor(ChatFormatting.DARK_PURPLE)));
             tooltip.add(CommonComponents.EMPTY);
         }
 

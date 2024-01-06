@@ -16,6 +16,7 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.items.ModItems;
+import net.sydokiddo.odyssey.registry.items.custom_items.OwnershipContractItem;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -31,6 +32,7 @@ public abstract class ItemStackMixin {
     @Shadow public abstract Item getItem();
     @Shadow public abstract ItemStack copy();
     @Unique private final Minecraft client = Minecraft.getInstance();
+    @Unique ItemStack itemStack = (ItemStack) (Object) this;
 
     // Adds unique tooltips to various items
 
@@ -198,6 +200,13 @@ public abstract class ItemStackMixin {
 
     @Inject(method = "getMaxStackSize", at = @At("HEAD"), cancellable = true)
     private void odyssey$changeMaxStackSizes(CallbackInfoReturnable<Integer> cir) {
+        if (this.getItem() instanceof OwnershipContractItem) {
+            if (OwnershipContractItem.isContractBound(itemStack)) {
+                cir.setReturnValue(1);
+            } else {
+                cir.setReturnValue(64);
+            }
+        }
         if (this.getItem() instanceof SignItem || this.getItem() instanceof HangingSignItem) {
             cir.setReturnValue(Odyssey.getConfig().items.itemStackSizeConfig.sign_stack_size);
         }
