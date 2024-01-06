@@ -56,16 +56,22 @@ public class OwnershipContractItem extends Item {
                 LivingEntity pet = (LivingEntity) serverLevel.getEntity(petUUID);
 
                 Component alreadyOwnedMessage = Component.translatable("gui.odyssey.item.ownership_contract.already_owned", compoundTag.getString(mobNameString)).withStyle(ChatFormatting.RED);
+                Component missingMessage = Component.translatable("gui.odyssey.item.ownership_contract.could_not_find", compoundTag.getString(mobNameString)).withStyle(ChatFormatting.RED);
                 Component oldOwnerMessage = Component.translatable("gui.odyssey.item.ownership_contract.transfer_ownership_old_owner", compoundTag.getString(mobNameString), player.getName().getString()).withStyle(ChatFormatting.WHITE);
                 Component newOwnerMessage = Component.translatable("gui.odyssey.item.ownership_contract.transfer_ownership_new_owner", compoundTag.getString(mobNameString)).withStyle(ChatFormatting.WHITE);
 
-                if (this.isPetOwnedByMe(pet, player)) {
+                if (this.isPetOwnedByMe(pet, player) || this.isPetMissing(pet)) {
 
-                    Minecraft.getInstance().gui.setOverlayMessage(alreadyOwnedMessage, false);
-                    Minecraft.getInstance().getNarrator().sayNow(alreadyOwnedMessage);
+                    if (this.isPetMissing(pet)) {
+                        Minecraft.getInstance().gui.setOverlayMessage(missingMessage, false);
+                        Minecraft.getInstance().getNarrator().sayNow(missingMessage);
+                    } else {
+                        Minecraft.getInstance().gui.setOverlayMessage(alreadyOwnedMessage, false);
+                        Minecraft.getInstance().getNarrator().sayNow(alreadyOwnedMessage);
+                        this.spawnParticlesAroundMob(serverLevel, ParticleTypes.SMOKE, pet);
+                    }
 
                     this.playFailSound(player.level(), player);
-                    this.spawnParticlesAroundMob(serverLevel, ParticleTypes.SMOKE, pet);
 
                 } else {
 
@@ -96,7 +102,7 @@ public class OwnershipContractItem extends Item {
     @Override
     public @NotNull InteractionResult interactLivingEntity(ItemStack itemStack, Player player, LivingEntity livingEntity, InteractionHand interactionHand) {
 
-        if ((livingEntity instanceof TamableAnimal tamableAnimal && tamableAnimal.getOwnerUUID() != null || livingEntity instanceof AbstractHorse abstractHorse && abstractHorse.getOwnerUUID() != null) && !isContractBound(itemStack)) {
+        if ((livingEntity instanceof TamableAnimal tamableAnimal && tamableAnimal.getOwnerUUID() != null || livingEntity instanceof AbstractHorse abstractHorse && abstractHorse.getOwnerUUID() != null) && !isContractBound(itemStack) && !this.isPetMissing(livingEntity)) {
 
             if (livingEntity.level() instanceof ServerLevel serverLevel) {
 
@@ -159,6 +165,10 @@ public class OwnershipContractItem extends Item {
     private boolean isPetOwnedByMe(LivingEntity livingEntity, Player player) {
         return (livingEntity instanceof TamableAnimal tamableAnimal && tamableAnimal.getOwnerUUID() != null && tamableAnimal.getOwnerUUID().equals(player.getUUID()) ||
         livingEntity instanceof AbstractHorse abstractHorse && abstractHorse.getOwnerUUID() != null && abstractHorse.getOwnerUUID().equals(player.getUUID()));
+    }
+
+    private boolean isPetMissing(LivingEntity livingEntity) {
+        return (livingEntity == null || !livingEntity.isAlive() || livingEntity.isDeadOrDying());
     }
 
     public static boolean isContractBound(ItemStack itemStack) {
