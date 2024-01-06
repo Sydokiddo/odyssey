@@ -10,11 +10,12 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.social.PlayerEntry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Saddleable;
+import net.minecraft.world.entity.item.PrimedTnt;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -32,16 +33,26 @@ public class OCommonMethods {
 
     // region Mechanics
 
-    public static void shearPrimedTNT(Level level, Entity primedTnt, BlockPos blockPos) {
+    public static final int TNT_CANNOT_DEFUSE_TICKS = 10;
 
-        if (RegistryHelpers.isBlockStateFree(level.getBlockState(blockPos)) && !level.isOutsideBuildHeight(blockPos)) {
-            level.setBlock(blockPos, Blocks.TNT.defaultBlockState(), 3);
-        } else if (level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
-            primedTnt.spawnAtLocation(Items.TNT);
+    public static void defusePrimedTNT(Level level, PrimedTnt primedTnt, BlockPos blockPos, SoundEvent soundEvent) {
+
+        if (level.getRandom().nextFloat() < 0.01F) {
+            primedTnt.setFuse(1);
+        } else {
+            if (RegistryHelpers.isBlockStateFree(level.getBlockState(blockPos)) && !level.isOutsideBuildHeight(blockPos)) {
+                level.setBlock(blockPos, Blocks.TNT.defaultBlockState(), 3);
+            } else if (level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
+                primedTnt.spawnAtLocation(Items.TNT);
+            }
+
+            if (Chrysalis.IS_DEBUG && primedTnt.isAlive()) {
+                Odyssey.LOGGER.info("TNT has been successfully defused at {}", blockPos);
+            }
+
+            level.playSound(null, blockPos, soundEvent, SoundSource.PLAYERS, 1.0F, 1.0F);
+            primedTnt.discard();
         }
-
-        level.playSound(null, blockPos, ModSoundEvents.TNT_SHEAR, SoundSource.PLAYERS, 1.0F, 1.0F);
-        primedTnt.discard();
     }
 
     public static void doSaddleRemovingEvents(LivingEntity livingEntity, Player player, InteractionHand interactionHand) {

@@ -438,5 +438,11 @@
       "odyssey:entity/tnt/shear"
     ],
     "subtitle": "subtitles.item.shears.shear"
+  },
+  "entity.tnt.splash": {
+    "sounds": [
+      "odyssey:entity/tnt/splash"
+    ],
+    "subtitle": "subtitles.entity.tnt.splash"
   }
 }

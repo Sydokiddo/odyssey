@@ -16,17 +16,20 @@ import net.minecraft.world.item.ShearsItem;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.sydokiddo.odyssey.Odyssey;
+import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
 import net.sydokiddo.odyssey.registry.misc.OCommonMethods;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 
 @Mixin(PrimedTnt.class)
 public abstract class PrimedTNTMixin extends Entity {
 
     @Shadow public abstract int getFuse();
     @Shadow @Nullable private LivingEntity owner;
+    @Unique PrimedTnt primedTnt = (PrimedTnt) (Object) this;
 
     private PrimedTNTMixin(EntityType<?> entityType, Level level) {
         super(entityType, level);
@@ -64,7 +67,7 @@ public abstract class PrimedTNTMixin extends Entity {
     public @NotNull InteractionResult interact(Player player, InteractionHand interactionHand) {
 
         ItemStack itemStack = player.getItemInHand(interactionHand);
-        boolean canDefuse = !itemStack.isEmpty() && itemStack.getItem() instanceof ShearsItem && this.getFuse() > 10;
+        boolean canDefuse = !itemStack.isEmpty() && itemStack.getItem() instanceof ShearsItem && this.getFuse() > OCommonMethods.TNT_CANNOT_DEFUSE_TICKS;
         BlockPos blockPos = this.getOnPos().above();
 
         if (Odyssey.getConfig().entities.miscEntitiesConfig.tnt_defusing) {
@@ -72,7 +75,7 @@ public abstract class PrimedTNTMixin extends Entity {
             if (!this.level().isClientSide()) {
 
                 if (canDefuse) {
-                    OCommonMethods.shearPrimedTNT(this.level(), this, blockPos);
+                    OCommonMethods.defusePrimedTNT(this.level(), primedTnt, blockPos, ModSoundEvents.TNT_SHEAR);
                     player.gameEvent(GameEvent.SHEAR);
                     itemStack.hurtAndBreak(1, player, (shears) -> shears.broadcastBreakEvent(interactionHand));
                 }
