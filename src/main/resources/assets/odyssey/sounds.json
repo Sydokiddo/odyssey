@@ -268,6 +268,25 @@
     "subtitle": "subtitles.item.environment_detector.use"
   },
 
+  "item.ownership_contract.fail": {
+    "sounds": [
+      "odyssey:item/ownership_contract/fail"
+    ],
+    "subtitle": "subtitles.item.ownership_contract.fail"
+  },
+  "item.ownership_contract.sign": {
+    "sounds": [
+      "odyssey:item/ownership_contract/sign"
+    ],
+    "subtitle": "subtitles.item.ownership_contract.sign"
+  },
+  "item.ownership_contract.transfer_ownership": {
+    "sounds": [
+      "odyssey:item/ownership_contract/transfer_ownership"
+    ],
+    "subtitle": "subtitles.item.ownership_contract.transfer_ownership"
+  },
+
   "item.bucket.fill_frog": {
     "sounds": [
       "odyssey:item/bucket/fill_frog"

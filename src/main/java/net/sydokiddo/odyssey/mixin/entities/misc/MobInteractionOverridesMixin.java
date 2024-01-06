@@ -13,6 +13,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.sydokiddo.chrysalis.Chrysalis;
 import net.sydokiddo.odyssey.Odyssey;
+import net.sydokiddo.odyssey.registry.items.ModItems;
 import net.sydokiddo.odyssey.registry.misc.ModTags;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -20,19 +21,30 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin({AbstractHorse.class, AbstractChestedHorse.class, Horse.class, Wolf.class, Cat.class, Parrot.class})
-public class MobBrushingOverridesMixin extends Mob {
+public class MobInteractionOverridesMixin extends Mob {
 
-    private MobBrushingOverridesMixin(EntityType<? extends Mob> entityType, Level level) {
+    private MobInteractionOverridesMixin(EntityType<? extends Mob> entityType, Level level) {
         super(entityType, level);
     }
 
     @Inject(method = "mobInteract", at = @At("HEAD"), cancellable = true)
-    private void odyssey$cancelMobInteractionsWhenBrushing(Player player, InteractionHand interactionHand, CallbackInfoReturnable<InteractionResult> cir) {
+    private void odyssey$cancelMobInteractions(Player player, InteractionHand interactionHand, CallbackInfoReturnable<InteractionResult> cir) {
 
-        if (this.isAlive() && player.getItemInHand(interactionHand).is(Items.BRUSH) && this.getType().is(ModTags.CAN_BE_BRUSHED)) {
+        if (!this.isAlive()) return;
+
+        if (player.getItemInHand(interactionHand).is(Items.BRUSH) && this.getType().is(ModTags.CAN_BE_BRUSHED)) {
 
             if (Chrysalis.IS_DEBUG) {
-                Odyssey.LOGGER.info("Overriding right-click methods for {} as {} has a brush in their hand", this.getName().getString(), player.getName().getString());
+                Odyssey.LOGGER.info("Overriding right-click methods for {} as {} has a Brush in their hand", this.getName().getString(), player.getName().getString());
+            }
+
+            cir.setReturnValue(super.mobInteract(player, interactionHand));
+        }
+
+        if (player.getItemInHand(interactionHand).is(ModItems.OWNERSHIP_CONTRACT)) {
+
+            if (Chrysalis.IS_DEBUG) {
+                Odyssey.LOGGER.info("Overriding right-click methods for {} as {} has an Ownership Contract in their hand", this.getName().getString(), player.getName().getString());
             }
 
             cir.setReturnValue(super.mobInteract(player, interactionHand));

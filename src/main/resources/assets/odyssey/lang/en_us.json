@@ -9,6 +9,7 @@
   "item.odyssey.elder_guardian_thorn": "Elder Guardian Thorn",
   "item.odyssey.patina": "Patina",
   "item.odyssey.environment_detector": "Environment Detector",
+  "item.odyssey.ownership_contract": "Ownership Contract",
 
   "item.odyssey.frog_bucket": "Bucket of Frog",
   "item.odyssey.squid_bucket": "Bucket of Squid",
@@ -58,6 +59,21 @@
   "gui.odyssey.item.clock.hour_am": "AM",
   "gui.odyssey.item.clock.hour_pm": "PM",
   "gui.odyssey.item.clock.day": "Day: %s",
+
+  "gui.odyssey.item.ownership_contract.bound": "Bound",
+  "gui.odyssey.item.ownership_contract.bound_pet": "Bound Pet:",
+  "gui.odyssey.item.ownership_contract.bound_pet_owner": "Bound Pet Owner:",
+  "gui.odyssey.item.ownership_contract.name": "%s",
+
+  "gui.odyssey.item.ownership_contract.when_used": "When Used on Tamed Mob:",
+  "item.odyssey.ownership_contract.unbound_desc": "Binds Pet Ownership to Item",
+  "item.odyssey.ownership_contract.bound_desc": "Transfers Mob Ownership to Player",
+
+  "gui.odyssey.item.ownership_contract.bind_fail": "Failed to bind %1$s to %2$s",
+  "gui.odyssey.item.ownership_contract.bind_success": "%1$s has been bound to %2$s",
+  "gui.odyssey.item.ownership_contract.already_owned": "You are already the owner of %1$s",
+  "gui.odyssey.item.ownership_contract.transfer_ownership_old_owner": "Ownership of %1$s has been transferred to %2$s",
+  "gui.odyssey.item.ownership_contract.transfer_ownership_new_owner": "You are now the new owner of %1$s",
 
   "item.odyssey.milk_bucket.desc": "Clears All Effects",
   "item.odyssey.honey_bottle.desc": "Clears Poison",
@@ -149,6 +165,10 @@
   "subtitles.item.saddle.unequip": "Saddle unequips",
   "subtitles.item.shovel.dig_snow": "Shovel digs",
   "subtitles.block.piston.apply_slimeball": "Slimeball squishes",
+
+  "subtitles.item.ownership_contract.fail": "Ownership Contract fails",
+  "subtitles.item.ownership_contract.sign": "Ownership Contract signed",
+  "subtitles.item.ownership_contract.transfer_ownership": "Ownership Contract fulfilled",
 
   "subtitles.block.fragile_button.shatter": "Button shatters",
   "subtitles.block.fragile_pressure_plate.shatter": "Pressure Plate shatters",

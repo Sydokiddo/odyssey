@@ -1,6 +1,7 @@
 package net.sydokiddo.odyssey.misc.config.options;
 
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
+import net.fabricmc.loader.api.FabricLoader;
 
 public class TooltipConfig {
 
@@ -8,7 +9,7 @@ public class TooltipConfig {
     public boolean durability_information = true;
 
     @ConfigEntry.Gui.Tooltip
-    public boolean food_information = true;
+    public boolean food_information = !FabricLoader.getInstance().isModLoaded("appleskin");
 
     @ConfigEntry.Gui.Tooltip
     public boolean fireproof_items = true;

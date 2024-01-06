@@ -17,9 +17,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(AbstractHorse.class)
-public abstract class HorseMixin extends Animal {
+public abstract class AbstractHorseMixin extends Animal {
 
-    private HorseMixin(EntityType<? extends Animal> entityType, Level level) {
+    private AbstractHorseMixin(EntityType<? extends Animal> entityType, Level level) {
         super(entityType, level);
     }
 

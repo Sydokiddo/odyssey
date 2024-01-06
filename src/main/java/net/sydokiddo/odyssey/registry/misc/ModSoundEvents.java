@@ -58,6 +58,10 @@ public class ModSoundEvents {
 
     public static final SoundEvent ENVIRONMENT_DETECTOR_USE = registerSoundEvent("item.environment_detector.use");
 
+    public static final SoundEvent OWNERSHIP_CONTRACT_FAIL = registerSoundEvent("item.ownership_contract.fail");
+    public static final SoundEvent OWNERSHIP_CONTRACT_SIGN = registerSoundEvent("item.ownership_contract.sign");
+    public static final SoundEvent OWNERSHIP_CONTRACT_TRANSFER_OWNERSHIP = registerSoundEvent("item.ownership_contract.transfer_ownership");
+
     public static final SoundEvent BUCKET_FILL_FROG = registerSoundEvent("item.bucket.fill_frog");
     public static final SoundEvent BUCKET_EMPTY_FROG = registerSoundEvent("item.bucket.empty_frog");
 
