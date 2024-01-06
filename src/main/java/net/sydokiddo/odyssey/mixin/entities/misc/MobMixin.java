@@ -1,7 +1,9 @@
 package net.sydokiddo.odyssey.mixin.entities.misc;
 
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -42,6 +44,11 @@ public abstract class MobMixin extends LivingEntity {
             this.gameEvent(GameEvent.ENTITY_INTERACT, player);
 
             if (this.level() instanceof ServerLevel serverLevel) {
+
+                if (player instanceof ServerPlayer serverPlayer) {
+                    CriteriaTriggers.PLAYER_INTERACTED_WITH_ENTITY.trigger(serverPlayer, player.getItemInHand(interactionHand), this);
+                }
+
                 serverLevel.sendParticles(ParticleTypes.HEART, this.getX(), this.getEyeY() + 0.5, this.getZ(), 1, 0.0D, 0.0D, 0.0D, 0.0D);
             }
 

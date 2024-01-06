@@ -17,6 +17,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.TamableAnimal;
+import net.minecraft.world.entity.animal.camel.Camel;
 import net.minecraft.world.entity.animal.horse.AbstractHorse;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
@@ -77,13 +78,13 @@ public class OwnershipContractItem extends Item {
 
                     if (this.getOldOwner(pet) != null) {
                         Objects.requireNonNull(this.getOldOwner(pet)).sendSystemMessage(oldOwnerMessage);
-                        Objects.requireNonNull(this.getOldOwner(pet)).playNotifySound(ModSoundEvents.OWNERSHIP_CONTRACT_TRANSFER_OWNERSHIP, SoundSource.PLAYERS, 1.0F, 1.0F);
+                        Objects.requireNonNull(this.getOldOwner(pet)).playNotifySound(ModSoundEvents.OWNERSHIP_CONTRACT_TRANSFER_OWNERSHIP, SoundSource.PLAYERS, 1.0F, 1.0F + level.getRandom().nextFloat() * 0.2F);
                     }
 
                     Minecraft.getInstance().gui.setOverlayMessage(newOwnerMessage, false);
                     Minecraft.getInstance().getNarrator().sayNow(newOwnerMessage);
 
-                    level.playSound(null, player.getOnPos().above(), ModSoundEvents.OWNERSHIP_CONTRACT_TRANSFER_OWNERSHIP, SoundSource.PLAYERS, 1.0F, 1.0F);
+                    level.playSound(null, player.getOnPos().above(), ModSoundEvents.OWNERSHIP_CONTRACT_TRANSFER_OWNERSHIP, SoundSource.PLAYERS, 1.0F, 1.0F + level.getRandom().nextFloat() * 0.2F);
                     this.setNewOwner(pet, player);
                     this.spawnParticlesAroundMob(serverLevel, ParticleTypes.HEART, pet);
 
@@ -99,10 +100,14 @@ public class OwnershipContractItem extends Item {
         return super.use(level, player, interactionHand);
     }
 
+    private boolean canBeTamed(LivingEntity livingEntity) {
+        return (livingEntity instanceof TamableAnimal tamableAnimal && tamableAnimal.getOwnerUUID() != null || livingEntity instanceof AbstractHorse abstractHorse && abstractHorse.getOwnerUUID() != null) && (!(livingEntity instanceof Camel));
+    }
+
     @Override
     public @NotNull InteractionResult interactLivingEntity(ItemStack itemStack, Player player, LivingEntity livingEntity, InteractionHand interactionHand) {
 
-        if ((livingEntity instanceof TamableAnimal tamableAnimal && tamableAnimal.getOwnerUUID() != null || livingEntity instanceof AbstractHorse abstractHorse && abstractHorse.getOwnerUUID() != null) && !isContractBound(itemStack) && !this.isPetMissing(livingEntity)) {
+        if (this.canBeTamed(livingEntity) && !isContractBound(itemStack) && !this.isPetMissing(livingEntity)) {
 
             if (livingEntity.level() instanceof ServerLevel serverLevel) {
 
