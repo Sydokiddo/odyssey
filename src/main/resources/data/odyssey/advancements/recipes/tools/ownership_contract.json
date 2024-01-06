@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_ink_sac": {
+    "has_paper": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:ink_sac"
+              "minecraft:paper"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_ink_sac",
+      "has_paper",
       "has_the_recipe"
     ]
   ],
