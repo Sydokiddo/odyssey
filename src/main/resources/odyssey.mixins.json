@@ -38,6 +38,7 @@
     "entities.misc.MobMixin",
     "entities.misc.PlayerMixin",
     "entities.misc.PrimedTNTMixin",
+    "entities.misc.TamableAnimalMixin",
     "entities.misc.ThrownPotionMixin",
     "entities.passive.AbstractHorseMixin",
     "entities.passive.AllayAiMixin",
