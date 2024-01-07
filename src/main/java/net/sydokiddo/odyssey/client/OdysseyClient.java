@@ -4,12 +4,16 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
+import net.minecraft.Util;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.entity.animal.frog.Frog;
@@ -17,6 +21,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.biome.Biome;
 import net.sydokiddo.chrysalis.Chrysalis;
 import net.sydokiddo.odyssey.client.rendering.ModEntityRenderer;
+import net.sydokiddo.odyssey.registry.OdysseyRegistry;
 import net.sydokiddo.odyssey.registry.blocks.ModBlocks;
 import net.sydokiddo.odyssey.registry.items.ModItems;
 import net.sydokiddo.odyssey.registry.items.custom_items.OwnershipContractItem;
@@ -117,6 +122,25 @@ public class OdysseyClient implements ClientModInitializer {
                 }
                 return 0.0F;
             });
+
+            // endregion
+
+            // region Packets
+
+            // Environment Detector Packet
+
+            ClientPlayNetworking.registerGlobalReceiver(OdysseyRegistry.ENVIRONMENT_DETECTOR_PACKET_ID,((client, handler, buf, responseSender) -> {
+
+                Holder<Biome> biome = client.level.getBiome(client.player.getOnPos());
+
+                biome.unwrapKey().ifPresent(key -> {
+                    Component biomeName = Component.translatable(Util.makeDescriptionId("biome", key.location()));
+                    Component component = Component.translatable("gui.odyssey.item.environment_detector.biome", biomeName);
+
+                    Minecraft.getInstance().gui.setOverlayMessage(component, false);
+                    Minecraft.getInstance().getNarrator().sayNow(component);
+                });
+            }));
 
             // endregion
         }

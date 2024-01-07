@@ -1,17 +1,17 @@
 package net.sydokiddo.odyssey.registry.items.custom_items;
 
-import net.minecraft.Util;
-import net.minecraft.client.Minecraft;
-import net.minecraft.core.Holder;
-import net.minecraft.network.chat.Component;
+import io.netty.buffer.Unpooled;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.sydokiddo.odyssey.registry.OdysseyRegistry;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
 import org.jetbrains.annotations.NotNull;
 
@@ -28,19 +28,15 @@ public class EnvironmentDetectorItem extends Item {
         player.gameEvent(GameEvent.ITEM_INTERACT_FINISH);
 
         if (!level.isClientSide()) {
+
             player.awardStat(Stats.ITEM_USED.get(this));
+
+            if (player instanceof ServerPlayer serverPlayer) {
+                FriendlyByteBuf packet = new FriendlyByteBuf(Unpooled.buffer());
+                packet.writeInt(0);
+                ServerPlayNetworking.send(serverPlayer, OdysseyRegistry.ENVIRONMENT_DETECTOR_PACKET_ID, packet);
+            }
         }
-
-        Holder<Biome> biome = level.getBiome(player.getOnPos());
-
-        biome.unwrapKey().ifPresent(key -> {
-            Component biomeName = Component.translatable(Util.makeDescriptionId("biome", key.location()));
-            Component component = Component.translatable("gui.odyssey.item.environment_detector.biome", biomeName);
-
-            Minecraft.getInstance().gui.setOverlayMessage(component, false);
-            Minecraft.getInstance().getNarrator().sayNow(component);
-        });
-
         return InteractionResultHolder.sidedSuccess(player.getItemInHand(interactionHand), level.isClientSide());
     }
 }

@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.animal.Squid;
 import net.minecraft.world.entity.animal.allay.Allay;
 import net.minecraft.world.entity.decoration.ItemFrame;
@@ -38,6 +39,12 @@ public class OdysseyRegistry {
         ALLAY_FROM_BOOK = SynchedEntityData.defineId(Allay.class, EntityDataSerializers.BOOLEAN),
         VEX_FROM_BOOK = SynchedEntityData.defineId(Vex.class, EntityDataSerializers.BOOLEAN)
     ;
+
+    // endregion
+
+    // region Packets
+
+    public static final ResourceLocation ENVIRONMENT_DETECTOR_PACKET_ID = Odyssey.id("environment_detector_packet");
 
     // endregion
 
