@@ -67,8 +67,7 @@ public class ModBlocks {
         FabricBlockSettings.copyOf(Blocks.SUSPICIOUS_SAND).mapColor(MapColor.COLOR_ORANGE)));
 
     public static final Block TINTED_GLASS_PANE = registerBlock("tinted_glass_pane",
-        new TintedGlassPaneBlock(FabricBlockSettings.copyOf(Blocks.GLASS_PANE).mapColor(MapColor.COLOR_GRAY).noOcclusion()
-        .isValidSpawn(Blocks::never).isRedstoneConductor(Blocks::never).isSuffocating(Blocks::never).isViewBlocking(Blocks::never)));
+        new TintedGlassPaneBlock(FabricBlockSettings.copyOf(Blocks.GLASS_PANE).mapColor(MapColor.COLOR_GRAY)));
 
     // region Potion Cauldron
 
