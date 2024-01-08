@@ -252,6 +252,25 @@
     "subtitle": "subtitles.chiseled_bookshelf.take_vex"
   },
 
+  "block.note_block.trumpet": {
+    "sounds": [
+      "odyssey:note/trumpet"
+    ],
+    "subtitle": "subtitles.block.note_block.note"
+  },
+  "block.note_block.bongo": {
+    "sounds": [
+      "odyssey:note/bongo"
+    ],
+    "subtitle": "subtitles.block.note_block.note"
+  },
+  "block.note_block.violin": {
+    "sounds": [
+      "odyssey:note/violin"
+    ],
+    "subtitle": "subtitles.block.note_block.note"
+  },
+
   "item.patina.use": {
     "sounds": [
       "odyssey:item/patina/apply_patina1",

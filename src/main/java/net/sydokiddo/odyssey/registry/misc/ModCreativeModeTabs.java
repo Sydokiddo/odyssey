@@ -11,6 +11,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.blocks.ModBlocks;
 import net.sydokiddo.odyssey.registry.items.ModItems;
@@ -41,7 +42,8 @@ public class ModCreativeModeTabs {
             ModBlocks.GUNPOWDER_BLOCK, ModBlocks.REFINED_AMETHYST_BLOCK, ModBlocks.SUGAR_CANE_BLOCK, ModBlocks.SUSPICIOUS_RED_SAND, ModBlocks.GOLDEN_BUTTON, ModBlocks.IRON_BUTTON,
             ModBlocks.FRAGILE_BUTTON, ModBlocks.FRAGILE_PRESSURE_PLATE, ModBlocks.POLISHED_DEEPSLATE_BUTTON, ModBlocks.POLISHED_DEEPSLATE_PRESSURE_PLATE, ModBlocks.REDSTONE_LANTERN,
             ModBlocks.TINTED_GLASS_PANE, ModBlocks.STONE_WALL, ModBlocks.SMOOTH_STONE_STAIRS, ModBlocks.SMOOTH_STONE_WALL, ModBlocks.POLISHED_GRANITE_WALL, ModBlocks.POLISHED_DIORITE_WALL, ModBlocks.POLISHED_ANDESITE_WALL,
-            ModBlocks.PRISMARINE_BRICK_WALL, ModBlocks.DARK_PRISMARINE_WALL, Items.FLOWER_POT, Items.SMALL_DRIPLEAF, Items.SPORE_BLOSSOM, Items.SEA_PICKLE, Items.SUGAR_CANE, Items.SHORT_GRASS, Items.NETHER_WART);
+            ModBlocks.PRISMARINE_BRICK_WALL, ModBlocks.DARK_PRISMARINE_WALL, Items.FLOWER_POT, Items.SMALL_DRIPLEAF, Items.SPORE_BLOSSOM, Items.SEA_PICKLE, Items.SUGAR_CANE, Items.SHORT_GRASS, Items.NETHER_WART,
+            Blocks.NOTE_BLOCK, Blocks.COPPER_BLOCK, Blocks.RED_MUSHROOM_BLOCK, Blocks.DIAMOND_BLOCK);
         });
 
         // endregion

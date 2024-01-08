@@ -50,6 +50,10 @@ public class ModSoundEvents {
     public static final SoundEvent CHISELED_BOOKSHELF_INSERT_VEX = registerSoundEvent("block.chiseled_bookshelf.insert.vex");
     public static final SoundEvent CHISELED_BOOKSHELF_PICKUP_VEX = registerSoundEvent("block.chiseled_bookshelf.pickup.vex");
 
+    public static final SoundEvent NOTE_BLOCK_TRUMPET = registerSoundEvent("block.note_block.trumpet");
+    public static final SoundEvent NOTE_BLOCK_BONGO = registerSoundEvent("block.note_block.bongo");
+    public static final SoundEvent NOTE_BLOCK_VIOLIN = registerSoundEvent("block.note_block.violin");
+
     // endregion
 
     // region Item Sounds
