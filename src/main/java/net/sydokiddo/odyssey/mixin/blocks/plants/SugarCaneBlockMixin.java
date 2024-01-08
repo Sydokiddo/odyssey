@@ -45,7 +45,7 @@ public class SugarCaneBlockMixin extends Block implements SimpleWaterloggedBlock
         this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0).setValue(WATERLOGGED, false));
     }
 
-    @Inject(method = "createBlockStateDefinition", at = @At("HEAD"))
+    @Inject(method = "createBlockStateDefinition", at = @At("RETURN"))
     private void odyssey$createSugarCaneBlockStates(StateDefinition.Builder<Block, BlockState> builder, CallbackInfo info) {
         builder.add(WATERLOGGED);
     }

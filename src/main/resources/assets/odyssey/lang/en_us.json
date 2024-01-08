@@ -359,6 +359,10 @@
   "text.autoconfig.odyssey.option.blocks.qualityOfLifeBlockConfig.piston_interactions.@Tooltip": "Pistons can be right-clicked with a Slimeball to turn them into Sticky Pistons, and Sticky Pistons can be right-clicked with an Axe to turn them into normal Pistons",
   "text.autoconfig.odyssey.option.blocks.qualityOfLifeBlockConfig.axe_dispenser_functionality": "Axe Dispenser Functionality",
   "text.autoconfig.odyssey.option.blocks.qualityOfLifeBlockConfig.axe_dispenser_functionality.@Tooltip": "If an Axe is put into a Dispenser, it is now able to strip Wood/Logs and scrape Copper Blocks/Sticky Pistons that are in front of the Dispenser",
+  "text.autoconfig.odyssey.option.blocks.qualityOfLifeBlockConfig.note_block_waxing": "Note Block Waxing",
+  "text.autoconfig.odyssey.option.blocks.qualityOfLifeBlockConfig.note_block_waxing.@Tooltip": "Note Blocks can be waxed with Honeycomb to prevent players from cycling their note pitch",
+  "text.autoconfig.odyssey.option.blocks.qualityOfLifeBlockConfig.note_block_muffling": "Note Block Muffling",
+  "text.autoconfig.odyssey.option.blocks.qualityOfLifeBlockConfig.note_block_muffling.@Tooltip": "Placing a Carpet above a Note Block will cause its sound to be muffled",
 
   "text.autoconfig.odyssey.option.blocks.boneMealingConfig": "Bone-Mealing",
   "text.autoconfig.odyssey.option.blocks.boneMealingConfig.@Tooltip": "Allow for more plant types to be bone-mealed",
@@ -379,6 +383,8 @@
   "text.autoconfig.odyssey.option.blocks.miscBlocksConfig.unstable_gunpowder_blocks.@Tooltip": "Blocks of Gunpowder will instantly explode when they catch on fire or when lit with Flint and Steel or Fire Charges",
   "text.autoconfig.odyssey.option.blocks.miscBlocksConfig.bouncy_mushroom_blocks": "Bouncy Mushroom Blocks",
   "text.autoconfig.odyssey.option.blocks.miscBlocksConfig.bouncy_mushroom_blocks.@Tooltip": "Falling onto a Mushroom Block will bounce you upwards similarly to a Slime Block",
+  "text.autoconfig.odyssey.option.blocks.miscBlocksConfig.note_block_sensitivity": "Note Block Sensitivity",
+  "text.autoconfig.odyssey.option.blocks.miscBlocksConfig.note_block_sensitivity.@Tooltip": "Falling onto a Note Block while not sneaking or throwing a projectile at a Note Block will cause it to play its sound",
 
   "text.autoconfig.odyssey.option.entities": "Entities",
 

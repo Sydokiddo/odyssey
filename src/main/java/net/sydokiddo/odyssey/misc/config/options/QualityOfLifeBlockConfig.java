@@ -27,4 +27,10 @@ public class QualityOfLifeBlockConfig {
 
     @ConfigEntry.Gui.Tooltip
     public boolean axe_dispenser_functionality = true;
+
+    @ConfigEntry.Gui.Tooltip
+    public boolean note_block_waxing = true;
+
+    @ConfigEntry.Gui.Tooltip
+    public boolean note_block_muffling = true;
 }

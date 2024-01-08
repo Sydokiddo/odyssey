@@ -20,6 +20,7 @@ import net.sydokiddo.chrysalis.Chrysalis;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.OdysseyRegistry;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
+import net.sydokiddo.odyssey.registry.misc.OCommonMethods;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
@@ -93,14 +94,11 @@ public abstract class ItemFrameMixin extends HangingEntity {
                 this.level().levelEvent(player, 3003, this.pos, 0);
                 this.doItemFrameInteractionEvents(player, itemInHand);
 
-                if (!player.isCreative()) {
+                if (!player.getAbilities().instabuild) {
                     itemInHand.shrink(1);
                 }
 
-                if (Chrysalis.IS_DEBUG) {
-                    Odyssey.LOGGER.info("{} has been successfully waxed by {}", this.getName().getString(), player.getName().getString());
-                }
-
+                OCommonMethods.sendWaxingDebugMessage(this.getName().getString(), player, blockPosition());
                 cir.setReturnValue(InteractionResult.sidedSuccess(player.level().isClientSide()));
             }
 

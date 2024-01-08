@@ -90,6 +90,12 @@ public class OCommonMethods {
         }
     }
 
+    public static void sendWaxingDebugMessage(String blockString, Player player, BlockPos blockPos) {
+        if (Chrysalis.IS_DEBUG) {
+            Odyssey.LOGGER.info("{} has been successfully waxed by {} at {}", blockString, player.getName().getString(), blockPos);
+        }
+    }
+
     // endregion
 
     // region Rendering

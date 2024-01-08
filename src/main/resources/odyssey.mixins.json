@@ -11,6 +11,7 @@
     "blocks.functional_blocks.DecoratedPotBlockMixin",
     "blocks.functional_blocks.DispenserBlockMixin",
     "blocks.functional_blocks.NoteBlockInstrumentMixin",
+    "blocks.functional_blocks.NoteBlockMixin",
     "blocks.functional_blocks.PistonBaseBlockMixin",
     "blocks.functional_blocks.ShearsDispenseItemBehaviorMixin",
     "blocks.functional_blocks.SpawnerBlockMixin",
