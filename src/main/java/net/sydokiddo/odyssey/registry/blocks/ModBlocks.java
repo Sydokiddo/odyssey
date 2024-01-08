@@ -46,7 +46,7 @@ public class ModBlocks {
 
     public static final Block SUGAR_CANE_BLOCK = registerBlock("sugar_cane_block",
         new RotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.PLANT)
-        .instrument(NoteBlockInstrument.BASS).strength(0.5F).sound(SoundType.GRASS).ignitedByLava()));
+        .strength(0.5F).sound(SoundType.GRASS).ignitedByLava()));
 
     public static final Block REDSTONE_LANTERN = registerBlock("redstone_lantern",
         new RedstoneLanternBlock(FabricBlockSettings.copyOf(Blocks.LANTERN).luminance(RegistryHelpers.blockStateShouldEmitLight(7))));

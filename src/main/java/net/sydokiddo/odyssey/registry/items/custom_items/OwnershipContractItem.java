@@ -1,11 +1,14 @@
 package net.sydokiddo.odyssey.registry.items.custom_items;
 
+import io.netty.buffer.Unpooled;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -23,6 +26,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.sydokiddo.odyssey.registry.OdysseyRegistry;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -33,7 +37,7 @@ import java.util.UUID;
 public class OwnershipContractItem extends Item {
 
     private final String ownerNameString = "OwnerName";
-    private static final String mobNameString = "MobName";
+    public static final String mobNameString = "MobName";
     private final String mobUUIDString = "MobUUID";
 
     public OwnershipContractItem(Properties properties) {
@@ -71,19 +75,14 @@ public class OwnershipContractItem extends Item {
                 UUID petUUID = compoundTag.getUUID(mobUUIDString);
                 LivingEntity pet = (LivingEntity) serverLevel.getEntity(petUUID);
 
-                Component alreadyOwnedMessage = Component.translatable("gui.odyssey.item.ownership_contract.already_owned", compoundTag.getString(mobNameString)).withStyle(ChatFormatting.RED);
-                Component missingMessage = Component.translatable("gui.odyssey.item.ownership_contract.could_not_find", compoundTag.getString(mobNameString)).withStyle(ChatFormatting.RED);
-                Component oldOwnerMessage = Component.translatable("gui.odyssey.item.ownership_contract.transfer_ownership_old_owner", compoundTag.getString(mobNameString), player.getName().getString()).withStyle(ChatFormatting.WHITE);
-                Component newOwnerMessage = Component.translatable("gui.odyssey.item.ownership_contract.transfer_ownership_new_owner", compoundTag.getString(mobNameString)).withStyle(ChatFormatting.WHITE);
+                int oldOwnerPacketValue;
 
                 if (this.isPetOwnedByMe(pet, player) || this.isPetMissing(pet)) {
 
                     if (this.isPetMissing(pet)) {
-                        Minecraft.getInstance().gui.setOverlayMessage(missingMessage, false);
-                        Minecraft.getInstance().getNarrator().sayNow(missingMessage);
+                        oldOwnerPacketValue = 0;
                     } else {
-                        Minecraft.getInstance().gui.setOverlayMessage(alreadyOwnedMessage, false);
-                        Minecraft.getInstance().getNarrator().sayNow(alreadyOwnedMessage);
+                        oldOwnerPacketValue = 1;
                         this.spawnParticlesAroundMob(serverLevel, ParticleTypes.SMOKE, pet);
                     }
 
@@ -92,21 +91,28 @@ public class OwnershipContractItem extends Item {
                 } else {
 
                     if (this.getOldOwner(pet) != null) {
-                        Objects.requireNonNull(this.getOldOwner(pet)).sendSystemMessage(oldOwnerMessage);
+
+                        FriendlyByteBuf newOwnerPacket = new FriendlyByteBuf(Unpooled.buffer());
+                        newOwnerPacket.writeInt(2);
+                        ServerPlayNetworking.send(Objects.requireNonNull(this.getOldOwner(pet)), OdysseyRegistry.OWNERSHIP_CONTRACT_PACKET_ID, newOwnerPacket);
+
                         Objects.requireNonNull(this.getOldOwner(pet)).playNotifySound(ModSoundEvents.OWNERSHIP_CONTRACT_TRANSFER_OWNERSHIP, SoundSource.PLAYERS, 1.0F, 1.0F + level.getRandom().nextFloat() * 0.2F);
                     }
-
-                    Minecraft.getInstance().gui.setOverlayMessage(newOwnerMessage, false);
-                    Minecraft.getInstance().getNarrator().sayNow(newOwnerMessage);
 
                     level.playSound(null, player.getOnPos().above(), ModSoundEvents.OWNERSHIP_CONTRACT_TRANSFER_OWNERSHIP, SoundSource.PLAYERS, 1.0F, 1.0F + level.getRandom().nextFloat() * 0.2F);
                     this.setNewOwner(pet, player);
                     this.spawnParticlesAroundMob(serverLevel, ParticleTypes.HEART, pet);
 
+                    oldOwnerPacketValue = 3;
+
                     if (!player.getAbilities().instabuild) {
                         itemStack.shrink(1);
                     }
                 }
+
+                FriendlyByteBuf oldOwnerPacket = new FriendlyByteBuf(Unpooled.buffer());
+                oldOwnerPacket.writeInt(oldOwnerPacketValue);
+                if (player instanceof ServerPlayer serverPlayer) ServerPlayNetworking.send(serverPlayer, OdysseyRegistry.OWNERSHIP_CONTRACT_PACKET_ID, oldOwnerPacket);
             }
 
             return InteractionResultHolder.sidedSuccess(itemStack, level.isClientSide());

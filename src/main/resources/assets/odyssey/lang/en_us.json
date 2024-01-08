@@ -71,8 +71,9 @@
 
   "gui.odyssey.item.ownership_contract.bind_fail": "Failed to bind %1$s to %2$s",
   "gui.odyssey.item.ownership_contract.bind_success": "%1$s has been bound to %2$s",
-  "gui.odyssey.item.ownership_contract.already_owned": "You are already the owner of %1$s",
+  "gui.odyssey.item.ownership_contract.failed_message": "Failed to send message!",
   "gui.odyssey.item.ownership_contract.could_not_find": "%1$s could not be found",
+  "gui.odyssey.item.ownership_contract.already_owned": "You are already the owner of %1$s",
   "gui.odyssey.item.ownership_contract.transfer_ownership_old_owner": "Ownership of %1$s has been transferred to %2$s",
   "gui.odyssey.item.ownership_contract.transfer_ownership_new_owner": "You are now the new owner of %1$s",
 

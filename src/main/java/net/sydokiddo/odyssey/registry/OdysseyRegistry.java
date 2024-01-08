@@ -45,6 +45,7 @@ public class OdysseyRegistry {
     // region Packets
 
     public static final ResourceLocation ENVIRONMENT_DETECTOR_PACKET_ID = Odyssey.id("environment_detector_packet");
+    public static final ResourceLocation OWNERSHIP_CONTRACT_PACKET_ID = Odyssey.id("ownership_contract_packet");
 
     // endregion
 

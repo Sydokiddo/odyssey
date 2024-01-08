@@ -1,11 +1,11 @@
 package net.sydokiddo.odyssey.registry.items.custom_items;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.monster.Vex;
 import net.minecraft.world.entity.player.Player;
@@ -38,17 +38,18 @@ public class VexBoundBookItem extends MobInContainerItem {
     private void spawnVex(ServerLevel serverLevel, ItemStack itemStack, BlockPos blockPos) {
 
         Entity entity = this.type.spawn(serverLevel, itemStack, null, blockPos, MobSpawnType.BUCKET, true, false);
+        CompoundTag compoundTag = itemStack.getOrCreateTag();
 
-        if (entity instanceof ContainerMob containerMob) {
+        if (entity instanceof ContainerMob containerMob && containerMob instanceof Vex vex) {
 
-            if (containerMob instanceof Vex vex) {
-                vex.setBoundOrigin(blockPos);
+            vex.setPersistenceRequired();
+            vex.setBoundOrigin(blockPos);
+
+            if (!compoundTag.contains("LifeTicks")) {
+                vex.setLimitedLife(20 * (30 + serverLevel.random.nextInt(90)));
             }
-            if (containerMob instanceof Mob mob) {
-                mob.setPersistenceRequired();
-            }
 
-            containerMob.loadFromItemTag(itemStack.getOrCreateTag());
+            containerMob.loadFromItemTag(compoundTag);
             containerMob.setFromItem(true);
         }
     }

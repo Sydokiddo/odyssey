@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
+import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BiomeColors;
@@ -17,6 +18,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.entity.animal.frog.Frog;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.biome.Biome;
 import net.sydokiddo.chrysalis.Chrysalis;
@@ -140,6 +142,26 @@ public class OdysseyClient implements ClientModInitializer {
                     Minecraft.getInstance().gui.setOverlayMessage(component, false);
                     Minecraft.getInstance().getNarrator().sayNow(component);
                 });
+            }));
+
+            // Ownership Contract Packet
+
+            ClientPlayNetworking.registerGlobalReceiver(OdysseyRegistry.OWNERSHIP_CONTRACT_PACKET_ID,((client, handler, buf, responseSender) -> {
+
+                ItemStack itemStack = client.player.getItemInHand(client.player.getUsedItemHand());
+                CompoundTag compoundTag = itemStack.getOrCreateTag();
+
+                Component messageToSend = Component.translatable("gui.odyssey.item.ownership_contract.failed_message").withStyle(ChatFormatting.RED); // Failed Message
+
+                switch (buf.readInt()) {
+                    case 0 -> messageToSend = Component.translatable("gui.odyssey.item.ownership_contract.could_not_find", compoundTag.getString(OwnershipContractItem.mobNameString)).withStyle(ChatFormatting.RED); // Missing Message
+                    case 1 -> messageToSend = Component.translatable("gui.odyssey.item.ownership_contract.already_owned", compoundTag.getString(OwnershipContractItem.mobNameString)).withStyle(ChatFormatting.RED); // Already Owned Message
+                    case 2 -> messageToSend = Component.translatable("gui.odyssey.item.ownership_contract.transfer_ownership_old_owner", compoundTag.getString(OwnershipContractItem.mobNameString), client.player.getName().getString()).withStyle(ChatFormatting.WHITE); // Old Owner Message
+                    case 3 -> messageToSend = Component.translatable("gui.odyssey.item.ownership_contract.transfer_ownership_new_owner", compoundTag.getString(OwnershipContractItem.mobNameString)).withStyle(ChatFormatting.WHITE); // New Owner Message
+                }
+
+                Minecraft.getInstance().gui.setOverlayMessage(messageToSend, false);
+                Minecraft.getInstance().getNarrator().sayNow(messageToSend);
             }));
 
             // endregion
