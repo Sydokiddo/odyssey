@@ -252,6 +252,67 @@
     "subtitle": "subtitles.chiseled_bookshelf.take_vex"
   },
 
+  "block.paper_block.place": {
+    "sounds": [
+      "odyssey:block/paper_block/place1",
+      "odyssey:block/paper_block/place2",
+      "odyssey:block/paper_block/place3",
+      "odyssey:block/paper_block/place4"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.paper_block.break": {
+    "sounds": [
+      "odyssey:block/paper_block/place1",
+      "odyssey:block/paper_block/place2",
+      "odyssey:block/paper_block/place3",
+      "odyssey:block/paper_block/place4"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.paper_block.hit": {
+    "sounds": [
+      "odyssey:block/paper_block/step1",
+      "odyssey:block/paper_block/step2",
+      "odyssey:block/paper_block/step3",
+      "odyssey:block/paper_block/step4"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.paper_block.step": {
+    "sounds": [
+      "odyssey:block/paper_block/step1",
+      "odyssey:block/paper_block/step2",
+      "odyssey:block/paper_block/step3",
+      "odyssey:block/paper_block/step4"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.paper_block.fall": {
+    "sounds": [
+      "odyssey:block/paper_block/step1",
+      "odyssey:block/paper_block/step2",
+      "odyssey:block/paper_block/step3",
+      "odyssey:block/paper_block/step4"
+    ]
+  },
+  "block.paper_block.add_paper": {
+    "sounds": [
+      "odyssey:block/paper_block/add_paper1",
+      "odyssey:block/paper_block/add_paper2",
+      "odyssey:block/paper_block/add_paper3"
+    ],
+    "subtitle": "subtitles.block.paper_block.add_paper"
+  },
+  "block.paper_block.take_paper": {
+    "sounds": [
+      "odyssey:block/paper_block/take_paper1",
+      "odyssey:block/paper_block/take_paper2",
+      "odyssey:block/paper_block/take_paper3"
+    ],
+    "subtitle": "subtitles.block.paper_block.take_paper"
+  },
+
   "block.note_block.trumpet": {
     "sounds": [
       "odyssey:note/trumpet"

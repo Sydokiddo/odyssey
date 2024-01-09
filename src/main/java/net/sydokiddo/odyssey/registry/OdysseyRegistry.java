@@ -18,6 +18,7 @@ import net.minecraft.world.level.block.DispenserBlock;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.misc.util.commands.HatCommand;
 import net.sydokiddo.odyssey.misc.util.commands.ShowcaseCommand;
+import net.sydokiddo.odyssey.misc.util.dispenser.AddPaperToPaperBlockDispenserBehavior;
 import net.sydokiddo.odyssey.misc.util.dispenser.ApplyPatinaToCopperDispenserBehavior;
 import net.sydokiddo.odyssey.misc.util.dispenser.ApplySlimeballToPistonDispenserBehavior;
 import net.sydokiddo.odyssey.registry.blocks.ModBlocks;
@@ -88,12 +89,14 @@ public class OdysseyRegistry {
 
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.GUNPOWDER_BLOCK, 15, 100);
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.SUGAR_CANE_BLOCK, 30, 60);
+        FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.PAPER_BLOCK, 30, 60);
 
         // endregion
 
         // region Dispenser Methods
 
         DispenserBlock.registerBehavior(ModItems.PATINA, new ApplyPatinaToCopperDispenserBehavior());
+        DispenserBlock.registerBehavior(Items.PAPER, new AddPaperToPaperBlockDispenserBehavior());
 
         if (Odyssey.getConfig().blocks.qualityOfLifeBlockConfig.piston_interactions) {
             DispenserBlock.registerBehavior(Items.SLIME_BALL, new ApplySlimeballToPistonDispenserBehavior());

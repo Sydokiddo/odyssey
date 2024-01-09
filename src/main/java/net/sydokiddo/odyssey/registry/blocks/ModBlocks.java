@@ -48,6 +48,10 @@ public class ModBlocks {
         new RotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.PLANT)
         .strength(0.5F).sound(SoundType.GRASS).ignitedByLava()));
 
+    public static final Block PAPER_BLOCK = registerBlock("paper_block",
+        new PaperBlock(FabricBlockSettings.create().mapColor(MapColor.SNOW)
+        .strength(0.5F).sound(ModSoundEvents.PAPER_BLOCK).ignitedByLava()));
+
     public static final Block REDSTONE_LANTERN = registerBlock("redstone_lantern",
         new RedstoneLanternBlock(FabricBlockSettings.copyOf(Blocks.LANTERN).luminance(RegistryHelpers.blockStateShouldEmitLight(7))));
 

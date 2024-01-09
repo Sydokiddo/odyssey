@@ -1,0 +1,7 @@
+{
+	"parent": "minecraft:block/cube_column",
+	"textures": {
+		"end": "odyssey:block/paper_block_top",
+		"side": "odyssey:block/paper_block_side"
+	}
+}

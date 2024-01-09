@@ -100,6 +100,7 @@
 
   "block.odyssey.gunpowder_block": "Block of Gunpowder",
   "block.odyssey.sugar_cane_block": "Block of Sugar Cane",
+  "block.odyssey.paper_block": "Block of Paper",
   "block.odyssey.refined_amethyst_block": "Refined Block of Amethyst",
   "block.odyssey.potion_cauldron": "Potion Cauldron",
   "block.odyssey.redstone_lantern": "Redstone Lantern",
@@ -182,6 +183,9 @@
 
   "subtitles.block.redstone_lantern.power_on": "Redstone Lantern activates",
   "subtitles.block.redstone_lantern.power_off": "Redstone Lantern extinguishes",
+
+  "subtitles.block.paper_block.add_paper": "Paper placed",
+  "subtitles.block.paper_block.take_paper": "Paper taken",
 
   "subtitles.entity.item_frame.waxed_interact_fail": "Item Frame rustles",
   "subtitles.entity.glow_item_frame.waxed_interact_fail": "Glow Item Frame rustles",

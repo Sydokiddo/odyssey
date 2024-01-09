@@ -39,7 +39,7 @@ public class ModCreativeModeTabs {
 
             content.addAfter(ModItems.ELDER_GUARDIAN_THORN, ModItems.WITHER_SKULL_FRAGMENT, ModItems.PATINA, ModItems.IRON_POTATO, ModItems.ENCHANTED_IRON_POTATO,
             ModItems.SQUID_BUCKET, ModItems.GLOW_SQUID_BUCKET, ModItems.FROG_BUCKET, ModItems.ALLAY_BOUND_BOOK, ModItems.VEX_BOUND_BOOK, ModItems.ENVIRONMENT_DETECTOR, ModItems.OWNERSHIP_CONTRACT,
-            ModBlocks.GUNPOWDER_BLOCK, ModBlocks.REFINED_AMETHYST_BLOCK, ModBlocks.SUGAR_CANE_BLOCK, ModBlocks.SUSPICIOUS_RED_SAND, ModBlocks.GOLDEN_BUTTON, ModBlocks.IRON_BUTTON,
+            ModBlocks.GUNPOWDER_BLOCK, ModBlocks.REFINED_AMETHYST_BLOCK, ModBlocks.SUGAR_CANE_BLOCK, ModBlocks.PAPER_BLOCK, ModBlocks.SUSPICIOUS_RED_SAND, ModBlocks.GOLDEN_BUTTON, ModBlocks.IRON_BUTTON,
             ModBlocks.FRAGILE_BUTTON, ModBlocks.FRAGILE_PRESSURE_PLATE, ModBlocks.POLISHED_DEEPSLATE_BUTTON, ModBlocks.POLISHED_DEEPSLATE_PRESSURE_PLATE, ModBlocks.REDSTONE_LANTERN,
             ModBlocks.TINTED_GLASS_PANE, ModBlocks.STONE_WALL, ModBlocks.SMOOTH_STONE_STAIRS, ModBlocks.SMOOTH_STONE_WALL, ModBlocks.POLISHED_GRANITE_WALL, ModBlocks.POLISHED_DIORITE_WALL, ModBlocks.POLISHED_ANDESITE_WALL,
             ModBlocks.PRISMARINE_BRICK_WALL, ModBlocks.DARK_PRISMARINE_WALL, Items.FLOWER_POT, Items.SMALL_DRIPLEAF, Items.SPORE_BLOSSOM, Items.SEA_PICKLE, Items.SUGAR_CANE, Items.SHORT_GRASS, Items.NETHER_WART,
@@ -89,6 +89,7 @@ public class ModCreativeModeTabs {
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(entries -> {
             entries.addAfter(Items.SUSPICIOUS_SAND, ModBlocks.SUSPICIOUS_RED_SAND);
             entries.addAfter(Items.SOUL_LANTERN, ModBlocks.REDSTONE_LANTERN);
+            entries.addAfter(Items.BEEHIVE, ModBlocks.PAPER_BLOCK);
             entries.addAfter(Items.TINTED_GLASS, ModBlocks.TINTED_GLASS_PANE);
         });
 
@@ -101,6 +102,7 @@ public class ModCreativeModeTabs {
             entries.addAfter(Items.REDSTONE_TORCH, ModBlocks.REDSTONE_LANTERN);
             entries.addAfter(Items.STONE_BUTTON, ModBlocks.FRAGILE_BUTTON, ModBlocks.GOLDEN_BUTTON, ModBlocks.IRON_BUTTON);
             entries.addAfter(Items.STONE_PRESSURE_PLATE, ModBlocks.FRAGILE_PRESSURE_PLATE);
+            entries.addAfter(Items.LECTERN, ModBlocks.PAPER_BLOCK);
         });
 
         // endregion

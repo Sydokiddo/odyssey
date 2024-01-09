@@ -1,0 +1,161 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {}
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "block": "odyssey:paper_block",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "sheets": "1"
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "count": 1.0,
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:paper"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "block": "odyssey:paper_block",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "sheets": "2"
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "count": 2.0,
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:paper"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "block": "odyssey:paper_block",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "sheets": "3"
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "count": 3.0,
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:paper"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "block": "odyssey:paper_block",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "sheets": "4"
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "count": 4.0,
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:paper"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "block": "odyssey:paper_block",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "sheets": "5"
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "count": 5.0,
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:paper"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "block": "odyssey:paper_block",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "sheets": "6"
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "count": 6.0,
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:paper"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "block": "odyssey:paper_block",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "sheets": "7"
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "count": 7.0,
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:paper"
+            },
+            {
+              "type": "minecraft:item",
+              "name": "odyssey:paper_block"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "odyssey:blocks/paper_block"
+}

@@ -9,6 +9,7 @@
     "minecraft:chain",
     "#chrysalis:torches",
     "#chrysalis:lanterns",
-    "#chrysalis:heads"
+    "#chrysalis:heads",
+    "odyssey:paper_block"
   ]
 }

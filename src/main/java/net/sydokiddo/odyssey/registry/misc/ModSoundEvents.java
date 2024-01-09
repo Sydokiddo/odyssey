@@ -50,6 +50,14 @@ public class ModSoundEvents {
     public static final SoundEvent CHISELED_BOOKSHELF_INSERT_VEX = registerSoundEvent("block.chiseled_bookshelf.insert.vex");
     public static final SoundEvent CHISELED_BOOKSHELF_PICKUP_VEX = registerSoundEvent("block.chiseled_bookshelf.pickup.vex");
 
+    public static final SoundEvent PAPER_BLOCK_BREAK = registerSoundEvent("block.paper_block.break");
+    public static final SoundEvent PAPER_BLOCK_STEP = registerSoundEvent("block.paper_block.step");
+    public static final SoundEvent PAPER_BLOCK_PLACE = registerSoundEvent("block.paper_block.place");
+    public static final SoundEvent PAPER_BLOCK_HIT = registerSoundEvent("block.paper_block.hit");
+    public static final SoundEvent PAPER_BLOCK_FALL = registerSoundEvent("block.paper_block.fall");
+    public static final SoundEvent PAPER_BLOCK_ADD_PAPER = registerSoundEvent("block.paper_block.add_paper");
+    public static final SoundEvent PAPER_BLOCK_TAKE_PAPER = registerSoundEvent("block.paper_block.take_paper");
+
     public static final SoundEvent NOTE_BLOCK_TRUMPET = registerSoundEvent("block.note_block.trumpet");
     public static final SoundEvent NOTE_BLOCK_BONGO = registerSoundEvent("block.note_block.bongo");
     public static final SoundEvent NOTE_BLOCK_VIOLIN = registerSoundEvent("block.note_block.violin");
@@ -122,6 +130,10 @@ public class ModSoundEvents {
     public static final SoundType FRAGILE_PRESSURE_PLATE_CRACKED = new SoundType(1F, 1F,
         ModSoundEvents.FRAGILE_PRESSURE_PLATE_SHATTER, ModSoundEvents.FRAGILE_PRESSURE_PLATE_STEP, ModSoundEvents.FRAGILE_PRESSURE_PLATE_PLACE,
         ModSoundEvents.FRAGILE_PRESSURE_PLATE_HIT, ModSoundEvents.FRAGILE_PRESSURE_PLATE_FALL);
+
+    public static final SoundType PAPER_BLOCK = new SoundType(1F, 1F,
+        ModSoundEvents.PAPER_BLOCK_BREAK, ModSoundEvents.PAPER_BLOCK_STEP, ModSoundEvents.PAPER_BLOCK_PLACE,
+        ModSoundEvents.PAPER_BLOCK_HIT, ModSoundEvents.PAPER_BLOCK_FALL);
 
     // Registry
 

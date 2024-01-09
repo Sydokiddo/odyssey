@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "sheets=1": {
+      "model": "odyssey:block/paper_block_1_sheet"
+    },
+    "sheets=2": {
+      "model": "odyssey:block/paper_block_2_sheets"
+    },
+    "sheets=3": {
+      "model": "odyssey:block/paper_block_3_sheets"
+    },
+    "sheets=4": {
+      "model": "odyssey:block/paper_block_4_sheets"
+    },
+    "sheets=5": {
+      "model": "odyssey:block/paper_block_5_sheets"
+    },
+    "sheets=6": {
+      "model": "odyssey:block/paper_block_6_sheets"
+    },
+    "sheets=7": {
+      "model": "odyssey:block/paper_block_7_sheets"
+    },
+    "sheets=8": {
+      "model": "odyssey:block/paper_block_8_sheets"
+    }
+  }
+}
