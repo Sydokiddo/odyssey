@@ -96,27 +96,6 @@ public class PaperBlock extends Block {
         BlockState blockStateValue = blockState.setValue(ModBlockStateProperties.SHEETS, sheets);
         SoundEvent soundEvent = SoundEvents.EMPTY;
 
-        // region Adding Paper
-
-        if (itemInHand.is(paper) && sheets < maxSheetAmount) {
-
-            interacted = true;
-            blockStateValue = blockState.setValue(ModBlockStateProperties.SHEETS, Math.min(maxSheetAmount, sheets + 1));
-            soundEvent = ModSoundEvents.PAPER_BLOCK_ADD_PAPER;
-
-            player.awardStat(Stats.ITEM_USED.get(itemInHand.getItem()));
-
-            if (player instanceof ServerPlayer serverPlayer) {
-                CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, itemInHand);
-            }
-
-            if (!player.getAbilities().instabuild) {
-                itemInHand.shrink(1);
-            }
-        }
-
-        // endregion
-
         // region Removing Paper
 
         if (player.getMainHandItem().isEmpty() && sheets <= maxSheetAmount && sheets >= 1) {
@@ -138,6 +117,27 @@ public class PaperBlock extends Block {
                 }
             } else {
                 Block.popResourceFromFace(level, blockPos, Direction.UP, itemStack);
+            }
+        }
+
+        // endregion
+
+        // region Adding Paper
+
+        if (itemInHand.is(paper) && sheets < maxSheetAmount) {
+
+            interacted = true;
+            blockStateValue = blockState.setValue(ModBlockStateProperties.SHEETS, Math.min(maxSheetAmount, sheets + 1));
+            soundEvent = ModSoundEvents.PAPER_BLOCK_ADD_PAPER;
+
+            player.awardStat(Stats.ITEM_USED.get(itemInHand.getItem()));
+
+            if (player instanceof ServerPlayer serverPlayer) {
+                CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, itemInHand);
+            }
+
+            if (!player.getAbilities().instabuild) {
+                itemInHand.shrink(1);
             }
         }
 
