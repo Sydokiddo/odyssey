@@ -34,8 +34,12 @@ public class AddPaperToPaperBlockDispenserBehavior implements DispenseItemBehavi
             RegistryHelpers.playDispenserSound(blockSource);
             RegistryHelpers.playDispenserAnimation(blockSource, direction);
 
-            Block.pushEntitiesUp(blockState, blockState, serverLevel, blockPos);
-            serverLevel.setBlock(blockPos, blockState.setValue(ModBlockStateProperties.SHEETS, Math.min(8, blockState.getValue(ModBlockStateProperties.SHEETS) + 1)), 3);
+            int sheets = blockState.getValue(ModBlockStateProperties.SHEETS);
+            BlockState blockStateValue = blockState.setValue(ModBlockStateProperties.SHEETS, Math.min(8, sheets + 1));
+
+            Block.pushEntitiesUp(blockState, blockStateValue, serverLevel, blockPos);
+            serverLevel.setBlock(blockPos, blockStateValue, 3);
+
             serverLevel.playSound(null, blockPos, ModSoundEvents.PAPER_BLOCK_ADD_PAPER, SoundSource.BLOCKS, 1.0F, 1.0F);
             serverLevel.gameEvent(null, GameEvent.BLOCK_CHANGE, blockPos);
 

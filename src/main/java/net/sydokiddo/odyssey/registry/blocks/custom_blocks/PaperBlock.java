@@ -7,6 +7,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -50,6 +51,8 @@ public class PaperBlock extends Block {
         this.registerDefaultState(this.stateDefinition.any().setValue(ModBlockStateProperties.SHEETS, 8));
     }
 
+    // region Hitbox
+
     @Override
     public boolean isPathfindable(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, PathComputationType pathComputationType) {
         if (Objects.requireNonNull(pathComputationType) == PathComputationType.LAND) {
@@ -73,6 +76,8 @@ public class PaperBlock extends Block {
         return 1.0F;
     }
 
+    // endregion
+
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(ModBlockStateProperties.SHEETS);
@@ -91,13 +96,15 @@ public class PaperBlock extends Block {
         BlockState blockStateValue = blockState.setValue(ModBlockStateProperties.SHEETS, sheets);
         SoundEvent soundEvent = SoundEvents.EMPTY;
 
-        // Adding Paper
+        // region Adding Paper
 
         if (itemInHand.is(paper) && sheets < maxSheetAmount) {
 
             interacted = true;
             blockStateValue = blockState.setValue(ModBlockStateProperties.SHEETS, Math.min(maxSheetAmount, sheets + 1));
             soundEvent = ModSoundEvents.PAPER_BLOCK_ADD_PAPER;
+
+            player.awardStat(Stats.ITEM_USED.get(itemInHand.getItem()));
 
             if (player instanceof ServerPlayer serverPlayer) {
                 CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, itemInHand);
@@ -108,7 +115,9 @@ public class PaperBlock extends Block {
             }
         }
 
-        // Removing Paper
+        // endregion
+
+        // region Removing Paper
 
         if (player.getMainHandItem().isEmpty() && sheets <= maxSheetAmount && sheets >= 1) {
 
@@ -132,7 +141,9 @@ public class PaperBlock extends Block {
             }
         }
 
-        // Interacting
+        // endregion
+
+        // region Interacting
 
         if (interacted) {
 
@@ -145,6 +156,8 @@ public class PaperBlock extends Block {
 
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
+
+        // endregion
 
         return super.use(blockState, level, blockPos, player, interactionHand, blockHitResult);
     }
