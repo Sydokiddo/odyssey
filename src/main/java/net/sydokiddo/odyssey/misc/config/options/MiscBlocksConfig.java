@@ -12,7 +12,4 @@ public class MiscBlocksConfig {
 
     @ConfigEntry.Gui.Tooltip
     public boolean bouncy_mushroom_blocks = true;
-
-    @ConfigEntry.Gui.Tooltip
-    public boolean note_block_sensitivity = true;
 }

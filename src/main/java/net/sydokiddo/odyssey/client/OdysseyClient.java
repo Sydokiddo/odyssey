@@ -21,9 +21,14 @@ import net.minecraft.world.entity.animal.frog.Frog;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.block.NoteBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.sydokiddo.chrysalis.Chrysalis;
 import net.sydokiddo.odyssey.client.rendering.ModEntityRenderer;
 import net.sydokiddo.odyssey.registry.OdysseyRegistry;
+import net.sydokiddo.odyssey.registry.blocks.ModBlockStateProperties;
 import net.sydokiddo.odyssey.registry.blocks.ModBlocks;
 import net.sydokiddo.odyssey.registry.items.ModItems;
 import net.sydokiddo.odyssey.registry.items.custom_items.OwnershipContractItem;
@@ -162,6 +167,31 @@ public class OdysseyClient implements ClientModInitializer {
 
                 Minecraft.getInstance().gui.setOverlayMessage(messageToSend, false);
                 Minecraft.getInstance().getNarrator().sayNow(messageToSend);
+            }));
+
+            // Note Block Packet
+
+            ClientPlayNetworking.registerGlobalReceiver(OdysseyRegistry.NOTE_BLOCK_PACKET_ID,((client, handler, buf, responseSender) -> {
+
+                BlockHitResult lookedAtBlock = (BlockHitResult) client.hitResult;
+                BlockState blockState = client.level.getBlockState(lookedAtBlock.getBlockPos());
+
+                if (lookedAtBlock.getType() == HitResult.Type.BLOCK && blockState.getBlock() instanceof NoteBlock) {
+
+                    int notePitch;
+
+                    if (blockState.getValue(ModBlockStateProperties.WAXED)) {
+                        notePitch = blockState.getValue(NoteBlock.NOTE);
+                    } else {
+                        notePitch = blockState.getValue(NoteBlock.NOTE) + 1;
+                    }
+
+                    if (notePitch == 25) notePitch = 0;
+                    Component messageToSend = Component.translatable("gui.odyssey.block.note_block.note_pitch", notePitch);
+
+                    Minecraft.getInstance().gui.setOverlayMessage(messageToSend, true);
+                    Minecraft.getInstance().getNarrator().sayNow(messageToSend);
+                }
             }));
 
             // endregion

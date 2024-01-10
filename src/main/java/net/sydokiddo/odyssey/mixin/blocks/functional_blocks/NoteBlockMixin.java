@@ -1,10 +1,13 @@
 package net.sydokiddo.odyssey.mixin.blocks.functional_blocks;
 
+import io.netty.buffer.Unpooled;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
@@ -33,6 +36,7 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.sydokiddo.chrysalis.Chrysalis;
 import net.sydokiddo.odyssey.Odyssey;
+import net.sydokiddo.odyssey.registry.OdysseyRegistry;
 import net.sydokiddo.odyssey.registry.blocks.ModBlockStateProperties;
 import net.sydokiddo.odyssey.registry.misc.OCommonMethods;
 import org.jetbrains.annotations.Nullable;
@@ -73,30 +77,27 @@ public abstract class NoteBlockMixin extends Block {
 
     // endregion
 
-    // Note Block Waxing
+    // region Note Block Waxing
 
     @Inject(method = "use", at = @At("HEAD"), cancellable = true)
     private void odyssey$noteBlockWaxing(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult, CallbackInfoReturnable<InteractionResult> cir) {
 
-        if (!Odyssey.getConfig().blocks.qualityOfLifeBlockConfig.note_block_waxing) return;
         ItemStack itemStack = player.getItemInHand(interactionHand);
 
-        if (blockState.getValue(WAXED)) {
+        if (blockState.getValue(WAXED) && !(itemStack.is(ItemTags.NOTE_BLOCK_TOP_INSTRUMENTS) && blockHitResult.getDirection() == Direction.UP)) {
 
-            if (!(itemStack.is(ItemTags.NOTE_BLOCK_TOP_INSTRUMENTS) && blockHitResult.getDirection() == Direction.UP)) {
-
-                if (Chrysalis.IS_DEBUG) {
-                    Odyssey.LOGGER.info("{} is waxed, preventing its note from being cycled", this.getName().getString());
-                }
-
-                this.playNote(player, blockState, level, blockPos);
-                player.awardStat(Stats.PLAY_NOTEBLOCK);
-                cir.setReturnValue(InteractionResult.sidedSuccess(level.isClientSide));
+            if (Chrysalis.IS_DEBUG) {
+                Odyssey.LOGGER.info("{} is waxed, preventing its note from being cycled", this.getName().getString());
             }
+
+            this.playNote(player, blockState, level, blockPos);
+            if (player instanceof ServerPlayer serverPlayer) this.sendNoteBlockPacket(serverPlayer);
+            player.awardStat(Stats.PLAY_NOTEBLOCK);
+            cir.setReturnValue(InteractionResult.sidedSuccess(level.isClientSide));
 
         } else {
 
-            if (itemStack.is(Items.HONEYCOMB)) {
+            if (itemStack.is(Items.HONEYCOMB) && Odyssey.getConfig().blocks.qualityOfLifeBlockConfig.noteBlockConfig.note_block_waxing) {
 
                 player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
 
@@ -119,6 +120,40 @@ public abstract class NoteBlockMixin extends Block {
         }
     }
 
+    // endregion
+
+    // region Note HUD Message
+
+    // Sends a message packet to the player's client that displays the played note
+
+    @Inject(method = "use", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/NoteBlock;playNote(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)V"))
+    private void odyssey$sendNoteHUDMessageOnUse(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult, CallbackInfoReturnable<InteractionResult> cir) {
+        if (player instanceof ServerPlayer serverPlayer) {
+            this.sendNoteBlockPacket(serverPlayer);
+        }
+    }
+
+    @Inject(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/NoteBlock;playNote(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)V"))
+    private void odyssey$sendNoteHUDMessageOnAttack(BlockState blockState, Level level, BlockPos blockPos, Player player, CallbackInfo info) {
+        if (player instanceof ServerPlayer serverPlayer) {
+            this.sendNoteBlockPacket(serverPlayer);
+        }
+    }
+
+    @Unique
+    private void sendNoteBlockPacket(ServerPlayer serverPlayer) {
+
+        if (!Odyssey.getConfig().blocks.qualityOfLifeBlockConfig.noteBlockConfig.note_block_gui_rendering) return;
+
+        FriendlyByteBuf packet = new FriendlyByteBuf(Unpooled.buffer());
+        packet.writeInt(0);
+        ServerPlayNetworking.send(serverPlayer, OdysseyRegistry.NOTE_BLOCK_PACKET_ID, packet);
+    }
+
+    // endregion
+
+    // region Note Block Sensitivity
+
     // Falling onto a Note Block while not sneaking will play its sound
 
     @Override
@@ -126,7 +161,7 @@ public abstract class NoteBlockMixin extends Block {
 
         super.fallOn(level, blockState, blockPos, entity, fallDistance);
 
-        if (!entity.isShiftKeyDown() && !blockState.getValue(INSTRUMENT).worksAboveNoteBlock() && Odyssey.getConfig().blocks.miscBlocksConfig.note_block_sensitivity) {
+        if (!entity.isShiftKeyDown() && !blockState.getValue(INSTRUMENT).worksAboveNoteBlock() && Odyssey.getConfig().blocks.qualityOfLifeBlockConfig.noteBlockConfig.note_block_sensitivity) {
 
             this.playNote(entity, blockState, level, blockPos);
 
@@ -144,7 +179,7 @@ public abstract class NoteBlockMixin extends Block {
 
         super.onProjectileHit(level, blockState, blockHitResult, projectile);
 
-        if (Odyssey.getConfig().blocks.miscBlocksConfig.note_block_sensitivity) {
+        if (Odyssey.getConfig().blocks.qualityOfLifeBlockConfig.noteBlockConfig.note_block_sensitivity) {
 
             Entity projectileOwner;
 
@@ -164,6 +199,10 @@ public abstract class NoteBlockMixin extends Block {
         }
     }
 
+    // endregion
+
+    // region Note Block Muffling
+
     // Note Blocks with a Carpet on top will play their sound muffled
 
     @Inject(method = "playNote", at = @At("HEAD"), cancellable = true)
@@ -171,7 +210,7 @@ public abstract class NoteBlockMixin extends Block {
 
         TagKey<Block> woolCarpetsTag = BlockTags.WOOL_CARPETS;
 
-        if (level.getBlockState(blockPos.above()).is(woolCarpetsTag) || blockState.getValue(INSTRUMENT).worksAboveNoteBlock() && level.getBlockState(blockPos.above()).is(woolCarpetsTag) && Odyssey.getConfig().blocks.qualityOfLifeBlockConfig.note_block_muffling) {
+        if (level.getBlockState(blockPos.above()).is(woolCarpetsTag) || blockState.getValue(INSTRUMENT).worksAboveNoteBlock() && level.getBlockState(blockPos.above()).is(woolCarpetsTag) && Odyssey.getConfig().blocks.qualityOfLifeBlockConfig.noteBlockConfig.note_block_muffling) {
             level.blockEvent(blockPos, this, 1, 0);
             level.gameEvent(entity, GameEvent.NOTE_BLOCK_PLAY, blockPos);
             info.cancel();
@@ -181,7 +220,7 @@ public abstract class NoteBlockMixin extends Block {
     @SuppressWarnings("all")
     @Inject(method = "triggerEvent", at = @At("HEAD"), cancellable = true)
     private void odyssey$triggerMuffledNoteBlockEvent(BlockState blockState, Level level, BlockPos blockPos, int i, int j, CallbackInfoReturnable<Boolean> cir) {
-        if (i == 1 && Odyssey.getConfig().blocks.qualityOfLifeBlockConfig.note_block_muffling) {
+        if (i == 1 && Odyssey.getConfig().blocks.qualityOfLifeBlockConfig.noteBlockConfig.note_block_muffling) {
 
             if (Chrysalis.IS_DEBUG) {
                 Odyssey.LOGGER.info("Detected a Carpet above {}, playing muffled sound", this.getName().getString());
@@ -211,4 +250,6 @@ public abstract class NoteBlockMixin extends Block {
             cir.setReturnValue(true);
         }
     }
+
+    // endregion
 }
