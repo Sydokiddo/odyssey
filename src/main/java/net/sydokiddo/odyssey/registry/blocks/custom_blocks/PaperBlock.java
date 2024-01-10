@@ -86,78 +86,81 @@ public class PaperBlock extends Block {
     @Override
     public @NotNull InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
 
-        ItemStack itemInHand = player.getItemInHand(interactionHand);
-        Item paper = Items.PAPER;
-        int sheets = blockState.getValue(ModBlockStateProperties.SHEETS);
-        int maxSheetAmount = 8;
+        if (player.mayBuild()) {
 
-        boolean interacted = false;
+            ItemStack itemInHand = player.getItemInHand(interactionHand);
+            Item paper = Items.PAPER;
+            int sheets = blockState.getValue(ModBlockStateProperties.SHEETS);
+            int maxSheetAmount = 8;
 
-        BlockState blockStateValue = blockState.setValue(ModBlockStateProperties.SHEETS, sheets);
-        SoundEvent soundEvent = SoundEvents.EMPTY;
+            boolean interacted = false;
 
-        // region Removing Paper
+            BlockState blockStateValue = blockState.setValue(ModBlockStateProperties.SHEETS, sheets);
+            SoundEvent soundEvent = SoundEvents.EMPTY;
 
-        if (player.getMainHandItem().isEmpty() && sheets <= maxSheetAmount && sheets >= 1) {
+            // region Removing Paper
 
-            interacted = true;
-            soundEvent = ModSoundEvents.PAPER_BLOCK_TAKE_PAPER;
+            if (player.getMainHandItem().isEmpty() && sheets <= maxSheetAmount && sheets >= 1) {
 
-            if (sheets == 1) {
-                blockStateValue = Blocks.AIR.defaultBlockState();
-            } else {
-                blockStateValue = blockState.setValue(ModBlockStateProperties.SHEETS, sheets - 1);
-            }
+                interacted = true;
+                soundEvent = ModSoundEvents.PAPER_BLOCK_TAKE_PAPER;
 
-            ItemStack itemStack = new ItemStack(paper);
-
-            if (player.isShiftKeyDown()) {
-                if (!player.getInventory().add(itemStack)) {
-                    player.drop(itemStack, false);
+                if (sheets == 1) {
+                    blockStateValue = Blocks.AIR.defaultBlockState();
+                } else {
+                    blockStateValue = blockState.setValue(ModBlockStateProperties.SHEETS, sheets - 1);
                 }
-            } else {
-                Block.popResourceFromFace(level, blockPos, Direction.UP, itemStack);
-            }
-        }
 
-        // endregion
+                ItemStack itemStack = new ItemStack(paper);
 
-        // region Adding Paper
-
-        if (itemInHand.is(paper) && sheets < maxSheetAmount) {
-
-            interacted = true;
-            blockStateValue = blockState.setValue(ModBlockStateProperties.SHEETS, Math.min(maxSheetAmount, sheets + 1));
-            soundEvent = ModSoundEvents.PAPER_BLOCK_ADD_PAPER;
-
-            player.awardStat(Stats.ITEM_USED.get(itemInHand.getItem()));
-
-            if (player instanceof ServerPlayer serverPlayer) {
-                CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, itemInHand);
+                if (player.isShiftKeyDown()) {
+                    if (!player.getInventory().add(itemStack)) {
+                        player.drop(itemStack, false);
+                    }
+                } else {
+                    Block.popResourceFromFace(level, blockPos, Direction.UP, itemStack);
+                }
             }
 
-            if (!player.getAbilities().instabuild) {
-                itemInHand.shrink(1);
+            // endregion
+
+            // region Adding Paper
+
+            if (itemInHand.is(paper) && sheets < maxSheetAmount) {
+
+                interacted = true;
+                blockStateValue = blockState.setValue(ModBlockStateProperties.SHEETS, Math.min(maxSheetAmount, sheets + 1));
+                soundEvent = ModSoundEvents.PAPER_BLOCK_ADD_PAPER;
+
+                player.awardStat(Stats.ITEM_USED.get(itemInHand.getItem()));
+
+                if (player instanceof ServerPlayer serverPlayer) {
+                    CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, itemInHand);
+                }
+
+                if (!player.getAbilities().instabuild) {
+                    itemInHand.shrink(1);
+                }
             }
+
+            // endregion
+
+            // region Interacting
+
+            if (interacted) {
+
+                Block.pushEntitiesUp(blockState, blockStateValue, level, blockPos);
+                level.setBlock(blockPos, blockStateValue, 3);
+                level.updateNeighbourForOutputSignal(blockPos, this);
+
+                level.playSound(null, blockPos, soundEvent, SoundSource.BLOCKS, 1.0F, 1.0F);
+                level.gameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Context.of(player, blockState));
+
+                return InteractionResult.sidedSuccess(level.isClientSide);
+            }
+
+            // endregion
         }
-
-        // endregion
-
-        // region Interacting
-
-        if (interacted) {
-
-            Block.pushEntitiesUp(blockState, blockStateValue, level, blockPos);
-            level.setBlock(blockPos, blockStateValue, 3);
-            level.updateNeighbourForOutputSignal(blockPos, this);
-
-            level.playSound(null, blockPos, soundEvent, SoundSource.BLOCKS, 1.0F, 1.0F);
-            level.gameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Context.of(player, blockState));
-
-            return InteractionResult.sidedSuccess(level.isClientSide);
-        }
-
-        // endregion
 
         return super.use(blockState, level, blockPos, player, interactionHand, blockHitResult);
     }

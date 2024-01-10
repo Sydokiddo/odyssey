@@ -72,7 +72,7 @@ public abstract class PistonBaseBlockMixin extends DirectionalBlock {
         Item item = itemInHand.getItem();
         Direction direction = blockState.getValue(PistonBaseBlock.FACING);
 
-        if (!blockState.getValue(EXTENDED) && Odyssey.getConfig().blocks.qualityOfLifeBlockConfig.piston_interactions) {
+        if (!blockState.getValue(EXTENDED) && player.mayBuild() && Odyssey.getConfig().blocks.qualityOfLifeBlockConfig.piston_interactions) {
 
             if (!this.isSticky && itemInHand.is(Items.SLIME_BALL)) {
 

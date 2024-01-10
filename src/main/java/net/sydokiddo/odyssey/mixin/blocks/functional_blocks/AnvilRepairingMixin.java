@@ -34,7 +34,7 @@ public class AnvilRepairingMixin {
 
         ItemStack itemInHand = player.getItemInHand(interactionHand);
 
-        if (!level.isClientSide() && itemInHand.is(ModTags.REPAIRS_ANVILS) && Odyssey.getConfig().blocks.qualityOfLifeBlockConfig.anvil_repairing && blockState.getBlock() != Blocks.ANVIL) {
+        if (!level.isClientSide() && player.mayBuild() && itemInHand.is(ModTags.REPAIRS_ANVILS) && blockState.getBlock() != Blocks.ANVIL && Odyssey.getConfig().blocks.qualityOfLifeBlockConfig.anvil_repairing) {
 
             Block anvilType;
 

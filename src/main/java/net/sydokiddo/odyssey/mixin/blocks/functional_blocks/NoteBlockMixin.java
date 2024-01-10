@@ -81,7 +81,7 @@ public abstract class NoteBlockMixin extends Block {
 
         ItemStack itemStack = player.getItemInHand(interactionHand);
 
-        if (!blockState.getValue(WAXED) && itemStack.is(Items.HONEYCOMB) && Odyssey.getConfig().blocks.qualityOfLifeBlockConfig.noteBlockConfig.note_block_waxing) {
+        if (!blockState.getValue(WAXED) && itemStack.is(Items.HONEYCOMB) && player.mayBuild() && Odyssey.getConfig().blocks.qualityOfLifeBlockConfig.noteBlockConfig.note_block_waxing) {
 
             player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
 
