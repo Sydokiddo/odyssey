@@ -29,21 +29,27 @@ public class ModConfig implements ConfigData {
         @ConfigEntry.Gui.Tooltip
         public TooltipConfig tooltipConfig = new TooltipConfig();
 
+        @ConfigEntry.Gui.RequiresRestart(value = false)
         @ConfigEntry.Gui.Tooltip
         public boolean more_repairable_items = true;
 
+        @ConfigEntry.Gui.RequiresRestart(value = false)
         @ConfigEntry.Gui.Tooltip
         public boolean silk_touch_and_fortune_on_shears = true;
 
+        @ConfigEntry.Gui.RequiresRestart(value = false)
         @ConfigEntry.Gui.Tooltip
         public boolean improved_turtle_helmets = true;
 
+        @ConfigEntry.Gui.RequiresRestart(value = false)
         @ConfigEntry.Gui.Tooltip
         public boolean improved_riptide = true;
 
+        @ConfigEntry.Gui.RequiresRestart(value = false)
         @ConfigEntry.Gui.Tooltip
         public float patina_drop_chance = 0.25F;
 
+        @ConfigEntry.Gui.RequiresRestart(value = false)
         @ConfigEntry.Gui.Tooltip
         public boolean compass_and_map_gui_rendering = true;
     }
