@@ -3,3 +3,4 @@ accessWidener   v1  named
 accessible method net/minecraft/util/ParticleUtils getRandomSpeedRanges (Lnet/minecraft/util/RandomSource;)Lnet/minecraft/world/phys/Vec3;
 accessible method net/minecraft/world/entity/animal/frog/Frog getVariant ()Lnet/minecraft/world/entity/animal/FrogVariant;
 accessible class net/minecraft/world/level/block/state/properties/NoteBlockInstrument$Type
+accessible method net/minecraft/world/level/block/NoteBlock playNote (Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)V

@@ -17,6 +17,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.piston.PistonBaseBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.sydokiddo.chrysalis.Chrysalis;
 import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.items.ModItems;
@@ -44,6 +45,10 @@ public class ScrapeBlockDispenserBehavior implements DispenseItemBehavior {
 
         if (itemStack.hurt(1, serverLevel.getRandom(), null)) {
             itemStack.setCount(0);
+        }
+
+        if (Chrysalis.IS_DEBUG) {
+            Odyssey.LOGGER.info("Dispenser has stripped/scraped a block at {}", blockPos);
         }
     }
 

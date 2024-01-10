@@ -2,13 +2,17 @@ package net.sydokiddo.odyssey.mixin.blocks.misc;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.Stats;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.NoteBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import net.sydokiddo.chrysalis.Chrysalis;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.misc.ModTags;
 import org.spongepowered.asm.mixin.Mixin;
@@ -28,7 +32,26 @@ public class BlockMixin {
     }
 
     @Inject(at = @At("HEAD"), method = "fallOn", cancellable = true)
-    private void odyssey$fallOnBouncyBlock(Level level, BlockState blockState, BlockPos blockPos, Entity entity, float fallDistance, CallbackInfo info) {
+    private void odyssey$fallOnBlock(Level level, BlockState blockState, BlockPos blockPos, Entity entity, float fallDistance, CallbackInfo info) {
+
+        // Falling on Note Blocks
+
+        if (!level.isClientSide() && !entity.isShiftKeyDown() && fallDistance > 0 && blockState.getBlock() instanceof NoteBlock noteBlock && !blockState.getValue(NoteBlock.INSTRUMENT).worksAboveNoteBlock() && Odyssey.getConfig().blocks.qualityOfLifeBlockConfig.noteBlockConfig.note_block_sensitivity) {
+
+            if (entity instanceof Player player) {
+                player.awardStat(Stats.PLAY_NOTEBLOCK);
+            }
+
+            if (Chrysalis.IS_DEBUG) {
+                Odyssey.LOGGER.info("{} has fallen onto a Note Block at {}", entity.getName().getString(), blockPos);
+            }
+
+            noteBlock.playNote(entity, blockState, level, blockPos);
+            info.cancel();
+        }
+
+        // Falling on Mushroom Blocks
+
         if (!entity.isSuppressingBounce() && blockState.is(ModTags.BOUNCY_BLOCKS) && Odyssey.getConfig().blocks.miscBlocksConfig.bouncy_mushroom_blocks) {
             entity.causeFallDamage(fallDistance, 0.0F, level.damageSources().fall());
             level.playSound(null, blockPos, blockState.getSoundType().getStepSound(), SoundSource.BLOCKS, blockState.getSoundType().getVolume() * 0.15F, blockState.getSoundType().getPitch());

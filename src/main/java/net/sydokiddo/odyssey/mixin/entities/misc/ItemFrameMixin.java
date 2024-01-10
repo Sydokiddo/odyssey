@@ -98,7 +98,7 @@ public abstract class ItemFrameMixin extends HangingEntity {
                     itemInHand.shrink(1);
                 }
 
-                OCommonMethods.sendWaxingDebugMessage(this.getName().getString(), player, blockPosition());
+                OCommonMethods.sendWaxingDebugMessage(level(), this.getName().getString(), player, blockPosition());
                 cir.setReturnValue(InteractionResult.sidedSuccess(player.level().isClientSide()));
             }
 
@@ -117,7 +117,7 @@ public abstract class ItemFrameMixin extends HangingEntity {
                     itemInHand.hurtAndBreak(1, player, (shears) -> shears.broadcastBreakEvent(interactionHand));
                 }
 
-                if (Chrysalis.IS_DEBUG) {
+                if (Chrysalis.IS_DEBUG && !level().isClientSide()) {
                     Odyssey.LOGGER.info("Setting {} as invisible as it has been sheared by {}", this.getName().getString(), player.getName().getString());
                 }
 
@@ -138,7 +138,7 @@ public abstract class ItemFrameMixin extends HangingEntity {
             this.setInvisible(false);
             this.displayPoofParticles();
 
-            if (Chrysalis.IS_DEBUG) {
+            if (Chrysalis.IS_DEBUG && !level().isClientSide()) {
                 Odyssey.LOGGER.info("Setting {} as visible again as its item has been removed", this.getName().getString());
             }
         }
@@ -151,7 +151,7 @@ public abstract class ItemFrameMixin extends HangingEntity {
 
         if (this.isWaxed()) {
 
-            if (Chrysalis.IS_DEBUG) {
+            if (Chrysalis.IS_DEBUG && !level().isClientSide()) {
                 Odyssey.LOGGER.info("{} is waxed, preventing items inside of it from being rotated", this.getName().getString());
             }
 

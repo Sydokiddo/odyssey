@@ -162,7 +162,7 @@ public interface PotionCauldronInteraction {
         PotionCauldronBlock.lowerFillLevel(blockState, level, blockPos);
         level.gameEvent(null, GameEvent.BLOCK_CHANGE, blockPos);
 
-        if (Chrysalis.IS_DEBUG) {
+        if (Chrysalis.IS_DEBUG && !level.isClientSide()) {
             Odyssey.LOGGER.info("{} has been converted into {} in a {}", startingItem.getItem().getName(startingItem).getString(), resultItem.getItem().getName(resultItem).getString(), blockState.getBlock().asItem().getName(blockState.getBlock().asItem().getDefaultInstance()));
         }
     }
