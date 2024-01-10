@@ -18,10 +18,20 @@ public abstract class RabbitMixin extends Animal {
 
     @Override
     protected int calculateFallDamage(float f, float g) {
-        if (Odyssey.getConfig().entities.passiveMobsConfig.decreased_rabbit_fall_damage) {
+        if (Odyssey.getConfig().entities.passiveMobsConfig.improved_rabbits) {
             return super.calculateFallDamage(f, g) - 10;
         } else {
             return super.calculateFallDamage(f, g);
         }
+    }
+
+    // Rabbits can now step up 1 block
+
+    @Override
+    public float maxUpStep() {
+        if (Odyssey.getConfig().entities.passiveMobsConfig.improved_rabbits) {
+            return 1.0F;
+        }
+        return super.maxUpStep();
     }
 }

@@ -8,9 +8,6 @@ public class PassiveMobsConfig {
     public boolean saddle_removing = true;
 
     @ConfigEntry.Gui.Tooltip
-    public boolean decreased_rabbit_fall_damage = true;
-
-    @ConfigEntry.Gui.Tooltip
     public boolean bucketable_frogs = true;
 
     @ConfigEntry.Gui.Tooltip
@@ -18,6 +15,9 @@ public class PassiveMobsConfig {
 
     @ConfigEntry.Gui.Tooltip
     public boolean improved_mount_hud = true;
+
+    @ConfigEntry.Gui.Tooltip
+    public boolean improved_rabbits = true;
 
     @ConfigEntry.Gui.Tooltip
     public boolean improved_horses = true;
