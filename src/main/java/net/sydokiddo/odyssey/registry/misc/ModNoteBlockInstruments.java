@@ -7,4 +7,5 @@ public class ModNoteBlockInstruments {
     public static NoteBlockInstrument TRUMPET;
     public static NoteBlockInstrument BONGO;
     public static NoteBlockInstrument VIOLIN;
+    public static NoteBlockInstrument ELECTRIC_GUITAR;
 }

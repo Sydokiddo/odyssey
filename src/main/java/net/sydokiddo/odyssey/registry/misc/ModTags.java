@@ -36,7 +36,8 @@ public class ModTags {
 
         TRUMPET_NOTE_BLOCK_INSTRUMENT = registerBlockTag("note_block_instruments/trumpet"),
         BONGO_NOTE_BLOCK_INSTRUMENT = registerBlockTag("note_block_instruments/bongo"),
-        VIOLIN_NOTE_BLOCK_INSTRUMENT = registerBlockTag("note_block_instruments/violin")
+        VIOLIN_NOTE_BLOCK_INSTRUMENT = registerBlockTag("note_block_instruments/violin"),
+        ELECTRIC_GUITAR_NOTE_BLOCK_INSTRUMENT = registerBlockTag("note_block_instruments/electric_guitar")
     ;
 
     // endregion

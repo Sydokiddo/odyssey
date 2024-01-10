@@ -18,7 +18,7 @@ public class NoteBlockInstrumentMixin {
     @Mutable @Shadow @Final private static NoteBlockInstrument[] $VALUES;
 
     @SuppressWarnings("unused")
-    public <T> NoteBlockInstrumentMixin(String enumName, int ordinal, String lowerCase, Holder<T> direct, NoteBlockInstrument.Type type) {
+    private <T> NoteBlockInstrumentMixin(String enumName, int ordinal, String lowerCase, Holder<T> direct, NoteBlockInstrument.Type type) {
         throw new UnsupportedOperationException("Replaced by Mixin");
     }
 
@@ -30,10 +30,11 @@ public class NoteBlockInstrumentMixin {
     @Inject(method = "<clinit>", at = @At(value = "FIELD", target = "Lnet/minecraft/world/level/block/state/properties/NoteBlockInstrument;$VALUES:[Lnet/minecraft/world/level/block/state/properties/NoteBlockInstrument;", shift = At.Shift.AFTER))
     private static void odyssey$addNoteBlockInstruments(CallbackInfo info) {
         int ordinal = $VALUES.length;
-        $VALUES = Arrays.copyOf($VALUES, ordinal + 3);
+        $VALUES = Arrays.copyOf($VALUES, ordinal + 4);
 
         ModNoteBlockInstruments.TRUMPET = $VALUES[ordinal] = createNoteBlockInstrument("trumpet", ordinal, ModSoundEvents.NOTE_BLOCK_TRUMPET);
         ModNoteBlockInstruments.BONGO = $VALUES[ordinal + 1] = createNoteBlockInstrument("bongo", ordinal + 1, ModSoundEvents.NOTE_BLOCK_BONGO);
         ModNoteBlockInstruments.VIOLIN = $VALUES[ordinal + 2] = createNoteBlockInstrument("violin", ordinal + 2, ModSoundEvents.NOTE_BLOCK_VIOLIN);
+        ModNoteBlockInstruments.ELECTRIC_GUITAR = $VALUES[ordinal + 3] = createNoteBlockInstrument("electric_guitar", ordinal + 3, ModSoundEvents.NOTE_BLOCK_ELECTRIC_GUITAR);
     }
 }

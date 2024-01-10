@@ -331,6 +331,12 @@
     ],
     "subtitle": "subtitles.block.note_block.note"
   },
+  "block.note_block.electric_guitar": {
+    "sounds": [
+      "odyssey:note/electric_guitar"
+    ],
+    "subtitle": "subtitles.block.note_block.note"
+  },
 
   "item.patina.use": {
     "sounds": [

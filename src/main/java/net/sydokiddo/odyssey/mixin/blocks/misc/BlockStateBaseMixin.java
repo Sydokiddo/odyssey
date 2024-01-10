@@ -28,5 +28,8 @@ public abstract class BlockStateBaseMixin {
         if (this.is(ModTags.VIOLIN_NOTE_BLOCK_INSTRUMENT)) {
             cir.setReturnValue(ModNoteBlockInstruments.VIOLIN);
         }
+        if (this.is(ModTags.ELECTRIC_GUITAR_NOTE_BLOCK_INSTRUMENT)) {
+            cir.setReturnValue(ModNoteBlockInstruments.ELECTRIC_GUITAR);
+        }
     }
 }
