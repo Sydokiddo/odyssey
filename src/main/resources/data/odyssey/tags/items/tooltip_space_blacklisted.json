@@ -2,6 +2,7 @@
   "values": [
     "minecraft:crossbow",
     "#chrysalis:immune_to_fire",
-    {"id": "#endlessencore:disobeys_gravity", "required": false}
+    {"id": "#endlessencore:disobeys_gravity", "required": false},
+    {"id": "#peculia:gauntlets", "required": false}
   ]
 }

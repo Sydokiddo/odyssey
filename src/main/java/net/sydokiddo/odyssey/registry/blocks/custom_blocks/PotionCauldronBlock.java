@@ -48,7 +48,7 @@ public class PotionCauldronBlock extends LayeredCauldronBlock implements EntityB
 
     // region Block Entity Ticking
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings("all")
     @Nullable
     protected static <E extends BlockEntity, A extends BlockEntity> BlockEntityTicker<A> createTickerHelper(BlockEntityType<A> blockEntityType, BlockEntityType<E> blockEntityType2, BlockEntityTicker<? super E> blockEntityTicker) {
         return blockEntityType2 == blockEntityType ? (BlockEntityTicker<A>) blockEntityTicker : null;

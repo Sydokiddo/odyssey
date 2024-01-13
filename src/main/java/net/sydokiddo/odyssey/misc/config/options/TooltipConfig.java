@@ -55,10 +55,6 @@ public class TooltipConfig {
 
     @ConfigEntry.Gui.RequiresRestart(value = false)
     @ConfigEntry.Gui.Tooltip
-    public boolean eyes_of_ender = true;
-
-    @ConfigEntry.Gui.RequiresRestart(value = false)
-    @ConfigEntry.Gui.Tooltip
     public boolean spawn_eggs = true;
 
     @ConfigEntry.Gui.RequiresRestart(value = false)
