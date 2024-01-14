@@ -1,5 +1,7 @@
 package net.sydokiddo.odyssey.mixin.items;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
@@ -31,7 +33,6 @@ public abstract class ItemStackMixin {
 
     @Shadow public abstract Item getItem();
     @Shadow public abstract ItemStack copy();
-    @Unique private final Minecraft client = Minecraft.getInstance();
     @Unique ItemStack itemStack = (ItemStack) (Object) this;
 
     // Adds unique tooltips to various items
@@ -41,12 +42,14 @@ public abstract class ItemStackMixin {
         return (number < 10 ? "0" : "") + number;
     }
 
+    @Environment(EnvType.CLIENT)
     @Inject(method = "getTooltipLines", at = @At("TAIL"))
     private void odyssey$addItemTooltipsAfterEnchantments(@Nullable Player player, TooltipFlag tooltipFlag, CallbackInfoReturnable<List<Component>> cir) {
 
         ItemStack itemStack = this.getItem().getDefaultInstance();
+        Minecraft client = Minecraft.getInstance();
 
-        if (!tooltipFlag.isAdvanced()) {
+        if (!cir.getReturnValue().isEmpty() && !tooltipFlag.isAdvanced()) {
 
             if (itemStack.is(Items.CARROT_ON_A_STICK) && Odyssey.getConfig().items.tooltipConfig.carrots_on_a_stick) {
                 RegistryHelpers.addHoldingTooltip(cir.getReturnValue());
