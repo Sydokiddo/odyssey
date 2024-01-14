@@ -161,7 +161,7 @@ public class OdysseyClient implements ClientModInitializer {
                 switch (buf.readInt()) {
                     case 0 -> messageToSend = Component.translatable("gui.odyssey.item.ownership_contract.could_not_find", compoundTag.getString(OwnershipContractItem.mobNameString)).withStyle(ChatFormatting.RED); // Missing Message
                     case 1 -> messageToSend = Component.translatable("gui.odyssey.item.ownership_contract.already_owned", compoundTag.getString(OwnershipContractItem.mobNameString)).withStyle(ChatFormatting.RED); // Already Owned Message
-                    case 2 -> messageToSend = Component.translatable("gui.odyssey.item.ownership_contract.transfer_ownership_old_owner", compoundTag.getString(OwnershipContractItem.mobNameString), client.player.getName().getString()).withStyle(ChatFormatting.WHITE); // Old Owner Message
+                    case 2 -> messageToSend = Component.translatable("gui.odyssey.item.ownership_contract.transfer_ownership_old_owner", compoundTag.getString(OwnershipContractItem.mobNameString), buf.readNbt().getString("NewOwner")).withStyle(ChatFormatting.WHITE); // Old Owner Message
                     case 3 -> messageToSend = Component.translatable("gui.odyssey.item.ownership_contract.transfer_ownership_new_owner", compoundTag.getString(OwnershipContractItem.mobNameString)).withStyle(ChatFormatting.WHITE); // New Owner Message
                 }
 

@@ -92,15 +92,19 @@ public class OwnershipContractItem extends Item {
 
                     if (this.getOldOwner(pet) != null) {
 
+                        CompoundTag newOwnerName = new CompoundTag();
+                        newOwnerName.putString("NewOwner", player.getName().getString());
+
                         FriendlyByteBuf newOwnerPacket = new FriendlyByteBuf(Unpooled.buffer());
                         newOwnerPacket.writeInt(2);
-                        ServerPlayNetworking.send(Objects.requireNonNull(this.getOldOwner(pet)), OdysseyRegistry.OWNERSHIP_CONTRACT_PACKET_ID, newOwnerPacket);
+                        newOwnerPacket.writeNbt(newOwnerName);
 
+                        ServerPlayNetworking.send(Objects.requireNonNull(this.getOldOwner(pet)), OdysseyRegistry.OWNERSHIP_CONTRACT_PACKET_ID, newOwnerPacket);
                         Objects.requireNonNull(this.getOldOwner(pet)).playNotifySound(ModSoundEvents.OWNERSHIP_CONTRACT_TRANSFER_OWNERSHIP, SoundSource.PLAYERS, 1.0F, 1.0F + level.getRandom().nextFloat() * 0.2F);
                     }
 
-                    level.playSound(null, player.getOnPos().above(), ModSoundEvents.OWNERSHIP_CONTRACT_TRANSFER_OWNERSHIP, SoundSource.PLAYERS, 1.0F, 1.0F + level.getRandom().nextFloat() * 0.2F);
                     this.setNewOwner(pet, player);
+                    level.playSound(null, player.getOnPos().above(), ModSoundEvents.OWNERSHIP_CONTRACT_TRANSFER_OWNERSHIP, SoundSource.PLAYERS, 1.0F, 1.0F + level.getRandom().nextFloat() * 0.2F);
                     this.spawnParticlesAroundMob(serverLevel, ParticleTypes.HEART, pet);
 
                     oldOwnerPacketValue = 3;
