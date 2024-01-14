@@ -39,6 +39,7 @@ public class OwnershipContractItem extends Item {
     private final String ownerNameString = "OwnerName";
     public static final String mobNameString = "MobName";
     private final String mobUUIDString = "MobUUID";
+    private boolean hasSuccessfullyTransferred = false;
 
     public OwnershipContractItem(Properties properties) {
         super(properties);
@@ -104,8 +105,8 @@ public class OwnershipContractItem extends Item {
                     }
 
                     this.setNewOwner(pet, player);
-                    level.playSound(null, player.getOnPos().above(), ModSoundEvents.OWNERSHIP_CONTRACT_TRANSFER_OWNERSHIP, SoundSource.PLAYERS, 1.0F, 1.0F + level.getRandom().nextFloat() * 0.2F);
                     this.spawnParticlesAroundMob(serverLevel, ParticleTypes.HEART, pet);
+                    if (!this.hasSuccessfullyTransferred) this.playTransferSound(serverLevel, player);
 
                     oldOwnerPacketValue = 3;
 
@@ -177,6 +178,11 @@ public class OwnershipContractItem extends Item {
 
     private void playFailSound(Level level, Player player) {
         level.playSound(null, player.getOnPos().above(), ModSoundEvents.OWNERSHIP_CONTRACT_FAIL, SoundSource.PLAYERS, 1.0F, 1.0F + level.getRandom().nextFloat() * 0.2F);
+    }
+
+    private void playTransferSound(ServerLevel serverLevel, Player player) {
+        serverLevel.playSound(null, player.getOnPos().above(), ModSoundEvents.OWNERSHIP_CONTRACT_TRANSFER_OWNERSHIP, SoundSource.PLAYERS, 1.0F, 1.0F + serverLevel.getRandom().nextFloat() * 0.2F);
+        this.hasSuccessfullyTransferred = true;
     }
 
     private boolean isPetOwnedByMe(LivingEntity livingEntity, Player player) {
