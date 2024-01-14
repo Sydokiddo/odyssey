@@ -6,6 +6,7 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
@@ -33,6 +34,7 @@ import net.sydokiddo.odyssey.registry.blocks.ModBlocks;
 import net.sydokiddo.odyssey.registry.items.ModItems;
 import net.sydokiddo.odyssey.registry.items.custom_items.OwnershipContractItem;
 import net.sydokiddo.odyssey.registry.misc.ModParticles;
+import net.sydokiddo.odyssey.registry.misc.OCommonMethods;
 import java.util.Objects;
 
 @Environment(EnvType.CLIENT)
@@ -45,6 +47,7 @@ public class OdysseyClient implements ClientModInitializer {
 
             ModEntityRenderer.init();
             ModParticles.registerParticles();
+            HudRenderCallback.EVENT.register((guiGraphics, tickDelta) -> OCommonMethods.renderCompassAndMapOverlay(guiGraphics));
 
             // region Block Rendering
 
