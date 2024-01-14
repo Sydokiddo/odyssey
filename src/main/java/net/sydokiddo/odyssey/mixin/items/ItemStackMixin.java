@@ -96,9 +96,13 @@ public abstract class ItemStackMixin {
                             z = client.player.getBlockZ();
                         }
 
-                        RegistryHelpers.addCoordinatesTooltip(cir.getReturnValue(), x, y, z);
-                        if (!CompassItem.isLodestoneCompass(this.copy())) RegistryHelpers.addDirectionTooltip(cir.getReturnValue(), client);
-                        if (CompassItem.isLodestoneCompass(this.copy())) RegistryHelpers.addDimensionTooltip(cir.getReturnValue(), copy().getOrCreateTag().getString(CompassItem.TAG_LODESTONE_DIMENSION));
+                        if (CompassItem.isLodestoneCompass(copy()) && CompassItem.getLodestonePosition(copy().getOrCreateTag()) == null) {
+                            RegistryHelpers.addNullTooltip(cir.getReturnValue());
+                        } else {
+                            RegistryHelpers.addCoordinatesTooltip(cir.getReturnValue(), x, y, z);
+                            if (!CompassItem.isLodestoneCompass(this.copy())) RegistryHelpers.addDirectionTooltip(cir.getReturnValue(), client);
+                            if (CompassItem.isLodestoneCompass(this.copy())) RegistryHelpers.addDimensionTooltip(cir.getReturnValue(), copy().getOrCreateTag().getString(CompassItem.TAG_LODESTONE_DIMENSION));
+                        }
                     }
 
                     if (itemStack.is(Items.RECOVERY_COMPASS)) {
