@@ -39,7 +39,6 @@ public class OwnershipContractItem extends Item {
     private final String ownerNameString = "OwnerName";
     public static final String mobNameString = "MobName";
     private final String mobUUIDString = "MobUUID";
-    private boolean hasSuccessfullyTransferred = false;
 
     public OwnershipContractItem(Properties properties) {
         super(properties);
@@ -87,7 +86,7 @@ public class OwnershipContractItem extends Item {
                         this.spawnParticlesAroundMob(serverLevel, ParticleTypes.SMOKE, pet);
                     }
 
-                    this.playFailSound(player.level(), player);
+                    this.playFailSound(serverLevel, player);
 
                 } else {
 
@@ -106,7 +105,7 @@ public class OwnershipContractItem extends Item {
 
                     this.setNewOwner(pet, player);
                     this.spawnParticlesAroundMob(serverLevel, ParticleTypes.HEART, pet);
-                    if (!this.hasSuccessfullyTransferred) this.playTransferSound(serverLevel, player);
+                    serverLevel.playSound(null, player.getOnPos().above(), ModSoundEvents.OWNERSHIP_CONTRACT_TRANSFER_OWNERSHIP, SoundSource.PLAYERS, 1.0F, 1.0F + serverLevel.getRandom().nextFloat() * 0.2F);
 
                     oldOwnerPacketValue = 3;
 
@@ -144,25 +143,32 @@ public class OwnershipContractItem extends Item {
                     CriteriaTriggers.PLAYER_INTERACTED_WITH_ENTITY.trigger(serverPlayer, itemStack, livingEntity);
                 }
 
-                Component bindFailMessage = Component.translatable("gui.odyssey.item.ownership_contract.bind_fail", livingEntity.getName().getString(), itemStack.getHoverName().getString()).withStyle(ChatFormatting.RED);
-                Component bindSuccessMessage = Component.translatable("gui.odyssey.item.ownership_contract.bind_success", livingEntity.getName().getString(), itemStack.getHoverName().getString()).withStyle(ChatFormatting.WHITE);
+                int sentMessagePacketValue;
 
                 if (this.isPetOwnedByMe(livingEntity, player) || player.isCreative()) {
 
-                    livingEntity.level().playSound(null, player.getOnPos().above(), ModSoundEvents.OWNERSHIP_CONTRACT_SIGN, SoundSource.PLAYERS, 1.0F, 1.0F + player.level().getRandom().nextFloat() * 0.2F);
+                    serverLevel.playSound(null, player.getOnPos().above(), ModSoundEvents.OWNERSHIP_CONTRACT_SIGN, SoundSource.PLAYERS, 1.0F, 1.0F + player.level().getRandom().nextFloat() * 0.2F);
                     this.saveMobToContract(player, livingEntity, itemStack, interactionHand);
                     this.spawnParticlesAroundMob(serverLevel, ParticleTypes.HAPPY_VILLAGER, livingEntity);
 
-                    Minecraft.getInstance().gui.setOverlayMessage(bindSuccessMessage, false);
-                    Minecraft.getInstance().getNarrator().sayNow(bindSuccessMessage);
+                    sentMessagePacketValue = 4;
 
                 } else {
-                    this.playFailSound(player.level(), player);
+
+                    this.playFailSound(serverLevel, player);
                     this.spawnParticlesAroundMob(serverLevel, ParticleTypes.SMOKE, livingEntity);
 
-                    Minecraft.getInstance().gui.setOverlayMessage(bindFailMessage, false);
-                    Minecraft.getInstance().getNarrator().sayNow(bindFailMessage);
+                    sentMessagePacketValue = 5;
                 }
+
+                CompoundTag bindMessageTag = new CompoundTag();
+                bindMessageTag.putString("SelectedMob", livingEntity.getName().getString());
+                FriendlyByteBuf bindMessagePacket = new FriendlyByteBuf(Unpooled.buffer());
+
+                bindMessagePacket.writeInt(sentMessagePacketValue);
+                bindMessagePacket.writeNbt(bindMessageTag);
+
+                if (player instanceof ServerPlayer serverPlayer) ServerPlayNetworking.send(serverPlayer, OdysseyRegistry.OWNERSHIP_CONTRACT_PACKET_ID, bindMessagePacket);
             }
 
             return InteractionResult.sidedSuccess(player.level().isClientSide);
@@ -178,11 +184,6 @@ public class OwnershipContractItem extends Item {
 
     private void playFailSound(Level level, Player player) {
         level.playSound(null, player.getOnPos().above(), ModSoundEvents.OWNERSHIP_CONTRACT_FAIL, SoundSource.PLAYERS, 1.0F, 1.0F + level.getRandom().nextFloat() * 0.2F);
-    }
-
-    private void playTransferSound(ServerLevel serverLevel, Player player) {
-        serverLevel.playSound(null, player.getOnPos().above(), ModSoundEvents.OWNERSHIP_CONTRACT_TRANSFER_OWNERSHIP, SoundSource.PLAYERS, 1.0F, 1.0F + serverLevel.getRandom().nextFloat() * 0.2F);
-        this.hasSuccessfullyTransferred = true;
     }
 
     private boolean isPetOwnedByMe(LivingEntity livingEntity, Player player) {

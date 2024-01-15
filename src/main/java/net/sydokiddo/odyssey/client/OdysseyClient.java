@@ -166,6 +166,8 @@ public class OdysseyClient implements ClientModInitializer {
                     case 1 -> messageToSend = Component.translatable("gui.odyssey.item.ownership_contract.already_owned", compoundTag.getString(OwnershipContractItem.mobNameString)).withStyle(ChatFormatting.RED); // Already Owned Message
                     case 2 -> messageToSend = Component.translatable("gui.odyssey.item.ownership_contract.transfer_ownership_old_owner", compoundTag.getString(OwnershipContractItem.mobNameString), buf.readNbt().getString("NewOwner")).withStyle(ChatFormatting.WHITE); // Old Owner Message
                     case 3 -> messageToSend = Component.translatable("gui.odyssey.item.ownership_contract.transfer_ownership_new_owner", compoundTag.getString(OwnershipContractItem.mobNameString)).withStyle(ChatFormatting.WHITE); // New Owner Message
+                    case 4 -> messageToSend = Component.translatable("gui.odyssey.item.ownership_contract.bind_success", buf.readNbt().getString("SelectedMob"), itemStack.getHoverName().getString()).withStyle(ChatFormatting.WHITE); // Bind Success Message
+                    case 5 -> messageToSend = Component.translatable("gui.odyssey.item.ownership_contract.bind_fail", buf.readNbt().getString("SelectedMob"), itemStack.getHoverName().getString()).withStyle(ChatFormatting.RED); // Bind Fail Message
                 }
 
                 Minecraft.getInstance().gui.setOverlayMessage(messageToSend, false);
