@@ -34,6 +34,7 @@ public class ModTags {
         PREVENTS_SNIFFER_EGG_HATCHING = registerBlockTag("prevents_sniffer_egg_hatching"),
         UNDERWATER_FLOWER_POTS = registerBlockTag("underwater_flower_pots"),
         BOUNCY_BLOCKS = registerBlockTag("bouncy_blocks"),
+        DOES_NOT_OCCLUDE_NOTE_BLOCKS = registerBlockTag("does_not_occlude_note_blocks"),
 
         TRUMPET_NOTE_BLOCK_INSTRUMENT = registerBlockTag("note_block_instruments/trumpet"),
         BONGO_NOTE_BLOCK_INSTRUMENT = registerBlockTag("note_block_instruments/bongo"),

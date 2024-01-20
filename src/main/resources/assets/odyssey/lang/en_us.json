@@ -372,6 +372,8 @@
   "text.autoconfig.odyssey.option.blocks.qualityOfLifeBlockConfig.noteBlockConfig.note_block_muffling.@Tooltip": "Placing a Carpet above a Note Block will cause its sound to be muffled",
   "text.autoconfig.odyssey.option.blocks.qualityOfLifeBlockConfig.noteBlockConfig.note_block_sensitivity": "Note Block Sensitivity",
   "text.autoconfig.odyssey.option.blocks.qualityOfLifeBlockConfig.noteBlockConfig.note_block_sensitivity.@Tooltip": "Falling onto a Note Block while not sneaking or throwing a projectile at a Note Block will cause it to play its sound",
+  "text.autoconfig.odyssey.option.blocks.qualityOfLifeBlockConfig.noteBlockConfig.allow_placing_decorations_on_note_blocks": "Allow Placing Decorations on Note Blocks",
+  "text.autoconfig.odyssey.option.blocks.qualityOfLifeBlockConfig.noteBlockConfig.allow_placing_decorations_on_note_blocks.@Tooltip": "Various non-full blocks such as Candles, Flower Pots, and more will not occlude Note Blocks when placed on top of them",
   "text.autoconfig.odyssey.option.blocks.qualityOfLifeBlockConfig.noteBlockConfig.note_block_gui_rendering": "Note Block GUI Rendering",
   "text.autoconfig.odyssey.option.blocks.qualityOfLifeBlockConfig.noteBlockConfig.note_block_gui_rendering.@Tooltip": "Playing a Note Block with right-click or left-click will display the current note on a status message overlay",
 

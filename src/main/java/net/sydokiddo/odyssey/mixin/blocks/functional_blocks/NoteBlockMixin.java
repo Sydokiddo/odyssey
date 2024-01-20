@@ -35,6 +35,7 @@ import net.sydokiddo.chrysalis.Chrysalis;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.OdysseyRegistry;
 import net.sydokiddo.odyssey.registry.blocks.ModBlockStateProperties;
+import net.sydokiddo.odyssey.registry.misc.ModTags;
 import net.sydokiddo.odyssey.registry.misc.OCommonMethods;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
@@ -43,6 +44,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
@@ -119,6 +121,14 @@ public abstract class NoteBlockMixin extends Block {
 
             cir.setReturnValue(InteractionResult.sidedSuccess(level.isClientSide));
         }
+    }
+
+    @Redirect(method = "playNote", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockState;isAir()Z"))
+    private boolean odyssey$preventNoteBlockOcclusion(BlockState blockState) {
+        if (Odyssey.getConfig().blocks.qualityOfLifeBlockConfig.noteBlockConfig.allow_placing_decorations_on_note_blocks) {
+            return (blockState.isAir() || blockState.is(ModTags.DOES_NOT_OCCLUDE_NOTE_BLOCKS));
+        }
+        return blockState.isAir();
     }
 
     // endregion

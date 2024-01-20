@@ -1,0 +1,29 @@
+{
+  "values": [
+    "#minecraft:buttons",
+    "#minecraft:pressure_plates",
+    "#minecraft:candles",
+    "#minecraft:flower_pots",
+    "#minecraft:signs",
+    "#minecraft:banners",
+    "minecraft:chain",
+    "minecraft:lightning_rod",
+    "minecraft:end_rod",
+    "#chrysalis:lanterns",
+    "#chrysalis:torches",
+    "#minecraft:wool_carpets",
+    "minecraft:moss_carpet",
+    "minecraft:turtle_egg",
+    "minecraft:sea_pickle",
+    "minecraft:glow_lichen",
+    "minecraft:sculk_vein",
+    {"id": "endlessencore:anemonate", "required": false},
+    {"id": "endlessencore:fleet_egg", "required": false},
+    {"id": "peculia:moldspawn_bulb", "required": false},
+    {"id": "lottablocks:sunrise_paper_lantern", "required": false},
+    {"id": "lottablocks:twilight_paper_lantern", "required": false},
+    {"id": "lottablocks:blooming_paper_lantern", "required": false},
+    {"id": "lottablocks:wall_moss", "required": false},
+    {"id": "lottablocks:wall_web", "required": false}
+  ]
+}
