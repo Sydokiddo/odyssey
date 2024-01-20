@@ -22,7 +22,6 @@ public class ModConfig implements ConfigData {
         @ConfigEntry.Gui.Tooltip
         public ItemStackSizeConfig itemStackSizeConfig = new ItemStackSizeConfig();
 
-        @ConfigEntry.Gui.RequiresRestart()
         @ConfigEntry.Gui.CollapsibleObject()
         @ConfigEntry.Gui.Tooltip
         public PotionConfig potionConfig = new PotionConfig();
