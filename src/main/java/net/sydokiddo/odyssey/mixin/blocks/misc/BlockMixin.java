@@ -47,7 +47,6 @@ public class BlockMixin {
             }
 
             noteBlock.playNote(entity, blockState, level, blockPos);
-            info.cancel();
         }
 
         // Falling on Mushroom Blocks
