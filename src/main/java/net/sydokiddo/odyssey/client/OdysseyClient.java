@@ -185,7 +185,7 @@ public class OdysseyClient implements ClientModInitializer {
 
                     int notePitch;
 
-                    if (blockState.getValue(ModBlockStateProperties.WAXED)) {
+                    if (blockState.getValue(ModBlockStateProperties.WAXED) || buf.readInt() == 0) {
                         notePitch = blockState.getValue(NoteBlock.NOTE);
                     } else {
                         notePitch = blockState.getValue(NoteBlock.NOTE) + 1;

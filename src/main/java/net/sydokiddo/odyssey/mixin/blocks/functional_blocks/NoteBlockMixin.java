@@ -112,7 +112,7 @@ public abstract class NoteBlockMixin extends Block {
                 Odyssey.LOGGER.info("{} is waxed, preventing its note from being cycled", this.getName().getString());
             }
 
-            if (player instanceof ServerPlayer serverPlayer) this.sendNoteBlockPacket(serverPlayer);
+            if (player instanceof ServerPlayer serverPlayer) this.sendNoteBlockPacket(serverPlayer, 0);
 
             this.playNote(player, blockState, level, blockPos);
             player.awardStat(Stats.PLAY_NOTEBLOCK);
@@ -128,24 +128,24 @@ public abstract class NoteBlockMixin extends Block {
     @Inject(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/NoteBlock;playNote(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)V"))
     private void odyssey$sendNoteHUDMessageOnAttack(BlockState blockState, Level level, BlockPos blockPos, Player player, CallbackInfo info) {
         if (player instanceof ServerPlayer serverPlayer) {
-            this.sendNoteBlockPacket(serverPlayer);
+            this.sendNoteBlockPacket(serverPlayer, 0);
         }
     }
 
     @Inject(method = "use", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/NoteBlock;playNote(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)V"))
     private void odyssey$sendNoteHUDMessageOnUse(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult, CallbackInfoReturnable<InteractionResult> cir) {
         if (player instanceof ServerPlayer serverPlayer) {
-            this.sendNoteBlockPacket(serverPlayer);
+            this.sendNoteBlockPacket(serverPlayer, 1);
         }
     }
 
     @Unique
-    private void sendNoteBlockPacket(ServerPlayer serverPlayer) {
+    private void sendNoteBlockPacket(ServerPlayer serverPlayer, int packetInt) {
 
         if (!Odyssey.getConfig().blocks.qualityOfLifeBlockConfig.noteBlockConfig.note_block_gui_rendering) return;
 
         FriendlyByteBuf packet = new FriendlyByteBuf(Unpooled.buffer());
-        packet.writeInt(0);
+        packet.writeInt(packetInt);
         ServerPlayNetworking.send(serverPlayer, OdysseyRegistry.NOTE_BLOCK_PACKET_ID, packet);
     }
 
