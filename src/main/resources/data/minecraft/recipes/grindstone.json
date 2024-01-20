@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "tag": "minecraft:planks"
+    },
+    "-": {
+      "tag": "odyssey:normal_stone_slab_crafting_materials"
+    },
+    "I": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "I-I",
+    "# #"
+  ],
+  "result": {
+    "item": "minecraft:grindstone"
+  }
+}
