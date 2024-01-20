@@ -17,14 +17,17 @@ public class ModConfig implements ConfigData {
 
     public static class Items {
 
+        @ConfigEntry.Gui.RequiresRestart(value = false)
         @ConfigEntry.Gui.CollapsibleObject()
         @ConfigEntry.Gui.Tooltip
         public ItemStackSizeConfig itemStackSizeConfig = new ItemStackSizeConfig();
 
+        @ConfigEntry.Gui.RequiresRestart()
         @ConfigEntry.Gui.CollapsibleObject()
         @ConfigEntry.Gui.Tooltip
         public PotionConfig potionConfig = new PotionConfig();
 
+        @ConfigEntry.Gui.RequiresRestart(value = false)
         @ConfigEntry.Gui.CollapsibleObject()
         @ConfigEntry.Gui.Tooltip
         public TooltipConfig tooltipConfig = new TooltipConfig();
@@ -63,14 +66,17 @@ public class ModConfig implements ConfigData {
 
     public static class Blocks {
 
+        @ConfigEntry.Gui.RequiresRestart(value = false)
         @ConfigEntry.Gui.CollapsibleObject()
         @ConfigEntry.Gui.Tooltip
         public QualityOfLifeBlockConfig qualityOfLifeBlockConfig = new QualityOfLifeBlockConfig();
 
+        @ConfigEntry.Gui.RequiresRestart(value = false)
         @ConfigEntry.Gui.CollapsibleObject()
         @ConfigEntry.Gui.Tooltip
         public BoneMealingConfig boneMealingConfig = new BoneMealingConfig();
 
+        @ConfigEntry.Gui.RequiresRestart(value = false)
         @ConfigEntry.Gui.CollapsibleObject()
         @ConfigEntry.Gui.Tooltip
         public MiscBlocksConfig miscBlocksConfig = new MiscBlocksConfig();
@@ -85,14 +91,17 @@ public class ModConfig implements ConfigData {
 
     public static class Entities {
 
+        @ConfigEntry.Gui.RequiresRestart(value = false)
         @ConfigEntry.Gui.CollapsibleObject()
         @ConfigEntry.Gui.Tooltip
         public PassiveMobsConfig passiveMobsConfig = new PassiveMobsConfig();
 
+        @ConfigEntry.Gui.RequiresRestart(value = false)
         @ConfigEntry.Gui.CollapsibleObject()
         @ConfigEntry.Gui.Tooltip
         public HostileMobsConfig hostileMobsConfig = new HostileMobsConfig();
 
+        @ConfigEntry.Gui.RequiresRestart(value = false)
         @ConfigEntry.Gui.CollapsibleObject()
         @ConfigEntry.Gui.Tooltip
         public MiscEntitiesConfig miscEntitiesConfig = new MiscEntitiesConfig();
