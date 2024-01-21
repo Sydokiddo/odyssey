@@ -4,24 +4,31 @@ import me.shedaniel.autoconfig.annotation.ConfigEntry;
 
 public class MiscEntitiesConfig {
 
+    @ConfigEntry.Gui.RequiresRestart(value = false)
     @ConfigEntry.Gui.Tooltip
     public boolean armor_stand_arms = true;
 
+    @ConfigEntry.Gui.RequiresRestart(value = false)
     @ConfigEntry.Gui.Tooltip
     public boolean hidden_fire_overlay_with_fire_resistance = true;
 
+    @ConfigEntry.Gui.RequiresRestart(value = false)
     @ConfigEntry.Gui.Tooltip
     public boolean item_frame_interactions = true;
 
+    @ConfigEntry.Gui.RequiresRestart(value = false)
     @ConfigEntry.Gui.Tooltip
     public boolean tnt_defusing = true;
 
+    @ConfigEntry.Gui.RequiresRestart(value = false)
     @ConfigEntry.Gui.Tooltip
     public boolean tnt_knockback = true;
 
+    @ConfigEntry.Gui.RequiresRestart(value = false)
     @ConfigEntry.Gui.Tooltip
     public boolean named_mob_death_messages = true;
 
+    @ConfigEntry.Gui.RequiresRestart(value = false)
     @ConfigEntry.Gui.Tooltip
     public boolean capture_allays_and_vexes_in_books = true;
 }
