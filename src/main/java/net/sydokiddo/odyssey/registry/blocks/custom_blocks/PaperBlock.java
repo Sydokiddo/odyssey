@@ -14,13 +14,19 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -29,10 +35,13 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.sydokiddo.odyssey.registry.blocks.ModBlockStateProperties;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import java.util.Objects;
 
 @SuppressWarnings("deprecation")
 public class PaperBlock extends Block {
+
+    private static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
     private static final VoxelShape[] HITBOX = new VoxelShape[] {
         Shapes.empty(),
@@ -48,7 +57,7 @@ public class PaperBlock extends Block {
 
     public PaperBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(ModBlockStateProperties.SHEETS, 8));
+        this.registerDefaultState(this.stateDefinition.any().setValue(ModBlockStateProperties.SHEETS, 8).setValue(WATERLOGGED, false));
     }
 
     // region Hitbox
@@ -78,10 +87,35 @@ public class PaperBlock extends Block {
 
     // endregion
 
+    // region Block State Initialization
+
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(ModBlockStateProperties.SHEETS);
+        builder.add(ModBlockStateProperties.SHEETS, WATERLOGGED);
     }
+
+    @Override @Nullable
+    public BlockState getStateForPlacement(BlockPlaceContext blockPlaceContext) {
+        FluidState fluidState = blockPlaceContext.getLevel().getFluidState(blockPlaceContext.getClickedPos());
+        return Objects.requireNonNull(super.getStateForPlacement(blockPlaceContext)).setValue(WATERLOGGED, fluidState.getType() == Fluids.WATER);
+    }
+
+    @Override
+    public @NotNull BlockState updateShape(BlockState blockState, Direction direction, BlockState adjacentBlockState, LevelAccessor levelAccessor, BlockPos blockPos, BlockPos adjacentBlockPos) {
+        if (blockState.getValue(WATERLOGGED)) {
+            levelAccessor.scheduleTick(blockPos, Fluids.WATER, Fluids.WATER.getTickDelay(levelAccessor));
+        }
+        return super.updateShape(blockState, direction, adjacentBlockState, levelAccessor, blockPos, adjacentBlockPos);
+    }
+
+    @Override
+    public @NotNull FluidState getFluidState(BlockState blockState) {
+        return blockState.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(blockState);
+    }
+
+    // endregion
+
+    // region Mechanics
 
     @Override
     public @NotNull InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
@@ -106,7 +140,7 @@ public class PaperBlock extends Block {
                 soundEvent = ModSoundEvents.PAPER_BLOCK_TAKE_PAPER;
 
                 if (sheets == 1) {
-                    blockStateValue = Blocks.AIR.defaultBlockState();
+                    blockStateValue = blockState.getValue(WATERLOGGED) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState();
                 } else {
                     blockStateValue = blockState.setValue(ModBlockStateProperties.SHEETS, sheets - 1);
                 }
@@ -177,4 +211,6 @@ public class PaperBlock extends Block {
         }
         return super.getAnalogOutputSignal(blockState, level, blockPos);
     }
+
+    // endregion
 }
