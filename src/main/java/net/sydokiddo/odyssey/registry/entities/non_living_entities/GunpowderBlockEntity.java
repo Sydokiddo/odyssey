@@ -9,6 +9,7 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.sydokiddo.odyssey.registry.blocks.ModBlocks;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -31,6 +32,7 @@ public class GunpowderBlockEntity extends Entity implements TraceableEntity {
     @Override
     protected void defineSynchedData() {
         this.entityData.define(DATA_FUSE_ID, 1);
+        this.entityData.define(DATA_BLOCK_STATE_ID, ModBlocks.GUNPOWDER_BLOCK.defaultBlockState());
     }
 
     @Override

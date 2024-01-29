@@ -14,7 +14,8 @@ import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
-import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
+import net.sydokiddo.chrysalis.misc.util.helpers.BlockHelper;
+import net.sydokiddo.chrysalis.misc.util.helpers.RegistryHelper;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.blocks.custom_blocks.*;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
@@ -53,11 +54,11 @@ public class ModBlocks {
         .strength(0.5F).sound(ModSoundEvents.PAPER_BLOCK).ignitedByLava()));
 
     public static final Block REDSTONE_LANTERN = registerBlock("redstone_lantern",
-        new RedstoneLanternBlock(FabricBlockSettings.copyOf(Blocks.LANTERN).luminance(RegistryHelpers.blockStateShouldEmitLight(7))));
+        new RedstoneLanternBlock(FabricBlockSettings.copyOf(Blocks.LANTERN).luminance(BlockHelper.blockStateShouldEmitLight(7))));
 
-    public static final Block GOLDEN_BUTTON = registerBlock("golden_button", RegistryHelpers.registerCustomPulseTimeButton(METAL_TYPE, 10));
+    public static final Block GOLDEN_BUTTON = registerBlock("golden_button", RegistryHelper.registerButton(METAL_TYPE, 10));
 
-    public static final Block IRON_BUTTON = registerBlock("iron_button", RegistryHelpers.registerCustomPulseTimeButton(METAL_TYPE, 40));
+    public static final Block IRON_BUTTON = registerBlock("iron_button", RegistryHelper.registerButton(METAL_TYPE, 40));
 
     public static final Block FRAGILE_BUTTON = registerBlock("fragile_button",
         new FragileButtonBlock(TERRACOTTA_TYPE, 20, BlockBehaviour.Properties.of().noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY)));
@@ -83,9 +84,9 @@ public class ModBlocks {
 
     // region Deepslate Variants
 
-    public static final Block POLISHED_DEEPSLATE_BUTTON = registerBlock("polished_deepslate_button", RegistryHelpers.registerStoneButton(POLISHED_DEEPSLATE_TYPE));
+    public static final Block POLISHED_DEEPSLATE_BUTTON = registerBlock("polished_deepslate_button", RegistryHelper.registerButton(POLISHED_DEEPSLATE_TYPE, 20));
 
-    public static final Block POLISHED_DEEPSLATE_PRESSURE_PLATE = registerBlock("polished_deepslate_pressure_plate", RegistryHelpers.registerStonePressurePlate(POLISHED_DEEPSLATE_TYPE, MapColor.DEEPSLATE));
+    public static final Block POLISHED_DEEPSLATE_PRESSURE_PLATE = registerBlock("polished_deepslate_pressure_plate", RegistryHelper.registerStonePressurePlate(POLISHED_DEEPSLATE_TYPE, MapColor.DEEPSLATE));
 
     // endregion
 

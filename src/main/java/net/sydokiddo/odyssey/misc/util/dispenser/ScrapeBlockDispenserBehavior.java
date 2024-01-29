@@ -18,7 +18,7 @@ import net.minecraft.world.level.block.piston.PistonBaseBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.sydokiddo.chrysalis.Chrysalis;
-import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
+import net.sydokiddo.chrysalis.misc.util.helpers.BlockHelper;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.items.ModItems;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
@@ -40,8 +40,8 @@ public class ScrapeBlockDispenserBehavior implements DispenseItemBehavior {
         serverLevel.playSound(null, blockPos, soundEvent, SoundSource.BLOCKS, 1.0F, 1.0F);
         serverLevel.gameEvent(null, GameEvent.BLOCK_CHANGE, blockPos);
 
-        RegistryHelpers.playDispenserSound(blockSource);
-        RegistryHelpers.playDispenserAnimation(blockSource, blockSource.state().getValue(DispenserBlock.FACING));
+        BlockHelper.playDispenserSound(blockSource);
+        BlockHelper.playDispenserAnimation(blockSource, blockSource.state().getValue(DispenserBlock.FACING));
 
         if (itemStack.hurt(1, serverLevel.getRandom(), null)) {
             itemStack.setCount(0);
@@ -110,8 +110,8 @@ public class ScrapeBlockDispenserBehavior implements DispenseItemBehavior {
             return itemStack;
         }
 
-        RegistryHelpers.playDispenserAnimation(blockSource, direction);
-        RegistryHelpers.playDispenserFailSound(blockSource);
+        BlockHelper.playDispenserAnimation(blockSource, direction);
+        BlockHelper.playDispenserFailSound(blockSource);
         return itemStack;
     }
 }

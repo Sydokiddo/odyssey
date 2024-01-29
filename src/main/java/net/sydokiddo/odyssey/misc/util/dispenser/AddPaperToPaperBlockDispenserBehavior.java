@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.sydokiddo.chrysalis.Chrysalis;
-import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
+import net.sydokiddo.chrysalis.misc.util.helpers.BlockHelper;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.blocks.ModBlockStateProperties;
 import net.sydokiddo.odyssey.registry.blocks.ModBlocks;
@@ -31,8 +31,8 @@ public class AddPaperToPaperBlockDispenserBehavior implements DispenseItemBehavi
 
         if (blockState.is(ModBlocks.PAPER_BLOCK) && blockState.getValue(ModBlockStateProperties.SHEETS) < 8) {
 
-            RegistryHelpers.playDispenserSound(blockSource);
-            RegistryHelpers.playDispenserAnimation(blockSource, direction);
+            BlockHelper.playDispenserSound(blockSource);
+            BlockHelper.playDispenserAnimation(blockSource, direction);
 
             int sheets = blockState.getValue(ModBlockStateProperties.SHEETS);
             BlockState blockStateValue = blockState.setValue(ModBlockStateProperties.SHEETS, Math.min(8, sheets + 1));
@@ -50,6 +50,7 @@ public class AddPaperToPaperBlockDispenserBehavior implements DispenseItemBehavi
             itemStack.shrink(1);
             return itemStack;
         }
-        return RegistryHelpers.defaultDispenseItemBehavior.dispense(blockSource, itemStack);
+
+        return BlockHelper.defaultDispenseItemBehavior.dispense(blockSource, itemStack);
     }
 }

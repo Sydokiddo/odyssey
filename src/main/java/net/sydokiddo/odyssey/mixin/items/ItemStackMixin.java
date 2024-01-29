@@ -15,7 +15,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.Heightmap;
-import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
+import net.sydokiddo.chrysalis.misc.util.helpers.ItemHelper;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.items.ModItems;
 import net.sydokiddo.odyssey.registry.items.custom_items.OwnershipContractItem;
@@ -52,17 +52,17 @@ public abstract class ItemStackMixin {
         if (!cir.getReturnValue().isEmpty() && !tooltipFlag.isAdvanced()) {
 
             if (itemStack.is(Items.CARROT_ON_A_STICK) && Odyssey.getConfig().items.tooltipConfig.carrots_on_a_stick) {
-                RegistryHelpers.addHoldingTooltip(cir.getReturnValue());
+                ItemHelper.addHoldingTooltip(cir.getReturnValue());
                 cir.getReturnValue().add(CommonComponents.space().append(Component.translatable("item.odyssey.carrot_on_a_stick.desc").withStyle(ChatFormatting.BLUE)));
             }
 
             if (itemStack.is(Items.WARPED_FUNGUS_ON_A_STICK) && Odyssey.getConfig().items.tooltipConfig.warped_fungus_on_a_stick) {
-                RegistryHelpers.addHoldingTooltip(cir.getReturnValue());
+                ItemHelper.addHoldingTooltip(cir.getReturnValue());
                 cir.getReturnValue().add(CommonComponents.space().append(Component.translatable("item.odyssey.warped_fungus_on_a_stick.desc").withStyle(ChatFormatting.BLUE)));
             }
 
             if (itemStack.is(Items.SHIELD) && Odyssey.getConfig().items.tooltipConfig.shields) {
-                RegistryHelpers.addUseTooltip(cir.getReturnValue());
+                ItemHelper.addUseTooltip(cir.getReturnValue());
                 cir.getReturnValue().add(CommonComponents.space().append(Component.translatable("item.odyssey.shield.desc").withStyle(ChatFormatting.BLUE)));
             }
 
@@ -97,11 +97,11 @@ public abstract class ItemStackMixin {
                         }
 
                         if (CompassItem.isLodestoneCompass(copy()) && CompassItem.getLodestonePosition(copy().getOrCreateTag()) == null) {
-                            RegistryHelpers.addNullTooltip(cir.getReturnValue());
+                            ItemHelper.addNullTooltip(cir.getReturnValue());
                         } else {
-                            RegistryHelpers.addCoordinatesTooltip(cir.getReturnValue(), x, y, z);
-                            if (!CompassItem.isLodestoneCompass(this.copy())) RegistryHelpers.addDirectionTooltip(cir.getReturnValue(), client);
-                            if (CompassItem.isLodestoneCompass(this.copy())) RegistryHelpers.addDimensionTooltip(cir.getReturnValue(), copy().getOrCreateTag().getString(CompassItem.TAG_LODESTONE_DIMENSION));
+                            ItemHelper.addCoordinatesTooltip(cir.getReturnValue(), x, y, z);
+                            if (!CompassItem.isLodestoneCompass(this.copy())) ItemHelper.addDirectionTooltip(cir.getReturnValue(), client);
+                            if (CompassItem.isLodestoneCompass(this.copy())) ItemHelper.addDimensionTooltip(cir.getReturnValue(), copy().getOrCreateTag().getString(CompassItem.TAG_LODESTONE_DIMENSION));
                         }
                     }
 
@@ -116,10 +116,10 @@ public abstract class ItemStackMixin {
                             int deathY = deathPos.pos().getY();
                             int deathZ = deathPos.pos().getZ();
 
-                            RegistryHelpers.addCoordinatesTooltip(cir.getReturnValue(), deathX, deathY, deathZ);
-                            RegistryHelpers.addDimensionTooltip(cir.getReturnValue(), client.player.getLastDeathLocation().get().dimension().location().toString());
+                            ItemHelper.addCoordinatesTooltip(cir.getReturnValue(), deathX, deathY, deathZ);
+                            ItemHelper.addDimensionTooltip(cir.getReturnValue(), client.player.getLastDeathLocation().get().dimension().location().toString());
                         } else {
-                            RegistryHelpers.addNullTooltip(cir.getReturnValue());
+                            ItemHelper.addNullTooltip(cir.getReturnValue());
                         }
                     }
                 }

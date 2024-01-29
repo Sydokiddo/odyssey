@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.sydokiddo.chrysalis.Chrysalis;
-import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
+import net.sydokiddo.chrysalis.misc.util.helpers.BlockHelper;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.items.custom_items.PatinaItem;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
@@ -30,8 +30,8 @@ public class ApplyPatinaToCopperDispenserBehavior implements DispenseItemBehavio
 
         if (copperState.isPresent()) {
 
-            RegistryHelpers.playDispenserSound(blockSource);
-            RegistryHelpers.playDispenserAnimation(blockSource, direction);
+            BlockHelper.playDispenserSound(blockSource);
+            BlockHelper.playDispenserAnimation(blockSource, direction);
 
             serverLevel.setBlockAndUpdate(blockPos, copperState.get());
             serverLevel.playSound(null, blockPos, ModSoundEvents.PATINA_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
@@ -45,6 +45,7 @@ public class ApplyPatinaToCopperDispenserBehavior implements DispenseItemBehavio
             itemStack.shrink(1);
             return itemStack;
         }
-        return RegistryHelpers.defaultDispenseItemBehavior.dispense(blockSource, itemStack);
+
+        return BlockHelper.defaultDispenseItemBehavior.dispense(blockSource, itemStack);
     }
 }

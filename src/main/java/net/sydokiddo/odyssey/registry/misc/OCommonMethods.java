@@ -24,8 +24,8 @@ import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.sydokiddo.chrysalis.Chrysalis;
-import net.sydokiddo.chrysalis.misc.util.InventoryHelper;
-import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
+import net.sydokiddo.chrysalis.misc.util.helpers.BlockHelper;
+import net.sydokiddo.chrysalis.misc.util.helpers.ItemHelper;
 import net.sydokiddo.odyssey.Odyssey;
 import java.util.List;
 
@@ -40,7 +40,7 @@ public class OCommonMethods {
         if (level.getRandom().nextFloat() < 0.01F) {
             primedTnt.setFuse(1);
         } else {
-            if (RegistryHelpers.isBlockStateFree(level.getBlockState(blockPos)) && !level.isOutsideBuildHeight(blockPos)) {
+            if (BlockHelper.isBlockStateFree(level.getBlockState(blockPos)) && !level.isOutsideBuildHeight(blockPos)) {
                 level.setBlock(blockPos, Blocks.TNT.defaultBlockState(), 3);
             } else if (level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
                 primedTnt.spawnAtLocation(Items.TNT);
@@ -75,7 +75,7 @@ public class OCommonMethods {
             tooltip.add(Component.translatable("item.durability", itemStack.getMaxDamage() - itemStack.getDamageValue(), itemStack.getMaxDamage()).withStyle(ChatFormatting.GRAY));
 
             if (!itemStack.is(ModTags.TOOLTIP_SPACE_BLACKLISTED)) {
-                RegistryHelpers.addSpaceOnTooltipIfEnchantedOrTrimmed(itemStack, tooltip);
+                ItemHelper.addSpaceOnTooltipIfEnchantedOrTrimmed(itemStack, tooltip);
             }
         }
     }
@@ -111,12 +111,12 @@ public class OCommonMethods {
             Player player = minecraft.player;
             assert player != null;
 
-            if (InventoryHelper.hasItemInInventory(Items.COMPASS, player) || InventoryHelper.hasItemInInventory(Items.FILLED_MAP, player)) {
+            if (ItemHelper.hasItemInInventory(Items.COMPASS, player) || ItemHelper.hasItemInInventory(Items.FILLED_MAP, player)) {
 
                 BlockPos blockPos = minecraft.getCameraEntity().blockPosition();
                 int heightOffset;
 
-                if (FabricLoader.getInstance().isModLoaded(RegistryHelpers.manic) || FabricLoader.getInstance().isModLoaded("mr_nevermore") || FabricLoader.getInstance().isModLoaded("mr_manic")) {
+                if (FabricLoader.getInstance().isModLoaded("manic") || FabricLoader.getInstance().isModLoaded("mr_nevermore") || FabricLoader.getInstance().isModLoaded("mr_manic")) {
                     heightOffset = 35;
                 } else {
                     heightOffset = 5;

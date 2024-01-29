@@ -19,10 +19,10 @@ public class SpawnerBubbleParticle extends TextureSheetParticle {
         super(clientLevel, d, e, f);
         this.setSize(0.02F, 0.02F);
         this.quadSize *= this.random.nextFloat() * 0.6F + 0.2F;
-        this.xd = g * (double)0.2F + (Math.random() * 2.0 - 1.0) * (double)0.02F;
-        this.yd = h * (double)0.2F + (Math.random() * 2.0 - 1.0) * (double)0.02F;
-        this.zd = i * (double)0.2F + (Math.random() * 2.0 - 1.0) * (double)0.02F;
-        this.lifetime = (int)(8.0 / (Math.random() * 0.8 + 0.2)) + 4;
+        this.xd = g * (double) 0.2F + (Math.random() * 2.0 - 1.0) * (double) 0.02F;
+        this.yd = h * (double) 0.2F + (Math.random() * 2.0 - 1.0) * (double) 0.02F;
+        this.zd = i * (double) 0.2F + (Math.random() * 2.0 - 1.0) * (double) 0.02F;
+        this.lifetime = (int) (8.0 / (Math.random() * 0.8 + 0.2)) + 4;
     }
 
     @Override
@@ -54,12 +54,12 @@ public class SpawnerBubbleParticle extends TextureSheetParticle {
 
     @Override
     public int getLightColor(float f) {
-        float g = ((float)this.age + f) / (float)this.lifetime;
+        float g = ((float) this.age + f) / (float) this.lifetime;
         g = Mth.clamp(g, 1.0F, 0.0F);
         int lightColor = super.getLightColor(f);
         int j = lightColor & 0xFF;
         int k = lightColor >> 16 & 0xFF;
-        if ((j += (int)(g * 15.0F * 16.0F)) > 240) {
+        if ((j += (int) (g * 15.0F * 16.0F)) > 240) {
             j = 240;
         }
         return j | k << 16;

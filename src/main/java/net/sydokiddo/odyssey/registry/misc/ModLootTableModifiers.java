@@ -4,7 +4,7 @@ import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
-import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
+import net.sydokiddo.chrysalis.misc.util.helpers.RegistryHelper;
 import net.sydokiddo.odyssey.registry.items.ModItems;
 
 public class ModLootTableModifiers {
@@ -15,7 +15,7 @@ public class ModLootTableModifiers {
 
             // region Dungeon Loot Table
 
-            if (RegistryHelpers.DUNGEON.equals(id)) {
+            if (RegistryHelper.DUNGEON.equals(id)) {
                 LootPool.Builder builder = LootPool.lootPool();
                 builder.add(LootItem.lootTableItem(ModItems.ENCHANTED_IRON_POTATO).setWeight(4));
                 builder.add(LootItem.lootTableItem(ModItems.IRON_POTATO).setWeight(12));
@@ -26,7 +26,7 @@ public class ModLootTableModifiers {
 
             // region Mineshaft Loot Table
 
-            if (RegistryHelpers.MINESHAFT.equals(id)) {
+            if (RegistryHelper.MINESHAFT.equals(id)) {
                 LootPool.Builder builder = LootPool.lootPool();
                 builder.add(LootItem.lootTableItem(ModItems.IRON_POTATO).setWeight(16));
                 table.withPool(builder);
@@ -36,19 +36,19 @@ public class ModLootTableModifiers {
 
             // region Bastion Loot Tables
 
-            if (RegistryHelpers.BASTION_TREASURE.equals(id)) {
+            if (RegistryHelper.BASTION_TREASURE.equals(id)) {
                 LootPool.Builder builder = LootPool.lootPool();
                 builder.add(LootItem.lootTableItem(ModItems.ENCHANTED_IRON_POTATO).setWeight(1));
                 table.withPool(builder);
             }
 
-            if (RegistryHelpers.BASTION_HOGLIN_STABLE.equals(id)) {
+            if (RegistryHelper.BASTION_HOGLIN_STABLE.equals(id)) {
                 LootPool.Builder builder = LootPool.lootPool();
                 builder.add(LootItem.lootTableItem(ModItems.IRON_POTATO).setWeight(6));
                 table.withPool(builder);
             }
 
-            if (RegistryHelpers.BASTION_OTHER.equals(id)) {
+            if (RegistryHelper.BASTION_OTHER.equals(id)) {
                 LootPool.Builder builder = LootPool.lootPool();
                 builder.add(LootItem.lootTableItem(ModItems.IRON_POTATO).setWeight(6));
                 table.withPool(builder);
@@ -58,7 +58,7 @@ public class ModLootTableModifiers {
 
             // region Desert Temple Loot Table
 
-            if (RegistryHelpers.DESERT_TEMPLE.equals(id)) {
+            if (RegistryHelper.DESERT_TEMPLE.equals(id)) {
                 LootPool.Builder builder = LootPool.lootPool();
                 builder.add(LootItem.lootTableItem(ModItems.ENCHANTED_IRON_POTATO).setWeight(2));
                 builder.add(LootItem.lootTableItem(ModItems.IRON_POTATO).setWeight(8));
@@ -69,7 +69,7 @@ public class ModLootTableModifiers {
 
             // region Ruined Portal Loot Table
 
-            if (RegistryHelpers.RUINED_PORTAL.equals(id)) {
+            if (RegistryHelper.RUINED_PORTAL.equals(id)) {
                 LootPool.Builder builder = LootPool.lootPool();
                 builder.add(LootItem.lootTableItem(ModItems.ENCHANTED_IRON_POTATO).setWeight(2));
                 builder.add(LootItem.lootTableItem(ModItems.IRON_POTATO).setWeight(12));
@@ -80,7 +80,7 @@ public class ModLootTableModifiers {
 
             // region Stronghold Loot Table
 
-            if (RegistryHelpers.STRONGHOLD_CORRIDOR.equals(id)) {
+            if (RegistryHelper.STRONGHOLD_CORRIDOR.equals(id)) {
                 LootPool.Builder builder = LootPool.lootPool();
                 builder.add(LootItem.lootTableItem(ModItems.IRON_POTATO).setWeight(2));
                 table.withPool(builder);
@@ -90,7 +90,7 @@ public class ModLootTableModifiers {
 
             // region Underwater Ruin Loot Table
 
-            if (RegistryHelpers.UNDERWATER_RUIN_BIG.equals(id)) {
+            if (RegistryHelper.UNDERWATER_RUIN_BIG.equals(id)) {
                 LootPool.Builder builder = LootPool.lootPool();
                 builder.add(LootItem.lootTableItem(ModItems.IRON_POTATO).setWeight(2));
                 table.withPool(builder);
@@ -100,7 +100,7 @@ public class ModLootTableModifiers {
 
             // region Woodland Mansion Loot Table
 
-            if (RegistryHelpers.WOODLAND_MANSION.equals(id)) {
+            if (RegistryHelper.WOODLAND_MANSION.equals(id)) {
                 LootPool.Builder builder = LootPool.lootPool();
                 builder.add(LootItem.lootTableItem(ModItems.ENCHANTED_IRON_POTATO).setWeight(2));
                 builder.add(LootItem.lootTableItem(ModItems.IRON_POTATO).setWeight(8));
@@ -111,7 +111,7 @@ public class ModLootTableModifiers {
 
             // region Pillager Outpost Loot Table
 
-            if (RegistryHelpers.PILLAGER_OUTPOST.equals(id)) {
+            if (RegistryHelper.PILLAGER_OUTPOST.equals(id)) {
                 LootPool.Builder builder = LootPool.lootPool();
                 builder.add(LootItem.lootTableItem(ModItems.IRON_POTATO).setWeight(12));
                 table.withPool(builder);
@@ -121,7 +121,7 @@ public class ModLootTableModifiers {
 
             // region Ancient City Loot Table
 
-            if (RegistryHelpers.ANCIENT_CITY.equals(id)) {
+            if (RegistryHelper.ANCIENT_CITY.equals(id)) {
                 LootPool.Builder builder = LootPool.lootPool();
                 builder.when(LootItemRandomChanceCondition.randomChance(0.20f));
                 builder.add(LootItem.lootTableItem(ModItems.ENCHANTED_IRON_POTATO).setWeight(1));

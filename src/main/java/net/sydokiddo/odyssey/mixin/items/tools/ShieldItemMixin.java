@@ -9,7 +9,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BannerPattern;
-import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
+import net.sydokiddo.chrysalis.misc.util.helpers.ItemHelper;
 import net.sydokiddo.odyssey.registry.misc.OCommonMethods;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -57,7 +57,7 @@ public class ShieldItemMixin {
         if (compoundTag != null && compoundTag.contains("Patterns")) {
             tooltip.add(Component.translatable("gui.odyssey.item.shield.banner").withStyle(ChatFormatting.GRAY));
             addBannerTextToShield(itemStack, tooltip);
-            RegistryHelpers.addSpaceOnTooltipIfEnchantedOrTrimmed(itemStack, tooltip);
+            ItemHelper.addSpaceOnTooltipIfEnchantedOrTrimmed(itemStack, tooltip);
         }
     }
 }

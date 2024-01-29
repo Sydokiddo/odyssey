@@ -9,7 +9,7 @@ import net.minecraft.world.effect.MobEffectUtil;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
-import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
+import net.sydokiddo.chrysalis.misc.util.helpers.ItemHelper;
 import net.sydokiddo.chrysalis.registry.misc.ChrysalisTags;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.misc.OCommonMethods;
@@ -46,7 +46,7 @@ public class ItemMixin {
             if (itemStack.isEdible()) {
 
                 tooltip.add(Component.translatable(nutritionString, Objects.requireNonNull(itemStack.getItem().getFoodProperties()).getNutrition()).withStyle(ChatFormatting.BLUE));
-                tooltip.add(Component.translatable(saturationString, RegistryHelpers.getFoodSaturation(itemStack)).withStyle(ChatFormatting.BLUE));
+                tooltip.add(Component.translatable(saturationString, ItemHelper.getFoodSaturation(itemStack)).withStyle(ChatFormatting.BLUE));
 
                 if (itemStack.getItem() instanceof SuspiciousStewItem && tooltipFlag.isCreative()) {
                     tooltip.add(CommonComponents.EMPTY);
@@ -56,31 +56,31 @@ public class ItemMixin {
 
         if ((itemStack.getItem().isFireResistant() || itemStack.is(ChrysalisTags.IMMUNE_TO_FIRE)) && Odyssey.getConfig().items.tooltipConfig.fireproof_items) {
             tooltip.add(Component.translatable("gui.odyssey.item.fireproof").withStyle(style -> style.withItalic(true).withColor(FIREPROOF_COLOR)));
-            RegistryHelpers.addSpaceOnTooltipIfEnchantedOrTrimmed(itemStack, tooltip);
+            ItemHelper.addSpaceOnTooltipIfEnchantedOrTrimmed(itemStack, tooltip);
         }
 
         if (itemStack.getItem() instanceof HoneyBottleItem && Odyssey.getConfig().items.tooltipConfig.honey_bottles) {
-            RegistryHelpers.addDrinkTooltip(tooltip);
+            ItemHelper.addDrinkTooltip(tooltip);
             tooltip.add(CommonComponents.space().append(Component.translatable("item.odyssey.honey_bottle.desc").withStyle(ChatFormatting.BLUE)));
         }
 
         if (itemStack.getItem() instanceof MilkBucketItem && Odyssey.getConfig().items.tooltipConfig.milk_buckets) {
-            RegistryHelpers.addDrinkTooltip(tooltip);
+            ItemHelper.addDrinkTooltip(tooltip);
             tooltip.add(CommonComponents.space().append(Component.translatable("item.odyssey.milk_bucket.desc").withStyle(ChatFormatting.BLUE)));
         }
 
         if (itemStack.is(Items.TOTEM_OF_UNDYING) && Odyssey.getConfig().items.tooltipConfig.totems_of_undying) {
-            RegistryHelpers.addHoldingTooltip(tooltip);
+            ItemHelper.addHoldingTooltip(tooltip);
             tooltip.add(CommonComponents.space().append(Component.translatable("item.odyssey.totem_of_undying.desc").withStyle(ChatFormatting.BLUE)));
         }
 
         if (itemStack.getItem() instanceof SpawnEggItem && Odyssey.getConfig().items.tooltipConfig.spawn_eggs) {
-            RegistryHelpers.addUseTooltip(tooltip);
+            ItemHelper.addUseTooltip(tooltip);
             tooltip.add(CommonComponents.space().append(Component.translatable("item.odyssey.spawn_egg.desc").withStyle(ChatFormatting.BLUE)));
         }
 
         if (itemStack.is(Items.SPYGLASS) && Odyssey.getConfig().items.tooltipConfig.spyglasses) {
-            RegistryHelpers.addUseTooltip(tooltip);
+            ItemHelper.addUseTooltip(tooltip);
             tooltip.add(CommonComponents.space().append(Component.translatable("item.odyssey.spyglass.desc").withStyle(ChatFormatting.BLUE)));
         }
 
@@ -97,10 +97,10 @@ public class ItemMixin {
 
                 MobEffectInstance waterBreathing = new MobEffectInstance(MobEffects.WATER_BREATHING, effectTime, 0, false, false, true);
 
-                if (!RegistryHelpers.hasEnchantmentOrTrim(itemStack)) tooltip.add(CommonComponents.EMPTY);
+                if (!ItemHelper.hasEnchantmentOrTrim(itemStack)) tooltip.add(CommonComponents.EMPTY);
                 tooltip.add(Component.translatable("gui.odyssey.item.turtle_helmet.when_entering_water").withStyle(ChatFormatting.GRAY));
                 tooltip.add(CommonComponents.space().append(Component.translatable("potion.withDuration", Component.translatable(waterBreathing.getDescriptionId()), MobEffectUtil.formatDuration(waterBreathing, 1.0F, level.tickRateManager().tickrate())).withStyle(ChatFormatting.BLUE)));
-                RegistryHelpers.addSpaceOnTooltipIfEnchantedOrTrimmed(itemStack, tooltip);
+                ItemHelper.addSpaceOnTooltipIfEnchantedOrTrimmed(itemStack, tooltip);
             }
 
             if (itemStack.is(Items.SPECTRAL_ARROW) && Odyssey.getConfig().items.tooltipConfig.spectral_arrows) {

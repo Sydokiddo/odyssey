@@ -12,7 +12,6 @@ import net.minecraft.client.renderer.entity.TntMinecartRenderer;
 import net.minecraft.client.renderer.texture.TextureAtlas;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.sydokiddo.odyssey.registry.blocks.ModBlocks;
 import net.sydokiddo.odyssey.registry.entities.non_living_entities.GunpowderBlockEntity;
 import org.jetbrains.annotations.NotNull;
 
@@ -36,8 +35,8 @@ public class GunpowderBlockEntityRenderer extends EntityRenderer<GunpowderBlockE
         poseStack.translate(0.0F, 0.5F, 0.0F);
         int fuse = gunpowderBlock.getFuse();
 
-        if ((float)fuse - g + 1.0F < 10.0F) {
-            float h = 1.0F - ((float)fuse - g + 1.0F) / 10.0F;
+        if ((float) fuse - g + 1.0F < 10.0F) {
+            float h = 1.0F - ((float) fuse - g + 1.0F) / 10.0F;
             h = Mth.clamp(h, 0.0F, 1.0F);
             h *= h;
             h *= h;
@@ -48,7 +47,7 @@ public class GunpowderBlockEntityRenderer extends EntityRenderer<GunpowderBlockE
         poseStack.mulPose(Axis.YP.rotationDegrees(-90.0F));
         poseStack.translate(-0.5F, -0.5F, 0.5F);
         poseStack.mulPose(Axis.YP.rotationDegrees(90.0F));
-        TntMinecartRenderer.renderWhiteSolidBlock(this.blockRenderer, ModBlocks.GUNPOWDER_BLOCK.defaultBlockState(), poseStack, multiBufferSource, i, fuse / 5 % 2 == 0);
+        TntMinecartRenderer.renderWhiteSolidBlock(this.blockRenderer, gunpowderBlock.getBlockState(), poseStack, multiBufferSource, i, fuse / 5 % 2 == 0);
         poseStack.popPose();
 
         super.render(gunpowderBlock, f, g, poseStack, multiBufferSource, i);

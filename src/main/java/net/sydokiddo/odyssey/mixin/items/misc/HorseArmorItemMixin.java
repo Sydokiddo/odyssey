@@ -8,7 +8,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
+import net.sydokiddo.chrysalis.misc.util.helpers.ItemHelper;
 import net.sydokiddo.odyssey.Odyssey;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
@@ -31,7 +31,7 @@ public class HorseArmorItemMixin extends Item {
             tooltip.add(CommonComponents.EMPTY);
             tooltip.add(Component.translatable("gui.odyssey.item.when_on_horse").withStyle(ChatFormatting.GRAY));
             tooltip.add(Component.translatable("item.odyssey.horse_armor.desc", this.protection).withStyle(ChatFormatting.BLUE));
-            RegistryHelpers.addSpaceOnTooltipIfEnchantedOrTrimmed(itemStack, tooltip);
+            ItemHelper.addSpaceOnTooltipIfEnchantedOrTrimmed(itemStack, tooltip);
         }
     }
 }

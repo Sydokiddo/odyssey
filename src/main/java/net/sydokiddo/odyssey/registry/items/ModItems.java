@@ -8,7 +8,8 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
-import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
+import net.minecraft.world.level.material.Fluids;
+import net.sydokiddo.chrysalis.misc.util.helpers.RegistryHelper;
 import net.sydokiddo.chrysalis.registry.items.custom_items.EnchantedGlintItem;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.items.custom_items.*;
@@ -37,13 +38,13 @@ public class ModItems {
         new FabricItemSettings().stacksTo(1).craftRemainder(Items.BUCKET), Items.BUCKET));
 
     public static final Item SQUID_BUCKET = registerItem("squid_bucket",
-        RegistryHelpers.registerMobInWaterBucket(EntityType.SQUID, ModSoundEvents.BUCKET_EMPTY_SQUID));
+        RegistryHelper.registerMobInFluidContainer(EntityType.SQUID, Fluids.WATER, ModSoundEvents.BUCKET_EMPTY_SQUID));
 
     public static final Item GLOW_SQUID_BUCKET = registerItem("glow_squid_bucket",
-        RegistryHelpers.registerMobInWaterBucket(EntityType.GLOW_SQUID, ModSoundEvents.BUCKET_EMPTY_GLOW_SQUID));
+        RegistryHelper.registerMobInFluidContainer(EntityType.GLOW_SQUID, Fluids.WATER, ModSoundEvents.BUCKET_EMPTY_GLOW_SQUID));
 
     public static final Item ALLAY_BOUND_BOOK = registerItem("allay_bound_book",
-        RegistryHelpers.registerMobInContainer(EntityType.ALLAY, ModSoundEvents.BOOK_RELEASE_ALLAY, Items.BOOK));
+        RegistryHelper.registerMobInContainer(EntityType.ALLAY, ModSoundEvents.BOOK_RELEASE_ALLAY, Items.BOOK));
 
     public static final Item VEX_BOUND_BOOK = registerItem("vex_bound_book",
         new VexBoundBookItem(EntityType.VEX, ModSoundEvents.BOOK_RELEASE_VEX,

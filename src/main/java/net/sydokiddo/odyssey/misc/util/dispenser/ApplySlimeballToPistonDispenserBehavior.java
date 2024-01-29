@@ -14,7 +14,7 @@ import net.minecraft.world.level.block.piston.PistonBaseBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.sydokiddo.chrysalis.Chrysalis;
-import net.sydokiddo.chrysalis.misc.util.RegistryHelpers;
+import net.sydokiddo.chrysalis.misc.util.helpers.BlockHelper;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
 import org.jetbrains.annotations.NotNull;
@@ -31,8 +31,8 @@ public class ApplySlimeballToPistonDispenserBehavior implements DispenseItemBeha
 
         if (blockState.is(Blocks.PISTON) && !blockState.getValue(PistonBaseBlock.EXTENDED)) {
 
-            RegistryHelpers.playDispenserSound(blockSource);
-            RegistryHelpers.playDispenserAnimation(blockSource, direction);
+            BlockHelper.playDispenserSound(blockSource);
+            BlockHelper.playDispenserAnimation(blockSource, direction);
 
             if (!serverLevel.isClientSide()) {
                 for (int i = 0; i < 5; ++i) {
@@ -51,6 +51,7 @@ public class ApplySlimeballToPistonDispenserBehavior implements DispenseItemBeha
             itemStack.shrink(1);
             return itemStack;
         }
-        return RegistryHelpers.defaultDispenseItemBehavior.dispense(blockSource, itemStack);
+
+        return BlockHelper.defaultDispenseItemBehavior.dispense(blockSource, itemStack);
     }
 }
