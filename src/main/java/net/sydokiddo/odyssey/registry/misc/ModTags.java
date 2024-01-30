@@ -23,6 +23,7 @@ public class ModTags {
         POLISHED_STONE_SLAB_CRAFTING_MATERIALS = registerItemTag("polished_stone_slab_crafting_materials"),
         CHISELED_STONE_CRAFTING_MATERIALS = registerItemTag("chiseled_stone_crafting_materials"),
         UNDERWATER_POTTABLE_PLANTS = registerItemTag("underwater_pottable_plants"),
+        NOTE_BLOCK_MUFFLERS_ITEM = registerItemTag("note_block_mufflers"),
         TOOLTIP_SPACE_BLACKLISTED = registerItemTag("tooltip_space_blacklisted")
     ;
 
@@ -35,6 +36,7 @@ public class ModTags {
         UNDERWATER_FLOWER_POTS = registerBlockTag("underwater_flower_pots"),
         BOUNCY_BLOCKS = registerBlockTag("bouncy_blocks"),
         DOES_NOT_OCCLUDE_NOTE_BLOCKS = registerBlockTag("does_not_occlude_note_blocks"),
+        NOTE_BLOCK_MUFFLERS = registerBlockTag("note_block_mufflers"),
 
         TRUMPET_NOTE_BLOCK_INSTRUMENT = registerBlockTag("note_block_instruments/trumpet"),
         BONGO_NOTE_BLOCK_INSTRUMENT = registerBlockTag("note_block_instruments/bongo"),

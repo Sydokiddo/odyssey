@@ -3,6 +3,7 @@
     "minecraft:netherrack",
     "#minecraft:nylium",
     "minecraft:nether_quartz_ore",
-    "minecraft:nether_gold_ore"
+    "minecraft:nether_gold_ore",
+    {"id": "peculia:crumbling_netherrack", "required": false}
   ]
 }

@@ -12,7 +12,6 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -166,7 +165,7 @@ public abstract class NoteBlockMixin extends Block {
     @Inject(method = "playNote", at = @At("HEAD"), cancellable = true)
     private void odyssey$playMuffledNote(Entity entity, BlockState blockState, Level level, BlockPos blockPos, CallbackInfo info) {
 
-        TagKey<Block> woolCarpetsTag = BlockTags.WOOL_CARPETS;
+        TagKey<Block> woolCarpetsTag = ModTags.NOTE_BLOCK_MUFFLERS;
 
         if (level.getBlockState(blockPos.above()).is(woolCarpetsTag) || blockState.getValue(INSTRUMENT).worksAboveNoteBlock() && level.getBlockState(blockPos.above()).is(woolCarpetsTag) && Odyssey.getConfig().blocks.qualityOfLifeBlockConfig.noteBlockConfig.note_block_muffling) {
 
