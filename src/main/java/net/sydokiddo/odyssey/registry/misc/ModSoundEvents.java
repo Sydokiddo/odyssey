@@ -90,6 +90,8 @@ public class ModSoundEvents {
     public static final SoundEvent BOOK_CAPTURE_VEX = registerSoundEvent("item.book.capture_vex");
     public static final SoundEvent BOOK_RELEASE_VEX = registerSoundEvent("item.book.release_vex");
 
+    public static final SoundEvent ARMOR_EQUIP_BANNER = registerSoundEvent("item.armor.equip_banner");
+
     public static final SoundEvent SADDLE_UNEQUIP = registerSoundEvent("item.saddle.unequip");
 
     public static final SoundEvent SHOVEL_DIG_SNOW = registerSoundEvent("item.shovel.dig_snow");

@@ -54,6 +54,7 @@
     "entities.passive.SnifferMixin",
     "entities.passive.SquidMixin",
     "entities.passive.StriderMixin",
+    "items.misc.BannerItemMixin",
     "items.EnchantmentMixin",
     "items.ItemMixin",
     "items.ItemStackMixin",

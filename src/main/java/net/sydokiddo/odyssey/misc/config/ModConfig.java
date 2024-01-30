@@ -12,6 +12,7 @@ public class ModConfig implements ConfigData {
 
     // region Items
 
+    @ConfigEntry.Gui.RequiresRestart(value = false)
     @ConfigEntry.Gui.CollapsibleObject()
     public Items items = new Items();
 
@@ -55,12 +56,17 @@ public class ModConfig implements ConfigData {
         @ConfigEntry.Gui.RequiresRestart(value = false)
         @ConfigEntry.Gui.Tooltip
         public boolean compass_and_map_gui_rendering = true;
+
+        @ConfigEntry.Gui.RequiresRestart(value = false)
+        @ConfigEntry.Gui.Tooltip
+        public boolean equipable_banners = true;
     }
 
     // endregion
 
     // region Blocks
 
+    @ConfigEntry.Gui.RequiresRestart(value = false)
     @ConfigEntry.Gui.CollapsibleObject()
     public Blocks blocks = new Blocks();
 
@@ -86,6 +92,7 @@ public class ModConfig implements ConfigData {
 
     // region Entitites
 
+    @ConfigEntry.Gui.RequiresRestart(value = false)
     @ConfigEntry.Gui.CollapsibleObject()
     public Entities entities = new Entities();
 

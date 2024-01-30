@@ -450,6 +450,16 @@
     "subtitle": "subtitles.item.book.release_vex"
   },
 
+  "item.armor.equip_banner": {
+    "sounds": [
+      "odyssey:item/banner/equip1",
+      "odyssey:item/banner/equip2",
+      "odyssey:item/banner/equip3",
+      "odyssey:item/banner/equip4"
+    ],
+    "subtitle": "subtitles.item.armor.equip_banner"
+  },
+
   "item.saddle.unequip": {
     "sounds": [
       "odyssey:item/saddle/unequip"
