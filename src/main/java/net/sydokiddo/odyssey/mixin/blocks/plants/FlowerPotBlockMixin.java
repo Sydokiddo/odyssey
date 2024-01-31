@@ -25,6 +25,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.Objects;
@@ -79,11 +80,28 @@ public abstract class FlowerPotBlockMixin extends Block implements SimpleWaterlo
 
     @Inject(method = "use", at = @At("HEAD"), cancellable = true)
     private void odyssey$preventUnderwaterUseIfNotWaterPlant(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult, CallbackInfoReturnable<InteractionResult> cir) {
+
         ItemStack itemInHand = player.getItemInHand(interactionHand);
 
         if (blockState.getValue(WATERLOGGED) && !itemInHand.is(ModTags.UNDERWATER_POTTABLE_PLANTS) && blockState.is(Blocks.FLOWER_POT)) {
             cir.cancel();
             cir.setReturnValue(InteractionResult.CONSUME);
         }
+    }
+
+    @Redirect(method = "use", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;setBlock(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z", ordinal = 0))
+    private boolean odyssey$setFilledFlowerPotAsWaterlogged(Level level, BlockPos blockPos, BlockState blockState, int tickDelay) {
+        if (level.getBlockState(blockPos).getValue(WATERLOGGED)) {
+            return level.setBlock(blockPos, blockState.setValue(WATERLOGGED, true), 3);
+        }
+        return level.setBlock(blockPos, blockState, 3);
+    }
+
+    @Redirect(method = "use", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;setBlock(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z", ordinal = 1))
+    private boolean odyssey$setEmptyFlowerPotAsWaterlogged(Level level, BlockPos blockPos, BlockState blockState, int tickDelay) {
+        if (level.getBlockState(blockPos).getValue(WATERLOGGED)) {
+            return level.setBlock(blockPos, Blocks.FLOWER_POT.defaultBlockState().setValue(WATERLOGGED, true), 3);
+        }
+        return level.setBlock(blockPos, Blocks.FLOWER_POT.defaultBlockState(), 3);
     }
 }
