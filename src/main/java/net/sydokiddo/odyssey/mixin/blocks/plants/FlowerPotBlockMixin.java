@@ -60,12 +60,8 @@ public abstract class FlowerPotBlockMixin extends Block implements SimpleWaterlo
     }
 
     @Inject(method = "updateShape", at = @At("RETURN"))
-    private void odyssey$updateShapeForFlowerPots(BlockState blockState, Direction direction, BlockState blockState2, LevelAccessor levelAccessor, BlockPos blockPos, BlockPos blockPos2, CallbackInfoReturnable<BlockState> cir) {
+    private void odyssey$updateShapeForFlowerPots(BlockState blockState, Direction direction, BlockState adjacentState, LevelAccessor levelAccessor, BlockPos blockPos, BlockPos adjacentPos, CallbackInfoReturnable<BlockState> cir) {
         if (blockState.getValue(WATERLOGGED)) {
-            if (!blockState.is(ModTags.UNDERWATER_FLOWER_POTS) && !blockState.is(Blocks.FLOWER_POT)) {
-                popResource((Level) levelAccessor, blockPos, new ItemStack(this.getPotted()));
-                levelAccessor.setBlock(blockPos, Blocks.FLOWER_POT.defaultBlockState(), 3);
-            }
             levelAccessor.scheduleTick(blockPos, Fluids.WATER, Fluids.WATER.getTickDelay(levelAccessor));
         }
     }
@@ -74,6 +70,26 @@ public abstract class FlowerPotBlockMixin extends Block implements SimpleWaterlo
     @Override
     public @NotNull FluidState getFluidState(BlockState blockState) {
         return blockState.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(blockState);
+    }
+
+    @Override
+    public boolean placeLiquid(LevelAccessor levelAccessor, BlockPos blockPos, BlockState blockState, FluidState fluidState) {
+
+        if (!blockState.getValue(WATERLOGGED) && fluidState.getType() == Fluids.WATER) {
+
+            if (!blockState.is(ModTags.UNDERWATER_FLOWER_POTS) && !blockState.is(Blocks.FLOWER_POT)) {
+                popResource((Level) levelAccessor, blockPos, new ItemStack(this.getPotted()));
+                levelAccessor.setBlock(blockPos, Blocks.FLOWER_POT.defaultBlockState().setValue(WATERLOGGED, true), 3);
+            } else {
+                levelAccessor.setBlock(blockPos, blockState.setValue(WATERLOGGED, true), 3);
+            }
+
+            levelAccessor.scheduleTick(blockPos, fluidState.getType(), fluidState.getType().getTickDelay(levelAccessor));
+            return true;
+
+        } else {
+            return false;
+        }
     }
 
     // endregion
