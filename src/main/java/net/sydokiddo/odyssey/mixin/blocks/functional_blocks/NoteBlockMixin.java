@@ -174,7 +174,7 @@ public abstract class NoteBlockMixin extends Block {
             level.gameEvent(entity, GameEvent.NOTE_BLOCK_PLAY, blockPos);
 
             if (Chrysalis.IS_DEBUG && !level.isClientSide()) {
-                Odyssey.LOGGER.info("Detected a Carpet above {}, playing muffled sound", this.getName().getString());
+                Odyssey.LOGGER.info("Detected a Note Block muffling block above {}, playing muffled sound", this.getName().getString());
             }
         }
     }
