@@ -1,5 +1,7 @@
 package net.sydokiddo.odyssey.mixin.items.misc;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.world.inventory.tooltip.TooltipComponent;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -16,6 +18,7 @@ public abstract class MapItemMixin extends Item {
         super(properties);
     }
 
+    @Environment(EnvType.CLIENT)
     @Override
     public @NotNull Optional<TooltipComponent> getTooltipImage(@NotNull ItemStack itemStack) {
         return Optional.of(new MapTooltipComponent(itemStack));

@@ -30,7 +30,6 @@ import net.sydokiddo.chrysalis.misc.util.helpers.BlockHelper;
 import net.sydokiddo.chrysalis.misc.util.helpers.ItemHelper;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.misc.util.misc.MapTooltipComponent;
-
 import java.util.List;
 
 public class OCommonMethods {
