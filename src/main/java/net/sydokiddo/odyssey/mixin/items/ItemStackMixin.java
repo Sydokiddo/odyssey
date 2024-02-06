@@ -78,6 +78,8 @@ public abstract class ItemStackMixin {
                         int y;
                         int z;
 
+                        cir.getReturnValue().add(CommonComponents.EMPTY);
+
                         if (CompassItem.isLodestoneCompass(this.copy())) {
 
                             cir.getReturnValue().add(Component.translatable("gui.odyssey.item.compass.lodestone_location").withStyle(ChatFormatting.GRAY));
@@ -88,7 +90,6 @@ public abstract class ItemStackMixin {
 
                         } else {
 
-                            if (itemStack.is(Items.FILLED_MAP)) cir.getReturnValue().add(CommonComponents.EMPTY);
                             cir.getReturnValue().add(Component.translatable("gui.odyssey.item.compass.current_location").withStyle(ChatFormatting.GRAY));
 
                             x = client.player.getBlockX();
@@ -107,6 +108,7 @@ public abstract class ItemStackMixin {
 
                     if (itemStack.is(Items.RECOVERY_COMPASS)) {
 
+                        cir.getReturnValue().add(CommonComponents.EMPTY);
                         cir.getReturnValue().add(Component.translatable("gui.odyssey.item.recovery_compass.death_location").withStyle(ChatFormatting.GRAY));
 
                         if (client.player.getLastDeathLocation().isPresent()) {
