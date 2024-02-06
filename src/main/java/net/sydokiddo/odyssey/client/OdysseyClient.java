@@ -48,7 +48,7 @@ public class OdysseyClient implements ClientModInitializer {
 
             ModEntityRenderer.init();
             ModParticles.registerParticles();
-            HudRenderCallback.EVENT.register((guiGraphics, tickDelta) -> OCommonMethods.renderCompassAndMapOverlay(guiGraphics));
+            HudRenderCallback.EVENT.register((guiGraphics, tickDelta) -> OCommonMethods.renderCompassOverlay(guiGraphics));
             TooltipComponentCallback.EVENT.register(OCommonMethods::shouldRenderMapTooltip);
 
             // region Block Rendering

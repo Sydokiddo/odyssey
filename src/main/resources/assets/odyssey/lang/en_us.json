@@ -324,8 +324,10 @@
   "text.autoconfig.odyssey.option.items.tooltipConfig.frog_buckets.@Tooltip": "A unique tooltip will display on a Bucket of Frog displaying the type of Frog currently in the Bucket",
   "text.autoconfig.odyssey.option.items.tooltipConfig.horse_armor": "Horse Armor",
   "text.autoconfig.odyssey.option.items.tooltipConfig.horse_armor.@Tooltip": "A unique tooltip will display on Horse Armor displaying the amount of armor points it gives",
-  "text.autoconfig.odyssey.option.items.tooltipConfig.compasses_and_maps": "Compasses and Maps",
-  "text.autoconfig.odyssey.option.items.tooltipConfig.compasses_and_maps.@Tooltip": "A variety of information such as coordinates, direction, and dimension will display on Compasses, Recovery Compasses, Lodestone Compasses, and Filled Maps",
+  "text.autoconfig.odyssey.option.items.tooltipConfig.compasses": "Compasses",
+  "text.autoconfig.odyssey.option.items.tooltipConfig.compasses.@Tooltip": "A variety of information such as coordinates, direction, and dimension will display on Compasses, Lodestone Compasses, and Recovery Compasses",
+  "text.autoconfig.odyssey.option.items.tooltipConfig.maps": "Maps",
+  "text.autoconfig.odyssey.option.items.tooltipConfig.maps.@Tooltip": "Maps will display a unique tooltip on them showcasing a preview image of themselves",
   "text.autoconfig.odyssey.option.items.tooltipConfig.clocks": "Clocks",
   "text.autoconfig.odyssey.option.items.tooltipConfig.clocks.@Tooltip": "Clocks will display the time of day and the current day number on a unique tooltip",
 
@@ -339,8 +341,8 @@
   "text.autoconfig.odyssey.option.items.improved_riptide.@Tooltip": "Fixes a vanilla bug that causes the speed of Riptide to be decreased when paired with Depth Strider, and allows for Riptide to be used while in a Water Cauldron",
   "text.autoconfig.odyssey.option.items.patina_drop_chance": "Patina Drop Chance",
   "text.autoconfig.odyssey.option.items.patina_drop_chance.@Tooltip": "The chance at which Patina will drop from scraping any Copper block. Any value higher than 1.0 will make it drop 100% of the time.",
-  "text.autoconfig.odyssey.option.items.compass_and_map_gui_rendering": "Compass and Map GUI Rendering",
-  "text.autoconfig.odyssey.option.items.compass_and_map_gui_rendering.@Tooltip": "Having a Compass or Filled Map in your inventory will render your current coordinates in the top left corner of the screen",
+  "text.autoconfig.odyssey.option.items.compass_gui_rendering": "Compass GUI Rendering",
+  "text.autoconfig.odyssey.option.items.compass_gui_rendering.@Tooltip": "Having a Compass in your inventory will render your current coordinates and direction in the top left corner of the screen",
   "text.autoconfig.odyssey.option.items.equipable_banners": "Equipable Banners",
   "text.autoconfig.odyssey.option.items.equipable_banners.@Tooltip": "Banners can be equipped on your head slot similarly to a helmet",
 

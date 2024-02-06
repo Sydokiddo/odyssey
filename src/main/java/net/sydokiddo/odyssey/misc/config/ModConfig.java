@@ -55,7 +55,7 @@ public class ModConfig implements ConfigData {
 
         @ConfigEntry.Gui.RequiresRestart(value = false)
         @ConfigEntry.Gui.Tooltip
-        public boolean compass_and_map_gui_rendering = true;
+        public boolean compass_gui_rendering = true;
 
         @ConfigEntry.Gui.RequiresRestart(value = false)
         @ConfigEntry.Gui.Tooltip

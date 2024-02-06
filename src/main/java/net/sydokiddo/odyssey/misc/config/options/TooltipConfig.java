@@ -71,7 +71,11 @@ public class TooltipConfig {
 
     @ConfigEntry.Gui.RequiresRestart(value = false)
     @ConfigEntry.Gui.Tooltip
-    public boolean compasses_and_maps = true;
+    public boolean compasses = true;
+
+    @ConfigEntry.Gui.RequiresRestart(value = false)
+    @ConfigEntry.Gui.Tooltip
+    public boolean maps = true;
 
     @ConfigEntry.Gui.RequiresRestart(value = false)
     @ConfigEntry.Gui.Tooltip

@@ -12,6 +12,7 @@ import net.minecraft.world.inventory.tooltip.TooltipComponent;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.MapItem;
 import net.minecraft.world.level.saveddata.maps.MapItemSavedData;
+import net.sydokiddo.odyssey.Odyssey;
 import org.jetbrains.annotations.NotNull;
 
 @Environment(EnvType.CLIENT)
@@ -29,7 +30,7 @@ public class MapTooltipComponent implements ClientTooltipComponent, TooltipCompo
     @Override
     public void renderImage(@NotNull Font font, int x, int y, @NotNull GuiGraphics guiGraphics) {
 
-        if (Minecraft.getInstance().level == null || id == null || data == null) return;
+        if (Minecraft.getInstance().level == null || id == null || data == null || !Odyssey.getConfig().items.tooltipConfig.maps) return;
         final PoseStack poseStack = guiGraphics.pose();
 
         poseStack.pushPose();

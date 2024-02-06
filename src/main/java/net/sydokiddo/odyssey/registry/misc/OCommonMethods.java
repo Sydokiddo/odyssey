@@ -104,17 +104,17 @@ public class OCommonMethods {
     // region Rendering
 
     @Environment(EnvType.CLIENT)
-    public static void renderCompassAndMapOverlay(GuiGraphics guiGraphics) {
+    public static void renderCompassOverlay(GuiGraphics guiGraphics) {
 
         Minecraft minecraft = Minecraft.getInstance();
-        if (minecraft.gui.getDebugOverlay().showDebugScreen() || !Odyssey.getConfig().items.compass_and_map_gui_rendering) return;
+        if (minecraft.gui.getDebugOverlay().showDebugScreen() || !Odyssey.getConfig().items.compass_gui_rendering) return;
 
         if (minecraft.getCameraEntity() != null) {
 
             Player player = minecraft.player;
             assert player != null;
 
-            if (ItemHelper.hasItemInInventory(Items.COMPASS, player) || ItemHelper.hasItemInInventory(Items.FILLED_MAP, player)) {
+            if (ItemHelper.hasItemInInventory(Items.COMPASS, player)) {
 
                 BlockPos blockPos = minecraft.getCameraEntity().blockPosition();
                 int heightOffset;
@@ -138,7 +138,7 @@ public class OCommonMethods {
 
     @Environment(EnvType.CLIENT)
     public static ClientTooltipComponent shouldRenderMapTooltip(TooltipComponent tooltipComponent) {
-        if (tooltipComponent instanceof MapTooltipComponent mapTooltipComponent) {
+        if (tooltipComponent instanceof MapTooltipComponent mapTooltipComponent && Odyssey.getConfig().items.tooltipConfig.maps) {
             return mapTooltipComponent;
         }
         return null;

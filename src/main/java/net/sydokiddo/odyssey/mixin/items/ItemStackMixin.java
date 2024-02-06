@@ -68,11 +68,11 @@ public abstract class ItemStackMixin {
 
             if (client.level != null && client.player != null) {
 
-                // region Compass and Map Tooltips
+                // region Compass Tooltips
 
-                if (Odyssey.getConfig().items.tooltipConfig.compasses_and_maps) {
+                if (Odyssey.getConfig().items.tooltipConfig.compasses) {
 
-                    if (itemStack.is(Items.COMPASS) || itemStack.is(Items.FILLED_MAP)) {
+                    if (itemStack.is(Items.COMPASS)) {
 
                         int x;
                         int y;
