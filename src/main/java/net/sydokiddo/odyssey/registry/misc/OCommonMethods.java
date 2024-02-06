@@ -7,6 +7,7 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
 import net.minecraft.client.gui.screens.social.PlayerEntry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -17,6 +18,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Saddleable;
 import net.minecraft.world.entity.item.PrimedTnt;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.tooltip.TooltipComponent;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
@@ -27,6 +29,8 @@ import net.sydokiddo.chrysalis.Chrysalis;
 import net.sydokiddo.chrysalis.misc.util.helpers.BlockHelper;
 import net.sydokiddo.chrysalis.misc.util.helpers.ItemHelper;
 import net.sydokiddo.odyssey.Odyssey;
+import net.sydokiddo.odyssey.misc.util.misc.MapTooltipComponent;
+
 import java.util.List;
 
 public class OCommonMethods {
@@ -131,6 +135,14 @@ public class OCommonMethods {
                 poseStack.popPose();
             }
         }
+    }
+
+    @Environment(EnvType.CLIENT)
+    public static ClientTooltipComponent shouldRenderMapTooltip(TooltipComponent tooltipComponent) {
+        if (tooltipComponent instanceof MapTooltipComponent mapTooltipComponent) {
+            return mapTooltipComponent;
+        }
+        return null;
     }
 
     // endregion

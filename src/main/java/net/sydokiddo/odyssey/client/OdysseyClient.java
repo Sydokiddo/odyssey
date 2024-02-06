@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
+import net.fabricmc.fabric.api.client.rendering.v1.TooltipComponentCallback;
 import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
@@ -48,6 +49,7 @@ public class OdysseyClient implements ClientModInitializer {
             ModEntityRenderer.init();
             ModParticles.registerParticles();
             HudRenderCallback.EVENT.register((guiGraphics, tickDelta) -> OCommonMethods.renderCompassAndMapOverlay(guiGraphics));
+            TooltipComponentCallback.EVENT.register(OCommonMethods::shouldRenderMapTooltip);
 
             // region Block Rendering
 
