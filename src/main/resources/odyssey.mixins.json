@@ -8,7 +8,6 @@
     "blocks.functional_blocks.AbstractCauldronBlockMixin",
     "blocks.functional_blocks.AnvilRepairingMixin",
     "blocks.functional_blocks.ChiseledBookshelfBlockMixin",
-    "blocks.functional_blocks.DecoratedPotBlockMixin",
     "blocks.functional_blocks.DispenserBlockMixin",
     "blocks.functional_blocks.NoteBlockInstrumentMixin",
     "blocks.functional_blocks.NoteBlockMixin",
