@@ -49,9 +49,7 @@ public class OCommonMethods {
                 primedTnt.spawnAtLocation(Items.TNT);
             }
 
-            if (Chrysalis.IS_DEBUG && primedTnt.isAlive() && !level.isClientSide()) {
-                Odyssey.LOGGER.info("TNT has been successfully defused at {}", blockPos);
-            }
+            if (Chrysalis.IS_DEBUG && primedTnt.isAlive() && !level.isClientSide()) Odyssey.LOGGER.info("TNT has been successfully defused at {}", blockPos);
 
             level.playSound(null, blockPos, soundEvent, SoundSource.PLAYERS, 1.0F, 1.0F);
             primedTnt.discard();
@@ -59,13 +57,9 @@ public class OCommonMethods {
     }
 
     public static void doSaddleRemovingEvents(LivingEntity livingEntity, Player player, InteractionHand interactionHand) {
-
         livingEntity.level().playSound(null, livingEntity, ModSoundEvents.SADDLE_UNEQUIP, SoundSource.NEUTRAL, 1.0F, 1.0F);
         player.setItemInHand(interactionHand, Items.SADDLE.getDefaultInstance());
-
-        if (Chrysalis.IS_DEBUG && livingEntity instanceof Saddleable saddleable && saddleable.isSaddled() && !livingEntity.level().isClientSide()) {
-            Odyssey.LOGGER.info("Saddle has been successfully removed from {} by {}", livingEntity.getName().getString(), player.getName().getString());
-        }
+        if (Chrysalis.IS_DEBUG && livingEntity instanceof Saddleable saddleable && saddleable.isSaddled() && !livingEntity.level().isClientSide()) Odyssey.LOGGER.info("Saddle has been successfully removed from {} by {}", livingEntity.getName().getString(), player.getName().getString());
     }
 
     // endregion
@@ -74,12 +68,8 @@ public class OCommonMethods {
 
     public static void addItemDurabilityTooltip(ItemStack itemStack, List<Component> tooltip, TooltipFlag tooltipFlag) {
         if (Odyssey.getConfig().items.tooltipConfig.durability_information && itemStack.isDamaged() && !tooltipFlag.isAdvanced()) {
-
             tooltip.add(Component.translatable("item.durability", itemStack.getMaxDamage() - itemStack.getDamageValue(), itemStack.getMaxDamage()).withStyle(ChatFormatting.GRAY));
-
-            if (!itemStack.is(ModTags.TOOLTIP_SPACE_BLACKLISTED)) {
-                ItemHelper.addSpaceOnTooltipIfEnchantedOrTrimmed(itemStack, tooltip);
-            }
+            if (!itemStack.is(ModTags.TOOLTIP_SPACE_BLACKLISTED)) ItemHelper.addSpaceOnTooltipIfEnchantedOrTrimmed(itemStack, tooltip);
         }
     }
 
@@ -88,15 +78,11 @@ public class OCommonMethods {
     // region Debugging
 
     public static void sendMobConversionDebugMessage(LivingEntity startingEntity, LivingEntity resultEntity) {
-        if (Chrysalis.IS_DEBUG && !startingEntity.level().isClientSide()) {
-            Odyssey.LOGGER.info("{} has been converted into {}", startingEntity.getName().getString(), resultEntity.getName().getString());
-        }
+        if (Chrysalis.IS_DEBUG && !startingEntity.level().isClientSide()) Odyssey.LOGGER.info("{} has been converted into {}", startingEntity.getName().getString(), resultEntity.getName().getString());
     }
 
     public static void sendWaxingDebugMessage(Level level, String blockString, Player player, BlockPos blockPos) {
-        if (Chrysalis.IS_DEBUG && !level.isClientSide()) {
-            Odyssey.LOGGER.info("{} has been successfully waxed by {} at {}", blockString, player.getName().getString(), blockPos);
-        }
+        if (Chrysalis.IS_DEBUG && !level.isClientSide()) Odyssey.LOGGER.info("{} has been successfully waxed by {} at {}", blockString, player.getName().getString(), blockPos);
     }
 
     // endregion

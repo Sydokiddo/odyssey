@@ -50,10 +50,7 @@ public class HatCommand {
                 player.level().playSound(null, player.getX(), player.getY(), player.getZ(), soundEvent, player.getSoundSource(), 1.0F, 1.0F);
             }
 
-            if (!currentHeadItem.isEmpty()) {
-                player.setItemSlot(EquipmentSlot.MAINHAND, currentHeadItem.copyAndClear());
-            }
-
+            if (!currentHeadItem.isEmpty()) player.setItemSlot(EquipmentSlot.MAINHAND, currentHeadItem.copyAndClear());
             player.setItemSlot(EquipmentSlot.HEAD, heldItem.copyAndClear());
             player.sendSystemMessage(successText);
         }

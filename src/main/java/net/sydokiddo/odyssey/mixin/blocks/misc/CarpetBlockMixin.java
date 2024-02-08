@@ -68,9 +68,7 @@ public class CarpetBlockMixin extends Block implements SimpleWaterloggedBlock {
 
     @Inject(method = "canSurvive", at = @At("RETURN"), cancellable = true)
     private void odyssey$canCarpetSurvive(BlockState blockState, LevelReader levelReader, BlockPos blockPos, CallbackInfoReturnable<Boolean> cir) {
-        if (levelReader.getBlockState(blockPos.below()).is(Blocks.WATER)) {
-            cir.setReturnValue(false);
-        }
+        if (levelReader.getBlockState(blockPos.below()).is(Blocks.WATER)) cir.setReturnValue(false);
     }
 
     // endregion

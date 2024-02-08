@@ -20,7 +20,7 @@ public class PottedSporeBlossomBlock extends FlowerPotBlock {
 
         BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
 
-        for (int l = 0; l < 7; ++l) {
+        for (int particleAmount = 0; particleAmount < 7; ++particleAmount) {
 
             mutableBlockPos.set(blockPos.getX() + Mth.nextInt(randomSource, -5, 5), blockPos.getY() - randomSource.nextInt(5), blockPos.getZ() + Mth.nextInt(randomSource, -5, 5));
 

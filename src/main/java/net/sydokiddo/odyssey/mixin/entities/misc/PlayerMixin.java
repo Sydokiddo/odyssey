@@ -25,29 +25,19 @@ public abstract class PlayerMixin extends LivingEntity {
 
     @Redirect(method = "aiStep", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;removeEntitiesOnShoulder()V"))
     private void odyssey$cancelRemovingShoulderEntities(Player player) {
-        if (!Odyssey.getConfig().entities.passiveMobsConfig.improved_parrots) {
-            this.removeEntitiesOnShoulder();
-        }
+        if (!Odyssey.getConfig().entities.passiveMobsConfig.improved_parrots) this.removeEntitiesOnShoulder();
     }
 
     @Inject(method = "aiStep", at = @At("HEAD"))
     private void odyssey$changeRemovingShoulderEntities(CallbackInfo ci) {
-        if (Odyssey.getConfig().entities.passiveMobsConfig.improved_parrots && !this.level().isClientSide() && (this.fallDistance > 1.0F && this.getDeltaMovement().horizontalDistance() == 0) || (this.isUnderWater() || this.isInLava() || this.isInPowderSnow)) {
+        if (!this.level().isClientSide() && (this.fallDistance > 1.0F && this.getDeltaMovement().horizontalDistance() == 0) || (this.isUnderWater() || this.isInLava() || this.isInPowderSnow) && Odyssey.getConfig().entities.passiveMobsConfig.improved_parrots) {
             this.removeEntitiesOnShoulder();
         }
     }
 
     @Redirect(method = "turtleHelmetTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;addEffect(Lnet/minecraft/world/effect/MobEffectInstance;)Z"))
     private boolean odyssey$tickImprovedTurtleHelmets(Player player, MobEffectInstance mobEffectInstance) {
-
-        int effectTime;
-
-        if (Odyssey.getConfig().items.improved_turtle_helmets) {
-            effectTime = 600;
-        } else {
-            effectTime = 200;
-        }
-
+        int effectTime = Odyssey.getConfig().items.improved_turtle_helmets ? 600 : 200;
         return this.addEffect(new MobEffectInstance(MobEffects.WATER_BREATHING, effectTime, 0, false, false, true));
     }
 }

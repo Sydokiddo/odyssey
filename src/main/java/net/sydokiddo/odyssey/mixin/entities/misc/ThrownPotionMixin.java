@@ -38,16 +38,13 @@ public abstract class ThrownPotionMixin extends ThrowableItemProjectile {
         List<PrimedTnt> list = this.level().getEntitiesOfClass(PrimedTnt.class, boundingBox, CAN_DEFUSE);
 
         for (PrimedTnt primedTnt : list) {
-
-            double distance = this.distanceToSqr(primedTnt);
-
-            if (distance < 16.0) {
+            if (this.distanceToSqr(primedTnt) < 16.0) {
 
                 BlockPos blockPos = primedTnt.getOnPos().above();
 
-                OCommonMethods.defusePrimedTNT(level(), primedTnt, blockPos, ModSoundEvents.TNT_SPLASH);
+                OCommonMethods.defusePrimedTNT(this.level(), primedTnt, blockPos, ModSoundEvents.TNT_SPLASH);
 
-                if (level() instanceof ServerLevel serverLevel) {
+                if (this.level() instanceof ServerLevel serverLevel) {
                     serverLevel.sendParticles(ParticleTypes.LARGE_SMOKE, blockPos.getX(), blockPos.getY() + 1, blockPos.getZ(), 0, 0.0, 0.0, 0.0, 0.0);
                 }
             }

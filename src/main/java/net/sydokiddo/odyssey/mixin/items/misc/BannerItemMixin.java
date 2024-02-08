@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(BannerItem.class)
-public abstract class BannerItemMixin extends Item implements Equipable {
+public class BannerItemMixin extends Item implements Equipable {
 
     private BannerItemMixin(Properties properties) {
         super(properties);

@@ -37,15 +37,8 @@ public class BlockMixin {
         // Falling on Note Blocks
 
         if (!level.isClientSide() && !entity.isShiftKeyDown() && fallDistance > 0 && blockState.getBlock() instanceof NoteBlock noteBlock && !blockState.getValue(NoteBlock.INSTRUMENT).worksAboveNoteBlock() && Odyssey.getConfig().blocks.qualityOfLifeBlockConfig.noteBlockConfig.note_block_sensitivity) {
-
-            if (entity instanceof Player player) {
-                player.awardStat(Stats.PLAY_NOTEBLOCK);
-            }
-
-            if (Chrysalis.IS_DEBUG) {
-                Odyssey.LOGGER.info("{} has fallen onto a Note Block at {}", entity.getName().getString(), blockPos);
-            }
-
+            if (entity instanceof Player player) player.awardStat(Stats.PLAY_NOTEBLOCK);
+            if (Chrysalis.IS_DEBUG) Odyssey.LOGGER.info("{} has fallen onto a Note Block at {}", entity.getName().getString(), blockPos);
             noteBlock.playNote(entity, blockState, level, blockPos);
         }
 
@@ -72,8 +65,8 @@ public class BlockMixin {
         Vec3 movement = entity.getDeltaMovement();
 
         if (movement.y < 0.0) {
-            double d = entity instanceof LivingEntity ? 1.0 : 0.8;
-            entity.setDeltaMovement(movement.x, -movement.y * d, movement.z);
+            double bounceIntensity = entity instanceof LivingEntity ? 1.0 : 0.8;
+            entity.setDeltaMovement(movement.x, -movement.y * bounceIntensity, movement.z);
         }
     }
 }

@@ -26,6 +26,7 @@ public class FrogBucketItem extends MobInContainerItem {
 
     @Override
     public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> tooltip, TooltipFlag tooltipFlag) {
+
         super.appendHoverText(itemStack, level, tooltip, tooltipFlag);
         CompoundTag compoundTag = itemStack.getTag();
 

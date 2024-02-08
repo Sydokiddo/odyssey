@@ -48,7 +48,7 @@ public class BaseSpawnerMixin {
 
             RandomSource randomSource = serverLevel.getRandom();
 
-            for (int amount = 0; amount < 20; ++amount) {
+            for (int particleAmount = 0; particleAmount < 20; ++particleAmount) {
 
                 double x = (double)blockPos.getX() + 0.5 + (randomSource.nextDouble() - 0.5) * 2.0;
                 double y = (double)blockPos.getY() + 0.5 + (randomSource.nextDouble() - 0.5) * 2.0;

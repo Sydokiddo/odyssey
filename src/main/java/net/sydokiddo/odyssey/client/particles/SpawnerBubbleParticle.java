@@ -43,9 +43,7 @@ public class SpawnerBubbleParticle extends TextureSheetParticle {
         this.yd *= 0.85F;
         this.zd *= 0.85F;
 
-        if (!this.level.getFluidState(BlockPos.containing(this.x, this.y, this.z)).is(FluidTags.WATER)) {
-            this.remove();
-        }
+        if (!this.level.getFluidState(BlockPos.containing(this.x, this.y, this.z)).is(FluidTags.WATER)) this.remove();
     }
 
     // endregion

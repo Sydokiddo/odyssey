@@ -28,6 +28,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.List;
 import java.util.Objects;
 
+@SuppressWarnings("deprecation")
 @Mixin(SpawnerBlock.class)
 public abstract class SpawnerBlockMixin extends BaseEntityBlock implements SimpleWaterloggedBlock {
 
@@ -56,7 +57,6 @@ public abstract class SpawnerBlockMixin extends BaseEntityBlock implements Simpl
         return Objects.requireNonNull(super.getStateForPlacement(blockPlaceContext)).setValue(WATERLOGGED, inWater);
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     public @NotNull BlockState updateShape(BlockState blockState, Direction direction, BlockState blockState2, LevelAccessor levelAccessor, BlockPos blockPos, BlockPos blockPos2) {
         if (blockState.getValue(WATERLOGGED)) {
@@ -65,7 +65,6 @@ public abstract class SpawnerBlockMixin extends BaseEntityBlock implements Simpl
         return super.updateShape(blockState, direction, blockState2, levelAccessor, blockPos, blockPos2);
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     public @NotNull FluidState getFluidState(BlockState blockState) {
         return blockState.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(blockState);
@@ -75,15 +74,11 @@ public abstract class SpawnerBlockMixin extends BaseEntityBlock implements Simpl
 
     @Inject(method = "spawnAfterBreak", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/SpawnerBlock;popExperience(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;I)V"), cancellable = true)
     private void odyssey$preventSpawnerXPFromSilkTouch(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, ItemStack itemStack, boolean brokenByPlayer, CallbackInfo info) {
-        if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.SILK_TOUCH, itemStack) > 0) {
-            info.cancel();
-        }
+        if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.SILK_TOUCH, itemStack) > 0) info.cancel();
     }
 
     @Inject(method = "appendHoverText", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Spawner;appendHoverText(Lnet/minecraft/world/item/ItemStack;Ljava/util/List;Ljava/lang/String;)V"), cancellable = true)
     private void odyssey$hideSpawnerTooltipInSurvival(ItemStack itemStack, @Nullable BlockGetter blockGetter, List<Component> tooltip, TooltipFlag tooltipFlag, CallbackInfo info) {
-        if (!tooltipFlag.isCreative()) {
-            info.cancel();
-        }
+        if (!tooltipFlag.isCreative()) info.cancel();
     }
 }

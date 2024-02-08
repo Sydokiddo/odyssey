@@ -86,12 +86,8 @@ public abstract class NoteBlockMixin extends Block {
 
             player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
 
-            if (player instanceof ServerPlayer serverPlayer) {
-                CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, itemStack);
-            }
-            if (!player.getAbilities().instabuild) {
-                itemStack.shrink(1);
-            }
+            if (player instanceof ServerPlayer serverPlayer) CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, itemStack);
+            if (!player.getAbilities().instabuild) itemStack.shrink(1);
 
             OCommonMethods.sendWaxingDebugMessage(level, this.getName().getString(), player, blockPos);
 
@@ -109,12 +105,9 @@ public abstract class NoteBlockMixin extends Block {
 
             cir.cancel();
 
-            if (Chrysalis.IS_DEBUG && !level.isClientSide()) {
-                Odyssey.LOGGER.info("{} is waxed, preventing its note from being cycled", this.getName().getString());
-            }
+            if (Chrysalis.IS_DEBUG && !level.isClientSide()) Odyssey.LOGGER.info("{} is waxed, preventing its note from being cycled", this.getName().getString());
 
             if (player instanceof ServerPlayer serverPlayer) this.sendNoteBlockPacket(serverPlayer, 0);
-
             this.playNote(player, blockState, level, blockPos);
             player.awardStat(Stats.PLAY_NOTEBLOCK);
 
@@ -136,16 +129,12 @@ public abstract class NoteBlockMixin extends Block {
 
     @Inject(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/NoteBlock;playNote(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)V"))
     private void odyssey$sendNoteHUDMessageOnAttack(BlockState blockState, Level level, BlockPos blockPos, Player player, CallbackInfo info) {
-        if (player instanceof ServerPlayer serverPlayer) {
-            this.sendNoteBlockPacket(serverPlayer, 0);
-        }
+        if (player instanceof ServerPlayer serverPlayer) this.sendNoteBlockPacket(serverPlayer, 0);
     }
 
     @Inject(method = "use", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/NoteBlock;playNote(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)V"))
     private void odyssey$sendNoteHUDMessageOnUse(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult, CallbackInfoReturnable<InteractionResult> cir) {
-        if (player instanceof ServerPlayer serverPlayer) {
-            this.sendNoteBlockPacket(serverPlayer, 1);
-        }
+        if (player instanceof ServerPlayer serverPlayer) this.sendNoteBlockPacket(serverPlayer, 1);
     }
 
     @Unique
@@ -173,16 +162,14 @@ public abstract class NoteBlockMixin extends Block {
             level.blockEvent(blockPos, this, 1, 0);
             level.gameEvent(entity, GameEvent.NOTE_BLOCK_PLAY, blockPos);
 
-            if (Chrysalis.IS_DEBUG && !level.isClientSide()) {
-                Odyssey.LOGGER.info("Detected a Note Block muffling block above {}, playing muffled sound", this.getName().getString());
-            }
+            if (Chrysalis.IS_DEBUG && !level.isClientSide()) Odyssey.LOGGER.info("Detected a Note Block muffling block above {}, playing muffled sound", this.getName().getString());
         }
     }
 
     @Inject(method = "triggerEvent", at = @At("HEAD"), cancellable = true)
-    private void odyssey$triggerMuffledNoteBlockEvent(BlockState blockState, Level level, BlockPos blockPos, int i, int j, CallbackInfoReturnable<Boolean> cir) {
+    private void odyssey$triggerMuffledNoteBlockEvent(BlockState blockState, Level level, BlockPos blockPos, int blockEvent, int j, CallbackInfoReturnable<Boolean> cir) {
 
-        if (i == 1 && Odyssey.getConfig().blocks.qualityOfLifeBlockConfig.noteBlockConfig.note_block_muffling) {
+        if (blockEvent == 1 && Odyssey.getConfig().blocks.qualityOfLifeBlockConfig.noteBlockConfig.note_block_muffling) {
 
             cir.cancel();
 

@@ -13,8 +13,6 @@ public class EnchantmentHelperMixin {
 
     @Inject(at = @At("RETURN"), method = "getDepthStrider", cancellable = true)
     private static void odyssey$fixRiptideWithDepthStrider(LivingEntity livingEntity, CallbackInfoReturnable<Integer> cir) {
-        if (livingEntity.isAutoSpinAttack() && Odyssey.getConfig().items.improved_riptide) {
-            cir.setReturnValue(0);
-        }
+        if (livingEntity.isAutoSpinAttack() && Odyssey.getConfig().items.improved_riptide) cir.setReturnValue(0);
     }
 }

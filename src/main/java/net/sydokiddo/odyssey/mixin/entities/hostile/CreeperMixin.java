@@ -15,8 +15,6 @@ public abstract class CreeperMixin {
 
     @Inject(method = "canDropMobsSkull", at = @At("HEAD"), cancellable = true)
     private void odyssey$allowMultipleHeadsFromChargedCreepers(CallbackInfoReturnable<Boolean> cir) {
-        if (Odyssey.getConfig().entities.hostileMobsConfig.more_heads_from_charged_creepers) {
-            cir.setReturnValue(this.isPowered());
-        }
+        if (Odyssey.getConfig().entities.hostileMobsConfig.more_heads_from_charged_creepers) cir.setReturnValue(this.isPowered());
     }
 }

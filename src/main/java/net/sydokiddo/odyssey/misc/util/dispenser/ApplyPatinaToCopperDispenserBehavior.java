@@ -38,9 +38,7 @@ public class ApplyPatinaToCopperDispenserBehavior implements DispenseItemBehavio
             serverLevel.levelEvent(3005, blockPos, 0);
             serverLevel.gameEvent(null, GameEvent.BLOCK_CHANGE, blockPos);
 
-            if (Chrysalis.IS_DEBUG) {
-                Odyssey.LOGGER.info("Dispenser has successfully dispensed Patina at {}", blockPos);
-            }
+            if (Chrysalis.IS_DEBUG) Odyssey.LOGGER.info("Dispenser has successfully dispensed Patina at {}", blockPos);
 
             itemStack.shrink(1);
             return itemStack;

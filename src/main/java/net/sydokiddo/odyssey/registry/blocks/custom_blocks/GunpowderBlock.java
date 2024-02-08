@@ -24,6 +24,7 @@ import net.sydokiddo.odyssey.registry.entities.non_living_entities.GunpowderBloc
 import net.sydokiddo.odyssey.registry.entities.registry.ModEntities;
 import org.jetbrains.annotations.NotNull;
 
+@SuppressWarnings("deprecation")
 public class GunpowderBlock extends FallingBlock {
 
     public GunpowderBlock(Properties properties) {
@@ -38,37 +39,26 @@ public class GunpowderBlock extends FallingBlock {
     // region Block Interactions
 
     @Override
-    public void onPlace(BlockState blockState, Level level, BlockPos blockPos, BlockState adjacentBlockState, boolean bl) {
+    public void onPlace(BlockState blockState, Level level, BlockPos blockPos, BlockState adjacentBlockState, boolean moved) {
 
-        super.onPlace(blockState, level, blockPos, adjacentBlockState, bl);
+        super.onPlace(blockState, level, blockPos, adjacentBlockState, moved);
 
         for (Direction direction : Direction.values()) {
-            if (level.getBlockState(blockPos.relative(direction)).getBlock() instanceof BaseFireBlock) {
-                explode(level, blockPos);
-            }
+            if (level.getBlockState(blockPos.relative(direction)).getBlock() instanceof BaseFireBlock) explode(level, blockPos);
         }
     }
 
-    @SuppressWarnings("deprecation")
     @Override
-    public void neighborChanged(BlockState state, Level level, BlockPos blockPos, Block block, BlockPos neighborPos, boolean bl) {
-
-        super.neighborChanged(state, level, blockPos, block, neighborPos, bl);
-
-        if (level.getBlockState(neighborPos).getBlock() instanceof FireBlock) {
-            explode(level, blockPos);
-        }
+    public void neighborChanged(BlockState state, Level level, BlockPos blockPos, Block block, BlockPos neighborPos, boolean moved) {
+        super.neighborChanged(state, level, blockPos, block, neighborPos, moved);
+        if (level.getBlockState(neighborPos).getBlock() instanceof FireBlock) explode(level, blockPos);
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     public void onProjectileHit(Level level, BlockState blockState, BlockHitResult blockHitResult, Projectile projectile) {
-        if (!level.isClientSide() && projectile.isOnFire()) {
-            explode(level, blockHitResult.getBlockPos());
-        }
+        if (!level.isClientSide() && projectile.isOnFire()) explode(level, blockHitResult.getBlockPos());
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     public @NotNull InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
 
@@ -80,9 +70,7 @@ public class GunpowderBlock extends FallingBlock {
             level.setBlock(blockPos, Blocks.AIR.defaultBlockState(), 11);
             player.awardStat(Stats.ITEM_USED.get(itemInHand.getItem()));
 
-            if (player instanceof ServerPlayer serverPlayer) {
-                CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, itemInHand);
-            }
+            if (player instanceof ServerPlayer serverPlayer) CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, itemInHand);
 
             if (!player.getAbilities().instabuild) {
                 if (itemInHand.is(Items.FLINT_AND_STEEL)) {
@@ -94,6 +82,7 @@ public class GunpowderBlock extends FallingBlock {
 
             return InteractionResult.sidedSuccess(level.isClientSide());
         }
+
         return super.use(blockState, level, blockPos, player, interactionHand, blockHitResult);
     }
 
@@ -103,15 +92,11 @@ public class GunpowderBlock extends FallingBlock {
 
     @Override
     public void wasExploded(Level level, BlockPos blockPos, Explosion explosion) {
-        if (!level.isClientSide()) {
-            explode(level, blockPos, explosion.getIndirectSourceEntity());
-        }
+        if (!level.isClientSide()) explode(level, blockPos, explosion.getIndirectSourceEntity());
     }
 
     public static void explode(Level level, BlockPos blockPos) {
-        if (Odyssey.getConfig().blocks.miscBlocksConfig.unstable_gunpowder_blocks) {
-            explode(level, blockPos, null);
-        }
+        if (Odyssey.getConfig().blocks.miscBlocksConfig.unstable_gunpowder_blocks) explode(level, blockPos, null);
     }
 
     private static void explode(Level level, BlockPos blockPos, LivingEntity livingEntity) {

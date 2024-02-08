@@ -109,9 +109,7 @@ public class OwnershipContractItem extends Item {
 
                     oldOwnerPacketValue = 3;
 
-                    if (!player.getAbilities().instabuild) {
-                        itemStack.shrink(1);
-                    }
+                    if (!player.getAbilities().instabuild) itemStack.shrink(1);
                 }
 
                 FriendlyByteBuf oldOwnerPacket = new FriendlyByteBuf(Unpooled.buffer());
@@ -136,12 +134,9 @@ public class OwnershipContractItem extends Item {
 
             if (livingEntity.level() instanceof ServerLevel serverLevel) {
 
-                player.awardStat(Stats.ITEM_USED.get(this));
                 player.gameEvent(GameEvent.ENTITY_INTERACT);
-
-                if (player instanceof ServerPlayer serverPlayer) {
-                    CriteriaTriggers.PLAYER_INTERACTED_WITH_ENTITY.trigger(serverPlayer, itemStack, livingEntity);
-                }
+                player.awardStat(Stats.ITEM_USED.get(this));
+                if (player instanceof ServerPlayer serverPlayer) CriteriaTriggers.PLAYER_INTERACTED_WITH_ENTITY.trigger(serverPlayer, itemStack, livingEntity);
 
                 int sentMessagePacketValue;
 
@@ -173,6 +168,7 @@ public class OwnershipContractItem extends Item {
 
             return InteractionResult.sidedSuccess(player.level().isClientSide);
         }
+
         return super.interactLivingEntity(itemStack, player, livingEntity, interactionHand);
     }
 
@@ -225,12 +221,8 @@ public class OwnershipContractItem extends Item {
         if (oldItem.getCount() <= 1 && !player.getAbilities().instabuild) {
             player.setItemInHand(interactionHand, boundContract);
         } else {
-            if (!player.getAbilities().instabuild) {
-                oldItem.shrink(1);
-            }
-            if (!player.getInventory().add(boundContract)) {
-                player.drop(boundContract, false);
-            }
+            if (!player.getAbilities().instabuild) oldItem.shrink(1);
+            if (!player.getInventory().add(boundContract)) player.drop(boundContract, false);
         }
     }
 

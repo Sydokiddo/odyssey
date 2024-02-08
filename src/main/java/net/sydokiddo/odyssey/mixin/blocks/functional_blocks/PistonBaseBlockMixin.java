@@ -49,12 +49,8 @@ public abstract class PistonBaseBlockMixin extends DirectionalBlock {
     @Unique
     private void doPistonUseEvents(Level level, BlockPos blockPos, Player player, Item item, BlockState blockState, Block block, SoundEvent soundEvent, Direction direction) {
 
-        if (player instanceof ServerPlayer serverPlayer) {
-            CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, item.getDefaultInstance());
-        }
-        if (!level.isClientSide()) {
-            player.awardStat(Stats.ITEM_USED.get(item));
-        }
+        if (player instanceof ServerPlayer serverPlayer) CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, item.getDefaultInstance());
+        if (!level.isClientSide()) player.awardStat(Stats.ITEM_USED.get(item));
 
         ParticleUtils.spawnParticlesOnBlockFace(level, blockPos, ParticleTypes.ITEM_SLIME, UniformInt.of(3, 5), direction, () -> ParticleUtils.getRandomSpeedRanges(level.getRandom()), 0.55);
         level.setBlockAndUpdate(blockPos, block.defaultBlockState().setValue(PistonBaseBlock.FACING, blockState.getValue(PistonBaseBlock.FACING)));
@@ -78,10 +74,7 @@ public abstract class PistonBaseBlockMixin extends DirectionalBlock {
 
                 // Putting Slime Balls on Pistons
 
-                if (!player.getAbilities().instabuild) {
-                    itemInHand.shrink(1);
-                }
-
+                if (!player.getAbilities().instabuild) itemInHand.shrink(1);
                 doPistonUseEvents(level, blockPos, player, item, blockState, Blocks.STICKY_PISTON, ModSoundEvents.PISTON_APPLY_SLIMEBALL, direction);
                 return InteractionResult.sidedSuccess(level.isClientSide());
 
@@ -89,10 +82,7 @@ public abstract class PistonBaseBlockMixin extends DirectionalBlock {
 
                 // Scraping Sticky Pistons
 
-                if (!player.getAbilities().instabuild) {
-                    itemInHand.hurtAndBreak(1, player, (axe) -> axe.broadcastBreakEvent(interactionHand));
-                }
-
+                if (!player.getAbilities().instabuild) itemInHand.hurtAndBreak(1, player, (axe) -> axe.broadcastBreakEvent(interactionHand));
                 popResourceFromFace(level, blockPos, direction, new ItemStack(Items.SLIME_BALL));
                 doPistonUseEvents(level, blockPos, player, item, blockState, Blocks.PISTON, ModSoundEvents.PISTON_REMOVE_SLIMEBALL, direction);
                 return InteractionResult.sidedSuccess(level.isClientSide());
@@ -101,6 +91,7 @@ public abstract class PistonBaseBlockMixin extends DirectionalBlock {
                 return super.use(blockState, level, blockPos, player, interactionHand, blockHitResult);
             }
         }
+
         return super.use(blockState, level, blockPos, player, interactionHand, blockHitResult);
     }
 

@@ -43,12 +43,8 @@ public class GunpowderBlockEntity extends Entity implements TraceableEntity {
 
     @Override
     protected void readAdditionalSaveData(CompoundTag compoundTag) {
-
         this.setFuse(compoundTag.getShort(fuseString));
-
-        if (compoundTag.contains(blockStateString, 10)) {
-            this.setBlockState(NbtUtils.readBlockState(this.level().holderLookup(Registries.BLOCK), compoundTag.getCompound(blockStateString)));
-        }
+        if (compoundTag.contains(blockStateString, 10)) this.setBlockState(NbtUtils.readBlockState(this.level().holderLookup(Registries.BLOCK), compoundTag.getCompound(blockStateString)));
     }
 
     public int getFuse() {
@@ -74,28 +70,18 @@ public class GunpowderBlockEntity extends Entity implements TraceableEntity {
     @Override
     public void tick() {
 
-        if (!this.isNoGravity()) {
-            this.setDeltaMovement(this.getDeltaMovement().add(0.0, -0.04, 0.0));
-        }
+        if (!this.isNoGravity()) this.setDeltaMovement(this.getDeltaMovement().add(0.0, -0.04, 0.0));
 
         this.move(MoverType.SELF, this.getDeltaMovement());
         this.setDeltaMovement(this.getDeltaMovement().scale(0.98));
-
-        if (this.onGround()) {
-            this.setDeltaMovement(this.getDeltaMovement().multiply(0.7, -0.5, 0.7));
-        }
+        if (this.onGround()) this.setDeltaMovement(this.getDeltaMovement().multiply(0.7, -0.5, 0.7));
 
         int fuse = this.getFuse() - 1;
         this.setFuse(fuse);
 
         if (fuse <= 0) {
-
             this.discard();
-
-            if (!this.level().isClientSide()) {
-                this.level().explode(this, this.getX(), this.getY(0.0625), this.getZ(), 5.0F, true, Level.ExplosionInteraction.TNT);
-            }
-
+            if (!this.level().isClientSide()) this.level().explode(this, this.getX(), this.getY(0.0625), this.getZ(), 5.0F, true, Level.ExplosionInteraction.TNT);
         } else {
             this.updateInWaterStateAndDoFluidPushing();
         }
@@ -115,7 +101,8 @@ public class GunpowderBlockEntity extends Entity implements TraceableEntity {
         return Entity.MovementEmission.NONE;
     }
 
-    @Nullable @Override
+    @Nullable
+    @Override
     public Entity getOwner() {
         return this.owner;
     }
@@ -127,13 +114,8 @@ public class GunpowderBlockEntity extends Entity implements TraceableEntity {
 
     @Override
     public void restoreFrom(Entity entity) {
-
         super.restoreFrom(entity);
-
-        if (entity instanceof GunpowderBlockEntity gunpowderBlockEntity) {
-            this.owner = gunpowderBlockEntity.owner;
-        }
-
+        if (entity instanceof GunpowderBlockEntity gunpowderBlockEntity) this.owner = gunpowderBlockEntity.owner;
     }
 
     // endregion

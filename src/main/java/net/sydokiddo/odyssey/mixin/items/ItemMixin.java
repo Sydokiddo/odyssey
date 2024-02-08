@@ -49,9 +49,7 @@ public class ItemMixin {
                 tooltip.add(Component.translatable(nutritionString, Objects.requireNonNull(itemStack.getItem().getFoodProperties()).getNutrition()).withStyle(ChatFormatting.BLUE));
                 tooltip.add(Component.translatable(saturationString, ItemHelper.getFoodSaturation(itemStack)).withStyle(ChatFormatting.BLUE));
 
-                if (itemStack.getItem() instanceof SuspiciousStewItem && tooltipFlag.isCreative()) {
-                    tooltip.add(CommonComponents.EMPTY);
-                }
+                if (itemStack.getItem() instanceof SuspiciousStewItem && tooltipFlag.isCreative()) tooltip.add(CommonComponents.EMPTY);
             }
         }
 
@@ -86,16 +84,10 @@ public class ItemMixin {
         }
 
         if (level != null) {
+
             if (itemStack.is(Items.TURTLE_HELMET) && Odyssey.getConfig().items.tooltipConfig.turtle_helmets) {
 
-                int effectTime;
-
-                if (Odyssey.getConfig().items.improved_turtle_helmets) {
-                    effectTime = 600;
-                } else {
-                    effectTime = 200;
-                }
-
+                int effectTime = Odyssey.getConfig().items.improved_turtle_helmets ? 600 : 200;
                 MobEffectInstance waterBreathing = new MobEffectInstance(MobEffects.WATER_BREATHING, effectTime, 0, false, false, true);
 
                 if (!ItemHelper.hasEnchantmentOrTrim(itemStack)) tooltip.add(CommonComponents.EMPTY);

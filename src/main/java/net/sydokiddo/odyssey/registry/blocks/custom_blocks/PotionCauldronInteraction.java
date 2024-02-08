@@ -59,6 +59,7 @@ public interface PotionCauldronInteraction {
                         level.playSound(null, blockPos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
                         level.gameEvent(null, GameEvent.FLUID_PLACE, blockPos);
                     }
+
                     return InteractionResult.sidedSuccess(level.isClientSide());
 
                 } else {
@@ -70,10 +71,11 @@ public interface PotionCauldronInteraction {
                 // Dissipating Particles and Sound
 
                 if (level instanceof ServerLevel serverLevel) {
-                    for (int i = 0; i < 10; ++i) {
+                    for (int particleAmount = 0; particleAmount < 10; ++particleAmount) {
                         serverLevel.sendParticles(ParticleTypes.POOF, (double) blockPos.getX() + 0.5D, (double) blockPos.getY() + 1.0D, (double) blockPos.getZ() + 0.5D, 1, 0.0D, 0.0D, 0.0D, 0.0D);
                     }
                 }
+
                 return CauldronInteraction.fillBucket(blockState, level, blockPos, player, hand, itemStack, new ItemStack(Items.GLASS_BOTTLE), stateIn -> true, ModSoundEvents.CAULDRON_POTION_DISSIPATE);
             }
         });
@@ -100,6 +102,7 @@ public interface PotionCauldronInteraction {
                 level.playSound(null, blockPos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
                 level.gameEvent(null, GameEvent.FLUID_PICKUP, blockPos);
             }
+
             return InteractionResult.sidedSuccess(level.isClientSide());
         });
 
@@ -137,6 +140,7 @@ public interface PotionCauldronInteraction {
                     doCauldronConsumeInteraction(blockState, level, blockPos, player, hand, Items.POTATO.getDefaultInstance(), poisonousPotato);
                     level.playSound(null, blockPos, ModSoundEvents.CAULDRON_POISON_POTATO, SoundSource.BLOCKS, 1.0F, 1.0F);
                 }
+
                 return InteractionResult.sidedSuccess(level.isClientSide());
 
             } else {
@@ -153,17 +157,12 @@ public interface PotionCauldronInteraction {
 
         player.awardStat(Stats.ITEM_USED.get(startingItem.getItem()));
         player.awardStat(Stats.USE_CAULDRON);
-
-        if (player instanceof ServerPlayer serverPlayer) {
-            CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, startingItem);
-        }
+        if (player instanceof ServerPlayer serverPlayer) CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, startingItem);
 
         player.setItemInHand(interactionHand, resultItem);
         PotionCauldronBlock.lowerFillLevel(blockState, level, blockPos);
         level.gameEvent(null, GameEvent.BLOCK_CHANGE, blockPos);
 
-        if (Chrysalis.IS_DEBUG && !level.isClientSide()) {
-            Odyssey.LOGGER.info("{} has been converted into {} in a {}", startingItem.getItem().getName(startingItem).getString(), resultItem.getItem().getName(resultItem).getString(), blockState.getBlock().asItem().getName(blockState.getBlock().asItem().getDefaultInstance()));
-        }
+        if (Chrysalis.IS_DEBUG && !level.isClientSide()) Odyssey.LOGGER.info("{} has been converted into {} in a {}", startingItem.getItem().getName(startingItem).getString(), resultItem.getItem().getName(resultItem).getString(), blockState.getBlock().asItem().getName(blockState.getBlock().asItem().getDefaultInstance()));
     }
 }

@@ -60,6 +60,7 @@ public abstract class PrimedTNTMixin extends Entity {
                 }
             }
         }
+
         return super.hurt(damageSource, damageAmount);
     }
 
@@ -86,6 +87,7 @@ public abstract class PrimedTNTMixin extends Entity {
                 return canDefuse ? InteractionResult.SUCCESS : InteractionResult.PASS;
             }
         }
+
         return super.interact(player, interactionHand);
     }
 }

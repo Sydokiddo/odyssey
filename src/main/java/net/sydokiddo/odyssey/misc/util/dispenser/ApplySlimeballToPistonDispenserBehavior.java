@@ -35,7 +35,7 @@ public class ApplySlimeballToPistonDispenserBehavior implements DispenseItemBeha
             BlockHelper.playDispenserAnimation(blockSource, direction);
 
             if (!serverLevel.isClientSide()) {
-                for (int i = 0; i < 5; ++i) {
+                for (int particleAmount = 0; particleAmount < 5; ++particleAmount) {
                     serverLevel.sendParticles(ParticleTypes.ITEM_SLIME, blockPos.getX() + serverLevel.getRandom().nextDouble(), blockPos.getY() + 1, blockPos.getZ() + serverLevel.getRandom().nextDouble(), 1, 0.0, 0.0, 0.0, 1.0);
                 }
             }
@@ -44,9 +44,7 @@ public class ApplySlimeballToPistonDispenserBehavior implements DispenseItemBeha
             serverLevel.playSound(null, blockPos, ModSoundEvents.PISTON_APPLY_SLIMEBALL, SoundSource.BLOCKS, 1.0F, 1.0F);
             serverLevel.gameEvent(null, GameEvent.BLOCK_CHANGE, blockPos);
 
-            if (Chrysalis.IS_DEBUG) {
-                Odyssey.LOGGER.info("Dispenser has converted a Piston into a Sticky Piston at {}", blockPos);
-            }
+            if (Chrysalis.IS_DEBUG) Odyssey.LOGGER.info("Dispenser has converted a Piston into a Sticky Piston at {}", blockPos);
 
             itemStack.shrink(1);
             return itemStack;

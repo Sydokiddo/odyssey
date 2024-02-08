@@ -63,12 +63,8 @@ public class BlockBehaviourMixin {
                 level.addDestroyBlockEffect(blockPos, blockState);
                 player.awardStat(Stats.ITEM_USED.get(mainHandItem.getItem()));
 
-                if (player instanceof ServerPlayer serverPlayer) {
-                    CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, mainHandItem);
-                }
-                if (!player.getAbilities().instabuild) {
-                    player.getMainHandItem().hurtAndBreak(1, player, (shovel) -> shovel.broadcastBreakEvent(interactionHand));
-                }
+                if (player instanceof ServerPlayer serverPlayer) CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, mainHandItem);
+                if (!player.getAbilities().instabuild) player.getMainHandItem().hurtAndBreak(1, player, (shovel) -> shovel.broadcastBreakEvent(interactionHand));
 
                 cir.setReturnValue(InteractionResult.sidedSuccess(level.isClientSide()));
             }
@@ -91,22 +87,15 @@ public class BlockBehaviourMixin {
             Entity projectileOwner;
 
             if (projectile.getOwner() != null) {
-
                 projectileOwner = projectile.getOwner();
-
-                if (projectileOwner instanceof Player player) {
-                    player.awardStat(Stats.PLAY_NOTEBLOCK);
-                }
-
+                if (projectileOwner instanceof Player player) player.awardStat(Stats.PLAY_NOTEBLOCK);
             } else {
                 projectileOwner = projectile;
             }
 
             noteBlock.playNote(projectileOwner, blockState, level, blockHitResult.getBlockPos());
 
-            if (Chrysalis.IS_DEBUG) {
-                Odyssey.LOGGER.info("{} has been hit by a projectile at {}", blockState.getBlock().getName().getString(), blockHitResult.getBlockPos());
-            }
+            if (Chrysalis.IS_DEBUG) Odyssey.LOGGER.info("{} has been hit by a projectile at {}", blockState.getBlock().getName().getString(), blockHitResult.getBlockPos());
         }
     }
 }

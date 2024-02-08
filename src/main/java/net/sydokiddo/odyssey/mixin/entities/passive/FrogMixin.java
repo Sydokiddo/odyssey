@@ -52,13 +52,9 @@ public abstract class FrogMixin extends Animal implements ContainerMob {
 
     @Override
     public void loadFromItemTag(CompoundTag compoundTag) {
-
         ContainerMob.loadDefaultDataFromItemTag(this, compoundTag);
         FrogVariant frogVariant = BuiltInRegistries.FROG_VARIANT.get(ResourceLocation.tryParse(compoundTag.getString(Frog.VARIANT_KEY)));
-
-        if (frogVariant != null) {
-            this.setVariant(frogVariant);
-        }
+        if (frogVariant != null) this.setVariant(frogVariant);
     }
 
     @Override
@@ -79,6 +75,7 @@ public abstract class FrogMixin extends Animal implements ContainerMob {
         if (this.isAlive() && player.getItemInHand(interactionHand).is(containerItem) && Odyssey.getConfig().entities.passiveMobsConfig.bucketable_frogs) {
             return ContainerMob.containerMobPickup(player, interactionHand, this, containerItem).orElse(super.mobInteract(player, interactionHand));
         }
+
         return super.mobInteract(player, interactionHand);
     }
 

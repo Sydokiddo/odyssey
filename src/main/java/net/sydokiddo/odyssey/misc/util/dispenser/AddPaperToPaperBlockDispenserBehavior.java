@@ -43,9 +43,7 @@ public class AddPaperToPaperBlockDispenserBehavior implements DispenseItemBehavi
             serverLevel.playSound(null, blockPos, ModSoundEvents.PAPER_BLOCK_ADD_PAPER, SoundSource.BLOCKS, 1.0F, 1.0F);
             serverLevel.gameEvent(null, GameEvent.BLOCK_CHANGE, blockPos);
 
-            if (Chrysalis.IS_DEBUG) {
-                Odyssey.LOGGER.info("Dispenser has added Paper to a Paper Block at {}", blockPos);
-            }
+            if (Chrysalis.IS_DEBUG) Odyssey.LOGGER.info("Dispenser has added Paper to a Paper Block at {}", blockPos);
 
             itemStack.shrink(1);
             return itemStack;

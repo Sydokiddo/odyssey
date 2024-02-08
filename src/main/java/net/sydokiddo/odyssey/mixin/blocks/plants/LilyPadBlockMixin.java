@@ -45,12 +45,14 @@ public abstract class LilyPadBlockMixin implements BonemealableBlock {
 
             stopGrowth:
 
-            for (int i = 0; i < 24; ++i) {
+            for (int radius = 0; radius < 24; ++radius) {
 
                 BlockPos growPos = blockPos;
 
-                for (int j = 0; j < i / 16; ++j) {
+                for (int growthOffset = 0; growthOffset < radius / 16; ++growthOffset) {
+
                     growPos = growPos.offset(randomSource.nextInt(3) - 1, 0, randomSource.nextInt(3) - 1);
+
                     if (serverLevel.getBlockState(growPos).isCollisionShapeFullBlock(serverLevel, growPos)) {
                         continue stopGrowth;
                     }

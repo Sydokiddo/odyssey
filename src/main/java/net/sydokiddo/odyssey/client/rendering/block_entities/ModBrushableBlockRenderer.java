@@ -59,7 +59,7 @@ public class ModBrushableBlockRenderer implements BlockEntityRenderer<ModBrushab
     private float[] translations(Direction direction, int dustedLevel) {
 
         float[] offset = new float[]{0.5F, 0.0F, 0.5F};
-        float translation = (float)dustedLevel / 10.0F * 0.75F;
+        float translation = (float) dustedLevel / 10.0F * 0.75F;
 
         switch (direction) {
             case NORTH -> offset[2] = 0.25F - translation;

@@ -46,10 +46,7 @@ public class AbstractCauldronBlockMixin {
 
             if (level instanceof ServerLevel serverLevel) {
 
-                if (player instanceof ServerPlayer serverPlayer) {
-                    CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, player.getItemInHand(interactionHand));
-                }
-
+                if (player instanceof ServerPlayer serverPlayer) CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, player.getItemInHand(interactionHand));
                 serverLevel.sendParticles(ParticleTypes.LARGE_SMOKE, blockPos.getX() + 0.5, blockPos.getY() + 0.6, blockPos.getZ() + 0.5, 8, 0.2, 0.2, 0.2, 0);
 
                 if (!player.getAbilities().instabuild) {
@@ -79,9 +76,7 @@ public class AbstractCauldronBlockMixin {
                     world.setBlockAndUpdate(pos, Blocks.WATER_CAULDRON.defaultBlockState());
                 }
 
-                if (player instanceof ServerPlayer serverPlayer) {
-                    CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, player.getItemInHand(interactionHand));
-                }
+                if (player instanceof ServerPlayer serverPlayer) CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, player.getItemInHand(interactionHand));
 
                 user.setItemInHand(hand, ItemUtils.createFilledResult(stack, user, new ItemStack(Items.GLASS_BOTTLE)));
                 user.awardStat(Stats.USE_CAULDRON);

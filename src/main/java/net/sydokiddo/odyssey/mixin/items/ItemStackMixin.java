@@ -209,6 +209,7 @@ public abstract class ItemStackMixin {
 
     @Inject(method = "getMaxStackSize", at = @At("HEAD"), cancellable = true)
     private void odyssey$changeMaxStackSizes(CallbackInfoReturnable<Integer> cir) {
+
         if (this.getItem() instanceof OwnershipContractItem) {
             if (OwnershipContractItem.isContractBound(itemStack)) {
                 cir.setReturnValue(1);
@@ -216,29 +217,21 @@ public abstract class ItemStackMixin {
                 cir.setReturnValue(64);
             }
         }
-        if (this.getItem() instanceof SignItem || this.getItem() instanceof HangingSignItem) {
-            cir.setReturnValue(Odyssey.getConfig().items.itemStackSizeConfig.sign_stack_size);
-        }
-        if (this.getItem() instanceof MinecartItem) {
-            cir.setReturnValue(Odyssey.getConfig().items.itemStackSizeConfig.minecart_stack_size);
-        }
-        if (this.getItem() instanceof BoatItem) {
-            cir.setReturnValue(Odyssey.getConfig().items.itemStackSizeConfig.boat_stack_size);
-        }
-        if (this.getItem() instanceof BannerItem) {
-            cir.setReturnValue(Odyssey.getConfig().items.itemStackSizeConfig.banner_stack_size);
-        }
-        if (this.getItem() instanceof BannerPatternItem) {
-            cir.setReturnValue(Odyssey.getConfig().items.itemStackSizeConfig.banner_pattern_stack_size);
-        }
-        if (this.getItem() instanceof ArmorStandItem) {
-            cir.setReturnValue(Odyssey.getConfig().items.itemStackSizeConfig.armor_stand_stack_size);
-        }
-        if (this.getItem() instanceof SnowballItem) {
-            cir.setReturnValue(Odyssey.getConfig().items.itemStackSizeConfig.snowball_stack_size);
-        }
-        if (this.getItem() instanceof EggItem) {
-            cir.setReturnValue(Odyssey.getConfig().items.itemStackSizeConfig.egg_stack_size);
-        }
+
+        if (this.getItem() instanceof SignItem || this.getItem() instanceof HangingSignItem) cir.setReturnValue(Odyssey.getConfig().items.itemStackSizeConfig.sign_stack_size);
+
+        if (this.getItem() instanceof MinecartItem) cir.setReturnValue(Odyssey.getConfig().items.itemStackSizeConfig.minecart_stack_size);
+
+        if (this.getItem() instanceof BoatItem) cir.setReturnValue(Odyssey.getConfig().items.itemStackSizeConfig.boat_stack_size);
+
+        if (this.getItem() instanceof BannerItem) cir.setReturnValue(Odyssey.getConfig().items.itemStackSizeConfig.banner_stack_size);
+
+        if (this.getItem() instanceof BannerPatternItem) cir.setReturnValue(Odyssey.getConfig().items.itemStackSizeConfig.banner_pattern_stack_size);
+
+        if (this.getItem() instanceof ArmorStandItem) cir.setReturnValue(Odyssey.getConfig().items.itemStackSizeConfig.armor_stand_stack_size);
+
+        if (this.getItem() instanceof SnowballItem) cir.setReturnValue(Odyssey.getConfig().items.itemStackSizeConfig.snowball_stack_size);
+
+        if (this.getItem() instanceof EggItem) cir.setReturnValue(Odyssey.getConfig().items.itemStackSizeConfig.egg_stack_size);
     }
 }

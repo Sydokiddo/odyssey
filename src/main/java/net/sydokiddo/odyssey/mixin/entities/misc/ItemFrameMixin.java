@@ -94,10 +94,7 @@ public abstract class ItemFrameMixin extends HangingEntity {
                 this.level().levelEvent(player, 3003, this.pos, 0);
                 this.doItemFrameInteractionEvents(player, itemInHand);
 
-                if (!player.getAbilities().instabuild) {
-                    itemInHand.shrink(1);
-                }
-
+                if (!player.getAbilities().instabuild) itemInHand.shrink(1);
                 OCommonMethods.sendWaxingDebugMessage(level(), this.getName().getString(), player, blockPosition());
                 cir.setReturnValue(InteractionResult.sidedSuccess(player.level().isClientSide()));
             }
@@ -113,14 +110,8 @@ public abstract class ItemFrameMixin extends HangingEntity {
                 this.displayPoofParticles();
                 this.doItemFrameInteractionEvents(player, itemInHand);
 
-                if (!player.getAbilities().instabuild) {
-                    itemInHand.hurtAndBreak(1, player, (shears) -> shears.broadcastBreakEvent(interactionHand));
-                }
-
-                if (Chrysalis.IS_DEBUG && !level().isClientSide()) {
-                    Odyssey.LOGGER.info("Setting {} as invisible as it has been sheared by {}", this.getName().getString(), player.getName().getString());
-                }
-
+                if (!player.getAbilities().instabuild) itemInHand.hurtAndBreak(1, player, (shears) -> shears.broadcastBreakEvent(interactionHand));
+                if (Chrysalis.IS_DEBUG && !level().isClientSide()) Odyssey.LOGGER.info("Setting {} as invisible as it has been sheared by {}", this.getName().getString(), player.getName().getString());
                 cir.setReturnValue(InteractionResult.sidedSuccess(player.level().isClientSide()));
             }
 
@@ -134,13 +125,9 @@ public abstract class ItemFrameMixin extends HangingEntity {
         // Makes the item frame visible again if it is invisible without an item in it
 
         if (this.isInvisible()) {
-
             this.setInvisible(false);
             this.displayPoofParticles();
-
-            if (Chrysalis.IS_DEBUG && !level().isClientSide()) {
-                Odyssey.LOGGER.info("Setting {} as visible again as its item has been removed", this.getName().getString());
-            }
+            if (Chrysalis.IS_DEBUG && !level().isClientSide()) Odyssey.LOGGER.info("Setting {} as visible again as its item has been removed", this.getName().getString());
         }
     }
 
@@ -150,11 +137,7 @@ public abstract class ItemFrameMixin extends HangingEntity {
         // Prevents the item inside the Item Frame from being rotated if the Item Frame is waxed
 
         if (this.isWaxed()) {
-
-            if (Chrysalis.IS_DEBUG && !level().isClientSide()) {
-                Odyssey.LOGGER.info("{} is waxed, preventing items inside of it from being rotated", this.getName().getString());
-            }
-
+            if (Chrysalis.IS_DEBUG && !level().isClientSide()) Odyssey.LOGGER.info("{} is waxed, preventing items inside of it from being rotated", this.getName().getString());
             cir.cancel();
             cir.setReturnValue(InteractionResult.PASS);
         }
@@ -166,8 +149,8 @@ public abstract class ItemFrameMixin extends HangingEntity {
 
     @Unique
     private void displayPoofParticles() {
-        if (level() instanceof ServerLevel serverLevel) {
-            for (int i = 0; i < 5; ++i) {
+        if (this.level() instanceof ServerLevel serverLevel) {
+            for (int particleAmount = 0; particleAmount < 5; ++particleAmount) {
                 double x = (double) this.pos.getX() + 0.5D;
                 double y = (double) this.pos.getY() + 0.5D;
                 double z = (double) this.pos.getZ() + 0.5D;
@@ -182,11 +165,7 @@ public abstract class ItemFrameMixin extends HangingEntity {
         SoundEvent interactionSound;
 
         if (this.isWaxed()) {
-            if (this.getType() == EntityType.GLOW_ITEM_FRAME) {
-                interactionSound = ModSoundEvents.WAXED_GLOW_ITEM_FRAME_INTERACT_FAIL;
-            } else {
-                interactionSound = ModSoundEvents.WAXED_ITEM_FRAME_INTERACT_FAIL;
-            }
+            interactionSound = this.getType() == EntityType.GLOW_ITEM_FRAME ? ModSoundEvents.WAXED_GLOW_ITEM_FRAME_INTERACT_FAIL : ModSoundEvents.WAXED_ITEM_FRAME_INTERACT_FAIL;
         } else {
             interactionSound = this.getRotateItemSound();
         }

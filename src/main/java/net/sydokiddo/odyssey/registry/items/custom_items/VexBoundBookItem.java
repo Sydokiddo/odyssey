@@ -44,10 +44,7 @@ public class VexBoundBookItem extends MobInContainerItem {
 
             vex.setPersistenceRequired();
             vex.setBoundOrigin(blockPos);
-
-            if (!compoundTag.contains("LifeTicks")) {
-                vex.setLimitedLife(20 * (30 + serverLevel.random.nextInt(90)));
-            }
+            if (!compoundTag.contains("LifeTicks")) vex.setLimitedLife(20 * (30 + serverLevel.random.nextInt(90)));
 
             containerMob.loadFromItemTag(compoundTag);
             containerMob.setFromItem(true);

@@ -38,6 +38,8 @@ public class ModBlocks {
 
     // Blocks
 
+    // region Uncategorized
+
     public static final Block GUNPOWDER_BLOCK = registerBlock("gunpowder_block",
         new GunpowderBlock(FabricBlockSettings.create().mapColor(MapColor.COLOR_GRAY)
         .sound(SoundType.SAND).instrument(NoteBlockInstrument.SNARE).strength(0.5F).ignitedByLava()));
@@ -73,6 +75,8 @@ public class ModBlocks {
 
     public static final Block TINTED_GLASS_PANE = registerBlock("tinted_glass_pane",
         new TintedGlassPaneBlock(FabricBlockSettings.copyOf(Blocks.GLASS_PANE).mapColor(MapColor.COLOR_GRAY)));
+
+    // endregion
 
     // region Potion Cauldron
 

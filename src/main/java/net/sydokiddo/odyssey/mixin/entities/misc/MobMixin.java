@@ -44,16 +44,11 @@ public abstract class MobMixin extends LivingEntity {
             this.gameEvent(GameEvent.ENTITY_INTERACT, player);
 
             if (this.level() instanceof ServerLevel serverLevel) {
-
-                if (player instanceof ServerPlayer serverPlayer) {
-                    CriteriaTriggers.PLAYER_INTERACTED_WITH_ENTITY.trigger(serverPlayer, player.getItemInHand(interactionHand), this);
-                }
-
+                if (player instanceof ServerPlayer serverPlayer) CriteriaTriggers.PLAYER_INTERACTED_WITH_ENTITY.trigger(serverPlayer, player.getItemInHand(interactionHand), this);
                 serverLevel.sendParticles(ParticleTypes.HEART, this.getX(), this.getEyeY() + 0.5, this.getZ(), 1, 0.0D, 0.0D, 0.0D, 0.0D);
             }
 
             player.awardStat(Stats.ITEM_USED.get(player.getItemInHand(interactionHand).getItem()));
-
             cir.setReturnValue(InteractionResult.sidedSuccess(this.level().isClientSide()));
         }
     }

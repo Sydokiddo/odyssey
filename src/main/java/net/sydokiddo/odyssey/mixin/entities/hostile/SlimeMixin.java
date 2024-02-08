@@ -154,11 +154,7 @@ public abstract class SlimeMixin extends Mob {
         MagmaCube magmaCube = EntityType.MAGMA_CUBE.create(this.level());
 
         if (magmaCube != null) {
-
-            if (!this.isSilent()) {
-                this.playSound(ModSoundEvents.SLIME_CONVERTED_TO_MAGMA_CUBE);
-            }
-
+            if (!this.isSilent()) this.playSound(ModSoundEvents.SLIME_CONVERTED_TO_MAGMA_CUBE);
             magmaCube.setSize(this.getSize(), true);
             doEntityConversionEvents(magmaCube);
             this.discard();
@@ -171,11 +167,7 @@ public abstract class SlimeMixin extends Mob {
         Slime slime = EntityType.SLIME.create(this.level());
 
         if (slime != null) {
-
-            if (!this.isSilent()) {
-                this.playSound(ModSoundEvents.MAGMA_CUBE_CONVERTED_TO_SLIME);
-            }
-
+            if (!this.isSilent()) this.playSound(ModSoundEvents.MAGMA_CUBE_CONVERTED_TO_SLIME);
             slime.setSize(this.getSize(), true);
             doEntityConversionEvents(slime);
             this.discard();

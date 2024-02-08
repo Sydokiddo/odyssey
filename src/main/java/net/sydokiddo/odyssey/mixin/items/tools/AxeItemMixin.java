@@ -25,7 +25,7 @@ public class AxeItemMixin {
         Level level = useOnContext.getLevel();
         Optional<BlockState> weatheringCopper = WeatheringCopper.getPrevious(level.getBlockState(useOnContext.getClickedPos()));
 
-        if (level.getRandom().nextFloat() < Odyssey.getConfig().items.patina_drop_chance && weatheringCopper.isPresent()) {
+        if (weatheringCopper.isPresent() && level.getRandom().nextFloat() < Odyssey.getConfig().items.patina_drop_chance) {
             Block.popResourceFromFace(level, useOnContext.getClickedPos(), useOnContext.getClickedFace(), new ItemStack(ModItems.PATINA));
         }
     }

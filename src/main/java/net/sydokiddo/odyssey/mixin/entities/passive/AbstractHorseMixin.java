@@ -40,16 +40,8 @@ public abstract class AbstractHorseMixin extends Animal {
         BlockState aboveAboveState = this.level().getBlockState(blockPos.above().above());
         TagKey<Block> leavesTag = BlockTags.LEAVES;
 
-        if ((aboveState.is(leavesTag) || aboveAboveState.is(leavesTag)) && Odyssey.getConfig().entities.passiveMobsConfig.improved_horses) {
-
-            SoundType soundType;
-
-            if (aboveState.is(leavesTag)) {
-                soundType = aboveState.getSoundType();
-            } else {
-                soundType = aboveAboveState.getSoundType();
-            }
-
+        if (Odyssey.getConfig().entities.passiveMobsConfig.improved_horses && (aboveState.is(leavesTag) || aboveAboveState.is(leavesTag))) {
+            SoundType soundType = aboveState.is(leavesTag) ? aboveState.getSoundType() : aboveAboveState.getSoundType();
             this.playSound(soundType.getStepSound(), soundType.getVolume() * 0.15F, soundType.getPitch());
         }
     }

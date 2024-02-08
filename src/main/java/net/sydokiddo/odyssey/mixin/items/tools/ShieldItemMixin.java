@@ -27,15 +27,13 @@ public class ShieldItemMixin {
         CompoundTag blockEntityData = BlockItem.getBlockEntityData(itemStack);
         String patternsString = "Patterns";
 
-        if (blockEntityData == null || !blockEntityData.contains(patternsString)) {
-            return;
-        }
+        if (blockEntityData == null || !blockEntityData.contains(patternsString)) return;
 
         ListTag listTag = blockEntityData.getList(patternsString, 10);
 
-        for (int i = 0; i < listTag.size() && i < 6; ++i) {
+        for (int bannerText = 0; bannerText < listTag.size() && bannerText < 6; ++bannerText) {
 
-            CompoundTag compoundTag = listTag.getCompound(i);
+            CompoundTag compoundTag = listTag.getCompound(bannerText);
 
             DyeColor dyeColor = DyeColor.byId(compoundTag.getInt("Color"));
             Holder<BannerPattern> holder = BannerPattern.byHash(compoundTag.getString("Pattern"));

@@ -65,10 +65,7 @@ public class ChiseledBookshelfBlockMixin {
             }
 
             level.playSound(null, blockPos, soundEvent, SoundSource.BLOCKS, 1.0F, 1.0F);
-
-            if (!player.getInventory().add(itemStack)) {
-                player.drop(itemStack, false);
-            }
+            if (!player.getInventory().add(itemStack)) player.drop(itemStack, false);
         }
     }
 }

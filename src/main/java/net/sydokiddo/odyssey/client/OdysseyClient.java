@@ -101,10 +101,7 @@ public class OdysseyClient implements ClientModInitializer {
                 float axolotlType = 0;
                 String variantString = "Variant";
 
-                if (compoundTag != null && compoundTag.contains(variantString)) {
-                    axolotlType = compoundTag.getInt(variantString);
-                }
-
+                if (compoundTag != null && compoundTag.contains(variantString)) axolotlType = compoundTag.getInt(variantString);
                 return axolotlType * 0.01F + 0.0001F;
             });
 

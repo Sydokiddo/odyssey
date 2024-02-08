@@ -167,14 +167,8 @@ public class PaperBlock extends Block {
                 soundEvent = ModSoundEvents.PAPER_BLOCK_ADD_PAPER;
 
                 player.awardStat(Stats.ITEM_USED.get(itemInHand.getItem()));
-
-                if (player instanceof ServerPlayer serverPlayer) {
-                    CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, itemInHand);
-                }
-
-                if (!player.getAbilities().instabuild) {
-                    itemInHand.shrink(1);
-                }
+                if (player instanceof ServerPlayer serverPlayer) CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, itemInHand);
+                if (!player.getAbilities().instabuild) itemInHand.shrink(1);
             }
 
             // endregion

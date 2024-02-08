@@ -25,7 +25,7 @@ public class GuardianMixin extends Monster {
 
         ElderGuardian elderGuardian = EntityType.ELDER_GUARDIAN.create(serverLevel);
 
-        if (elderGuardian != null && Odyssey.getConfig().entities.hostileMobsConfig.renewable_elder_guardians && this.getType() != EntityType.ELDER_GUARDIAN) {
+        if (elderGuardian != null && this.getType() != EntityType.ELDER_GUARDIAN && Odyssey.getConfig().entities.hostileMobsConfig.renewable_elder_guardians) {
 
             elderGuardian.moveTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), this.getXRot());
             elderGuardian.setNoAi(this.isNoAi());

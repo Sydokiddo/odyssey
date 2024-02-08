@@ -52,9 +52,7 @@ public class RedstoneLanternBlock extends LanternBlock {
 
     @Override
     public void onRemove(BlockState blockState, Level level, BlockPos blockPos, BlockState adjacentBlockState, boolean moved) {
-        if (!moved) {
-            this.updateRedstoneLanternNeighbors(level, blockPos);
-        }
+        if (!moved) this.updateRedstoneLanternNeighbors(level, blockPos);
     }
 
     @Override
@@ -108,17 +106,8 @@ public class RedstoneLanternBlock extends LanternBlock {
         this.updateRedstoneLanternNeighbors(level, blockPos);
 
         if (level instanceof ServerLevel serverLevel) {
-
             for (int particleAmount = 0; particleAmount < 10; ++particleAmount) {
-
-                SimpleParticleType particleType;
-
-                if (serverLevel.getBlockState(blockPos).getValue(WATERLOGGED)) {
-                    particleType = ParticleTypes.BUBBLE;
-                } else {
-                    particleType = ParticleTypes.SMOKE;
-                }
-
+                SimpleParticleType particleType = serverLevel.getBlockState(blockPos).getValue(WATERLOGGED) ? ParticleTypes.BUBBLE : ParticleTypes.SMOKE;
                 serverLevel.sendParticles(particleType, (double) blockPos.getX() + 0.5D, (double) blockPos.getY() + 0.7D, (double) blockPos.getZ() + 0.5D, 1, 0.0D, 0.0D, 0.0D, 0.0D);
             }
         }

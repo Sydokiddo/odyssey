@@ -37,6 +37,7 @@ public class EnvironmentDetectorItem extends Item {
                 ServerPlayNetworking.send(serverPlayer, OdysseyRegistry.ENVIRONMENT_DETECTOR_PACKET_ID, packet);
             }
         }
+
         return InteractionResultHolder.sidedSuccess(player.getItemInHand(interactionHand), level.isClientSide());
     }
 }

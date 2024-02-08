@@ -43,13 +43,9 @@ public class ScrapeBlockDispenserBehavior implements DispenseItemBehavior {
         BlockHelper.playDispenserSound(blockSource);
         BlockHelper.playDispenserAnimation(blockSource, blockSource.state().getValue(DispenserBlock.FACING));
 
-        if (itemStack.hurt(1, serverLevel.getRandom(), null)) {
-            itemStack.setCount(0);
-        }
+        if (itemStack.hurt(1, serverLevel.getRandom(), null)) itemStack.setCount(0);
 
-        if (Chrysalis.IS_DEBUG) {
-            Odyssey.LOGGER.info("Dispenser has stripped/scraped a block at {}", blockPos);
-        }
+        if (Chrysalis.IS_DEBUG) Odyssey.LOGGER.info("Dispenser has stripped/scraped a block at {}", blockPos);
     }
 
     @Override
@@ -100,7 +96,7 @@ public class ScrapeBlockDispenserBehavior implements DispenseItemBehavior {
             Direction pistonDirection = blockState.getValue(PistonBaseBlock.FACING);
 
             if (!serverLevel.isClientSide()) {
-                for (int i = 0; i < 5; ++i) {
+                for (int particleAmount = 0; particleAmount < 5; ++particleAmount) {
                     serverLevel.sendParticles(ParticleTypes.ITEM_SLIME, blockPos.getX() + serverLevel.getRandom().nextDouble(), blockPos.getY() + 1, blockPos.getZ() + serverLevel.getRandom().nextDouble(), 1, 0.0, 0.0, 0.0, 1.0);
                 }
             }

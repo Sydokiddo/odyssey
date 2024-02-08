@@ -33,9 +33,7 @@ public class ShearsDispenseItemBehaviorMixin extends OptionalDispenseItemBehavio
 
         if (!level.isClientSide()) {
             this.setSuccess(tryShearingPrimedTNT(level, blockPos));
-            if (this.isSuccess() && itemStack.hurt(1, level.getRandom(), null)) {
-                itemStack.setCount(0);
-            }
+            if (this.isSuccess() && itemStack.hurt(1, level.getRandom(), null)) itemStack.setCount(0);
         }
     }
 

@@ -17,8 +17,6 @@ public class FireBlockMixin {
 
     @Inject(method = "checkBurnOut", at = @At("HEAD"))
     private void odyssey$explodeGunpowderBlockWhenOnFire(Level level, BlockPos blockPos, int i, RandomSource randomSource, int j, CallbackInfo info) {
-        if (level.getBlockState(blockPos).getBlock() instanceof GunpowderBlock) {
-            GunpowderBlock.explode(level, blockPos);
-        }
+        if (level.getBlockState(blockPos).getBlock() instanceof GunpowderBlock) GunpowderBlock.explode(level, blockPos);
     }
 }

@@ -33,8 +33,6 @@ public abstract class EntityMixin implements EntityAccess {
 
     @Inject(at = @At("RETURN"), method = "isInWaterOrRain", cancellable = true)
     private void odyssey$allowRiptideInWaterCauldrons(CallbackInfoReturnable<Boolean> cir) {
-        if (isEntityInsideCauldron(this.getFeetBlockState(), this.getOnPos()) && Odyssey.getConfig().items.improved_riptide) {
-            cir.setReturnValue(true);
-        }
+        if (isEntityInsideCauldron(this.getFeetBlockState(), this.getOnPos()) && Odyssey.getConfig().items.improved_riptide) cir.setReturnValue(true);
     }
 }

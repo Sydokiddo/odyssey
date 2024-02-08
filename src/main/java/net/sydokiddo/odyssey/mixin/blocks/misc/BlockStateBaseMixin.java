@@ -19,17 +19,9 @@ public abstract class BlockStateBaseMixin {
 
     @Inject(at = @At("HEAD"), method = "instrument", cancellable = true)
     private void odyssey$setNoteBlockInstruments(CallbackInfoReturnable<NoteBlockInstrument> cir) {
-        if (this.is(ModTags.TRUMPET_NOTE_BLOCK_INSTRUMENT)) {
-            cir.setReturnValue(ModNoteBlockInstruments.TRUMPET);
-        }
-        if (this.is(ModTags.BONGO_NOTE_BLOCK_INSTRUMENT)) {
-            cir.setReturnValue(ModNoteBlockInstruments.BONGO);
-        }
-        if (this.is(ModTags.VIOLIN_NOTE_BLOCK_INSTRUMENT)) {
-            cir.setReturnValue(ModNoteBlockInstruments.VIOLIN);
-        }
-        if (this.is(ModTags.ELECTRIC_GUITAR_NOTE_BLOCK_INSTRUMENT)) {
-            cir.setReturnValue(ModNoteBlockInstruments.ELECTRIC_GUITAR);
-        }
+        if (this.is(ModTags.TRUMPET_NOTE_BLOCK_INSTRUMENT)) cir.setReturnValue(ModNoteBlockInstruments.TRUMPET);
+        if (this.is(ModTags.BONGO_NOTE_BLOCK_INSTRUMENT)) cir.setReturnValue(ModNoteBlockInstruments.BONGO);
+        if (this.is(ModTags.VIOLIN_NOTE_BLOCK_INSTRUMENT)) cir.setReturnValue(ModNoteBlockInstruments.VIOLIN);
+        if (this.is(ModTags.ELECTRIC_GUITAR_NOTE_BLOCK_INSTRUMENT)) cir.setReturnValue(ModNoteBlockInstruments.ELECTRIC_GUITAR);
     }
 }

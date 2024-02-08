@@ -19,6 +19,7 @@ import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 
+@SuppressWarnings("deprecation")
 @Mixin(Squid.class)
 public class SquidMixin extends WaterAnimal implements Bucketable {
 
@@ -58,13 +59,11 @@ public class SquidMixin extends WaterAnimal implements Bucketable {
         this.entityData.set(OdysseyRegistry.FROM_BUCKET, fromBucket);
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     public void saveToBucketTag(ItemStack itemStack) {
         Bucketable.saveDefaultDataToBucketTag(this, itemStack);
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     public void loadFromBucketTag(CompoundTag compoundTag) {
         Bucketable.loadDefaultDataFromBucketTag(this, compoundTag);
@@ -94,9 +93,11 @@ public class SquidMixin extends WaterAnimal implements Bucketable {
 
     @Override
     public @NotNull InteractionResult mobInteract(Player player, @NotNull InteractionHand interactionHand) {
+
         if (this.isAlive() && Odyssey.getConfig().entities.passiveMobsConfig.bucketable_squids) {
             return Bucketable.bucketMobPickup(player, interactionHand, this).orElse(super.mobInteract(player, interactionHand));
         }
+
         return super.mobInteract(player, interactionHand);
     }
 

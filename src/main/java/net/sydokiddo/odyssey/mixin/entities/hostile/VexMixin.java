@@ -53,11 +53,7 @@ public abstract class VexMixin extends Monster implements TraceableEntity, Conta
         Entity owner = this.getOwner();
 
         if (!this.level().isClientSide() && Odyssey.getConfig().entities.hostileMobsConfig.vexes_die_with_evokers && owner instanceof Evoker && !owner.isAlive() && !this.fromItem()) {
-
-            if (Chrysalis.IS_DEBUG) {
-                Odyssey.LOGGER.info("{} has been killed as its owner {} is no longer alive", this.getName().getString(), owner.getName().getString());
-            }
-
+            if (Chrysalis.IS_DEBUG) Odyssey.LOGGER.info("{} has been killed as its owner {} is no longer alive", this.getName().getString(), owner.getName().getString());
             this.kill();
         }
     }
@@ -86,17 +82,13 @@ public abstract class VexMixin extends Monster implements TraceableEntity, Conta
 
     @Override
     public void saveToItemTag(ItemStack itemStack) {
-        if (this.hasLimitedLife) {
-            itemStack.getOrCreateTag().putInt(LIFE_TICKS_TAG, this.limitedLifeTicks);
-        }
+        if (this.hasLimitedLife) itemStack.getOrCreateTag().putInt(LIFE_TICKS_TAG, this.limitedLifeTicks);
         ContainerMob.saveDefaultDataToItemTag(this, itemStack);
     }
 
     @Override
     public void loadFromItemTag(CompoundTag compoundTag) {
-        if (compoundTag.contains(LIFE_TICKS_TAG)) {
-            this.setLimitedLife(compoundTag.getInt(LIFE_TICKS_TAG));
-        }
+        if (compoundTag.contains(LIFE_TICKS_TAG)) this.setLimitedLife(compoundTag.getInt(LIFE_TICKS_TAG));
         ContainerMob.loadDefaultDataFromItemTag(this, compoundTag);
     }
 
@@ -121,6 +113,7 @@ public abstract class VexMixin extends Monster implements TraceableEntity, Conta
             this.setOwner(null);
             return ContainerMob.containerMobPickup(player, interactionHand, this, containerItem).orElse(super.mobInteract(player, interactionHand));
         }
+
         return super.mobInteract(player, interactionHand);
     }
 }
