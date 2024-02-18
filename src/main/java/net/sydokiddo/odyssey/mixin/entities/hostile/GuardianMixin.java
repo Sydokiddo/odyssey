@@ -7,8 +7,8 @@ import net.minecraft.world.entity.monster.ElderGuardian;
 import net.minecraft.world.entity.monster.Guardian;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.Level;
+import net.sydokiddo.chrysalis.misc.util.helpers.DebugHelper;
 import net.sydokiddo.odyssey.Odyssey;
-import net.sydokiddo.odyssey.registry.misc.OCommonMethods;
 import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(Guardian.class)
@@ -22,24 +22,10 @@ public class GuardianMixin extends Monster {
 
     @Override
     public void thunderHit(ServerLevel serverLevel, LightningBolt lightningBolt) {
-
-        ElderGuardian elderGuardian = EntityType.ELDER_GUARDIAN.create(serverLevel);
-
-        if (elderGuardian != null && this.getType() != EntityType.ELDER_GUARDIAN && Odyssey.getConfig().entities.hostileMobsConfig.renewable_elder_guardians) {
-
-            elderGuardian.moveTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), this.getXRot());
-            elderGuardian.setNoAi(this.isNoAi());
-
-            if (this.hasCustomName()) {
-                elderGuardian.setCustomName(this.getCustomName());
-                elderGuardian.setCustomNameVisible(this.isCustomNameVisible());
-            }
-
-            elderGuardian.setPersistenceRequired();
-            serverLevel.addFreshEntity(elderGuardian);
-            OCommonMethods.sendMobConversionDebugMessage(this, elderGuardian);
-            this.discard();
-
+        if (this.getType() != EntityType.ELDER_GUARDIAN && Odyssey.getConfig().entities.hostileMobsConfig.renewable_elder_guardians) {
+            ElderGuardian elderGuardian = EntityType.ELDER_GUARDIAN.create(serverLevel);
+            DebugHelper.sendEntityConversionDebugMessage(this, elderGuardian);
+            this.convertTo(EntityType.ELDER_GUARDIAN, true);
         } else {
             super.thunderHit(serverLevel, lightningBolt);
         }
