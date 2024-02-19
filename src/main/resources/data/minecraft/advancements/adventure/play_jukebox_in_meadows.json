@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:adventure/play_jukebox",
+  "parent": "odyssey:adventure/play_jukebox",
   "criteria": {
     "play_jukebox_in_meadows": {
       "conditions": {
@@ -27,19 +27,19 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
+    "title": {
+      "translate": "advancements.adventure.play_jukebox_in_meadows.title"
+    },
     "description": {
       "translate": "advancements.adventure.play_jukebox_in_meadows.description"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "minecraft:jukebox"
     },
+    "frame": "task",
+    "hidden": false,
     "show_toast": true,
-    "title": {
-      "translate": "advancements.adventure.play_jukebox_in_meadows.title"
-    }
+    "announce_to_chat": true
   },
   "requirements": [
     [

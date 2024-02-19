@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:adventure/root",
   "criteria": {
-    "blowing_horn": {
+    "play_goat_horn": {
       "conditions": {
         "item": {
           "items": [
@@ -13,23 +13,24 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
-    "description": {
-      "translate": "advancements.adventure.use_goat_horn.description"
+    "title": {
+      "translate": "advancements.odyssey.play_goat_horn.title"
     },
-    "frame": "task",
-    "hidden": false,
+    "description": {
+      "translate": "advancements.odyssey.play_goat_horn.description"
+    },
     "icon": {
       "item": "minecraft:goat_horn"
     },
+    "frame": "task",
+    "hidden": false,
     "show_toast": true,
-    "title": {
-      "translate": "advancements.adventure.use_goat_horn.title"
-    }
+    "announce_to_chat": true
   },
   "requirements": [
     [
-      "blowing_horn"
+      "play_goat_horn"
     ]
-  ]
+  ],
+  "sends_telemetry_event": false
 }

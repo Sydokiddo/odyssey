@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:adventure/root",
   "criteria": {
-    "in_mansion": {
+    "in_ancient_city": {
       "conditions": {
         "player": [
           {
@@ -9,7 +9,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "minecraft:mansion"
+                "structure": "minecraft:ancient_city"
               }
             }
           }
@@ -19,23 +19,24 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
+    "title": {
+      "translate": "advancements.odyssey.find_ancient_city.title"
+    },
     "description": {
-      "translate": "advancements.adventure.find_mansion.description"
+      "translate": "advancements.odyssey.find_ancient_city.description"
+    },
+    "icon": {
+      "item": "minecraft:sculk"
     },
     "frame": "task",
     "hidden": false,
-    "icon": {
-      "item": "minecraft:dark_oak_planks"
-    },
     "show_toast": true,
-    "title": {
-      "translate": "advancements.adventure.find_mansion.title"
-    }
+    "announce_to_chat": true
   },
   "requirements": [
     [
-      "in_mansion"
+      "in_ancient_city"
     ]
-  ]
+  ],
+  "sends_telemetry_event": false
 }

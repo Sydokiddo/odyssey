@@ -13,23 +13,24 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
-    "description": {
-      "translate": "advancements.adventure.vex_in_a_book.description"
+    "title": {
+      "translate": "advancements.odyssey.vex_in_a_book.title"
     },
-    "frame": "task",
-    "hidden": false,
+    "description": {
+      "translate": "advancements.odyssey.vex_in_a_book.description"
+    },
     "icon": {
       "item": "odyssey:vex_bound_book"
     },
+    "frame": "task",
+    "hidden": false,
     "show_toast": true,
-    "title": {
-      "translate": "advancements.adventure.vex_in_a_book.title"
-    }
+    "announce_to_chat": true
   },
   "requirements": [
     [
       "vex_bound_book"
     ]
-  ]
+  ],
+  "sends_telemetry_event": false
 }

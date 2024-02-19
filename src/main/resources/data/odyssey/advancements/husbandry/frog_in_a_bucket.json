@@ -13,23 +13,24 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
-    "description": {
-      "translate": "advancements.husbandry.frog_in_a_bucket.description"
+    "title": {
+      "translate": "advancements.odyssey.frog_in_a_bucket.title"
     },
-    "frame": "task",
-    "hidden": false,
+    "description": {
+      "translate": "advancements.odyssey.frog_in_a_bucket.description"
+    },
     "icon": {
       "item": "odyssey:frog_bucket"
     },
+    "frame": "task",
+    "hidden": false,
     "show_toast": true,
-    "title": {
-      "translate": "advancements.husbandry.frog_in_a_bucket.title"
-    }
+    "announce_to_chat": true
   },
   "requirements": [
     [
       "frog_bucket"
     ]
-  ]
+  ],
+  "sends_telemetry_event": false
 }

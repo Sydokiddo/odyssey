@@ -26,23 +26,24 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
-    "description": {
-      "translate": "advancements.husbandry.play_jukebox.description"
+    "title": {
+      "translate": "advancements.odyssey.play_jukebox.title"
     },
-    "frame": "task",
-    "hidden": false,
+    "description": {
+      "translate": "advancements.odyssey.play_jukebox.description"
+    },
     "icon": {
       "item": "minecraft:music_disc_cat"
     },
+    "frame": "task",
+    "hidden": false,
     "show_toast": true,
-    "title": {
-      "translate": "advancements.husbandry.play_jukebox.title"
-    }
+    "announce_to_chat": true
   },
   "requirements": [
     [
       "play_jukebox"
     ]
-  ]
+  ],
+  "sends_telemetry_event": false
 }

@@ -1,7 +1,7 @@
 {
-  "parent": "minecraft:adventure/find_ocean_monument",
+  "parent": "odyssey:adventure/find_ocean_monument",
   "criteria": {
-    "shot_trident": {
+    "threw_trident": {
       "conditions": {
         "damage": {
           "type": {
@@ -21,24 +21,24 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
+    "title": {
+      "translate": "advancements.adventure.throw_trident.title"
+    },
     "description": {
       "translate": "advancements.adventure.throw_trident.description"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "minecraft:trident",
       "nbt": "{Damage:0}"
     },
+    "frame": "task",
+    "hidden": false,
     "show_toast": true,
-    "title": {
-      "translate": "advancements.adventure.throw_trident.title"
-    }
+    "announce_to_chat": true
   },
   "requirements": [
     [
-      "shot_trident"
+      "threw_trident"
     ]
   ],
   "sends_telemetry_event": true

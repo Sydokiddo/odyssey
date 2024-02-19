@@ -6,23 +6,24 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
-    "description": {
-      "translate": "advancements.husbandry.duplicate_allay.description"
+    "title": {
+      "translate": "advancements.odyssey.duplicate_allay.title"
     },
-    "frame": "task",
-    "hidden": false,
+    "description": {
+      "translate": "advancements.odyssey.duplicate_allay.description"
+    },
     "icon": {
       "item": "minecraft:amethyst_shard"
     },
+    "frame": "task",
+    "hidden": false,
     "show_toast": true,
-    "title": {
-      "translate": "advancements.husbandry.duplicate_allay.title"
-    }
+    "announce_to_chat": true
   },
   "requirements": [
     [
       "duplicate_allay"
     ]
-  ]
+  ],
+  "sends_telemetry_event": false
 }

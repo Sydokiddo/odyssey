@@ -1,17 +1,14 @@
 {
-  "parent": "minecraft:nether/brew_potion",
+  "parent": "minecraft:husbandry/wax_on",
   "criteria": {
-    "tip_arrows": {
+    "use_patina": {
       "conditions": {
         "location": [
           {
             "condition": "minecraft:location_check",
             "predicate": {
               "block": {
-                "blocks": [
-                  "minecraft:cauldron",
-                  "odyssey:potion_cauldron"
-                ]
+                "tag": "chrysalis:copper_blocks"
               }
             }
           },
@@ -19,7 +16,7 @@
             "condition": "minecraft:match_tool",
             "predicate": {
               "items": [
-                "minecraft:arrow"
+                "odyssey:patina"
               ]
             }
           }
@@ -29,23 +26,24 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
+    "title": {
+      "translate": "advancements.odyssey.use_patina.title"
+    },
     "description": {
-      "translate": "advancements.nether.tip_arrows_in_potion_cauldron.description"
+      "translate": "advancements.odyssey.use_patina.description"
+    },
+    "icon": {
+      "item": "odyssey:patina"
     },
     "frame": "task",
     "hidden": false,
-    "icon": {
-      "item": "minecraft:tipped_arrow"
-    },
     "show_toast": true,
-    "title": {
-      "translate": "advancements.nether.tip_arrows_in_potion_cauldron.title"
-    }
+    "announce_to_chat": true
   },
   "requirements": [
     [
-      "tip_arrows"
+      "use_patina"
     ]
-  ]
+  ],
+  "sends_telemetry_event": false
 }

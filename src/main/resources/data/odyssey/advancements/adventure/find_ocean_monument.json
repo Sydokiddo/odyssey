@@ -19,23 +19,24 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
-    "description": {
-      "translate": "advancements.adventure.find_ocean_monument.description"
+    "title": {
+      "translate": "advancements.odyssey.find_ocean_monument.title"
     },
-    "frame": "task",
-    "hidden": false,
+    "description": {
+      "translate": "advancements.odyssey.find_ocean_monument.description"
+    },
     "icon": {
       "item": "minecraft:prismarine"
     },
+    "frame": "task",
+    "hidden": false,
     "show_toast": true,
-    "title": {
-      "translate": "advancements.adventure.find_ocean_monument.title"
-    }
+    "announce_to_chat": true
   },
   "requirements": [
     [
       "in_monument"
     ]
-  ]
+  ],
+  "sends_telemetry_event": false
 }

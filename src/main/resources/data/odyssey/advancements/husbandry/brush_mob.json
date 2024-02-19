@@ -22,24 +22,25 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
-    "description": {
-      "translate": "advancements.husbandry.brush_mob.description"
+    "title": {
+      "translate": "advancements.odyssey.brush_mob.title"
     },
-    "frame": "task",
-    "hidden": false,
+    "description": {
+      "translate": "advancements.odyssey.brush_mob.description"
+    },
     "icon": {
       "item": "minecraft:brush",
       "nbt": "{Damage:0}"
     },
+    "frame": "task",
+    "hidden": false,
     "show_toast": true,
-    "title": {
-      "translate": "advancements.husbandry.brush_mob.title"
-    }
+    "announce_to_chat": true
   },
   "requirements": [
     [
       "brush_mob"
     ]
-  ]
+  ],
+  "sends_telemetry_event": false
 }

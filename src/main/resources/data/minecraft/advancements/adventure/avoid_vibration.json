@@ -1,25 +1,24 @@
 {
-  "parent": "minecraft:adventure/find_ancient_city",
+  "parent": "odyssey:adventure/find_ancient_city",
   "criteria": {
     "avoid_vibration": {
-      "conditions": {},
       "trigger": "minecraft:avoid_vibration"
     }
   },
   "display": {
-    "announce_to_chat": true,
+    "title": {
+      "translate": "advancements.adventure.avoid_vibration.title"
+    },
     "description": {
       "translate": "advancements.adventure.avoid_vibration.description"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "minecraft:sculk_sensor"
     },
+    "frame": "task",
+    "hidden": false,
     "show_toast": true,
-    "title": {
-      "translate": "advancements.adventure.avoid_vibration.title"
-    }
+    "announce_to_chat": true
   },
   "requirements": [
     [

@@ -209,53 +209,53 @@
   "subtitles.chiseled_bookshelf.insert_vex": "Vex Bound Book placed",
   "subtitles.chiseled_bookshelf.take_vex": "Vex Bound Book taken",
 
-  "advancements.adventure.use_goat_horn.title": "Call of the Wild",
-  "advancements.adventure.use_goat_horn.description": "Blow a Goat Horn",
+  "advancements.odyssey.play_goat_horn.title": "Call of the Wild",
+  "advancements.odyssey.play_goat_horn.description": "Blow a Goat Horn",
 
-  "advancements.husbandry.frog_in_a_bucket.title": "Leap Year",
-  "advancements.husbandry.frog_in_a_bucket.description": "Catch a Frog in a Bucket",
+  "advancements.odyssey.frog_in_a_bucket.title": "Leap Year",
+  "advancements.odyssey.frog_in_a_bucket.description": "Catch a Frog in a Bucket",
 
-  "advancements.husbandry.squid_in_a_bucket.title": "Squidnapper",
-  "advancements.husbandry.squid_in_a_bucket.description": "Catch a Squid or a Glow Squid in a Bucket",
+  "advancements.odyssey.squid_in_a_bucket.title": "Squidnapper",
+  "advancements.odyssey.squid_in_a_bucket.description": "Catch a Squid or a Glow Squid in a Bucket",
 
-  "advancements.adventure.find_ancient_city.title": "Long Long Forgotten",
-  "advancements.adventure.find_ancient_city.description": "Enter an Ancient City",
+  "advancements.odyssey.find_ancient_city.title": "Long Long Forgotten",
+  "advancements.odyssey.find_ancient_city.description": "Enter an Ancient City",
 
-  "advancements.adventure.find_ocean_monument.title": "A Monumental Discovery",
-  "advancements.adventure.find_ocean_monument.description": "Enter an Ocean Monument",
+  "advancements.odyssey.find_ocean_monument.title": "A Monumental Discovery",
+  "advancements.odyssey.find_ocean_monument.description": "Enter an Ocean Monument",
 
-  "advancements.adventure.find_mansion.title": "A Foreboding Keep",
-  "advancements.adventure.find_mansion.description": "Enter a Woodland Mansion",
+  "advancements.odyssey.find_mansion.title": "A Foreboding Keep",
+  "advancements.odyssey.find_mansion.description": "Enter a Woodland Mansion",
 
-  "advancements.adventure.vex_in_a_book.title": "Fly My Pretties",
-  "advancements.adventure.vex_in_a_book.description": "Capture a Vex in a Book",
+  "advancements.odyssey.vex_in_a_book.title": "Fly My Pretties",
+  "advancements.odyssey.vex_in_a_book.description": "Capture a Vex in a Book",
 
-  "advancements.husbandry.allay_in_a_book.title": "Do You Believe in Fairies?",
-  "advancements.husbandry.allay_in_a_book.description": "Capture an Allay in a Book",
+  "advancements.odyssey.allay_in_a_book.title": "Do You Believe in Fairies?",
+  "advancements.odyssey.allay_in_a_book.description": "Capture an Allay in a Book",
 
-  "advancements.husbandry.duplicate_allay.title": "Musical Evocation",
-  "advancements.husbandry.duplicate_allay.description": "Duplicate an Allay while it is dancing near a Jukebox using an Amethyst Shard",
+  "advancements.odyssey.duplicate_allay.title": "Musical Evocation",
+  "advancements.odyssey.duplicate_allay.description": "Duplicate an Allay while it is dancing near a Jukebox using an Amethyst Shard",
 
-  "advancements.husbandry.play_jukebox.title": "Music to My Ears!",
-  "advancements.husbandry.play_jukebox.description": "Play a Music Disc in a Jukebox",
+  "advancements.odyssey.play_jukebox.title": "Music to My Ears!",
+  "advancements.odyssey.play_jukebox.description": "Play a Music Disc in a Jukebox",
 
-  "advancements.husbandry.rare_axolotl_in_a_bucket.title": "The Luckiest Predator",
-  "advancements.husbandry.rare_axolotl_in_a_bucket.description": "Catch the rarest Axolotl variant in a Bucket",
+  "advancements.odyssey.rare_axolotl_in_a_bucket.title": "The Luckiest Predator",
+  "advancements.odyssey.rare_axolotl_in_a_bucket.description": "Catch the rarest Axolotl variant in a Bucket",
 
-  "advancements.husbandry.brush_mob.title": "You Can Pet the Dog!",
-  "advancements.husbandry.brush_mob.description": "Pet a passive mob with a Brush",
+  "advancements.odyssey.brush_mob.title": "You Can Pet the Dog!",
+  "advancements.odyssey.brush_mob.description": "Pet a passive mob with a Brush",
 
-  "advancements.husbandry.use_patina.title": "Patina Pending",
-  "advancements.husbandry.use_patina.description": "Apply Patina to a Copper block!",
+  "advancements.odyssey.use_patina.title": "Patina Pending",
+  "advancements.odyssey.use_patina.description": "Apply Patina to a Copper block!",
 
-  "advancements.husbandry.cure_poison_with_honey.title": "Cough Syrup",
-  "advancements.husbandry.cure_poison_with_honey.description": "Cure poison by drinking a Honey Bottle",
+  "advancements.odyssey.cure_poison_with_honey.title": "Cough Syrup",
+  "advancements.odyssey.cure_poison_with_honey.description": "Cure poison by drinking a Honey Bottle",
 
-  "advancements.nether.tip_arrows_in_potion_cauldron.title": "Tipped to Perfection",
-  "advancements.nether.tip_arrows_in_potion_cauldron.description": "Tip Arrows in a Potion Cauldron",
+  "advancements.odyssey.tip_arrows_in_potion_cauldron.title": "Tipped to Perfection",
+  "advancements.odyssey.tip_arrows_in_potion_cauldron.description": "Tip Arrows in a Potion Cauldron",
 
-  "advancements.nether.poison_potato_in_potion_cauldron.title": "Spoiled Rotten",
-  "advancements.nether.poison_potato_in_potion_cauldron.description": "Poison a Potato in a Potion Cauldron",
+  "advancements.odyssey.poison_potato_in_potion_cauldron.title": "Spoiled Rotten",
+  "advancements.odyssey.poison_potato_in_potion_cauldron.description": "Poison a Potato in a Potion Cauldron",
 
   "text.autoconfig.odyssey.title": "Odyssey - Options",
 

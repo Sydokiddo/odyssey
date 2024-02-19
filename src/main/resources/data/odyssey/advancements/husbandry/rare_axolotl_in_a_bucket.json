@@ -4,11 +4,6 @@
     "blue_axolotl": {
       "trigger": "minecraft:player_interacted_with_entity",
       "conditions": {
-        "item": {
-          "items": [
-            "minecraft:water_bucket"
-          ]
-        },
         "entity": [
           {
             "condition": "minecraft:entity_properties",
@@ -18,29 +13,35 @@
               "nbt": "{Variant:4}"
             }
           }
-        ]
+        ],
+        "item": {
+          "items": [
+            "minecraft:water_bucket"
+          ]
+        }
       }
     }
   },
   "display": {
-    "announce_to_chat": true,
-    "description": {
-      "translate": "advancements.husbandry.rare_axolotl_in_a_bucket.description"
+    "title": {
+      "translate": "advancements.odyssey.rare_axolotl_in_a_bucket.title"
     },
-    "frame": "challenge",
-    "hidden": false,
+    "description": {
+      "translate": "advancements.odyssey.rare_axolotl_in_a_bucket.description"
+    },
     "icon": {
       "item": "minecraft:axolotl_bucket",
       "nbt": "{Variant:4}"
     },
+    "frame": "challenge",
+    "hidden": false,
     "show_toast": true,
-    "title": {
-      "translate": "advancements.husbandry.rare_axolotl_in_a_bucket.title"
-    }
+    "announce_to_chat": true
   },
   "requirements": [
     [
       "blue_axolotl"
     ]
-  ]
+  ],
+  "sends_telemetry_event": false
 }

@@ -2,24 +2,23 @@
   "parent": "minecraft:adventure/avoid_vibration",
   "criteria": {
     "kill_mob_near_sculk_catalyst": {
-      "conditions": {},
       "trigger": "minecraft:kill_mob_near_sculk_catalyst"
     }
   },
   "display": {
-    "announce_to_chat": true,
+    "title": {
+      "translate": "advancements.adventure.kill_mob_near_sculk_catalyst.title"
+    },
     "description": {
       "translate": "advancements.adventure.kill_mob_near_sculk_catalyst.description"
     },
-    "frame": "challenge",
-    "hidden": false,
     "icon": {
       "item": "minecraft:sculk_catalyst"
     },
+    "frame": "challenge",
+    "hidden": false,
     "show_toast": true,
-    "title": {
-      "translate": "advancements.adventure.kill_mob_near_sculk_catalyst.title"
-    }
+    "announce_to_chat": true
   },
   "requirements": [
     [

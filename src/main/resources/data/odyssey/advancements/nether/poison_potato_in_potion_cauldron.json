@@ -29,23 +29,24 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
-    "description": {
-      "translate": "advancements.nether.poison_potato_in_potion_cauldron.description"
+    "title": {
+      "translate": "advancements.odyssey.poison_potato_in_potion_cauldron.title"
     },
-    "frame": "task",
-    "hidden": true,
+    "description": {
+      "translate": "advancements.odyssey.poison_potato_in_potion_cauldron.description"
+    },
     "icon": {
       "item": "minecraft:poisonous_potato"
     },
+    "frame": "task",
+    "hidden": true,
     "show_toast": true,
-    "title": {
-      "translate": "advancements.nether.poison_potato_in_potion_cauldron.title"
-    }
+    "announce_to_chat": true
   },
   "requirements": [
     [
       "poison_potato"
     ]
-  ]
+  ],
+  "sends_telemetry_event": false
 }

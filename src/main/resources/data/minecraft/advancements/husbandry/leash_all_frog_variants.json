@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:husbandry/frog_in_a_bucket",
+  "parent": "odyssey:husbandry/frog_in_a_bucket",
   "criteria": {
     "minecraft:cold": {
       "conditions": {
@@ -72,19 +72,19 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
+    "title": {
+      "translate": "advancements.husbandry.leash_all_frog_variants.title"
+    },
     "description": {
       "translate": "advancements.husbandry.leash_all_frog_variants.description"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "minecraft:lead"
     },
+    "frame": "task",
+    "hidden": false,
     "show_toast": true,
-    "title": {
-      "translate": "advancements.husbandry.leash_all_frog_variants.title"
-    }
+    "announce_to_chat": true
   },
   "requirements": [
     [

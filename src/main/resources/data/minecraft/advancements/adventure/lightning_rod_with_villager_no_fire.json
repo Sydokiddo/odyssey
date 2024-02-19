@@ -34,19 +34,19 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
+    "title": {
+      "translate": "advancements.adventure.lightning_rod_with_villager_no_fire.title"
+    },
     "description": {
       "translate": "advancements.adventure.lightning_rod_with_villager_no_fire.description"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "minecraft:lightning_rod"
     },
+    "frame": "task",
+    "hidden": false,
     "show_toast": true,
-    "title": {
-      "translate": "advancements.adventure.lightning_rod_with_villager_no_fire.title"
-    }
+    "announce_to_chat": true
   },
   "requirements": [
     [

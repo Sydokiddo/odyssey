@@ -13,23 +13,24 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
-    "description": {
-      "translate": "advancements.husbandry.allay_in_a_book.description"
+    "title": {
+      "translate": "advancements.odyssey.allay_in_a_book.title"
     },
-    "frame": "task",
-    "hidden": false,
+    "description": {
+      "translate": "advancements.odyssey.allay_in_a_book.description"
+    },
     "icon": {
       "item": "odyssey:allay_bound_book"
     },
+    "frame": "task",
+    "hidden": false,
     "show_toast": true,
-    "title": {
-      "translate": "advancements.husbandry.allay_in_a_book.title"
-    }
+    "announce_to_chat": true
   },
   "requirements": [
     [
       "allay_bound_book"
     ]
-  ]
+  ],
+  "sends_telemetry_event": false
 }
