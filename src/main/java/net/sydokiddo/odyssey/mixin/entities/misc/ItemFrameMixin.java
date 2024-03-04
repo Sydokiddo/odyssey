@@ -95,7 +95,7 @@ public abstract class ItemFrameMixin extends HangingEntity {
                 this.doItemFrameInteractionEvents(player, itemInHand);
 
                 if (!player.getAbilities().instabuild) itemInHand.shrink(1);
-                OCommonMethods.sendWaxingDebugMessage(level(), this.getName().getString(), player, blockPosition());
+                OCommonMethods.sendWaxingDebugMessage(player.level(), this.getName().getString(), player, blockPosition());
                 cir.setReturnValue(InteractionResult.sidedSuccess(player.level().isClientSide()));
             }
 
@@ -111,7 +111,7 @@ public abstract class ItemFrameMixin extends HangingEntity {
                 this.doItemFrameInteractionEvents(player, itemInHand);
 
                 if (!player.getAbilities().instabuild) itemInHand.hurtAndBreak(1, player, (shears) -> shears.broadcastBreakEvent(interactionHand));
-                if (Chrysalis.IS_DEBUG && !level().isClientSide()) Odyssey.LOGGER.info("Setting {} as invisible as it has been sheared by {}", this.getName().getString(), player.getName().getString());
+                if (Chrysalis.IS_DEBUG && !player.level().isClientSide()) Odyssey.LOGGER.info("Setting {} as invisible as it has been sheared by {}", this.getName().getString(), player.getName().getString());
                 cir.setReturnValue(InteractionResult.sidedSuccess(player.level().isClientSide()));
             }
 
@@ -127,7 +127,7 @@ public abstract class ItemFrameMixin extends HangingEntity {
         if (this.isInvisible()) {
             this.setInvisible(false);
             this.displayPoofParticles();
-            if (Chrysalis.IS_DEBUG && !level().isClientSide()) Odyssey.LOGGER.info("Setting {} as visible again as its item has been removed", this.getName().getString());
+            if (Chrysalis.IS_DEBUG && !this.level().isClientSide()) Odyssey.LOGGER.info("Setting {} as visible again as its item has been removed", this.getName().getString());
         }
     }
 
@@ -137,7 +137,7 @@ public abstract class ItemFrameMixin extends HangingEntity {
         // Prevents the item inside the Item Frame from being rotated if the Item Frame is waxed
 
         if (this.isWaxed()) {
-            if (Chrysalis.IS_DEBUG && !level().isClientSide()) Odyssey.LOGGER.info("{} is waxed, preventing items inside of it from being rotated", this.getName().getString());
+            if (Chrysalis.IS_DEBUG && !this.level().isClientSide()) Odyssey.LOGGER.info("{} is waxed, preventing items inside of it from being rotated", this.getName().getString());
             cir.cancel();
             cir.setReturnValue(InteractionResult.PASS);
         }
