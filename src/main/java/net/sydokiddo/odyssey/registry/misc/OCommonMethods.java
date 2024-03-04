@@ -77,10 +77,6 @@ public class OCommonMethods {
 
     // region Debugging
 
-    public static void sendMobConversionDebugMessage(LivingEntity startingEntity, LivingEntity resultEntity) {
-        if (Chrysalis.IS_DEBUG && !startingEntity.level().isClientSide()) Odyssey.LOGGER.info("{} has been converted into {}", startingEntity.getName().getString(), resultEntity.getName().getString());
-    }
-
     public static void sendWaxingDebugMessage(Level level, String blockString, Player player, BlockPos blockPos) {
         if (Chrysalis.IS_DEBUG && !level.isClientSide()) Odyssey.LOGGER.info("{} has been successfully waxed by {} at {}", blockString, player.getName().getString(), blockPos);
     }
