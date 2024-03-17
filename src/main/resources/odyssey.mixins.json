@@ -65,6 +65,8 @@
     "items.tools.CrossbowItemMixin",
     "items.tools.DiggerItemMixin",
     "items.tools.IronRepairableItemMixin",
+    "items.tools.NetheriteArmorRepairingMixin",
+    "items.tools.NetheriteToolRepairingMixin",
     "items.tools.ShieldItemMixin",
     "items.tools.StringRepairableItemMixin",
     "items.tools.TridentItemMixin",

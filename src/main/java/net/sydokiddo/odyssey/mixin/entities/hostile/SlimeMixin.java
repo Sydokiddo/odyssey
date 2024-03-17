@@ -27,7 +27,7 @@ public abstract class SlimeMixin extends Mob {
 
     @Shadow public abstract int getSize();
 
-    @Unique private static final String MAGMA_CONVERSION_TAG = "magma_cube_conversion_time";
+    @Unique private static final String MAGMA_CUBE_CONVERSION_TAG = "magma_cube_conversion_time";
     @Unique private static final String SLIME_CONVERSION_TAG = "slime_conversion_time";
 
     @Unique private int onMagmaTime;
@@ -68,15 +68,15 @@ public abstract class SlimeMixin extends Mob {
 
     @Inject(at = @At("HEAD"), method = "addAdditionalSaveData")
     private void odyssey$addSlimeTags(CompoundTag compoundTag, CallbackInfo info) {
-        compoundTag.putInt(MAGMA_CONVERSION_TAG, this.isMagmaConverting() ? this.conversionTime : -1);
+        compoundTag.putInt(MAGMA_CUBE_CONVERSION_TAG, this.isMagmaConverting() ? this.conversionTime : -1);
         compoundTag.putInt(SLIME_CONVERSION_TAG, this.isSlimeConverting() ? this.conversionTime : -1);
     }
 
     @Inject(at = @At("HEAD"), method = "readAdditionalSaveData")
     private void odyssey$readSlimeTags(CompoundTag compoundTag, CallbackInfo info) {
         if (Odyssey.getConfig().entities.hostileMobsConfig.slime_and_magma_cube_converting) {
-            if (compoundTag.contains(MAGMA_CONVERSION_TAG, 99) && compoundTag.getInt(MAGMA_CONVERSION_TAG) > -1) {
-                this.startMagmaConversion(compoundTag.getInt(MAGMA_CONVERSION_TAG));
+            if (compoundTag.contains(MAGMA_CUBE_CONVERSION_TAG, 99) && compoundTag.getInt(MAGMA_CUBE_CONVERSION_TAG) > -1) {
+                this.startMagmaConversion(compoundTag.getInt(MAGMA_CUBE_CONVERSION_TAG));
             } else if (compoundTag.contains(SLIME_CONVERSION_TAG, 99) && compoundTag.getInt(SLIME_CONVERSION_TAG) > -1) {
                 this.startSlimeConversion(compoundTag.getInt(SLIME_CONVERSION_TAG));
             }
