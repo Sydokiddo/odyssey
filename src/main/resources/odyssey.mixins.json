@@ -51,6 +51,7 @@
     "entities.passive.PigMixin",
     "entities.passive.RabbitMixin",
     "entities.passive.SnifferMixin",
+    "entities.passive.SnowGolemMixin",
     "entities.passive.SquidMixin",
     "entities.passive.StriderMixin",
     "items.EnchantmentMixin",

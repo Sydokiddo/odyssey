@@ -7,6 +7,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffectUtil;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.sydokiddo.chrysalis.misc.util.helpers.ItemHelper;
@@ -14,17 +15,20 @@ import net.sydokiddo.chrysalis.registry.misc.ChrysalisTags;
 import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.misc.OCommonMethods;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.awt.*;
 import java.util.*;
 import java.util.List;
 
 @Mixin(Item.class)
-public class ItemMixin {
+public abstract class ItemMixin {
 
+    @Shadow public abstract ItemStack getDefaultInstance();
     @Unique private static final int FIREPROOF_COLOR = Color.decode("#766A76").getRGB();
 
     @Inject(method = "appendHoverText", at = @At("HEAD"))
@@ -101,5 +105,16 @@ public class ItemMixin {
                 tooltip.add(Component.translatable("potion.withDuration", Component.translatable(glowing.getDescriptionId()), MobEffectUtil.formatDuration(glowing, 1.0F, level.tickRateManager().tickrate())).withStyle(ChatFormatting.BLUE));
             }
         }
+    }
+
+    @Inject(at = @At("HEAD"), method = "isEdible", cancellable = true)
+    private void odyssey$makeItemsEdible(CallbackInfoReturnable<Boolean> cir) {
+        if (this.getDefaultInstance().getItem() == Items.FERMENTED_SPIDER_EYE || this.getDefaultInstance().getItem() == Items.GLISTERING_MELON_SLICE) cir.setReturnValue(true);
+    }
+
+    @Inject(at = @At("HEAD"), method = "getFoodProperties", cancellable = true)
+    private void odyssey$itemFoodProperties(CallbackInfoReturnable<FoodProperties> cir) {
+        if (this.getDefaultInstance().getItem() == Items.FERMENTED_SPIDER_EYE) cir.setReturnValue(new FoodProperties.Builder().nutrition(2).saturationMod(0.8F).effect(new MobEffectInstance(MobEffects.POISON, 100, 0), 1.0F).effect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 0), 1.0F).build());
+        if (this.getDefaultInstance().getItem() == Items.GLISTERING_MELON_SLICE) cir.setReturnValue(new FoodProperties.Builder().nutrition(5).saturationMod(1.2F).build());
     }
 }

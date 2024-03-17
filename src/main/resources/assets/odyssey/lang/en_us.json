@@ -195,6 +195,8 @@
   "subtitles.entity.slime.converted_to_magma_cube": "Slime converts to Magma Cube",
   "subtitles.entity.magma_cube.converted_to_slime": "Magma Cube converts to Slime",
 
+  "subtitles.entity.snow_golem.equip_pumpkin": "Carved Pumpkin equips",
+
   "subtitles.item.bucket.fill_frog": "Frog scooped",
   "subtitles.item.bucket.fill_squid": "Squid scooped",
   "subtitles.item.bucket.fill_glow_squid": "Glow Squid scooped",
@@ -420,9 +422,11 @@
   "text.autoconfig.odyssey.option.entities.passiveMobsConfig.improved_horses": "Improved Horses",
   "text.autoconfig.odyssey.option.entities.passiveMobsConfig.improved_horses.@Tooltip": "Horses wearing Leather Horse Armor are now able to walk on Powder Snow, and Horses, Donkeys, Mules, and Camels will now ignore leaf collisions while being ridden",
   "text.autoconfig.odyssey.option.entities.passiveMobsConfig.improved_parrots": "Improved Parrots",
-  "text.autoconfig.odyssey.option.entities.passiveMobsConfig.improved_parrots.@Tooltip": "Parrots now have 10 health instead of 6 health, and will now only dismount your shoulder while jumping in place",
+  "text.autoconfig.odyssey.option.entities.passiveMobsConfig.improved_parrots.@Tooltip": "Parrots have increased health, will now only dismount your shoulder while jumping in place, and can be fed to heal them",
   "text.autoconfig.odyssey.option.entities.passiveMobsConfig.improved_sniffer_stats": "Improved Sniffer Stats",
   "text.autoconfig.odyssey.option.entities.passiveMobsConfig.improved_sniffer_stats.@Tooltip": "Sniffers now have 24 health instead of 14, and they also now have 0.6 knockback resistance",
+  "text.autoconfig.odyssey.option.entities.passiveMobsConfig.snow_golem_pumpkin_equipping": "Snow Golem Pumpkin Equipping",
+  "text.autoconfig.odyssey.option.entities.passiveMobsConfig.snow_golem_pumpkin_equipping.@Tooltip": "Snow Golems without a Carved Pumpkin on their head can be right-clicked on with a Carved Pumpkin to equip it onto them",
 
   "text.autoconfig.odyssey.option.entities.hostileMobsConfig": "Hostile Mobs",
   "text.autoconfig.odyssey.option.entities.hostileMobsConfig.@Tooltip": "Options for the behavior of hostile mobs",

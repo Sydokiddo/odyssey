@@ -35,4 +35,8 @@ public class PassiveMobsConfig {
     @ConfigEntry.Gui.RequiresRestart(value = false)
     @ConfigEntry.Gui.Tooltip
     public boolean improved_sniffer_stats = true;
+
+    @ConfigEntry.Gui.RequiresRestart(value = false)
+    @ConfigEntry.Gui.Tooltip
+    public boolean snow_golem_pumpkin_equipping = true;
 }

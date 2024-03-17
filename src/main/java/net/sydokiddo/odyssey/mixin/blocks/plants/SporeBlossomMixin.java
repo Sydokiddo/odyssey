@@ -23,7 +23,7 @@ public class SporeBlossomMixin implements BonemealableBlock {
 
     @Inject(method = "canSurvive", at = @At("HEAD"), cancellable = true)
     private void odyssey$allowSporeBlossomsOnLeaves(BlockState blockState, LevelReader levelReader, BlockPos blockPos, CallbackInfoReturnable<Boolean> cir) {
-        if (levelReader.getBlockState(blockPos.above()).is(BlockTags.LEAVES)) cir.setReturnValue(true);
+        if (levelReader.getBlockState(blockPos.above()).is(BlockTags.LEAVES) && !levelReader.isWaterAt(blockPos)) cir.setReturnValue(true);
     }
 
     @Override

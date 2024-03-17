@@ -105,6 +105,8 @@ public class ModSoundEvents {
     public static final SoundEvent SLIME_CONVERTED_TO_MAGMA_CUBE = registerSoundEvent("entity.slime.converted_to_magma_cube");
     public static final SoundEvent MAGMA_CUBE_CONVERTED_TO_SLIME = registerSoundEvent("entity.magma_cube.converted_to_slime");
 
+    public static final SoundEvent SNOW_GOLEM_EQUIP_PUMPKIN = registerSoundEvent("entity.snow_golem.equip_pumpkin");
+
     public static final SoundEvent ITEM_FRAME_SHEAR = registerSoundEvent("entity.item_frame.shear");
     public static final SoundEvent WAXED_ITEM_FRAME_INTERACT_FAIL = registerSoundEvent("entity.item_frame.waxed_interact_fail");
     public static final SoundEvent WAXED_GLOW_ITEM_FRAME_INTERACT_FAIL = registerSoundEvent("entity.glow_item_frame.waxed_interact_fail");

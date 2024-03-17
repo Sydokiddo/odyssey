@@ -131,7 +131,9 @@ public class ModCreativeModeTabs {
         // region Food and Drinks Tab
 
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FOOD_AND_DRINKS).register(entries -> {
+            entries.addAfter(Items.MELON_SLICE, Items.GLISTERING_MELON_SLICE);
             entries.addAfter(Items.POISONOUS_POTATO, ModItems.IRON_POTATO, ModItems.ENCHANTED_IRON_POTATO);
+            entries.addAfter(Items.SPIDER_EYE, Items.FERMENTED_SPIDER_EYE);
         });
 
         // endregion

@@ -504,6 +504,13 @@
     "subtitle": "subtitles.entity.magma_cube.converted_to_slime"
   },
 
+  "entity.snow_golem.equip_pumpkin": {
+    "sounds": [
+      "odyssey:mob/snow_golem/equip_pumpkin"
+    ],
+    "subtitle": "subtitles.entity.snow_golem.equip_pumpkin"
+  },
+
   "entity.item_frame.shear": {
     "sounds": [
       "odyssey:entity/item_frame/shear1",
