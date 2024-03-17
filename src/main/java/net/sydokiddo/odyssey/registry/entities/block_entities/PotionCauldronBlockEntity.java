@@ -22,7 +22,7 @@ import org.jetbrains.annotations.NotNull;
 public class PotionCauldronBlockEntity extends BlockEntity {
 
     public Potion potion = ModBlocks.POTION_CAULDRON_STATE.potion;
-    private final String potionString = "Potion";
+    private final String potionString = "potion";
 
     public PotionCauldronBlockEntity(BlockPos blockPos, BlockState blockState) {
         super(ModEntities.POTION_CAULDRON, blockPos, blockState);
@@ -32,14 +32,14 @@ public class PotionCauldronBlockEntity extends BlockEntity {
 
     @Override
     public void saveAdditional(CompoundTag compoundTag) {
-        compoundTag.putString(potionString, String.valueOf(BuiltInRegistries.POTION.getKey(this.potion)));
+        compoundTag.putString(this.potionString, String.valueOf(BuiltInRegistries.POTION.getKey(this.getPotion())));
         super.saveAdditional(compoundTag);
     }
 
     @Override
     public void load(@NotNull CompoundTag compoundTag) {
         super.load(compoundTag);
-        this.potion = Potion.byName(compoundTag.getString(potionString));
+        this.potion = Potion.byName(compoundTag.getString(this.potionString));
     }
 
     @Override
@@ -49,7 +49,7 @@ public class PotionCauldronBlockEntity extends BlockEntity {
 
     public int getColor() {
         if (this.hasPotion()) {
-            return PotionUtils.getColor(this.potion);
+            return PotionUtils.getColor(this.getPotion());
         }
         return 0xffffff;
     }
@@ -59,7 +59,7 @@ public class PotionCauldronBlockEntity extends BlockEntity {
     }
 
     public boolean hasPotion() {
-        return this.potion != Potions.EMPTY && this.potion != null;
+        return this.getPotion() != Potions.EMPTY && this.getPotion() != null;
     }
 
     // endregion
@@ -78,11 +78,11 @@ public class PotionCauldronBlockEntity extends BlockEntity {
 
             if (level.getRandom().nextFloat() > 0.05F) return;
 
-            double d = (double) (color >> 16 & 0xFF) / 255.0;
-            double e = (double) (color >> 8 & 0xFF) / 255.0;
-            double f = (double) (color & 0xFF) / 255.0;
+            double r = (double) (color >> 16 & 0xFF) / 255.0;
+            double g = (double) (color >> 8 & 0xFF) / 255.0;
+            double b = (double) (color & 0xFF) / 255.0;
 
-            level.addParticle(ParticleTypes.ENTITY_EFFECT, blockPos.getX() + 0.5, blockPos.getY() + 1, blockPos.getZ() + 0.5, d, e, f);
+            level.addParticle(ParticleTypes.ENTITY_EFFECT, blockPos.getX() + 0.5, blockPos.getY() + 1, blockPos.getZ() + 0.5, r, g, b);
 
             potionCauldronBlockEntity.setChanged();
             level.sendBlockUpdated(potionCauldronBlockEntity.getBlockPos(), potionCauldronBlockEntity.getBlockState(), potionCauldronBlockEntity.getBlockState(), Block.UPDATE_ALL);
@@ -94,13 +94,13 @@ public class PotionCauldronBlockEntity extends BlockEntity {
     // region Misc Methods
 
     public boolean tryApplyPotion(Potion potion) {
-        if (this.potion == Potions.EMPTY || this.potion == potion) {
+        if (this.getPotion() == Potions.EMPTY || this.getPotion() == potion) {
 
             this.potion = potion;
 
-            if (this.level != null) {
+            if (this.getLevel() != null) {
                 this.setChanged();
-                this.level.sendBlockUpdated(this.getBlockPos(), this.getBlockState(), this.getBlockState(), Block.UPDATE_ALL);
+                this.getLevel().sendBlockUpdated(this.getBlockPos(), this.getBlockState(), this.getBlockState(), Block.UPDATE_ALL);
             }
             return true;
         }

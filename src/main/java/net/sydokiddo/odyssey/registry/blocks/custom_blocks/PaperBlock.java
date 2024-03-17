@@ -57,7 +57,7 @@ public class PaperBlock extends Block {
 
     public PaperBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(ModBlockStateProperties.SHEETS, 8).setValue(WATERLOGGED, false));
+        this.registerDefaultState(this.getStateDefinition().any().setValue(ModBlockStateProperties.SHEETS, 8).setValue(WATERLOGGED, false));
     }
 
     // region Hitbox
@@ -101,11 +101,11 @@ public class PaperBlock extends Block {
     }
 
     @Override
-    public @NotNull BlockState updateShape(BlockState blockState, Direction direction, BlockState adjacentBlockState, LevelAccessor levelAccessor, BlockPos blockPos, BlockPos adjacentBlockPos) {
+    public @NotNull BlockState updateShape(BlockState blockState, Direction direction, BlockState adjacentState, LevelAccessor levelAccessor, BlockPos blockPos, BlockPos adjacentPos) {
         if (blockState.getValue(WATERLOGGED)) {
             levelAccessor.scheduleTick(blockPos, Fluids.WATER, Fluids.WATER.getTickDelay(levelAccessor));
         }
-        return super.updateShape(blockState, direction, adjacentBlockState, levelAccessor, blockPos, adjacentBlockPos);
+        return super.updateShape(blockState, direction, adjacentState, levelAccessor, blockPos, adjacentPos);
     }
 
     @Override
@@ -184,7 +184,7 @@ public class PaperBlock extends Block {
                 level.playSound(null, blockPos, soundEvent, SoundSource.BLOCKS, 1.0F, 1.0F);
                 level.gameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Context.of(player, blockState));
 
-                return InteractionResult.sidedSuccess(level.isClientSide);
+                return InteractionResult.sidedSuccess(level.isClientSide());
             }
 
             // endregion

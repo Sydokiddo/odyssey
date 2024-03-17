@@ -48,7 +48,7 @@ public class PatinaItem extends Item {
             level.setBlock(blockPos, copperState.get(), 11);
             level.gameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Context.of(player, copperState.get()));
 
-            return InteractionResult.sidedSuccess(level.isClientSide);
+            return InteractionResult.sidedSuccess(level.isClientSide());
         }
 
         return InteractionResult.PASS;

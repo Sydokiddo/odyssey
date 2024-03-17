@@ -95,7 +95,7 @@ public abstract class NoteBlockMixin extends Block {
             level.gameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Context.of(player, blockState));
             level.levelEvent(player, 3003, blockPos, 0);
 
-            cir.setReturnValue(InteractionResult.sidedSuccess(level.isClientSide));
+            cir.setReturnValue(InteractionResult.sidedSuccess(level.isClientSide()));
         }
     }
 
@@ -111,7 +111,7 @@ public abstract class NoteBlockMixin extends Block {
             this.playNote(player, blockState, level, blockPos);
             player.awardStat(Stats.PLAY_NOTEBLOCK);
 
-            cir.setReturnValue(InteractionResult.sidedSuccess(level.isClientSide));
+            cir.setReturnValue(InteractionResult.sidedSuccess(level.isClientSide()));
         }
     }
 

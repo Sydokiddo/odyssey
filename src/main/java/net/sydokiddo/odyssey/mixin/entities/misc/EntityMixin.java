@@ -28,11 +28,11 @@ public abstract class EntityMixin implements EntityAccess {
 
     @Unique
     private boolean isEntityInsideCauldron(BlockState blockState, BlockPos blockPos) {
-        return blockState.getBlock() == Blocks.WATER_CAULDRON && this.getY() < (double)blockPos.getY() + getCauldronContentHeight(blockState) && this.getBoundingBox().maxY > (double)blockPos.getY() + 0.25;
+        return blockState.getBlock() == Blocks.WATER_CAULDRON && this.getY() < (double) blockPos.getY() + getCauldronContentHeight(blockState) && this.getBoundingBox().maxY > (double) blockPos.getY() + 0.25;
     }
 
     @Inject(at = @At("RETURN"), method = "isInWaterOrRain", cancellable = true)
     private void odyssey$allowRiptideInWaterCauldrons(CallbackInfoReturnable<Boolean> cir) {
-        if (isEntityInsideCauldron(this.getFeetBlockState(), this.getOnPos()) && Odyssey.getConfig().items.improved_riptide) cir.setReturnValue(true);
+        if (this.isEntityInsideCauldron(this.getFeetBlockState(), this.getOnPos()) && Odyssey.getConfig().items.improved_riptide) cir.setReturnValue(true);
     }
 }

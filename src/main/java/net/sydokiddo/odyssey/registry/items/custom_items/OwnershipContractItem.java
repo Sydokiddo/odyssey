@@ -36,9 +36,9 @@ import java.util.UUID;
 
 public class OwnershipContractItem extends Item {
 
-    private final String ownerNameString = "OwnerName";
-    public static final String mobNameString = "MobName";
-    private final String mobUUIDString = "MobUUID";
+    private final String ownerNameString = "owner_name";
+    public static final String mobNameString = "mob_name";
+    private final String mobUUIDString = "mob_uuid";
 
     public OwnershipContractItem(Properties properties) {
         super(properties);
@@ -65,14 +65,14 @@ public class OwnershipContractItem extends Item {
         ItemStack itemStack = player.getItemInHand(interactionHand);
         CompoundTag compoundTag = itemStack.getOrCreateTag();
 
-        if (isContractBound(itemStack) && compoundTag.hasUUID(mobUUIDString)) {
+        if (isContractBound(itemStack) && compoundTag.hasUUID(this.mobUUIDString)) {
 
             if (level instanceof ServerLevel serverLevel) {
 
                 player.awardStat(Stats.ITEM_USED.get(this));
                 player.gameEvent(GameEvent.ITEM_INTERACT_FINISH);
 
-                UUID petUUID = compoundTag.getUUID(mobUUIDString);
+                UUID petUUID = compoundTag.getUUID(this.mobUUIDString);
                 LivingEntity pet = (LivingEntity) serverLevel.getEntity(petUUID);
 
                 int oldOwnerPacketValue;
@@ -93,7 +93,7 @@ public class OwnershipContractItem extends Item {
                     if (this.getOldOwner(pet) != null) {
 
                         CompoundTag newOwnerName = new CompoundTag();
-                        newOwnerName.putString("NewOwner", player.getName().getString());
+                        newOwnerName.putString("new_owner", player.getName().getString());
 
                         FriendlyByteBuf newOwnerPacket = new FriendlyByteBuf(Unpooled.buffer());
                         newOwnerPacket.writeInt(2);
@@ -157,7 +157,7 @@ public class OwnershipContractItem extends Item {
                 }
 
                 CompoundTag bindMessageTag = new CompoundTag();
-                bindMessageTag.putString("SelectedMob", livingEntity.getName().getString());
+                bindMessageTag.putString("selected_mob", livingEntity.getName().getString());
                 FriendlyByteBuf bindMessagePacket = new FriendlyByteBuf(Unpooled.buffer());
 
                 bindMessagePacket.writeInt(sentMessagePacketValue);
@@ -166,7 +166,7 @@ public class OwnershipContractItem extends Item {
                 if (player instanceof ServerPlayer serverPlayer) ServerPlayNetworking.send(serverPlayer, OdysseyRegistry.OWNERSHIP_CONTRACT_PACKET_ID, bindMessagePacket);
             }
 
-            return InteractionResult.sidedSuccess(player.level().isClientSide);
+            return InteractionResult.sidedSuccess(player.level().isClientSide());
         }
 
         return super.interactLivingEntity(itemStack, player, livingEntity, interactionHand);
@@ -201,21 +201,21 @@ public class OwnershipContractItem extends Item {
         ItemStack boundContract = new ItemStack(this, 1);
 
         CompoundTag compoundTag = boundContract.getOrCreateTag();
-        compoundTag.putUUID(mobUUIDString, livingEntity.getUUID());
+        compoundTag.putUUID(this.mobUUIDString, livingEntity.getUUID());
         compoundTag.putString(mobNameString, livingEntity.getName().getString());
 
         if (oldItem.hasCustomHoverName()) {
             boundContract.setHoverName(oldItem.getHoverName());
         }
 
-        String ownerUUIDString = "OwnerUUID";
+        String ownerUUIDString = "owner_uuid";
 
         if (livingEntity instanceof TamableAnimal tamableAnimal && tamableAnimal.getOwnerUUID() != null) {
             compoundTag.putUUID(ownerUUIDString, tamableAnimal.getOwnerUUID());
-            if (tamableAnimal.getOwner() != null) compoundTag.putString(ownerNameString, tamableAnimal.getOwner().getName().getString());
+            if (tamableAnimal.getOwner() != null) compoundTag.putString(this.ownerNameString, tamableAnimal.getOwner().getName().getString());
         } else if (livingEntity instanceof AbstractHorse abstractHorse && abstractHorse.getOwnerUUID() != null) {
             compoundTag.putUUID(ownerUUIDString, abstractHorse.getOwnerUUID());
-            if (abstractHorse.getOwner() != null) compoundTag.putString(ownerNameString, abstractHorse.getOwner().getName().getString());
+            if (abstractHorse.getOwner() != null) compoundTag.putString(this.ownerNameString, abstractHorse.getOwner().getName().getString());
         }
 
         if (oldItem.getCount() <= 1 && !player.getAbilities().instabuild) {
@@ -266,7 +266,7 @@ public class OwnershipContractItem extends Item {
             tooltip.add(Component.translatable("gui.odyssey.item.ownership_contract.bound_pet").withStyle(ChatFormatting.BLUE).append(CommonComponents.space()).append(Component.translatable("gui.chrysalis.none").withStyle(style -> style.withItalic(true).withColor(ChatFormatting.GRAY))));
         }
 
-        if (compoundTag.contains(ownerNameString)) {
+        if (compoundTag.contains(this.ownerNameString)) {
             tooltip.add(Component.translatable("gui.odyssey.item.ownership_contract.bound_pet_owner").withStyle(ChatFormatting.BLUE).append(CommonComponents.space()).append(Component.translatable("gui.odyssey.item.ownership_contract.name", compoundTag.getString(ownerNameString)).withStyle(style -> style.withItalic(true).withColor(ChatFormatting.GRAY))));
         } else {
             tooltip.add(Component.translatable("gui.odyssey.item.ownership_contract.bound_pet_owner").withStyle(ChatFormatting.BLUE).append(CommonComponents.space()).append(Component.translatable("gui.chrysalis.none").withStyle(style -> style.withItalic(true).withColor(ChatFormatting.GRAY))));

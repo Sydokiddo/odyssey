@@ -42,7 +42,7 @@ public abstract class SpawnerBlockMixin extends BaseEntityBlock implements Simpl
 
     @Inject(method = "<init>", at = @At("RETURN"))
     private void odyssey$registerSpawnerDefaultBlockStates(Properties properties, CallbackInfo info) {
-        this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, false));
+        this.registerDefaultState(this.getStateDefinition().any().setValue(WATERLOGGED, false));
     }
 
     @Override
@@ -58,11 +58,11 @@ public abstract class SpawnerBlockMixin extends BaseEntityBlock implements Simpl
     }
 
     @Override
-    public @NotNull BlockState updateShape(BlockState blockState, Direction direction, BlockState blockState2, LevelAccessor levelAccessor, BlockPos blockPos, BlockPos blockPos2) {
+    public @NotNull BlockState updateShape(BlockState blockState, Direction direction, BlockState adjacentState, LevelAccessor levelAccessor, BlockPos blockPos, BlockPos adjacentPos) {
         if (blockState.getValue(WATERLOGGED)) {
             levelAccessor.scheduleTick(blockPos, Fluids.WATER, Fluids.WATER.getTickDelay(levelAccessor));
         }
-        return super.updateShape(blockState, direction, blockState2, levelAccessor, blockPos, blockPos2);
+        return super.updateShape(blockState, direction, adjacentState, levelAccessor, blockPos, adjacentPos);
     }
 
     @Override

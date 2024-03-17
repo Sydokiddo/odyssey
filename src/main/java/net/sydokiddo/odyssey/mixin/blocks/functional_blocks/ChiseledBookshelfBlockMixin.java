@@ -29,7 +29,7 @@ public class ChiseledBookshelfBlockMixin {
     @Inject(at = @At("HEAD"), method = "addBook")
     private static void odyssey$playBoundBookInsertSound(Level level, BlockPos blockPos, Player player, ChiseledBookShelfBlockEntity chiseledBookShelfBlockEntity, ItemStack itemStack, int slot, CallbackInfo info) {
 
-        if (!level.isClientSide) {
+        if (!level.isClientSide()) {
 
             SoundEvent soundEvent;
 
@@ -51,7 +51,7 @@ public class ChiseledBookshelfBlockMixin {
     @Inject(at = @At("HEAD"), method = "removeBook")
     private static void odyssey$playBoundBookRemoveSound(Level level, BlockPos blockPos, Player player, ChiseledBookShelfBlockEntity chiseledBookShelfBlockEntity, int slot, CallbackInfo info) {
 
-        if (!level.isClientSide) {
+        if (!level.isClientSide()) {
 
             SoundEvent soundEvent;
             ItemStack itemStack = chiseledBookShelfBlockEntity.removeItem(slot, 1);

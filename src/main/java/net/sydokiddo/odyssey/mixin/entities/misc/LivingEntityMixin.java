@@ -42,7 +42,7 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Inject(method = "die", at = @At("HEAD"))
     private void odyssey$displayMobDeathMessage(DamageSource damageSource, CallbackInfo info) {
-        if (!this.isRemoved() && !this.dead && !this.level().isClientSide && this.level().getGameRules().getBoolean(GameRules.RULE_SHOWDEATHMESSAGES) && this.hasCustomName() && Odyssey.getConfig().entities.miscEntitiesConfig.named_mob_death_messages) {
+        if (!this.isRemoved() && !this.dead && !this.level().isClientSide() && this.level().getGameRules().getBoolean(GameRules.RULE_SHOWDEATHMESSAGES) && this.hasCustomName() && Odyssey.getConfig().entities.miscEntitiesConfig.named_mob_death_messages) {
             Objects.requireNonNull(this.level().getServer()).getPlayerList().broadcastSystemMessage(this.getCombatTracker().getDeathMessage(), false);
         }
     }

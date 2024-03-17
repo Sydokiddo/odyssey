@@ -38,7 +38,7 @@ public class CarpetBlockMixin extends Block implements SimpleWaterloggedBlock {
 
     @Inject(method = "<init>", at = @At("RETURN"))
     private void odyssey$registerCarpetDefaultBlockStates(Properties properties, CallbackInfo info) {
-        this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, false));
+        this.registerDefaultState(this.getStateDefinition().any().setValue(WATERLOGGED, false));
     }
 
     @Override
@@ -54,7 +54,7 @@ public class CarpetBlockMixin extends Block implements SimpleWaterloggedBlock {
     }
 
     @Inject(method = "updateShape", at = @At("RETURN"))
-    private void odyssey$updateShapeForCarpets(BlockState blockState, Direction direction, BlockState blockState2, LevelAccessor levelAccessor, BlockPos blockPos, BlockPos blockPos2, CallbackInfoReturnable<BlockState> cir) {
+    private void odyssey$updateShapeForCarpets(BlockState blockState, Direction direction, BlockState adjacentState, LevelAccessor levelAccessor, BlockPos blockPos, BlockPos adjacentPos, CallbackInfoReturnable<BlockState> cir) {
         if (blockState.getValue(WATERLOGGED)) {
             levelAccessor.scheduleTick(blockPos, Fluids.WATER, Fluids.WATER.getTickDelay(levelAccessor));
         }

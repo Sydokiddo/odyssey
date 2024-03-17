@@ -35,7 +35,7 @@ public abstract class VexMixin extends Monster implements TraceableEntity, Conta
 
     @Shadow private int limitedLifeTicks;
     @Shadow private boolean hasLimitedLife;
-    @Shadow public abstract void setLimitedLife(int i);
+    @Shadow public abstract void setLimitedLife(int limitedLifeTicks);
     @Shadow public abstract void setOwner(Mob mob);
 
     @Unique private static final String FROM_BOOK_TAG = "FromBook";

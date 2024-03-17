@@ -50,9 +50,9 @@ public class BaseSpawnerMixin {
 
             for (int particleAmount = 0; particleAmount < 20; ++particleAmount) {
 
-                double x = (double)blockPos.getX() + 0.5 + (randomSource.nextDouble() - 0.5) * 2.0;
-                double y = (double)blockPos.getY() + 0.5 + (randomSource.nextDouble() - 0.5) * 2.0;
-                double z = (double)blockPos.getZ() + 0.5 + (randomSource.nextDouble() - 0.5) * 2.0;
+                double x = (double) blockPos.getX() + 0.5 + (randomSource.nextDouble() - 0.5) * 2.0;
+                double y = (double) blockPos.getY() + 0.5 + (randomSource.nextDouble() - 0.5) * 2.0;
+                double z = (double) blockPos.getZ() + 0.5 + (randomSource.nextDouble() - 0.5) * 2.0;
 
                 serverLevel.sendParticles(ModParticles.SPAWNER_BUBBLE, x, y, z, 0, 0.0, 0.0, 0.0, 0.0);
             }

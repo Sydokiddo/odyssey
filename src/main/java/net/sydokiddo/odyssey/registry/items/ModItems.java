@@ -17,17 +17,23 @@ import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
 
 public class ModItems {
 
+    // region Item Stats
+
+    public static FoodProperties.Builder ironPotatoStats(int time) {
+        return new FoodProperties.Builder().nutrition(4).saturationMod(1.2F).alwaysEat()
+        .effect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, time, 1), 1F)
+        .effect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, time, 0), 1F);
+    }
+
+    // endregion
+
     // region Foods
 
     public static final Item IRON_POTATO = registerItem("iron_potato",
-        new Item(new FabricItemSettings().food(new FoodProperties.Builder().nutrition(4).saturationMod(1.2F).alwaysEat()
-        .effect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 300, 1), 1F)
-        .effect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 300, 0), 1F).build()).rarity(Rarity.RARE)));
+        new Item(new FabricItemSettings().food(ironPotatoStats(300).build()).rarity(Rarity.RARE)));
 
     public static final Item ENCHANTED_IRON_POTATO = registerItem("enchanted_iron_potato",
-        new EnchantedGlintItem(new FabricItemSettings().food(new FoodProperties.Builder().nutrition(4).saturationMod(1.2F).alwaysEat()
-        .effect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 900, 1), 1F)
-        .effect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 900, 0), 1F).build()).rarity(Rarity.EPIC)));
+        new EnchantedGlintItem(new FabricItemSettings().food(ironPotatoStats(900).build()).rarity(Rarity.EPIC)));
 
     // endregion
 

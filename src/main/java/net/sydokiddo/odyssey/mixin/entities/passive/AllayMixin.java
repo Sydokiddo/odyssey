@@ -21,6 +21,7 @@ import net.sydokiddo.odyssey.Odyssey;
 import net.sydokiddo.odyssey.registry.OdysseyRegistry;
 import net.sydokiddo.odyssey.registry.items.ModItems;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
+import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -37,8 +38,8 @@ public abstract class AllayMixin extends PathfinderMob implements ContainerMob, 
     @Shadow private long duplicationCooldown;
     @Shadow @Final private static EntityDataAccessor<Boolean> DATA_CAN_DUPLICATE;
     @Shadow public abstract boolean hasItemInHand();
+    @Shadow public abstract @NotNull SimpleContainer getInventory();
 
-    @Shadow @Final private SimpleContainer inventory;
     @Unique private static final String FROM_BOOK_TAG = "FromBook";
     @Unique private static final String DUPLICATION_COOLDOWN_TAG = "DuplicationCooldown";
     @Unique private static final String CAN_DUPLICATE_TAG = "CanDuplicate";
@@ -117,7 +118,7 @@ public abstract class AllayMixin extends PathfinderMob implements ContainerMob, 
     @Unique
     private void dropHeldItems() {
 
-        this.inventory.removeAllItems().forEach(this::spawnAtLocation);
+        this.getInventory().removeAllItems().forEach(this::spawnAtLocation);
         ItemStack itemStack = this.getItemBySlot(EquipmentSlot.MAINHAND);
 
         if (!itemStack.isEmpty()) {

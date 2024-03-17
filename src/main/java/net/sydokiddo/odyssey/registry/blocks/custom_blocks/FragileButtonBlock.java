@@ -23,7 +23,7 @@ public class FragileButtonBlock extends ButtonBlock {
 
     public FragileButtonBlock(BlockSetType blockSetType, int ticksToStayPressed, Properties properties) {
         super(blockSetType, ticksToStayPressed, properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(POWERED, false).setValue(FACE, AttachFace.WALL).setValue(CRACKED, false));
+        this.registerDefaultState(this.getStateDefinition().any().setValue(FACING, Direction.NORTH).setValue(POWERED, false).setValue(FACE, AttachFace.WALL).setValue(CRACKED, false));
     }
 
     @Override

@@ -35,7 +35,7 @@ public class RedstoneLanternBlock extends LanternBlock {
 
     public RedstoneLanternBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(HANGING, false).setValue(LIT, true).setValue(WATERLOGGED, false));
+        this.registerDefaultState(this.getStateDefinition().any().setValue(HANGING, false).setValue(LIT, true).setValue(WATERLOGGED, false));
     }
 
     // region Block State Initialization

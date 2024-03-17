@@ -37,14 +37,14 @@ public class GunpowderBlockEntity extends Entity implements TraceableEntity {
 
     @Override
     protected void addAdditionalSaveData(CompoundTag compoundTag) {
-        compoundTag.putShort(fuseString, (short) this.getFuse());
-        compoundTag.put(blockStateString, NbtUtils.writeBlockState(this.getBlockState()));
+        compoundTag.putShort(this.fuseString, (short) this.getFuse());
+        compoundTag.put(this.blockStateString, NbtUtils.writeBlockState(this.getBlockState()));
     }
 
     @Override
     protected void readAdditionalSaveData(CompoundTag compoundTag) {
-        this.setFuse(compoundTag.getShort(fuseString));
-        if (compoundTag.contains(blockStateString, 10)) this.setBlockState(NbtUtils.readBlockState(this.level().holderLookup(Registries.BLOCK), compoundTag.getCompound(blockStateString)));
+        this.setFuse(compoundTag.getShort(this.fuseString));
+        if (compoundTag.contains(this.blockStateString, 10)) this.setBlockState(NbtUtils.readBlockState(this.level().holderLookup(Registries.BLOCK), compoundTag.getCompound(this.blockStateString)));
     }
 
     public int getFuse() {

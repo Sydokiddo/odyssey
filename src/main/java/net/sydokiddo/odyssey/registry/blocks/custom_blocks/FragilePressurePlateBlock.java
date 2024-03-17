@@ -20,7 +20,7 @@ public class FragilePressurePlateBlock extends PressurePlateBlock {
 
     public FragilePressurePlateBlock(BlockSetType blockSetType, Properties properties) {
         super(blockSetType, properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(POWERED, false).setValue(CRACKED, false));
+        this.registerDefaultState(this.getStateDefinition().any().setValue(POWERED, false).setValue(CRACKED, false));
     }
 
     @Override

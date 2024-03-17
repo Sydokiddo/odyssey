@@ -30,7 +30,7 @@ public class VexBoundBookItem extends MobInContainerItem {
     @Override
     public void checkExtraContent(@Nullable Player player, @NotNull Level level, @NotNull ItemStack itemStack, @NotNull BlockPos blockPos) {
         if (level instanceof ServerLevel) {
-            this.spawnVex((ServerLevel)level, itemStack, blockPos);
+            this.spawnVex((ServerLevel) level, itemStack, blockPos);
             level.gameEvent(player, GameEvent.ENTITY_PLACE, blockPos);
         }
     }
@@ -44,7 +44,7 @@ public class VexBoundBookItem extends MobInContainerItem {
 
             vex.setPersistenceRequired();
             vex.setBoundOrigin(blockPos);
-            if (!compoundTag.contains("LifeTicks")) vex.setLimitedLife(20 * (30 + serverLevel.random.nextInt(90)));
+            if (!compoundTag.contains("LifeTicks")) vex.setLimitedLife(20 * (30 + serverLevel.getRandom().nextInt(90)));
 
             containerMob.loadFromItemTag(compoundTag);
             containerMob.setFromItem(true);

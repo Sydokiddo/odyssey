@@ -17,8 +17,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class ScreenEffectRendererMixin {
 
     @Inject(method = "renderScreenEffect", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/player/LocalPlayer;isOnFire()Z"), cancellable = true)
-    private static void odyssey$hideFireOverlay(Minecraft client, PoseStack poseStack, CallbackInfo info) {
-        if (client.player != null && client.player.hasEffect(MobEffects.FIRE_RESISTANCE) && Odyssey.getConfig().entities.miscEntitiesConfig.hidden_fire_overlay_with_fire_resistance) {
+    private static void odyssey$hideFireOverlay(Minecraft minecraft, PoseStack poseStack, CallbackInfo info) {
+        if (minecraft.player != null && minecraft.player.hasEffect(MobEffects.FIRE_RESISTANCE) && Odyssey.getConfig().entities.miscEntitiesConfig.hidden_fire_overlay_with_fire_resistance) {
             info.cancel();
         }
     }

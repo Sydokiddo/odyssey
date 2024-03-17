@@ -27,7 +27,7 @@ public class PottedSporeBlossomBlock extends FlowerPotBlock {
             BlockState mutualBlockState = level.getBlockState(mutableBlockPos);
             if (mutualBlockState.isCollisionShapeFullBlock(level, mutableBlockPos)) continue;
 
-            level.addParticle(ParticleTypes.SPORE_BLOSSOM_AIR, (double)mutableBlockPos.getX() + randomSource.nextDouble(), (double)mutableBlockPos.getY() + randomSource.nextDouble(), (double)mutableBlockPos.getZ() + randomSource.nextDouble(), 0.0, 0.0, 0.0);
+            level.addParticle(ParticleTypes.SPORE_BLOSSOM_AIR, (double) mutableBlockPos.getX() + randomSource.nextDouble(), (double) mutableBlockPos.getY() + randomSource.nextDouble(), (double) mutableBlockPos.getZ() + randomSource.nextDouble(), 0.0, 0.0, 0.0);
         }
     }
 }

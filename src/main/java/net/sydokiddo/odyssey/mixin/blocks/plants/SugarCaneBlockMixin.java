@@ -42,7 +42,7 @@ public class SugarCaneBlockMixin extends Block implements SimpleWaterloggedBlock
 
     @Inject(method = "<init>", at = @At("RETURN"))
     private void odyssey$registerSugarCaneDefaultBlockStates(Properties properties, CallbackInfo info) {
-        this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0).setValue(WATERLOGGED, false));
+        this.registerDefaultState(this.getStateDefinition().any().setValue(AGE, 0).setValue(WATERLOGGED, false));
     }
 
     @Inject(method = "createBlockStateDefinition", at = @At("RETURN"))
@@ -58,7 +58,7 @@ public class SugarCaneBlockMixin extends Block implements SimpleWaterloggedBlock
     }
 
     @Inject(method = "updateShape", at = @At("RETURN"))
-    private void odyssey$updateShapeForSugarCane(BlockState blockState, Direction direction, BlockState blockState2, LevelAccessor levelAccessor, BlockPos blockPos, BlockPos blockPos2, CallbackInfoReturnable<BlockState> cir) {
+    private void odyssey$updateShapeForSugarCane(BlockState blockState, Direction direction, BlockState adjacentState, LevelAccessor levelAccessor, BlockPos blockPos, BlockPos adjacentPos, CallbackInfoReturnable<BlockState> cir) {
         if (blockState.getValue(WATERLOGGED)) {
             levelAccessor.scheduleTick(blockPos, Fluids.WATER, Fluids.WATER.getTickDelay(levelAccessor));
         }
