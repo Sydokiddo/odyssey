@@ -34,6 +34,10 @@ public class QualityOfLifeBlockConfig {
 
     @ConfigEntry.Gui.RequiresRestart()
     @ConfigEntry.Gui.Tooltip
+    public boolean cracked_and_mossy_block_interactions = true;
+
+    @ConfigEntry.Gui.RequiresRestart()
+    @ConfigEntry.Gui.Tooltip
     public boolean axe_dispenser_functionality = true;
 
     @ConfigEntry.Gui.RequiresRestart(value = false)

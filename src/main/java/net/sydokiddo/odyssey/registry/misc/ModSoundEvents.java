@@ -68,6 +68,7 @@ public class ModSoundEvents {
     // region Item Sounds
 
     public static final SoundEvent PATINA_USE = registerSoundEvent("item.patina.use");
+    public static final SoundEvent CLAY_BALL_FILL_CRACKS = registerSoundEvent("item.clay_ball.fill_cracks");
 
     public static final SoundEvent ENVIRONMENT_DETECTOR_USE = registerSoundEvent("item.environment_detector.use");
 
@@ -95,6 +96,7 @@ public class ModSoundEvents {
     public static final SoundEvent SADDLE_UNEQUIP = registerSoundEvent("item.saddle.unequip");
 
     public static final SoundEvent SHOVEL_DIG_SNOW = registerSoundEvent("item.shovel.dig_snow");
+    public static final SoundEvent AXE_SCRAPE_MOSS = registerSoundEvent("item.axe.scrape_moss");
 
     // endregion
 

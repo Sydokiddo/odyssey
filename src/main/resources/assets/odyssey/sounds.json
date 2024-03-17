@@ -346,6 +346,14 @@
     ],
     "subtitle": "subtitles.item.patina.use"
   },
+  "item.clay_ball.fill_cracks": {
+    "sounds": [
+      "odyssey:item/clay_ball/fill_cracks1",
+      "odyssey:item/clay_ball/fill_cracks2",
+      "odyssey:item/clay_ball/fill_cracks3"
+    ],
+    "subtitle": "subtitles.item.clay_ball.fill_cracks"
+  },
 
   "item.environment_detector.use": {
     "sounds": [
@@ -475,6 +483,14 @@
       "odyssey:item/shovel/dig_snow4"
     ],
     "subtitle": "subtitles.item.shovel.dig_snow"
+  },
+  "item.axe.scrape_moss": {
+    "sounds": [
+      "odyssey:item/axe/scrape_moss1",
+      "odyssey:item/axe/scrape_moss2",
+      "odyssey:item/axe/scrape_moss3"
+    ],
+    "subtitle": "subtitles.item.axe.scrape"
   },
 
   "entity.armor_stand.add_arms": {

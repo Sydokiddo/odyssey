@@ -20,6 +20,7 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.sydokiddo.chrysalis.Chrysalis;
 import net.sydokiddo.chrysalis.misc.util.helpers.BlockHelper;
 import net.sydokiddo.odyssey.Odyssey;
+import net.sydokiddo.odyssey.registry.OdysseyRegistry;
 import net.sydokiddo.odyssey.registry.items.ModItems;
 import net.sydokiddo.odyssey.registry.misc.ModSoundEvents;
 import org.jetbrains.annotations.NotNull;
@@ -59,29 +60,29 @@ public class ScrapeBlockDispenserBehavior implements DispenseItemBehavior {
         Optional<BlockState> strippableWoodBlocks = this.getStripped(blockState);
         Optional<BlockState> previousCopperState = WeatheringCopper.getPrevious(blockState);
         Optional<BlockState> waxedCopperState = Optional.ofNullable(HoneycombItem.WAX_OFF_BY_BLOCK.get().get(blockState.getBlock())).map(block -> block.withPropertiesOf(blockState));
+        Optional<BlockState> scrapableMossyBlocks = OdysseyRegistry.getScrapableMossyBlocks(blockState);
 
-        // Wood Stripping
+        // region Wood Stripping
 
         if (strippableWoodBlocks.isPresent()) {
             doBlockConversionEvents(serverLevel, blockPos, strippableWoodBlocks.get(), SoundEvents.AXE_STRIP, itemStack, blockSource);
             return itemStack;
         }
 
-        // Copper Scraping
+        // endregion
+
+        // region Copper Scraping
 
         if (previousCopperState.isPresent()) {
-
             doBlockConversionEvents(serverLevel, blockPos, previousCopperState.get(), SoundEvents.AXE_SCRAPE, itemStack, blockSource);
             serverLevel.levelEvent(3005, blockPos, 0);
-
-            if (serverLevel.getRandom().nextFloat() < 0.25F) {
-                Block.popResource(serverLevel, blockPos, new ItemStack(ModItems.PATINA));
-            }
-
+            if (serverLevel.getRandom().nextFloat() < 0.25F) Block.popResource(serverLevel, blockPos, new ItemStack(ModItems.PATINA));
             return itemStack;
         }
 
-        // Removing Wax from Copper
+        // endregion
+
+        // region Removing Wax from Copper
 
         if (waxedCopperState.isPresent()) {
             doBlockConversionEvents(serverLevel, blockPos, waxedCopperState.get(), SoundEvents.AXE_WAX_OFF, itemStack, blockSource);
@@ -89,7 +90,9 @@ public class ScrapeBlockDispenserBehavior implements DispenseItemBehavior {
             return itemStack;
         }
 
-        // Converting Sticky Pistons into Pistons
+        // endregion
+
+        // region Converting Sticky Pistons into Pistons
 
         if (blockState.is(Blocks.STICKY_PISTON) && !blockState.getValue(PistonBaseBlock.EXTENDED) && Odyssey.getConfig().blocks.qualityOfLifeBlockConfig.piston_interactions) {
 
@@ -105,6 +108,17 @@ public class ScrapeBlockDispenserBehavior implements DispenseItemBehavior {
             Block.popResourceFromFace(serverLevel, blockPos, pistonDirection, new ItemStack(Items.SLIME_BALL));
             return itemStack;
         }
+
+        // endregion
+
+        // region Removing Moss from Mossy Blocks
+
+        if (scrapableMossyBlocks.isPresent() && Odyssey.getConfig().blocks.qualityOfLifeBlockConfig.cracked_and_mossy_block_interactions) {
+            doBlockConversionEvents(serverLevel, blockPos, scrapableMossyBlocks.get(), ModSoundEvents.AXE_SCRAPE_MOSS, itemStack, blockSource);
+            return itemStack;
+        }
+
+        // endregion
 
         BlockHelper.playDispenserAnimation(blockSource, direction);
         BlockHelper.playDispenserFailSound(blockSource);
