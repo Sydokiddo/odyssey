@@ -27,40 +27,40 @@ public class GunpowderBlockEntity extends Entity implements TraceableEntity {
         this.blocksBuilding = true;
     }
 
-    // region NBT
+    // region Tags
 
     @Override
     protected void defineSynchedData() {
-        this.entityData.define(DATA_FUSE_ID, 1);
-        this.entityData.define(DATA_BLOCK_STATE_ID, ModBlocks.GUNPOWDER_BLOCK.defaultBlockState());
+        this.getEntityData().define(DATA_FUSE_ID, 1);
+        this.getEntityData().define(DATA_BLOCK_STATE_ID, ModBlocks.GUNPOWDER_BLOCK.defaultBlockState());
     }
 
     @Override
-    protected void addAdditionalSaveData(CompoundTag compoundTag) {
-        compoundTag.putShort(this.fuseString, (short) this.getFuse());
-        compoundTag.put(this.blockStateString, NbtUtils.writeBlockState(this.getBlockState()));
+    protected void addAdditionalSaveData(CompoundTag tags) {
+        tags.putShort(this.fuseString, (short) this.getFuse());
+        tags.put(this.blockStateString, NbtUtils.writeBlockState(this.getBlockState()));
     }
 
     @Override
-    protected void readAdditionalSaveData(CompoundTag compoundTag) {
-        this.setFuse(compoundTag.getShort(this.fuseString));
-        if (compoundTag.contains(this.blockStateString, 10)) this.setBlockState(NbtUtils.readBlockState(this.level().holderLookup(Registries.BLOCK), compoundTag.getCompound(this.blockStateString)));
+    protected void readAdditionalSaveData(CompoundTag tags) {
+        this.setFuse(tags.getShort(this.fuseString));
+        if (tags.contains(this.blockStateString, 10)) this.setBlockState(NbtUtils.readBlockState(this.level().holderLookup(Registries.BLOCK), tags.getCompound(this.blockStateString)));
     }
 
     public int getFuse() {
-        return this.entityData.get(DATA_FUSE_ID);
+        return this.getEntityData().get(DATA_FUSE_ID);
     }
 
     private void setFuse(int fuseTime) {
-        this.entityData.set(DATA_FUSE_ID, fuseTime);
+        this.getEntityData().set(DATA_FUSE_ID, fuseTime);
     }
 
     public BlockState getBlockState() {
-        return this.entityData.get(DATA_BLOCK_STATE_ID);
+        return this.getEntityData().get(DATA_BLOCK_STATE_ID);
     }
 
     public void setBlockState(BlockState blockState) {
-        this.entityData.set(DATA_BLOCK_STATE_ID, blockState);
+        this.getEntityData().set(DATA_BLOCK_STATE_ID, blockState);
     }
 
     // endregion

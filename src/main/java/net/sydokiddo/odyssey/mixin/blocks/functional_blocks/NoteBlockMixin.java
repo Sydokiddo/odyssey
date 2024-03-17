@@ -65,7 +65,7 @@ public abstract class NoteBlockMixin extends Block {
 
     @Inject(method = "<init>", at = @At("RETURN"))
     private void odyssey$registerNoteBlockDefaultBlockStates(Properties properties, CallbackInfo info) {
-        this.registerDefaultState(this.stateDefinition.any().setValue(WAXED, false));
+        this.registerDefaultState(this.getStateDefinition().any().setValue(WAXED, false));
     }
 
     @Inject(method = "createBlockStateDefinition", at = @At("RETURN"))

@@ -40,22 +40,22 @@ public abstract class ItemFrameMixin extends HangingEntity {
         super(entityType, level);
     }
 
-    // region NBT
+    // region Tags
 
-    @Unique private static final String WAXED_TAG = "Waxed";
+    @Unique private static final String WAXED_TAG = "waxed";
 
     @Inject(at = @At("HEAD"), method = "defineSynchedData")
-    private void odyssey$defineItemFrameNBT(CallbackInfo info) {
+    private void odyssey$defineItemFrameTags(CallbackInfo info) {
         this.getEntityData().define(OdysseyRegistry.WAXED, false);
     }
 
     @Inject(at = @At("HEAD"), method = "addAdditionalSaveData")
-    private void odyssey$addItemFrameNBT(CompoundTag compoundTag, CallbackInfo info) {
+    private void odyssey$addItemFrameTags(CompoundTag compoundTag, CallbackInfo info) {
         compoundTag.putBoolean(WAXED_TAG, this.isWaxed());
     }
 
     @Inject(at = @At("HEAD"), method = "readAdditionalSaveData")
-    private void odyssey$readItemFrameNBT(CompoundTag compoundTag, CallbackInfo info) {
+    private void odyssey$readItemFrameTags(CompoundTag compoundTag, CallbackInfo info) {
         this.setWaxed(compoundTag.getBoolean(WAXED_TAG));
     }
 
@@ -66,7 +66,7 @@ public abstract class ItemFrameMixin extends HangingEntity {
 
     @Unique
     private void setWaxed(boolean isWaxed) {
-        this.entityData.set(OdysseyRegistry.WAXED, isWaxed);
+        this.getEntityData().set(OdysseyRegistry.WAXED, isWaxed);
     }
 
     // endregion

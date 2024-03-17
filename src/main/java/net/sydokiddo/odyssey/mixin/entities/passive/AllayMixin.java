@@ -40,7 +40,7 @@ public abstract class AllayMixin extends PathfinderMob implements ContainerMob, 
     @Shadow public abstract boolean hasItemInHand();
     @Shadow public abstract @NotNull SimpleContainer getInventory();
 
-    @Unique private static final String FROM_BOOK_TAG = "FromBook";
+    @Unique private static final String FROM_BOOK_TAG = "from_book";
     @Unique private static final String DUPLICATION_COOLDOWN_TAG = "DuplicationCooldown";
     @Unique private static final String CAN_DUPLICATE_TAG = "CanDuplicate";
 
@@ -48,26 +48,26 @@ public abstract class AllayMixin extends PathfinderMob implements ContainerMob, 
         super(entityType, level);
     }
 
-    // region NBT
+    // region Tags
 
     @Inject(at = @At("HEAD"), method = "defineSynchedData")
-    private void odyssey$defineAllayNBT(CallbackInfo info) {
-        this.entityData.define(OdysseyRegistry.ALLAY_FROM_BOOK, false);
+    private void odyssey$defineAllayTags(CallbackInfo info) {
+        this.getEntityData().define(OdysseyRegistry.ALLAY_FROM_BOOK, false);
     }
 
     @Inject(at = @At("HEAD"), method = "addAdditionalSaveData")
-    private void odyssey$addAllayNBT(CompoundTag compoundTag, CallbackInfo info) {
+    private void odyssey$addAllayTags(CompoundTag compoundTag, CallbackInfo info) {
         compoundTag.putBoolean(FROM_BOOK_TAG, this.fromItem());
     }
 
     @Override
     public boolean fromItem() {
-        return this.entityData.get(OdysseyRegistry.ALLAY_FROM_BOOK);
+        return this.getEntityData().get(OdysseyRegistry.ALLAY_FROM_BOOK);
     }
 
     @Override
     public void setFromItem(boolean fromItem) {
-        this.entityData.set(OdysseyRegistry.ALLAY_FROM_BOOK, fromItem);
+        this.getEntityData().set(OdysseyRegistry.ALLAY_FROM_BOOK, fromItem);
     }
 
     @Override
@@ -80,7 +80,7 @@ public abstract class AllayMixin extends PathfinderMob implements ContainerMob, 
     @Override
     public void loadFromItemTag(CompoundTag compoundTag) {
         this.duplicationCooldown = compoundTag.getInt(DUPLICATION_COOLDOWN_TAG);
-        this.entityData.set(DATA_CAN_DUPLICATE, compoundTag.getBoolean(CAN_DUPLICATE_TAG));
+        this.getEntityData().set(DATA_CAN_DUPLICATE, compoundTag.getBoolean(CAN_DUPLICATE_TAG));
         ContainerMob.loadDefaultDataFromItemTag(this, compoundTag);
     }
 

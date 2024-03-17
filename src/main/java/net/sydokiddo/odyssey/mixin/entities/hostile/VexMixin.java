@@ -38,7 +38,7 @@ public abstract class VexMixin extends Monster implements TraceableEntity, Conta
     @Shadow public abstract void setLimitedLife(int limitedLifeTicks);
     @Shadow public abstract void setOwner(Mob mob);
 
-    @Unique private static final String FROM_BOOK_TAG = "FromBook";
+    @Unique private static final String FROM_BOOK_TAG = "from_book";
     @Unique private static final String LIFE_TICKS_TAG = "LifeTicks";
 
     private VexMixin(EntityType<? extends Monster> entityType, Level level) {
@@ -58,26 +58,26 @@ public abstract class VexMixin extends Monster implements TraceableEntity, Conta
         }
     }
 
-    // region NBT
+    // region Tags
 
     @Inject(at = @At("HEAD"), method = "defineSynchedData")
-    private void odyssey$defineVexNBT(CallbackInfo info) {
-        this.entityData.define(OdysseyRegistry.VEX_FROM_BOOK, false);
+    private void odyssey$defineVexTags(CallbackInfo info) {
+        this.getEntityData().define(OdysseyRegistry.VEX_FROM_BOOK, false);
     }
 
     @Inject(at = @At("HEAD"), method = "addAdditionalSaveData")
-    private void odyssey$addVexNBT(CompoundTag compoundTag, CallbackInfo info) {
+    private void odyssey$addVexTags(CompoundTag compoundTag, CallbackInfo info) {
         compoundTag.putBoolean(FROM_BOOK_TAG, this.fromItem());
     }
 
     @Override
     public boolean fromItem() {
-        return this.entityData.get(OdysseyRegistry.VEX_FROM_BOOK);
+        return this.getEntityData().get(OdysseyRegistry.VEX_FROM_BOOK);
     }
 
     @Override
     public void setFromItem(boolean fromItem) {
-        this.entityData.set(OdysseyRegistry.VEX_FROM_BOOK, fromItem);
+        this.getEntityData().set(OdysseyRegistry.VEX_FROM_BOOK, fromItem);
     }
 
     @Override

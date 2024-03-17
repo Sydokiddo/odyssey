@@ -28,18 +28,18 @@ public class PotionCauldronBlockEntity extends BlockEntity {
         super(ModEntities.POTION_CAULDRON, blockPos, blockState);
     }
 
-    // region NBT
+    // region Tags
 
     @Override
-    public void saveAdditional(CompoundTag compoundTag) {
-        compoundTag.putString(this.potionString, String.valueOf(BuiltInRegistries.POTION.getKey(this.getPotion())));
-        super.saveAdditional(compoundTag);
+    public void saveAdditional(CompoundTag tags) {
+        tags.putString(this.potionString, String.valueOf(BuiltInRegistries.POTION.getKey(this.getPotion())));
+        super.saveAdditional(tags);
     }
 
     @Override
-    public void load(@NotNull CompoundTag compoundTag) {
-        super.load(compoundTag);
-        this.potion = Potion.byName(compoundTag.getString(this.potionString));
+    public void load(@NotNull CompoundTag tags) {
+        super.load(tags);
+        this.potion = Potion.byName(tags.getString(this.potionString));
     }
 
     @Override

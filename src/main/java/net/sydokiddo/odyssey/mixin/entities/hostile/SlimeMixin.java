@@ -27,8 +27,8 @@ public abstract class SlimeMixin extends Mob {
 
     @Shadow public abstract int getSize();
 
-    @Unique private static final String MAGMA_CONVERSION_TAG = "MagmaCubeConversionTime";
-    @Unique private static final String SLIME_CONVERSION_TAG = "SlimeConversionTime";
+    @Unique private static final String MAGMA_CONVERSION_TAG = "magma_cube_conversion_time";
+    @Unique private static final String SLIME_CONVERSION_TAG = "slime_conversion_time";
 
     @Unique private int onMagmaTime;
     @Unique private int inWaterTime;
@@ -38,7 +38,7 @@ public abstract class SlimeMixin extends Mob {
         super(entityType, level);
     }
 
-    // region NBT
+    // region Tags
 
     @Unique
     private boolean isMagmaConverting() {
@@ -47,7 +47,7 @@ public abstract class SlimeMixin extends Mob {
 
     @Unique
     private void setMagmaConverting(boolean isMagmaConverting) {
-        this.entityData.set(OdysseyRegistry.MAGMA_CUBE_CONVERSION, isMagmaConverting);
+        this.getEntityData().set(OdysseyRegistry.MAGMA_CUBE_CONVERSION, isMagmaConverting);
     }
 
     @Unique
@@ -57,23 +57,23 @@ public abstract class SlimeMixin extends Mob {
 
     @Unique
     private void setSlimeConverting(boolean isSlimeConverting) {
-        this.entityData.set(OdysseyRegistry.SLIME_CONVERSION, isSlimeConverting);
+        this.getEntityData().set(OdysseyRegistry.SLIME_CONVERSION, isSlimeConverting);
     }
 
     @Inject(at = @At("HEAD"), method = "defineSynchedData")
-    private void odyssey$defineSlimeNBT(CallbackInfo info) {
+    private void odyssey$defineSlimeTags(CallbackInfo info) {
         this.getEntityData().define(OdysseyRegistry.MAGMA_CUBE_CONVERSION, false);
         this.getEntityData().define(OdysseyRegistry.SLIME_CONVERSION, false);
     }
 
     @Inject(at = @At("HEAD"), method = "addAdditionalSaveData")
-    private void odyssey$addSlimeNBT(CompoundTag compoundTag, CallbackInfo info) {
+    private void odyssey$addSlimeTags(CompoundTag compoundTag, CallbackInfo info) {
         compoundTag.putInt(MAGMA_CONVERSION_TAG, this.isMagmaConverting() ? this.conversionTime : -1);
         compoundTag.putInt(SLIME_CONVERSION_TAG, this.isSlimeConverting() ? this.conversionTime : -1);
     }
 
     @Inject(at = @At("HEAD"), method = "readAdditionalSaveData")
-    private void odyssey$readSlimeNBT(CompoundTag compoundTag, CallbackInfo info) {
+    private void odyssey$readSlimeTags(CompoundTag compoundTag, CallbackInfo info) {
         if (Odyssey.getConfig().entities.hostileMobsConfig.slime_and_magma_cube_converting) {
             if (compoundTag.contains(MAGMA_CONVERSION_TAG, 99) && compoundTag.getInt(MAGMA_CONVERSION_TAG) > -1) {
                 this.startMagmaConversion(compoundTag.getInt(MAGMA_CONVERSION_TAG));

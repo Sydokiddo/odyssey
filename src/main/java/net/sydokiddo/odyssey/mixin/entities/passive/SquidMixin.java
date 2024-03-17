@@ -23,18 +23,18 @@ import org.spongepowered.asm.mixin.Unique;
 @Mixin(Squid.class)
 public class SquidMixin extends WaterAnimal implements Bucketable {
 
-    @Unique private static final String FROM_BUCKET_TAG = "FromBucket";
+    @Unique private static final String FROM_BUCKET_TAG = "from_bucket";
 
     private SquidMixin(EntityType<? extends WaterAnimal> entityType, Level level) {
         super(entityType, level);
     }
 
-    // region NBT
+    // region Tags
 
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
-        this.entityData.define(OdysseyRegistry.FROM_BUCKET, false);
+        this.getEntityData().define(OdysseyRegistry.FROM_BUCKET, false);
     }
 
     @Override
@@ -51,12 +51,12 @@ public class SquidMixin extends WaterAnimal implements Bucketable {
 
     @Override
     public boolean fromBucket() {
-        return this.entityData.get(OdysseyRegistry.FROM_BUCKET);
+        return this.getEntityData().get(OdysseyRegistry.FROM_BUCKET);
     }
 
     @Override
     public void setFromBucket(boolean fromBucket) {
-        this.entityData.set(OdysseyRegistry.FROM_BUCKET, fromBucket);
+        this.getEntityData().set(OdysseyRegistry.FROM_BUCKET, fromBucket);
     }
 
     @Override
