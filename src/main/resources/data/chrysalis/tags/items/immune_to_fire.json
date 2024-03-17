@@ -2,6 +2,10 @@
   "replace": false,
   "values": [
     "minecraft:wither_skeleton_skull",
-    "odyssey:wither_skull_fragment"
+    "odyssey:wither_skull_fragment",
+    "minecraft:ghast_tear",
+    "minecraft:blaze_rod",
+    "minecraft:blaze_powder",
+    "minecraft:magma_cream"
   ]
 }
