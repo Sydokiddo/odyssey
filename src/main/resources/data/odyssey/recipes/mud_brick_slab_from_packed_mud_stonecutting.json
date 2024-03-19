@@ -4,5 +4,5 @@
   "ingredient": {
     "item": "minecraft:packed_mud"
   },
-  "result": "odyssey:packed_mud_slab"
+  "result": "minecraft:mud_brick_slab"
 }
