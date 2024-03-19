@@ -130,6 +130,16 @@ public class ModBlocks {
 
     // endregion
 
+    // region Sandstone Blocks
+
+    public static final Block SMOOTH_SANDSTONE_WALL = registerBlock("smooth_sandstone_wall",
+        new WallBlock(FabricBlockSettings.copyOf(Blocks.SMOOTH_SANDSTONE).sound(SoundType.STONE)));
+
+    public static final Block SMOOTH_RED_SANDSTONE_WALL = registerBlock("smooth_red_sandstone_wall",
+        new WallBlock(FabricBlockSettings.copyOf(Blocks.SMOOTH_RED_SANDSTONE).sound(SoundType.STONE)));
+
+    // endregion
+
     // region Potted Plants
 
     public static final Block POTTED_SMALL_DRIPLEAF = registerBlockWithoutBlockItem("potted_small_dripleaf",
