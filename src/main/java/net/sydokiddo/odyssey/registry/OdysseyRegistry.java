@@ -77,11 +77,11 @@ public class OdysseyRegistry {
 
     private static final ImmutableMap<Block, Block> CRACKED_BLOCK_FILLING = ImmutableMap.<Block, Block>builder()
         .put(Blocks.CRACKED_STONE_BRICKS, Blocks.STONE_BRICKS)
-        .put(Blocks.INFESTED_CRACKED_STONE_BRICKS, Blocks.INFESTED_STONE_BRICKS)
         .put(Blocks.CRACKED_DEEPSLATE_BRICKS, Blocks.DEEPSLATE_BRICKS)
         .put(Blocks.CRACKED_DEEPSLATE_TILES, Blocks.DEEPSLATE_TILES)
-        .put(Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS, Blocks.POLISHED_BLACKSTONE_BRICKS)
         .put(Blocks.CRACKED_NETHER_BRICKS, Blocks.NETHER_BRICKS)
+        .put(Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS, Blocks.POLISHED_BLACKSTONE_BRICKS)
+        .put(Blocks.INFESTED_CRACKED_STONE_BRICKS, Blocks.INFESTED_STONE_BRICKS)
         .build();
 
     public static Optional<BlockState> getFillableCrackedBlocks(BlockState blockState) {
@@ -97,6 +97,7 @@ public class OdysseyRegistry {
         .put(Blocks.MOSSY_STONE_BRICK_STAIRS, Blocks.STONE_BRICK_STAIRS)
         .put(Blocks.MOSSY_STONE_BRICK_SLAB, Blocks.STONE_BRICK_SLAB)
         .put(Blocks.MOSSY_STONE_BRICK_WALL, Blocks.STONE_BRICK_WALL)
+        .put(Blocks.INFESTED_MOSSY_STONE_BRICKS, Blocks.INFESTED_STONE_BRICKS)
         .build();
 
     public static Optional<BlockState> getScrapableMossyBlocks(BlockState blockState) {
