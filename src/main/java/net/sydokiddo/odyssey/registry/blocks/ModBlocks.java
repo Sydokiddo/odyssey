@@ -140,6 +140,25 @@ public class ModBlocks {
 
     // endregion
 
+    // region Quartz Blocks
+
+    public static final Block QUARTZ_WALL = registerBlock("quartz_wall",
+        new WallBlock(FabricBlockSettings.copyOf(Blocks.QUARTZ_BLOCK).sound(SoundType.STONE)));
+
+    public static final Block QUARTZ_BRICK_STAIRS = registerBlock("quartz_brick_stairs",
+        new StairBlock(Blocks.QUARTZ_BRICKS.defaultBlockState(), FabricBlockSettings.copyOf(Blocks.QUARTZ_BRICKS)));
+
+    public static final Block QUARTZ_BRICK_SLAB = registerBlock("quartz_brick_slab",
+        new SlabBlock(FabricBlockSettings.copyOf(Blocks.QUARTZ_BRICKS)));
+
+    public static final Block QUARTZ_BRICK_WALL = registerBlock("quartz_brick_wall",
+        new WallBlock(FabricBlockSettings.copyOf(Blocks.QUARTZ_BRICKS).sound(SoundType.STONE)));
+
+    public static final Block SMOOTH_QUARTZ_WALL = registerBlock("smooth_quartz_wall",
+        new WallBlock(FabricBlockSettings.copyOf(Blocks.SMOOTH_QUARTZ).sound(SoundType.STONE)));
+
+    // endregion
+
     // region Potted Plants
 
     public static final Block POTTED_SMALL_DRIPLEAF = registerBlockWithoutBlockItem("potted_small_dripleaf",

@@ -43,6 +43,7 @@ public class ModCreativeModeTabs {
             ModBlocks.FRAGILE_BUTTON, ModBlocks.FRAGILE_PRESSURE_PLATE, ModBlocks.POLISHED_DEEPSLATE_BUTTON, ModBlocks.POLISHED_DEEPSLATE_PRESSURE_PLATE, ModBlocks.REDSTONE_LANTERN,
             ModBlocks.TINTED_GLASS_PANE, ModBlocks.STONE_WALL, ModBlocks.SMOOTH_STONE_STAIRS, ModBlocks.SMOOTH_STONE_WALL, ModBlocks.POLISHED_GRANITE_WALL, ModBlocks.POLISHED_DIORITE_WALL, ModBlocks.POLISHED_ANDESITE_WALL,
             ModBlocks.SMOOTH_SANDSTONE_WALL, ModBlocks.SMOOTH_RED_SANDSTONE_WALL, ModBlocks.PRISMARINE_BRICK_WALL, ModBlocks.DARK_PRISMARINE_WALL,
+            ModBlocks.QUARTZ_WALL, ModBlocks.QUARTZ_BRICK_STAIRS, ModBlocks.QUARTZ_BRICK_SLAB, ModBlocks.QUARTZ_BRICK_WALL, ModBlocks.SMOOTH_QUARTZ_WALL,
             Items.FLOWER_POT, Items.SMALL_DRIPLEAF, Items.SPORE_BLOSSOM, Items.SEA_PICKLE, Items.SUGAR_CANE, Items.SHORT_GRASS, Items.NETHER_WART,
             Blocks.NOTE_BLOCK, Blocks.COPPER_BLOCK, Blocks.RED_MUSHROOM_BLOCK, Blocks.DIAMOND_BLOCK, Blocks.NETHERRACK);
         });
@@ -58,7 +59,6 @@ public class ModCreativeModeTabs {
             entries.addAfter(Items.POLISHED_GRANITE_SLAB, ModBlocks.POLISHED_GRANITE_WALL);
             entries.addAfter(Items.POLISHED_DIORITE_SLAB, ModBlocks.POLISHED_DIORITE_WALL);
             entries.addAfter(Items.POLISHED_ANDESITE_SLAB, ModBlocks.POLISHED_ANDESITE_WALL);
-            entries.addAfter(Items.AMETHYST_BLOCK, ModBlocks.REFINED_AMETHYST_BLOCK);
             entries.addAfter(Items.POLISHED_DEEPSLATE_WALL, ModBlocks.POLISHED_DEEPSLATE_PRESSURE_PLATE, ModBlocks.POLISHED_DEEPSLATE_BUTTON);
             entries.addAfter(Items.SMOOTH_SANDSTONE_SLAB, ModBlocks.SMOOTH_SANDSTONE_WALL);
             entries.addAfter(Items.SMOOTH_RED_SANDSTONE_SLAB, ModBlocks.SMOOTH_RED_SANDSTONE_WALL);
@@ -66,6 +66,10 @@ public class ModCreativeModeTabs {
             entries.addAfter(Items.DARK_PRISMARINE_SLAB, ModBlocks.DARK_PRISMARINE_WALL);
             entries.addAfter(Items.HEAVY_WEIGHTED_PRESSURE_PLATE, ModBlocks.IRON_BUTTON);
             entries.addAfter(Items.LIGHT_WEIGHTED_PRESSURE_PLATE, ModBlocks.GOLDEN_BUTTON);
+            entries.addAfter(Items.QUARTZ_SLAB, ModBlocks.QUARTZ_WALL);
+            entries.addAfter(Items.QUARTZ_BRICKS, ModBlocks.QUARTZ_BRICK_STAIRS, ModBlocks.QUARTZ_BRICK_SLAB, ModBlocks.QUARTZ_BRICK_WALL);
+            entries.addAfter(Items.SMOOTH_QUARTZ_SLAB, ModBlocks.SMOOTH_QUARTZ_WALL);
+            entries.addAfter(Items.AMETHYST_BLOCK, ModBlocks.REFINED_AMETHYST_BLOCK);
         });
 
         // endregion

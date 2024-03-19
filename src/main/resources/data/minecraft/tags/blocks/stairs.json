@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "odyssey:smooth_stone_stairs"
+    "odyssey:smooth_stone_stairs",
+    "odyssey:quartz_brick_stairs"
   ]
 }

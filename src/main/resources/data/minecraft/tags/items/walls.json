@@ -9,6 +9,9 @@
     "odyssey:stone_wall",
     "odyssey:smooth_stone_wall",
     "odyssey:smooth_sandstone_wall",
-    "odyssey:smooth_red_sandstone_wall"
+    "odyssey:smooth_red_sandstone_wall",
+    "odyssey:quartz_wall",
+    "odyssey:quartz_brick_wall",
+    "odyssey:smooth_quartz_wall"
   ]
 }
