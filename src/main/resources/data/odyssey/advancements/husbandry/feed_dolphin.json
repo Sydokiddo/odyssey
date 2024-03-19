@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:husbandry/fishy_business",
+  "criteria": {
+    "feed_dolphin": {
+      "trigger": "minecraft:player_interacted_with_entity",
+      "conditions": {
+        "item": {
+          "tag": "minecraft:fishes"
+        },
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "minecraft:dolphin"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "title": {
+      "translate": "advancements.odyssey.feed_dolphin.title"
+    },
+    "description": {
+      "translate": "advancements.odyssey.feed_dolphin.description"
+    },
+    "icon": {
+      "item": "minecraft:cod"
+    },
+    "frame": "task",
+    "hidden": false,
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "requirements": [
+    [
+      "feed_dolphin"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

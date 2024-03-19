@@ -1,0 +1,29 @@
+{
+  "parent": "minecraft:adventure/root",
+  "criteria": {
+    "repair_cracked_block": {
+      "trigger": "odyssey:repair_cracked_block"
+    }
+  },
+  "display": {
+    "title": {
+      "translate": "advancements.odyssey.repair_cracked_block.title"
+    },
+    "description": {
+      "translate": "advancements.odyssey.repair_cracked_block.description"
+    },
+    "icon": {
+      "item": "minecraft:clay_ball"
+    },
+    "frame": "task",
+    "hidden": false,
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "requirements": [
+    [
+      "repair_cracked_block"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

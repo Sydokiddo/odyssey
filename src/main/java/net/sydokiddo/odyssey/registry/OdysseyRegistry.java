@@ -139,6 +139,7 @@ public class OdysseyRegistry {
 
         ModCreativeModeTabs.registerCreativeTabs();
         ModLootTableModifiers.modifyLootTables();
+        ModCriteriaTriggers.registerCriteriaTriggers();
         CommandRegistrationCallback.EVENT.register((commandDispatcher, commandBuildContext, commandSelection) -> ShowcaseCommand.register(commandDispatcher));
         CommandRegistrationCallback.EVENT.register((commandDispatcher, commandBuildContext, commandSelection) -> HatCommand.register(commandDispatcher));
 
@@ -186,6 +187,7 @@ public class OdysseyRegistry {
                 ParticleUtils.spawnParticlesOnBlockFace(level, blockPos, new BlockParticleOption(ParticleTypes.BLOCK, Blocks.CLAY.defaultBlockState()), UniformInt.of(3, 5), hitResult.getDirection(), () -> ParticleUtils.getRandomSpeedRanges(level.getRandom()), 0.55);
                 executeBlockConversionEvents(level, blockPos, fillableCrackedBlocks.get(), itemInHand, ModSoundEvents.CLAY_BALL_FILL_CRACKS, player);
                 if (!player.getAbilities().instabuild) itemInHand.shrink(1);
+                if (!level.isClientSide() && player instanceof ServerPlayer serverPlayer) ModCriteriaTriggers.REPAIR_CRACKED_BLOCK.trigger(serverPlayer);
 
                 return InteractionResult.sidedSuccess(level.isClientSide());
             }
@@ -199,6 +201,7 @@ public class OdysseyRegistry {
                 executeBlockConversionEvents(level, blockPos, scrapableMossyBlocks.get(), itemInHand, ModSoundEvents.AXE_SCRAPE_MOSS, player);
                 Block.popResourceFromFace(level, hitResult.getBlockPos(), hitResult.getDirection(), new ItemStack(Items.MOSS_BLOCK));
                 if (!player.getAbilities().instabuild) itemInHand.hurtAndBreak(1, player, (axe) -> axe.broadcastBreakEvent(interactionHand));
+                if (!level.isClientSide() && player instanceof ServerPlayer serverPlayer) ModCriteriaTriggers.SCRAPE_MOSSY_BLOCK.trigger(serverPlayer);
 
                 return InteractionResult.sidedSuccess(level.isClientSide());
             }

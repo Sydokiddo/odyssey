@@ -1,0 +1,38 @@
+{
+  "parent": "minecraft:husbandry/plant_seed",
+  "criteria": {
+    "cake": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:cake"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "title": {
+      "translate": "advancements.odyssey.bake_cake.title"
+    },
+    "description": {
+      "translate": "advancements.odyssey.bake_cake.description"
+    },
+    "icon": {
+      "item": "minecraft:cake"
+    },
+    "frame": "task",
+    "hidden": false,
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "requirements": [
+    [
+      "cake"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

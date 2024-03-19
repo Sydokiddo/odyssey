@@ -1,0 +1,29 @@
+{
+  "parent": "odyssey:adventure/repair_cracked_block",
+  "criteria": {
+    "scrape_mossy_block": {
+      "trigger": "odyssey:scrape_mossy_block"
+    }
+  },
+  "display": {
+    "title": {
+      "translate": "advancements.odyssey.scrape_mossy_block.title"
+    },
+    "description": {
+      "translate": "advancements.odyssey.scrape_mossy_block.description"
+    },
+    "icon": {
+      "item": "minecraft:mossy_cobblestone"
+    },
+    "frame": "task",
+    "hidden": false,
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "requirements": [
+    [
+      "scrape_mossy_block"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

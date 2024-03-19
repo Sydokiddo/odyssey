@@ -1,0 +1,30 @@
+{
+  "parent": "minecraft:adventure/throw_trident",
+  "criteria": {
+    "use_riptide_trident": {
+      "trigger": "chrysalis:use_riptide_trident"
+    }
+  },
+  "display": {
+    "title": {
+      "translate": "advancements.odyssey.use_riptide_trident.title"
+    },
+    "description": {
+      "translate": "advancements.odyssey.use_riptide_trident.description"
+    },
+    "icon": {
+      "item": "minecraft:trident",
+      "nbt": "{Damage:0}"
+    },
+    "frame": "task",
+    "hidden": false,
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "requirements": [
+    [
+      "use_riptide_trident"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

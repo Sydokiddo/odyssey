@@ -1,5 +1,5 @@
 {
-  "parent": "odyssey:adventure/find_ocean_monument",
+  "parent": "odyssey:adventure/kill_elder_guardian",
   "criteria": {
     "threw_trident": {
       "conditions": {

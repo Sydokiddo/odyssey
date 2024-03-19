@@ -1,0 +1,40 @@
+{
+  "parent": "odyssey:adventure/find_ocean_monument",
+  "criteria": {
+    "elder_guardian": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "minecraft:elder_guardian"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "title": {
+      "translate": "advancements.odyssey.kill_elder_guardian.title"
+    },
+    "description": {
+      "translate": "advancements.odyssey.kill_elder_guardian.description"
+    },
+    "icon": {
+      "item": "odyssey:elder_guardian_thorn"
+    },
+    "frame": "task",
+    "hidden": false,
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "requirements": [
+    [
+      "elder_guardian"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

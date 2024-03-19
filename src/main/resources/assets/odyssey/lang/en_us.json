@@ -227,6 +227,12 @@
   "advancements.odyssey.find_ocean_monument.title": "A Monumental Discovery",
   "advancements.odyssey.find_ocean_monument.description": "Enter an Ocean Monument",
 
+  "advancements.odyssey.kill_elder_guardian.title": "The Deep End",
+  "advancements.odyssey.kill_elder_guardian.description": "Defeat an Elder Guardian",
+
+  "advancements.odyssey.use_riptide_trident.title": "Do a Barrel Roll!",
+  "advancements.odyssey.use_riptide_trident.description": "Use a Trident enchanted with Riptide to give yourself a boost",
+
   "advancements.odyssey.find_mansion.title": "A Foreboding Keep",
   "advancements.odyssey.find_mansion.description": "Enter a Woodland Mansion",
 
@@ -242,6 +248,9 @@
   "advancements.odyssey.play_jukebox.title": "Music to My Ears!",
   "advancements.odyssey.play_jukebox.description": "Play a Music Disc in a Jukebox",
 
+  "advancements.odyssey.feed_dolphin.title": "Echolocation",
+  "advancements.odyssey.feed_dolphin.description": "Feed a dolphin some fish to have it lead you to treasure",
+
   "advancements.odyssey.rare_axolotl_in_a_bucket.title": "The Luckiest Predator",
   "advancements.odyssey.rare_axolotl_in_a_bucket.description": "Catch the rarest Axolotl variant in a Bucket",
 
@@ -250,6 +259,15 @@
 
   "advancements.odyssey.use_patina.title": "Patina Pending",
   "advancements.odyssey.use_patina.description": "Apply Patina to a Copper block!",
+
+  "advancements.odyssey.repair_cracked_block.title": "Restored and Refurbished",
+  "advancements.odyssey.repair_cracked_block.description": "Repair a cracked block using a Clay Ball",
+
+  "advancements.odyssey.scrape_mossy_block.title": "Like a Moss",
+  "advancements.odyssey.scrape_mossy_block.description": "Use an Axe to scrape moss off of a mossy block",
+
+  "advancements.odyssey.bake_cake.title": "The Lie",
+  "advancements.odyssey.bake_cake.description": "Bake a Cake",
 
   "advancements.odyssey.cure_poison_with_honey.title": "Cough Syrup",
   "advancements.odyssey.cure_poison_with_honey.description": "Cure poison by drinking a Honey Bottle",
