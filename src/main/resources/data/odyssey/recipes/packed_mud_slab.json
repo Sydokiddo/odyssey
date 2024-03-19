@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:packed_mud"
+    }
+  },
+  "result": {
+    "item": "odyssey:packed_mud_slab",
+    "count": 6
+  },
+  "show_notification": true
+}

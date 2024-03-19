@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "odyssey:quartz_brick_slab"
+    "odyssey:quartz_brick_slab",
+    "odyssey:packed_mud_slab"
   ]
 }

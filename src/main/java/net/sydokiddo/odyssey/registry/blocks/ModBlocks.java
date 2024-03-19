@@ -45,7 +45,7 @@ public class ModBlocks {
         .sound(SoundType.SAND).instrument(NoteBlockInstrument.SNARE).strength(0.5F).ignitedByLava()));
 
     public static final Block REFINED_AMETHYST_BLOCK = registerBlock("refined_amethyst_block",
-        new AmethystBlock(FabricBlockSettings.copyOf(Blocks.AMETHYST_BLOCK).sound(SoundType.AMETHYST)));
+        new AmethystBlock(FabricBlockSettings.copyOf(Blocks.AMETHYST_BLOCK)));
 
     public static final Block SUGAR_CANE_BLOCK = registerBlock("sugar_cane_block",
         new RotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.PLANT)
@@ -97,53 +97,53 @@ public class ModBlocks {
     // region Prismarine Variants
 
     public static final Block PRISMARINE_BRICK_WALL = registerBlock("prismarine_brick_wall",
-        new WallBlock(FabricBlockSettings.copyOf(Blocks.PRISMARINE_BRICKS).sound(SoundType.STONE)));
+        new WallBlock(FabricBlockSettings.copyOf(Blocks.PRISMARINE_BRICKS)));
 
     public static final Block DARK_PRISMARINE_WALL = registerBlock("dark_prismarine_wall",
-        new WallBlock(FabricBlockSettings.copyOf(Blocks.DARK_PRISMARINE).sound(SoundType.STONE)));
+        new WallBlock(FabricBlockSettings.copyOf(Blocks.DARK_PRISMARINE)));
 
     // endregion
 
     // region Polished Granite, Diorite, and Andesite Walls
 
     public static final Block POLISHED_GRANITE_WALL = registerBlock("polished_granite_wall",
-        new WallBlock(FabricBlockSettings.copyOf(Blocks.POLISHED_GRANITE).sound(SoundType.STONE)));
+        new WallBlock(FabricBlockSettings.copyOf(Blocks.POLISHED_GRANITE)));
 
     public static final Block POLISHED_DIORITE_WALL = registerBlock("polished_diorite_wall",
-        new WallBlock(FabricBlockSettings.copyOf(Blocks.POLISHED_DIORITE).sound(SoundType.STONE)));
+        new WallBlock(FabricBlockSettings.copyOf(Blocks.POLISHED_DIORITE)));
 
     public static final Block POLISHED_ANDESITE_WALL = registerBlock("polished_andesite_wall",
-        new WallBlock(FabricBlockSettings.copyOf(Blocks.POLISHED_ANDESITE).sound(SoundType.STONE)));
+        new WallBlock(FabricBlockSettings.copyOf(Blocks.POLISHED_ANDESITE)));
 
     // endregion
 
     // region Stone and Smooth Stone Variants
 
     public static final Block STONE_WALL = registerBlock("stone_wall",
-        new WallBlock(FabricBlockSettings.copyOf(Blocks.STONE).sound(SoundType.STONE)));
+        new WallBlock(FabricBlockSettings.copyOf(Blocks.STONE)));
 
     public static final Block SMOOTH_STONE_STAIRS = registerBlock("smooth_stone_stairs",
         new StairBlock(Blocks.SMOOTH_STONE.defaultBlockState(), FabricBlockSettings.copyOf(Blocks.SMOOTH_STONE)));
 
     public static final Block SMOOTH_STONE_WALL = registerBlock("smooth_stone_wall",
-        new WallBlock(FabricBlockSettings.copyOf(Blocks.SMOOTH_STONE).sound(SoundType.STONE)));
+        new WallBlock(FabricBlockSettings.copyOf(Blocks.SMOOTH_STONE)));
 
     // endregion
 
-    // region Sandstone Blocks
+    // region Sandstone Variants
 
     public static final Block SMOOTH_SANDSTONE_WALL = registerBlock("smooth_sandstone_wall",
-        new WallBlock(FabricBlockSettings.copyOf(Blocks.SMOOTH_SANDSTONE).sound(SoundType.STONE)));
+        new WallBlock(FabricBlockSettings.copyOf(Blocks.SMOOTH_SANDSTONE)));
 
     public static final Block SMOOTH_RED_SANDSTONE_WALL = registerBlock("smooth_red_sandstone_wall",
-        new WallBlock(FabricBlockSettings.copyOf(Blocks.SMOOTH_RED_SANDSTONE).sound(SoundType.STONE)));
+        new WallBlock(FabricBlockSettings.copyOf(Blocks.SMOOTH_RED_SANDSTONE)));
 
     // endregion
 
-    // region Quartz Blocks
+    // region Quartz Variants
 
     public static final Block QUARTZ_WALL = registerBlock("quartz_wall",
-        new WallBlock(FabricBlockSettings.copyOf(Blocks.QUARTZ_BLOCK).sound(SoundType.STONE)));
+        new WallBlock(FabricBlockSettings.copyOf(Blocks.QUARTZ_BLOCK)));
 
     public static final Block QUARTZ_BRICK_STAIRS = registerBlock("quartz_brick_stairs",
         new StairBlock(Blocks.QUARTZ_BRICKS.defaultBlockState(), FabricBlockSettings.copyOf(Blocks.QUARTZ_BRICKS)));
@@ -152,10 +152,23 @@ public class ModBlocks {
         new SlabBlock(FabricBlockSettings.copyOf(Blocks.QUARTZ_BRICKS)));
 
     public static final Block QUARTZ_BRICK_WALL = registerBlock("quartz_brick_wall",
-        new WallBlock(FabricBlockSettings.copyOf(Blocks.QUARTZ_BRICKS).sound(SoundType.STONE)));
+        new WallBlock(FabricBlockSettings.copyOf(Blocks.QUARTZ_BRICKS)));
 
     public static final Block SMOOTH_QUARTZ_WALL = registerBlock("smooth_quartz_wall",
-        new WallBlock(FabricBlockSettings.copyOf(Blocks.SMOOTH_QUARTZ).sound(SoundType.STONE)));
+        new WallBlock(FabricBlockSettings.copyOf(Blocks.SMOOTH_QUARTZ)));
+
+    // endregion
+
+    // region Packed Mud Variants
+
+    public static final Block PACKED_MUD_STAIRS = registerBlock("packed_mud_stairs",
+        new StairBlock(Blocks.PACKED_MUD.defaultBlockState(), FabricBlockSettings.copyOf(Blocks.PACKED_MUD)));
+
+    public static final Block PACKED_MUD_SLAB = registerBlock("packed_mud_slab",
+        new SlabBlock(FabricBlockSettings.copyOf(Blocks.PACKED_MUD)));
+
+    public static final Block PACKED_MUD_WALL = registerBlock("packed_mud_wall",
+        new WallBlock(FabricBlockSettings.copyOf(Blocks.PACKED_MUD)));
 
     // endregion
 
