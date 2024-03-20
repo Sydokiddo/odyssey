@@ -22,11 +22,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(Parrot.class)
 public abstract class ParrotMixin extends ShoulderRidingEntity {
 
-    @Shadow public abstract boolean isFood(ItemStack itemStack);
-
     private ParrotMixin(EntityType<? extends ShoulderRidingEntity> entityType, Level level) {
         super(entityType, level);
     }
+
+    @Shadow public abstract boolean isFood(ItemStack itemStack);
 
     @Inject(at = @At("HEAD"), method = "createAttributes", cancellable = true)
     private static void odyssey$improvedParrotAttributes(CallbackInfoReturnable<AttributeSupplier.Builder> cir) {

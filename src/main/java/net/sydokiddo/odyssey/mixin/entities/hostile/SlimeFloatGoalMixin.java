@@ -22,7 +22,7 @@ public class SlimeFloatGoalMixin {
 
     @Inject(method = "canUse", at = @At(value = "HEAD"), cancellable = true)
     private void odyssey$preventSlimeFloatingOnWater(CallbackInfoReturnable<Boolean> cir) {
-        if (slime instanceof MagmaCube magmaCube && magmaCube.isInWater() && Odyssey.getConfig().entities.hostileMobsConfig.slime_and_magma_cube_converting) {
+        if (this.slime instanceof MagmaCube magmaCube && magmaCube.isInWater() && Odyssey.getConfig().entities.hostileMobsConfig.slime_and_magma_cube_converting) {
             cir.setReturnValue(false);
         }
     }

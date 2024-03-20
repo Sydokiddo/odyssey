@@ -76,7 +76,7 @@ public abstract class PrimedTNTMixin extends Entity {
             if (!this.level().isClientSide()) {
 
                 if (canDefuse) {
-                    OCommonMethods.defusePrimedTNT(this.level(), primedTnt, blockPos, ModSoundEvents.TNT_SHEAR);
+                    OCommonMethods.defusePrimedTNT(this.level(), this.primedTnt, blockPos, ModSoundEvents.TNT_SHEAR);
                     player.gameEvent(GameEvent.SHEAR);
                     itemStack.hurtAndBreak(1, player, (shears) -> shears.broadcastBreakEvent(interactionHand));
                 }

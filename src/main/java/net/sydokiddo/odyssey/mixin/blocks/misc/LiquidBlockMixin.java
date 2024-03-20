@@ -20,7 +20,7 @@ public class LiquidBlockMixin {
 
     @ModifyArg(method = "shouldSpreadLiquid", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;setBlockAndUpdate(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z"), index = 1)
     private BlockState odyssey$generateCobbledDeepslate(BlockPos blockPos, BlockState blockState) {
-        if (blockState.is(Blocks.COBBLESTONE) && (random.nextInt(1, 9) - blockPos.getY() >= 0) && Odyssey.getConfig().blocks.qualityOfLifeBlockConfig.renewable_deepslate) {
+        if (blockState.is(Blocks.COBBLESTONE) && (this.random.nextInt(1, 9) - blockPos.getY() >= 0) && Odyssey.getConfig().blocks.qualityOfLifeBlockConfig.renewable_deepslate) {
             blockState = Blocks.COBBLED_DEEPSLATE.defaultBlockState();
         }
         return blockState;

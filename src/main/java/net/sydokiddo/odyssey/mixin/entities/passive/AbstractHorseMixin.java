@@ -54,7 +54,7 @@ public abstract class AbstractHorseMixin extends Animal {
     @Inject(method = "doPlayerRide", at = @At("HEAD"), cancellable = true)
     private void odyssey$preventRidingHorseWithOwnershipContract(Player player, CallbackInfo info) {
 
-        if (abstractHorse instanceof Camel) return;
+        if (this.abstractHorse instanceof Camel) return;
 
         if (player.getMainHandItem().is(ownershipContract) && !OwnershipContractItem.isContractBound(player.getMainHandItem()) || player.getOffhandItem().is(ownershipContract) && !OwnershipContractItem.isContractBound(player.getOffhandItem())) {
             info.cancel();

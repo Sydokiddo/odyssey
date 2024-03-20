@@ -37,7 +37,7 @@ public class MobInteractionOverridesMixin extends Mob {
         ItemStack itemStack = player.getItemInHand(interactionHand);
 
         if (itemStack.is(Items.BRUSH) && this.getType().is(ModTags.CAN_BE_BRUSHED) || itemStack.is(ModItems.OWNERSHIP_CONTRACT)) {
-            if (mob instanceof AbstractHorse && !OwnershipContractItem.isContractBound(player.getItemInHand(interactionHand))) return;
+            if (this.mob instanceof AbstractHorse && !OwnershipContractItem.isContractBound(player.getItemInHand(interactionHand))) return;
             cir.setReturnValue(super.mobInteract(player, interactionHand));
         }
     }

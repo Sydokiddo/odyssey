@@ -27,7 +27,7 @@ public abstract class SnowGolemMixin extends AbstractGolem {
     }
 
     @Shadow public abstract boolean hasPumpkin();
-    @Shadow public abstract void setPumpkin(boolean bl);
+    @Shadow public abstract void setPumpkin(boolean hasPumpkin);
 
     @Inject(at = @At("HEAD"), method = "mobInteract", cancellable = true)
     private void odyssey$snowGolemPumpkinInteraction(Player player, InteractionHand interactionHand, CallbackInfoReturnable<InteractionResult> cir) {

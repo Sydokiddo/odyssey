@@ -211,7 +211,7 @@ public abstract class ItemStackMixin {
     private void odyssey$changeMaxStackSizes(CallbackInfoReturnable<Integer> cir) {
 
         if (this.getItem() instanceof OwnershipContractItem) {
-            if (OwnershipContractItem.isContractBound(itemStack)) {
+            if (OwnershipContractItem.isContractBound(this.itemStack)) {
                 cir.setReturnValue(1);
             } else {
                 cir.setReturnValue(64);

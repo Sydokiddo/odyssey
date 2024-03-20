@@ -93,7 +93,7 @@ public class RedstoneLanternBlock extends LanternBlock {
 
     private void turnOnLantern(Level level, BlockPos blockPos, BlockState blockState) {
         level.playSound(null, blockPos, ModSoundEvents.REDSTONE_LANTERN_POWER_ON, SoundSource.BLOCKS);
-        level.setBlock(blockPos, blockState.setValue(LIT, true), tickTime);
+        level.setBlock(blockPos, blockState.setValue(LIT, true), this.tickTime);
         level.gameEvent(null, GameEvent.BLOCK_ACTIVATE, blockPos);
         this.updateRedstoneLanternNeighbors(level, blockPos);
     }
@@ -101,7 +101,7 @@ public class RedstoneLanternBlock extends LanternBlock {
     private void turnOffLantern(Level level, BlockPos blockPos, BlockState blockState) {
 
         level.playSound(null, blockPos, ModSoundEvents.REDSTONE_LANTERN_POWER_OFF, SoundSource.BLOCKS);
-        level.setBlock(blockPos, blockState.setValue(LIT, false), tickTime);
+        level.setBlock(blockPos, blockState.setValue(LIT, false), this.tickTime);
         level.gameEvent(null, GameEvent.BLOCK_DEACTIVATE, blockPos);
         this.updateRedstoneLanternNeighbors(level, blockPos);
 
