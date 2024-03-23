@@ -31,7 +31,7 @@ public abstract class ParrotMixin extends ShoulderRidingEntity {
     @Inject(at = @At("HEAD"), method = "createAttributes", cancellable = true)
     private static void odyssey$improvedParrotAttributes(CallbackInfoReturnable<AttributeSupplier.Builder> cir) {
         if (Odyssey.getConfig().entities.passiveMobsConfig.improved_parrots) {
-            cir.setReturnValue(Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 10.0).add(Attributes.FLYING_SPEED, 0.4F).add(Attributes.MOVEMENT_SPEED, 0.2F));
+            cir.setReturnValue(Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 10.0F).add(Attributes.FLYING_SPEED, 0.4F).add(Attributes.MOVEMENT_SPEED, 0.2F));
         }
     }
 

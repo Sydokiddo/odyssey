@@ -16,7 +16,7 @@ public class SnifferMixin {
     @Inject(at = @At("HEAD"), method = "createAttributes", cancellable = true)
     private static void odyssey$improvedSnifferAttributes(CallbackInfoReturnable<AttributeSupplier.Builder> cir) {
         if (Odyssey.getConfig().entities.passiveMobsConfig.improved_sniffer_stats) {
-            cir.setReturnValue(Mob.createMobAttributes().add(Attributes.MOVEMENT_SPEED, 0.1F).add(Attributes.MAX_HEALTH, 24.0).add(Attributes.KNOCKBACK_RESISTANCE, 0.6F));
+            cir.setReturnValue(Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 24.0F).add(Attributes.MOVEMENT_SPEED, 0.1F).add(Attributes.KNOCKBACK_RESISTANCE, 0.6F));
         }
     }
 }
