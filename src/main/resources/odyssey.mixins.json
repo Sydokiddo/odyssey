@@ -23,6 +23,7 @@
     "blocks.misc.LiquidBlockMixin",
     "blocks.misc.PowderSnowBlockMixin",
     "blocks.misc.SnifferEggBlockMixin",
+    "blocks.plants.CaveVinesBlockMixin",
     "blocks.plants.FlowerPotBlockMixin",
     "blocks.plants.LeavesBlockMixin",
     "blocks.plants.LilyPadBlockMixin",
